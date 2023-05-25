@@ -46,7 +46,7 @@ function ServicesSection() {
         </Typography>
         <Typography variant="body1" sx={{ textAlign: "center" }}>
           Customize your invitation and choose 'send online' to create your
-          event.
+          event..
         </Typography>
 
         {serviceLists.map((list, index) => {
