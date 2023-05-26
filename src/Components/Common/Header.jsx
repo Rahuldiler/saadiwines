@@ -32,7 +32,7 @@ function Header() {
       setColorchange(false);
     }
   };
-  const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
@@ -78,22 +78,23 @@ function Header() {
       <AppBar
         component="nav"
         sx={{
-          backgroundColor: colorChange ? "#fff" : "transparent",
-          marginTop: colorChange ? "0px" : "40px",
+          backgroundColor: colorChange
+            ? "#fff"
+            : mobileOpen
+            ? "#fff"
+            : "transparent",
+          marginTop: colorChange ? "0px" : mobileOpen ? "20px" : "40px",
           boxShadow: !colorChange && "none",
           color: colorChange ? "#000" : "#fff",
         }}
       >
         <Toolbar
           sx={{
-            marginLeft: "auto",
-            marginRight: "auto",
-            width: "1280px",
             color: colorChange ? "#000" : "#fff",
           }}
         >
           <IconButton
-            color="inherit"
+            color="#000"
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
@@ -108,7 +109,9 @@ function Header() {
             sx={{
               flexGrow: 1,
               // display: { xs: "none", sm: "block" },
-              fontSize: "28px",
+              fontSize: "36px",
+              fontWeight: 700,
+              mt: "5px",
             }}
           >
             <span className="vibeFont" style={{ color: "#E21A9E" }}>
@@ -128,6 +131,7 @@ function Header() {
                   padding: "0px 20px",
                   textDecoration: "none",
                   fontWeight: 500,
+                  fontSize: "20px",
                 }}
               >
                 {item.title}

@@ -1,7 +1,7 @@
 import { Button, Grid, Link, Typography } from "@mui/material";
 import React from "react";
 
-export default function ServiceCard({ title, info, imgLeft, url }) {
+export default function ServiceCard({ title, info, imgLeft, url, imgVid }) {
   return (
     <Grid
       container
@@ -19,14 +19,14 @@ export default function ServiceCard({ title, info, imgLeft, url }) {
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          ml: { lg: imgLeft ? "0px" : "80px", xs: "0px" },
+          ml: { lg: imgLeft ? "0px" : "60px", xs: "0px" },
         }}
       >
         <Typography
           variant="h3"
           sx={{
             mt: 4,
-            fontSize: "44px",
+            fontSize: "64px",
             fontWeight: 500,
             mt: { lg: "0px", xs: "20px" },
             display: "flex",
@@ -62,11 +62,11 @@ export default function ServiceCard({ title, info, imgLeft, url }) {
         lg={5}
         order={{ lg: imgLeft ? 2 : 1, xs: 1 }}
         sx={{
-          ml: { lg: imgLeft ? "80px" : "0px", xs: "0px" },
+          ml: { lg: imgLeft ? "60px" : "0px", xs: "0px" },
         }}
       >
         <video className="videoResponsiveService" autoPlay loop muted>
-          <source src="/assets/video.mp4" type="video/mp4" />
+          <source src={imgVid} type="video/mp4" />
         </video>
       </Grid>
     </Grid>

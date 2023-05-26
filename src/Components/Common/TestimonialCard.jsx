@@ -10,7 +10,7 @@ function TestimonialCard({ data }) {
         background: "#FFF",
         boxShadow: "-1px 6px 25px #f8dcee",
         borderRadius: "10px",
-        m: 4,
+        m: { lg: "60px" },
       }}
     >
       <Box

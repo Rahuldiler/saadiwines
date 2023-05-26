@@ -8,28 +8,28 @@ function ServicesSection() {
     {
       title: "Website Designing",
       info: "Produced with rich, radiant inks and high-quality, weatherproof vinyl, our custom die cut stickers are available in any shape or size. Further elevate your custom-shaped stickers with beautiful matte and gloss coatings.",
-      imgVid: "/assets/weddingimg3.png",
+      imgVid: "/assets/video.mp4",
       imgLeft: false,
       url: "#website-designing",
     },
     {
       title: "Video Invitation",
       info: "Produced with rich, radiant inks and high-quality, weatherproof vinyl, our custom die cut stickers are available in any shape or size. Further elevate your custom-shaped stickers with beautiful matte and gloss coatings.",
-      imgVid: "/assets/weddingimg3.png",
+      imgVid: "/assets/video.mp4",
       imgLeft: true,
       url: "#video-invitation",
     },
     {
       title: "Budget Planning",
       info: "Produced with rich, radiant inks and high-quality, weatherproof vinyl, our custom die cut stickers are available in any shape or size. Further elevate your custom-shaped stickers with beautiful matte and gloss coatings.",
-      imgVid: "/assets/weddingimg3.png",
+      imgVid: "/assets/video.mp4",
       imgLeft: false,
       url: "#budget-planning",
     },
     {
       title: "Guest Management",
       info: "Produced with rich, radiant inks and high-quality, weatherproof vinyl, our custom die cut stickers are available in any shape or size. Further elevate your custom-shaped stickers with beautiful matte and gloss coatings.",
-      imgVid: "/assets/weddingimg3.png",
+      imgVid: "/assets/video.mp4",
       imgLeft: true,
       url: "#guest-management",
     },
@@ -62,6 +62,7 @@ function ServicesSection() {
               img={list.img}
               imgLeft={list.imgLeft}
               url={list.url}
+              imgVid={list.imgVid}
             />
           );
         })}

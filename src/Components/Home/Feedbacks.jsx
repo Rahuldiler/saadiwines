@@ -4,8 +4,8 @@ import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 import { Autoplay, Grid, Navigation, Pagination } from "swiper";
 import "swiper/css";
 import "swiper/css/pagination";
-import "swiper/css/navigation";
 import TestimonialCard from "../Common/TestimonialCard";
+import "swiper/css/bundle";
 
 function Feedbacks() {
   const dummyData = [
@@ -53,7 +53,7 @@ function Feedbacks() {
         background: "#FFF9F5",
       }}
     >
-      <Box sx={{ width: "100%" }} className="layoutMargin">
+      <Box sx={{ width: "100%" }}>
         <Box sx={{ py: { lg: 10, xs: "40px" } }}>
           <Typography
             variant="h2"
@@ -67,7 +67,7 @@ function Feedbacks() {
             Lorem ipsum dolor sit amet,
           </Typography>
         </Box>
-        <Box sx={{ pb: 10 }}>
+        <Box sx={{ pb: 10, mx: { lg: 14, xs: 2 } }}>
           <Swiper
             spaceBetween={0}
             initialSlide={step}
@@ -97,11 +97,11 @@ function Feedbacks() {
               clickable: true,
             }}
             navigation={{
-              nextEl: ".swiper-button-next",
               prevEl: ".swiper-button-prev",
+              nextEl: ".swiper-button-next",
             }}
             autoplay={{
-              delay: 2500,
+              delay: 25000,
               disableOnInteraction: false,
             }}
             // onSlideChange={() => console.log("slide change")}
@@ -114,9 +114,11 @@ function Feedbacks() {
                 </SwiperSlide>
               );
             })}
-            <div className="container-dots" style={{ marginTop: "60px" }}>
+            {/* <div className="container-dots" style={{ marginTop: "60px" }}>
               <div className="custom-pagination"></div>
-            </div>
+            </div> */}
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
           </Swiper>
         </Box>
       </Box>
