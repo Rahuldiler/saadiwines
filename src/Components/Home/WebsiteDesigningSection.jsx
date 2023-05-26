@@ -5,7 +5,10 @@ import WebsiteTemplateContainer from "../Common/WebsiteTemplateContainer";
 function WebsiteDesigningSection() {
   return (
     <section style={{ background: "#FBF8F8" }} id="website-designing">
-      <Box className="layoutMargin" sx={{ py: 10 }}>
+      <Box
+        className="layoutMargin"
+        sx={{ py: { lg: 10, xs: "20px" }, px: { lg: "0px", xs: "40px" } }}
+      >
         <Grid container sx={{ my: 8 }}>
           <Grid item lg={6}>
             <Box
@@ -67,6 +70,7 @@ function WebsiteDesigningSection() {
                 boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
                 display: "flex",
                 alignItem: "center",
+                mt: { lg: 0, xs: "40px" },
               }}
             >
               <video

@@ -13,6 +13,7 @@ import { BsTwitter } from "react-icons/bs";
 import { FiInstagram } from "react-icons/fi";
 import { HiMail } from "react-icons/hi";
 import { ImLocation } from "react-icons/im";
+import Image from "next/image";
 
 function Footer() {
   const socialFooter = [
@@ -88,8 +89,14 @@ function Footer() {
     },
   ];
   return (
-    <footer style={{ background: "#fff0e6" }}>
-      <Box className="layoutMargin" sx={{ py: 10 }}>
+    <footer
+      style={{
+        background: "#fff0e6",
+        // background: "#fff3fb",
+        position: "relative",
+      }}
+    >
+      <Box className="layoutMargin" sx={{ py: 10, px: { lg: 0, xs: "20px" } }}>
         <Grid container>
           <Grid item xs={12} sm={12} md={3} lg={4} sx={{ pr: 10 }}>
             <Typography
@@ -98,7 +105,6 @@ function Footer() {
               className="vibeFont"
               sx={{
                 flexGrow: 1,
-                display: { xs: "none", sm: "block" },
                 fontSize: "36px",
               }}
             >
@@ -137,7 +143,14 @@ function Footer() {
               })}
             </Box>
           </Grid>
-          <Grid item xs={12} sm={12} md={3} lg={2}>
+          <Grid
+            item
+            xs={12}
+            sm={12}
+            md={3}
+            lg={2}
+            sx={{ mt: { lg: 0, xs: "40px" } }}
+          >
             <Typography variant="h6" sx={{ fontWeight: 300, fontSize: "26px" }}>
               Information
             </Typography>
@@ -153,7 +166,14 @@ function Footer() {
               })}
             </List>
           </Grid>
-          <Grid item xs={12} sm={12} md={3} lg={3} sx={{ pr: 6 }}>
+          <Grid
+            item
+            xs={12}
+            sm={12}
+            md={3}
+            lg={3}
+            sx={{ mt: { lg: 0, xs: "40px" }, pr: 6 }}
+          >
             <Typography variant="h6" sx={{ fontWeight: 300, fontSize: "26px" }}>
               Contact
             </Typography>
@@ -181,7 +201,14 @@ function Footer() {
               );
             })}
           </Grid>
-          <Grid item xs={12} sm={12} md={3} lg={3} sx={{ pl: 4 }}>
+          <Grid
+            item
+            xs={12}
+            sm={12}
+            md={3}
+            lg={3}
+            sx={{ mt: { lg: 0, xs: "40px" }, pl: { lg: 4, xs: 0 } }}
+          >
             <Typography variant="h6" sx={{ fontWeight: 300, fontSize: "26px" }}>
               Our Work
             </Typography>
@@ -196,8 +223,11 @@ function Footer() {
                     key={index}
                   >
                     <Link href={listOfImg.url}>
-                      <img
+                      <Image
                         className="imgHover"
+                        alt="img"
+                        width={1000}
+                        height={1000}
                         src={listOfImg.img}
                         style={{
                           height: "80px",
@@ -213,6 +243,21 @@ function Footer() {
           </Grid>
         </Grid>
       </Box>
+      <Image
+        alt="img"
+        width={1000}
+        height={1000}
+        src="/assets/whitepaperbottom.svg"
+        className="bottomPaper"
+        style={{
+          position: "absolute",
+          zIndex: 4,
+          bottom: -60,
+          left: 0,
+          width: "100%",
+          height: "auto",
+        }}
+      />
     </footer>
   );
 }

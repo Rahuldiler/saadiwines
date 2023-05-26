@@ -36,7 +36,11 @@ function ServicesSection() {
   ];
   return (
     <section className="layoutMargin" id="services">
-      <Box>
+      <Box
+        sx={{
+          px: { lg: "0px", xs: "40px" },
+        }}
+      >
         <Typography
           variant="h2"
           className="vibeFont"

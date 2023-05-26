@@ -1,4 +1,5 @@
 import { Box, Grid, Link } from "@mui/material";
+import Image from "next/image";
 import React from "react";
 
 function WebsiteTemplateContainer() {
@@ -42,14 +43,14 @@ function WebsiteTemplateContainer() {
         display: "flex",
         justifyContent: "space-around",
         flexWrap: "wrap",
-        pb: 10,
+        pb: { lg: 10, xs: 0 },
       }}
     >
       {templateDesign.map((listOfImg, index) => {
         return (
           <Box
             sx={{
-              flex: "1 1 25%",
+              flex: { lg: "1 1 25%", xs: "1 1 50%" },
               display: "flex",
               justifyContent: "center",
             }}
@@ -58,13 +59,16 @@ function WebsiteTemplateContainer() {
             <Link
               href={listOfImg.url}
               sx={{
-                px: 8,
-                py: 4,
+                px: { lg: 8, xs: "20px" },
+                py: { lg: 4, xs: "20px" },
                 // "&:hover": {},
               }}
             >
-              <img
+              <Image
                 className="imgHover"
+                alt="img"
+                width={1000}
+                height={1000}
                 src={listOfImg.img}
                 style={{ height: "auto", width: "100%", borderRadius: "7px" }}
               />

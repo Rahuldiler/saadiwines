@@ -2,12 +2,17 @@ import {
   AppBar,
   Box,
   Button,
+  Divider,
   IconButton,
   Link,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemText,
   Toolbar,
   Typography,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 
 function Header() {
@@ -27,7 +32,47 @@ function Header() {
       setColorchange(false);
     }
   };
-  window.addEventListener("scroll", changeNavbarColor);
+  const [mobileOpen, setMobileOpen] = React.useState(false);
+
+  const handleDrawerToggle = () => {
+    setMobileOpen((prevState) => !prevState);
+  };
+
+  const drawer = (
+    <Box
+      onClick={handleDrawerToggle}
+      sx={{
+        textAlign: "start",
+        background: "#fff",
+        width: "100%",
+        color: "#000",
+      }}
+    >
+      <Divider />
+      <List>
+        {navItems.map((item) => (
+          <ListItem key={item} disablePadding>
+            <Link
+              href={item.url}
+              key={item}
+              sx={{
+                color: "#000",
+                padding: "0px 20px",
+                textDecoration: "none",
+                fontWeight: 500,
+              }}
+            >
+              <ListItemText primary={item.title} />
+            </Link>
+          </ListItem>
+        ))}
+      </List>
+    </Box>
+  );
+
+  useEffect(() => {
+    window.addEventListener("scroll", changeNavbarColor);
+  }, [colorChange]);
   return (
     <header style={{ position: "absolute", left: 0 }}>
       <AppBar
@@ -51,7 +96,7 @@ function Header() {
             color="inherit"
             aria-label="open drawer"
             edge="start"
-            // onClick={handleDrawerToggle}
+            onClick={handleDrawerToggle}
             sx={{ mr: 2, display: { sm: "none" } }}
           >
             <MenuIcon />
@@ -62,11 +107,16 @@ function Header() {
             className="vibeFont"
             sx={{
               flexGrow: 1,
-              display: { xs: "none", sm: "block" },
+              // display: { xs: "none", sm: "block" },
               fontSize: "28px",
             }}
           >
-            ShaadiVines
+            <span className="vibeFont" style={{ color: "#E21A9E" }}>
+              Shaadi
+            </span>
+            <span className="vibeFont" style={{ color: "#BC8129" }}>
+              Vines
+            </span>
           </Typography>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             {navItems.map((item, index) => (
@@ -84,6 +134,7 @@ function Header() {
               </Link>
             ))}
           </Box>
+
           <Button
             style={{
               backgroundColor: "#E21A9E",
@@ -95,6 +146,14 @@ function Header() {
             Login
           </Button>
         </Toolbar>
+        {mobileOpen && (
+          <Box
+            component="nav"
+            sx={{ position: "relative", zIndex: 10, width: "100%" }}
+          >
+            {drawer}
+          </Box>
+        )}
       </AppBar>
     </header>
   );

@@ -6,7 +6,10 @@ function VideoInvitation() {
   return (
     <section>
       <Box className="layoutMargin" id="video-invitation">
-        <Grid container sx={{ my: 10 }}>
+        <Grid
+          container
+          sx={{ py: { lg: 10, xs: "40px" }, px: { lg: "0px", xs: "40px" } }}
+        >
           <Grid item lg={6}>
             <Box
               sx={{
@@ -20,7 +23,7 @@ function VideoInvitation() {
               <Typography
                 variant="h2"
                 className="vibeFont"
-                sx={{ color: "#bc8129" }}
+                sx={{ color: "#bc8129", mt: { lg: 0, xs: "40px" } }}
               >
                 Video Invitations
               </Typography>
@@ -67,6 +70,7 @@ function VideoInvitation() {
                 boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
                 display: "flex",
                 alignItem: "center",
+                mt: { lg: 0, xs: "40px" },
               }}
             >
               <video
