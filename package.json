@@ -11,12 +11,20 @@
   "dependencies": {
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
+    "@heroicons/react": "^2.0.18",
     "@mui/icons-material": "^5.11.16",
     "@mui/material": "^5.13.2",
     "next": "13.4.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-grid-gallery": "^1.0.0",
     "react-icons": "^4.8.0",
+    "react-simple-image-slider": "^2.4.1",
+    "react-slideshow-image": "^4.2.1",
+    "simple-react-lightbox": "^3.6.9-0",
     "swiper": "^9.3.2"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.3.2"
   }
 }

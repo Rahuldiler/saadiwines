@@ -49,17 +49,17 @@ function TestimonialCard({ data }) {
           fontWeight: 600,
           textAlign: "start",
           ml: { lg: 4, xs: 2 },
-          "&:before, &:after": {
-            fontFamily: "Revalia",
-            color: "#f0d7b260",
-            fontSize: "100px",
-            position: "absolute",
-          },
-          "&:before": {
-            content: `"“"`,
-            top: { lg: "40px", xs: "60px" },
-            right: "60px",
-          },
+          // "&:before, &:after": {
+          //   fontFamily: "Revalia",
+          //   color: "#f0d7b260",
+          //   fontSize: "100px",
+          //   position: "absolute",
+          // },
+          // "&:before": {
+          //   content: `"“"`,
+          //   top: { lg: "40px", xs: "60px" },
+          //   right: "60px",
+          // },
         }}
       >
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu

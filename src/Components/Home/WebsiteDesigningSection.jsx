@@ -4,7 +4,7 @@ import WebsiteTemplateContainer from "../Common/WebsiteTemplateContainer";
 
 function WebsiteDesigningSection() {
   return (
-    <section style={{ background: "#FBF8F8" }} id="website-designing">
+    <section style={{ background: "#FBF8F8" }} id="services">
       <Box
         className="layoutMargin"
         sx={{ py: { lg: 10, xs: "20px" }, px: { lg: "0px", xs: "40px" } }}

@@ -20,12 +20,12 @@ export default function Home() {
     <>
       <main>
         <HeroSection />
-        <ServicesSection />
+        {/* <ServicesSection /> */}
+        <About />
         <WebsiteDesigningSection />
         <VideoInvitation />
         <Budget />
         <GuestList />
-        <About />
         <Feedbacks />
         <ContactUs />
       </main>

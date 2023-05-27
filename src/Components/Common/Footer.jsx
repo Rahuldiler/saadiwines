@@ -121,6 +121,7 @@ function Footer() {
               {socialFooter.map((item, index) => {
                 return (
                   <Link
+                    key={index}
                     sx={{
                       background: "#fff",
                       p: 2,
@@ -157,7 +158,7 @@ function Footer() {
             <List sx={{ p: 0, m: 0, color: "#000", fontWeight: 400 }}>
               {listNav.map((nav, index) => {
                 return (
-                  <ListItem sx={{ p: 0, mt: 2, cursor: "pointer" }}>
+                  <ListItem sx={{ p: 0, mt: 2, cursor: "pointer" }} key={index}>
                     <Link sx={{ color: "inherit", textDecoration: "none" }}>
                       {nav.title}
                     </Link>
@@ -186,6 +187,7 @@ function Footer() {
             {contactInfo.map((item, index) => {
               return (
                 <Typography
+                  key={index}
                   variant="body1"
                   sx={{
                     color: "#A3888C",

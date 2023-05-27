@@ -20,7 +20,7 @@ function Header() {
     { title: "Home", url: "/" },
     { title: "About Us", url: "#about" },
     { title: "Our Services", url: "#services" },
-    { title: "Feedbacks", url: "#feedbacks" },
+    { title: "Reviews", url: "#reviews" },
     { title: "Contact Us", url: "#contact" },
   ];
 

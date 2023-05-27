@@ -17,7 +17,7 @@ function GuestList() {
     },
     {
       title: "Track your guests’ responses.",
-      info: "See guests’ RSVPs, who has opened your invite, and who’s purchased a gift from your registry, all in one place.",
+      info: "See guests’ RSVPs, who has opened your invite,  all in one place.",
       img: "/assets/placeholder.png",
     },
   ];

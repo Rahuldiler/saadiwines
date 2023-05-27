@@ -25,7 +25,7 @@ function ContactUs() {
     },
   ];
   return (
-    <section>
+    <section id="contact">
       <Box>
         <Typography
           variant="h2"
