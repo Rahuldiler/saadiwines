@@ -3,7 +3,9 @@ import React from "react";
 
 function BottomBar() {
   return (
-    <Typography sx={{ textAlign: "center", p: 2 }}>
+    <Typography
+      sx={{ textAlign: "center", p: 2, zIndex: 5, position: "relative" }}
+    >
       © 2023 Shaadi Vines. All Rights Reserved.
     </Typography>
   );

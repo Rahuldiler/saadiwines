@@ -2,12 +2,17 @@ import {
   AppBar,
   Box,
   Button,
+  Divider,
   IconButton,
   Link,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemText,
   Toolbar,
   Typography,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 
 function Header() {
@@ -27,31 +32,72 @@ function Header() {
       setColorchange(false);
     }
   };
-  window.addEventListener("scroll", changeNavbarColor);
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  const handleDrawerToggle = () => {
+    setMobileOpen((prevState) => !prevState);
+  };
+
+  const drawer = (
+    <Box
+      onClick={handleDrawerToggle}
+      sx={{
+        textAlign: "start",
+        background: "#fff",
+        width: "100%",
+        color: "#000",
+      }}
+    >
+      <Divider />
+      <List>
+        {navItems.map((item) => (
+          <ListItem key={item} disablePadding>
+            <Link
+              href={item.url}
+              key={item}
+              sx={{
+                color: "#000",
+                padding: "0px 20px",
+                textDecoration: "none",
+                fontWeight: 500,
+              }}
+            >
+              <ListItemText primary={item.title} />
+            </Link>
+          </ListItem>
+        ))}
+      </List>
+    </Box>
+  );
+
+  useEffect(() => {
+    window.addEventListener("scroll", changeNavbarColor);
+  }, [colorChange]);
   return (
     <header style={{ position: "absolute", left: 0 }}>
       <AppBar
         component="nav"
         sx={{
-          backgroundColor: colorChange ? "#fff" : "transparent",
-          marginTop: colorChange ? "0px" : "40px",
+          backgroundColor: colorChange
+            ? "#fff"
+            : mobileOpen
+            ? "#fff"
+            : "transparent",
+          marginTop: colorChange ? "0px" : mobileOpen ? "20px" : "40px",
           boxShadow: !colorChange && "none",
           color: colorChange ? "#000" : "#fff",
         }}
       >
         <Toolbar
           sx={{
-            marginLeft: "auto",
-            marginRight: "auto",
-            width: "1280px",
             color: colorChange ? "#000" : "#fff",
           }}
         >
           <IconButton
-            color="inherit"
+            color="#000"
             aria-label="open drawer"
             edge="start"
-            // onClick={handleDrawerToggle}
+            onClick={handleDrawerToggle}
             sx={{ mr: 2, display: { sm: "none" } }}
           >
             <MenuIcon />
@@ -62,11 +108,18 @@ function Header() {
             className="vibeFont"
             sx={{
               flexGrow: 1,
-              display: { xs: "none", sm: "block" },
-              fontSize: "28px",
+              // display: { xs: "none", sm: "block" },
+              fontSize: "36px",
+              fontWeight: 700,
+              mt: "5px",
             }}
           >
-            ShaadiVines
+            <span className="vibeFont" style={{ color: "#E21A9E" }}>
+              Shaadi
+            </span>
+            <span className="vibeFont" style={{ color: "#BC8129" }}>
+              Vines
+            </span>
           </Typography>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             {navItems.map((item, index) => (
@@ -78,23 +131,33 @@ function Header() {
                   padding: "0px 20px",
                   textDecoration: "none",
                   fontWeight: 500,
+                  fontSize: "20px",
                 }}
               >
                 {item.title}
               </Link>
             ))}
           </Box>
+
           <Button
             style={{
               backgroundColor: "#E21A9E",
               color: "#fff",
-              marginLeft: "100px",
+              marginLeft: "16px",
               padding: "7px 16px",
             }}
           >
             Login
           </Button>
         </Toolbar>
+        {mobileOpen && (
+          <Box
+            component="nav"
+            sx={{ position: "relative", zIndex: 10, width: "100%" }}
+          >
+            {drawer}
+          </Box>
+        )}
       </AppBar>
     </header>
   );

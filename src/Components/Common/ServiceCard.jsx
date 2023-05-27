@@ -1,27 +1,34 @@
 import { Button, Grid, Link, Typography } from "@mui/material";
 import React from "react";
 
-export default function ServiceCard({ title, info, imgLeft, url }) {
+export default function ServiceCard({ title, info, imgLeft, url, imgVid }) {
   return (
-    <Grid container sx={{ my: 10, mx: 10 }}>
+    <Grid
+      container
+      sx={{
+        my: 10,
+        display: "flex",
+        justifyContent: "space-between",
+      }}
+    >
       <Grid
         item
         lg={5}
-        order={{ lg: imgLeft ? 1 : 2 }}
+        order={{ lg: imgLeft ? 1 : 2, xs: 2 }}
         sx={{
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          ml: imgLeft ? "0px" : "80px",
+          ml: { lg: imgLeft ? "0px" : "60px", xs: "0px" },
         }}
       >
         <Typography
           variant="h3"
           sx={{
             mt: 4,
-            fontSize: "44px",
+            fontSize: "64px",
             fontWeight: 500,
-            mt: 0,
+            mt: { lg: "0px", xs: "20px" },
             display: "flex",
             alignItems: "center",
             gap: "10px",
@@ -53,21 +60,13 @@ export default function ServiceCard({ title, info, imgLeft, url }) {
       <Grid
         item
         lg={5}
-        order={{ lg: imgLeft ? 2 : 1 }}
-        sx={{ ml: imgLeft ? "80px" : "0px" }}
+        order={{ lg: imgLeft ? 2 : 1, xs: 1 }}
+        sx={{
+          ml: { lg: imgLeft ? "60px" : "0px", xs: "0px" },
+        }}
       >
-        <video
-          style={{
-            width: "480px",
-            height: "480px",
-            objectFit: "cover",
-            borderRadius: "20px",
-          }}
-          autoPlay
-          loop
-          muted
-        >
-          <source src="/assets/video.mp4" type="video/mp4" />
+        <video className="videoResponsiveService" autoPlay loop muted>
+          <source src={imgVid} type="video/mp4" />
         </video>
       </Grid>
     </Grid>

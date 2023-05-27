@@ -30,7 +30,7 @@ function ContactUs() {
         <Typography
           variant="h2"
           className="vibeFont"
-          sx={{ color: "#bc8129", mt: 2, textAlign: "center" }}
+          sx={{ color: "#bc8129", mt: 10, textAlign: "center" }}
         >
           Contact Us
         </Typography>
@@ -38,7 +38,11 @@ function ContactUs() {
         <Typography variant="body1" sx={{ textAlign: "center" }}>
           Have Questions? Feel Free to Write Us
         </Typography>
-        <Grid container sx={{ my: 10 }} className="layoutMargin">
+        <Grid
+          container
+          sx={{ my: { lg: 10, xs: "40px" } }}
+          className="layoutMargin"
+        >
           <Grid
             item
             lg={6}
@@ -46,6 +50,7 @@ function ContactUs() {
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
+              px: { lg: 0, xs: "20px" },
             }}
           >
             <Typography variant="h6" sx={{ fontSize: "30px" }}>
@@ -93,6 +98,8 @@ function ContactUs() {
                 border: "1px solid #BC8129",
                 p: 4,
                 borderRadius: "7px",
+                mt: { lg: 0, xs: "40px" },
+                mx: { lg: 0, xs: "20px" },
               }}
             >
               <TextField
