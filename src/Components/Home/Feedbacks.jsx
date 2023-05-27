@@ -117,8 +117,8 @@ function Feedbacks() {
             {/* <div className="container-dots" style={{ marginTop: "60px" }}>
               <div className="custom-pagination"></div>
             </div> */}
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
+            <div className="swiper-button-prev"></div>
+            <div className="swiper-button-next"></div>
           </Swiper>
         </Box>
       </Box>

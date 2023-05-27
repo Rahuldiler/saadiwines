@@ -143,7 +143,7 @@ function Header() {
             style={{
               backgroundColor: "#E21A9E",
               color: "#fff",
-              marginLeft: "100px",
+              marginLeft: "16px",
               padding: "7px 16px",
             }}
           >

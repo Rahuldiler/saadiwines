@@ -5,35 +5,18 @@ import React from "react";
 function WebsiteTemplateContainer() {
   const templateDesign = [
     {
-      img: "/assets/placeholder.png",
+      id: 1,
+      img: "https://sv-landing-page-assets.s3.eu-north-1.amazonaws.com/Screenshot+2023-05-27+at+11.38.02+AM.png",
       url: "/",
     },
     {
-      img: "/assets/placeholder.png",
+      id: 2,
+      img: "https://sv-landing-page-assets.s3.eu-north-1.amazonaws.com/Screenshot+2023-05-27+at+11.59.18+AM.png",
       url: "/",
     },
     {
-      img: "/assets/placeholder.png",
-      url: "/",
-    },
-    {
-      img: "/assets/placeholder.png",
-      url: "/",
-    },
-    {
-      img: "/assets/placeholder.png",
-      url: "/",
-    },
-    {
-      img: "/assets/placeholder.png",
-      url: "/",
-    },
-    {
-      img: "/assets/placeholder.png",
-      url: "/",
-    },
-    {
-      img: "/assets/placeholder.png",
+      id: 3,
+      img: "https://sv-landing-page-assets.s3.eu-north-1.amazonaws.com/Screenshot+2023-05-27+at+12.00.52+PM.png",
       url: "/",
     },
   ];
@@ -54,7 +37,7 @@ function WebsiteTemplateContainer() {
               display: "flex",
               justifyContent: "center",
             }}
-            key={index}
+            key={listOfImg.id}
           >
             <Link
               href={listOfImg.url}
