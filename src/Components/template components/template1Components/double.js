@@ -67,7 +67,7 @@ function Double({
         } relative`}
       >
         <div
-          class="absolute top-0 left-0  opacity-100 mix-blend-multiply  w-[100%] h-[100%] bg-cover bg-no-repeat bg-[center_top]"
+          className="absolute top-0 left-0  opacity-100 mix-blend-multiply  w-[100%] h-[100%] bg-cover bg-no-repeat bg-[center_top]"
           style={{ backgroundImage: "url('/images/bg-watercolor.jpg')" }}
         ></div>
         <p className="font-Alex text-[50px] mb-3">{title}</p>
