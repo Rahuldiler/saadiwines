@@ -44,8 +44,8 @@ function GreenStrip({title,text,img,propName}) {
             <div className={` ${propName==="clock"?"lg:w-[30%]":"lg:w-[50%]"} lg:w-[30%] text-white lg:flex items-center `}>
                 <img src={img} alt='glasses' className='w-24 h-20 mr-3 mb-6 hidden lg:block'/>
                 <div className='text-center lg:text-left'>
-                  <p className='text-[14px] lg:text-base mb-3'>{text}</p>
-                  <p className='font-Alex text-[35px] '>{title}</p>
+                  <p className='text-[14px] lg:!text-base mb-3'>{text}</p>
+                  <p className='!font-Alex !text-[35px] '>{title}</p>
                 </div>
             </div>
            {propName!=="clock"&& <Swiper
@@ -69,20 +69,20 @@ function GreenStrip({title,text,img,propName}) {
 
             {propName==="clock"&&<div className='text-white text-[20px] lg:w-[70%] grid grid-cols-4 text-center'>
               <div>
-                <p className='font-Alex text-[30px] lg:text-[60px]'>{timeRemaining.days}</p>
-                <p className='text-[10px] lg:text-base'>DAYS</p>
+                <p className='!font-Alex !text-[30px] lg:!text-[60px]'>{timeRemaining.days}</p>
+                <p className='!text-[10px] lg:!text-base'>DAYS</p>
               </div>
               <div>
-                <p className='font-Alex  text-[30px] lg:text-[60px]'>{timeRemaining.hours}</p>
-                <p className='text-[10px] lg:text-base'>HOURS</p>
+                <p className='!font-Alex  !text-[30px] lg:!text-[60px]'>{timeRemaining.hours}</p>
+                <p className='!text-[10px] lg:!text-base'>HOURS</p>
               </div>
               <div>
-                <p className='font-Alex  text-[30px] lg:text-[60px]'>{timeRemaining.minutes}</p>
-                <p className='text-[10px] lg:text-base'>MINUTES</p>
+                <p className='!font-Alex  !text-[30px] lg:!text-[60px]'>{timeRemaining.minutes}</p>
+                <p className='!text-[10px] lg:!text-base'>MINUTES</p>
               </div>
               <div>
-                <p className='font-Alex  text-[30px] lg:text-[60px]'>{timeRemaining.seconds}</p>
-                <p className='text-[10px] lg:text-base'>SECONDS</p>
+                <p className='!font-Alex  !text-[30px] lg:!text-[60px]'>{timeRemaining.seconds}</p>
+                <p className='!text-[10px] lg:!text-base'>SECONDS</p>
               </div>
             </div>}
         </div>
