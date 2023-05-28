@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const Lightbox = ({ isOpen, imageUrl, onClose }) => {
   if (!isOpen) return null;
@@ -6,7 +6,13 @@ const Lightbox = ({ isOpen, imageUrl, onClose }) => {
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-50">
       <div className="max-w-3xl w-full">
-        <img src={imageUrl} alt="Lightbox" className="rounded-lg shadow-lg" />
+        <Image
+          src={imageUrl}
+          alt="Lightbox"
+          className="rounded-lg shadow-lg"
+          width={1000}
+          height={1000}
+        />
         <button
           className="absolute top-0 right-0 m-4 text-gray-400 hover:text-white"
           onClick={onClose}

@@ -13,6 +13,7 @@ import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
 // import Double from "../../../components/template1Components/double";
 import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
+import Image from "next/image";
 // import ContactForm from "../../../components/template1Components/rsvpForm";
 
 function Template1() {
@@ -32,27 +33,27 @@ function Template1() {
   const slides = [
     {
       id: 1,
-      image: "./images/c-paral-14.jpg",
+      image: "/images/c-paral-14.jpg",
       caption1: " Christin & Thomas ",
       caption2: " 16/04/2030",
     },
     {
       id: 2,
-      image: "./images/package-lock.jpeg",
+      image: "/images/package-lock.jpeg",
       caption1: " Christin & Thomas ",
       caption2: " 16/04/2030",
     },
   ];
 
   const images = [
-    { id: 1, image: "./images/gallery/c-gallery-01.jpg" },
-    { id: 1, image: "./images/gallery/c-gallery-02.jpg" },
-    { id: 1, image: "./images/gallery/c-gallery-03.jpg" },
-    { id: 1, image: "./images/gallery/c-gallery-04.jpg" },
-    { id: 1, image: "./images/gallery/c-gallery-07.jpg" },
-    { id: 1, image: "./images/gallery/c-gallery-08.jpg" },
-    { id: 1, image: "./images/gallery/c-gallery-09.jpg" },
-    { id: 1, image: "./images/gallery/c-gallery-10.jpg" },
+    { id: 1, image: "/images/gallery/c-gallery-01.jpg" },
+    { id: 1, image: "/images/gallery/c-gallery-02.jpg" },
+    { id: 1, image: "/images/gallery/c-gallery-03.jpg" },
+    { id: 1, image: "/images/gallery/c-gallery-04.jpg" },
+    { id: 1, image: "/images/gallery/c-gallery-07.jpg" },
+    { id: 1, image: "/images/gallery/c-gallery-08.jpg" },
+    { id: 1, image: "/images/gallery/c-gallery-09.jpg" },
+    { id: 1, image: "/images/gallery/c-gallery-10.jpg" },
   ];
 
   const stepss = [
@@ -101,14 +102,14 @@ function Template1() {
   const slides2 = [
     {
       id: 1,
-      image: "./images/avatar-01.jpg",
+      image: "/images/avatar-01.jpg",
       textinfo:
         "As I look back on our friendship, I can't help but remember all of the fun times we've had together, from the crazy adventures to the quiet moments of reflection.",
       avatarName: " Hanna Stuart",
     },
     {
       id: 1,
-      image: "./images/avatar-02.jpg",
+      image: "/images/avatar-02.jpg",
       textinfo:
         "You have always been someone I can count on, and I hope you know that I'll always be here for you. I can't wait to see what the future holds for you and your partner Christin.",
       avatarName: " Rode Depoins",
@@ -128,9 +129,11 @@ function Template1() {
             <div className="absolute top-0 left-0 bg-black w-full h-full opacity-30">
               {" "}
             </div>
-            <img
+            <Image
               src={slide.image}
               alt={slide.caption1}
+              width={1000}
+              height={1000}
               className="object-cover w-full h-full"
             />
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 p-4 text-white  w-max ">
@@ -170,7 +173,7 @@ function Template1() {
       <GreenStrip
         title="Our Wedding"
         text="MISSING DAYS TO"
-        img="./images/icon-02.png"
+        img="/images/icon-02.png"
         propName="clock"
       />
 
@@ -196,7 +199,7 @@ function Template1() {
       </div>
 
       <Double
-        img="./images/double1.jpg"
+        img="/images/double1.jpg"
         title="Official Ceremony"
         subtitle="11:30 am In The Square"
         infotext="Welcome to this beautiful park, where we gather to celebrate our wedding. As we look around us, we can't help but be struck by the natural beauty that surrounds us. From the vibrant flowers and trees to the gently flowing streams, this park provides the perfect backdrop for this joyous occasion. As we stand here today, surrounded by the beauty of this park, we are reminded of the enduring power of love."
@@ -206,7 +209,7 @@ function Template1() {
       />
 
       <Double
-        img="./images/double2.jpg"
+        img="/images/double2.jpg"
         title="Lunch at the Villa"
         subtitle="13:30 pm In The Garden"
         infotext="The villa's garden is truly a work of art, with carefully cultivated flower beds and winding paths that invite us to explore the natural beauty around us. The gentle breeze that brushes against our skin and the chirping of the birds add to the enchanting ambiance that surrounds us. It's the perfect setting for a wedding reception, as it allows us to enjoy delicious food and drinks while basking in the splendor of the best flowery nature."
@@ -222,7 +225,13 @@ function Template1() {
         <p className="text-center mt-1 mb-10">WEDDING</p>
         <div className="grid lg:grid-cols-2  lg:px-20 py-14">
           <div className="px-8">
-            <img src="./images/double2.jpg" alt="" className="" />
+            <Image
+              src="/images/double2.jpg"
+              alt=""
+              className=""
+              width={1000}
+              height={1000}
+            />
             <p className="font-Alex text-[50px] text-center mt-5">
               Wedding Menu
             </p>
@@ -255,10 +264,12 @@ function Template1() {
               className={``}
               onClick={() => openLightbox(image.image)}
             >
-              <img
+              <Image
                 src={image.image}
                 alt=""
                 className="object-contain w-full h-full"
+                width={1000}
+                height={1000}
               />
             </div>
           ))}
@@ -278,7 +289,13 @@ function Template1() {
               <div class="absolute hover:bg-[#0000005E] opacity-0 hover:!opacity-100 w-[100%] h-[100%] font-Alex  flex justify-center items-center">
                 <p className="text-5xl  font-Alex text-white">Girls</p>{" "}
               </div>
-              <img src="./images/bestfriendsgirls.jpg" alt="" className="" />
+              <Image
+                src="/images/bestfriendsgirls.jpg"
+                alt=""
+                className=""
+                width={1000}
+                height={1000}
+              />
             </div>
             <div className="lg:flex justify-between cursor-pointer lg:px-32 mt-11 mb-7">
               <p>ROSE</p>
@@ -298,7 +315,13 @@ function Template1() {
               <div class="absolute hover:bg-[#0000005E] opacity-0 hover:!opacity-100 w-[100%] h-[100%] font-Alex  flex justify-center items-center">
                 <p className="text-5xl  font-Alex text-white">Guys</p>{" "}
               </div>
-              <img src="./images/bestfriendsguys.jpg" alt="" className="" />
+              <Image
+                src="/images/bestfriendsguys.jpg"
+                alt=""
+                className=""
+                width={1000}
+                height={1000}
+              />
             </div>
             <div className="lg:flex justify-between cursor-pointer lg:px-32 mt-11 mb-7">
               <p>JACK</p>
@@ -327,10 +350,12 @@ function Template1() {
               <div className="each-slide-effect mx-auto text-center ">
                 <div className="py-20 text-center">
                   <p className="lg:px-[320px] px-8 mb-10">{slide.textinfo}</p>
-                  <img
+                  <Image
                     src={slide.image}
                     alt=""
                     className="rounded-full w-16 h-16 m-auto mb-5"
+                    width={1000}
+                    height={1000}
                   />
                   <span className="font-Alex text-[20px]">
                     {slide.avatarName}
@@ -344,7 +369,7 @@ function Template1() {
       </div>
 
       <Double
-        img="./images/afterparty1.jpg"
+        img="/images/afterparty1.jpg"
         title="The After Party"
         subtitle="13:30 pm In The Garden"
         infotext="Get ready to keep the celebration going! The after party for the wedding will be held at the stunning rooftop bar, Sky Lounge, starting at 9 PM. The location is just a short walk from the reception venue, so you won't have to worry about transportation. 
@@ -356,7 +381,7 @@ function Template1() {
       <GreenStrip
         title="Our Vendors"
         text="THANK YOU"
-        img="./images/couple-line.png"
+        img="/images/couple-line.png"
         propName="venders"
       />
 
@@ -452,10 +477,12 @@ function Template1() {
         ></div>
         <div className="grid lg:grid-cols-3 grid-rows-3 lg:grid-rows-none text-center lg:text-left ">
           <div className=" text-white lg:flex items-center lg:pl-10 mb-[40px] lg:mb-auto">
-            <img
+            <Image
               src="/images/icon-01.png"
               alt="glasses"
               className="w-24 h-20 mr-3 mb-6 hidden lg:block"
+              width={1000}
+              height={1000}
             />
             <div>
               <p>CITY</p>
@@ -463,10 +490,12 @@ function Template1() {
             </div>
           </div>
           <div className=" text-white lg:flex items-center lg:pl-10 mb-[40px] lg:mb-auto">
-            <img
+            <Image
               src="/images/icon-02.png"
               alt="glasses"
               className="w-24 h-20 mr-3 mb-6 hidden lg:block"
+              width={1000}
+              height={1000}
             />
             <div>
               <p>PHONE</p>
@@ -474,10 +503,12 @@ function Template1() {
             </div>
           </div>
           <div className=" text-white lg:flex items-center lg:pl-10 mb-[40px] lg:mb-auto">
-            <img
+            <Image
               src="/images/icon-03.png"
               alt="glasses"
               className="w-24 h-20 mr-3 mb-6 hidden lg:block"
+              width={1000}
+              height={1000}
             />
             <div>
               <p>ADDRESS</p>
