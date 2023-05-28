@@ -121,7 +121,7 @@ function Template1() {
       <div className="h-[900px] relative">
         {slides.map((slide, index) => (
           <div
-            key={slide.id}
+            key={index}
             className={`absolute top-0 bg-black left-0 w-full h-full transition-opacity duration-500 ${
               index === currentSlide ? "opacity-100" : "opacity-0"
             }`}
@@ -138,7 +138,7 @@ function Template1() {
             />
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 p-4 text-white  w-max ">
               <div
-                className={`font-Alex text-center text-[50px] w-56 lg:w-auto lg:text-[120px] ${
+                className={`!font-Alex text-center text-[50px] w-56 lg:w-auto lg:text-[120px] ${
                   currentSlide ? "text-[120px]" : ""
                 } transition-all duration-500`}
               >
@@ -219,20 +219,14 @@ function Template1() {
       />
 
       <div>
-        <p className="font-Alex text-[40px] lg:text-[100px] text-center mt-16">
+        <p className="!font-Alex !text-[40px] lg:text-[100px] text-center mt-16">
           Organization
         </p>
         <p className="text-center mt-1 mb-10">WEDDING</p>
         <div className="grid lg:grid-cols-2  lg:px-20 py-14">
           <div className="px-8">
-            <Image
-              src="/images/double2.jpg"
-              alt=""
-              className=""
-              width={1000}
-              height={1000}
-            />
-            <p className="font-Alex text-[50px] text-center mt-5">
+            <img src="/images/double2.jpg" alt="" className="" />
+            <p className="!font-Alex !text-[50px] text-center mt-5">
               Wedding Menu
             </p>
             <p className=" text-center lg:px-14 ">
@@ -244,7 +238,7 @@ function Template1() {
           </div>
           <div className="px-8 mt-16 lg:mt-auto">
             {stepss.map((steps, index) => (
-              <div key={steps.id} className={``}>
+              <div key={index} className={``}>
                 <Steps
                   step={steps.stp}
                   fctnName={steps.functionName}
@@ -260,7 +254,7 @@ function Template1() {
         <div className="grid grid-cols-4 cursor-pointer">
           {images.map((image, index) => (
             <div
-              key={image.id}
+              key={index}
               className={``}
               onClick={() => openLightbox(image.image)}
             >
@@ -279,23 +273,17 @@ function Template1() {
       <Lightbox isOpen={isOpen} imageUrl={viewImg} onClose={closeLightbox} />
 
       <div style={{ backgroundImage: "url('/images/bg-watercolor-02.jpg')" }}>
-        <p className="font-Alex text-[40px] lg:text-[100px] text-center mt-16 lg:mt-0 pt-16 ">
+        <p className="!font-Alex !text-[40px] lg:!text-[100px] text-center mt-16 lg:mt-0 pt-16 ">
           Best Friends
         </p>
         <p className="text-center mt-1 mb-10">THANKS FOR BEING THERE</p>
         <div className="grid lg:grid-cols-2 grid-rows-2 lg:grid-rows-none lg:px-20 py-14">
           <div className="px-8">
             <div className="relative">
-              <div class="absolute hover:bg-[#0000005E] opacity-0 hover:!opacity-100 w-[100%] h-[100%] font-Alex  flex justify-center items-center">
-                <p className="text-5xl  font-Alex text-white">Girls</p>{" "}
+              <div className="absolute hover:bg-[#0000005E] opacity-0 hover:!opacity-100 w-[100%] h-[100%] !font-Alex  flex justify-center items-center">
+                <p className="!text-5xl  !font-Alex text-white">Girls</p>{" "}
               </div>
-              <Image
-                src="/images/bestfriendsgirls.jpg"
-                alt=""
-                className=""
-                width={1000}
-                height={1000}
-              />
+              <img src="/images/bestfriendsgirls.jpg" alt="" className="" />
             </div>
             <div className="lg:flex justify-between cursor-pointer lg:px-32 mt-11 mb-7">
               <p>ROSE</p>
@@ -312,16 +300,10 @@ function Template1() {
           </div>
           <div className="px-8">
             <div className="relative">
-              <div class="absolute hover:bg-[#0000005E] opacity-0 hover:!opacity-100 w-[100%] h-[100%] font-Alex  flex justify-center items-center">
-                <p className="text-5xl  font-Alex text-white">Guys</p>{" "}
+              <div className="absolute hover:bg-[#0000005E] opacity-0 hover:!opacity-100 w-[100%] h-[100%] !font-Alex  flex justify-center items-center">
+                <p className="!text-5xl  !font-Alex text-white">Guys</p>{" "}
               </div>
-              <Image
-                src="/images/bestfriendsguys.jpg"
-                alt=""
-                className=""
-                width={1000}
-                height={1000}
-              />
+              <img src="/images/bestfriendsguys.jpg" alt="" className="" />
             </div>
             <div className="lg:flex justify-between cursor-pointer lg:px-32 mt-11 mb-7">
               <p>JACK</p>
@@ -329,7 +311,7 @@ function Template1() {
               <p>ANDREW</p>
               <p>THOM</p>
             </div>
-            <p className=" lg:text-center lg:px-14">
+            <p className=" lg:text-center lg:!px-14">
               We are proud to present a menu that reflects our love for both
               classic and contemporary cuisine. Our chef has artfully combined
               traditional recipes with innovative techniques, resulting in a
@@ -341,13 +323,16 @@ function Template1() {
 
       <div className="bg-[#9CAB8D] text-white relative">
         <div
-          class="absolute top-0 left-0  opacity-100 mix-blend-multiply  w-[100%] h-[100%] bg-cover bg-no-repeat bg-[center_top]"
+          className="absolute top-0 left-0  opacity-100 mix-blend-multiply  w-[100%] h-[100%] bg-cover bg-no-repeat bg-[center_top]"
           style={{ backgroundImage: "url('/images/bg-watercolor.jpg')" }}
         ></div>
         <div className="lg:px-36 px-4">
           <Slide autoplay={true}>
             {slides2.map((slide, index) => (
-              <div className="each-slide-effect mx-auto text-center ">
+              <div
+                key={index}
+                className="each-slide-effect mx-auto text-center "
+              >
                 <div className="py-20 text-center">
                   <p className="lg:px-[320px] px-8 mb-10">{slide.textinfo}</p>
                   <Image
@@ -357,7 +342,7 @@ function Template1() {
                     width={1000}
                     height={1000}
                   />
-                  <span className="font-Alex text-[20px]">
+                  <span className="!font-Alex !ext-[20px]">
                     {slide.avatarName}
                   </span>
                   <p>Bridesmaid</p>
@@ -389,13 +374,13 @@ function Template1() {
         className=" lg:py-[32rem] py-[450px] relative bg-cover "
         style={{ backgroundImage: "url('/images/c-paral-03.jpg')" }}
       >
-        <div class="absolute top-0 left-0  opacity-50  w-[100%] h-[100%] bg-black "></div>
+        <div className="absolute top-0 left-0  opacity-50  w-[100%] h-[100%] bg-black "></div>
         <div
           className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center max-w-[650px] mx-auto px-28 lg:px-auto py-28 bg-cover z-50"
           style={{ backgroundImage: "url('/images/bg-watercolor-02.jpg')" }}
         >
           <p>R.S.V.P</p>
-          <p className="font-Alex text-[30px] lg:text-[50px] lg:px-28 mb-12">
+          <p className="!font-Alex !text-[30px] lg:!text-[50px] lg:px-28 mb-12">
             Confirmation at Marriage
           </p>
           <ContactForm />
@@ -407,14 +392,14 @@ function Template1() {
         style={{ backgroundImage: "url('/images/bg-watercolor-03.jpg')" }}
       >
         <div
-          class="absolute top-0 left-0  opacity-100  w-[100%] h-[100%] bg-[length:309px_auto] bg-no-repeat"
+          className="absolute top-0 left-0  opacity-100  w-[100%] h-[100%] bg-[length:309px_auto] bg-no-repeat"
           style={{ backgroundImage: "url('/images/gr-leaf-10.png')" }}
         ></div>
 
-        <p className="font-Alex lg:text-[100px] text-[50px] text-center">
+        <p className="!font-Alex lg:!text-[100px] !text-[50px] text-center">
           Our Blog
         </p>
-        <p className="font-Cardo text-center mb-14">WEDDING NEWS</p>
+        <p className="!font-Cardo text-center mb-14">WEDDING NEWS</p>
         <div className="grid lg:grid-cols-3 grid-rows-3 lg:grid-rows-none gap-y-8 lg:gap-y-0 lg:gap-x-8 lg:mx-20 mx-4">
           <div
             className="bg-cover lg:p-10 p-6"
@@ -425,7 +410,7 @@ function Template1() {
               style={{ backgroundImage: "url('/images/bg-watercolor-03.jpg')" }}
             >
               <p className="mb-3">February 8, 2023</p>
-              <p className="text-[25px] mb-6">We Love Passion</p>
+              <p className="!text-[25px] mb-6">We Love Passion</p>
               <p className="mb-4">
                 Every detail of the wedding is infused with love, custom
                 invitations, first dance...
@@ -442,7 +427,7 @@ function Template1() {
               style={{ backgroundImage: "url('/images/bg-watercolor-03.jpg')" }}
             >
               <p className="mb-3">February 8, 2023</p>
-              <p className="text-[25px] mb-6">Flower Design</p>
+              <p className="!text-[25px] mb-6">Flower Design</p>
               <p className="mb-4">
                 When it comes to planning the perfect wedding, flowers make all
                 the difference.
@@ -459,7 +444,7 @@ function Template1() {
               style={{ backgroundImage: "url('/images/bg-watercolor-03.jpg')" }}
             >
               <p className="mb-3">February 8, 2023</p>
-              <p className="text-[25px] mb-6">Special Events</p>
+              <p className="!text-[25px] mb-6">Special Events</p>
               <p className="mb-4">
                 Sneak a peek - Get an exclusive preview of our upcoming wedding
                 event.
@@ -472,7 +457,7 @@ function Template1() {
 
       <div className="bg-[#9CAB8D] p-10 relative">
         <div
-          class="absolute bg-[center_top] w-full h-full bg-no-repeat bg-cover opacity-100 mix-blend-multiply top-0 left-0"
+          className="absolute bg-[center_top] w-full h-full bg-no-repeat bg-cover opacity-100 mix-blend-multiply top-0 left-0"
           style={{ backgroundImage: "url('/images/bg-watercolor-02.jpg')" }}
         ></div>
         <div className="grid lg:grid-cols-3 grid-rows-3 lg:grid-rows-none text-center lg:text-left ">
@@ -499,7 +484,7 @@ function Template1() {
             />
             <div>
               <p>PHONE</p>
-              <p className=" text-[25px]">+1 203 903 559</p>
+              <p className=" !text-[25px]">+1 203 903 559</p>
             </div>
           </div>
           <div className=" text-white lg:flex items-center lg:pl-10 mb-[40px] lg:mb-auto">
@@ -512,7 +497,7 @@ function Template1() {
             />
             <div>
               <p>ADDRESS</p>
-              <p className=" text-[25px]">336 W 46th St</p>
+              <p className=" !text-[25px]">336 W 46th St</p>
             </div>
           </div>
         </div>
@@ -523,13 +508,13 @@ function Template1() {
         style={{ backgroundImage: "url('/images/bg-watercolor-02.jpg')" }}
       >
         <span
-          class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-50  lg:w-[240px] lg:h-[260px] bg-[length:235px_auto] bg-no-repeat"
+          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-50  lg:w-[240px] lg:h-[260px] bg-[length:235px_auto] bg-no-repeat"
           style={{ backgroundImage: "url('/images/gr-leaf-03.png')" }}
         ></span>
-        <p className="font-Alex text-[30px] lg:text-[50px] mb-3">
+        <p className="!font-Alex !text-[30px] lg:!text-[50px] mb-3">
           Christine & Thomas
         </p>
-        <p className="font-Cardo">MADE WITH LOVE IN NEW YORK</p>
+        <p className="!font-Cardo">MADE WITH LOVE IN NEW YORK</p>
       </div>
     </div>
   );

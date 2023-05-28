@@ -7,7 +7,7 @@ function Steps({step,fctnName,fctnInfo}) {
                 <span className='px-12 py-1 bg-[#9CAB8D] text-white mr-9 '>{step}</span>
             </div>
             <div className='mt-4 lg:mt-0'>
-                <p className='font-Alex text-[35px] '>{fctnName}</p>
+                <p className='!font-Alex !text-[35px] '>{fctnName}</p>
                 <p className='mt-2 lg:mt-0'>{fctnInfo}</p>
             </div>
         </div>

@@ -9,32 +9,14 @@ function CoupleInfo({ bgImage, name, gender, infotext1, infotext2 }) {
         className="py-[50px] lg:py-[100px] lg:px-[80px] lg:w-[80%] m-auto text-center mb-4"
         style={{ backgroundImage: `url('${bgImage}')` }}
       >
-        <p className="font-Alex text-[50px] text-center">{name}</p>
+        <p className="!font-Alex !text-[50px] text-center">{name}</p>
         <p className="mb-8">{gender}</p>
         <p className="b-3 mb-3">{infotext1}</p>
         <p className="b-3">{infotext2}</p>
         <div className="flex justify-between w-28 mx-auto mt-10">
-          <Image
-            src="/images/facebook.svg"
-            alt=""
-            className="w-5"
-            width={1000}
-            height={1000}
-          />
-          <Image
-            src="/images/twitter.svg"
-            alt=""
-            className="w-5"
-            width={1000}
-            height={1000}
-          />
-          <Image
-            src="/images/youtube.svg"
-            alt=""
-            className="w-5"
-            width={1000}
-            height={1000}
-          />
+          <img src="/images/facebook.svg" alt="" className="w-5" />
+          <img src="/images/twitter.svg" alt="" className="w-5" />
+          <img src="/images/youtube.svg" alt="" className="w-5" />
         </div>
       </div>
     </div>
