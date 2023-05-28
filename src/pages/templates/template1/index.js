@@ -120,7 +120,7 @@ function Template1() {
       <div className="h-[900px] relative">
         {slides.map((slide, index) => (
           <div
-            key={slide.id}
+            key={index}
             className={`absolute top-0 bg-black left-0 w-full h-full transition-opacity duration-500 ${
               index === currentSlide ? "opacity-100" : "opacity-0"
             }`}
@@ -235,7 +235,7 @@ function Template1() {
           </div>
           <div className="px-8 mt-16 lg:mt-auto">
             {stepss.map((steps, index) => (
-              <div key={steps.id} className={``}>
+              <div key={index} className={``}>
                 <Steps
                   step={steps.stp}
                   fctnName={steps.functionName}
@@ -251,7 +251,7 @@ function Template1() {
         <div className="grid grid-cols-4 cursor-pointer">
           {images.map((image, index) => (
             <div
-              key={image.id}
+              key={index}
               className={``}
               onClick={() => openLightbox(image.image)}
             >
@@ -275,7 +275,7 @@ function Template1() {
         <div className="grid lg:grid-cols-2 grid-rows-2 lg:grid-rows-none lg:px-20 py-14">
           <div className="px-8">
             <div className="relative">
-              <div class="absolute hover:bg-[#0000005E] opacity-0 hover:!opacity-100 w-[100%] h-[100%] !font-Alex  flex justify-center items-center">
+              <div className="absolute hover:bg-[#0000005E] opacity-0 hover:!opacity-100 w-[100%] h-[100%] !font-Alex  flex justify-center items-center">
                 <p className="!text-5xl  !font-Alex text-white">Girls</p>{" "}
               </div>
               <img src="/images/bestfriendsgirls.jpg" alt="" className="" />
@@ -295,7 +295,7 @@ function Template1() {
           </div>
           <div className="px-8">
             <div className="relative">
-              <div class="absolute hover:bg-[#0000005E] opacity-0 hover:!opacity-100 w-[100%] h-[100%] !font-Alex  flex justify-center items-center">
+              <div className="absolute hover:bg-[#0000005E] opacity-0 hover:!opacity-100 w-[100%] h-[100%] !font-Alex  flex justify-center items-center">
                 <p className="!text-5xl  !font-Alex text-white">Guys</p>{" "}
               </div>
               <img src="/images/bestfriendsguys.jpg" alt="" className="" />
@@ -318,13 +318,13 @@ function Template1() {
 
       <div className="bg-[#9CAB8D] text-white relative">
         <div
-          class="absolute top-0 left-0  opacity-100 mix-blend-multiply  w-[100%] h-[100%] bg-cover bg-no-repeat bg-[center_top]"
+          className="absolute top-0 left-0  opacity-100 mix-blend-multiply  w-[100%] h-[100%] bg-cover bg-no-repeat bg-[center_top]"
           style={{ backgroundImage: "url('/images/bg-watercolor.jpg')" }}
         ></div>
         <div className="lg:px-36 px-4">
           <Slide autoplay={true}>
             {slides2.map((slide, index) => (
-              <div className="each-slide-effect mx-auto text-center ">
+              <div  key={index} className="each-slide-effect mx-auto text-center ">
                 <div className="py-20 text-center">
                   <p className="lg:px-[320px] px-8 mb-10">{slide.textinfo}</p>
                   <img
@@ -364,7 +364,7 @@ function Template1() {
         className=" lg:py-[32rem] py-[450px] relative bg-cover "
         style={{ backgroundImage: "url('/images/c-paral-03.jpg')" }}
       >
-        <div class="absolute top-0 left-0  opacity-50  w-[100%] h-[100%] bg-black "></div>
+        <div className="absolute top-0 left-0  opacity-50  w-[100%] h-[100%] bg-black "></div>
         <div
           className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center max-w-[650px] mx-auto px-28 lg:px-auto py-28 bg-cover z-50"
           style={{ backgroundImage: "url('/images/bg-watercolor-02.jpg')" }}
@@ -382,7 +382,7 @@ function Template1() {
         style={{ backgroundImage: "url('/images/bg-watercolor-03.jpg')" }}
       >
         <div
-          class="absolute top-0 left-0  opacity-100  w-[100%] h-[100%] bg-[length:309px_auto] bg-no-repeat"
+          className="absolute top-0 left-0  opacity-100  w-[100%] h-[100%] bg-[length:309px_auto] bg-no-repeat"
           style={{ backgroundImage: "url('/images/gr-leaf-10.png')" }}
         ></div>
 
@@ -447,7 +447,7 @@ function Template1() {
 
       <div className="bg-[#9CAB8D] p-10 relative">
         <div
-          class="absolute bg-[center_top] w-full h-full bg-no-repeat bg-cover opacity-100 mix-blend-multiply top-0 left-0"
+          className="absolute bg-[center_top] w-full h-full bg-no-repeat bg-cover opacity-100 mix-blend-multiply top-0 left-0"
           style={{ backgroundImage: "url('/images/bg-watercolor-02.jpg')" }}
         ></div>
         <div className="grid lg:grid-cols-3 grid-rows-3 lg:grid-rows-none text-center lg:text-left ">
@@ -492,7 +492,7 @@ function Template1() {
         style={{ backgroundImage: "url('/images/bg-watercolor-02.jpg')" }}
       >
         <span
-          class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-50  lg:w-[240px] lg:h-[260px] bg-[length:235px_auto] bg-no-repeat"
+          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-50  lg:w-[240px] lg:h-[260px] bg-[length:235px_auto] bg-no-repeat"
           style={{ backgroundImage: "url('/images/gr-leaf-03.png')" }}
         ></span>
         <p className="!font-Alex !text-[30px] lg:!text-[50px] mb-3">

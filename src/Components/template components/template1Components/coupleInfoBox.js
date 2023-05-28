@@ -10,9 +10,9 @@ function CoupleInfo({bgImage,name,gender,infotext1,infotext2}) {
           <p className='b-3 mb-3'>{infotext1}</p>
           <p className='b-3'>{infotext2}</p>
           <div className='flex justify-between w-28 mx-auto mt-10'>
-            <img src="./images/facebook.svg" alt='' className='w-5'/>
-            <img src="./images/twitter.svg" alt='' className='w-5'/>
-            <img src="./images/youtube.svg" alt='' className='w-5'/>
+            <img src="/images/facebook.svg" alt='' className='w-5'/>
+            <img src="/images/twitter.svg" alt='' className='w-5'/>
+            <img src="/images/youtube.svg" alt='' className='w-5'/>
           </div>
         </div>
       </div>

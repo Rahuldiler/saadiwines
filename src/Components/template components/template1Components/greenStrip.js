@@ -40,7 +40,7 @@ function GreenStrip({title,text,img,propName}) {
     
     return(
         <div className=' bg-[#9CAB8D] p-12 bg-[url(https://wedding.nicdark.com/wedding-day/wp-content/uploads/sites/7/2023/03/gr-leaf-10.png)] bg-no-repeat lg:flex relative '>
-            <div class="absolute bg-[center_top] w-full h-full bg-no-repeat bg-cover opacity-100 mix-blend-multiply top-0 left-0 " style={{backgroundImage: "url('/images/bg-watercolor-02.jpg')",}}></div>
+            <div className="absolute bg-[center_top] w-full h-full bg-no-repeat bg-cover opacity-100 mix-blend-multiply top-0 left-0 " style={{backgroundImage: "url('/images/bg-watercolor-02.jpg')",}}></div>
             <div className={` ${propName==="clock"?"lg:w-[30%]":"lg:w-[50%]"} lg:w-[30%] text-white lg:flex items-center `}>
                 <img src={img} alt='glasses' className='w-24 h-20 mr-3 mb-6 hidden lg:block'/>
                 <div className='text-center lg:text-left'>
