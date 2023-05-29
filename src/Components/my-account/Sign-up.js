@@ -9,7 +9,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import TextFieldInput from './TextFieldInput';
-import useApi from '../api/my-account'
+import useApi from '../../api/my-account'
 
 const defaultTheme = createTheme();
 

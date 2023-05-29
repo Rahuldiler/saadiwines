@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Login from './components/Login'
-import SignUp from './components/Sign-up';
+import Login from '../components/my-account/Login'
+import SignUp from '../components/my-account/Sign-up';
 
 
 export default function Myaccount() {
