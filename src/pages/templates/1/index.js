@@ -13,7 +13,6 @@ import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
 // import Double from "../../../components/template1Components/double";
 import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
-import Image from "next/image";
 // import ContactForm from "../../../components/template1Components/rsvpForm";
 
 function Template1() {
@@ -129,11 +128,9 @@ function Template1() {
             <div className="absolute top-0 left-0 bg-black w-full h-full opacity-30">
               {" "}
             </div>
-            <Image
+            <img
               src={slide.image}
               alt={slide.caption1}
-              width={1000}
-              height={1000}
               className="object-cover w-full h-full"
             />
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 p-4 text-white  w-max ">
@@ -258,12 +255,10 @@ function Template1() {
               className={``}
               onClick={() => openLightbox(image.image)}
             >
-              <Image
+              <img
                 src={image.image}
                 alt=""
                 className="object-contain w-full h-full"
-                width={1000}
-                height={1000}
               />
             </div>
           ))}
@@ -329,18 +324,13 @@ function Template1() {
         <div className="lg:px-36 px-4">
           <Slide autoplay={true}>
             {slides2.map((slide, index) => (
-              <div
-                key={index}
-                className="each-slide-effect mx-auto text-center "
-              >
+              <div  key={index} className="each-slide-effect mx-auto text-center ">
                 <div className="py-20 text-center">
                   <p className="lg:px-[320px] px-8 mb-10">{slide.textinfo}</p>
-                  <Image
+                  <img
                     src={slide.image}
                     alt=""
                     className="rounded-full w-16 h-16 m-auto mb-5"
-                    width={1000}
-                    height={1000}
                   />
                   <span className="!font-Alex !ext-[20px]">
                     {slide.avatarName}
@@ -462,12 +452,10 @@ function Template1() {
         ></div>
         <div className="grid lg:grid-cols-3 grid-rows-3 lg:grid-rows-none text-center lg:text-left ">
           <div className=" text-white lg:flex items-center lg:pl-10 mb-[40px] lg:mb-auto">
-            <Image
+            <img
               src="/images/icon-01.png"
               alt="glasses"
               className="w-24 h-20 mr-3 mb-6 hidden lg:block"
-              width={1000}
-              height={1000}
             />
             <div>
               <p>CITY</p>
@@ -475,12 +463,10 @@ function Template1() {
             </div>
           </div>
           <div className=" text-white lg:flex items-center lg:pl-10 mb-[40px] lg:mb-auto">
-            <Image
+            <img
               src="/images/icon-02.png"
               alt="glasses"
               className="w-24 h-20 mr-3 mb-6 hidden lg:block"
-              width={1000}
-              height={1000}
             />
             <div>
               <p>PHONE</p>
@@ -488,12 +474,10 @@ function Template1() {
             </div>
           </div>
           <div className=" text-white lg:flex items-center lg:pl-10 mb-[40px] lg:mb-auto">
-            <Image
+            <img
               src="/images/icon-03.png"
               alt="glasses"
               className="w-24 h-20 mr-3 mb-6 hidden lg:block"
-              width={1000}
-              height={1000}
             />
             <div>
               <p>ADDRESS</p>
