@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -7,15 +7,13 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import TextFieldInput from './TextFieldInput';
-import useApi from '../../api/my-account'
+import {createTheme, ThemeProvider} from '@mui/material/styles';
+import TextFieldInput from '../Common/TextFieldInput';
+import {signUp} from "@/services/auth/auth";
 
 const defaultTheme = createTheme();
 
-export default function SignUp({ setHandle }) {
-    const { apiCall } = useApi();
-
+export default function SignUp({setHandle}) {
     const signupDetail = {
         firstName: '',
         lastName: '',
@@ -24,23 +22,18 @@ export default function SignUp({ setHandle }) {
         number: '',
     }
 
-    const [signup, setSignup] = useState(signupDetail)
+    const [userData, setUserData] = useState(signupDetail)
 
     const onSignupChange = (event) => {
-        setSignup(previousInputs => ({ ...previousInputs, [event.target.name]: event.target.value }))
+        setUserData(previousInputs => ({...previousInputs, [event.target.name]: event.target.value}))
     }
 
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        var requestOptions = {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: { data: signup, type: 'signup' }
-        }
 
         try {
-            const response = await apiCall('http://16.170.15.134:8080/register', requestOptions);
+            const response = await signUp(userData);
             if (response.status === 200) {
                 alert("Sign Up Complete....!!!")
                 setHandle(true)
@@ -57,7 +50,7 @@ export default function SignUp({ setHandle }) {
         <>
             <ThemeProvider theme={defaultTheme}>
                 <Container component="main" maxWidth="xs">
-                    <CssBaseline />
+                    <CssBaseline/>
                     <Box
                         sx={{
                             marginTop: 8,
@@ -66,13 +59,13 @@ export default function SignUp({ setHandle }) {
                             alignItems: 'center',
                         }}
                     >
-                        <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-                            <LockOutlinedIcon />
+                        <Avatar sx={{m: 1, bgcolor: 'secondary.main'}}>
+                            <LockOutlinedIcon/>
                         </Avatar>
                         <Typography component="h1" variant="h5">
                             Sign up
                         </Typography>
-                        <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+                        <Box component="form" noValidate onSubmit={handleSubmit} sx={{mt: 3}}>
                             <Grid container spacing={2}>
                                 <Grid item xs={12} sm={6}>
                                     <TextFieldInput
@@ -81,7 +74,7 @@ export default function SignUp({ setHandle }) {
                                         id="firstName"
                                         label="First Name"
                                         type="firstName"
-                                        value={signup.firstName}
+                                        value={userData.firstName}
                                         onChange={onSignupChange}
                                     />
                                 </Grid>
@@ -92,7 +85,7 @@ export default function SignUp({ setHandle }) {
                                         name="lastName"
                                         autoComplete="family-name"
                                         type="lastName"
-                                        value={signup.lastName}
+                                        value={userData.lastName}
                                         onChange={onSignupChange}
                                     />
                                 </Grid>
@@ -103,7 +96,7 @@ export default function SignUp({ setHandle }) {
                                         name="number"
                                         autoComplete="tel"
                                         type="number"
-                                        value={signup.number}
+                                        value={userData.number}
                                         onChange={onSignupChange}
                                     />
                                 </Grid>
@@ -114,7 +107,7 @@ export default function SignUp({ setHandle }) {
                                         name="email"
                                         autoComplete="email"
                                         type="email"
-                                        value={signup.email}
+                                        value={userData.email}
                                         onChange={onSignupChange}
                                     />
                                 </Grid>
@@ -125,7 +118,7 @@ export default function SignUp({ setHandle }) {
                                         type="password"
                                         id="password"
                                         autoComplete="new-password"
-                                        value={signup.password}
+                                        value={userData.password}
                                         onChange={onSignupChange}
                                     />
                                 </Grid>
@@ -134,7 +127,7 @@ export default function SignUp({ setHandle }) {
                                 type="submit"
                                 fullWidth
                                 variant="contained"
-                                sx={{ mt: 3, mb: 2 }}
+                                sx={{mt: 3, mb: 2}}
                             >
                                 Sign Up
                             </Button>

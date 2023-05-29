@@ -3,7 +3,7 @@ import Login from '../components/my-account/Login'
 import SignUp from '../components/my-account/Sign-up';
 
 
-export default function Myaccount() {
+export default function Authenticate() {
   const [handle, setHandle] = useState(true);
   return (
     <>{handle ?

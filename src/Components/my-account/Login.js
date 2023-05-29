@@ -6,55 +6,42 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import React, { useState } from 'react';
-import TextFieldInput from './TextFieldInput';
-import useApi from '../../api/my-account'
+import {createTheme, ThemeProvider} from '@mui/material/styles';
+import React, {useState} from 'react';
+import TextFieldInput from '../Common/TextFieldInput';
+import {login} from '@/services/auth/auth'
 
 const theme = createTheme();
 
 const defaultTheme = createTheme();
 
 export default function SignIn({setHandle}) {
-
-    const { apiCall } = useApi();
     const loginDetail = {
         email: '',
         password: '',
     }
 
-    const [login, setLogin] = useState(loginDetail)
+    const [credentials, setCredentials] = useState(loginDetail)
 
     const onLoginChange = (event) => {
-        setLogin(previousInputs => ({ ...previousInputs, [event.target.name]: event.target.value }))
+        setCredentials(previousInputs => ({...previousInputs, [event.target.name]: event.target.value}))
     }
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        var requestOptions = {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: { data: login, type: 'login' }
-        }
 
         try {
-            const response = await apiCall('http://16.170.15.134:8080/login', requestOptions);
-            if (response.status === 200) {
-                alert("Login Successfully")
-            } else {
-                console.log('Error:', response);
-            }
+            const response = await login(credentials);
         } catch (error) {
-            alert("enter currect details")
+            alert("Incorrect Credentials!")
         }
-
     }
 
     return (
-        <ThemeProvider theme={theme} >
+        <ThemeProvider theme={theme}>
             <ThemeProvider theme={defaultTheme}>
                 <Container component="main" maxWidth="xs">
-                    <CssBaseline />
+                    <CssBaseline/>
                     <Box
                         sx={{
                             marginTop: 8,
@@ -63,20 +50,20 @@ export default function SignIn({setHandle}) {
                             alignItems: 'center',
                         }}
                     >
-                        <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-                            <LockOutlinedIcon />
+                        <Avatar sx={{m: 1, bgcolor: 'secondary.main'}}>
+                            <LockOutlinedIcon/>
                         </Avatar>
                         <Typography component="h1" variant="h5">
                             Login
                         </Typography>
-                        <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+                        <Box component="form" onSubmit={handleSubmit} noValidate sx={{mt: 1}}>
                             <TextFieldInput
                                 id="email"
                                 label="Email Address"
                                 name="email"
                                 autoComplete="email"
                                 type="email"
-                                value={login.email}
+                                value={credentials.email}
                                 onChange={onLoginChange}
                             />
                             <TextFieldInput
@@ -85,14 +72,14 @@ export default function SignIn({setHandle}) {
                                 type="password"
                                 id="password"
                                 autoComplete="current-password"
-                                value={login.password}
+                                value={credentials.password}
                                 onChange={onLoginChange}
                             />
                             <Button
                                 type="submit"
                                 fullWidth
                                 variant="contained"
-                                sx={{ mt: 3, mb: 2 }}
+                                sx={{mt: 3, mb: 2}}
                             >
                                 Login
                             </Button>
