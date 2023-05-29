@@ -1,12 +1,17 @@
 import { Box, Button, Grid, Typography } from "@mui/material";
 import React from "react";
 import VideoInviTemplate from "../Common/VideoInviTemplate";
+import Image from "next/image";
 
 function VideoInvitation() {
+  const heroImg = "/assets/placeholder.png";
   return (
     <section>
       <Box className="layoutMargin" id="video-invitation">
-        <Grid container sx={{ my: 10 }}>
+        <Grid
+          container
+          sx={{ py: { lg: 10, xs: "40px" }, px: { lg: "0px", xs: "40px" } }}
+        >
           <Grid item lg={6}>
             <Box
               sx={{
@@ -20,7 +25,7 @@ function VideoInvitation() {
               <Typography
                 variant="h2"
                 className="vibeFont"
-                sx={{ color: "#bc8129" }}
+                sx={{ color: "#bc8129", mt: { lg: 0, xs: "40px" } }}
               >
                 Video Invitations
               </Typography>
@@ -67,20 +72,22 @@ function VideoInvitation() {
                 boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
                 display: "flex",
                 alignItem: "center",
+                mt: { lg: 0, xs: "40px" },
+                width: "100%",
+
+                height: { lg: "350px", xs: "200px" },
               }}
             >
-              <video
-                autoPlay
-                loop
-                muted
-                width="100%"
+              <Image
+                src={heroImg}
                 style={{
+                  objectFit: "cover",
                   borderRadius: "10px",
                 }}
-              >
-                <source src="/assets/video.mp4" type="video/mp4" />
-                Sorry, your browser doesn't support embedded videos.
-              </video>
+                alt="img"
+                width={1000}
+                height={1000}
+              />
             </Box>
           </Grid>
         </Grid>

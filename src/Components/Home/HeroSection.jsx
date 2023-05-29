@@ -1,4 +1,5 @@
 import { Box, Button, Link, Typography } from "@mui/material";
+import Image from "next/image";
 import React from "react";
 function HeroSection() {
   return (
@@ -77,14 +78,27 @@ function HeroSection() {
             }}
           ></video>
         </Box> */}
-        <img
+        <Image
+          alt="img"
+          width={1000}
+          height={1000}
           src="/assets/weddingimg1.jpg"
           style={{ width: "100vw", height: "100vh", objectFit: "cover" }}
         />
 
-        <img
+        <Image
+          alt="img"
+          width={1000}
+          height={1000}
           src="/assets/whitepaper.svg"
-          style={{ position: "absolute", bottom: -5, zIndex: 4 }}
+          style={{
+            position: "absolute",
+            zIndex: 4,
+            bottom: -5,
+            width: "100%",
+            height: "auto",
+            left: 0,
+          }}
         />
       </Box>
     </Box>

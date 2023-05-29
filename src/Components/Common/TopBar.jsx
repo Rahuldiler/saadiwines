@@ -11,8 +11,8 @@ function TopBar() {
       }}
     >
       <span style={{ fontSize: "14px" }}>
-        <span style={{ fontWeight: 600, marginRight: "5px" }}>25% Off!</span>
-        <span>Promo Code: 25</span>
+        {/* <span style={{ fontWeight: 600, marginRight: "5px" }}>25% Off!</span> */}
+        <span>Welcome</span>
       </span>
     </Box>
   );

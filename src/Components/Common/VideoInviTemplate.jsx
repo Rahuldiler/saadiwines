@@ -1,51 +1,73 @@
 import { Box, Link } from "@mui/material";
-import React from "react";
+import Image from "next/image";
+import React, { useEffect, useState } from "react";
+
+import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
+import { Autoplay, Navigation, Pagination } from "swiper";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/bundle";
+import Script from "next/script";
 
 function VideoInviTemplate() {
   const templateDesign = [
     {
-      img: "/assets/gold-confetti_inv.webp",
+      id: 2,
+      video:
+        "https://sv-landing-page-assets.s3.eu-north-1.amazonaws.com/WhatsApp+Video+2023-05-27+at+12.19.28+PM.mp4",
       url: "/",
     },
     {
-      img: "/assets/gold-confetti_inv.webp",
+      id: 1,
+      video:
+        "https://sv-landing-page-assets.s3.eu-north-1.amazonaws.com/WhatsApp+Video+2023-05-27+at+12.29.04+PM.mp4",
       url: "/",
     },
     {
-      img: "/assets/gold-confetti_inv.webp",
+      id: 3,
+      video:
+        "https://sv-landing-page-assets.s3.eu-north-1.amazonaws.com/WhatsApp+Video+2023-05-27+at+12.19.28+PM.mp4",
       url: "/",
     },
     {
-      img: "/assets/gold-confetti_inv.webp",
-      url: "/",
-    },
-    {
-      img: "/assets/gold-confetti_inv.webp",
-      url: "/",
-    },
-    {
-      img: "/assets/gold-confetti_inv.webp",
-      url: "/",
-    },
-    {
-      img: "/assets/gold-confetti_inv.webp",
-      url: "/",
-    },
-    {
-      img: "/assets/gold-confetti_inv.webp",
-      url: "/",
-    },
-    {
-      img: "/assets/gold-confetti_inv.webp",
-      url: "/",
-    },
-    {
-      img: "/assets/gold-confetti_inv.webp",
+      id: 4,
+      video:
+        "https://sv-landing-page-assets.s3.eu-north-1.amazonaws.com/WhatsApp+Video+2023-05-27+at+12.29.04+PM.mp4",
       url: "/",
     },
   ];
+  const [step, setStep] = useState(1);
+
+  useEffect(() => {
+    let options = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.8,
+    };
+
+    let callback = (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.target.id == "myvideo") {
+          if (entry.isIntersecting) {
+            entry.target.play();
+          } else {
+            entry.target.pause();
+          }
+        }
+      });
+    };
+
+    let observer = new IntersectionObserver(callback, options);
+    const videos = document.querySelectorAll("video");
+
+    videos.forEach((vide) => {
+      observer.observe(vide);
+    });
+  }, []);
+
   return (
     <Box
+      className="layoutMargin"
       sx={{
         display: "flex",
         justifyContent: "space-around",
@@ -53,38 +75,126 @@ function VideoInviTemplate() {
         pb: 8,
       }}
     >
-      {templateDesign.map((listOfImg, index) => {
+      {/* {templateDesign.map((listOfImg, index) => {
         return (
           <Box
             sx={{
-              flex: "1 1 20%",
+              flex: { lg: "1 1 20%", xs: "1 1 50%" },
               display: "flex",
               justifyContent: "center",
               borderRadius: "7px",
             }}
-            key={index}
+            key={listOfImg.id}
           >
             <Link
               href={listOfImg.url}
               sx={{
-                px: 8,
-                py: 4,
+                px: { lg: 8, xs: "20px" },
+                py: { lg: 4, xs: "20px" },
                 // "&:hover": {},
               }}
             >
-              <img
-                src={listOfImg.img}
-                className="imgHover"
+              <video
+                autoPlay
+                loop
+                controls
+                muted
+                width="100%"
                 style={{
-                  height: "auto",
-                  width: "100%",
-                  borderRadius: "7px",
+                  borderRadius: "10px",
+                  width: "500px",
+                  height: "300px",
+                  objectFit: "cover",
+                  boxShadow: "-1px 6px 25px #f8dcee",
                 }}
-              />
+              >
+                <source src={listOfImg.video} type="video/mp4" />
+                Sorry, your browser doesn't support embedded videos.
+              </video>
             </Link>
           </Box>
         );
-      })}
+      })} */}
+
+      <Swiper
+        spaceBetween={0}
+        initialSlide={step}
+        loop={true}
+        className="mySwiper"
+        breakpoints={{
+          640: {
+            slidesPerView: 1,
+            spaceBetween: 10,
+          },
+          768: {
+            slidesPerView: 1,
+            spaceBetween: 20,
+          },
+          1024: {
+            slidesPerView: 1,
+            spaceBetween: 30,
+          },
+        }}
+        modules={[Navigation, Pagination, Autoplay]}
+        pagination={{
+          el: ".custom-pagination",
+          clickable: true,
+        }}
+        navigation={{
+          prevEl: ".swiper-button-prev",
+          nextEl: ".swiper-button-next",
+        }}
+
+        // onSlideChange={() => console.log("slide change")}
+        // onSwiper={handleOnSetSwiper}
+      >
+        {templateDesign.map((listOfImg, index) => {
+          return (
+            <SwiperSlide key={index}>
+              <Box
+                sx={{
+                  flex: { lg: "1 1 100%", xs: "1 1 100%" },
+                  display: "flex",
+                  justifyContent: "center",
+                }}
+                key={listOfImg.id}
+              >
+                <Box
+                  sx={{
+                    px: { lg: 8, xs: "20px" },
+                    py: { lg: 4, xs: "20px" },
+                    // "&:hover": {},
+                  }}
+                >
+                  <video
+                    autoPlay
+                    loop
+                    muted
+                    controls
+                    className="video"
+                    id="myvideo"
+                    style={{
+                      borderRadius: "10px",
+                      objectFit: "cover",
+                      width: "700px",
+                      height: "480px",
+                      boxShadow: "-1px 6px 25px #f8dcee",
+                    }}
+                  >
+                    <source src={listOfImg.video} type="video/mp4" />
+                    Sorry, your browser doesn't support embedded videos.
+                  </video>
+                </Box>
+              </Box>
+            </SwiperSlide>
+          );
+        })}
+        {/* <div className="container-dots" style={{ marginTop: "60px" }}>
+              <div className="custom-pagination"></div>
+            </div> */}
+        <div className="swiper-button-prev"></div>
+        <div className="swiper-button-next"></div>
+      </Swiper>
     </Box>
   );
 }

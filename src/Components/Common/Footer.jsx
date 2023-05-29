@@ -13,6 +13,7 @@ import { BsTwitter } from "react-icons/bs";
 import { FiInstagram } from "react-icons/fi";
 import { HiMail } from "react-icons/hi";
 import { ImLocation } from "react-icons/im";
+import Image from "next/image";
 
 function Footer() {
   const socialFooter = [
@@ -88,8 +89,14 @@ function Footer() {
     },
   ];
   return (
-    <footer style={{ background: "#fff0e6" }}>
-      <Box className="layoutMargin" sx={{ py: 10 }}>
+    <footer
+      style={{
+        background: "#fff0e6",
+        // background: "#fff3fb",
+        position: "relative",
+      }}
+    >
+      <Box className="layoutMargin" sx={{ py: 10, px: { lg: 0, xs: "20px" } }}>
         <Grid container>
           <Grid item xs={12} sm={12} md={3} lg={4} sx={{ pr: 10 }}>
             <Typography
@@ -98,7 +105,6 @@ function Footer() {
               className="vibeFont"
               sx={{
                 flexGrow: 1,
-                display: { xs: "none", sm: "block" },
                 fontSize: "36px",
               }}
             >
@@ -115,6 +121,7 @@ function Footer() {
               {socialFooter.map((item, index) => {
                 return (
                   <Link
+                    key={index}
                     sx={{
                       background: "#fff",
                       p: 2,
@@ -124,27 +131,34 @@ function Footer() {
                       mr: 2,
                       display: "flex",
                       alignItems: "center",
-                      width: "20px",
+                      width: "50px",
                       "&:hover": {
                         background: "#002642",
                         color: "#fff",
                       },
                     }}
                   >
-                    {item.icon}
+                    <Box>{item.icon}</Box>
                   </Link>
                 );
               })}
             </Box>
           </Grid>
-          <Grid item xs={12} sm={12} md={3} lg={2}>
+          <Grid
+            item
+            xs={12}
+            sm={12}
+            md={3}
+            lg={2}
+            sx={{ mt: { lg: 0, xs: "40px" } }}
+          >
             <Typography variant="h6" sx={{ fontWeight: 300, fontSize: "26px" }}>
               Information
             </Typography>
             <List sx={{ p: 0, m: 0, color: "#000", fontWeight: 400 }}>
               {listNav.map((nav, index) => {
                 return (
-                  <ListItem sx={{ p: 0, mt: 2, cursor: "pointer" }}>
+                  <ListItem sx={{ p: 0, mt: 2, cursor: "pointer" }} key={index}>
                     <Link sx={{ color: "inherit", textDecoration: "none" }}>
                       {nav.title}
                     </Link>
@@ -153,7 +167,14 @@ function Footer() {
               })}
             </List>
           </Grid>
-          <Grid item xs={12} sm={12} md={3} lg={3} sx={{ pr: 6 }}>
+          <Grid
+            item
+            xs={12}
+            sm={12}
+            md={3}
+            lg={3}
+            sx={{ mt: { lg: 0, xs: "40px" }, pr: 6 }}
+          >
             <Typography variant="h6" sx={{ fontWeight: 300, fontSize: "26px" }}>
               Contact
             </Typography>
@@ -166,6 +187,7 @@ function Footer() {
             {contactInfo.map((item, index) => {
               return (
                 <Typography
+                  key={index}
                   variant="body1"
                   sx={{
                     color: "#A3888C",
@@ -181,7 +203,14 @@ function Footer() {
               );
             })}
           </Grid>
-          <Grid item xs={12} sm={12} md={3} lg={3} sx={{ pl: 4 }}>
+          <Grid
+            item
+            xs={12}
+            sm={12}
+            md={3}
+            lg={3}
+            sx={{ mt: { lg: 0, xs: "40px" }, pl: { lg: 4, xs: 0 } }}
+          >
             <Typography variant="h6" sx={{ fontWeight: 300, fontSize: "26px" }}>
               Our Work
             </Typography>
@@ -196,8 +225,11 @@ function Footer() {
                     key={index}
                   >
                     <Link href={listOfImg.url}>
-                      <img
+                      <Image
                         className="imgHover"
+                        alt="img"
+                        width={1000}
+                        height={1000}
                         src={listOfImg.img}
                         style={{
                           height: "80px",
@@ -213,6 +245,21 @@ function Footer() {
           </Grid>
         </Grid>
       </Box>
+      <Image
+        alt="img"
+        width={1000}
+        height={1000}
+        src="/assets/whitepaperbottom.svg"
+        className="bottomPaper"
+        style={{
+          position: "absolute",
+          zIndex: 4,
+          bottom: -60,
+          left: 0,
+          width: "100%",
+          height: "auto",
+        }}
+      />
     </footer>
   );
 }

@@ -1,6 +1,7 @@
 import { Box, Button, Grid, Typography } from "@mui/material";
 import React from "react";
 import GuestListCard from "../Common/GuestListCard";
+import Image from "next/image";
 
 function GuestList() {
   const guestLists = [
@@ -16,13 +17,13 @@ function GuestList() {
     },
     {
       title: "Track your guests’ responses.",
-      info: "See guests’ RSVPs, who has opened your invite, and who’s purchased a gift from your registry, all in one place.",
+      info: "See guests’ RSVPs, who has opened your invite,  all in one place.",
       img: "/assets/placeholder.png",
     },
   ];
   return (
-    <section style={{}} id="guest-management">
-      <Box sx={{ background: "#FBF8F8" }}>
+    <section id="guest-management">
+      <Box>
         <Box
           className="layoutMargin"
           sx={{
@@ -30,7 +31,8 @@ function GuestList() {
             flexDirection: "column",
             alignItems: "center",
             height: "100%",
-            py: 16,
+            py: { lg: 16, xs: 10 },
+            px: { lg: "0px", xs: "40px" },
           }}
         >
           <Typography
@@ -62,26 +64,35 @@ function GuestList() {
             </Button>
           </Box>
         </Box>
-        <Box className="layoutMargin" sx={{ pb: 10 }}>
-          <img
+        <Box
+          className="layoutMargin"
+          sx={{ pb: 10, px: { lg: 0, xs: "20px" } }}
+        >
+          <Image
+            alt="img"
+            width={1000}
+            height={1000}
             src="/assets/placeholder.png"
+            className="imgResGuest"
             style={{ width: "100%", height: "700px", borderRadius: "20px" }}
           />
         </Box>
       </Box>
-      <Box className="layoutMargin" sx={{ py: 10 }}>
-        <Typography variant="h3" sx={{ textAlign: "center" }}>
-          Everything guest at <br></br>a glance.
-        </Typography>
-        <Grid container spacing={8}>
-          {guestLists.map((guestList, index) => {
-            return (
-              <Grid lg={4} item key={index}>
-                <GuestListCard guestList={guestList} />
-              </Grid>
-            );
-          })}
-        </Grid>
+      <Box sx={{ py: 10, background: "#FFF9F5" }}>
+        <Box className="layoutMargin" sx={{ px: { lg: 0, xs: "20px" } }}>
+          <Typography variant="h3" sx={{ textAlign: "center" }}>
+            Everything guest at <br></br>a glance.
+          </Typography>
+          <Grid container spacing={{ lg: 8, xs: 0 }}>
+            {guestLists.map((guestList, index) => {
+              return (
+                <Grid lg={4} item key={index}>
+                  <GuestListCard guestList={guestList} />
+                </Grid>
+              );
+            })}
+          </Grid>
+        </Box>
       </Box>
     </section>
   );

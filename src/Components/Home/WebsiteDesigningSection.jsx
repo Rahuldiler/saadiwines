@@ -1,11 +1,17 @@
 import { Box, Button, Grid, Typography } from "@mui/material";
 import React from "react";
 import WebsiteTemplateContainer from "../Common/WebsiteTemplateContainer";
+import Image from "next/image";
 
 function WebsiteDesigningSection() {
+  const heroImg = "/assets/placeholder.png";
+
   return (
-    <section style={{ background: "#FBF8F8" }} id="website-designing">
-      <Box className="layoutMargin" sx={{ py: 10 }}>
+    <section style={{ background: "#FBF8F8" }} id="services">
+      <Box
+        className="layoutMargin"
+        sx={{ py: { lg: 10, xs: "20px" }, px: { lg: "0px", xs: "40px" } }}
+      >
         <Grid container sx={{ my: 8 }}>
           <Grid item lg={6}>
             <Box
@@ -67,20 +73,22 @@ function WebsiteDesigningSection() {
                 boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
                 display: "flex",
                 alignItem: "center",
+                mt: { lg: 0, xs: "40px" },
+                width: "100%",
+
+                height: { lg: "350px", xs: "200px" },
               }}
             >
-              <video
-                autoPlay
-                loop
-                muted
-                width="100%"
+              <Image
+                src={heroImg}
                 style={{
+                  objectFit: "cover",
                   borderRadius: "10px",
                 }}
-              >
-                <source src="/assets/video.mp4" type="video/mp4" />
-                Sorry, your browser doesn't support embedded videos.
-              </video>
+                alt="img"
+                width={1000}
+                height={1000}
+              />
             </Box>
           </Grid>
         </Grid>
