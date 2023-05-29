@@ -12,7 +12,7 @@ function BudgetCard({ budgetList }) {
         mt: { lg: 10, xs: "40px" },
         boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
         borderRadius: "10px",
-        height: "280px",
+        height: "400px",
       }}
     >
       <Box sx={{ display: "flex", justifyContent: "center" }}>
