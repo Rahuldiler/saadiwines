@@ -20,7 +20,7 @@ function Header() {
     { title: "Home", url: "/" },
     { title: "About Us", url: "#about" },
     { title: "Our Services", url: "#services" },
-    { title: "Feedbacks", url: "#feedbacks" },
+    { title: "Reviews", url: "#reviews" },
     { title: "Contact Us", url: "#contact" },
   ];
 
@@ -83,7 +83,6 @@ function Header() {
             : mobileOpen
             ? "#fff"
             : "transparent",
-          marginTop: colorChange ? "0px" : mobileOpen ? "20px" : "40px",
           boxShadow: !colorChange && "none",
           color: colorChange ? "#000" : "#fff",
         }}

@@ -1,5 +1,5 @@
 import './App.css';
-import Template1 from './pages/templates/template1/template1'
+import Template1 from './pages/templates/1/1'
 
 
 

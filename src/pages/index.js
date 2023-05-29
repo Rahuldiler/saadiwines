@@ -8,6 +8,10 @@ import ContactUs from "@/Components/Home/ContactUs";
 import Budget from "@/Components/Home/Budget";
 import Feedbacks from "@/Components/Home/Feedbacks";
 import About from "@/Components/Home/About";
+import Footer from "@/Components/Common/Footer";
+import BottomBar from "@/Components/Common/BottomBar";
+import TopBar from "@/Components/Common/TopBar";
+import Header from "@/Components/Common/Header";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,15 +19,19 @@ export default function Home() {
   return (
     <>
       <main>
+        {/* <TopBar /> */}
+        <Header />
         <HeroSection />
-        <ServicesSection />
+        {/* <ServicesSection /> */}
+        <About />
         <WebsiteDesigningSection />
         <VideoInvitation />
         <Budget />
         <GuestList />
-        <About />
         <Feedbacks />
         <ContactUs />
+        <Footer />
+        <BottomBar />
       </main>
     </>
   );

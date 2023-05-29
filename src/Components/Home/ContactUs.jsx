@@ -25,7 +25,7 @@ function ContactUs() {
     },
   ];
   return (
-    <section>
+    <section id="contact">
       <Box>
         <Typography
           variant="h2"
@@ -118,7 +118,7 @@ function ContactUs() {
               />
               <Button
                 sx={{
-                  background: "#BC8129",
+                  backgroundColor: "#BC8129",
                   color: "#fff",
                   border: 0,
                   p: "7px 30px",

@@ -8,7 +8,6 @@ function Budget() {
       title: "Let us do the math",
       info: "Enter your wedding budget and we’ll calculate estimated costs by category for you.",
       img: "/assets/OKBWRX1.png",
-      mt: 20,
     },
     {
       title: "Customise as needed",
@@ -19,7 +18,6 @@ function Budget() {
       title: "Track your expenses",
       info: "Monitor your spending and get a breakdown of your wedding expenses.",
       img: "/assets/pie.png",
-      mt: 20,
     },
   ];
   return (

@@ -52,6 +52,7 @@ function Feedbacks() {
       style={{
         background: "#FFF9F5",
       }}
+      id="reviews"
     >
       <Box sx={{ width: "100%" }}>
         <Box sx={{ py: { lg: 10, xs: "40px" } }}>
@@ -101,7 +102,7 @@ function Feedbacks() {
               nextEl: ".swiper-button-next",
             }}
             autoplay={{
-              delay: 25000,
+              delay: 2500,
               disableOnInteraction: false,
             }}
             // onSlideChange={() => console.log("slide change")}
