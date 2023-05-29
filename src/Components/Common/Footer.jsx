@@ -131,14 +131,14 @@ function Footer() {
                       mr: 2,
                       display: "flex",
                       alignItems: "center",
-                      width: "20px",
+                      width: "50px",
                       "&:hover": {
                         background: "#002642",
                         color: "#fff",
                       },
                     }}
                   >
-                    {item.icon}
+                    <Box>{item.icon}</Box>
                   </Link>
                 );
               })}

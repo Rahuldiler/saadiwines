@@ -67,6 +67,7 @@ function VideoInviTemplate() {
 
   return (
     <Box
+      className="layoutMargin"
       sx={{
         display: "flex",
         justifyContent: "space-around",
@@ -130,7 +131,7 @@ function VideoInviTemplate() {
             spaceBetween: 20,
           },
           1024: {
-            slidesPerView: 2,
+            slidesPerView: 1,
             spaceBetween: 30,
           },
         }}
@@ -149,17 +150,16 @@ function VideoInviTemplate() {
       >
         {templateDesign.map((listOfImg, index) => {
           return (
-            <SwiperSlide key={index} style={{ width: "300px" }}>
+            <SwiperSlide key={index}>
               <Box
                 sx={{
-                  flex: { lg: "1 1 25%", xs: "1 1 50%" },
+                  flex: { lg: "1 1 100%", xs: "1 1 100%" },
                   display: "flex",
                   justifyContent: "center",
                 }}
                 key={listOfImg.id}
               >
-                <Link
-                  href={listOfImg.url}
+                <Box
                   sx={{
                     px: { lg: 8, xs: "20px" },
                     py: { lg: 4, xs: "20px" },
@@ -171,21 +171,20 @@ function VideoInviTemplate() {
                     loop
                     muted
                     controls
-                    width="100%"
                     className="video"
                     id="myvideo"
                     style={{
                       borderRadius: "10px",
-                      width: "500px",
-                      height: "300px",
                       objectFit: "cover",
+                      width: "700px",
+                      height: "480px",
                       boxShadow: "-1px 6px 25px #f8dcee",
                     }}
                   >
                     <source src={listOfImg.video} type="video/mp4" />
                     Sorry, your browser doesn't support embedded videos.
                   </video>
-                </Link>
+                </Box>
               </Box>
             </SwiperSlide>
           );

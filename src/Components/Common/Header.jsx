@@ -83,7 +83,6 @@ function Header() {
             : mobileOpen
             ? "#fff"
             : "transparent",
-          marginTop: colorChange ? "0px" : mobileOpen ? "20px" : "40px",
           boxShadow: !colorChange && "none",
           color: colorChange ? "#000" : "#fff",
         }}

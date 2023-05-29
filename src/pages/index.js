@@ -23,7 +23,7 @@ export default function Home() {
   return (
     <>
       <main>
-        <TopBar />
+        {/* <TopBar /> */}
         <Header />
         <HeroSection />
         {/* <ServicesSection /> */}
