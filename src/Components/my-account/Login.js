@@ -32,6 +32,7 @@ export default function SignIn({setHandle}) {
 
         try {
             const response = await login(credentials);
+            alert("Login success!")
         } catch (error) {
             alert("Incorrect Credentials!")
         }
