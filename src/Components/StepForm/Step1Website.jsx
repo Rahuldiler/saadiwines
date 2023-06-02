@@ -7,7 +7,7 @@ import {
   RadioGroup,
   Typography,
 } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
@@ -18,12 +18,12 @@ import dayjs from "dayjs";
 import moment from "moment";
 import { FormLabelCustom, TextFieldInput } from "../Common/TextFieldInput";
 import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
-
+import { useEffect } from "react";
 function Step1Website({ websiteForm, setWebsiteForm }) {
   // const [valueTime, setValueTime] = React.useState(dayjs("2022-04-17T15:30"));
   // const [valueDate, setValueDate] = React.useState(dayjs("2022-04-17T15:30"));
-  const [valueDateTime, setValueDateTime] = React.useState();
-
+  const [valueDateTime, setValueDateTime] = useState();
+  const [websiteValidation, setWebsiteValidation] = useState(false);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setWebsiteForm((prevData) => {
@@ -85,6 +85,11 @@ function Step1Website({ websiteForm, setWebsiteForm }) {
           value={websiteForm.groom}
           onChange={handleChange}
         />
+        {(websiteForm.groom.match(/\W/) || /\d/.test(websiteForm.groom)) && (
+          <Box sx={{ color: "red", fontSize: "14px" }}>
+            Please don't add any special character and number
+          </Box>
+        )}
         <TextFieldInput
           id="bride"
           label="Bride Name"
@@ -93,11 +98,16 @@ function Step1Website({ websiteForm, setWebsiteForm }) {
           value={websiteForm.bride}
           onChange={handleChange}
         />
+        {(websiteForm.bride.match(/\W/) || /\d/.test(websiteForm.bride)) && (
+          <Box sx={{ color: "red", fontSize: "14px" }}>
+            Please don't add any special character and number
+          </Box>
+        )}
         <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <DateTimePicker
+          <DatePicker
             label="Pick a date"
             name="valueDateTime"
-            // value={valueDateTime}
+            disablePast
             onChange={(newValue) => handleDateTime(newValue)}
             sx={{ mt: 2 }}
           />

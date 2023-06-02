@@ -21,13 +21,16 @@ import { DateTimePicker } from "@mui/x-date-pickers";
 import { AiOutlineDelete } from "react-icons/ai";
 import { list } from "postcss";
 
-function Step2Itinerary({ itineraryLists, setItineraryLists }) {
-  const [valueDateTime, setValueDateTime] = React.useState([
-    dayjs("2022-04-17T15:30"),
-  ]);
+function Step2Itinerary({
+  itineraryLists,
+  setItineraryLists,
+  setValidationBoolean,
+}) {
+  const [valueDateTime, setValueDateTime] = React.useState([dayjs]);
   const addNewItinerary = () => {
     // setValueTime((prevData) => [...prevData, dayjs("2022-04-17T15:30")]);
-    setValueDateTime((prevData) => [...prevData, ""]);
+    setValidationBoolean(true);
+    setValueDateTime((prevData) => [...prevData, dayjs]);
 
     setItineraryLists((prevData) => [
       ...prevData,
@@ -66,10 +69,13 @@ function Step2Itinerary({ itineraryLists, setItineraryLists }) {
   // };
 
   const handleDateTime = (newValue, index) => {
-    setValueDateTime(newValue);
+    // setValueDateTime(newValue);
     const list = [...itineraryLists];
     list[index].dateTime = moment(newValue?.$d).format();
+    const listOfDates = [...valueDateTime];
+    listOfDates[index] = newValue;
     setItineraryLists(list);
+    setValueDateTime(listOfDates);
   };
 
   const deleteItinerary = (id) => {
@@ -77,6 +83,8 @@ function Step2Itinerary({ itineraryLists, setItineraryLists }) {
       prevData.filter((lists) => lists.id !== id)
     );
   };
+
+  console.log(itineraryLists, valueDateTime);
 
   return (
     <Box
@@ -140,7 +148,12 @@ function Step2Itinerary({ itineraryLists, setItineraryLists }) {
               value={list.functionName}
               onChange={(e) => handleChange(e, index)}
             />
-
+            {(list.functionName.match(/\W/) ||
+              /\d/.test(list.functionName)) && (
+              <Box sx={{ color: "red", fontSize: "14px" }}>
+                Please don't add any special character and number
+              </Box>
+            )}
             <TextFieldInput
               id="mapsLocation"
               label="Location"
@@ -151,6 +164,12 @@ function Step2Itinerary({ itineraryLists, setItineraryLists }) {
               // value={credentials.email}
               // onChange={onLoginChange}
             />
+            {(list.mapsLocation.match(/\W/) ||
+              /\d/.test(list.mapsLocation)) && (
+              <Box sx={{ color: "red", fontSize: "14px" }}>
+                Please don't add any special character and number
+              </Box>
+            )}
             <TextFieldInput
               id="details"
               label="Details"
@@ -161,6 +180,11 @@ function Step2Itinerary({ itineraryLists, setItineraryLists }) {
               // value={credentials.email}
               // onChange={onLoginChange}
             />
+            {(list.details.match(/\W/) || /\d/.test(list.details)) && (
+              <Box sx={{ color: "red", fontSize: "14px" }}>
+                Please don't add any special character and number
+              </Box>
+            )}
             <Box sx={{ mt: 2 }}>
               <MultilineTextField
                 name="address"
@@ -169,11 +193,16 @@ function Step2Itinerary({ itineraryLists, setItineraryLists }) {
                 handleCh={(e) => handleChange(e, index)}
               />
             </Box>
+            {(list.address.match(/\W/) || /\d/.test(list.address)) && (
+              <Box sx={{ color: "red", fontSize: "14px" }}>
+                Please don't add any special character and number
+              </Box>
+            )}
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <DateTimePicker
+                disablePast
                 label="Pick a date and time"
                 name="valueDateTime"
-                value={valueDateTime[index]}
                 onChange={(newValue) => handleDateTime(newValue, index)}
                 sx={{ mt: 2 }}
               />

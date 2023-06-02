@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
@@ -44,15 +44,20 @@ function index() {
       answer: "",
     },
   ]);
-  const [contactDetails, setContactDetails] = useState({
-    firstName: "",
-    lastName: "",
-    contactNumber: Number,
-    fromSide: "GROOM",
-  });
+  const [contactDetails, setContactDetails] = useState([
+    {
+      id: 1,
+      firstName: "",
+      lastName: "",
+      contactNumber: Number,
+      fromSide: "GROOM",
+    },
+  ]);
 
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set());
+
+  const [validationBoolean, setValidationBoolean] = useState(true);
 
   const steps = [
     {
@@ -70,12 +75,19 @@ function index() {
         <Step2Itinerary
           itineraryLists={itineraryLists}
           setItineraryLists={setItineraryLists}
+          setValidationBoolean={setValidationBoolean}
         />
       ),
     },
     {
       label: "FAQ",
-      components: <Step3FAQ faqLists={faqLists} setFaqLists={setFaqLists} />,
+      components: (
+        <Step3FAQ
+          faqLists={faqLists}
+          setFaqLists={setFaqLists}
+          setValidationBoolean={setValidationBoolean}
+        />
+      ),
     },
     {
       label: "Contact",
@@ -83,36 +95,128 @@ function index() {
         <Step4Contact
           contactDetails={contactDetails}
           setContactDetails={setContactDetails}
+          setValidationBoolean={setValidationBoolean}
         />
       ),
     },
   ];
 
   const handleNext = () => {
+    setValidationBoolean(true);
+
     if (activeStep === 0) {
-      websiteForm.groom && addWebsiteInfo(websiteForm);
+      addWebsiteInfo(websiteForm);
     } else if (activeStep === 1) {
       for (let i = 0; i < itineraryLists.length; i++) {
-        itineraryLists[i].functionName && addIternary(itineraryLists[i]);
+        addIternary(itineraryLists[i]);
       }
     } else if (activeStep === 2) {
       for (let i = 0; i < faqLists.length; i++) {
-        faqLists[i].question && addFaq(faqLists[i]);
+        addFaq(faqLists[i]);
       }
     } else if (activeStep === 3) {
-      contactDetails.firstName && addContact(contactDetails);
+      for (let i = 0; i < contactDetails.length; i++) {
+        addContact(contactDetails[i]);
+      }
     }
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
 
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
+    setValidationBoolean(false);
   };
+
+  const formValidate = () => {
+    if (activeStep === 0) {
+      if (
+        websiteForm.groom &&
+        websiteForm.bride &&
+        websiteForm.dateTime &&
+        !websiteForm.groom.match(/\W/) &&
+        !/\d/.test(websiteForm.groom) &&
+        !websiteForm.bride.match(/\W/) &&
+        !/\d/.test(websiteForm.bride)
+      ) {
+        setValidationBoolean(false);
+      } else {
+        setValidationBoolean(true);
+      }
+    }
+    if (activeStep === 1) {
+      let findEmptyField = [];
+      for (let i = 0; i < itineraryLists.length; i++) {
+        if (
+          itineraryLists[i].functionName &&
+          itineraryLists[i].details &&
+          itineraryLists[i].address &&
+          itineraryLists[i].mapsLocation &&
+          itineraryLists[i].dateTime &&
+          !itineraryLists[i].functionName.match(/\W/) &&
+          !/\d/.test(itineraryLists[i].functionName)
+        ) {
+          findEmptyField.push(false);
+        } else {
+          findEmptyField.push(true);
+        }
+      }
+      if (findEmptyField.includes(true)) {
+        setValidationBoolean(true);
+      } else {
+        setValidationBoolean(false);
+      }
+    }
+
+    if (activeStep === 2) {
+      let findEmptyField = [];
+
+      for (let i = 0; i < faqLists.length; i++) {
+        if (faqLists[i].question && faqLists[i].answer) {
+          findEmptyField.push(false);
+        } else {
+          findEmptyField.push(true);
+        }
+        if (findEmptyField.includes(true)) {
+          setValidationBoolean(true);
+        } else {
+          setValidationBoolean(false);
+        }
+      }
+    }
+    if (activeStep === 3) {
+      let findEmptyField = [];
+
+      for (let i = 0; i < contactDetails.length; i++) {
+        if (
+          contactDetails[i].firstName &&
+          contactDetails[i].lastName &&
+          contactDetails[i].contactNumber &&
+          !contactDetails[i].firstName.match(/\W/) &&
+          !/\d/.test(contactDetails[i].firstName) &&
+          !contactDetails[i].lastName.match(/\W/) &&
+          !/\d/.test(contactDetails[i].lastName)
+        ) {
+          setValidationBoolean(true);
+        } else {
+          findEmptyField.push(true);
+        }
+        if (findEmptyField.includes(true)) {
+          setValidationBoolean(true);
+        } else {
+          setValidationBoolean(false);
+        }
+      }
+    }
+  };
+
+  useEffect(() => {
+    formValidate();
+  }, [websiteForm, itineraryLists, faqLists, contactDetails]);
 
   return (
     <Box>
       <Grid container sx={{ position: "relative" }}>
-        <Grid lg={12}>
+        <Grid lg={12} item>
           <Box sx={{ maxWidth: "1000px", mx: "auto" }}>
             <Box
               sx={{
@@ -231,6 +335,7 @@ function index() {
                 )} */}
                       <Button
                         onClick={handleNext}
+                        disabled={validationBoolean}
                         className="bg-[#BC8129]"
                         sx={{
                           backgroundColor: "#BC8129",
@@ -241,6 +346,9 @@ function index() {
 
                           "&:hover": {
                             background: "#BC812990",
+                          },
+                          "&:disabled": {
+                            background: "#BC812950",
                           },
                         }}
                       >

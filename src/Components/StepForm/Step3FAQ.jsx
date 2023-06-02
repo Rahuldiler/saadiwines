@@ -14,8 +14,10 @@ import styles from "../../styles/Form.module.css";
 import { MultilineTextField, TextFieldInput } from "../Common/TextFieldInput";
 import { AiOutlineDelete } from "react-icons/ai";
 
-function Step3FAQ({ faqLists, setFaqLists }) {
+function Step3FAQ({ faqLists, setFaqLists, setValidationBoolean }) {
   const addNewFAQ = () => {
+    setValidationBoolean(false);
+
     setFaqLists((prevData) => [
       ...prevData,
       {
@@ -109,7 +111,11 @@ function Step3FAQ({ faqLists, setFaqLists }) {
               value={faq.question}
               onChange={(e) => handleChange(e, index)}
             />
-
+            {(faq.question.match(/\W/) || /\d/.test(faq.question)) && (
+              <Box sx={{ color: "red", fontSize: "14px" }}>
+                Please don't add any special character and number
+              </Box>
+            )}
             <TextFieldInput
               id="answer"
               label="Answer"
@@ -118,6 +124,11 @@ function Step3FAQ({ faqLists, setFaqLists }) {
               value={faq.answer}
               onChange={(e) => handleChange(e, index)}
             />
+            {(faq.answer.match(/\W/) || /\d/.test(faq.answer)) && (
+              <Box sx={{ color: "red", fontSize: "14px" }}>
+                Please don't add any special character and number
+              </Box>
+            )}
           </FormControl>
         );
       })}
