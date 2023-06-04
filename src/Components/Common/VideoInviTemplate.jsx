@@ -175,9 +175,7 @@ function VideoInviTemplate() {
                     id="myvideo"
                     style={{
                       borderRadius: "10px",
-                      objectFit: "cover",
-                      width: "700px",
-                      height: "480px",
+                      width: "100%",
                       boxShadow: "-1px 6px 25px #f8dcee",
                     }}
                   >
