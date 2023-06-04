@@ -9,18 +9,18 @@ import { ImLocation } from "react-icons/im";
 function ContactUs() {
   const contactInfo = [
     {
-      title: "Call Anytime",
-      value: "shaadivines@gmail.com",
+      title: "Write us at",
+      value: "admin@shaadivines.com",
       icon: <HiMail style={{ marginRight: 4 }} size={24} />,
     },
     {
-      title: "Write Email",
-      value: "+888 (123) 869523",
+      title: "Call us",
+      value: "+91 9412817667",
       icon: <FaPhone style={{ marginRight: 4 }} size={24} />,
     },
     {
-      title: "Visit Us Anytime",
-      value: "New York – 1075 Firs Avenue",
+      title: "Address",
+      value: "Sector 137, Noida",
       icon: <ImLocation style={{ marginRight: 4 }} size={24} />,
     },
   ];

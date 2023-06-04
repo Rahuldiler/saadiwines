@@ -49,15 +49,15 @@ function Footer() {
 
   const contactInfo = [
     {
-      value: "shaadivines@gmail.com",
+      value: "admin@shaadivines.com",
       icon: <HiMail style={{ marginRight: 4 }} />,
     },
     {
-      value: "+888 (123) 869523",
+      value: "+91 9412817667",
       icon: <FaPhone style={{ marginRight: 4 }} />,
     },
     {
-      value: "New York – 1075 Firs Avenue",
+      value: "Sector 137, Noida",
       icon: <ImLocation style={{ marginRight: 4 }} />,
     },
   ];
@@ -115,7 +115,6 @@ function Footer() {
               sx={{ color: "#000", fontSize: "16px" }}
             >
               Welcome and open yourself to your truest love this year with us!
-              With the Release Process
             </Typography>
             <Box sx={{ mt: 4, display: "flex" }}>
               {socialFooter.map((item, index) => {

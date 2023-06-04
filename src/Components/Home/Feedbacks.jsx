@@ -10,40 +10,25 @@ import "swiper/css/bundle";
 function Feedbacks() {
   const dummyData = [
     {
-      title: "Introduction to Figma1",
-      img: "/assets/placeholder.png",
-      time: "08 hr 12 mins",
-      completed: 50,
+      name: "Raj Malhotra",
+      description: "Shaadivines really rescued us in my daughters wedding. I could never imagine such a\n" +
+          "good use of tech to solve basic day to day life problems. Kudos to the team.",
+      image: "/assets/placeholder.png"
     },
     {
-      title: "Design Principles: Lea..2",
-      img: "/assets/placeholder.png",
-      time: "08 hr 12 mins",
-      completed: 60,
+      name: "Sanjana Rawat",
+      description: "I must say, I have saved atleast 30-40% of my budget due to impeccable planning\n" +
+          "done by Shaadivines Team. Specially their guests invite and RSVP feature helped us\n" +
+          "get accurate guests list and we catered accordingly.",
+      image: "/assets/placeholder.png"
     },
     {
-      title: "Introduction to Figma3",
-      img: "/assets/placeholder.png",
-      time: "08 hr 12 mins",
-      completed: 80,
-    },
-    {
-      title: "Design Principles: Lea..4",
-      img: "/assets/placeholder.png",
-      time: "08 hr 12 mins",
-      completed: 20,
-    },
-    {
-      title: "Introduction to Figma5",
-      img: "/assets/placeholder.png",
-      time: "08 hr 12 mins",
-      completed: 50,
-    },
-    {
-      title: "Design Principles: Lea..6",
-      img: "/assets/placeholder.png",
-      time: "08 hr 12 mins",
-      completed: 60,
+      name: "Akshay Agrawal",
+      description: "My sisters wedding was one of the most special day for me and weddingvines saved\n" +
+          "our day.\n" +
+          "Everyone was amazed with wedding website as rarely anyone has seen something like\n" +
+          "this in India",
+      image: "/assets/placeholder.png"
     },
   ];
   const [step, setStep] = useState(1);
@@ -64,9 +49,9 @@ function Feedbacks() {
             What our client say
           </Typography>
 
-          <Typography variant="body1" sx={{ textAlign: "center" }}>
+          {/* <Typography variant="body1" sx={{ textAlign: "center" }}>
             Lorem ipsum dolor sit amet,
-          </Typography>
+          </Typography> */}
         </Box>
         <Box sx={{ pb: 10, mx: { lg: 14, xs: 2 } }}>
           <Swiper
