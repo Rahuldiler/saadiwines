@@ -274,7 +274,7 @@ function index() {
                 <Typography sx={{ mt: 2, mb: 1 }}>
                   All steps completed - you&apos;re finished
                 </Typography>
-                <Link href="/dashboard">
+                <Link href="/choose-template">
                   <Typography
                     variant="body1"
                     sx={{

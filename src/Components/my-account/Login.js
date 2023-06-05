@@ -10,6 +10,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import React, { useState } from "react";
 import { TextFieldInput } from "../Common/TextFieldInput";
 import { login } from "@/services/auth/auth";
+import { COLORS } from "../Utils/ConstantTheme";
 
 const theme = createTheme();
 
@@ -22,8 +23,9 @@ export default function SignIn({ setHandle }) {
   };
 
   const [credentials, setCredentials] = useState(loginDetail);
-
+  const [validationErrorMessage, setValidationErrorMessage] = useState(null);
   const onLoginChange = (event) => {
+    setValidationErrorMessage(null);
     setCredentials((previousInputs) => ({
       ...previousInputs,
       [event.target.name]: event.target.value,
@@ -35,9 +37,11 @@ export default function SignIn({ setHandle }) {
 
     try {
       const response = await login(credentials);
-      alert("Login success!");
+      // alert("Login success!");
     } catch (error) {
-      alert("Incorrect Credentials!");
+      console.log(error.response.data.message);
+      setValidationErrorMessage(error.response.data.message);
+      // alert("Incorrect Credentials!");
     }
   };
 
@@ -48,13 +52,12 @@ export default function SignIn({ setHandle }) {
           <CssBaseline />
           <Box
             sx={{
-              marginTop: 8,
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+            <Avatar sx={{ m: 1, background: COLORS.primary }}>
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
@@ -63,7 +66,7 @@ export default function SignIn({ setHandle }) {
             <Box
               component="form"
               onSubmit={handleSubmit}
-              noValidate
+              validate
               sx={{ mt: 1 }}
             >
               <TextFieldInput
@@ -84,19 +87,36 @@ export default function SignIn({ setHandle }) {
                 value={credentials.password}
                 onChange={onLoginChange}
               />
+              <Typography
+                variant="span"
+                sx={{ color: "red", fontSize: "16px" }}
+              >
+                {validationErrorMessage}
+              </Typography>
               <Button
+                className={`bg-[${COLORS.primary}]`}
                 type="submit"
                 fullWidth
                 variant="contained"
-                sx={{ mt: 3, mb: 2 }}
+                sx={{
+                  mt: 3,
+                  mb: 2,
+                  "&:hover": {
+                    backgroundColor: COLORS.hoverPrimary,
+                  },
+                }}
               >
                 Login
               </Button>
               <Grid container>
                 <Grid item>
-                  <span onClick={() => setHandle(false)}>
+                  <Button
+                    variant="body2"
+                    sx={{ fontWeight: 400, cursor: "pointer" }}
+                    onClick={() => setHandle(false)}
+                  >
                     Don't have an account? Sign Up
-                  </span>
+                  </Button>
                 </Grid>
               </Grid>
             </Box>
