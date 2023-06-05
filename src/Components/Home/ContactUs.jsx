@@ -5,6 +5,7 @@ import { BsTwitter } from "react-icons/bs";
 import { FiInstagram } from "react-icons/fi";
 import { HiMail } from "react-icons/hi";
 import { ImLocation } from "react-icons/im";
+import { COLORS } from "../Utils/ConstantTheme";
 
 function ContactUs() {
   const contactInfo = [
@@ -117,6 +118,7 @@ function ContactUs() {
                 sx={{ background: "#FFF9F5", border: 0, width: "100%", mt: 4 }}
               />
               <Button
+                className={`bg-[${COLORS.primary}]`}
                 sx={{
                   backgroundColor: "#BC8129",
                   color: "#fff",

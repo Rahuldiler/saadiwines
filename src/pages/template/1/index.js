@@ -13,13 +13,13 @@ import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
 // import Double from "../../../components/template1Components/double";
 import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
+import { COLORS } from "@/Components/Utils/ConstantTheme";
 // import ContactForm from "../../../components/template1Components/rsvpForm";
 
 function Template1() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [viewImg, setViewImg] = useState("");
   const [isOpen, setIsOpen] = useState(false);
-
   const openLightbox = (img) => {
     setIsOpen(true);
     setViewImg(img);
@@ -324,7 +324,10 @@ function Template1() {
         <div className="lg:px-36 px-4">
           <Slide autoplay={true}>
             {slides2.map((slide, index) => (
-              <div  key={index} className="each-slide-effect mx-auto text-center ">
+              <div
+                key={index}
+                className="each-slide-effect mx-auto text-center "
+              >
                 <div className="py-20 text-center">
                   <p className="lg:px-[320px] px-8 mb-10">{slide.textinfo}</p>
                   <img

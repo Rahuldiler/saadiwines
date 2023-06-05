@@ -9,13 +9,14 @@ import {
   ListItem,
   ListItemButton,
   ListItemText,
+  Modal,
   Toolbar,
   Typography,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 
-function Header() {
+function Header({ handleOpen, setHandle }) {
   const navItems = [
     { title: "Home", url: "/" },
     { title: "About Us", url: "#about" },
@@ -25,6 +26,7 @@ function Header() {
   ];
 
   const [colorChange, setColorchange] = useState(false);
+
   const changeNavbarColor = () => {
     if (window.scrollY >= 80) {
       setColorchange(true);
@@ -69,6 +71,11 @@ function Header() {
       </List>
     </Box>
   );
+
+  const handleOpenDialog = () => {
+    handleOpen();
+    setHandle(true);
+  };
 
   useEffect(() => {
     window.addEventListener("scroll", changeNavbarColor);
@@ -139,6 +146,7 @@ function Header() {
           </Box>
 
           <Button
+            onClick={handleOpenDialog}
             style={{
               backgroundColor: "#E21A9E",
               color: "#fff",

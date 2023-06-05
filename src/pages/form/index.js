@@ -20,6 +20,7 @@ import { addWebsiteInfo } from "@/services/website/formWebsite";
 import { addIternary } from "@/services/itinerary/formItinerary";
 import { addFaq } from "@/services/FAQ/formFaq";
 import { addContact } from "@/services/Contact/formContact";
+import { useRouter } from "next/router";
 
 function index() {
   const [websiteForm, setWebsiteForm] = useState({
@@ -53,7 +54,7 @@ function index() {
       fromSide: "GROOM",
     },
   ]);
-
+  const router = useRouter();
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set());
 
@@ -118,6 +119,7 @@ function index() {
       for (let i = 0; i < contactDetails.length; i++) {
         addContact(contactDetails[i]);
       }
+      router.push("/choose-template");
     }
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
@@ -254,72 +256,37 @@ function index() {
                 })}
               </Stepper>
             </Box>
-            {activeStep === steps.length ? (
-              <Box
-                sx={{
-                  m: { lg: "80px 100px", xs: "60px 20px" },
-                  p: "18px",
-                  textAlign: "center",
-                }}
-              >
-                <Box sx={{ display: "flex", justifyContent: "center" }}>
-                  <Image
-                    src="/assets/thanks.png"
-                    width={100}
-                    height={100}
-                    alt="thanks"
-                  />
-                </Box>
 
-                <Typography sx={{ mt: 2, mb: 1 }}>
-                  All steps completed - you&apos;re finished
-                </Typography>
-                <Link href="/dashboard">
-                  <Typography
-                    variant="body1"
+            <React.Fragment>
+              <Box sx={{ mb: 4 }}>
+                {steps[activeStep]?.components}
+                <Box sx={{ m: { lg: "0px 200px", xs: "60px 20px" } }}>
+                  <Box
                     sx={{
-                      color: "#BC8129",
-                      fontWeight: 500,
+                      display: "flex",
+                      flexDirection: "row",
+                      pt: 2,
+                      gap: 1,
                     }}
                   >
-                    Check Templates
-                  </Typography>
-                </Link>
-                <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
-                  <Box sx={{ flex: "1 1 auto" }} />
-                </Box>
-              </Box>
-            ) : (
-              <React.Fragment>
-                <Box sx={{ mb: 4 }}>
-                  {steps[activeStep].components}
-                  <Box sx={{ m: { lg: "0px 200px", xs: "60px 20px" } }}>
-                    <Box
+                    <Button
+                      disabled={activeStep === 0}
+                      onClick={handleBack}
+                      className="bg-[#ffe5bd]"
                       sx={{
-                        display: "flex",
-                        flexDirection: "row",
-                        pt: 2,
-                        gap: 1,
+                        backgroundColor: "#FBF8F850",
+                        color: "#BC8129",
+                        border: 0,
+                        p: "7px 30px",
+                        width: "100%",
+                        "&:hover": {
+                          background: "#BC812990",
+                        },
                       }}
                     >
-                      <Button
-                        disabled={activeStep === 0}
-                        onClick={handleBack}
-                        className="bg-[#ffe5bd]"
-                        sx={{
-                          backgroundColor: "#FBF8F850",
-                          color: "#BC8129",
-                          border: 0,
-                          p: "7px 30px",
-                          width: "100%",
-                          "&:hover": {
-                            background: "#BC812990",
-                          },
-                        }}
-                      >
-                        Back
-                      </Button>
-                      {/* <Button
+                      Back
+                    </Button>
+                    {/* <Button
                   color="inherit"
                   disabled={activeStep === 0}
                   onClick={handleBack}
@@ -327,41 +294,40 @@ function index() {
                 >
                   Back
                 </Button> */}
-                      <Box sx={{ flex: "1 1 auto" }} />
-                      {/* {isStepOptional(activeStep) && (
+                    <Box sx={{ flex: "1 1 auto" }} />
+                    {/* {isStepOptional(activeStep) && (
                   <Button color="inherit" onClick={handleSkip} sx={{ mr: 1 }}>
                     Skip
                   </Button>
                 )} */}
-                      <Button
-                        onClick={handleNext}
-                        disabled={validationBoolean}
-                        className="bg-[#BC8129]"
-                        sx={{
-                          backgroundColor: "#BC8129",
-                          color: "#fff",
-                          border: 0,
-                          p: "7px 30px",
-                          width: "100%",
+                    <Button
+                      onClick={handleNext}
+                      disabled={validationBoolean}
+                      className="bg-[#BC8129]"
+                      sx={{
+                        backgroundColor: "#BC8129",
+                        color: "#fff",
+                        border: 0,
+                        p: "7px 30px",
+                        width: "100%",
 
-                          "&:hover": {
-                            background: "#BC812990",
-                          },
-                          "&:disabled": {
-                            background: "#BC812950",
-                          },
-                        }}
-                      >
-                        {activeStep === steps.length - 1 ? "Finish" : "Next"}
-                      </Button>
-                      {/* <Button onClick={handleNext}>
+                        "&:hover": {
+                          background: "#BC812990",
+                        },
+                        "&:disabled": {
+                          background: "#BC812950",
+                        },
+                      }}
+                    >
+                      {activeStep === steps.length - 1 ? "Finish" : "Next"}
+                    </Button>
+                    {/* <Button onClick={handleNext}>
                   {activeStep === steps.length - 1 ? "Finish" : "Next"}
                 </Button> */}
-                    </Box>
                   </Box>
                 </Box>
-              </React.Fragment>
-            )}
+              </Box>
+            </React.Fragment>
           </Box>
         </Grid>
       </Grid>
