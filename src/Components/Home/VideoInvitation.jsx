@@ -33,10 +33,13 @@ function VideoInvitation() {
                 variant="body1"
                 sx={{ color: "#000", fontSize: "18px" }}
               >
-                Design a personalized website, create an all-in-one registry,
-                and
+                Your special day deserves a special invitation. There’s nothing
+                like a captivating video to showcase your love story and get
+                your guests excited to witness your special day.
                 <br></br>
-                experience wedding planning the way it should be.
+                Put together your favourite photos and videos, to include all
+                the essential details of the day, then tie everything together
+                with delightful music.
               </Typography>
               <Box sx={{ marginTop: "40px" }}>
                 <Button

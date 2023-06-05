@@ -37,8 +37,11 @@ function Budget() {
           variant="body1"
           sx={{ color: "#000", fontSize: "18px", mt: 2, textAlign: "center" }}
         >
-          Your Budget Planner will keep your budget and payment deadlines under
-          control.
+          Failing to plan is planning to Fail! Our state of the art budget
+          planner, keeps you informed about all the major expenses.
+          <br></br>
+          Decide your budget for all major preset categories, and keep your
+          expenses in check by eliminating last minute miscellaneous expanses.
         </Typography>
         <Grid container spacing={{ lg: 8, xs: 0 }}>
           {budgetLists.map((budgetList, index) => {
