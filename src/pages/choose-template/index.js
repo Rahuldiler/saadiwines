@@ -1,6 +1,7 @@
 import ChooseTemplateCard from "@/Components/ChooseTemplate/ChooseTemplateCard";
-import { BOXSHADOW, COLORS } from "@/Components/Utils/ConstantTheme";
-import { Box, Button, Grid, Typography } from "@mui/material";
+import { BORDER, BOXSHADOW, COLORS } from "@/Components/Utils/ConstantTheme";
+import { Box, Button, Dialog, Divider, Grid, Typography } from "@mui/material";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
 import { useState } from "react";
@@ -61,11 +62,15 @@ function ChooseTemplate() {
 
   const [allTemplates, setAllTemplates] = useState(templateData);
   const [selectedTemplate, setSelectedTemplate] = useState(templateData[0].url);
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   console.log(selectedTemplate);
 
   const handleChooseTemplate = () => {
-    router.push(selectedTemplate);
+    // router.push(selectedTemplate);
+    handleOpen();
   };
   return (
     <Box sx={{ position: "relative" }}>
@@ -119,6 +124,18 @@ function ChooseTemplate() {
           >
             Choose Later
           </Button>
+          <Link href={selectedTemplate} target="_blank">
+            <Button
+              style={{
+                border: BORDER.primaryBorder,
+                color: COLORS.primary,
+                marginLeft: "16px",
+                padding: "7px 16px",
+              }}
+            >
+              View Template
+            </Button>
+          </Link>
           <Button
             onClick={handleChooseTemplate}
             style={{
@@ -132,6 +149,30 @@ function ChooseTemplate() {
           </Button>
         </Box>
       </Box>
+      <Dialog open={open} onClose={handleClose}>
+        <Box sx={{ p: 0, background: "#fff" }}>
+          <Typography variant="h5" sx={{ px: 4, py: 2 }}>
+            Heading
+          </Typography>
+          <Divider />
+          <Typography variant="body1" sx={{ px: 4, py: 2 }}>
+            Our team will get in touch with you shortly
+          </Typography>
+          <Divider />
+          <Button
+            onClick={handleClose}
+            sx={{
+              px: 4,
+              py: 2,
+              float: "right",
+              fontSize: "16px",
+              color: COLORS.primary,
+            }}
+          >
+            Okay
+          </Button>
+        </Box>
+      </Dialog>
     </Box>
   );
 }

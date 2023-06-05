@@ -39,7 +39,7 @@ export default function SignUp({ setHandle }) {
     try {
       const response = await signUp(userData);
       if (response.status === 200) {
-        alert("Sign Up Complete....!!!");
+        // alert("Sign Up Complete....!!!");n
         setHandle(true);
       } else {
         console.log("Error:", response);
