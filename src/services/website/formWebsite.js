@@ -11,4 +11,16 @@ const addWebsiteInfo = async (websiteForm) => {
   });
 };
 
-export { addWebsiteInfo };
+const getWebsiteInfo = async () => {
+  const token = localStorage.getItem("shaadivines token");
+  return http
+    .get({
+      url: "/wedding_info/me",
+      headers: { Authorization: `Bearer ${token}` },
+    })
+    .then((response) => {
+      return response.data;
+    });
+};
+
+export { addWebsiteInfo, getWebsiteInfo };

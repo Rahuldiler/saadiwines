@@ -16,6 +16,7 @@ import { useState } from "react";
 import { Box, Dialog, Modal } from "@mui/material";
 import Login from "../Components/my-account/Login";
 import SignUp from "@/Components/my-account/Sign-up";
+import LoginModal from "@/Components/Common/LoginModal";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,11 +26,24 @@ export default function Home() {
   const handleClose = () => setOpen(false);
   const [handle, setHandle] = useState(true);
 
+  const navItems = [
+    { title: "Home", url: "/" },
+    { title: "About Us", url: "#about" },
+    { title: "Our Services", url: "#services" },
+    { title: "Reviews", url: "#reviews" },
+    { title: "Contact Us", url: "#contact" },
+  ];
+
   return (
     <>
       <main>
         {/* <TopBar /> */}
-        <Header handleOpen={handleOpen} setHandle={setHandle} />
+        <Header
+          handleOpen={handleOpen}
+          setHandle={setHandle}
+          navItems={navItems}
+          isHome={true}
+        />
         <HeroSection />
         {/* <ServicesSection /> */}
         <About />
@@ -41,15 +55,12 @@ export default function Home() {
         <ContactUs />
         <Footer />
         <BottomBar />
-        <Dialog open={open} onClose={handleClose}>
-          <Box sx={{ p: 4, background: "#fff" }}>
-            {handle ? (
-              <Login setHandle={setHandle} />
-            ) : (
-              <SignUp setHandle={setHandle} />
-            )}
-          </Box>
-        </Dialog>
+        <LoginModal
+          open={open}
+          handle={handle}
+          handleClose={handleClose}
+          setHandle={setHandle}
+        />
       </main>
     </>
   );

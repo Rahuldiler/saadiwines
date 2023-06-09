@@ -20,13 +20,14 @@ import dayjs from "dayjs";
 import { DateTimePicker } from "@mui/x-date-pickers";
 import { AiOutlineDelete } from "react-icons/ai";
 import { list } from "postcss";
+import { useEffect } from "react";
 
 function Step2Itinerary({
   itineraryLists,
   setItineraryLists,
   setValidationBoolean,
 }) {
-  const [valueDateTime, setValueDateTime] = React.useState([dayjs]);
+  const [valueDateTime, setValueDateTime] = React.useState();
   const addNewItinerary = () => {
     // setValueTime((prevData) => [...prevData, dayjs("2022-04-17T15:30")]);
     setValidationBoolean(true);
@@ -84,7 +85,16 @@ function Step2Itinerary({
     );
   };
 
-  console.log(itineraryLists, valueDateTime);
+  useEffect(() => {
+    let valueDate = [];
+
+    for (let i = 0; i < itineraryLists.length; i++) {
+      valueDate.push(dayjs(itineraryLists[i].dateTime));
+    }
+
+    setValueDateTime(valueDate);
+    setValidationBoolean(false);
+  }, [itineraryLists]);
 
   return (
     <Box
@@ -203,6 +213,7 @@ function Step2Itinerary({
                 disablePast
                 label="Pick a date and time"
                 name="valueDateTime"
+                value={valueDateTime ? valueDateTime[index] : null}
                 onChange={(newValue) => handleDateTime(newValue, index)}
                 sx={{ mt: 2 }}
               />
