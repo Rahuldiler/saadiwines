@@ -16,14 +16,18 @@ import styles from "../../styles/Form.module.css";
 import Image from "next/image";
 import dayjs from "dayjs";
 import moment from "moment";
-import { FormLabelCustom, TextFieldInput } from "../Common/TextFieldInput";
+import {
+  FormLabelCustom,
+  MultilineTextField,
+  TextFieldInput,
+} from "../Common/TextFieldInput";
 import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 import { useEffect } from "react";
 function Step1Website({ websiteForm, setWebsiteForm }) {
   // const [valueTime, setValueTime] = React.useState(dayjs("2022-04-17T15:30"));
   // const [valueDate, setValueDate] = React.useState(dayjs("2022-04-17T15:30"));
   const [valueDateTime, setValueDateTime] = useState();
-  const [websiteValidation, setWebsiteValidation] = useState(false);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setWebsiteForm((prevData) => {
@@ -33,8 +37,6 @@ function Step1Website({ websiteForm, setWebsiteForm }) {
       };
     });
   };
-
-  console.log(valueDateTime?.$d);
 
   // const handleTime = (newValue) => {
   //   setValueTime(newValue);
@@ -66,6 +68,10 @@ function Step1Website({ websiteForm, setWebsiteForm }) {
     });
   };
 
+  useEffect(() => {
+    setValueDateTime(dayjs(websiteForm?.dateTime));
+  }, [websiteForm.dateTime]);
+
   return (
     <Box
       sx={{
@@ -77,36 +83,127 @@ function Step1Website({ websiteForm, setWebsiteForm }) {
         Website Details
       </Typography>
       <FormControl sx={{ width: "100%" }}>
-        <TextFieldInput
-          id="groom"
-          label="Groom Name"
-          name="groom"
-          type="text"
-          value={websiteForm.groom}
-          onChange={handleChange}
-        />
-        {(websiteForm.groom.match(/\W/) || /\d/.test(websiteForm.groom)) && (
-          <Box sx={{ color: "red", fontSize: "14px" }}>
-            Please don't add any special character and number
+        <Box sx={{ display: "flex", width: "100%", gap: 2 }}>
+          <Box sx={{ width: "50%" }}>
+            <TextFieldInput
+              id="groom"
+              label="Groom Name"
+              name="groom"
+              type="text"
+              value={websiteForm?.groom}
+              onChange={handleChange}
+            />
+            {(websiteForm?.groom.match(/\W/) ||
+              /\d/.test(websiteForm?.groom)) && (
+              <Box sx={{ color: "red", fontSize: "14px" }}>
+                Please don't add any special character and number
+              </Box>
+            )}
           </Box>
-        )}
-        <TextFieldInput
-          id="bride"
-          label="Bride Name"
-          name="bride"
-          type="text"
-          value={websiteForm.bride}
-          onChange={handleChange}
-        />
-        {(websiteForm.bride.match(/\W/) || /\d/.test(websiteForm.bride)) && (
-          <Box sx={{ color: "red", fontSize: "14px" }}>
-            Please don't add any special character and number
+          <Box sx={{ width: "50%" }}>
+            <TextFieldInput
+              id="bride"
+              label="Bride Name"
+              name="bride"
+              type="text"
+              value={websiteForm?.bride}
+              onChange={handleChange}
+            />
+            {(websiteForm?.bride.match(/\W/) ||
+              /\d/.test(websiteForm?.bride)) && (
+              <Box sx={{ color: "red", fontSize: "14px" }}>
+                Please don't add any special character and number
+              </Box>
+            )}
           </Box>
-        )}
+        </Box>
+        <Box sx={{ display: "flex", width: "100%", gap: 2 }}>
+          <Box sx={{ width: "50%" }}>
+            <TextFieldInput
+              id="motherName"
+              label="Mother Name"
+              name="motherName"
+              type="text"
+              value={websiteForm?.motherName}
+              onChange={handleChange}
+            />
+            {(websiteForm?.motherName.match(/\W/) ||
+              /\d/.test(websiteForm?.motherName)) && (
+              <Box sx={{ color: "red", fontSize: "14px" }}>
+                Please don't add any special character and number
+              </Box>
+            )}
+          </Box>
+          <Box sx={{ width: "50%" }}>
+            <TextFieldInput
+              id="fatherName"
+              label="Father Name"
+              name="fatherName"
+              type="text"
+              value={websiteForm?.fatherName}
+              onChange={handleChange}
+            />
+            {(websiteForm?.fatherName.match(/\W/) ||
+              /\d/.test(websiteForm?.fatherName)) && (
+              <Box sx={{ color: "red", fontSize: "14px" }}>
+                Please don't add any special character and number
+              </Box>
+            )}
+          </Box>
+        </Box>
+        <Box sx={{ display: "flex", width: "100%", gap: 2 }}>
+          <Box sx={{ width: "50%" }}>
+            <TextFieldInput
+              id="grandMotherName"
+              label="Grand Mother Name"
+              name="grandMotherName"
+              type="text"
+              value={websiteForm?.grandMotherName}
+              onChange={handleChange}
+            />
+            {(websiteForm?.grandMotherName.match(/\W/) ||
+              /\d/.test(websiteForm?.grandMotherName)) && (
+              <Box sx={{ color: "red", fontSize: "14px" }}>
+                Please don't add any special character and number
+              </Box>
+            )}
+          </Box>
+          <Box sx={{ width: "50%" }}>
+            <TextFieldInput
+              id="grandFatherName"
+              label="Grand Father Name"
+              name="grandFatherName"
+              type="text"
+              value={websiteForm?.grandFatherName}
+              onChange={handleChange}
+            />
+            {(websiteForm?.grandFatherName.match(/\W/) ||
+              /\d/.test(websiteForm?.grandFatherName)) && (
+              <Box sx={{ color: "red", fontSize: "14px" }}>
+                Please don't add any special character and number
+              </Box>
+            )}
+          </Box>
+        </Box>
+        <Box sx={{ mt: 2 }}>
+          <MultilineTextField
+            name="thankYouMessage"
+            label="Thank You Message"
+            value={websiteForm.thankYouMessage}
+            handleCh={(e) => handleChange(e)}
+          />
+          {(websiteForm?.thankYouMessage.match(/\W/) ||
+            /\d/.test(websiteForm?.thankYouMessage)) && (
+            <Box sx={{ color: "red", fontSize: "14px" }}>
+              Please don't add any special character and number
+            </Box>
+          )}
+        </Box>
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <DatePicker
             label="Pick a date"
             name="valueDateTime"
+            value={valueDateTime}
             disablePast
             onChange={(newValue) => handleDateTime(newValue)}
             sx={{ mt: 2 }}

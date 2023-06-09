@@ -8,7 +8,7 @@ import {
   Button,
   Typography,
 } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 
 import styles from "../../styles/Form.module.css";
 import { MultilineTextField, TextFieldInput } from "../Common/TextFieldInput";
@@ -19,7 +19,7 @@ function Step4Contact({ setContactDetails, contactDetails }) {
     setContactDetails((prevData) => [
       ...prevData,
       {
-        id: prevData[prevData.length - 1].id + 1,
+        arrayId: prevData[prevData.length - 1].id + 1,
         firstName: "",
         lastName: "",
         contactNumber: Number,
@@ -35,13 +35,15 @@ function Step4Contact({ setContactDetails, contactDetails }) {
     setContactDetails(list);
   };
 
-  console.log(contactDetails);
-
   const deleteContact = (id) => {
     setContactDetails((prevData) =>
       prevData.filter((lists) => lists.id !== id)
     );
   };
+
+  useEffect(() => {
+    setValidationBoolean(false);
+  }, [contactDetails]);
   return (
     <Box
       sx={{

@@ -16,21 +16,28 @@ import axios from "axios";
 import { Grid } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
-import { addWebsiteInfo } from "@/services/website/formWebsite";
-import { addIternary } from "@/services/itinerary/formItinerary";
-import { addFaq } from "@/services/FAQ/formFaq";
-import { addContact } from "@/services/Contact/formContact";
+import { addWebsiteInfo, getWebsiteInfo } from "@/services/website/formWebsite";
+import { addIternary, getIternary } from "@/services/itinerary/formItinerary";
+import { addMilestone, getMilestone } from "@/services/FAQ/formFaq";
+import { addContact, getContact } from "@/services/Contact/formContact";
 import { useRouter } from "next/router";
+import dayjs from "dayjs";
+import { getUser } from "@/services/users/user";
 
 function index() {
   const [websiteForm, setWebsiteForm] = useState({
     groom: "",
     bride: "",
     dateTime: "",
+    motherName: "",
+    fatherName: "",
+    grandMotherName: "",
+    grandFatherName: "",
+    thankYouMessage: "",
   });
   const [itineraryLists, setItineraryLists] = useState([
     {
-      id: 1,
+      arrayId: 1,
       functionName: "",
       details: "",
       address: "",
@@ -38,11 +45,11 @@ function index() {
       dateTime: "",
     },
   ]);
-  const [faqLists, setFaqLists] = useState([
+  const [milestoneLists, setMilestoneLists] = useState([
     {
-      id: 1,
-      question: "",
-      answer: "",
+      arrayId: 1,
+      title: "",
+      description: "",
     },
   ]);
   const [contactDetails, setContactDetails] = useState([
@@ -84,8 +91,8 @@ function index() {
       label: "FAQ",
       components: (
         <Step3FAQ
-          faqLists={faqLists}
-          setFaqLists={setFaqLists}
+          milestoneLists={milestoneLists}
+          setMilestoneLists={setMilestoneLists}
           setValidationBoolean={setValidationBoolean}
         />
       ),
@@ -112,8 +119,8 @@ function index() {
         addIternary(itineraryLists[i]);
       }
     } else if (activeStep === 2) {
-      for (let i = 0; i < faqLists.length; i++) {
-        addFaq(faqLists[i]);
+      for (let i = 0; i < milestoneLists.length; i++) {
+        addMilestone(milestoneLists[i]);
       }
     } else if (activeStep === 3) {
       for (let i = 0; i < contactDetails.length; i++) {
@@ -135,10 +142,25 @@ function index() {
         websiteForm.groom &&
         websiteForm.bride &&
         websiteForm.dateTime &&
+        websiteForm.motherName &&
+        websiteForm.fatherName &&
+        websiteForm.grandMotherName &&
+        websiteForm.grandFatherName &&
+        websiteForm.thankYouMessage &&
         !websiteForm.groom.match(/\W/) &&
         !/\d/.test(websiteForm.groom) &&
         !websiteForm.bride.match(/\W/) &&
-        !/\d/.test(websiteForm.bride)
+        !/\d/.test(websiteForm.bride) &&
+        !websiteForm.motherName.match(/\W/) &&
+        !/\d/.test(websiteForm.motherName) &&
+        !websiteForm.fatherName.match(/\W/) &&
+        !/\d/.test(websiteForm.fatherName) &&
+        !websiteForm.grandMotherName.match(/\W/) &&
+        !/\d/.test(websiteForm.grandMotherName) &&
+        !websiteForm.grandFatherName.match(/\W/) &&
+        !/\d/.test(websiteForm.grandFatherName) &&
+        !websiteForm.thankYouMessage.match(/\W/) &&
+        !/\d/.test(websiteForm.thankYouMessage)
       ) {
         setValidationBoolean(false);
       } else {
@@ -162,6 +184,7 @@ function index() {
           findEmptyField.push(true);
         }
       }
+      console.log("findEmptyField", findEmptyField);
       if (findEmptyField.includes(true)) {
         setValidationBoolean(true);
       } else {
@@ -172,8 +195,8 @@ function index() {
     if (activeStep === 2) {
       let findEmptyField = [];
 
-      for (let i = 0; i < faqLists.length; i++) {
-        if (faqLists[i].question && faqLists[i].answer) {
+      for (let i = 0; i < milestoneLists.length; i++) {
+        if (milestoneLists[i].title && milestoneLists[i].description) {
           findEmptyField.push(false);
         } else {
           findEmptyField.push(true);
@@ -210,10 +233,34 @@ function index() {
       }
     }
   };
+  useEffect(() => {
+    const token = localStorage.getItem("shaadivines token");
+    if (!token) {
+      router.push("/");
+    }
+  }, []);
 
   useEffect(() => {
     formValidate();
-  }, [websiteForm, itineraryLists, faqLists, contactDetails]);
+  }, [websiteForm, itineraryLists, milestoneLists, contactDetails]);
+
+  useEffect(() => {
+    const token = localStorage.getItem("shaadivines token");
+    if (token) {
+      getWebsiteInfo().then((res) => {
+        res[0] && setWebsiteForm(res[0]);
+      });
+      getIternary().then((res) => {
+        res.length > 0 && setItineraryLists(res);
+      });
+      getMilestone().then((res) => {
+        res.length > 0 && setMilestoneLists(res);
+      });
+      getContact().then((res) => {
+        res.length > 0 && setContactDetails(res);
+      });
+    }
+  }, []);
 
   return (
     <Box>

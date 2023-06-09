@@ -11,12 +11,14 @@ import React, { useState } from "react";
 import { TextFieldInput } from "../Common/TextFieldInput";
 import { login } from "@/services/auth/auth";
 import { COLORS } from "../Utils/ConstantTheme";
+import { useRouter } from "next/router";
 
 const theme = createTheme();
 
 const defaultTheme = createTheme();
 
 export default function SignIn({ setHandle }) {
+  const router = useRouter();
   const loginDetail = {
     email: "",
     password: "",
@@ -37,6 +39,7 @@ export default function SignIn({ setHandle }) {
 
     try {
       const response = await login(credentials);
+      router.push("/dashboard");
       // alert("Login success!");
     } catch (error) {
       console.log(error.response.data.message);

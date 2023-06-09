@@ -11,4 +11,16 @@ const addIternary = async (iternaryData) => {
   });
 };
 
-export { addIternary };
+const getIternary = async () => {
+  const token = localStorage.getItem("shaadivines token");
+  return http
+    .get({
+      url: "/iternary/me",
+      headers: { Authorization: `Bearer ${token}` },
+    })
+    .then((response) => {
+      return response.data;
+    });
+};
+
+export { addIternary, getIternary };

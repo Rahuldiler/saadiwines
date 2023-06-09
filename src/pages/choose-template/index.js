@@ -1,6 +1,14 @@
 import ChooseTemplateCard from "@/Components/ChooseTemplate/ChooseTemplateCard";
 import { BORDER, BOXSHADOW, COLORS } from "@/Components/Utils/ConstantTheme";
-import { Box, Button, Dialog, Divider, Grid, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Dialog,
+  Divider,
+  Grid,
+  Typography,
+  useTheme,
+} from "@mui/material";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
@@ -59,14 +67,12 @@ function ChooseTemplate() {
     },
   ];
   const router = useRouter();
-
+  const theme = useTheme();
   const [allTemplates, setAllTemplates] = useState(templateData);
   const [selectedTemplate, setSelectedTemplate] = useState(templateData[0].url);
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
-  console.log(selectedTemplate);
 
   const handleChooseTemplate = () => {
     // router.push(selectedTemplate);
@@ -127,7 +133,7 @@ function ChooseTemplate() {
           <Link href={selectedTemplate} target="_blank">
             <Button
               style={{
-                border: BORDER.primaryBorder,
+                border: theme.border.primaryBorder,
                 color: COLORS.primary,
                 marginLeft: "16px",
                 padding: "7px 16px",
