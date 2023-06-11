@@ -3,6 +3,10 @@ const COLORS = {
   pinkColor: "#E21A9E",
   hoverPinkColor: "#E21A9E90",
   hoverPrimary: "#BC812990",
+  green: "green",
+  gray: "gray",
+  red: "red",
+  white: "white",
 };
 
 const BOXSHADOW = {
