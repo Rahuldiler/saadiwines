@@ -8,38 +8,42 @@ import {
   RadioGroup,
   Typography,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import styles from "../../styles/Form.module.css";
 import { MultilineTextField, TextFieldInput } from "../Common/TextFieldInput";
 import { AiOutlineDelete } from "react-icons/ai";
 
-function Step3FAQ({ faqLists, setFaqLists, setValidationBoolean }) {
+function Step3FAQ({ setValidationBoolean, milestoneLists, setMilestoneLists }) {
   const addNewFAQ = () => {
     setValidationBoolean(false);
 
-    setFaqLists((prevData) => [
+    setMilestoneLists((prevData) => [
       ...prevData,
       {
-        id: prevData[prevData.length - 1].id + 1,
-        question: "",
-        answer: "",
+        arrayId: prevData[prevData.length - 1].id + 1,
+        title: "",
+        description: "",
       },
     ]);
   };
 
   const handleChange = (e, index) => {
     const { name, value } = e.target;
-    const list = [...faqLists];
+    const list = [...milestoneLists];
     list[index][name] = value;
-    setFaqLists(list);
+    setMilestoneLists(list);
   };
-
-  console.log(faqLists);
 
   const deleteFAQ = (id) => {
-    setFaqLists((prevData) => prevData.filter((lists) => lists.id !== id));
+    setMilestoneLists((prevData) =>
+      prevData.filter((lists) => lists.id !== id)
+    );
   };
+
+  useEffect(() => {
+    setValidationBoolean(false);
+  }, [milestoneLists]);
   return (
     <Box
       sx={{
@@ -78,7 +82,7 @@ function Step3FAQ({ faqLists, setFaqLists, setValidationBoolean }) {
           flexWrap: "wrap",
         }}
       ></Box>
-      {faqLists.map((faq, index) => {
+      {milestoneLists.map((faq, index) => {
         return (
           <FormControl
             key={index}
@@ -91,7 +95,7 @@ function Step3FAQ({ faqLists, setFaqLists, setValidationBoolean }) {
           >
             <Box sx={{ display: "Flex", justifyContent: "space-between" }}>
               <Typography variant="body1">FAQ {index + 1}</Typography>
-              {faqLists.length > 1 && (
+              {milestoneLists.length > 1 && (
                 <Button
                   onClick={() => deleteFAQ(faq.id)}
                   sx={{
@@ -104,20 +108,20 @@ function Step3FAQ({ faqLists, setFaqLists, setValidationBoolean }) {
             </Box>
 
             <TextFieldInput
-              id="question"
-              label="Question"
-              name="question"
+              id="title"
+              label="Title"
+              name="title"
               type="text"
-              value={faq.question}
+              value={faq.title}
               onChange={(e) => handleChange(e, index)}
             />
 
             <TextFieldInput
-              id="answer"
-              label="Answer"
-              name="answer"
+              id="description"
+              label="Description"
+              name="description"
               type="text"
-              value={faq.answer}
+              value={faq.description}
               onChange={(e) => handleChange(e, index)}
             />
           </FormControl>

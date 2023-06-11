@@ -1,35 +1,37 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
+    name: "",
+    email: "",
+    message: "",
   });
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // Perform form submission logic here
-    console.log(formData);
     // Reset form fields
     setFormData({
-      name: '',
-      email: '',
-      message: ''
+      name: "",
+      email: "",
+      message: "",
     });
   };
 
   return (
     <form className="max-w-sm mx-auto" onSubmit={handleSubmit}>
       <div className="mb-4 relative">
-        <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-700 absolute top-3 left-0">
+        <label
+          htmlFor="name"
+          className="block mb-2 text-sm font-medium text-gray-700 absolute top-3 left-0"
+        >
           Name
         </label>
         <input
@@ -43,7 +45,10 @@ const ContactForm = () => {
         />
       </div>
       <div className="mb-4 relative">
-        <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-700 absolute top-3 left-0">
+        <label
+          htmlFor="email"
+          className="block mb-2 text-sm font-medium text-gray-700 absolute top-3 left-0"
+        >
           Email
         </label>
         <input
@@ -57,7 +62,10 @@ const ContactForm = () => {
         />
       </div>
       <div className="mb-4 relative">
-        <label htmlFor="message" className="block mb-2 text-sm font-medium text-gray-700 absolute top-3 left-0">
+        <label
+          htmlFor="message"
+          className="block mb-2 text-sm font-medium text-gray-700 absolute top-3 left-0"
+        >
           Message
         </label>
         <textarea

@@ -7,7 +7,7 @@ const http = new HTTPClientHandler();
 const login = async (credentials) =>
   http.post({ url: "/login", payload: credentials }).then((resopnse) => {
     localStorage.setItem("shaadivines token", resopnse.data.jwtToken);
-    window.location = "/form";
+    window.location = "/dashboard";
   });
 
 const signUp = async (userData) =>
