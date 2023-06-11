@@ -1,28 +1,23 @@
-import CoupleInfo from "@/Components/template components/template1Components/coupleInfoBox";
-import Double from "@/Components/template components/template1Components/double";
-import GreenStrip from "@/Components/template components/template1Components/greenStrip";
-import Lightbox from "@/Components/template components/template1Components/lightBox";
-import ContactForm from "@/Components/template components/template1Components/rsvpForm";
-import Steps from "@/Components/template components/template1Components/steps";
+import CoupleInfo from "@/Components/templateComponents/template1Components/coupleInfoBox";
+import Double from "@/Components/templateComponents/template1Components/double";
+import GreenStrip from "@/Components/templateComponents/template1Components/greenStrip";
+import Lightbox from "@/Components/templateComponents/template1Components/lightBox";
+import ContactForm from "@/Components/templateComponents/template1Components/rsvpForm";
+import Steps from "@/Components/templateComponents/template1Components/steps";
 import React, { useState } from "react";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
-// import GreenStrip from "../../../components/template1Components/greenStrip";
-// import CoupleInfo from "../../../components/template1Components/coupleInfoBox";
-// import Steps from "../../../components/template1Components/steps";
-// import Lightbox from "../../../components/template1Components/lightBox";
-// import Double from "../../../components/template1Components/double";
 import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
-import { COLORS } from "@/Components/Utils/ConstantTheme";
-// import ContactForm from "../../../components/template1Components/rsvpForm";
+import Cards from "@/Components/templateComponents/cards";
 
 function Template1() {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [viewImg, setViewImg] = useState("");
+  const [imageIndex, setImageIndex] = useState();
   const [isOpen, setIsOpen] = useState(false);
+
   const openLightbox = (img) => {
     setIsOpen(true);
-    setViewImg(img);
+    setImageIndex(img);
   };
 
   const closeLightbox = () => {
@@ -46,13 +41,31 @@ function Template1() {
 
   const images = [
     { id: 1, image: "/images/gallery/c-gallery-01.jpg" },
-    { id: 1, image: "/images/gallery/c-gallery-02.jpg" },
-    { id: 1, image: "/images/gallery/c-gallery-03.jpg" },
-    { id: 1, image: "/images/gallery/c-gallery-04.jpg" },
-    { id: 1, image: "/images/gallery/c-gallery-07.jpg" },
-    { id: 1, image: "/images/gallery/c-gallery-08.jpg" },
-    { id: 1, image: "/images/gallery/c-gallery-09.jpg" },
-    { id: 1, image: "/images/gallery/c-gallery-10.jpg" },
+    { id: 2, image: "/images/gallery/c-gallery-02.jpg" },
+    { id: 3, image: "/images/gallery/c-gallery-03.jpg" },
+    { id: 4, image: "/images/gallery/c-gallery-04.jpg" },
+    { id: 5, image: "/images/gallery/c-gallery-07.jpg" },
+    { id: 6, image: "/images/gallery/c-gallery-08.jpg" },
+    { id: 7, image: "/images/gallery/c-gallery-09.jpg" },
+    { id: 8, image: "/images/gallery/c-gallery-10.jpg" },
+  ];
+
+  const impoFamily = [
+    { id: 1, image: "/images/gallery/c-gallery-01.jpg",  name:"rajat", relationship:"brother" },
+    { id: 2, image: "/images/gallery/c-gallery-02.jpg",  name:"rajat", relationship:"brother"},
+    { id: 3, image: "/images/gallery/c-gallery-03.jpg",  name:"rajat", relationship:"brother"},
+    { id: 4, image: "/images/gallery/c-gallery-04.jpg",  name:"rajat", relationship:"brother"},
+    { id: 5, image: "/images/gallery/c-gallery-07.jpg",  name:"rajat", relationship:"brother" },
+    { id: 6, image: "/images/gallery/c-gallery-08.jpg",  name:"rajat", relationship:"brother"},
+    { id: 7, image: "/images/gallery/c-gallery-09.jpg",  name:"rajat", relationship:"brother"},
+    { id: 8, image: "/images/gallery/c-gallery-10.jpg",  name:"rajat", relationship:"brother" },
+  ];
+
+  const contant = [
+    { id: 1, image: "/images/gallery/c-gallery-01.jpg",  name:"rajat", relationship:"brother", contactNo:"+9190909090" },
+    { id: 2, image: "/images/gallery/c-gallery-02.jpg",  name:"rajat", relationship:"brother", contactNo:"+9190909090"},
+    { id: 3, image: "/images/gallery/c-gallery-03.jpg",  name:"rajat", relationship:"brother", contactNo:"+9190909090"},
+
   ];
 
   const stepss = [
@@ -60,6 +73,8 @@ function Template1() {
       id: 1,
       stp: "1",
       functionName: " Wedding Ceremony ",
+      dateTime:"5/jun/2023 | 12:30pm",
+      location:"https://www.google.com/maps/place/Indira+Gandhi+International+Airport/@28.527554,77.0438314,11z/data=!4m6!3m5!1s0x390d1b85fc2a2d89:0xbef376182c43ed9d!8m2!3d28.5563529!4d77.1006963!16zL20vMDEyNDQ0?entry=ttu",
       functionInfo:
         " The wedding ceremony is the heart of any celebration. It's the moment when the couple exchange vows and commit to spending the rest of their lives together.",
     },
@@ -67,6 +82,8 @@ function Template1() {
       id: 2,
       stp: "2",
       functionName: " Lunch Time ",
+      dateTime:"5/jun/2023 | 12:30pm",
+      location:"https://www.google.com/maps/place/Mazaar+Restaurant/@28.5688605,77.2328845,15z/data=!4m6!3m5!1s0x390ce3ad97db2cb5:0xdce447161ff5833!8m2!3d28.5701715!4d77.2443807!16s%2Fg%2F1v7pwvx2?entry=ttu",
       functionInfo:
         " After the wedding ceremony, it's time for lunch! This is a time for guests to relax and enjoy a delicious meal together, while catching up with old friends and making new ones.",
     },
@@ -74,6 +91,8 @@ function Template1() {
       id: 3,
       stp: "3",
       functionName: " Party with Music ",
+      dateTime:"5/jun/2023 | 12:30pm",
+      location:"https://www.google.com/maps/place/C+R+Park+Market+No.1/@28.5350621,77.2431712,13.75z/data=!4m6!3m5!1s0x390ce3d83e0cb4b7:0xb7ece1334b216b84!8m2!3d28.5401153!4d77.2486233!16s%2Fg%2F1wk4bfx6?entry=ttu",
       functionInfo:
         " The party with music is the perfect way to celebrate the newlyweds and their love story. This is a time for guests to let loose, hit the dance floor, and enjoy some great music.",
     },
@@ -81,6 +100,8 @@ function Template1() {
       id: 4,
       stp: "4",
       functionName: " Cake Cutting ",
+      dateTime:"5/jun/2023 | 12:30pm",
+      location:"https://www.google.com/maps/place/Vivanta+Surajkund/@28.5435843,77.2614842,12.28z/data=!4m9!3m8!1s0x390cdc0daaaaaaab:0xd76f205f7679d870!5m2!4m1!1i2!8m2!3d28.4898296!4d77.2849204!16s%2Fg%2F11c71b1922?entry=ttu",
       functionInfo:
         " The cake cutting is a special moment that symbolizes the couple's union and their commitment to sharing their lives together and it's a tradition that dates back centuries.",
     },
@@ -114,6 +135,8 @@ function Template1() {
       avatarName: " Rode Depoins",
     },
   ];
+
+  const [rsvp,setRsvp] = useState(true)
 
   return (
     <div className="lg:min-w-[1280px] ">
@@ -182,6 +205,10 @@ function Template1() {
           bgImage="/images/bg-watercolor-02.jpg"
           name="Thomas Mcnroo"
           gender="THE GROOM"
+          father="X"
+          mother="Y"
+          grandfather="A"
+          grandmother="B"
           infotext1="My name is Thomas, and I'm filled with joy and excitement to be marrying the love of my life. I feel overwhelmed with gratitude for the love and support that we've received from our family and friends."
           infotext2=" On this special day, I want to express my gratitude to my partner - my rock, my confidant, my love. Christin, you bring out the best in me, and I'm honored to call you my partner for life. I promise to love you always."
         />
@@ -190,6 +217,10 @@ function Template1() {
           bgImage="/images/bg-watercolor.jpg"
           name="Christin Martin"
           gender="THE BRIDE"
+          father="X"
+          mother="Y"
+          grandfather="A"
+          grandmother="B"
           infotext1="Hello everyone, my name is Christin, and I'm overjoyed to share this special moment with all of you. I've always been a hopeless romantic, and I've dreamt of this day for as long as I can remember."
           infotext2=" Today, I feel like I'm living in a fairytale - marrying the love of my life and surrounded by all of our family and friends. Every detail of this wedding has been a labor of love, as the carefully selected flowers."
         />
@@ -217,13 +248,13 @@ function Template1() {
 
       <div>
         <p className="!font-Alex !text-[40px] lg:text-[100px] text-center mt-16">
-          Organization
+        Itinerary
         </p>
-        <p className="text-center mt-1 mb-10">WEDDING</p>
+        {/* <p className="text-center mt-1 mb-10">WEDDING</p> */}
         <div className="grid lg:grid-cols-2  lg:px-20 py-14">
           <div className="px-8">
             <img src="/images/double2.jpg" alt="" className="" />
-            <p className="!font-Alex !text-[50px] text-center mt-5">
+            {/* <p className="!font-Alex !text-[50px] text-center mt-5">
               Wedding Menu
             </p>
             <p className=" text-center lg:px-14 ">
@@ -231,7 +262,7 @@ function Template1() {
               classic and contemporary cuisine. Our chef has artfully combined
               traditional recipes with innovative techniques, resulting in a
               dining experience.
-            </p>
+            </p> */}
           </div>
           <div className="px-8 mt-16 lg:mt-auto">
             {stepss.map((steps, index) => (
@@ -239,6 +270,8 @@ function Template1() {
                 <Steps
                   step={steps.stp}
                   fctnName={steps.functionName}
+                  location = {steps.location}
+                  dateTime = {steps.dateTime}
                   fctnInfo={steps.functionInfo}
                 />
               </div>
@@ -248,12 +281,12 @@ function Template1() {
       </div>
 
       <div>
-        <div className="grid grid-cols-4 cursor-pointer">
+          <div className="grid grid-cols-4 cursor-pointer">
           {images.map((image, index) => (
             <div
               key={index}
               className={``}
-              onClick={() => openLightbox(image.image)}
+              onClick={() => openLightbox(index)}
             >
               <img
                 src={image.image}
@@ -263,56 +296,19 @@ function Template1() {
             </div>
           ))}
         </div>
+        <div>
+        </div>
       </div>
-
-      <Lightbox isOpen={isOpen} imageUrl={viewImg} onClose={closeLightbox} />
+      <Lightbox isOpen={isOpen} imageIndex={imageIndex} onClose={closeLightbox} images={images}/>
 
       <div style={{ backgroundImage: "url('/images/bg-watercolor-02.jpg')" }}>
         <p className="!font-Alex !text-[40px] lg:!text-[100px] text-center mt-16 lg:mt-0 pt-16 ">
-          Best Friends
+        Important Family Members
         </p>
-        <p className="text-center mt-1 mb-10">THANKS FOR BEING THERE</p>
-        <div className="grid lg:grid-cols-2 grid-rows-2 lg:grid-rows-none lg:px-20 py-14">
-          <div className="px-8">
-            <div className="relative">
-              <div className="absolute hover:bg-[#0000005E] opacity-0 hover:!opacity-100 w-[100%] h-[100%] !font-Alex  flex justify-center items-center">
-                <p className="!text-5xl  !font-Alex text-white">Girls</p>{" "}
-              </div>
-              <img src="/images/bestfriendsgirls.jpg" alt="" className="" />
-            </div>
-            <div className="lg:flex justify-between cursor-pointer lg:px-32 mt-11 mb-7">
-              <p>ROSE</p>
-              <p>MARY</p>
-              <p>LIZZY</p>
-              <p>HANNA</p>
-            </div>
-            <p className=" lg:text-center lg:px-14">
-              We are proud to present a menu that reflects our love for both
-              classic and contemporary cuisine. Our chef has artfully combined
-              traditional recipes with innovative techniques, resulting in a
-              dining experience.
-            </p>
-          </div>
-          <div className="px-8">
-            <div className="relative">
-              <div className="absolute hover:bg-[#0000005E] opacity-0 hover:!opacity-100 w-[100%] h-[100%] !font-Alex  flex justify-center items-center">
-                <p className="!text-5xl  !font-Alex text-white">Guys</p>{" "}
-              </div>
-              <img src="/images/bestfriendsguys.jpg" alt="" className="" />
-            </div>
-            <div className="lg:flex justify-between cursor-pointer lg:px-32 mt-11 mb-7">
-              <p>JACK</p>
-              <p>MARTIN</p>
-              <p>ANDREW</p>
-              <p>THOM</p>
-            </div>
-            <p className=" lg:text-center lg:!px-14">
-              We are proud to present a menu that reflects our love for both
-              classic and contemporary cuisine. Our chef has artfully combined
-              traditional recipes with innovative techniques, resulting in a
-              dining experience.
-            </p>
-          </div>
+        <div  className={`grid grid-cols-1 md:grid-cols-3 place-items-center gap-y-20 py-14 `}>
+        {impoFamily.map((cards, index) => (
+            <Cards imgSrc={cards.image} name={cards.name} relationship={cards.relationship}/>
+            ))}
         </div>
       </div>
 
@@ -322,48 +318,44 @@ function Template1() {
           style={{ backgroundImage: "url('/images/bg-watercolor.jpg')" }}
         ></div>
         <div className="lg:px-36 px-4">
-          <Slide autoplay={true}>
-            {slides2.map((slide, index) => (
-              <div
-                key={index}
-                className="each-slide-effect mx-auto text-center "
-              >
-                <div className="py-20 text-center">
-                  <p className="lg:px-[320px] px-8 mb-10">{slide.textinfo}</p>
-                  <img
-                    src={slide.image}
-                    alt=""
-                    className="rounded-full w-16 h-16 m-auto mb-5"
-                  />
-                  <span className="!font-Alex !ext-[20px]">
-                    {slide.avatarName}
-                  </span>
-                  <p>Bridesmaid</p>
-                </div>
-              </div>
-            ))}
-          </Slide>
-        </div>
+            <div className="py-20 text-center">
+              <p className="lg:px-[320px] px-8 mb-10">As I look back on our friendship, I can't help but remember all of the fun times we've had together, from the crazy adventures to the quiet moments of reflection.</p>
+            </div>
+          </div>
       </div>
 
-      <Double
+      <div>
+
+      </div>
+
+      {/* <Double
         img="/images/afterparty1.jpg"
-        title="The After Party"
-        subtitle="13:30 pm In The Garden"
-        infotext="Get ready to keep the celebration going! The after party for the wedding will be held at the stunning rooftop bar, Sky Lounge, starting at 9 PM. The location is just a short walk from the reception venue, so you won't have to worry about transportation. 
-      The Sky Lounge offers amazing views of the city skyline, along with a fully stocked bar and DJ playing all of your favorite hits. This will be the perfect spot to dance the night away and toast to the newlyweds. The party will go on until the early hours of the morning, so be sure to pace yourself!"
+        title="Venue details"
+        subtitle="venue date and time"
+        infotext="venue address"
         imgPostion="left"
         bgColor="white"
-      />
+      /> */}
 
-      <GreenStrip
+      {/* <GreenStrip
         title="Our Vendors"
         text="THANK YOU"
         img="/images/couple-line.png"
         propName="venders"
-      />
+      /> */}
 
-      <div
+      <div style={{ backgroundImage: "url('/images/bg-watercolor-02.jpg')" }}>
+        <p className="!font-Alex !text-[40px] lg:!text-[100px] text-center mt-16 lg:mt-0 pt-16 ">
+        Points of contacts
+        </p>
+        <div  className={`grid grid-cols-1 md:grid-cols-3 place-items-center gap-y-20 py-14 `}>
+        {contant.map((cards, index) => (
+            <Cards imgSrc={cards.image} name={cards.name} relationship={cards.relationship} contactNo={cards.contactNo}/>
+            ))}
+        </div>
+      </div>
+
+      {rsvp&&<div
         className=" lg:py-[32rem] py-[450px] relative bg-cover "
         style={{ backgroundImage: "url('/images/c-paral-03.jpg')" }}
       >
@@ -378,9 +370,9 @@ function Template1() {
           </p>
           <ContactForm />
         </div>
-      </div>
+      </div>}
 
-      <div
+      {/* <div
         className="py-28  bg-[length:731px_auto] bg-right-bottom bg-no-repeat relative"
         style={{ backgroundImage: "url('/images/bg-watercolor-03.jpg')" }}
       >
@@ -446,9 +438,9 @@ function Template1() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
-      <div className="bg-[#9CAB8D] p-10 relative">
+      {/* <div className="bg-[#9CAB8D] p-10 relative">
         <div
           className="absolute bg-[center_top] w-full h-full bg-no-repeat bg-cover opacity-100 mix-blend-multiply top-0 left-0"
           style={{ backgroundImage: "url('/images/bg-watercolor-02.jpg')" }}
@@ -488,7 +480,7 @@ function Template1() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
       <div
         className="text-center py-20 lg:py-14  bg-right-top bg-no-repeat bg-contain relative"
