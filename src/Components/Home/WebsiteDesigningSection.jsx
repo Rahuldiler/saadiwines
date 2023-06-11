@@ -1,10 +1,13 @@
 import { Box, Button, Grid, Typography } from "@mui/material";
 import React from "react";
 import WebsiteTemplateContainer from "../Common/WebsiteTemplateContainer";
+import Image from "next/image";
 
 function WebsiteDesigningSection() {
+  const heroImg = "/assets/placeholder.png";
+
   return (
-    <section style={{ background: "#FBF8F8" }} id="website-designing">
+    <section style={{ background: "#FBF8F8" }} id="services">
       <Box
         className="layoutMargin"
         sx={{ py: { lg: 10, xs: "20px" }, px: { lg: "0px", xs: "40px" } }}
@@ -31,10 +34,17 @@ function WebsiteDesigningSection() {
                 variant="body1"
                 sx={{ color: "#000", fontSize: "18px" }}
               >
-                Design a personalized website, create an all-in-one registry,
-                and
+                In the era of digitisation, where from shopping to eating,
+                everything can be done with the use of tech, why should your
+                most important day of the life be devoid of technology?
                 <br></br>
-                experience wedding planning the way it should be.
+                Shaadivines introduces e-card, which is the coolest way of
+                sending out invites to your guests. Say Bye to 2 page hard copy
+                printed cards, and Hello to new age customised designed wedding
+                website where people get to see your memorable story.
+                <br></br>
+                It can tell your beautiful love story, your relationship goals,
+                milestones, itinerary, locations and much more…
               </Typography>
               <Box sx={{ marginTop: "40px" }}>
                 <Button
@@ -71,20 +81,21 @@ function WebsiteDesigningSection() {
                 display: "flex",
                 alignItem: "center",
                 mt: { lg: 0, xs: "40px" },
+                width: "100%",
+
+                height: { lg: "350px", xs: "200px" },
               }}
             >
-              <video
-                autoPlay
-                loop
-                muted
-                width="100%"
+              <Image
+                src={heroImg}
                 style={{
+                  objectFit: "cover",
                   borderRadius: "10px",
                 }}
-              >
-                <source src="/assets/video.mp4" type="video/mp4" />
-                Sorry, your browser doesn't support embedded videos.
-              </video>
+                alt="img"
+                width={1000}
+                height={1000}
+              />
             </Box>
           </Grid>
         </Grid>

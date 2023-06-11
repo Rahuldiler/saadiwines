@@ -9,22 +9,16 @@ import {
   ListItem,
   ListItemButton,
   ListItemText,
+  Modal,
   Toolbar,
   Typography,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 
-function Header() {
-  const navItems = [
-    { title: "Home", url: "/" },
-    { title: "About Us", url: "#about" },
-    { title: "Our Services", url: "#services" },
-    { title: "Feedbacks", url: "#feedbacks" },
-    { title: "Contact Us", url: "#contact" },
-  ];
-
+function Header({ handleOpen, setHandle, navItems, isHome }) {
   const [colorChange, setColorchange] = useState(false);
+
   const changeNavbarColor = () => {
     if (window.scrollY >= 80) {
       setColorchange(true);
@@ -70,6 +64,11 @@ function Header() {
     </Box>
   );
 
+  const handleOpenDialog = () => {
+    handleOpen();
+    setHandle(true);
+  };
+
   useEffect(() => {
     window.addEventListener("scroll", changeNavbarColor);
   }, [colorChange]);
@@ -82,9 +81,10 @@ function Header() {
             ? "#fff"
             : mobileOpen
             ? "#fff"
-            : "transparent",
-          marginTop: colorChange ? "0px" : mobileOpen ? "20px" : "40px",
-          boxShadow: !colorChange && "none",
+            : isHome
+            ? "transparent"
+            : "#fff",
+          boxShadow: !colorChange && isHome ? "none" : "0px 0px 10px #000",
           color: colorChange ? "#000" : "#fff",
         }}
       >
@@ -127,7 +127,7 @@ function Header() {
                 href={item.url}
                 key={index}
                 sx={{
-                  color: colorChange ? "#000" : "#fff",
+                  color: colorChange ? "#000" : isHome ? "#fff" : "#000",
                   padding: "0px 20px",
                   textDecoration: "none",
                   fontWeight: 500,
@@ -139,16 +139,33 @@ function Header() {
             ))}
           </Box>
 
-          <Button
-            style={{
-              backgroundColor: "#E21A9E",
-              color: "#fff",
-              marginLeft: "16px",
-              padding: "7px 16px",
-            }}
-          >
-            Login
-          </Button>
+          {isHome ? (
+            <Button
+              onClick={handleOpenDialog}
+              style={{
+                backgroundColor: "#E21A9E",
+                color: "#fff",
+                marginLeft: "16px",
+                padding: "7px 16px",
+              }}
+            >
+              Login
+            </Button>
+          ) : (
+            <Button
+              // onClick={handleOpenDialog}
+              style={{
+                color: "#E21A9E",
+                // color: "#fff",
+                fontWeight: 500,
+
+                marginLeft: "16px",
+                padding: "7px 16px",
+              }}
+            >
+              Logout
+            </Button>
+          )}
         </Toolbar>
         {mobileOpen && (
           <Box

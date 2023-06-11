@@ -1,8 +1,10 @@
 import { Box, Button, Grid, Typography } from "@mui/material";
 import React from "react";
 import VideoInviTemplate from "../Common/VideoInviTemplate";
+import Image from "next/image";
 
 function VideoInvitation() {
+  const heroImg = "/assets/placeholder.png";
   return (
     <section>
       <Box className="layoutMargin" id="video-invitation">
@@ -31,10 +33,13 @@ function VideoInvitation() {
                 variant="body1"
                 sx={{ color: "#000", fontSize: "18px" }}
               >
-                Design a personalized website, create an all-in-one registry,
-                and
+                Your special day deserves a special invitation. There’s nothing
+                like a captivating video to showcase your love story and get
+                your guests excited to witness your special day.
                 <br></br>
-                experience wedding planning the way it should be.
+                Put together your favourite photos and videos, to include all
+                the essential details of the day, then tie everything together
+                with delightful music.
               </Typography>
               <Box sx={{ marginTop: "40px" }}>
                 <Button
@@ -71,20 +76,21 @@ function VideoInvitation() {
                 display: "flex",
                 alignItem: "center",
                 mt: { lg: 0, xs: "40px" },
+                width: "100%",
+
+                height: { lg: "350px", xs: "200px" },
               }}
             >
-              <video
-                autoPlay
-                loop
-                muted
-                width="100%"
+              <Image
+                src={heroImg}
                 style={{
+                  objectFit: "cover",
                   borderRadius: "10px",
                 }}
-              >
-                <source src="/assets/video.mp4" type="video/mp4" />
-                Sorry, your browser doesn't support embedded videos.
-              </video>
+                alt="img"
+                width={1000}
+                height={1000}
+              />
             </Box>
           </Grid>
         </Grid>

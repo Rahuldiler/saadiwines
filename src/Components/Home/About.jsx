@@ -4,12 +4,12 @@ import React from "react";
 
 function About() {
   const listData = [
-    "Metus interdum metus",
-    "Ligula cur maecenas",
-    "Fringilla nullan",
-    "Metus interdum metus",
-    "Ligula cur maecenas",
-    "Fringilla nullan",
+    "Smart e-card (Wedding website)",
+    "V-Card (Video card)",
+    "Budget Planner",
+    "Guest Management",
+    "RSVP",
+    "Photos organiser",
   ];
   return (
     <section id="about">
@@ -21,9 +21,9 @@ function About() {
         About Us
       </Typography>
 
-      <Typography variant="body1" sx={{ textAlign: "center" }}>
+      {/* <Typography variant="body1" sx={{ textAlign: "center" }}>
         Lorem ipsum dolor sit amet,
-      </Typography>
+      </Typography> */}
       {/* <Grid container sx={{ my: 10 }} className="layoutMargin">
         <Grid lg={6}>
           <Box
@@ -117,12 +117,17 @@ function About() {
             height: "auto",
           }}
         >
-          <Typography variant="h3">Metus interdum metus</Typography>
+          {/* <Typography variant="h3">Metus interdum metus</Typography> */}
           <Typography variant="body2" sx={{ margin: "20px 0px" }}>
-            The quick, brown fox jumps over a lazy dog. DJs flock by when MTV ax
-            quiz prog. Junk MTV quiz graced by fox whelps. Bawds jog, flick
-            quartz, vex nymphs. Waltz, bad nymph, Junk MTV quiz graced by fox
-            whelps. Bawds jog, flick quartz, vex nymphs. Waltz, bad nymph,
+            Welcome to ShaadiVines, where we blend the beauty of weddings with
+            the power of technology. We are passionate about transforming the
+            wedding experience for couples and their guests, creating
+            unforgettable moments and simplifying the planning process.
+            <br></br>
+            At ShaadiVines we believe in the power of data analytics and
+            personalization. By harnessing the insights gained from wedding
+            trends, guest preferences, and behavior, we continually refine our
+            solutions to deliver tailored experiences that exceed expectations.
           </Typography>
           <List style={{ columns: 2 }}>
             {listData.map((list, index) => {

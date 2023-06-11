@@ -33,12 +33,14 @@ function HeroSection() {
           }}
         >
           <Typography variant="h1" className="vibeFont" sx={{ color: "#fff" }}>
-            Plan your forever, better.
+            Creating memories, forever.
           </Typography>
           <Typography variant="body1" sx={{ color: "#fff", fontSize: "18px" }}>
-            Design a personalized website, create an all-in-one registry, and
+            Your special day deserves a special invitation.
             <br></br>
-            experience wedding planning the way it should be.
+            With smart e-card, creating a digital invitation is something your near and
+            <br></br>
+            dear ones will never forget.
           </Typography>
           <Box sx={{ marginTop: "40px" }}>
             <Button

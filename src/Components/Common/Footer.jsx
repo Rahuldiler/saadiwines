@@ -49,15 +49,15 @@ function Footer() {
 
   const contactInfo = [
     {
-      value: "shaadivines@gmail.com",
+      value: "admin@shaadivines.com",
       icon: <HiMail style={{ marginRight: 4 }} />,
     },
     {
-      value: "+888 (123) 869523",
+      value: "+91 9412817667",
       icon: <FaPhone style={{ marginRight: 4 }} />,
     },
     {
-      value: "New York – 1075 Firs Avenue",
+      value: "Sector 137, Noida",
       icon: <ImLocation style={{ marginRight: 4 }} />,
     },
   ];
@@ -115,12 +115,12 @@ function Footer() {
               sx={{ color: "#000", fontSize: "16px" }}
             >
               Welcome and open yourself to your truest love this year with us!
-              With the Release Process
             </Typography>
             <Box sx={{ mt: 4, display: "flex" }}>
               {socialFooter.map((item, index) => {
                 return (
                   <Link
+                    key={index}
                     sx={{
                       background: "#fff",
                       p: 2,
@@ -130,14 +130,14 @@ function Footer() {
                       mr: 2,
                       display: "flex",
                       alignItems: "center",
-                      width: "20px",
+                      width: "50px",
                       "&:hover": {
                         background: "#002642",
                         color: "#fff",
                       },
                     }}
                   >
-                    {item.icon}
+                    <Box>{item.icon}</Box>
                   </Link>
                 );
               })}
@@ -157,7 +157,7 @@ function Footer() {
             <List sx={{ p: 0, m: 0, color: "#000", fontWeight: 400 }}>
               {listNav.map((nav, index) => {
                 return (
-                  <ListItem sx={{ p: 0, mt: 2, cursor: "pointer" }}>
+                  <ListItem sx={{ p: 0, mt: 2, cursor: "pointer" }} key={index}>
                     <Link sx={{ color: "inherit", textDecoration: "none" }}>
                       {nav.title}
                     </Link>
@@ -186,6 +186,7 @@ function Footer() {
             {contactInfo.map((item, index) => {
               return (
                 <Typography
+                  key={index}
                   variant="body1"
                   sx={{
                     color: "#A3888C",

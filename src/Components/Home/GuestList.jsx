@@ -17,7 +17,7 @@ function GuestList() {
     },
     {
       title: "Track your guests’ responses.",
-      info: "See guests’ RSVPs, who has opened your invite, and who’s purchased a gift from your registry, all in one place.",
+      info: "See guests’ RSVPs, who has opened your invite,  all in one place.",
       img: "/assets/placeholder.png",
     },
   ];
@@ -46,9 +46,10 @@ function GuestList() {
             variant="body1"
             sx={{ color: "#000", fontSize: "18px", mt: 2 }}
           >
-            Design a personalized website, create an all-in-one registry, and
-            <br></br>
-            experience wedding planning the way it should be.
+            Solving the most critical problem of wedding is guest management.
+            With easy contact exports, we create your wedding guest list,
+            segregated into different categories like family, work, friends etc.
+            Use this feature to send your invitations in 1 click to all guests
           </Typography>
           <Box sx={{ marginTop: "40px" }}>
             <Button
