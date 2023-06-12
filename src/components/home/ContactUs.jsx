@@ -5,7 +5,7 @@ import { BsTwitter } from "react-icons/bs";
 import { FiInstagram } from "react-icons/fi";
 import { HiMail } from "react-icons/hi";
 import { ImLocation } from "react-icons/im";
-import { COLORS } from "../Utils/ConstantTheme";
+import { COLORS } from "../utils/ConstantTheme";
 
 function ContactUs() {
   const contactInfo = [

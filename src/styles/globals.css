@@ -108,3 +108,12 @@ p {
     bottom: -10px !important;
   }
 }
+
+
+[contenteditable] {
+  outline: 0px solid transparent;
+}
+.MuiDataGrid-root .MuiDataGrid-cell:focus-within {
+  outline: none !important;
+}
+

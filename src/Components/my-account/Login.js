@@ -8,10 +8,10 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import React, { useState } from "react";
-import { TextFieldInput } from "../Common/TextFieldInput";
 import { login } from "@/services/auth/auth";
-import { COLORS } from "../Utils/ConstantTheme";
+import { COLORS } from "../utils/ConstantTheme";
 import { useRouter } from "next/router";
+import { TextFieldInput } from "../common/TextFieldInput";
 
 const theme = createTheme();
 

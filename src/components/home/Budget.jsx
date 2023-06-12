@@ -1,6 +1,6 @@
 import { Box, Grid, Typography } from "@mui/material";
 import React from "react";
-import BudgetCard from "../Common/BudgetCard";
+import BudgetCard from "../common/BudgetCard";
 
 function Budget() {
   const budgetLists = [

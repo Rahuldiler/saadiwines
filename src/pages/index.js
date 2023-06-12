@@ -1,22 +1,20 @@
 import { Inter } from "next/font/google";
-import HeroSection from "@/Components/Home/HeroSection";
-import ServicesSection from "@/Components/Home/ServicesSection";
-import WebsiteDesigningSection from "@/Components/Home/WebsiteDesigningSection";
-import VideoInvitation from "@/Components/Home/VideoInvitation";
-import GuestList from "@/Components/Home/GuestList";
-import ContactUs from "@/Components/Home/ContactUs";
-import Budget from "@/Components/Home/Budget";
-import Feedbacks from "@/Components/Home/Feedbacks";
-import About from "@/Components/Home/About";
-import Footer from "@/Components/Common/Footer";
-import BottomBar from "@/Components/Common/BottomBar";
-import TopBar from "@/Components/Common/TopBar";
-import Header from "@/Components/Common/Header";
+import HeroSection from "@/components/home/HeroSection";
+import ServicesSection from "@/components/home/ServicesSection";
+import WebsiteDesigningSection from "@/components/home/WebsiteDesigningSection";
+import VideoInvitation from "@/components/home/VideoInvitation";
+import GuestList from "@/components/home/GuestList";
+import ContactUs from "@/components/home/ContactUs";
+import Budget from "@/components/home/Budget";
+import Feedbacks from "@/components/home/Feedbacks";
+import About from "@/components/home/About";
+import Footer from "@/components/common/Footer";
+import BottomBar from "@/components/common/BottomBar";
+import TopBar from "@/components/common/TopBar";
+import Header from "@/components/common/Header";
 import { useState } from "react";
 import { Box, Dialog, Modal } from "@mui/material";
-import Login from "../Components/my-account/Login";
-import SignUp from "@/Components/my-account/Sign-up";
-import LoginModal from "@/Components/Common/LoginModal";
+import LoginModal from "@/components/common/LoginModal";
 
 const inter = Inter({ subsets: ["latin"] });
 

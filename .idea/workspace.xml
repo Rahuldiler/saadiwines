@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="7662e723-2879-4fb5-a6e6-5cde3b4c1ae2" name="Changes" comment="Code merged">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+=======
+    <list default="true" id="7662e723-2879-4fb5-a6e6-5cde3b4c1ae2" name="Changes" comment="Fixes in authentication">
+      <change beforePath="$PROJECT_DIR$/.env.local" beforeDir="false" afterPath="$PROJECT_DIR$/.env.local" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Budget-Planner/PlanningTabs.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Budget-Planner/PlanningTabs.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/HTTPClientHandler.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/HTTPClientHandler.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/auth/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/auth/auth.js" afterDir="false" />
+>>>>>>> master
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,7 +30,11 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
+<<<<<<< HEAD
         <entry key="$PROJECT_DIR$" value="login" />
+=======
+        <entry key="$PROJECT_DIR$" value="sagar/template-form" />
+>>>>>>> master
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -43,7 +57,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2QPA9MKjLQbcuk8sArfsdiQh66C" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+  <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
@@ -63,8 +77,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/Components" />
-      <recent name="$PROJECT_DIR$/src/pages" />
+      <recent name="$PROJECT_DIR$/src/Components/template components" />
       <recent name="$PROJECT_DIR$/src/Components/Common" />
       <recent name="$PROJECT_DIR$/src/services/auth" />
     </key>
@@ -93,10 +106,15 @@
       <workItem from="1685246384348" duration="1706000" />
       <workItem from="1685288829615" duration="2013000" />
       <workItem from="1685339401572" duration="830000" />
+<<<<<<< HEAD
       <workItem from="1685370381859" duration="10813000" />
       <workItem from="1685537580077" duration="3372000" />
       <workItem from="1685631036905" duration="1932000" />
       <workItem from="1686463861233" duration="175000" />
+=======
+      <workItem from="1685370381859" duration="10425000" />
+      <workItem from="1686230852712" duration="3998000" />
+>>>>>>> master
     </task>
     <task id="LOCAL-00001" summary="Removed react-lightbox library">
       <created>1685289296459</created>
@@ -112,14 +130,7 @@
       <option name="project" value="LOCAL" />
       <updated>1685380864212</updated>
     </task>
-    <task id="LOCAL-00003" summary="Code merged">
-      <created>1685382614545</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1685382614545</updated>
-    </task>
-    <option name="localTasksCounter" value="4" />
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -190,7 +201,6 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Removed react-lightbox library" />
     <MESSAGE value="Fixes in authentication" />
-    <MESSAGE value="Code merged" />
-    <option name="LAST_COMMIT_MESSAGE" value="Code merged" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixes in authentication" />
   </component>
 </project>

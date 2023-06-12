@@ -2,39 +2,51 @@ import axios from "axios";
 
 export default class HTTPClientHandler {
     constructor() {
-        console.log(process.env.NEXT_PUBLIC_API_URL);
         axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_URL
+        if (typeof window !== "undefined") {
+            this.token = window.localStorage.getItem("jwtToken");
+        } else {
+            this.token = null;
+        }
+
     }
 
     get = async (options) => {
-        return await axios.get(options.url, {params: options.params, headers: options.headers})
+        let headers = options.headers;
+        headers = options.isSecured ? {...headers, Authorization: `Bearer ${this.token}`} : headers;
+        return await axios.get(options.url, {params: options.params, headers});
     }
 
     post = async (options) => {
+        let headers = options.headers;
+        headers = options.isSecured ? {...headers, Authorization: `Bearer ${this.token}`} : headers;
         return await axios.post(
             options.url,
             options.payload,
             {
-                baseURL: this.baseURL,
                 params: options.params,
-                headers: options.headers
+                headers
             }
         )
     }
     put = async (options) => {
-        return await axios.post(options.url,
+        let headers = options.headers;
+        headers = options.isSecured ? {...headers, Authorization: `Bearer ${this.token}`} : headers;
+        return await axios.put(options.url,
             options.payload,
             {
                 params: options.params,
-                headers: options.headers
+                headers
             }
         )
     }
     delete = async (options) => {
+        let headers = options.headers;
+        headers = options.isSecured ? {...headers, Authorization: `Bearer ${this.token}`} : headers;
         return await axios.post(options.url,
             {
                 params: options.params,
-                headers: options.headers
+                headers
             }
         )
     }

@@ -1,7 +1,7 @@
 import { Box, Grid, List, ListItem, Typography } from "@mui/material";
 import React from "react";
-import ServiceListCard from "../Common/ServiceListCard";
-import ServiceCard from "../Common/ServiceCard";
+import ServiceListCard from "../common/ServiceListCard";
+import ServiceCard from "../common/ServiceCard";
 
 function ServicesSection() {
   const serviceLists = [

@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 import { Autoplay, Grid, Navigation, Pagination } from "swiper";
 import "swiper/css";
 import "swiper/css/pagination";
-import TestimonialCard from "../Common/TestimonialCard";
+import TestimonialCard from "../common/TestimonialCard";
 import "swiper/css/bundle";
 
 function Feedbacks() {
