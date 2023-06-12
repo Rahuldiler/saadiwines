@@ -6,7 +6,7 @@ const getUserPreference = async () => {
   const token = localStorage.getItem("shaadivines token");
   return http
     .get({
-      url: "/user_preference",
+      url: "/user_preference/me",
       headers: { Authorization: `Bearer ${token}` },
     })
     .then((response) => {

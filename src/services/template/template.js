@@ -6,7 +6,7 @@ const getTemplateKey = async () => {
   const token = localStorage.getItem("shaadivines token");
   return http
     .get({
-      url: "/getTemplateKey/me",
+      url: "/getTemplateKey",
       headers: { Authorization: `Bearer ${token}` },
     })
     .then((response) => {
@@ -21,7 +21,7 @@ const getTemplateData = async (apiKey) => {
   const token = localStorage.getItem("shaadivines token");
   return http
     .get({
-      url: `/getTemplateKey/${apiKey}`,
+      url: `/getTemplateData/${apiKey}`,
       headers: { Authorization: `Bearer ${token}` },
     })
     .then((response) => {

@@ -1,5 +1,9 @@
-import { COLORS } from "@/Components/utils/ConstantTheme";
 import ChooseTemplateCard from "@/components/template-selection/ChooseTemplateCard";
+import { COLORS } from "@/components/utils/ConstantTheme";
+import {
+  getUserPreference,
+  updateUserPreference,
+} from "@/services/user-preference/userPreference";
 import {
   Box,
   Button,
@@ -11,7 +15,7 @@ import {
 } from "@mui/material";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 
 function ChooseTemplate() {
@@ -69,15 +73,36 @@ function ChooseTemplate() {
   const router = useRouter();
   const theme = useTheme();
   const [allTemplates, setAllTemplates] = useState(templateData);
-  const [selectedTemplate, setSelectedTemplate] = useState(templateData[0].url);
+  const [selectedTemplate, setSelectedTemplate] = useState({
+    id: templateData[0].id,
+    url: templateData[0].url,
+  });
+  const [userPreferenceData, setUserPreferenceData] = useState([]);
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   const handleChooseTemplate = () => {
     // router.push(selectedTemplate);
+    const updatedData = {
+      id: userPreferenceData[0].id,
+      userId: userPreferenceData[0].userId,
+      templateId: selectedTemplate.id,
+      rsvpEnabled: userPreferenceData[0].rsvpEnabled,
+      budgetPlanningEnabled: userPreferenceData[0].budgetPlanningEnabled,
+      guestListEnabled: userPreferenceData[0].guestListEnabled,
+    };
+    updateUserPreference(updatedData);
     handleOpen();
   };
+
+  useEffect(() => {
+    getUserPreference().then((response) => {
+      setUserPreferenceData(response);
+    });
+  }, []);
+
+  console.log(userPreferenceData);
   return (
     <Box sx={{ position: "relative" }}>
       <Box sx={{ textAlign: "center", mt: 4 }}>
@@ -130,7 +155,7 @@ function ChooseTemplate() {
           >
             Choose Later
           </Button>
-          <Link href={selectedTemplate} target="_blank">
+          <Link href={selectedTemplate.url} target="_blank">
             <Button
               style={{
                 border: theme.border.primaryBorder,

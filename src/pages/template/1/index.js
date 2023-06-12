@@ -8,9 +8,12 @@ import React, { useState } from "react";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
 import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
-import Cards from "@/components/template-components/1/Cards";
+import Cards from "@/components/template-components/Cards";
+import moment from "moment";
+// import Cards from "@/components/template-components/1/Cards";
 
-function Template1() {
+function Template1({ formData }) {
+  console.log(formData);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [imageIndex, setImageIndex] = useState();
   const [isOpen, setIsOpen] = useState(false);
@@ -51,21 +54,78 @@ function Template1() {
   ];
 
   const impoFamily = [
-    { id: 1, image: "/images/gallery/c-gallery-01.jpg",  name:"rajat", relationship:"brother" },
-    { id: 2, image: "/images/gallery/c-gallery-02.jpg",  name:"rajat", relationship:"brother"},
-    { id: 3, image: "/images/gallery/c-gallery-03.jpg",  name:"rajat", relationship:"brother"},
-    { id: 4, image: "/images/gallery/c-gallery-04.jpg",  name:"rajat", relationship:"brother"},
-    { id: 5, image: "/images/gallery/c-gallery-07.jpg",  name:"rajat", relationship:"brother" },
-    { id: 6, image: "/images/gallery/c-gallery-08.jpg",  name:"rajat", relationship:"brother"},
-    { id: 7, image: "/images/gallery/c-gallery-09.jpg",  name:"rajat", relationship:"brother"},
-    { id: 8, image: "/images/gallery/c-gallery-10.jpg",  name:"rajat", relationship:"brother" },
+    {
+      id: 1,
+      image: "/images/gallery/c-gallery-01.jpg",
+      name: "rajat",
+      relationship: "brother",
+    },
+    {
+      id: 2,
+      image: "/images/gallery/c-gallery-02.jpg",
+      name: "rajat",
+      relationship: "brother",
+    },
+    {
+      id: 3,
+      image: "/images/gallery/c-gallery-03.jpg",
+      name: "rajat",
+      relationship: "brother",
+    },
+    {
+      id: 4,
+      image: "/images/gallery/c-gallery-04.jpg",
+      name: "rajat",
+      relationship: "brother",
+    },
+    {
+      id: 5,
+      image: "/images/gallery/c-gallery-07.jpg",
+      name: "rajat",
+      relationship: "brother",
+    },
+    {
+      id: 6,
+      image: "/images/gallery/c-gallery-08.jpg",
+      name: "rajat",
+      relationship: "brother",
+    },
+    {
+      id: 7,
+      image: "/images/gallery/c-gallery-09.jpg",
+      name: "rajat",
+      relationship: "brother",
+    },
+    {
+      id: 8,
+      image: "/images/gallery/c-gallery-10.jpg",
+      name: "rajat",
+      relationship: "brother",
+    },
   ];
 
   const contant = [
-    { id: 1, image: "/images/gallery/c-gallery-01.jpg",  name:"rajat", relationship:"brother", contactNo:"+9190909090" },
-    { id: 2, image: "/images/gallery/c-gallery-02.jpg",  name:"rajat", relationship:"brother", contactNo:"+9190909090"},
-    { id: 3, image: "/images/gallery/c-gallery-03.jpg",  name:"rajat", relationship:"brother", contactNo:"+9190909090"},
-
+    {
+      id: 1,
+      image: "/images/gallery/c-gallery-01.jpg",
+      name: "rajat",
+      relationship: "brother",
+      contactNo: "+9190909090",
+    },
+    {
+      id: 2,
+      image: "/images/gallery/c-gallery-02.jpg",
+      name: "rajat",
+      relationship: "brother",
+      contactNo: "+9190909090",
+    },
+    {
+      id: 3,
+      image: "/images/gallery/c-gallery-03.jpg",
+      name: "rajat",
+      relationship: "brother",
+      contactNo: "+9190909090",
+    },
   ];
 
   const stepss = [
@@ -73,8 +133,9 @@ function Template1() {
       id: 1,
       stp: "1",
       functionName: " Wedding Ceremony ",
-      dateTime:"5/jun/2023 | 12:30pm",
-      location:"https://www.google.com/maps/place/Indira+Gandhi+International+Airport/@28.527554,77.0438314,11z/data=!4m6!3m5!1s0x390d1b85fc2a2d89:0xbef376182c43ed9d!8m2!3d28.5563529!4d77.1006963!16zL20vMDEyNDQ0?entry=ttu",
+      dateTime: "5/jun/2023 | 12:30pm",
+      location:
+        "https://www.google.com/maps/place/Indira+Gandhi+International+Airport/@28.527554,77.0438314,11z/data=!4m6!3m5!1s0x390d1b85fc2a2d89:0xbef376182c43ed9d!8m2!3d28.5563529!4d77.1006963!16zL20vMDEyNDQ0?entry=ttu",
       functionInfo:
         " The wedding ceremony is the heart of any celebration. It's the moment when the couple exchange vows and commit to spending the rest of their lives together.",
     },
@@ -82,8 +143,9 @@ function Template1() {
       id: 2,
       stp: "2",
       functionName: " Lunch Time ",
-      dateTime:"5/jun/2023 | 12:30pm",
-      location:"https://www.google.com/maps/place/Mazaar+Restaurant/@28.5688605,77.2328845,15z/data=!4m6!3m5!1s0x390ce3ad97db2cb5:0xdce447161ff5833!8m2!3d28.5701715!4d77.2443807!16s%2Fg%2F1v7pwvx2?entry=ttu",
+      dateTime: "5/jun/2023 | 12:30pm",
+      location:
+        "https://www.google.com/maps/place/Mazaar+Restaurant/@28.5688605,77.2328845,15z/data=!4m6!3m5!1s0x390ce3ad97db2cb5:0xdce447161ff5833!8m2!3d28.5701715!4d77.2443807!16s%2Fg%2F1v7pwvx2?entry=ttu",
       functionInfo:
         " After the wedding ceremony, it's time for lunch! This is a time for guests to relax and enjoy a delicious meal together, while catching up with old friends and making new ones.",
     },
@@ -91,8 +153,9 @@ function Template1() {
       id: 3,
       stp: "3",
       functionName: " Party with Music ",
-      dateTime:"5/jun/2023 | 12:30pm",
-      location:"https://www.google.com/maps/place/C+R+Park+Market+No.1/@28.5350621,77.2431712,13.75z/data=!4m6!3m5!1s0x390ce3d83e0cb4b7:0xb7ece1334b216b84!8m2!3d28.5401153!4d77.2486233!16s%2Fg%2F1wk4bfx6?entry=ttu",
+      dateTime: "5/jun/2023 | 12:30pm",
+      location:
+        "https://www.google.com/maps/place/C+R+Park+Market+No.1/@28.5350621,77.2431712,13.75z/data=!4m6!3m5!1s0x390ce3d83e0cb4b7:0xb7ece1334b216b84!8m2!3d28.5401153!4d77.2486233!16s%2Fg%2F1wk4bfx6?entry=ttu",
       functionInfo:
         " The party with music is the perfect way to celebrate the newlyweds and their love story. This is a time for guests to let loose, hit the dance floor, and enjoy some great music.",
     },
@@ -100,8 +163,9 @@ function Template1() {
       id: 4,
       stp: "4",
       functionName: " Cake Cutting ",
-      dateTime:"5/jun/2023 | 12:30pm",
-      location:"https://www.google.com/maps/place/Vivanta+Surajkund/@28.5435843,77.2614842,12.28z/data=!4m9!3m8!1s0x390cdc0daaaaaaab:0xd76f205f7679d870!5m2!4m1!1i2!8m2!3d28.4898296!4d77.2849204!16s%2Fg%2F11c71b1922?entry=ttu",
+      dateTime: "5/jun/2023 | 12:30pm",
+      location:
+        "https://www.google.com/maps/place/Vivanta+Surajkund/@28.5435843,77.2614842,12.28z/data=!4m9!3m8!1s0x390cdc0daaaaaaab:0xd76f205f7679d870!5m2!4m1!1i2!8m2!3d28.4898296!4d77.2849204!16s%2Fg%2F11c71b1922?entry=ttu",
       functionInfo:
         " The cake cutting is a special moment that symbolizes the couple's union and their commitment to sharing their lives together and it's a tradition that dates back centuries.",
     },
@@ -136,7 +200,7 @@ function Template1() {
     },
   ];
 
-  const [rsvp,setRsvp] = useState(true)
+  const [rsvp, setRsvp] = useState(true);
 
   return (
     <div className="lg:min-w-[1280px] ">
@@ -197,46 +261,52 @@ function Template1() {
         propName="clock"
       />
 
-      <div
-        className={`lg:p-24 py-28 p-4 lg:flex justify-between  `}
-        style={{ backgroundImage: "url('/images/c-paral-02.jpg')" }}
-      >
-        <CoupleInfo
-          bgImage="/images/bg-watercolor-02.jpg"
-          name="Thomas Mcnroo"
-          gender="THE GROOM"
-          father="X"
-          mother="Y"
-          grandfather="A"
-          grandmother="B"
-          infotext1="My name is Thomas, and I'm filled with joy and excitement to be marrying the love of my life. I feel overwhelmed with gratitude for the love and support that we've received from our family and friends."
-          infotext2=" On this special day, I want to express my gratitude to my partner - my rock, my confidant, my love. Christin, you bring out the best in me, and I'm honored to call you my partner for life. I promise to love you always."
-        />
+      {formData && (
+        <div
+          className={`lg:p-24 py-28 p-4 lg:flex justify-between  `}
+          style={{ backgroundImage: "url('/images/c-paral-02.jpg')" }}
+        >
+          <CoupleInfo
+            bgImage="/images/bg-watercolor-02.jpg"
+            name={formData && formData?.website[0]?.groom}
+            gender="THE GROOM"
+            father="X"
+            mother="Y"
+            grandfather="A"
+            grandmother="B"
+            infotext1="My name is Thomas, and I'm filled with joy and excitement to be marrying the love of my life. I feel overwhelmed with gratitude for the love and support that we've received from our family and friends."
+            infotext2=" On this special day, I want to express my gratitude to my partner - my rock, my confidant, my love. Christin, you bring out the best in me, and I'm honored to call you my partner for life. I promise to love you always."
+          />
 
-        <CoupleInfo
-          bgImage="/images/bg-watercolor.jpg"
-          name="Christin Martin"
-          gender="THE BRIDE"
-          father="X"
-          mother="Y"
-          grandfather="A"
-          grandmother="B"
-          infotext1="Hello everyone, my name is Christin, and I'm overjoyed to share this special moment with all of you. I've always been a hopeless romantic, and I've dreamt of this day for as long as I can remember."
-          infotext2=" Today, I feel like I'm living in a fairytale - marrying the love of my life and surrounded by all of our family and friends. Every detail of this wedding has been a labor of love, as the carefully selected flowers."
-        />
-      </div>
+          <CoupleInfo
+            bgImage="/images/bg-watercolor.jpg"
+            name={formData && formData?.website[0]?.bride}
+            gender="THE BRIDE"
+            father="X"
+            mother="Y"
+            grandfather="A"
+            grandmother="B"
+            infotext1="Hello everyone, my name is Christin, and I'm overjoyed to share this special moment with all of you. I've always been a hopeless romantic, and I've dreamt of this day for as long as I can remember."
+            infotext2=" Today, I feel like I'm living in a fairytale - marrying the love of my life and surrounded by all of our family and friends. Every detail of this wedding has been a labor of love, as the carefully selected flowers."
+          />
+        </div>
+      )}
 
-      <Double
-        img="/images/double1.jpg"
-        title="Official Ceremony"
-        subtitle="11:30 am In The Square"
-        infotext="Welcome to this beautiful park, where we gather to celebrate our wedding. As we look around us, we can't help but be struck by the natural beauty that surrounds us. From the vibrant flowers and trees to the gently flowing streams, this park provides the perfect backdrop for this joyous occasion. As we stand here today, surrounded by the beauty of this park, we are reminded of the enduring power of love."
-        imgPostion="left"
-        hoverTitle="St Paul Park"
-        hoverText="Today, we celebrate the love and commitment of this wonderful couple."
-      />
+      {formData?.milestone?.map((milestone, index) => {
+        return (
+          <Double
+            img="/images/double1.jpg"
+            title={milestone.title}
+            subtitle="11:30 am In The Square"
+            infotext={milestone.description}
+            imgPostion={index % 2 == 0 ? "left" : ""}
+            hoverTitle="St Paul Park"
+            hoverText="Today, we celebrate the love and commitment of this wonderful couple."
+          />
+        );
+      })}
 
-      <Double
+      {/* <Double
         img="/images/double2.jpg"
         title="Lunch at the Villa"
         subtitle="13:30 pm In The Garden"
@@ -244,11 +314,11 @@ function Template1() {
         imgPostion=""
         hoverTitle="Madison Villas"
         hoverText="We wanted to take a moment to thank you a lot for joining us."
-      />
+      /> */}
 
       <div>
         <p className="!font-Alex !text-[40px] lg:text-[100px] text-center mt-16">
-        Itinerary
+          Itinerary
         </p>
         {/* <p className="text-center mt-1 mb-10">WEDDING</p> */}
         <div className="grid lg:grid-cols-2  lg:px-20 py-14">
@@ -265,14 +335,14 @@ function Template1() {
             </p> */}
           </div>
           <div className="px-8 mt-16 lg:mt-auto">
-            {stepss.map((steps, index) => (
+            {formData?.itinerary?.map((steps, index) => (
               <div key={index} className={``}>
                 <Steps
                   step={steps.stp}
                   fctnName={steps.functionName}
-                  location = {steps.location}
-                  dateTime = {steps.dateTime}
-                  fctnInfo={steps.functionInfo}
+                  location={steps.location}
+                  dateTime={moment(steps.dateTime).format("LLLL")}
+                  fctnInfo={steps.details}
                 />
               </div>
             ))}
@@ -281,13 +351,9 @@ function Template1() {
       </div>
 
       <div>
-          <div className="grid grid-cols-4 cursor-pointer">
+        <div className="grid grid-cols-4 cursor-pointer">
           {images.map((image, index) => (
-            <div
-              key={index}
-              className={``}
-              onClick={() => openLightbox(index)}
-            >
+            <div key={index} className={``} onClick={() => openLightbox(index)}>
               <img
                 src={image.image}
                 alt=""
@@ -296,19 +362,29 @@ function Template1() {
             </div>
           ))}
         </div>
-        <div>
-        </div>
+        <div></div>
       </div>
-      <Lightbox isOpen={isOpen} imageIndex={imageIndex} onClose={closeLightbox} images={images}/>
+      <Lightbox
+        isOpen={isOpen}
+        imageIndex={imageIndex}
+        onClose={closeLightbox}
+        images={images}
+      />
 
       <div style={{ backgroundImage: "url('/images/bg-watercolor-02.jpg')" }}>
         <p className="!font-Alex !text-[40px] lg:!text-[100px] text-center mt-16 lg:mt-0 pt-16 ">
-        Important Family Members
+          Important Family Members
         </p>
-        <div  className={`grid grid-cols-1 md:grid-cols-3 place-items-center gap-y-20 py-14 `}>
-        {impoFamily.map((cards, index) => (
-            <Cards imgSrc={cards.image} name={cards.name} relationship={cards.relationship}/>
-            ))}
+        <div
+          className={`grid grid-cols-1 md:grid-cols-3 place-items-center gap-y-20 py-14 `}
+        >
+          {impoFamily.map((cards, index) => (
+            <Cards
+              imgSrc={cards.image}
+              name={cards.name}
+              relationship={cards.relationship}
+            />
+          ))}
         </div>
       </div>
 
@@ -318,15 +394,17 @@ function Template1() {
           style={{ backgroundImage: "url('/images/bg-watercolor.jpg')" }}
         ></div>
         <div className="lg:px-36 px-4">
-            <div className="py-20 text-center">
-              <p className="lg:px-[320px] px-8 mb-10">As I look back on our friendship, I can't help but remember all of the fun times we've had together, from the crazy adventures to the quiet moments of reflection.</p>
-            </div>
+          <div className="py-20 text-center">
+            {formData && (
+              <p className="lg:px-[320px] px-8 mb-10">
+                {formData?.website[0]?.thankYouMessage}
+              </p>
+            )}
           </div>
+        </div>
       </div>
 
-      <div>
-
-      </div>
+      <div></div>
 
       {/* <Double
         img="/images/afterparty1.jpg"
@@ -346,31 +424,40 @@ function Template1() {
 
       <div style={{ backgroundImage: "url('/images/bg-watercolor-02.jpg')" }}>
         <p className="!font-Alex !text-[40px] lg:!text-[100px] text-center mt-16 lg:mt-0 pt-16 ">
-        Points of contacts
+          Points of contacts
         </p>
-        <div  className={`grid grid-cols-1 md:grid-cols-3 place-items-center gap-y-20 py-14 `}>
-        {contant.map((cards, index) => (
-            <Cards imgSrc={cards.image} name={cards.name} relationship={cards.relationship} contactNo={cards.contactNo}/>
-            ))}
+        <div
+          className={`grid grid-cols-1 md:grid-cols-3 place-items-center gap-y-20 py-14 `}
+        >
+          {formData?.pocs?.map((cards, index) => (
+            <Cards
+              imgSrc={contant[index].image}
+              name={cards.firstName}
+              relationship={cards.relationship}
+              contactNo={`+91 ${cards.contactNumber}`}
+            />
+          ))}
         </div>
       </div>
 
-      {rsvp&&<div
-        className=" lg:py-[32rem] py-[450px] relative bg-cover "
-        style={{ backgroundImage: "url('/images/c-paral-03.jpg')" }}
-      >
-        <div className="absolute top-0 left-0  opacity-50  w-[100%] h-[100%] bg-black "></div>
+      {rsvp && (
         <div
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center max-w-[650px] mx-auto px-28 lg:px-auto py-28 bg-cover z-50"
-          style={{ backgroundImage: "url('/images/bg-watercolor-02.jpg')" }}
+          className=" lg:py-[32rem] py-[450px] relative bg-cover "
+          style={{ backgroundImage: "url('/images/c-paral-03.jpg')" }}
         >
-          <p>R.S.V.P</p>
-          <p className="!font-Alex !text-[30px] lg:!text-[50px] lg:px-28 mb-12">
-            Confirmation at Marriage
-          </p>
-          <ContactForm />
+          <div className="absolute top-0 left-0  opacity-50  w-[100%] h-[100%] bg-black "></div>
+          <div
+            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center max-w-[650px] mx-auto px-28 lg:px-auto py-28 bg-cover z-50"
+            style={{ backgroundImage: "url('/images/bg-watercolor-02.jpg')" }}
+          >
+            <p>R.S.V.P</p>
+            <p className="!font-Alex !text-[30px] lg:!text-[50px] lg:px-28 mb-12">
+              Confirmation at Marriage
+            </p>
+            <ContactForm />
+          </div>
         </div>
-      </div>}
+      )}
 
       {/* <div
         className="py-28  bg-[length:731px_auto] bg-right-bottom bg-no-repeat relative"

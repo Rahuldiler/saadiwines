@@ -11,7 +11,7 @@ import {
 import React, { useEffect, useState } from "react";
 
 import styles from "../../styles/Form.module.css";
-import { MultilineTextField, TextFieldInput } from "../Common/TextFieldInput";
+import { MultilineTextField, TextFieldInput } from "../common/TextFieldInput";
 import { AiOutlineDelete } from "react-icons/ai";
 
 function Step3FAQ({ setValidationBoolean, milestoneLists, setMilestoneLists }) {
