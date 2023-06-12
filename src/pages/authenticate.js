@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Login from "../Components/my-account/Login";
-import SignUp from "../Components/my-account/Sign-up";
+import Login from "../components/auth/Login";
+import SignUp from "../components/auth/Sign-up";
 
 export default function Authenticate() {
   const [handle, setHandle] = useState(true);

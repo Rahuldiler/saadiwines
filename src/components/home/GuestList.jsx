@@ -1,6 +1,6 @@
 import { Box, Button, Grid, Typography } from "@mui/material";
 import React from "react";
-import GuestListCard from "../Common/GuestListCard";
+import GuestListCard from "../common/GuestListCard";
 import Image from "next/image";
 
 function GuestList() {

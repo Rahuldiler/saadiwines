@@ -1,14 +1,14 @@
-import CoupleInfo from "@/Components/templateComponents/template1Components/coupleInfoBox";
-import Double from "@/Components/templateComponents/template1Components/double";
-import GreenStrip from "@/Components/templateComponents/template1Components/greenStrip";
-import Lightbox from "@/Components/templateComponents/template1Components/lightBox";
-import ContactForm from "@/Components/templateComponents/template1Components/rsvpForm";
-import Steps from "@/Components/templateComponents/template1Components/steps";
+import CoupleInfo from "@/components/template-components/template1Components/coupleInfoBox";
+import Double from "@/components/template-components/template1Components/double";
+import GreenStrip from "@/components/template-components/template1Components/greenStrip";
+import Lightbox from "@/components/template-components/template1Components/lightBox";
+import ContactForm from "@/components/template-components/template1Components/rsvpForm";
+import Steps from "@/components/template-components/template1Components/steps";
 import React, { useState } from "react";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
 import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
-import Cards from "@/Components/templateComponents/cards";
+import Cards from "@/components/template-components/Cards";
 
 function Template1() {
   const [currentSlide, setCurrentSlide] = useState(0);

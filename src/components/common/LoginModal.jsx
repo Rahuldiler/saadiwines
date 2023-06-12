@@ -1,7 +1,7 @@
 import { Box, Dialog } from "@mui/material";
 import React from "react";
-import SignUp from "../my-account/Sign-up";
-import Login from "../my-account/Login";
+import SignUp from "../auth/Sign-up";
+import Login from "../auth/Login";
 
 function LoginModal({ open, handle, handleClose, setHandle }) {
   return (

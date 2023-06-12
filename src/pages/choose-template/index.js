@@ -1,5 +1,5 @@
-import ChooseTemplateCard from "@/Components/ChooseTemplate/ChooseTemplateCard";
-import { BORDER, BOXSHADOW, COLORS } from "@/Components/Utils/ConstantTheme";
+import ChooseTemplateCard from "@/components/template-selection/ChooseTemplateCard";
+import { BORDER, BOXSHADOW, COLORS } from "@/components/utils/ConstantTheme";
 import {
   Box,
   Button,

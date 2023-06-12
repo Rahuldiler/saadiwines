@@ -5,12 +5,12 @@ import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import Step1Website from "@/Components/StepForm/Step1Website";
-import Step2Itinerary from "@/Components/StepForm/Step2Itinerary";
-import Step3FAQ from "@/Components/StepForm/Step3FAQ";
-import Step4Contact from "@/Components/StepForm/Step4Contact";
-import Header from "@/Components/Common/Header";
-import Footer from "@/Components/Common/Footer";
+import Step1Website from "@/components/stepper-form/Step1Website";
+import Step2Itinerary from "@/components/stepper-form/Step2Itinerary";
+import Step3FAQ from "@/components/stepper-form/Step3FAQ";
+import Step4Contact from "@/components/stepper-form/Step4Contact";
+import Header from "@/components/common/Header";
+import Footer from "@/components/common/Footer";
 import axios from "axios";
 
 import { Grid } from "@mui/material";

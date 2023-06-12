@@ -1,18 +1,17 @@
 import { Box, Button, Grid, Typography } from "@mui/material";
 import React from "react";
-import WebsiteTemplateContainer from "../Common/WebsiteTemplateContainer";
+import VideoInviTemplate from "../common/VideoInviTemplate";
 import Image from "next/image";
 
-function WebsiteDesigningSection() {
+function VideoInvitation() {
   const heroImg = "/assets/placeholder.png";
-
   return (
-    <section style={{ background: "#FBF8F8" }} id="services">
-      <Box
-        className="layoutMargin"
-        sx={{ py: { lg: 10, xs: "20px" }, px: { lg: "0px", xs: "40px" } }}
-      >
-        <Grid container sx={{ my: 8 }}>
+    <section>
+      <Box className="layoutMargin" id="video-invitation">
+        <Grid
+          container
+          sx={{ py: { lg: 10, xs: "40px" }, px: { lg: "0px", xs: "40px" } }}
+        >
           <Grid item lg={6}>
             <Box
               sx={{
@@ -26,25 +25,21 @@ function WebsiteDesigningSection() {
               <Typography
                 variant="h2"
                 className="vibeFont"
-                sx={{ color: "#bc8129" }}
+                sx={{ color: "#bc8129", mt: { lg: 0, xs: "40px" } }}
               >
-                Website Designing
+                Video Invitations
               </Typography>
               <Typography
                 variant="body1"
                 sx={{ color: "#000", fontSize: "18px" }}
               >
-                In the era of digitisation, where from shopping to eating,
-                everything can be done with the use of tech, why should your
-                most important day of the life be devoid of technology?
+                Your special day deserves a special invitation. There’s nothing
+                like a captivating video to showcase your love story and get
+                your guests excited to witness your special day.
                 <br></br>
-                Shaadivines introduces e-card, which is the coolest way of
-                sending out invites to your guests. Say Bye to 2 page hard copy
-                printed cards, and Hello to new age customised designed wedding
-                website where people get to see your memorable story.
-                <br></br>
-                It can tell your beautiful love story, your relationship goals,
-                milestones, itinerary, locations and much more…
+                Put together your favourite photos and videos, to include all
+                the essential details of the day, then tie everything together
+                with delightful music.
               </Typography>
               <Box sx={{ marginTop: "40px" }}>
                 <Button
@@ -100,9 +95,9 @@ function WebsiteDesigningSection() {
           </Grid>
         </Grid>
       </Box>
-      <WebsiteTemplateContainer />
+      <VideoInviTemplate />
     </section>
   );
 }
 
-export default WebsiteDesigningSection;
+export default VideoInvitation;

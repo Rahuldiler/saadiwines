@@ -1,5 +1,5 @@
 import {  Box } from "@mui/material";
-import PlanningTable from "@/Components/Budget-Planner/PlanningTabs";
+import PlanningTable from "@/components/budget-planner/PlanningTabs";
 const index = () => {
   return (
     <Box>

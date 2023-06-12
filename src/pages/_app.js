@@ -1,8 +1,8 @@
-import BottomBar from "@/Components/Common/BottomBar";
-import Footer from "@/Components/Common/Footer";
-import Header from "@/Components/Common/Header";
-import TopBar from "@/Components/Common/TopBar";
-import { theme } from "@/Components/Utils/theme";
+import BottomBar from "@/components/common/BottomBar";
+import Footer from "@/components/common/Footer";
+import Header from "@/components/common/Header";
+import TopBar from "@/components/common/TopBar";
+import { theme } from "@/components/utils/theme";
 import { getUser } from "@/services/users/user";
 import "@/styles/globals.css";
 import { ThemeProvider } from "@mui/material";

@@ -7,7 +7,7 @@ const addMilestone = async (faqData) => {
   http.post({
     url: "/milestone",
     payload: faqData,
-    headers: { Authorization: `Bearer ${token}` },
+    isSecured: true,
   });
 };
 
