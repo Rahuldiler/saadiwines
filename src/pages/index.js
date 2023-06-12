@@ -1,6 +1,5 @@
-import { Inter } from "next/font/google";
+import {Inter} from "next/font/google";
 import HeroSection from "@/components/home/HeroSection";
-import ServicesSection from "@/components/home/ServicesSection";
 import WebsiteDesigningSection from "@/components/home/WebsiteDesigningSection";
 import VideoInvitation from "@/components/home/VideoInvitation";
 import GuestList from "@/components/home/GuestList";
@@ -10,12 +9,8 @@ import Feedbacks from "@/components/home/Feedbacks";
 import About from "@/components/home/About";
 import Footer from "@/components/common/Footer";
 import BottomBar from "@/components/common/BottomBar";
-import TopBar from "@/components/common/TopBar";
 import Header from "@/components/common/Header";
-import { useState } from "react";
-import { Box, Dialog, Modal } from "@mui/material";
-import Login from "../components/auth/Login";
-import SignUp from "@/components/auth/Sign-up";
+import {useState} from "react";
 import LoginModal from "@/components/common/LoginModal";
 
 const inter = Inter({ subsets: ["latin"] });

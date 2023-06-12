@@ -1,28 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 import Box from "@mui/material/Box";
 import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
 import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-import Step1Website from "@/components/stepper-form/Step1Website";
-import Step2Itinerary from "@/components/stepper-form/Step2Itinerary";
-import Step3FAQ from "@/components/stepper-form/Step3FAQ";
-import Step4Contact from "@/components/stepper-form/Step4Contact";
-import Header from "@/components/common/Header";
-import Footer from "@/components/common/Footer";
-import axios from "axios";
 
-import { Grid } from "@mui/material";
-import Image from "next/image";
-import Link from "next/link";
-import { addWebsiteInfo, getWebsiteInfo } from "@/services/website/formWebsite";
-import { addIternary, getIternary } from "@/services/itinerary/formItinerary";
-import { addMilestone, getMilestone } from "@/services/FAQ/formFaq";
-import { addContact, getContact } from "@/services/Contact/formContact";
-import { useRouter } from "next/router";
-import dayjs from "dayjs";
-import { getUser } from "@/services/users/user";
+import {Grid} from "@mui/material";
+import {addWebsiteInfo, getWebsiteInfo} from "@/services/website/formWebsite";
+import {addIternary, getIternary} from "@/services/itinerary/formItinerary";
+import {addMilestone, getMilestone} from "@/services/FAQ/formFaq";
+import {addContact, getContact} from "@/services/Contact/formContact";
+import {useRouter} from "next/router";
+import Step1Website from "@/Components/StepForm/Step1Website";
+import Step2Itinerary from "@/Components/StepForm/Step2Itinerary";
+import Step3FAQ from "@/Components/StepForm/Step3FAQ";
+import Step4Contact from "@/Components/StepForm/Step4Contact";
 
 function index() {
   const [websiteForm, setWebsiteForm] = useState({

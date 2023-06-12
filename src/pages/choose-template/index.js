@@ -1,4 +1,3 @@
-import ChooseTemplateCard from "@/components/template-selection/ChooseTemplateCard";
 import { BORDER, BOXSHADOW, COLORS } from "@/components/utils/ConstantTheme";
 import {
   Box,
@@ -13,6 +12,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
 import { useState } from "react";
+import ChooseTemplateCard from "@/Components/ChooseTemplate/ChooseTemplateCard";
 
 function ChooseTemplate() {
   const templateData = [
