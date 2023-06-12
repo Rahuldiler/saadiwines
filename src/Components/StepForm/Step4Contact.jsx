@@ -14,7 +14,11 @@ import styles from "../../styles/Form.module.css";
 import { MultilineTextField, TextFieldInput } from "../Common/TextFieldInput";
 import { AiOutlineDelete } from "react-icons/ai";
 
-function Step4Contact({ setContactDetails, contactDetails }) {
+function Step4Contact({
+  setContactDetails,
+  contactDetails,
+  setValidationBoolean,
+}) {
   const addNewContact = () => {
     setContactDetails((prevData) => [
       ...prevData,

@@ -1,6 +1,8 @@
 import Header from "@/Components/Common/Header";
+import { getTemplateKey } from "@/services/template/template";
+import { getUserPreference } from "@/services/user-preference/userPreference";
 import { Box } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 
 function Dashboard() {
   const navItems = [
@@ -9,6 +11,16 @@ function Dashboard() {
     { title: "Budget", url: "/" },
     { title: "Guests", url: "/" },
   ];
+
+  useEffect(() => {
+    getTemplateKey().then((response) => {
+      // localStorage.setItem("templateKey", response.userIdKey);
+    });
+
+    getUserPreference().then((response) => {
+      console.log(response);
+    });
+  }, []);
 
   return (
     <Box>
