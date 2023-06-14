@@ -45,12 +45,11 @@ function Header({ handleOpen, setHandle, navItems, isHome }) {
       <Divider />
       <List>
         {navItems.map((item, index) => (
-          <>
+          <Box key={item.id}>
             {item && (
-              <ListItem key={item.id} disablePadding>
+              <ListItem disablePadding>
                 <Link
                   href={item.url}
-                  key={item}
                   sx={{
                     color: "#000",
                     padding: "0px 20px",
@@ -62,7 +61,7 @@ function Header({ handleOpen, setHandle, navItems, isHome }) {
                 </Link>
               </ListItem>
             )}
-          </>
+          </Box>
         ))}
       </List>
     </Box>
@@ -125,13 +124,12 @@ function Header({ handleOpen, setHandle, navItems, isHome }) {
               Vines
             </span>
           </Typography>
-          <Box sx={{ display: { xs: "none", sm: "block" } }}>
+          <Box sx={{ display: { xs: "none", sm: "flex" } }}>
             {navItems.map((item, index) => (
-              <>
+              <Box key={item.id}>
                 {item && (
                   <Link
                     href={item.url}
-                    key={item.id}
                     sx={{
                       color: colorChange ? "#000" : isHome ? "#fff" : "#000",
                       padding: "0px 20px",
@@ -143,7 +141,7 @@ function Header({ handleOpen, setHandle, navItems, isHome }) {
                     {item.title}
                   </Link>
                 )}
-              </>
+              </Box>
             ))}
           </Box>
 
