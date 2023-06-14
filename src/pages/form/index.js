@@ -234,7 +234,7 @@ function index() {
     }
   };
   useEffect(() => {
-    const token = localStorage.getItem("shaadivines token");
+    const token = localStorage.getItem("jwtToken");
     if (!token) {
       router.push("/");
     }
