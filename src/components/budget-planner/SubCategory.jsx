@@ -24,7 +24,7 @@ import PaymentsDialog from "./PaymentsDialog";
 import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutline";
 import CustomCircularProgress from "./CustomCircularProgress";
 import Modal from "./Modal";
-import { BORDER, COLORS } from "../Utils/ConstantTheme";
+import { BORDER, COLORS } from "../utils/ConstantTheme";
 import { CustomCell } from "./table-components/CustomCell";
 import { CustomHeader } from "./table-components/CustomHeader";
 
