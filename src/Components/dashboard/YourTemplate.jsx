@@ -20,11 +20,7 @@ function YourTemplate() {
 
   const handleViewTemplate = async () => {
     const response = await getTemplateKey();
-    router.push(`/template/${encodeURIComponent(response.userIdKey)}`);
-    console.log(
-      encodeURIComponent(response.userIdKey + "/"),
-      response.userIdKey
-    );
+    router.push(`/template/${response.userIdKey.replace(/\/$/, "%2F")}`);
   };
   return (
     <Box sx={{ mt: 14 }}>
