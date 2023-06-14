@@ -9,7 +9,7 @@ import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import CustomCircularProgress from "./CustomCircularProgress";
 import { addCategory, getCategories } from "@/services/category/category";
-import { BORDER, COLORS } from "../Utils/ConstantTheme";
+import { BORDER, COLORS } from "../utils/ConstantTheme";
 import Modal from "./Modal";
 
 const Category = ({
