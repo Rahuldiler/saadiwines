@@ -3,33 +3,20 @@ import HTTPClientHandler from "@/services/HTTPClientHandler";
 const http = new HTTPClientHandler();
 
 const getTemplateKey = async () => {
-  const token = localStorage.getItem("shaadivines token");
-  return http
-    .get({
-      url: "/getTemplateKey",
-      headers: { Authorization: `Bearer ${token}` },
-    })
-    .then((response) => {
-      return response.data;
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+  const response = await http.get({
+    url: "/getTemplateKey",
+    isSecured: true,
+  });
+  console.log(response);
+  return response.data;
 };
 
 const getTemplateData = async (apiKey) => {
-  const token = localStorage.getItem("shaadivines token");
-  return http
-    .get({
-      url: `/getTemplateData/${apiKey}`,
-      headers: { Authorization: `Bearer ${token}` },
-    })
-    .then((response) => {
-      return response.data;
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+  const response = await http.get({
+    url: `/getTemplateData/${apiKey}`,
+    isSecured: true,
+  });
+  return response.data;
 };
 
 export { getTemplateKey, getTemplateData };

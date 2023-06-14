@@ -6,22 +6,29 @@ import React, { useEffect, useState } from "react";
 
 function Dashboard() {
   const [navItems, setNavItems] = useState([
-    { title: "Templates", url: "/choose-template" },
-    { title: "Wedding Info", url: "/form" },
+    { id: 1, title: "Templates", url: "/choose-template" },
+    { id: 2, title: "Wedding Info", url: "/form" },
   ]);
 
   const [userPreferenceData, setUserPreferenceData] = useState([]);
 
+  const getUserPreferenceData = async () => {
+    const response = await getUserPreference();
+    setUserPreferenceData(response);
+    setNavItems([
+      { id: 1, title: "Templates", url: "/choose-template" },
+      { id: 2, title: "Wedding Info", url: "/form" },
+      response[0].budgetPlanningEnabled && {
+        id: 3,
+        title: "Budget",
+        url: "/",
+      },
+      response[0].guestListEnabled && { id: 4, title: "Guests", url: "/" },
+    ]);
+  };
+
   useEffect(() => {
-    getUserPreference().then((response) => {
-      setUserPreferenceData(response);
-      setNavItems([
-        { title: "Templates", url: "/choose-template" },
-        { title: "Wedding Info", url: "/form" },
-        response[0].budgetPlanningEnabled && { title: "Budget", url: "/" },
-        response[0].guestListEnabled && { title: "Guests", url: "/" },
-      ]);
-    });
+    getUserPreferenceData();
   }, []);
 
   return (

@@ -3,24 +3,19 @@ import HTTPClientHandler from "@/services/HTTPClientHandler";
 const http = new HTTPClientHandler();
 
 const addIternary = async (iternaryData) => {
-  const token = localStorage.getItem("shaadivines token");
-  http.post({
+  await http.post({
     url: "/iternary",
     payload: iternaryData,
-    headers: { Authorization: `Bearer ${token}` },
+    isSecured: true,
   });
 };
 
 const getIternary = async () => {
-  const token = localStorage.getItem("shaadivines token");
-  return http
-    .get({
-      url: "/iternary/me",
-      headers: { Authorization: `Bearer ${token}` },
-    })
-    .then((response) => {
-      return response.data;
-    });
+  const response = http.get({
+    url: "/iternary/me",
+    isSecured: true,
+  });
+  return response.data;
 };
 
 export { addIternary, getIternary };

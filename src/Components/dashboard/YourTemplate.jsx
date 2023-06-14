@@ -18,10 +18,13 @@ function YourTemplate() {
     },
   ];
 
-  const handleViewTemplate = () => {
-    getTemplateKey().then((response) => {
-      router.push(`/template/${response.userIdKey}`);
-    });
+  const handleViewTemplate = async () => {
+    const response = await getTemplateKey();
+    router.push(`/template/${encodeURIComponent(response.userIdKey)}`);
+    console.log(
+      encodeURIComponent(response.userIdKey + "/"),
+      response.userIdKey
+    );
   };
   return (
     <Box sx={{ mt: 14 }}>

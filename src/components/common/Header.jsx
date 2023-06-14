@@ -47,7 +47,7 @@ function Header({ handleOpen, setHandle, navItems, isHome }) {
         {navItems.map((item, index) => (
           <>
             {item && (
-              <ListItem key={index} disablePadding>
+              <ListItem key={item.id} disablePadding>
                 <Link
                   href={item.url}
                   key={item}
@@ -131,7 +131,7 @@ function Header({ handleOpen, setHandle, navItems, isHome }) {
                 {item && (
                   <Link
                     href={item.url}
-                    key={index}
+                    key={item.id}
                     sx={{
                       color: colorChange ? "#000" : isHome ? "#fff" : "#000",
                       padding: "0px 20px",
