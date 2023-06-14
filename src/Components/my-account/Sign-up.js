@@ -8,7 +8,7 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { TextFieldInput } from "../Common/TextFieldInput";
+import { TextFieldInput } from "../common/TextFieldInput";
 import { signUp } from "@/services/auth/auth";
 import { COLORS } from "../utils/ConstantTheme";
 import { FormControl } from "@mui/material";
