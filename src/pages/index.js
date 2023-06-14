@@ -1,9 +1,4 @@
 import {Inter} from "next/font/google";
-import Feedbacks from "@/components/home/Feedbacks";
-import About from "@/components/home/About";
-import Footer from "@/components/common/Footer";
-import BottomBar from "@/components/common/BottomBar";
-import Header from "@/components/common/Header";
 import {useState} from "react";
 import LoginModal from "@/Components/common/LoginModal";
 import HeroSection from "@/Components/home/HeroSection";
@@ -12,6 +7,11 @@ import VideoInvitation from "@/Components/home/VideoInvitation";
 import Budget from "@/Components/home/Budget";
 import GuestList from "@/Components/home/GuestList";
 import ContactUs from "@/Components/home/ContactUs";
+import Header from "@/Components/common/Header";
+import About from "@/Components/home/About";
+import Feedbacks from "@/Components/home/Feedbacks";
+import Footer from "@/Components/common/Footer";
+import BottomBar from "@/Components/common/BottomBar";
 
 const inter = Inter({ subsets: ["latin"] });
 
