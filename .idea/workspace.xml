@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7662e723-2879-4fb5-a6e6-5cde3b4c1ae2" name="Changes" comment="Fixes in authentication">
+    <list default="true" id="7662e723-2879-4fb5-a6e6-5cde3b4c1ae2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Budget-Planner/Category.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Budget-Planner/Category.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Budget-Planner/Payments.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Budget-Planner/Payments.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Budget-Planner/PlanningTabs.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Budget-Planner/PlanningTabs.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Budget-Planner/SubCategory.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Budget-Planner/SubCategory.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/authenticate.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/authenticate.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/template/1/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/template/1/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/budget-planner/Category.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/budget-planner/Category.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/budget-planner/Payments.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/budget-planner/Payments.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/budget-planner/PlanningTabs.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/budget-planner/PlanningTabs.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/budget-planner/SubCategory.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/budget-planner/SubCategory.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

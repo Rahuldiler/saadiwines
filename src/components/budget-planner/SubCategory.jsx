@@ -1,30 +1,19 @@
-import {
-  Typography,
-  Box,
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableRow,
-  Chip,
-  Divider,
-} from "@mui/material";
+import {Box, Chip, Divider, Table, TableBody, TableCell, TableHead, TableRow, Typography,} from "@mui/material";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import TextField from "@mui/material/TextField";
 import CloseIcon from "@mui/icons-material/Close";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-import { useEffect, useState } from "react";
+import {useEffect, useState} from "react";
 import BorderLinearProgress from "./Progress";
-import { editCategory, getCategoriesById } from "@/services/category/category";
-import {
-  addSubcategory,
-  editSubcategory,
-} from "@/services/subCategory/subCategory";
+import {editCategory, getCategoriesById} from "@/services/category/category";
+import {addSubcategory, editSubcategory,} from "@/services/subCategory/subCategory";
 import PaymentsDialog from "./PaymentsDialog";
 import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutline";
 import CustomCircularProgress from "./CustomCircularProgress";
 import Modal from "./Modal";
-import { BORDER, COLORS } from "../utils/ConstantTheme";
+import {BORDER, COLORS} from "../utils/ConstantTheme"
+import {CustomCell} from "./table-components/CustomCell";
+import {CustomHeader} from "./table-components/CustomHeader";
 
 const SubCategory = ({ CateId, setTrackChanges }) => {
   const [subCategoryData, setSubCategoryData] = useState([]);
@@ -87,8 +76,12 @@ const SubCategory = ({ CateId, setTrackChanges }) => {
     return percentageDifference;
   };
 
-  const editeSubCategoryFun = (id, categoryId) => {
-
+  const editeSubCategoryFun = (data, name, expectedAmount) => {
+    editSubcategory({
+      ...data,
+      ...(name && { name }),
+      ...(expectedAmount && { expectedAmount }),
+    }).then((_) => setNotifyChanges((prev) => !prev));
   };
   return (
     <Box
@@ -186,54 +179,11 @@ const SubCategory = ({ CateId, setTrackChanges }) => {
           >
             <TableHead>
               <TableRow>
-                <TableCell>
-                  <Typography
-                    variant="subtitle2"
-                    fontWeight={300}
-                    color={COLORS.gray}
-                  >
-                    EXPENSE
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography
-                    style={{ whiteSpace: "pre-line" }}
-                    variant="subtitle2"
-                    fontWeight={300}
-                    color={COLORS.gray}
-                  >
-                    ESTIMATED BUDGET
-                  </Typography>
-                </TableCell>
-
-                <TableCell>
-                  <Typography
-                    variant="subtitle2"
-                    fontWeight={300}
-                    color={COLORS.gray}
-                  >
-                    PAID
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography
-                    style={{ whiteSpace: "pre-line" }}
-                    variant="subtitle2"
-                    fontWeight={300}
-                    color={COLORS.gray}
-                  >
-                    ADD TRANSACTION
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography
-                    variant="subtitle2"
-                    fontWeight={300}
-                    color={COLORS.gray}
-                  >
-                    PROGRESS
-                  </Typography>
-                </TableCell>
+                <CustomHeader title={"EXPENSE"} />
+                <CustomHeader title={" ESTIMATED BUDGET"} />
+                <CustomHeader title={" PAID"} />
+                <CustomHeader title={" ADD TRANSACTION"} />
+                <CustomHeader title={"   PROGRESS"} />
               </TableRow>
             </TableHead>
             <TableBody>
@@ -243,21 +193,28 @@ const SubCategory = ({ CateId, setTrackChanges }) => {
                   <TableRow key={subCat.id} sx={{ textAlign: "center" }}>
                     <TableCell
                       contentEditable
+                      sx={{ textAlign: "center" }}
                       suppressContentEditableWarning
                       id="expense"
                       onBlur={(e) =>
-                        editeSubCategoryFun(subCat.id, subCat.categoryId)
+                        editeSubCategoryFun(
+                          subCat,
+                          e.target.innerText,
+                          undefined
+                        )
                       }
                     >
                       <Typography
-                        style={{ whiteSpace: "pre-line" }}
+                        style={{ whiteSpace: "pre-line", textAlign: "center" }}
                         variant="body3"
                         fontWeight={600}
                       >
                         {subCat.name}
                       </Typography>
                     </TableCell>
-                    <TableCell>
+                    <TableCell
+                      style={{ whiteSpace: "pre-line", textAlign: "center" }}
+                    >
                       <Typography
                         id="estimatedBudget"
                         variant="body3"
@@ -266,42 +223,48 @@ const SubCategory = ({ CateId, setTrackChanges }) => {
                         contentEditable
                         suppressContentEditableWarning
                         onBlur={(e) =>
-                          editeSubCategoryFun(subCat.id, subCat.categoryId)
+                          editeSubCategoryFun(
+                            subCat,
+                            undefined,
+                            e.target.innerText
+                          )
                         }
-                        style={{ whiteSpace: "pre-line" }}
                       >
                         {subCat.expectedAmount}
                       </Typography>
                     </TableCell>
-                    <TableCell>
-                      <Typography variant="body3">
-                        {calculateBudgetTransaction(subCat.budgetTransaction)}
-                      </Typography>
-                    </TableCell>
-                    <TableCell
-                      onClick={() => {
-                        setSelectedItemForDialog(subCat);
-                        setDialogOpen(true);
-                      }}
-                    >
-                      <Chip
-                        sx={{
-                          px: "4px",
-                          backgroundColor: COLORS.primary,
-                          color: COLORS.white,
-                        }}
-                        size="small"
-                        label={"Add Transaction"}
-                      ></Chip>
-                    </TableCell>
-                    <TableCell>
-                      <BorderLinearProgress
-                        progress={calculateProgress(
-                          subCat.expectedAmount,
-                          calculateBudgetTransaction(subCat.budgetTransaction)
-                        )}
-                      />
-                    </TableCell>
+                    <CustomCell
+                      title={calculateBudgetTransaction(
+                        subCat.budgetTransaction
+                      )}
+                    />
+                    <CustomCell
+                      title={
+                        <Chip
+                          onClick={() => {
+                            setSelectedItemForDialog(subCat);
+                            setDialogOpen(true);
+                          }}
+                          sx={{
+                            px: "4px",
+                            backgroundColor: COLORS.primary,
+                            color: COLORS.white,
+                          }}
+                          size="small"
+                          label={"Add Transaction"}
+                        ></Chip>
+                      }
+                    />
+                    <CustomCell
+                      title={
+                        <BorderLinearProgress
+                          progress={calculateProgress(
+                            subCat.expectedAmount,
+                            calculateBudgetTransaction(subCat.budgetTransaction)
+                          )}
+                        />
+                      }
+                    />
                   </TableRow>
                 ))}
             </TableBody>
