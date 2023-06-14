@@ -8,6 +8,7 @@ import CoupleInfo from "@/Components/template-components/1/coupleInfoBox";
 import Double from "@/Components/template-components/1/double";
 import ContactForm from "@/Components/template-components/1/rsvpForm";
 import Lightbox from "@/Components/template-components/1/lightBox";
+import Cards from "@/Components/template-components/1/Cards";
 
 function Template1({formData}) {
     const [currentSlide, setCurrentSlide] = useState(0);
