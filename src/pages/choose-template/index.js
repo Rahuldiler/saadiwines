@@ -1,22 +1,11 @@
-import ChooseTemplateCard from "@/components/template-selection/ChooseTemplateCard";
-import { COLORS } from "@/components/utils/ConstantTheme";
-import {
-  getUserPreference,
-  updateUserPreference,
-} from "@/services/user-preference/userPreference";
-import {
-  Box,
-  Button,
-  Dialog,
-  Divider,
-  Grid,
-  Typography,
-  useTheme,
-} from "@mui/material";
+import ChooseTemplateCard from "@/Components/ChooseTemplate/ChooseTemplateCard";
+
+;
+import {getUserPreference, updateUserPreference,} from "@/services/user-preference/userPreference";
+import {Box, Button, Dialog, Divider, Grid, Typography, useTheme,} from "@mui/material";
 import Link from "next/link";
-import { useRouter } from "next/router";
-import React, { useEffect } from "react";
-import { useState } from "react";
+import {useRouter} from "next/router";
+import React, {useEffect, useState} from "react";
 
 function ChooseTemplate() {
   const templateData = [

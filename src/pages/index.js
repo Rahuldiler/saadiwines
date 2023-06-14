@@ -1,5 +1,4 @@
 import {Inter} from "next/font/google";
-import HeroSection from "@/components/home/HeroSection";
 import WebsiteDesigningSection from "@/components/home/WebsiteDesigningSection";
 import VideoInvitation from "@/components/home/VideoInvitation";
 import GuestList from "@/components/home/GuestList";
@@ -12,6 +11,7 @@ import BottomBar from "@/components/common/BottomBar";
 import Header from "@/components/common/Header";
 import {useState} from "react";
 import LoginModal from "@/Components/common/LoginModal";
+import HeroSection from "@/Components/home/HeroSection";
 
 const inter = Inter({ subsets: ["latin"] });
 

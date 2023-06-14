@@ -1,8 +1,8 @@
-import Header from "@/components/common/Header";
-import YourTemplate from "@/components/dashboard/YourTemplate";
-import { getUserPreference } from "@/services/user-preference/userPreference";
-import { Box } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import {getUserPreference} from "@/services/user-preference/userPreference";
+import {Box} from "@mui/material";
+import React, {useEffect, useState} from "react";
+import Header from "@/Components/common/Header";
+import YourTemplate from "@/Components/dashboard/YourTemplate";
 
 function Dashboard() {
   const [navItems, setNavItems] = useState([
