@@ -1,19 +1,32 @@
-import {Box, Chip, Divider, Table, TableBody, TableCell, TableHead, TableRow, Typography,} from "@mui/material";
+import {
+  Typography,
+  Box,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+  Chip,
+  Divider,
+} from "@mui/material";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import TextField from "@mui/material/TextField";
 import CloseIcon from "@mui/icons-material/Close";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import BorderLinearProgress from "./Progress";
-import {editCategory, getCategoriesById} from "@/services/category/category";
-import {addSubcategory, editSubcategory,} from "@/services/subCategory/subCategory";
+import { editCategory, getCategoriesById } from "@/services/category/category";
+import {
+  addSubcategory,
+  editSubcategory,
+} from "@/services/subCategory/subCategory";
 import PaymentsDialog from "./PaymentsDialog";
 import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutline";
 import CustomCircularProgress from "./CustomCircularProgress";
 import Modal from "./Modal";
-import {BORDER, COLORS} from "../utils/ConstantTheme"
-import {CustomCell} from "./table-components/CustomCell";
-import {CustomHeader} from "./table-components/CustomHeader";
+import { BORDER, COLORS } from "../Utils/ConstantTheme";
+import { CustomCell } from "./table-components/CustomCell";
+import { CustomHeader } from "./table-components/CustomHeader";
 
 const SubCategory = ({ CateId, setTrackChanges }) => {
   const [subCategoryData, setSubCategoryData] = useState([]);

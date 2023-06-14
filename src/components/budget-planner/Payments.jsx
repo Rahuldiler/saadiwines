@@ -22,7 +22,7 @@ import {
 } from "@mui/material";
 import CustomCircularProgress from "./CustomCircularProgress";
 
-import { BORDER, COLORS } from "../utils/ConstantTheme"
+import { BORDER, COLORS } from "../Utils/ConstantTheme";
 import { CustomCell } from "./table-components/CustomCell";
 import { CustomHeader } from "./table-components/CustomHeader";
 import { useState } from "react";
@@ -142,7 +142,7 @@ export default function Payments({ data }) {
           <FormControl sx={{ mr: 2, width: 300 }}>
             <InputLabel>Select Categories</InputLabel>
             <Select
-
+          
               multiple
               input={<OutlinedInput label="Select Categories" />}
               value={selectedCategories}

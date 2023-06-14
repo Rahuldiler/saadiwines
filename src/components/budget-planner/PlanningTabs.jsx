@@ -4,12 +4,11 @@ import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
 import Category from "./Category";
 import SubCategory from "./SubCategory";
-import {Grid, Typography} from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import Payments from "./Payments";
-import {getCategories} from "@/services/category/category";
+import { getCategories } from "@/services/category/category";
 import CustomCircularProgress from "./CustomCircularProgress";
-import {COLORS} from "../utils/ConstantTheme"
-
+import { COLORS } from "../Utils/ConstantTheme";
 export default function PlanningTabs() {
   const [activeTab, setActiveTab] = React.useState(0);
   const [loading, setLoading] = React.useState(false);
