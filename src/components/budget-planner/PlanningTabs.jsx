@@ -8,7 +8,7 @@ import { Grid, Typography } from "@mui/material";
 import Payments from "./Payments";
 import { getCategories } from "@/services/category/category";
 import CustomCircularProgress from "./CustomCircularProgress";
-import { COLORS } from "../Utils/ConstantTheme";
+import { COLORS } from "../utils/ConstantTheme";
 export default function PlanningTabs() {
   const [activeTab, setActiveTab] = React.useState(0);
   const [loading, setLoading] = React.useState(false);
