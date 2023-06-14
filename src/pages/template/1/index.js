@@ -1,14 +1,14 @@
-import CoupleInfo from "@/components/template-components/1/coupleInfoBox";
-import Double from "@/components/template-components/1/double";
-import GreenStrip from "@/components/template-components/1/greenStrip";
-import Lightbox from "@/components/template-components/1/lightBox";
-import ContactForm from "@/components/template-components/1/rsvpForm";
-import Steps from "@/components/template-components/1/steps";
+import CoupleInfo from "@/Components/templateComponents/template1Components/coupleInfoBox";
+import Double from "@/components/templateComponents/template1Components/double";
+import GreenStrip from "@/components/templateComponents/template1Components/greenStrip";
+import Lightbox from "@/components/templateComponents/template1Components/lightBox";
+import ContactForm from "@/components/templateComponents/template1Components/rsvpForm";
+import Steps from "@/components/templateComponents/template1Components/steps";
 import React, { useState } from "react";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
 import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
-import Cards from "@/components/template-components/1/Cards";
+import Cards from "@/components/templateComponents/Cards";
 
 function Template1() {
   const [currentSlide, setCurrentSlide] = useState(0);
