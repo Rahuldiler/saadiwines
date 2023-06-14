@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7662e723-2879-4fb5-a6e6-5cde3b4c1ae2" name="Changes" comment="Fixes">
+<<<<<<< HEAD
+    <list default="true" id="7662e723-2879-4fb5-a6e6-5cde3b4c1ae2" name="Changes" comment="Code merged">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Budget-Planner/SubCategory.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Budget-Planner/SubCategory.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Budget-Planner/table-components/CustomCell.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Budget-Planner/table-components/CustomCell.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/ChooseTemplate/ChooseTemplateCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/ChooseTemplate/ChooseTemplateCard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/my-account/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/my-account/Login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/my-account/Sign-up.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/my-account/Sign-up.js" afterDir="false" />
+=======
+    <list default="true" id="7662e723-2879-4fb5-a6e6-5cde3b4c1ae2" name="Changes" comment="Fixes in authentication">
+      <change beforePath="$PROJECT_DIR$/.env.local" beforeDir="false" afterPath="$PROJECT_DIR$/.env.local" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Budget-Planner/PlanningTabs.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Budget-Planner/PlanningTabs.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/HTTPClientHandler.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/HTTPClientHandler.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/auth/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/auth/auth.js" afterDir="false" />
+>>>>>>> master
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,7 +30,11 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
+<<<<<<< HEAD
+        <entry key="$PROJECT_DIR$" value="login" />
+=======
         <entry key="$PROJECT_DIR$" value="sagar/template-form" />
+>>>>>>> master
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -38,16 +48,16 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/pages/authenticate.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/services/auth/auth.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/.env.local" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/services/HTTPClientHandler.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/.env.local" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/services/auth/auth.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/pages/authenticate.js" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2QPA9MKjLQbcuk8sArfsdiQh66C" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+  <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
@@ -61,9 +71,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="javascript.nodejs.core.library.configured.version" value="18.13.0" />
     <property name="javascript.nodejs.core.library.typings.version" value="18.13.0" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.build" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -98,10 +106,15 @@
       <workItem from="1685246384348" duration="1706000" />
       <workItem from="1685288829615" duration="2013000" />
       <workItem from="1685339401572" duration="830000" />
+<<<<<<< HEAD
+      <workItem from="1685370381859" duration="10813000" />
+      <workItem from="1685537580077" duration="3372000" />
+      <workItem from="1685631036905" duration="1932000" />
+      <workItem from="1686463861233" duration="175000" />
+=======
       <workItem from="1685370381859" duration="10425000" />
       <workItem from="1686230852712" duration="3998000" />
-      <workItem from="1686738445257" duration="147000" />
-      <workItem from="1686738620695" duration="103000" />
+>>>>>>> master
     </task>
     <task id="LOCAL-00001" summary="Removed react-lightbox library">
       <created>1685289296459</created>
@@ -117,14 +130,7 @@
       <option name="project" value="LOCAL" />
       <updated>1685380864212</updated>
     </task>
-    <task id="LOCAL-00003" summary="Fixes">
-      <created>1686735962450</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1686735962450</updated>
-    </task>
-    <option name="localTasksCounter" value="4" />
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -183,11 +189,6 @@
             </State>
           </value>
         </entry>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
       </map>
     </option>
     <option name="OPEN_GENERIC_TABS">
@@ -200,7 +201,6 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Removed react-lightbox library" />
     <MESSAGE value="Fixes in authentication" />
-    <MESSAGE value="Fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixes in authentication" />
   </component>
 </project>
