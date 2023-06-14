@@ -15,7 +15,6 @@ function Template() {
   useEffect(() => {
     getUserPreference().then((response) => {
       setTemplateId(response[0].id);
-      console.log(response);
     });
   }, []);
 

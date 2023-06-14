@@ -11,7 +11,7 @@ const addIternary = async (iternaryData) => {
 };
 
 const getIternary = async () => {
-  const response = http.get({
+  const response = await http.get({
     url: "/iternary/me",
     isSecured: true,
   });

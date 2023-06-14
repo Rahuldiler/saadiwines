@@ -13,7 +13,6 @@ import moment from "moment";
 // import Cards from "@/components/template-components/1/Cards";
 
 function Template1({ formData }) {
-  console.log(formData);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [imageIndex, setImageIndex] = useState();
   const [isOpen, setIsOpen] = useState(false);

@@ -7,7 +7,6 @@ const getTemplateKey = async () => {
     url: "/getTemplateKey",
     isSecured: true,
   });
-  console.log(response);
   return response.data;
 };
 

@@ -42,7 +42,6 @@ export default function SignIn({ setHandle }) {
       router.push("/dashboard");
       // alert("Login success!");
     } catch (error) {
-      console.log(error.response.data.message);
       setValidationErrorMessage(error.response.data.message);
       // alert("Incorrect Credentials!");
     }

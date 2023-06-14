@@ -102,7 +102,6 @@ function ChooseTemplate() {
     });
   }, []);
 
-  console.log(userPreferenceData);
   return (
     <Box sx={{ position: "relative" }}>
       <Box sx={{ textAlign: "center", mt: 4 }}>

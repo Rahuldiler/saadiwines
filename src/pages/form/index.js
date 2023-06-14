@@ -184,7 +184,6 @@ function index() {
           findEmptyField.push(true);
         }
       }
-      console.log("findEmptyField", findEmptyField);
       if (findEmptyField.includes(true)) {
         setValidationBoolean(true);
       } else {
