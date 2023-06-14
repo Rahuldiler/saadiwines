@@ -22,7 +22,7 @@ import {
 } from "@mui/material";
 import CustomCircularProgress from "./CustomCircularProgress";
 
-import { BORDER, COLORS } from "../Utils/ConstantTheme";
+import { BORDER, COLORS } from "../utils/ConstantTheme";
 import { CustomCell } from "./table-components/CustomCell";
 import { CustomHeader } from "./table-components/CustomHeader";
 import { useState } from "react";
