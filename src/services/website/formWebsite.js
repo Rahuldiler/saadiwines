@@ -3,24 +3,19 @@ import HTTPClientHandler from "@/services/HTTPClientHandler";
 const http = new HTTPClientHandler();
 
 const addWebsiteInfo = async (websiteForm) => {
-  const token = localStorage.getItem("shaadivines token");
-  http.post({
+  await http.post({
     url: "/wedding_info",
     payload: websiteForm,
-    headers: { Authorization: `Bearer ${token}` },
+    isSecured: true,
   });
 };
 
 const getWebsiteInfo = async () => {
-  const token = localStorage.getItem("shaadivines token");
-  return http
-    .get({
-      url: "/wedding_info/me",
-      headers: { Authorization: `Bearer ${token}` },
-    })
-    .then((response) => {
-      return response.data;
-    });
+  const response = await http.get({
+    url: "/wedding_info/me",
+    isSecured: true,
+  });
+  return response.data;
 };
 
 export { addWebsiteInfo, getWebsiteInfo };

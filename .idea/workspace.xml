@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7662e723-2879-4fb5-a6e6-5cde3b4c1ae2" name="Changes" comment="Fixes">
+    <list default="true" id="369879d0-c866-4b70-8022-d857b0c9b9fe" name="Changes" comment="Merged code">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Budget-Planner/SubCategory.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Budget-Planner/SubCategory.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Budget-Planner/table-components/CustomCell.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Budget-Planner/table-components/CustomCell.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/ChooseTemplate/ChooseTemplateCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/ChooseTemplate/ChooseTemplateCard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/my-account/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/my-account/Login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/my-account/Sign-up.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/my-account/Sign-up.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/choose-template/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/choose-template/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/dashboard/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/dashboard/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +122,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686735962450</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Merged code">
+      <created>1686760357587</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1686760357587</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -201,6 +206,7 @@
     <MESSAGE value="Removed react-lightbox library" />
     <MESSAGE value="Fixes in authentication" />
     <MESSAGE value="Fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixes" />
+    <MESSAGE value="Merged code" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merged code" />
   </component>
 </project>
