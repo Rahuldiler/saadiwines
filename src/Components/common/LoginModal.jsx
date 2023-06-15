@@ -1,14 +1,15 @@
 import { Box, Dialog } from "@mui/material";
 import React from "react";
-import SignUp from "@/Components/my-account/Sign-up";
-import SignIn from "@/Components/my-account/Login";
+// import SignUp from "../my-account/Sign-up";
+import Login from "../my-account/Login";
+import SignUp from "../my-account/Sign-up";
 
 function LoginModal({ open, handle, handleClose, setHandle }) {
   return (
     <Dialog open={open} onClose={handleClose}>
       <Box sx={{ p: 4, background: "#fff" }}>
         {handle ? (
-          <SignIn setHandle={setHandle} />
+          <Login setHandle={setHandle} />
         ) : (
           <SignUp setHandle={setHandle} />
         )}

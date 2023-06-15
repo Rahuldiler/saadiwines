@@ -44,21 +44,24 @@ function Header({ handleOpen, setHandle, navItems, isHome }) {
     >
       <Divider />
       <List>
-        {navItems.map((item) => (
-          <ListItem key={item} disablePadding>
-            <Link
-              href={item.url}
-              key={item}
-              sx={{
-                color: "#000",
-                padding: "0px 20px",
-                textDecoration: "none",
-                fontWeight: 500,
-              }}
-            >
-              <ListItemText primary={item.title} />
-            </Link>
-          </ListItem>
+        {navItems.map((item, index) => (
+          <Box key={item.id}>
+            {item && (
+              <ListItem disablePadding>
+                <Link
+                  href={item.url}
+                  sx={{
+                    color: "#000",
+                    padding: "0px 20px",
+                    textDecoration: "none",
+                    fontWeight: 500,
+                  }}
+                >
+                  <ListItemText primary={item.title} />
+                </Link>
+              </ListItem>
+            )}
+          </Box>
         ))}
       </List>
     </Box>
@@ -121,21 +124,24 @@ function Header({ handleOpen, setHandle, navItems, isHome }) {
               Vines
             </span>
           </Typography>
-          <Box sx={{ display: { xs: "none", sm: "block" } }}>
+          <Box sx={{ display: { xs: "none", sm: "flex" } }}>
             {navItems.map((item, index) => (
-              <Link
-                href={item.url}
-                key={index}
-                sx={{
-                  color: colorChange ? "#000" : isHome ? "#fff" : "#000",
-                  padding: "0px 20px",
-                  textDecoration: "none",
-                  fontWeight: 500,
-                  fontSize: "20px",
-                }}
-              >
-                {item.title}
-              </Link>
+              <Box key={item.id}>
+                {item && (
+                  <Link
+                    href={item.url}
+                    sx={{
+                      color: colorChange ? "#000" : isHome ? "#fff" : "#000",
+                      padding: "0px 20px",
+                      textDecoration: "none",
+                      fontWeight: 500,
+                      fontSize: "20px",
+                    }}
+                  >
+                    {item.title}
+                  </Link>
+                )}
+              </Box>
             ))}
           </Box>
 

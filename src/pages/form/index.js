@@ -176,7 +176,6 @@ function index() {
           findEmptyField.push(true);
         }
       }
-      console.log("findEmptyField", findEmptyField);
       if (findEmptyField.includes(true)) {
         setValidationBoolean(true);
       } else {
@@ -226,7 +225,7 @@ function index() {
     }
   };
   useEffect(() => {
-    const token = localStorage.getItem("shaadivines token");
+    const token = localStorage.getItem("jwtToken");
     if (!token) {
       router.push("/");
     }
@@ -236,22 +235,25 @@ function index() {
     formValidate();
   }, [websiteForm, itineraryLists, milestoneLists, contactDetails]);
 
-  useEffect(() => {
-    const token = localStorage.getItem("shaadivines token");
+  const getWebsiteInfoData = async () => {
+    const token = localStorage.getItem("jwtToken");
     if (token) {
-      getWebsiteInfo().then((res) => {
-        res[0] && setWebsiteForm(res[0]);
-      });
-      getIternary().then((res) => {
-        res.length > 0 && setItineraryLists(res);
-      });
-      getMilestone().then((res) => {
-        res.length > 0 && setMilestoneLists(res);
-      });
-      getContact().then((res) => {
-        res.length > 0 && setContactDetails(res);
-      });
+      const resWebsite = await getWebsiteInfo();
+      resWebsite[0] && setWebsiteForm(resWebsite[0]);
+
+      const resIternary = await getIternary();
+      resIternary && setItineraryLists(resIternary);
+
+      const resMilestone = await getMilestone();
+      resMilestone && setMilestoneLists(resMilestone);
+
+      const resContact = await getContact();
+      resContact && setContactDetails(resContact);
     }
+  };
+
+  useEffect(() => {
+    getWebsiteInfoData();
   }, []);
 
   return (
