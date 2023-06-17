@@ -117,3 +117,37 @@ p {
   outline: none !important;
 }
 
+
+
+.elementor-item-active::after {
+  bottom: 0;
+  content: "";
+  background-color: #00000021;
+  height: 3px;
+  width: 100%;
+  left: 0;
+  z-index: 2;
+  position: absolute;
+}
+
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+
+.slider-title {
+  -webkit-text-stroke-color: #80A0C2;
+  -webkit-text-stroke-width: 1PX;
+}
+
+.Gallery {
+  left: calc((100% / var(--columns) - (var(--hgap) * (var(--columns) - 1) / var(--columns))) * var(--column) + (var(--hgap) * var(--column)));
+  position: absolute;
+  width: calc(100% / var(--columns) - (var(--hgap) * (var(--columns) - 1) / var(--columns)));
+  top: calc(var(--percent-height) + (var(--items-in-column) * var(--vgap)));
+}
