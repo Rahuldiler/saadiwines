@@ -4,7 +4,7 @@ import VideoInviTemplate from "../common/VideoInviTemplate";
 import Image from "next/image";
 
 function VideoInvitation() {
-  const heroImg = "/assets/placeholder.png";
+  const heroImg = "/assets/VideoInvitation.jpg";
   return (
     <section>
       <Box className="layoutMargin" id="video-invitation">
@@ -77,14 +77,14 @@ function VideoInvitation() {
                 alignItem: "center",
                 mt: { lg: 0, xs: "40px" },
                 width: "100%",
-
+                ml: "60px",
                 height: { lg: "350px", xs: "200px" },
               }}
             >
               <Image
                 src={heroImg}
                 style={{
-                  objectFit: "cover",
+                  objectFit: "fill",
                   borderRadius: "10px",
                 }}
                 alt="img"

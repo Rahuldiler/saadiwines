@@ -75,6 +75,7 @@ function Header({ handleOpen, setHandle, navItems, isHome }) {
   useEffect(() => {
     window.addEventListener("scroll", changeNavbarColor);
   }, [colorChange]);
+
   return (
     <header style={{ position: "absolute", left: 0 }}>
       <AppBar
@@ -117,12 +118,11 @@ function Header({ handleOpen, setHandle, navItems, isHome }) {
               mt: "5px",
             }}
           >
-            <span className="vibeFont" style={{ color: "#E21A9E" }}>
-              Shaadi
-            </span>
-            <span className="vibeFont" style={{ color: "#BC8129" }}>
-              Vines
-            </span>
+            <img
+              src="/assets/Logo.svg"
+              alt="Logo"
+              style={{ height: "40px", marginRight: "10px" }}
+            />
           </Typography>
           <Box sx={{ display: { xs: "none", sm: "flex" } }}>
             {navItems.map((item, index) => (
