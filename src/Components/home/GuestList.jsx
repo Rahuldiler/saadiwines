@@ -8,17 +8,17 @@ function GuestList() {
     {
       title: "Organize your guests.",
       info: "Assign plus ones, group families and dates together, and organize guests with tags.",
-      img: "/assets/placeholder.png",
+      img: "/assets/OrganizeYourGuests.png",
     },
     {
       title: "Communicate with your guests.",
       info: "Send Save the Dates, invites, custom eCards and more, right from your guest list.",
-      img: "/assets/placeholder.png",
+      img: "/assets/CommunicateWithYourGuests.png",
     },
     {
       title: "Track your guests’ responses.",
       info: "See guests’ RSVPs, who has opened your invite,  all in one place.",
-      img: "/assets/placeholder.png",
+      img: "/assets/TrackGuestResponse.png",
     },
   ];
   return (
@@ -73,7 +73,7 @@ function GuestList() {
             alt="img"
             width={1000}
             height={1000}
-            src="/assets/placeholder.png"
+            src="\assets\guestManagement.jpg"
             className="imgResGuest"
             style={{ width: "100%", height: "700px", borderRadius: "20px" }}
           />
