@@ -57,6 +57,7 @@ function index() {
       description: "",
     },
     dateTime: "",
+    thankYouMessage: "",
     pics: ["D", "E", "F"],
     placesToVisit: ["Dont know", "Don know 2"],
   });

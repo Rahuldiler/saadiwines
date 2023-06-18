@@ -93,6 +93,8 @@ function Step1Website({ websiteForm, setWebsiteForm, specialChars }) {
     setValueDateTime(dayjs(websiteForm?.dateTime));
   }, [websiteForm.dateTime]);
 
+  console.log("first", websiteForm);
+
   return (
     <Box
       sx={{
@@ -310,7 +312,7 @@ function Step1Website({ websiteForm, setWebsiteForm, specialChars }) {
             />
           </Box>
         </Box>
-        <Box sx={{ mt: 4 }}>
+        <Box>
           <MultilineTextField
             name="thankYouMessage"
             label="Thank You Message"
