@@ -45,7 +45,7 @@ function Header({ handleOpen, setHandle, navItems, isHome }) {
       <Divider />
       <List>
         {navItems.map((item, index) => (
-          <Box key={item.id}>
+          <Box key={item?.id}>
             {item && (
               <ListItem disablePadding>
                 <Link
@@ -126,7 +126,7 @@ function Header({ handleOpen, setHandle, navItems, isHome }) {
           </Typography>
           <Box sx={{ display: { xs: "none", sm: "flex" } }}>
             {navItems.map((item, index) => (
-              <Box key={item.id}>
+              <Box key={item?.id}>
                 {item && (
                   <Link
                     href={item.url}

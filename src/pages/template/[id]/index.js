@@ -5,6 +5,7 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import Template1 from "../1";
+import { templateInfoData } from "@/constants/templateInfo";
 
 function Template() {
   const [formData, setFormData] = useState({});
@@ -13,18 +14,24 @@ function Template() {
   const [componentTemplate, setComponentTemplate] = useState();
 
   useEffect(() => {
-    getUserPreference().then((response) => {
-      setTemplateId(response[0].id);
-    });
+    async function fetchTemplate() {
+      const response = await getUserPreference();
+      console.log(response);
+      setTemplateId(response[0]?.templateId);
+    }
+    fetchTemplate();
   }, []);
 
   useEffect(() => {
-    getTemplateKey().then((response) => {
-      getTemplateData(response.userIdKey).then((responseTemplate) => {
-        setFormData(responseTemplate);
-      });
-    });
+    async function fetchData() {
+      const responseKey = await getTemplateKey();
+      const responseTemplateData = await getTemplateData(responseKey.userIdKey);
+      setFormData(responseTemplateData);
+    }
+    fetchData();
   }, [templateId]);
+
+  console.log("formData", formData, templateId);
 
   useEffect(() => {
     switch (templateId) {
@@ -38,7 +45,6 @@ function Template() {
       //   componentTemplate = <Box>No template found</Box>;
     }
   }, [formData]);
-
   return <Box>{componentTemplate}</Box>;
 }
 

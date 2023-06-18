@@ -7,6 +7,9 @@ import {
   RadioGroup,
   Button,
   Typography,
+  Select,
+  MenuItem,
+  InputLabel,
 } from "@mui/material";
 import React, { useEffect } from "react";
 
@@ -14,45 +17,47 @@ import styles from "../../styles/Form.module.css";
 import { MultilineTextField, TextFieldInput } from "../common/TextFieldInput";
 import { AiOutlineDelete } from "react-icons/ai";
 
-function Step4Contact({
-  setContactDetails,
-  contactDetails,
+function Step5Family({
+  familyMemberLists,
+  setFamilyMemberLists,
   setValidationBoolean,
   specialChars,
 }) {
-  const addNewContact = () => {
-    setContactDetails((prevData) => [
+  const selectList = ["Brother", "Sister", "Father", "Mother", "Other"];
+  const addNewFamilyMember = () => {
+    setFamilyMemberLists((prevData) => [
       ...prevData,
       {
         arrayId: prevData[prevData.length - 1].arrayId + 1,
-        firstName: "",
-        lastName: "",
-        contactNumber: "",
-        fromSide: "GROOM",
+        id: 0,
+        userId: 0,
+        name: "",
+        relation: "",
       },
     ]);
   };
 
   const handleChange = (e, index) => {
     const { name, value } = e.target;
-    const list = [...contactDetails];
+    const list = [...familyMemberLists];
     list[index][name] = value;
-    setContactDetails(list);
+    setFamilyMemberLists(list);
   };
 
-  const deleteContact = (id) => {
-    setContactDetails((prevData) =>
+  const deleteFamilyMember = (id) => {
+    setFamilyMemberLists((prevData) =>
       prevData.filter((lists) => lists.arrayId !== id)
     );
   };
 
   useEffect(() => {
-    contactDetails[0].firstName
+    familyMemberLists[0].name
       ? setValidationBoolean(false)
       : setValidationBoolean(true);
-  }, [contactDetails]);
+  }, [familyMemberLists]);
 
-  console.log(contactDetails);
+  console.log(familyMemberLists);
+
   return (
     <Box
       sx={{
@@ -67,9 +72,9 @@ function Step4Contact({
           justifyContent: "space-between",
         }}
       >
-        <Typography variant="h6"> Contact Details</Typography>
+        <Typography variant="h6"> Family Member Details</Typography>
         <Button
-          onClick={addNewContact}
+          onClick={addNewFamilyMember}
           className="bg-[#BC8129]"
           sx={{
             backgroundColor: "#BC8129",
@@ -79,10 +84,10 @@ function Step4Contact({
             },
           }}
         >
-          + Add Contact
+          + Add Family Member
         </Button>
       </Box>
-      {contactDetails.map((contact, index) => {
+      {familyMemberLists.map((family, index) => {
         return (
           <FormControl
             sx={{
@@ -99,10 +104,10 @@ function Step4Contact({
                 justifyContent: "space-between",
               }}
             >
-              <Typography variant="body1">Contact {index + 1}</Typography>
-              {contactDetails.length > 1 && (
+              <Typography variant="body1">Member {index + 1}</Typography>
+              {familyMemberLists.length > 1 && (
                 <Button
-                  onClick={() => deleteContact(contact.arrayId)}
+                  onClick={() => deleteFamilyMember(contact.arrayId)}
                   sx={{
                     color: "#BC8129",
                   }}
@@ -112,41 +117,55 @@ function Step4Contact({
               )}
             </Box>
             <TextFieldInput
-              id="firstName"
-              label="First Name"
-              name="firstName"
+              id="name"
+              label="Name"
+              name="name"
               type="text"
-              value={contact.firstName}
+              value={family.name}
               onChange={(e) => handleChange(e, index)}
             />
-            {(contact?.firstName?.match(specialChars) ||
-              /\d/.test(contact?.firstName)) && (
+            {(family.name.match(specialChars) || /\d/.test(family.name)) && (
               <Box sx={{ color: "red", fontSize: "14px" }}>
                 Please don't add any special character and number
               </Box>
             )}
-            <TextFieldInput
-              id="lastName"
-              name="lastName"
-              label="Last Name"
+            <FormControl sx={{ mt: 2 }}>
+              <InputLabel id="demo-simple-select-label">Relation</InputLabel>
+              <Select
+                id="relation"
+                name="relation"
+                value={family.relation}
+                label="Relation"
+                required
+                onChange={(e) => handleChange(e, index)}
+                sx={{
+                  // background: "#FFF9F5",
+                  border: 0,
+                }}
+              >
+                {selectList.map((list, index) => {
+                  return (
+                    <MenuItem value={list} key={index}>
+                      {list}
+                    </MenuItem>
+                  );
+                })}
+              </Select>
+            </FormControl>
+            {/* <TextFieldInput
+              id="relation"
+              name="relation"
+              label="Relation"
               type="text"
-              value={contact.lastName}
+              value={family.relation}
               onChange={(e) => handleChange(e, index)}
             />
-            {(contact?.lastName?.match(specialChars) ||
-              /\d/.test(contact?.lastName)) && (
+            {(family.relation.match(specialChars) ||
+              /\d/.test(family.relation)) && (
               <Box sx={{ color: "red", fontSize: "14px" }}>
                 Please don't add any special character and number
               </Box>
-            )}
-            <TextFieldInput
-              id="contactNumber"
-              name="contactNumber"
-              label="Contact Number"
-              type="Number"
-              value={contact.contactNumber}
-              onChange={(e) => handleChange(e, index)}
-            />
+            )} */}
           </FormControl>
         );
       })}
@@ -154,4 +173,4 @@ function Step4Contact({
   );
 }
 
-export default Step4Contact;
+export default Step5Family;

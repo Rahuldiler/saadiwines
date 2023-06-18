@@ -1,11 +1,12 @@
 import { Box, Grid, Typography, useTheme } from "@mui/material";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import GuestListCard from "../common/GuestListCard";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { getTemplateKey } from "@/services/template/template";
+import { staticTemplateData } from "@/constants/template";
 
-function YourTemplate() {
+function YourTemplate({ userPreferenceData }) {
   const theme = useTheme();
   const router = useRouter();
   const dummyData = [
@@ -18,10 +19,19 @@ function YourTemplate() {
     },
   ];
 
+  const [selectedTemplate, setSelectedTemplate] = useState();
+
   const handleViewTemplate = async () => {
     const response = await getTemplateKey();
     router.push(`/template/${response.userIdKey.replace("/", "%2F")}`);
   };
+
+  useEffect(() => {
+    const id = userPreferenceData[0]?.templateId;
+    const filterTemplate = staticTemplateData.filter((item) => item.id === id);
+    setSelectedTemplate(filterTemplate);
+  }, [userPreferenceData]);
+  console.log(userPreferenceData, selectedTemplate);
   return (
     <Box sx={{ mt: 14 }}>
       <Box sx={{ px: { lg: "100px", xs: "20px" } }}>
@@ -30,7 +40,7 @@ function YourTemplate() {
         </Typography>
         <Box>
           <Grid container sx={{ mt: 4 }}>
-            {dummyData.map((templateData) => {
+            {selectedTemplate?.map((templateData) => {
               return (
                 <Grid item lg={3} key={templateData.id}>
                   <Box
@@ -66,7 +76,7 @@ function YourTemplate() {
                         paddingLeft: "10px",
                       }}
                     >
-                      Template 1
+                      {templateData.templateName}
                     </span>
                   </Typography>
                 </Grid>
