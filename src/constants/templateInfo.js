@@ -17,12 +17,62 @@ const templateInfoData = {
   ],
   familyMembers: [
     {
-      id: 12,
+      id: 1,
       name: "Vibhor",
       relation: "Brother",
     },
     {
-      id: 13,
+      id: 2,
+      name: "Arpit",
+      relation: "Brother",
+    },
+    {
+      id: 3,
+      name: "Vibhor",
+      relation: "Brother",
+    },
+    {
+      id: 4,
+      name: "Arpit",
+      relation: "Brother",
+    },
+    {
+      id: 5,
+      name: "Vibhor",
+      relation: "Brother",
+    },
+    {
+      id: 6,
+      name: "Arpit",
+      relation: "Brother",
+    },
+    {
+      id: 7,
+      name: "Vibhor",
+      relation: "Brother",
+    },
+    {
+      id: 8,
+      name: "Arpit",
+      relation: "Brother",
+    },
+    {
+      id: 9,
+      name: "Vibhor",
+      relation: "Brother",
+    },
+    {
+      id: 10,
+      name: "Arpit",
+      relation: "Brother",
+    },
+    {
+      id: 11,
+      name: "Vibhor",
+      relation: "Brother",
+    },
+    {
+      id: 12,
       name: "Arpit",
       relation: "Brother",
     },
@@ -123,67 +173,3 @@ const templateInfoData = {
 };
 
 export { templateInfoData };
-
-//     id: 1,
-//     firstName: "Vibhor",
-//     lastName: "Vibhor",
-//     contactNumber: "2145237",
-//     fromSide: "GROOM",
-//     image: null,
-//   },
-//   {
-//     id: 2,
-//     firstName: "Arpit",
-//     lastName: "Arpit",
-//     contactNumber: "1456323",
-//     fromSide: "GROOM",
-//     image: null,
-//   },
-//   {
-//     id: 3,
-//     firstName: "Vibhor",
-//     lastName: "Vibhor",
-//     contactNumber: "2145237",
-//     fromSide: "GROOM",
-//     image: null,
-//   },
-//   {
-//     id: 4,
-//     firstName: "Arpit",
-//     lastName: "Arpit",
-//     contactNumber: "1456323",
-//     fromSide: "GROOM",
-//     image: null,
-//   },
-//   {
-//     id: 5,
-//     firstName: "Vibhor",
-//     lastName: "Vibhor",
-//     contactNumber: "2145237",
-//     fromSide: "GROOM",
-//     image: null,
-//   },
-//   {
-//     id: 6,
-//     firstName: "Arpit",
-//     lastName: "Arpit",
-//     contactNumber: "1456323",
-//     fromSide: "GROOM",
-//     image: null,
-//   },
-//   {
-//     id: 7,
-//     firstName: "Vibhor",
-//     lastName: "Vibhor",
-//     contactNumber: "2145237",
-//     fromSide: "GROOM",
-//     image: null,
-//   },
-//   {
-//     id: 8,
-//     firstName: "Arpit",
-//     lastName: "Arpit",
-//     contactNumber: "1456323",
-//     fromSide: "GROOM",
-//     image: null,
-//   },

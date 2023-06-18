@@ -381,7 +381,7 @@ function Template1({ formData }) {
           {templateData?.familyMembers?.map((cards, index) => (
             <Cards
               key={index}
-              imgSrc=""
+              imgSrc="/images/gallery/c-gallery-10.jpg"
               name={cards.name}
               relationship={cards.relation}
             />
