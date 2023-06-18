@@ -2,20 +2,20 @@ import HTTPClientHandler from "@/services/HTTPClientHandler";
 
 const http = new HTTPClientHandler();
 
-const addItinerary = async (ItineraryData) => {
+const addFamilyMember = async (familyMemberData) => {
   await http.post({
-    url: "/itinerary",
-    payload: ItineraryData,
+    url: "/family_member",
+    payload: familyMemberData,
     isSecured: true,
   });
 };
 
-const getItinerary = async () => {
+const getFamilyMember = async () => {
   const response = await http.get({
-    url: "/itinerary/me",
+    url: "/family_member/me",
     isSecured: true,
   });
   return response.data;
 };
 
-export { addItinerary, getItinerary };
+export { addFamilyMember, getFamilyMember };

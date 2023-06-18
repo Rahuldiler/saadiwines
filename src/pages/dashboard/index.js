@@ -1,6 +1,6 @@
-import {getUserPreference} from "@/services/user-preference/userPreference";
-import {Box} from "@mui/material";
-import React, {useEffect, useState} from "react";
+import { getUserPreference } from "@/services/user-preference/userPreference";
+import { Box } from "@mui/material";
+import React, { useEffect, useState } from "react";
 import Header from "@/Components/common/Header";
 import YourTemplate from "@/Components/dashboard/YourTemplate";
 
@@ -18,12 +18,12 @@ function Dashboard() {
     setNavItems([
       { id: 1, title: "Templates", url: "/choose-template" },
       { id: 2, title: "Wedding Info", url: "/form" },
-      response[0].budgetPlanningEnabled && {
+      response[0]?.budgetPlanningEnabled && {
         id: 3,
         title: "Budget",
         url: "/",
       },
-      response[0].guestListEnabled && { id: 4, title: "Guests", url: "/" },
+      response[0]?.guestListEnabled && { id: 4, title: "Guests", url: "/" },
     ]);
   };
 
@@ -31,10 +31,12 @@ function Dashboard() {
     getUserPreferenceData();
   }, []);
 
+  console.log(userPreferenceData);
+
   return (
     <Box>
       <Header navItems={navItems} isHome={false} />
-      <YourTemplate />
+      <YourTemplate userPreferenceData={userPreferenceData} />
     </Box>
   );
 }
