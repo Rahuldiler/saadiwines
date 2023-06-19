@@ -1,75 +1,37 @@
 import ChooseTemplateCard from "@/Components/ChooseTemplate/ChooseTemplateCard";
-import {getUserPreference, updateUserPreference,} from "@/services/user-preference/userPreference";
-import {Box, Button, Dialog, Divider, Grid, Typography, useTheme,} from "@mui/material";
+import {
+  getUserPreference,
+  updateUserPreference,
+} from "@/services/user-preference/userPreference";
+import {
+  Box,
+  Button,
+  Dialog,
+  Divider,
+  Grid,
+  Typography,
+  useTheme,
+} from "@mui/material";
 import Link from "next/link";
-import {useRouter} from "next/router";
-import React, {useEffect, useState} from "react";
-import {COLORS} from "@/Components/utils/ConstantTheme";
+import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
+import { COLORS } from "@/Components/utils/ConstantTheme";
+import { staticTemplateData } from "@/constants/template";
 
 function ChooseTemplate() {
-  const templateData = [
-    {
-      id: 1,
-      templateName: "Classic",
-      templateImage: "/assets/placeholder.png",
-      url: "/template/1",
-      isSelected: true,
-    },
-    {
-      id: 2,
-      templateName: "Classic",
-      templateImage: "/assets/placeholder.png",
-      url: "/template/2",
-      isSelected: false,
-    },
-    {
-      id: 3,
-      templateName: "Classic",
-      templateImage: "/assets/placeholder.png",
-      url: "/template/1",
-      isSelected: false,
-    },
-    {
-      id: 4,
-      templateName: "Classic",
-      templateImage: "/assets/placeholder.png",
-      url: "/template/1",
-      isSelected: false,
-    },
-    {
-      id: 5,
-      templateName: "Classic",
-      templateImage: "/assets/placeholder.png",
-      url: "/template/1",
-      isSelected: false,
-    },
-    {
-      id: 6,
-      templateName: "Classic",
-      templateImage: "/assets/placeholder.png",
-      url: "/template/1",
-      isSelected: false,
-    },
-    {
-      id: 7,
-      templateName: "Classic",
-      templateImage: "/assets/placeholder.png",
-      url: "/template/1",
-      isSelected: false,
-    },
-  ];
   const router = useRouter();
   const theme = useTheme();
-  const [allTemplates, setAllTemplates] = useState(templateData);
+  const [allTemplates, setAllTemplates] = useState(staticTemplateData);
   const [selectedTemplate, setSelectedTemplate] = useState({
-    id: templateData[0].id,
-    url: templateData[0].url,
+    id: staticTemplateData[0].id,
+    url: staticTemplateData[0].url,
   });
   const [userPreferenceData, setUserPreferenceData] = useState([]);
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+  console.log("selectedTemplate", selectedTemplate);
   const handleChooseTemplate = () => {
     // router.push(selectedTemplate);
     const updatedData = {

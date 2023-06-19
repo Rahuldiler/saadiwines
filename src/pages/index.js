@@ -1,5 +1,5 @@
-import {Inter} from "next/font/google";
-import {useState} from "react";
+import { Inter } from "next/font/google";
+import { useState } from "react";
 import LoginModal from "@/Components/common/LoginModal";
 import HeroSection from "@/Components/home/HeroSection";
 import WebsiteDesigningSection from "@/Components/home/WebsiteDesigningSection";
@@ -22,11 +22,11 @@ export default function Home() {
   const [handle, setHandle] = useState(true);
 
   const navItems = [
-    { title: "Home", url: "/" },
-    { title: "About Us", url: "#about" },
-    { title: "Our Services", url: "#services" },
-    { title: "Reviews", url: "#reviews" },
-    { title: "Contact Us", url: "#contact" },
+    { title: "Home", url: "/", id: "1" },
+    { title: "About Us", url: "#about", id: "2" },
+    { title: "Our Services", url: "#services", id: "3" },
+    { title: "Reviews", url: "#reviews", id: "4" },
+    { title: "Contact Us", url: "#contact", id: "5" },
   ];
 
   return (

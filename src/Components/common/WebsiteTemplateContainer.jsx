@@ -7,6 +7,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/bundle";
 import TestimonialCard from "./TestimonialCard";
+import { staticTemplateData } from "@/constants/template";
 
 function WebsiteTemplateContainer() {
   const templateDesign = [
@@ -88,7 +89,7 @@ function WebsiteTemplateContainer() {
         // onSlideChange={() => console.log("slide change")}
         // onSwiper={handleOnSetSwiper}
       >
-        {templateDesign.map((listOfImg, index) => {
+        {staticTemplateData.map((listOfImg, index) => {
           return (
             <SwiperSlide key={index} style={{ width: "300px" }}>
               <Box
@@ -113,7 +114,7 @@ function WebsiteTemplateContainer() {
                     alt="img"
                     width={1000}
                     height={1000}
-                    src={listOfImg.img}
+                    src={listOfImg.templateImage}
                     style={{
                       height: "auto",
                       width: "100%",
