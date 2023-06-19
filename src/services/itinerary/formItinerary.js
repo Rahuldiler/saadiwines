@@ -2,20 +2,20 @@ import HTTPClientHandler from "@/services/HTTPClientHandler";
 
 const http = new HTTPClientHandler();
 
-const addIternary = async (iternaryData) => {
+const addItinerary = async (ItineraryData) => {
   await http.post({
-    url: "/iternary",
-    payload: iternaryData,
+    url: "/itinerary",
+    payload: ItineraryData,
     isSecured: true,
   });
 };
 
-const getIternary = async () => {
+const getItinerary = async () => {
   const response = await http.get({
-    url: "/iternary/me",
+    url: "/itinerary/me",
     isSecured: true,
   });
   return response.data;
 };
 
-export { addIternary, getIternary };
+export { addItinerary, getItinerary };

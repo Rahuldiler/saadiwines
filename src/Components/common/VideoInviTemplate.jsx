@@ -8,6 +8,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/bundle";
 import Script from "next/script";
+import ReactPlayer from "react-player";
 
 function VideoInviTemplate() {
   const templateDesign = [
@@ -50,8 +51,10 @@ function VideoInviTemplate() {
         if (entry.target.id == "myvideo") {
           if (entry.isIntersecting) {
             entry.target.play();
+            entry.target.muted = false;
           } else {
             entry.target.pause();
+            entry.target.muted = true;
           }
         }
       });
