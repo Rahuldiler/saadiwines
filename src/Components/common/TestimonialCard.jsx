@@ -3,6 +3,7 @@ import Link from "next/link";
 import React from "react";
 
 function TestimonialCard({ data }) {
+
     return (
         <Box
             sx={{
@@ -22,7 +23,7 @@ function TestimonialCard({ data }) {
                 }}
             >
                 <Avatar
-                    src="/assets/placeholder.png"
+                    src={data.image}
                     alt="avatar"
                     sx={{
                         width: { lg: "80px", xs: "60px" },

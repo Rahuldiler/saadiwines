@@ -1,15 +1,6 @@
-import {
-  Box,
-  Button,
-  Grid,
-  Link,
-  List,
-  ListItem,
-  Typography,
-} from "@mui/material";
 import React from "react";
-import { FaFacebookF, FaPhone } from "react-icons/fa";
-import { BsTwitter } from "react-icons/bs";
+import { Box, Button, Grid, Link, List, ListItem, Typography } from "@mui/material";
+import { FaFacebookF, FaPhone, FaPinterest } from "react-icons/fa";
 import { FiInstagram } from "react-icons/fi";
 import { HiMail } from "react-icons/hi";
 import { ImLocation } from "react-icons/im";
@@ -18,13 +9,16 @@ import Image from "next/image";
 function Footer() {
   const socialFooter = [
     {
-      icon: <FaFacebookF size={20} />,
+      icon: <FaFacebookF size={20}/>,
+      src: "https://www.facebook.com/shaadivines/"
     },
     {
-      icon: <BsTwitter size={20} />,
+      icon: <FaPinterest size={20} />,
+      src: "https://in.pinterest.com/shaadivines/"
     },
     {
       icon: <FiInstagram size={20} />,
+      src: "https://www.instagram.com/shaadi.vines/"
     },
   ];
 
@@ -88,11 +82,11 @@ function Footer() {
       url: "/",
     },
   ];
+
   return (
     <footer
       style={{
         background: "#fff0e6",
-        // background: "#fff3fb",
         position: "relative",
       }}
     >
@@ -120,6 +114,7 @@ function Footer() {
               {socialFooter.map((item, index) => {
                 return (
                   <Link
+                    href={item.src}
                     key={index}
                     sx={{
                       background: "#fff",
@@ -149,6 +144,7 @@ function Footer() {
             sm={12}
             md={3}
             lg={2}
+            ml={20}
             sx={{ mt: { lg: 0, xs: "40px" } }}
           >
             <Typography variant="h6" sx={{ fontWeight: 300, fontSize: "26px" }}>
@@ -172,6 +168,7 @@ function Footer() {
             sm={12}
             md={3}
             lg={3}
+            ml={18.5}
             sx={{ mt: { lg: 0, xs: "40px" }, pr: 6 }}
           >
             <Typography variant="h6" sx={{ fontWeight: 300, fontSize: "26px" }}>
@@ -181,7 +178,7 @@ function Footer() {
               variant="body1"
               sx={{ color: "#000", fontSize: "16px", my: 2 }}
             >
-              Would you have any enquiries.Please feel free to contuct us
+              Would you have any enquiries? Please feel free to contact us.
             </Typography>
             {contactInfo.map((item, index) => {
               return (
@@ -201,46 +198,6 @@ function Footer() {
                 </Typography>
               );
             })}
-          </Grid>
-          <Grid
-            item
-            xs={12}
-            sm={12}
-            md={3}
-            lg={3}
-            sx={{ mt: { lg: 0, xs: "40px" }, pl: { lg: 4, xs: 0 } }}
-          >
-            <Typography variant="h6" sx={{ fontWeight: 300, fontSize: "26px" }}>
-              Our Work
-            </Typography>
-            <Box sx={{ display: "flex", flexWrap: "wrap", mt: 2 }}>
-              {templateDesign.map((listOfImg, index) => {
-                return (
-                  <Box
-                    sx={{
-                      flex: "1 1 30%",
-                      display: "flex",
-                    }}
-                    key={index}
-                  >
-                    <Link href={listOfImg.url}>
-                      <Image
-                        className="imgHover"
-                        alt="img"
-                        width={1000}
-                        height={1000}
-                        src={listOfImg.img}
-                        style={{
-                          height: "80px",
-                          width: "80px",
-                          borderRadius: "7px",
-                        }}
-                      />
-                    </Link>
-                  </Box>
-                );
-              })}
-            </Box>
           </Grid>
         </Grid>
       </Box>
