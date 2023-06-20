@@ -4,12 +4,15 @@ import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
 import Category from "./Category";
 import SubCategory from "./SubCategory";
-import { Grid, Typography } from "@mui/material";
+import { Grid, Typography, useMediaQuery, useTheme } from "@mui/material";
 import Payments from "./Payments";
 import { getCategories } from "@/services/category/category";
 import CustomCircularProgress from "./CustomCircularProgress";
 import { COLORS } from "../utils/ConstantTheme";
+import Budget from "./mobile-view/Budget";
 export default function PlanningTabs() {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const [activeTab, setActiveTab] = React.useState(0);
   const [loading, setLoading] = React.useState(false);
   const [categories, setCategories] = React.useState([]);
@@ -88,25 +91,39 @@ export default function PlanningTabs() {
         </Grid>
       ),
     },
-    { label: "Payments", component: <Payments data={categories} /> },
+    {
+      label: "Payments",
+      component: <Payments data={categories} loading={loading} />,
+    },
   ];
   const handleTabChange = (event, newValue) => {
     setActiveTab(newValue);
   };
   return (
-    <Box mt={6}>
-      <Tabs
-        centered
-        value={activeTab}
-        onChange={handleTabChange}
-        TabIndicatorProps={{ style: { background: COLORS.primary } }}
-        // indicatorColor={'#BC8129'}
-      >
-        {tabs.map((tab, index) => (
-          <Tab key={index} label={tab.label} />
-        ))}
-      </Tabs>
-      {tabs[activeTab].component}
+    <Box>
+      {isMobile ? (
+        <Budget
+          loading={loading}
+          category={categories}
+          setTrackChanges={setTrackChanges}
+        />
+      ) : (
+        // Render table component for desktop view
+        <Box mt={6}>
+          <Tabs
+            centered
+            value={activeTab}
+            onChange={handleTabChange}
+            TabIndicatorProps={{ style: { background: COLORS.primary } }}
+            // indicatorColor={'#BC8129'}
+          >
+            {tabs.map((tab, index) => (
+              <Tab key={index} label={tab.label} />
+            ))}
+          </Tabs>
+          {tabs[activeTab].component}
+        </Box>
+      )}
     </Box>
   );
 }
