@@ -13,9 +13,9 @@ import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import TextField from "@mui/material/TextField";
 import CloseIcon from "@mui/icons-material/Close";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import BorderLinearProgress from "./Progress";
-import { editCategory, getCategoriesById } from "@/services/category/category";
+import { editCategory } from "@/services/category/category";
 import {
   addSubcategory,
   editSubcategory,
@@ -26,19 +26,14 @@ import CustomCircularProgress from "./CustomCircularProgress";
 import Modal from "./Modal";
 import { BORDER, COLORS } from "../utils/ConstantTheme";
 
-const SubCategory = ({ CateId, setTrackChanges }) => {
-  const [subCategoryData, setSubCategoryData] = useState([]);
+const SubCategory = ({ subCategory, setTrackChanges }) => {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [dialogOpenCategory, setDialogOpenCategory] = useState(false);
-  const [dialogOpenSubCategory, setDialogOpenSubCategory] = useState(false);
-  const [notifyChanges, setNotifyChanges] = useState(false);
+  const [dialogOpenSubCategory, setDialogOpenSubCategory] = useState({
+    dialogOpen: false,
+    subCategory: {},
+  });
   const [selectedItemForDialog, setSelectedItemForDialog] = useState(null);
-
-  useEffect(() => {
-    getCategoriesById(CateId.rowId).then((categories) => {
-      setSubCategoryData(categories.data);
-    });
-  }, [CateId, notifyChanges]);
 
   const calculateTotaEstimatedCost = (items) => {
     let total = items.reduce((sum, item) => {
@@ -87,9 +82,7 @@ const SubCategory = ({ CateId, setTrackChanges }) => {
     return percentageDifference;
   };
 
-  const editeSubCategoryFun = (id, categoryId) => {
-
-  };
+  const editeSubCategoryFun = (id, categoryId) => {};
   return (
     <Box
       sx={{
@@ -112,7 +105,7 @@ const SubCategory = ({ CateId, setTrackChanges }) => {
           justifyContent={"center"}
         >
           <Typography variant="h4" fontWeight={"bold"} mr={1}>
-            {subCategoryData.name}
+            {subCategory.name}
           </Typography>
           <DriveFileRenameOutlineIcon
             height={20}
@@ -128,7 +121,7 @@ const SubCategory = ({ CateId, setTrackChanges }) => {
             Estimated budget:{" "}
             <span style={{ fontWeight: "bold", color: COLORS.primary }}>
               {" "}
-              ₹ {subCategoryData.expectedAmount}
+              ₹ {subCategory.expectedAmount}
             </span>
           </Typography>
           <Typography variant="body3" mr={2}>
@@ -136,8 +129,8 @@ const SubCategory = ({ CateId, setTrackChanges }) => {
             <span style={{ fontWeight: "bold", color: COLORS.green }}>
               {" "}
               ₹{" "}
-              {subCategoryData.subCategory &&
-                calculateFinalCost(subCategoryData.subCategory)}
+              {subCategory.subCategory &&
+                calculateFinalCost(subCategory.subCategory)}
             </span>
           </Typography>
           <Typography variant="body3" sx={{ cursor: "pointer" }}>
@@ -147,7 +140,7 @@ const SubCategory = ({ CateId, setTrackChanges }) => {
         <Divider />
       </Box>
 
-      {subCategoryData.length == 0 ? (
+      {subCategory.length == 0 ? (
         <CustomCircularProgress />
       ) : (
         <>
@@ -156,26 +149,24 @@ const SubCategory = ({ CateId, setTrackChanges }) => {
               data={selectedItemForDialog}
               open={dialogOpen}
               setOpen={setDialogOpen}
-              CateId={CateId}
-              setSubCategoryData={setSubCategoryData}
+              setNotifyChanges={setTrackChanges}
             />
           )}
           <CategoryDialog
             open={dialogOpenCategory}
             setOpen={setDialogOpenCategory}
-            id={subCategoryData.id}
-            userId={subCategoryData.userId}
-            expectedAmount={subCategoryData.expectedAmount}
-            name={subCategoryData.name}
-            setNotifyChanges={setNotifyChanges}
+            id={subCategory.id}
+            userId={subCategory.userId}
+            expectedAmount={subCategory.expectedAmount}
+            name={subCategory.name}
             setTrackChanges={setTrackChanges}
           />
           <SubCategoryDialog
             open={dialogOpenSubCategory}
             setOpen={setDialogOpenSubCategory}
-            expectedAmount={subCategoryData.expectedAmount}
-            CateId={CateId}
-            setNotifyChanges={setNotifyChanges}
+            expectedAmount={subCategory.expectedAmount}
+            categoryId={subCategory.id}
+            setNotifyChanges={setTrackChanges}
           />
           <Table
             aria-label="simple table"
@@ -237,18 +228,11 @@ const SubCategory = ({ CateId, setTrackChanges }) => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {subCategoryData &&
-                subCategoryData.length != 0 &&
-                subCategoryData.subCategory.map((subCat) => (
+              {subCategory &&
+                subCategory.length != 0 &&
+                subCategory.subCategory.map((subCat) => (
                   <TableRow key={subCat.id} sx={{ textAlign: "center" }}>
-                    <TableCell
-                      contentEditable
-                      suppressContentEditableWarning
-                      id="expense"
-                      onBlur={(e) =>
-                        editeSubCategoryFun(subCat.id, subCat.categoryId)
-                      }
-                    >
+                    <TableCell id="expense">
                       <Typography
                         style={{ whiteSpace: "pre-line" }}
                         variant="body3"
@@ -263,11 +247,6 @@ const SubCategory = ({ CateId, setTrackChanges }) => {
                         variant="body3"
                         color="textSecondary"
                         fontWeight={400}
-                        contentEditable
-                        suppressContentEditableWarning
-                        onBlur={(e) =>
-                          editeSubCategoryFun(subCat.id, subCat.categoryId)
-                        }
                         style={{ whiteSpace: "pre-line" }}
                       >
                         {subCat.expectedAmount}
@@ -308,7 +287,7 @@ const SubCategory = ({ CateId, setTrackChanges }) => {
           </Table>
           <Box
             sx={{ display: "flex", cursor: "pointer", pt: "20px" }}
-            onClick={() => setDialogOpenSubCategory(true)}
+            onClick={() => setDialogOpenSubCategory({...dialogOpenSubCategory,dialogOpen:true})}
           >
             <AddCircleOutlineIcon
               sx={{ mt: "0px", mr: "5px", color: COLORS.primary }}
@@ -330,7 +309,6 @@ function CategoryDialog({
   userId,
   expectedAmount,
   name,
-  setNotifyChanges,
   setTrackChanges,
 }) {
   const [formData, setFormData] = useState({
@@ -353,9 +331,8 @@ function CategoryDialog({
     });
 
     editCategory(formData).then((res) => {
+      setTrackChanges((p) => !p);
       setOpen(false);
-      setNotifyChanges((prev) => !prev);
-      setTrackChanges((prev) => !prev);
     });
   };
   return (
@@ -387,10 +364,11 @@ function CategoryDialog({
 function SubCategoryDialog({
   open,
   setOpen,
-  CateId,
+  categoryId,
   expectedAmount,
   setNotifyChanges,
 }) {
+  console.log(expectedAmount)
   const [formData, setFormData] = useState({
     name: "",
     expectedAmount: expectedAmount,
@@ -398,7 +376,7 @@ function SubCategoryDialog({
 
   const postSubCategory = () => {
     if (formData.name && formData.expectedAmount) {
-      addSubcategory({ ...formData, categoryId: CateId.rowId }).then((res) => {
+      addSubcategory({ ...formData, categoryId: categoryId }).then((res) => {
         setNotifyChanges((prev) => !prev);
         setOpen(false);
       });
@@ -415,7 +393,7 @@ function SubCategoryDialog({
   return (
     <div>
       <Modal
-        open={open}
+        open={open.dialogOpen}
         saveCallback={postSubCategory}
         title={"Sub Category"}
         setOpen={setOpen}

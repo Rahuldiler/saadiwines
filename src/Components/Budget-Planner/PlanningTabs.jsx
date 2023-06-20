@@ -82,8 +82,9 @@ export default function PlanningTabs() {
                 <Typography>No Sub-Category Selected</Typography>
               </Box>
             ) : (
+              // <Box>{categories[selectedRow.rowIndex].name}</Box>
               <SubCategory
-                CateId={selectedRow}
+                subCategory={categories[selectedRow.rowIndex]}
                 setTrackChanges={setTrackChanges}
               />
             )}
