@@ -154,11 +154,8 @@ const SubCategory = ({ subCategory, setTrackChanges }) => {
           )}
           <CategoryDialog
             open={dialogOpenCategory}
+            category={subCategory}
             setOpen={setDialogOpenCategory}
-            id={subCategory.id}
-            userId={subCategory.userId}
-            expectedAmount={subCategory.expectedAmount}
-            name={subCategory.name}
             setTrackChanges={setTrackChanges}
           />
           <SubCategoryDialog
@@ -287,7 +284,12 @@ const SubCategory = ({ subCategory, setTrackChanges }) => {
           </Table>
           <Box
             sx={{ display: "flex", cursor: "pointer", pt: "20px" }}
-            onClick={() => setDialogOpenSubCategory({...dialogOpenSubCategory,dialogOpen:true})}
+            onClick={() =>
+              setDialogOpenSubCategory({
+                ...dialogOpenSubCategory,
+                dialogOpen: true,
+              })
+            }
           >
             <AddCircleOutlineIcon
               sx={{ mt: "0px", mr: "5px", color: COLORS.primary }}
@@ -302,35 +304,21 @@ const SubCategory = ({ subCategory, setTrackChanges }) => {
   );
 };
 
-function CategoryDialog({
-  open,
-  setOpen,
-  id,
-  userId,
-  expectedAmount,
-  name,
-  setTrackChanges,
-}) {
+function CategoryDialog({ open, setOpen, setTrackChanges, category }) {
   const [formData, setFormData] = useState({
-    id: id,
-    userId: userId,
-    name: "",
-    expectedAmount: expectedAmount,
+    name: category?.name || "",
+    expectedAmount: category?.expectedAmount || 0,
   });
-
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleCateChange = () => {
-    setFormData({
-      ...formData,
-      expectedAmount: expectedAmount,
-      userId: userId,
-      id: id,
-    });
-
-    editCategory(formData).then((res) => {
+    editCategory({
+      ...category,
+      name: formData.name,
+      expectedAmount: formData.expectedAmount,
+    }).then((res) => {
       setTrackChanges((p) => !p);
       setOpen(false);
     });
@@ -346,7 +334,7 @@ function CategoryDialog({
           <>
             <TextField
               name="name"
-              placeholder={name}
+              defaultValue={formData.name}
               sx={{
                 border: 0,
                 width: "100%",
@@ -368,7 +356,6 @@ function SubCategoryDialog({
   expectedAmount,
   setNotifyChanges,
 }) {
-  console.log(expectedAmount)
   const [formData, setFormData] = useState({
     name: "",
     expectedAmount: expectedAmount,
