@@ -6,6 +6,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import Template1 from "../1";
 import { templateInfoData } from "@/constants/templateInfo";
+import NewTemplate from "../2";
 
 function Template() {
   const [formData, setFormData] = useState({});
@@ -16,7 +17,6 @@ function Template() {
   useEffect(() => {
     async function fetchTemplate() {
       const response = await getUserPreference();
-      console.log(response);
       setTemplateId(response[0]?.templateId);
     }
     fetchTemplate();
@@ -31,15 +31,13 @@ function Template() {
     fetchData();
   }, [templateId]);
 
-  console.log("formData", formData, templateId);
-
   useEffect(() => {
     switch (templateId) {
       case 1:
         setComponentTemplate(<Template1 formData={formData} />);
         break;
       case 2:
-        setComponentTemplate(<Box>Template 2 </Box>);
+        setComponentTemplate(<NewTemplate formData={formData} />);
         break;
       // default:
       //   componentTemplate = <Box>No template found</Box>;

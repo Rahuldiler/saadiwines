@@ -1,4 +1,4 @@
-import ChooseTemplateCard from "@/Components/ChooseTemplate/ChooseTemplateCard";
+import ChooseTemplateCard from "@/Components/choose-template/ChooseTemplateCard";
 import {
   getUserPreference,
   updateUserPreference,
@@ -17,6 +17,7 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { COLORS } from "@/Components/utils/ConstantTheme";
 import { staticTemplateData } from "@/constants/template";
+import { set } from "date-fns";
 
 function ChooseTemplate() {
   const router = useRouter();
@@ -30,8 +31,6 @@ function ChooseTemplate() {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
-  console.log("selectedTemplate", selectedTemplate);
   const handleChooseTemplate = () => {
     // router.push(selectedTemplate);
     const updatedData = {
@@ -46,10 +45,52 @@ function ChooseTemplate() {
     handleOpen();
   };
 
+  const handleCloseModal = () => {
+    handleClose();
+    router.push("/dashboard");
+  };
+
+  const handleChooseLater = () => {
+    router.push("/dashboard");
+  };
+
   useEffect(() => {
-    getUserPreference().then((response) => {
+    async function fetchData() {
+      const response = await getUserPreference();
       setUserPreferenceData(response);
-    });
+
+      const selectedTemplate = response
+        ? allTemplates.map((template) => {
+            if (response[0].templateId === template.id) {
+              return {
+                ...template,
+                isSelected: true,
+              };
+            } else {
+              return {
+                ...template,
+                isSelected: false,
+              };
+            }
+          })
+        : allTemplates.map((template) => {
+            if (template.id === 1) {
+              return {
+                ...template,
+                isSelected: true,
+              };
+            } else {
+              return {
+                ...template,
+                isSelected: false,
+              };
+            }
+          });
+
+      setAllTemplates(selectedTemplate);
+    }
+
+    fetchData();
   }, []);
 
   return (
@@ -98,6 +139,7 @@ function ChooseTemplate() {
           sx={{ display: "flex", justifyContent: "flex-end", pr: 4 }}
         >
           <Button
+            onClick={handleChooseLater}
             style={{
               color: COLORS.primary,
             }}
@@ -140,7 +182,7 @@ function ChooseTemplate() {
           </Typography>
           <Divider />
           <Button
-            onClick={handleClose}
+            onClick={handleCloseModal}
             sx={{
               px: 4,
               py: 2,

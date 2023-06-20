@@ -21,7 +21,7 @@ function Dashboard() {
       response[0]?.budgetPlanningEnabled && {
         id: 3,
         title: "Budget",
-        url: "/",
+        url: "/budget-planner",
       },
       response[0]?.guestListEnabled && { id: 4, title: "Guests", url: "/" },
     ]);
@@ -30,8 +30,6 @@ function Dashboard() {
   useEffect(() => {
     getUserPreferenceData();
   }, []);
-
-  console.log(userPreferenceData);
 
   return (
     <Box>

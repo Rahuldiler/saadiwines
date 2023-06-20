@@ -21,71 +21,88 @@ import { DateTimePicker } from "@mui/x-date-pickers";
 import { AiOutlineDelete } from "react-icons/ai";
 import { list } from "postcss";
 import { useEffect } from "react";
+import NavigationSteps from "./NavigationSteps";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 
 function Step2Itinerary({
   itineraryLists,
-  setItineraryLists,
-  setValidationBoolean,
+  handleNext,
+  activeStep,
+  handleBack,
 }) {
-  const [valueDateTime, setValueDateTime] = React.useState();
-  const addNewItinerary = () => {
-    // setValueTime((prevData) => [...prevData, dayjs("2022-04-17T15:30")]);
-    setValidationBoolean(true);
-    setValueDateTime((prevData) => [...prevData, dayjs]);
-
-    setItineraryLists((prevData) => [
-      ...prevData,
-
+  const [valueDateTime, setValueDateTime] = useState();
+  const addNewItinerary = (id) => {
+    formik.setValues([
+      ...formik.values,
       {
-        id: prevData[prevData.length - 1].id + 1,
+        arrayId: id + 1,
         functionName: "",
         details: "",
         address: "",
         mapsLocation: "",
-        date: "",
-        time: "",
+        dateTime: "",
       },
     ]);
+
+    setValueDateTime((prevData) => [...prevData, dayjs]);
   };
 
   const handleChange = (e, index) => {
     const { name, value } = e.target;
-    const list = [...itineraryLists];
+    const list = [...formik.values];
     list[index][name] = value;
-    setItineraryLists(list);
+    formik.setValues(list);
   };
 
-  // const handleTime = (newValue, index) => {
-  //   setValueTime(newValue);
-  //   const list = [...itineraryLists];
-  //   list[index].itinerary.time = moment(newValue?.$d).format("LT");
-  //   setItineraryLists(list);
-  // };
-
-  // const handleDate = (newValue, index) => {
-  //   setValueDate(newValue);
-  //   const list = [...itineraryLists];
-  //   list[index].itinerary.date = moment(newValue?.$d).format("L");
-  //   setItineraryLists(list);
-  // };
+  const formik = useFormik({
+    initialValues: [
+      {
+        id: "",
+        arrayId: 1,
+        functionName: "",
+        details: "",
+        address: "",
+        mapsLocation: "",
+        dateTime: "",
+      },
+    ],
+    validationSchema: Yup.array().of(
+      Yup.object().shape({
+        functionName: Yup.string()
+          .matches(/^[a-zA-Z\s]*$/, "No special characters allowed")
+          .required("Required"),
+        details: Yup.string().required("Required"),
+        address: Yup.string().required("Required"),
+        mapsLocation: Yup.string().required("Required"),
+        dateTime: Yup.string().required("Required Date & Time"),
+      })
+    ),
+    onSubmit: (values) => {
+      handleNext(values);
+    },
+  });
 
   const handleDateTime = (newValue, index) => {
     // setValueDateTime(newValue);
-    const list = [...itineraryLists];
-    list[index].dateTime = moment(newValue?.$d).format();
+    const list = [...formik.values];
+
+    // list[index].dateTime = String(moment(newValue?.$d).toISOString());
+    list[index].dateTime = String(moment(newValue?.$d).format());
+
     const listOfDates = [...valueDateTime];
     listOfDates[index] = newValue;
-    setItineraryLists(list);
+    formik.setValues(list);
     setValueDateTime(listOfDates);
   };
 
   const deleteItinerary = (id) => {
-    setItineraryLists((prevData) =>
-      prevData.filter((lists) => lists.id !== id)
-    );
+    const updatedList = formik.values.filter((list) => list.arrayId !== id);
+    formik.setValues(updatedList);
   };
 
   useEffect(() => {
+    itineraryLists && formik.setValues(itineraryLists);
     let valueDate = [];
 
     for (let i = 0; i < itineraryLists.length; i++) {
@@ -93,7 +110,6 @@ function Step2Itinerary({
     }
 
     setValueDateTime(valueDate);
-    setValidationBoolean(false);
   }, [itineraryLists]);
 
   return (
@@ -112,7 +128,7 @@ function Step2Itinerary({
       >
         <Typography variant="h6">Itinerary Details</Typography>
         <Button
-          onClick={addNewItinerary}
+          onClick={() => addNewItinerary(formik.values.length)}
           className="bg-[#BC8129]"
           sx={{
             backgroundColor: "#BC8129",
@@ -125,152 +141,117 @@ function Step2Itinerary({
           + Add Itinerary
         </Button>
       </Box>
-      {itineraryLists.map((list, index) => {
-        return (
-          <FormControl
-            key={index}
-            sx={{
-              // boxShadow: " rgba(99, 99, 99, 0.2) 0px 2px 8px 0px",
-              mt: 4,
-              width: "100%",
-              borderBottom: "0.5px solid #BC812950",
-              paddingBottom: 4,
-            }}
-          >
-            <Box sx={{ display: "Flex", justifyContent: "space-between" }}>
-              <Typography variant="body1">Itinerary {index + 1}</Typography>
-              {itineraryLists.length > 1 && (
-                <Button
-                  onClick={() => deleteItinerary(list.id)}
-                  sx={{
-                    color: "#BC8129",
-                  }}
-                >
-                  <AiOutlineDelete size={20} />
-                </Button>
-              )}
-            </Box>
-            <TextFieldInput
-              id="functionName"
-              label="Function Name"
-              name="functionName"
-              type="text"
-              value={list.functionName}
-              onChange={(e) => handleChange(e, index)}
-            />
-            {(list.functionName.match(/\W/) ||
-              /\d/.test(list.functionName)) && (
-              <Box sx={{ color: "red", fontSize: "14px" }}>
-                Please don't add any special character and number
-              </Box>
-            )}
-            <TextFieldInput
-              id="mapsLocation"
-              label="Location"
-              name="mapsLocation"
-              type="text"
-              value={list.mapsLocation}
-              onChange={(e) => handleChange(e, index)}
-              // value={credentials.email}
-              // onChange={onLoginChange}
-            />
-            {(list.mapsLocation.match(/\W/) ||
-              /\d/.test(list.mapsLocation)) && (
-              <Box sx={{ color: "red", fontSize: "14px" }}>
-                Please don't add any special character and number
-              </Box>
-            )}
-            <TextFieldInput
-              id="details"
-              label="Details"
-              name="details"
-              type="text"
-              value={list.details}
-              onChange={(e) => handleChange(e, index)}
-              // value={credentials.email}
-              // onChange={onLoginChange}
-            />
-            {(list.details.match(/\W/) || /\d/.test(list.details)) && (
-              <Box sx={{ color: "red", fontSize: "14px" }}>
-                Please don't add any special character and number
-              </Box>
-            )}
-            <Box sx={{ mt: 2 }}>
-              <MultilineTextField
-                name="address"
-                label="Address"
-                value={list.address}
-                handleCh={(e) => handleChange(e, index)}
-              />
-            </Box>
-            {(list.address.match(/\W/) || /\d/.test(list.address)) && (
-              <Box sx={{ color: "red", fontSize: "14px" }}>
-                Please don't add any special character and number
-              </Box>
-            )}
-            <LocalizationProvider dateAdapter={AdapterDayjs}>
-              <DateTimePicker
-                disablePast
-                label="Pick a date and time"
-                name="valueDateTime"
-                value={valueDateTime ? valueDateTime[index] : null}
-                onChange={(newValue) => handleDateTime(newValue, index)}
-                sx={{ mt: 2 }}
-              />
-            </LocalizationProvider>
-            {/* <Box sx={{ display: "flex", gap: 4 }}>
-              <Box>
-                <FormLabel
-                  id="demo-radio-buttons-group-label"
-                  sx={{ fontWeight: 500, mt: 2 }}
-                >
-                  Pick a date of marriage:
-                </FormLabel>
-
-               
-
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                  <DatePicker
+      <form onSubmit={formik.handleSubmit}>
+        {formik.values.map((list, index) => {
+          return (
+            <Box
+              key={index}
+              sx={{
+                mt: 4,
+                width: "100%",
+                borderBottom: "0.5px solid #BC812950",
+                paddingBottom: 4,
+              }}
+            >
+              <Box
+                sx={{
+                  display: "Flex",
+                  justifyContent: "space-between",
+                }}
+              >
+                <Typography variant="body1">Itinerary {index + 1}</Typography>
+                {formik.values.length > 1 && (
+                  <Button
+                    onClick={() => deleteItinerary(list.arrayId)}
                     sx={{
-                      "&.MuiTextField-root": {
-                        width: "100%",
-                      },
+                      color: "#BC8129",
                     }}
-                    name="valueDate"
-
-                    // slotProps={{
-                    //   textField: {
-                    //     helperText: "MM/DD/YYYY",
-                    //   },
-                    // }}
-                  />
-                </LocalizationProvider>
+                  >
+                    <AiOutlineDelete size={20} />
+                  </Button>
+                )}
               </Box>
-              <Box>
-                <FormLabel
-                  id="demo-radio-buttons-group-label"
-                  sx={{ fontWeight: 500, mt: 2 }}
-                >
-                  Pick a time of marriage:
-                </FormLabel>
-
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                  <TimePicker
-                    sx={{
-                      "&.MuiTextField-root": {
-                        width: "100%",
-                      },
-                    }}
-                    name="valueTime"
-                    value={valueTime[index]}
-                    onChange={(newValue) => handleTime(newValue, index)}
-                  />
-                </LocalizationProvider>
+              <TextFieldInput
+                id="functionName"
+                label="Function Name *"
+                name="functionName"
+                type="text"
+                value={list.functionName}
+                onChange={(e) => handleChange(e, index)}
+              />
+              {formik.touched[index]?.functionName &&
+              formik.errors[index]?.functionName ? (
+                <div style={{ color: "Red" }}>
+                  {formik.errors[index]?.functionName}
+                </div>
+              ) : null}
+              <TextFieldInput
+                id="mapsLocation"
+                label="Location *"
+                name="mapsLocation"
+                type="text"
+                value={list.mapsLocation}
+                onChange={(e) => handleChange(e, index)}
+              />
+              {formik.touched[index]?.mapsLocation &&
+              formik.errors[index]?.mapsLocation ? (
+                <div style={{ color: "Red" }}>
+                  {formik.errors[index]?.mapsLocation}
+                </div>
+              ) : null}
+              <TextFieldInput
+                id="details"
+                label="Details *"
+                name="details"
+                type="text"
+                value={list.details}
+                onChange={(e) => handleChange(e, index)}
+              />
+              {formik.touched[index]?.details &&
+              formik.errors[index]?.details ? (
+                <div style={{ color: "Red" }}>
+                  {formik.errors[index]?.details}
+                </div>
+              ) : null}
+              <Box sx={{ mt: 2 }}>
+                <MultilineTextField
+                  name="address"
+                  label="Address *"
+                  value={list.address}
+                  handleCh={(e) => handleChange(e, index)}
+                />
               </Box>
-            </Box> */}
-          </FormControl>
-        );
-      })}
+              {formik.touched[index]?.address &&
+              formik.errors[index]?.address ? (
+                <div style={{ color: "Red" }}>
+                  {formik.errors[index]?.address}
+                </div>
+              ) : null}
+              <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <DateTimePicker
+                  disablePast
+                  label="Pick a date and time"
+                  name="valueDateTime"
+                  value={valueDateTime ? valueDateTime[index] || "" : null}
+                  onChange={(newValue) => handleDateTime(newValue, index)}
+                  sx={{ mt: 2, width: "100%" }}
+                />
+                {formik.touched[index]?.dateTime &&
+                formik.errors[index]?.dateTime ? (
+                  <div style={{ color: "Red" }}>
+                    {formik.errors[index]?.dateTime}
+                  </div>
+                ) : null}
+              </LocalizationProvider>
+            </Box>
+          );
+        })}
+        <NavigationSteps
+          activeStep={activeStep}
+          handleNext={handleNext}
+          handleBack={handleBack}
+        />
+      </form>
     </Box>
   );
 }
