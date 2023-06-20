@@ -10,14 +10,13 @@ import { DesktopDatePicker } from "@mui/x-date-pickers";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { addTransaction } from "@/services/transaction/transaction";
-import {  getCategoriesById } from "@/services/category/category";
+import { getCategoriesById } from "@/services/category/category";
 
 export default function PaymentsDialog({
   open,
   setOpen,
   data,
-  CateId,
-  setSubCategoryData,
+  setNotifyChanges,
 }) {
   const [formData, setFormData] = React.useState({
     subCategoryId: 0,
@@ -44,13 +43,7 @@ export default function PaymentsDialog({
         ...formData,
         type: "CREDIT",
         subCategoryId: data.id,
-      }).then((_) => {
-        getCategoriesById(CateId.rowId).then((categories) => {
-          setSubCategoryData(categories.data);
-          setOpen(false);
-        });
-      });
-    } else {
+      }).then((_) => setNotifyChanges((p) => !p));
     }
   };
   return (
