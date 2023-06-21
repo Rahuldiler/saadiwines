@@ -13,41 +13,66 @@ import React, { useEffect } from "react";
 import styles from "../../styles/Form.module.css";
 import { MultilineTextField, TextFieldInput } from "../common/TextFieldInput";
 import { AiOutlineDelete } from "react-icons/ai";
-
-function Step4Contact({
-  setContactDetails,
-  contactDetails,
-  setValidationBoolean,
-}) {
-  const addNewContact = () => {
-    setContactDetails((prevData) => [
-      ...prevData,
+import NavigationSteps from "./NavigationSteps";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+function Step4Contact({ contactDetails, handleNext, activeStep, handleBack }) {
+  const addNewContact = (id) => {
+    formik.setValues([
+      ...formik.values,
       {
-        arrayId: prevData[prevData.length - 1].id + 1,
+        arrayId: id + 1,
         firstName: "",
         lastName: "",
-        contactNumber: Number,
+        contactNumber: "",
         fromSide: "GROOM",
       },
     ]);
   };
 
+  const formik = useFormik({
+    initialValues: [
+      {
+        id: "",
+        arrayId: 1,
+        firstName: "",
+        lastName: "",
+        contactNumber: "",
+        fromSide: "GROOM",
+      },
+    ],
+    validationSchema: Yup.array().of(
+      Yup.object().shape({
+        firstName: Yup.string()
+          .matches(/^[a-zA-Z\s]*$/, "No special characters allowed")
+          .required("Required"),
+        lastName: Yup.string()
+          .matches(/^[a-zA-Z\s]*$/, "No special characters allowed")
+          .required("Required"),
+        contactNumber: Yup.number().required("Required"),
+      })
+    ),
+    onSubmit: (values) => {
+      handleNext(values);
+    },
+  });
+
   const handleChange = (e, index) => {
     const { name, value } = e.target;
-    const list = [...contactDetails];
+    const list = [...formik.values];
     list[index][name] = value;
-    setContactDetails(list);
+    formik.setValues(list);
   };
 
   const deleteContact = (id) => {
-    setContactDetails((prevData) =>
-      prevData.filter((lists) => lists.id !== id)
-    );
+    const updatedList = formik.values.filter((list) => list.arrayId !== id);
+    formik.setValues(updatedList);
   };
 
   useEffect(() => {
-    setValidationBoolean(false);
+    contactDetails && formik.setValues(contactDetails);
   }, [contactDetails]);
+
   return (
     <Box
       sx={{
@@ -64,7 +89,7 @@ function Step4Contact({
       >
         <Typography variant="h6"> Contact Details</Typography>
         <Button
-          onClick={addNewContact}
+          onClick={() => addNewContact(formik.values.length)}
           className="bg-[#BC8129]"
           sx={{
             backgroundColor: "#BC8129",
@@ -77,68 +102,87 @@ function Step4Contact({
           + Add Contact
         </Button>
       </Box>
-      {contactDetails.map((contact, index) => {
-        return (
-          <FormControl
-            sx={{
-              mt: 4,
-              width: "100%",
-              borderBottom: "0.5px solid #BC812950",
-              paddingBottom: 4,
-            }}
-            key={index}
-          >
-            <Box sx={{ display: "Flex", justifyContent: "space-between" }}>
-              <Typography variant="body1">Contact {index + 1}</Typography>
-              {contactDetails.length > 1 && (
-                <Button
-                  onClick={() => deleteContact(contact.id)}
-                  sx={{
-                    color: "#BC8129",
-                  }}
-                >
-                  <AiOutlineDelete size={20} />
-                </Button>
-              )}
-            </Box>
-            <TextFieldInput
-              id="firstName"
-              label="First Name"
-              name="firstName"
-              type="text"
-              value={contact.firstName}
-              onChange={(e) => handleChange(e, index)}
-            />
-            {(contact.firstName.match(/\W/) ||
-              /\d/.test(contact.firstName)) && (
-              <Box sx={{ color: "red", fontSize: "14px" }}>
-                Please don't add any special character and number
+      <form onSubmit={formik.handleSubmit}>
+        {formik.values.map((contact, index) => {
+          return (
+            <FormControl
+              sx={{
+                mt: 4,
+                width: "100%",
+                borderBottom: "0.5px solid #BC812950",
+                paddingBottom: 4,
+              }}
+              key={index}
+            >
+              <Box
+                sx={{
+                  display: "Flex",
+                  justifyContent: "space-between",
+                }}
+              >
+                <Typography variant="body1">Contact {index + 1}</Typography>
+                {formik.values.length > 1 && (
+                  <Button
+                    onClick={() => deleteContact(contact.arrayId)}
+                    sx={{
+                      color: "#BC8129",
+                    }}
+                  >
+                    <AiOutlineDelete size={20} />
+                  </Button>
+                )}
               </Box>
-            )}
-            <TextFieldInput
-              id="lastName"
-              name="lastName"
-              label="Last Name"
-              type="text"
-              value={contact.lastName}
-              onChange={(e) => handleChange(e, index)}
-            />
-            {(contact.lastName.match(/\W/) || /\d/.test(contact.lastName)) && (
-              <Box sx={{ color: "red", fontSize: "14px" }}>
-                Please don't add any special character and number
-              </Box>
-            )}
-            <TextFieldInput
-              id="contactNumber"
-              name="contactNumber"
-              label="Contact Number"
-              type="Number"
-              value={contact.contactNumber}
-              onChange={(e) => handleChange(e, index)}
-            />
-          </FormControl>
-        );
-      })}
+              <TextFieldInput
+                id="firstName"
+                label="First Name *"
+                name="firstName"
+                type="text"
+                value={contact.firstName}
+                onChange={(e) => handleChange(e, index)}
+              />
+              {formik.touched[index]?.firstName &&
+              formik.errors[index]?.firstName ? (
+                <div style={{ color: "Red" }}>
+                  {formik.errors[index]?.firstName}
+                </div>
+              ) : null}
+              <TextFieldInput
+                id="lastName"
+                name="lastName"
+                label="Last Name *"
+                type="text"
+                value={contact.lastName}
+                onChange={(e) => handleChange(e, index)}
+              />
+              {formik.touched[index]?.lastName &&
+              formik.errors[index]?.lastName ? (
+                <div style={{ color: "Red" }}>
+                  {formik.errors[index]?.lastName}
+                </div>
+              ) : null}
+              <TextFieldInput
+                id="contactNumber"
+                name="contactNumber"
+                label="Contact Number *"
+                type="Number"
+                value={contact.contactNumber}
+                onChange={(e) => handleChange(e, index)}
+              />
+              {formik.touched[index]?.contactNumber &&
+              formik.errors[index]?.contactNumber ? (
+                <div style={{ color: "Red" }}>
+                  {formik.errors[index]?.contactNumber}
+                </div>
+              ) : null}
+            </FormControl>
+          );
+        })}
+        <NavigationSteps
+          activeStep={activeStep}
+          handleNext={handleNext}
+          handleBack={handleBack}
+        />
+      </form>
     </Box>
   );
 }

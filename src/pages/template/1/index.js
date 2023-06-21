@@ -206,7 +206,6 @@ function Template1({ formData }) {
   useEffect(() => {
     formData ? setTemplateData(formData) : setTemplateData(templateInfoData);
   }, [formData]);
-  console.log("templateData", templateData);
   return (
     <div className="lg:min-w-[1280px] ">
       <div className="h-[900px] relative">
@@ -285,19 +284,13 @@ function Template1({ formData }) {
 
           <CoupleInfo
             bgImage="/images/bg-watercolor.jpg"
-            name={templateData && templateData?.weddingInfo?.bride.name}
+            name={templateData?.weddingInfo?.bride.name}
             gender="THE BRIDE"
-            father={templateData && templateData?.weddingInfo?.bride.fatherName}
-            mother={templateData && templateData?.weddingInfo?.bride.motherName}
-            grandfather={
-              templateData && templateData?.weddingInfo?.bride.grandFatherName
-            }
-            grandmother={
-              templateData && templateData?.weddingInfo?.bride.grandMotherName
-            }
-            infotext1={
-              templateData && templateData?.weddingInfo?.bride.description
-            }
+            father={templateData?.weddingInfo?.bride.fatherName}
+            mother={templateData?.weddingInfo?.bride.motherName}
+            grandfather={templateData?.weddingInfo?.bride.grandFatherName}
+            grandmother={templateData?.weddingInfo?.bride.grandMotherName}
+            infotext1={templateData?.weddingInfo?.bride.description}
             // infotext2=" Today, I feel like I'm living in a fairytale - marrying the love of my life and surrounded by all of our family and friends. Every detail of this wedding has been a labor of love, as the carefully selected flowers."
           />
         </div>
@@ -306,6 +299,7 @@ function Template1({ formData }) {
       {templateData?.milestone?.map((milestone, index) => {
         return (
           <Double
+            key={milestone.id}
             img="/images/double1.jpg"
             title={milestone.title}
             subtitle="11:30 am In The Square"
@@ -336,7 +330,7 @@ function Template1({ formData }) {
           </div>
           <div className="px-8 mt-16 lg:mt-auto">
             {templateData?.itinerary?.map((steps, index) => (
-              <div key={index} className={``}>
+              <div key={steps.id} className={``}>
                 <Steps
                   step={steps.id}
                   fctnName={steps.functionName}
@@ -378,12 +372,12 @@ function Template1({ formData }) {
         <div
           className={`grid grid-cols-1 md:grid-cols-3 place-items-center gap-y-20 py-14 `}
         >
-          {templateData?.familyMembers?.map((cards, index) => (
+          {templateData?.familyMembers?.map((card, index) => (
             <Cards
-              key={index}
+              key={card.id}
               imgSrc="/images/gallery/c-gallery-10.jpg"
-              name={cards.name}
-              relationship={cards.relation}
+              name={card.name}
+              relationship={card.relation}
             />
           ))}
         </div>
@@ -412,12 +406,13 @@ function Template1({ formData }) {
         <div
           className={`grid grid-cols-1 md:grid-cols-3 place-items-center gap-y-20 py-14 `}
         >
-          {templateData?.pocs?.map((cards, index) => (
+          {templateData?.pocs?.map((card, index) => (
             <Cards
-              imgSrc={cards.image}
-              name={cards.firstName}
-              relationship={cards.relationship}
-              contactNo={`+91 ${cards.contactNumber}`}
+              key={card.id}
+              imgSrc={card.image}
+              name={card.firstName}
+              relationship={card.relationship}
+              contactNo={`+91 ${card.contactNumber}`}
             />
           ))}
         </div>

@@ -12,6 +12,7 @@ import { signUp } from "@/services/auth/auth";
 import { COLORS } from "../utils/ConstantTheme";
 import { FormControl } from "@mui/material";
 import { TextFieldInput } from "../common/TextFieldInput";
+import { useRouter } from "next/router";
 
 const defaultTheme = createTheme();
 
@@ -25,7 +26,7 @@ export default function SignUp({ setHandle }) {
   };
 
   const [userData, setUserData] = useState(signupDetail);
-
+  const router = useRouter();
   const onSignupChange = (event) => {
     setUserData((previousInputs) => ({
       ...previousInputs,
@@ -38,12 +39,13 @@ export default function SignUp({ setHandle }) {
 
     try {
       const response = await signUp(userData);
-      if (response.status === 200) {
-        // alert("Sign Up Complete....!!!");n
-        setHandle(true);
-      } else {
-        console.log("Error:", response);
-      }
+      // setHandle(true);
+      router.push("/form");
+      // if (response.status === 200) {
+      //   alert("Sign Up Complete....!!!");
+      //   setHandle(true);
+      //   router.push("/form");
+      // }
     } catch (error) {
       console.error("Error:", error);
     }

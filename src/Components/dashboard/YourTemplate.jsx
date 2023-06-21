@@ -31,7 +31,6 @@ function YourTemplate({ userPreferenceData }) {
     const filterTemplate = staticTemplateData.filter((item) => item.id === id);
     setSelectedTemplate(filterTemplate);
   }, [userPreferenceData]);
-  console.log(userPreferenceData, selectedTemplate);
   return (
     <Box sx={{ mt: 14 }}>
       <Box sx={{ px: { lg: "100px", xs: "20px" } }}>
