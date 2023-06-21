@@ -104,15 +104,22 @@ function ContactUs() {
               }}
             >
               <TextField
-                placeholder="Your name"
+                placeholder="Name"
                 sx={{ background: "#FFF9F5", border: 0, width: "100%" }}
+                required
               />
               <TextField
-                placeholder="Email address"
+                placeholder="Phone Number"
                 sx={{ background: "#FFF9F5", border: 0, width: "100%", mt: 4 }}
+                required
               />
               <TextField
-                placeholder="Write message"
+                placeholder="Email Address"
+                sx={{ background: "#FFF9F5", border: 0, width: "100%", mt: 4 }}
+                required
+              />
+              <TextField
+                placeholder="Write Message"
                 multiline
                 rows={5}
                 sx={{ background: "#FFF9F5", border: 0, width: "100%", mt: 4 }}
@@ -142,3 +149,5 @@ function ContactUs() {
 }
 
 export default ContactUs;
+
+
