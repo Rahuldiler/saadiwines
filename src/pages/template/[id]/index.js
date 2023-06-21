@@ -17,7 +17,7 @@ function Template() {
   useEffect(() => {
     async function fetchTemplate() {
       const response = await getUserPreference();
-      setTemplateId(response[0]?.templateId);
+      setTemplateId(response.templateId);
     }
     fetchTemplate();
   }, []);

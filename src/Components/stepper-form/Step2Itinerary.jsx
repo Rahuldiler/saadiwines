@@ -87,8 +87,7 @@ function Step2Itinerary({
     // setValueDateTime(newValue);
     const list = [...formik.values];
 
-    // list[index].dateTime = String(moment(newValue?.$d).toISOString());
-    list[index].dateTime = String(moment(newValue?.$d).format());
+    list[index].dateTime = String(moment(newValue?.$d).toISOString());
 
     const listOfDates = [...valueDateTime];
     listOfDates[index] = newValue;
