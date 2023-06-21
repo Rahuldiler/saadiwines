@@ -6,19 +6,36 @@ import StepLabel from "@mui/material/StepLabel";
 import Button from "@mui/material/Button";
 
 import { Grid } from "@mui/material";
-import { addWebsiteInfo, getWebsiteInfo } from "@/services/website/formWebsite";
-import { addMilestone, getMilestone } from "@/services/FAQ/formFaq";
-import { addContact, getContact } from "@/services/Contact/formContact";
+import {
+  addWebsiteInfo,
+  getWebsiteInfo,
+  updateWebsiteInfo,
+} from "@/services/website/formWebsite";
+import {
+  addMilestone,
+  getMilestone,
+  updateMilestone,
+} from "@/services/FAQ/formFaq";
+import {
+  addContact,
+  getContact,
+  updateContact,
+} from "@/services/Contact/formContact";
 import { useRouter } from "next/router";
 import Step1Website from "@/Components/stepper-form/Step1Website";
 import Step2Itinerary from "@/Components/stepper-form/Step2Itinerary";
 import Step3FAQ from "@/Components/stepper-form/Step3FAQ";
 import Step4Contact from "@/Components/stepper-form/Step4Contact";
-import { addItinerary, getItinerary } from "@/services/itinerary/formItinerary";
+import {
+  addItinerary,
+  getItinerary,
+  updateItinerary,
+} from "@/services/itinerary/formItinerary";
 import Step5Family from "@/Components/stepper-form/Step5Family";
 import {
   addFamilyMember,
   getFamilyMember,
+  updateFamilyMember,
 } from "@/services/familyMember/formFamilyMember";
 
 function index() {
@@ -81,22 +98,29 @@ function index() {
     },
   ]);
   const router = useRouter();
-  const [activeStep, setActiveStep] = React.useState(1);
+  const [activeStep, setActiveStep] = React.useState(0);
 
+  console.log(activeStep, "activeStep");
   const handleNext = async (values) => {
     if (activeStep === 0) {
+      console.log(values.id);
       try {
-        await addWebsiteInfo(values);
-        setActiveStep((prevActiveStep) => prevActiveStep + 1);
+        values.id
+          ? await updateWebsiteInfo(values)
+          : await addWebsiteInfo(values);
+
+        setActiveStep(1);
       } catch (error) {
         return error.message;
       }
     } else if (activeStep === 1) {
       for (let i = 0; i < values.length; i++) {
-        const { arrayId, ...value } = values[i];
+        const { arrayId, ...itineraryList } = values[i];
         try {
-          await addItinerary(value);
-          setActiveStep((prevActiveStep) => prevActiveStep + 1);
+          itineraryList.id
+            ? await updateItinerary(itineraryList)
+            : await addItinerary(itineraryList);
+          setActiveStep(2);
         } catch (error) {
           return error.message;
         }
@@ -105,8 +129,11 @@ function index() {
       for (let i = 0; i < milestoneLists.length; i++) {
         const { arrayId, ...milestoneList } = milestoneLists[i];
         try {
-          await addMilestone(milestoneList);
-          setActiveStep((prevActiveStep) => prevActiveStep + 1);
+          milestoneList.id
+            ? await updateMilestone(milestoneList)
+            : await addMilestone(milestoneList);
+
+          setActiveStep(3);
         } catch (error) {
           return error.message;
         }
@@ -115,8 +142,10 @@ function index() {
       for (let i = 0; i < contactDetails.length; i++) {
         const { arrayId, ...contactDetail } = contactDetails[i];
         try {
-          await addContact(contactDetail);
-          setActiveStep((prevActiveStep) => prevActiveStep + 1);
+          contactDetail.id
+            ? await updateContact(contactDetail)
+            : await addContact(contactDetail);
+          setActiveStep(4);
         } catch (error) {
           return error.message;
         }
@@ -125,8 +154,9 @@ function index() {
       for (let i = 0; i < familyMemberLists.length; i++) {
         const { arrayId, ...familyMemberList } = familyMemberLists[i];
         try {
-          await addFamilyMember(familyMemberList);
-          setActiveStep((prevActiveStep) => prevActiveStep + 1);
+          familyMemberList.id
+            ? await updateFamilyMember(familyMemberList)
+            : await addFamilyMember(familyMemberList);
         } catch (error) {
           return error.message;
         }

@@ -10,6 +10,14 @@ const addContact = async (contactData) => {
   });
 };
 
+const updateContact = async (contactData) => {
+  await http.put({
+    url: "/poc",
+    payload: contactData,
+    isSecured: true,
+  });
+};
+
 const getContact = async () => {
   const response = await http.get({
     url: "/poc/me",
@@ -18,4 +26,4 @@ const getContact = async () => {
   return response.data;
 };
 
-export { addContact, getContact };
+export { addContact, updateContact, getContact };

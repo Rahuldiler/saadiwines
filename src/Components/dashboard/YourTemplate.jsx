@@ -27,7 +27,7 @@ function YourTemplate({ userPreferenceData }) {
   };
 
   useEffect(() => {
-    const id = userPreferenceData[0]?.templateId;
+    const id = userPreferenceData.templateId;
     const filterTemplate = staticTemplateData.filter((item) => item.id === id);
     setSelectedTemplate(filterTemplate);
   }, [userPreferenceData]);

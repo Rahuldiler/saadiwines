@@ -10,6 +10,14 @@ const addFamilyMember = async (familyMemberData) => {
   });
 };
 
+const updateFamilyMember = async (familyMemberData) => {
+  await http.put({
+    url: "/family_member",
+    payload: familyMemberData,
+    isSecured: true,
+  });
+};
+
 const getFamilyMember = async () => {
   const response = await http.get({
     url: "/family_member/me",
@@ -18,4 +26,4 @@ const getFamilyMember = async () => {
   return response.data;
 };
 
-export { addFamilyMember, getFamilyMember };
+export { addFamilyMember, updateFamilyMember, getFamilyMember };
