@@ -244,7 +244,7 @@ export default function MobileExpense() {
           <Button
             onClick={handleSubmit}
             variant="contained"
-            sx={{ color: "red", width: "96%", m: 1, borderRadius: "5px" }}
+            sx={{ width: "96%", m: 1, borderRadius: "5px" }}
           >
             Save{" "}
           </Button>

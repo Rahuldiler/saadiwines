@@ -11,22 +11,30 @@ import {
 } from "@mui/material";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import TextField from "@mui/material/TextField";
-import CloseIcon from "@mui/icons-material/Close";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import { useState } from "react";
 import BorderLinearProgress from "./Progress";
-import { editCategory } from "@/services/category/category";
-import {
-  addSubcategory,
-  editSubcategory,
-} from "@/services/subCategory/subCategory";
+import { deleteCategory, editCategory } from "@/services/category/category";
+import { addSubcategory } from "@/services/subCategory/subCategory";
 import PaymentsDialog from "./PaymentsDialog";
 import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutline";
 import CustomCircularProgress from "./CustomCircularProgress";
 import Modal from "./Modal";
 import { BORDER, COLORS } from "../utils/ConstantTheme";
+import { RenderDialogForSubCategory } from "./mobile-view/mobile-components/RenderDialog";
+import {
+  calculateBudgetTransaction,
+  calculateFinalCost,
+  calculateProgress,
+  calculateTotaEstimatedCost,
+} from "./calculate";
 
-const SubCategory = ({ subCategory, setTrackChanges }) => {
+const SubCategory = ({
+  subCategory,
+  setTrackChanges,
+  setSelectedRow,
+  selectedRow,
+}) => {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [dialogOpenCategory, setDialogOpenCategory] = useState(false);
   const [dialogOpenSubCategory, setDialogOpenSubCategory] = useState({
@@ -35,68 +43,44 @@ const SubCategory = ({ subCategory, setTrackChanges }) => {
   });
   const [selectedItemForDialog, setSelectedItemForDialog] = useState(null);
 
-  const calculateTotaEstimatedCost = (items) => {
-    let total = items.reduce((sum, item) => {
-      return (sum += +item.expectedAmount);
-    }, 0);
-    return total;
+  // EDIT SUB CATEGORY DIALOG
+  const [isEditingSubCategory, setIsEditingSubCategory] = useState({
+    isEditing: false,
+    subCategory: {},
+  });
+  const [openDialog, setOpenDialog] = useState(false);
+  const handleClick = (e, subCategory) => {
+    e.stopPropagation();
+    setIsEditingSubCategory({
+      ...isEditingSubCategory,
+      isEditing: true,
+      subCategory: subCategory,
+    });
+    setOpenDialog(true);
+  };
+  const handleCloseDialog = () => {
+    setOpenDialog(false);
   };
 
-  const calculateFinalCost = (data) => {
-    let totalAmount = 0;
-
-    for (const object of data) {
-      let objectAmount = 0;
-
-      if (object.budgetTransaction.length > 0) {
-        for (const transaction of object.budgetTransaction) {
-          objectAmount += transaction.amount;
-        }
-      }
-
-      totalAmount += objectAmount;
-    }
-
-    return totalAmount;
+  // DELETE CATEGORY
+  const handleCategoryDelete = (id) => {
+    deleteCategory(id).then(() => {
+      setTrackChanges((p) => !p);
+      setSelectedRow({ ...selectedRow, rowId: 0, rowIndex: 0 });
+    });
   };
 
-  // Calculataion inside PAID column->
-  const calculateBudgetTransaction = (items) => {
-    let total = items.reduce((sum, item) => {
-      return (sum += +item.amount);
-    }, 0);
-    return total || 0;
-  };
-
-  const calculateProgress = (estimatedBudget, final) => {
-    let percentageDifference;
-
-    if (estimatedBudget === 0 && final === 0) {
-      percentageDifference = 0; // Both values are 0, so the percentage difference is 0%
-    } else if (estimatedBudget === 0) {
-      percentageDifference = Infinity; // `a` is 0, so the percentage difference is infinity
-    } else {
-      percentageDifference = (final / estimatedBudget) * 100;
-    }
-
-    return percentageDifference;
-  };
-
-  const editeSubCategoryFun = (id, categoryId) => {};
   return (
     <Box
       sx={{
         overflow: "auto",
-        p: 4,
+        py: 6,
+        px: 3,
         m: 0,
         border: BORDER.primaryBorder,
         borderRadius: "7px",
       }}
     >
-      <Box textAlign={"end"}>
-        <CloseIcon fontSize={"large"} />
-      </Box>
-
       <Box textAlign={"center"}>
         <Box
           display={"flex"}
@@ -121,7 +105,7 @@ const SubCategory = ({ subCategory, setTrackChanges }) => {
             Estimated budget:{" "}
             <span style={{ fontWeight: "bold", color: COLORS.primary }}>
               {" "}
-              ₹ {subCategory.expectedAmount}
+              ₹ {calculateTotaEstimatedCost(subCategory.subCategory)}
             </span>
           </Typography>
           <Typography variant="body3" mr={2}>
@@ -133,9 +117,13 @@ const SubCategory = ({ subCategory, setTrackChanges }) => {
                 calculateFinalCost(subCategory.subCategory)}
             </span>
           </Typography>
-          <Typography variant="body3" sx={{ cursor: "pointer" }}>
-            <DeleteOutlineIcon sx={{ color: COLORS.primary }} /> Remove
-          </Typography>
+          <Box
+            sx={{ cursor: "pointer" }}
+            onClick={() => handleCategoryDelete(subCategory.id)}
+          >
+            <DeleteOutlineIcon sx={{ color: COLORS.primary, mb: 0.4 }} />
+            <Typography variant="body3">Remove</Typography>
+          </Box>
         </Box>
         <Divider />
       </Box>
@@ -164,6 +152,14 @@ const SubCategory = ({ subCategory, setTrackChanges }) => {
             expectedAmount={subCategory.expectedAmount}
             categoryId={subCategory.id}
             setNotifyChanges={setTrackChanges}
+          />
+          <RenderDialogForSubCategory
+            handleCloseDialog={handleCloseDialog}
+            openDialog={openDialog}
+            categoryId={subCategory.id}
+            isDesktop
+            setTrackChanges={setTrackChanges}
+            isEditingSubCategory={isEditingSubCategory}
           />
           <Table
             aria-label="simple table"
@@ -230,13 +226,25 @@ const SubCategory = ({ subCategory, setTrackChanges }) => {
                 subCategory.subCategory.map((subCat) => (
                   <TableRow key={subCat.id} sx={{ textAlign: "center" }}>
                     <TableCell id="expense">
-                      <Typography
-                        style={{ whiteSpace: "pre-line" }}
-                        variant="body3"
-                        fontWeight={600}
-                      >
-                        {subCat.name}
-                      </Typography>
+                      <Box display={"flex"}>
+                        <Typography
+                          style={{ whiteSpace: "pre-line" }}
+                          variant="body3"
+                          fontWeight={600}
+                        >
+                          {subCat.name}
+                        </Typography>
+                        <DriveFileRenameOutlineIcon
+                          fontSize="small"
+                          sx={{
+                            cursor: "pointer",
+                            color: COLORS.primary,
+                            ml: 0.5,
+                            mb: 0.2,
+                          }}
+                          onClick={(e) => handleClick(e, subCat)}
+                        />
+                      </Box>
                     </TableCell>
                     <TableCell>
                       <Typography
@@ -360,10 +368,20 @@ function SubCategoryDialog({
     name: "",
     expectedAmount: expectedAmount,
   });
-
+  const [errors, setErrors] = useState({});
+ 
   const postSubCategory = () => {
-    if (formData.name && formData.expectedAmount) {
-      addSubcategory({ ...formData, categoryId: categoryId }).then((res) => {
+    const newErrors = {};
+    if (formData.name.trim() === "") {
+      newErrors.name = "Name is required";
+    }
+    if (formData.expectedAmount === 0) {
+      newErrors.expectedAmount = "Amount is required";
+    }
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+    } else {
+      addSubcategory({ ...formData, categoryId: categoryId }).then((_) => {
         setNotifyChanges((prev) => !prev);
         setOpen(false);
       });
@@ -388,23 +406,42 @@ function SubCategoryDialog({
           <Box>
             <TextField
               name="name"
+              required
+              error={!!errors.name}
+              helperText={
+                errors.name && (
+                  <Typography variant="caption" sx={{ mx: "-10px" }}>
+                    {errors.name}
+                  </Typography>
+                )
+              }
               placeholder={"Name"}
               sx={{
                 border: 0,
                 mb: 2,
                 mt: 2,
+                width: "100%",
               }}
               onChange={handleChange}
             />
             <Typography>Enter Amount</Typography>
             <TextField
+              required
+              error={!!errors.expectedAmount}
+              helperText={
+                errors.expectedAmount && (
+                  <Typography variant="caption" sx={{ mx: "-10px" }}>
+                    {errors.expectedAmount}
+                  </Typography>
+                )
+              }
               name="expectedAmount"
               type="number"
               placeholder={"Amount"}
               sx={{
-                background: "#FFF9F5",
                 border: 0,
                 mb: 2,
+                width: "100%",
                 mt: 2,
               }}
               onChange={handleChange}

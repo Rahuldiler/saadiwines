@@ -13,6 +13,17 @@ const style = {
       },
     },
   },
+  dialogDesktop: {
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+    backdropFilter: "blur(4px)",
+    "& .MuiDialog-container": {
+      "& .MuiPaper-root": {
+        width: "100%",
+        // minWidth: "96%", // Set your width here
+        // height: "100%",
+      },
+    },
+  },
   dialogContent: {
     width: "100%",
     height: "100%",
@@ -20,14 +31,14 @@ const style = {
   },
 };
 
-const DialogBox = ({ open, onClose, children }) => {
+const DialogBox = ({ open, onClose, children,isDesktop = false }) => {
   return (
     <Dialog
       open={open}
       onClose={onClose}
       fullWidth
       maxWidth="sm"
-      sx={style.dialog}
+      sx={isDesktop ? style.dialogDesktop : style.dialog}
       //   className={classes.dialog}
     >
       <DialogContent sx={style.dialogContent}>{children}</DialogContent>

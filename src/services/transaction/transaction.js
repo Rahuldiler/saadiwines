@@ -9,5 +9,12 @@ const addTransaction = async (payload) => {
     payload: payload,
   });
 };
+const deleteTransaction = async (id) => {
+  return http.delete({
+    url: `/transaction/${id}`,
+    isSecured: true,
+    // payload: payload,
+  });
+};
 
-export { addTransaction };
+export { addTransaction, deleteTransaction };

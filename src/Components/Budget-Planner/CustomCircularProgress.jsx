@@ -4,7 +4,7 @@ import React from "react";
 const CustomCircularProgress = () => {
   return (
     <CircularProgress
-      sx={{ m: "auto", display: "flex", justifyContent: "center" }}
+      sx={{ m: "auto", display: "flex", justifyContent: "center", my: 1 }}
     />
   );
 };

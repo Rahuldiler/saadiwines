@@ -14,7 +14,7 @@ const getCategories = async () => {
 };
 const getCategoriesById = async (id) => {
   try {
-    return http.get({
+    return await http.get({
       url: `/category/${id}`,
       isSecured: true,
     });
@@ -23,18 +23,33 @@ const getCategoriesById = async (id) => {
   }
 };
 const addCategory = async (payload) => {
-  return http.post({
+  console.log("CATEGORY ADDED")
+  return await http.post({
     url: "/category",
     isSecured: true,
     payload: payload,
   });
 };
 const editCategory = async (payload) => {
-  return http.put({
+  console.log("CATEGORY EDITED")
+  return await http.put({
     url: "/category",
     isSecured: true,
     payload: payload,
   });
 };
+const deleteCategory = async (id) => {
+  console.log("CATEGORY DELETED")
+  return await http.delete({
+    url: `/category/${id}`,
+    isSecured: true,
+  });
+};
 
-export { getCategories, getCategoriesById, addCategory, editCategory };
+export {
+  getCategories,
+  getCategoriesById,
+  addCategory,
+  editCategory,
+  deleteCategory,
+};

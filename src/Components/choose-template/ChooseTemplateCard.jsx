@@ -10,10 +10,10 @@ function ChooseTemplateCard({
   setSelectedTemplate,
 }) {
   // const [isSelected, setIsSelected] = useState(false);
-  const handleSelect = (id) => {
+  const handleSelect = (id, templateId) => {
     setAllTemplates((prevData) =>
       prevData.map((template) => {
-        if (template.id === id) {
+        if (template.templateId === templateId && template.id === id) {
           return {
             ...template,
             isSelected: true,
@@ -26,7 +26,7 @@ function ChooseTemplateCard({
         }
       })
     );
-    setSelectedTemplate({ id: template.id, url: template.url });
+    setSelectedTemplate({ id: template.id, url: template.url, color:template?.theme?.bgColor, templateId: template.templateId });
   };
 
   return (
@@ -55,7 +55,7 @@ function ChooseTemplateCard({
           alt="..."
           width={800}
           height={800}
-          onClick={() => handleSelect(template.id)}
+          onClick={() => handleSelect(template.id, template.templateId)}
           style={{
             width: "512px",
             minHeight: "502px",

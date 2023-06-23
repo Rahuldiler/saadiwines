@@ -1,4 +1,11 @@
-import { Box, Button, Divider, TextField, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Divider,
+  TextField,
+  Typography,
+  FormHelperText,
+} from "@mui/material";
 import React, { useState } from "react";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import { COLORS } from "@/Components/utils/ConstantTheme";
@@ -14,7 +21,11 @@ const PaymentsDialog = ({ onClose, setTrackChanges, subCategoryId }) => {
     details: "",
   });
   const [valueDateTime, setValueDateTime] = useState();
-
+  const [errors, setErrors] = useState({});
+  const style = {
+    ml: -1,
+    variant: "caption",
+  };
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevFormData) => ({
@@ -26,14 +37,25 @@ const PaymentsDialog = ({ onClose, setTrackChanges, subCategoryId }) => {
     setValueDateTime(newValue);
   };
   const handleSubmit = () => {
-    // console.log(formData);
-    if (formData.name && formData.amount && formData.details) {
+    const newErrors = {};
+    if (formData.name.trim() === "") {
+      newErrors.name = "Name is required";
+    }
+    if (formData.amount === 0) {
+      newErrors.amount = "Amount is required";
+    }
+    if (formData.details === "") {
+      newErrors.details = "Details is required";
+    }
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+    } else {
       addTransaction({
         ...formData,
         type: "CREDIT",
         dateAdded: valueDateTime,
         subCategoryId: subCategoryId,
-      }).then((_) => setTrackChanges(p => !p));
+      }).then((_) => setTrackChanges((p) => !p));
     }
   };
   const RenderHeading = ({ title }) => {
@@ -129,7 +151,15 @@ const PaymentsDialog = ({ onClose, setTrackChanges, subCategoryId }) => {
           placeholder="Enter Name"
           name="name"
           variant="outlined"
-          // value={subCategoryData.name}
+          required
+          error={!!errors.name}
+          helperText={
+            errors.name && (
+              <Typography variant="caption" sx={{ mx: "-10px" }}>
+                {errors.name}
+              </Typography>
+            )
+          }
           onChange={handleChange}
         />
         <RenderHeading title={"Amount"} />
@@ -143,13 +173,20 @@ const PaymentsDialog = ({ onClose, setTrackChanges, subCategoryId }) => {
           placeholder="Enter Amount"
           name="amount"
           variant="outlined"
-          // value={subCategoryData.name}
+          required
+          error={!!errors.amount}
+          helperText={
+            errors.amount && (
+              <Typography variant="caption" sx={{ mx: "-10px" }}>
+                {errors.amount}
+              </Typography>
+            )
+          }
           onChange={handleChange}
         />
         <RenderHeading title={"Date"} />
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <DesktopDatePicker
-            // label="Pick a date"
             name="valueDateTime"
             value={valueDateTime}
             disablePast
@@ -159,74 +196,6 @@ const PaymentsDialog = ({ onClose, setTrackChanges, subCategoryId }) => {
             slotProps={{ textField: { size: "small" } }}
           />
         </LocalizationProvider>
-        {/* <Grid container textAlign={"start"} py={1}>
-              <Grid item xs>
-                <Box>
-                  <RenderHeading title={"Estimated Cost"} />
-                  <Input
-                    type="number"
-                    disableUnderline={true}
-                    sx={{
-                      border: `1px solid ${COLORS.lighGray}`,
-                      borderRadius: "5px",
-                      m: 1,
-                    }}
-                    name={"expectedAmount"}
-                    value={subCategoryData.expectedAmount}
-                    onChange={handleChange}
-                    placeholder="0"
-                    startAdornment={
-                      <InputAdornment
-                        position="start"
-                        sx={{
-                          backgroundColor: COLORS.lighGray,
-                          height: "20px",
-                          py: 2,
-                          px: 1,
-                          borderRadius: "5px",
-                        }}
-                      >
-                        ₹
-                      </InputAdornment>
-                    }
-                  />
-                </Box>
-              </Grid>
-              <Grid item xs>
-                <Box>
-                  <Box>
-                    <RenderHeading title={"Final Cost"} />
-                    <Input
-                      disabled
-                      disableUnderline={true}
-                      sx={{
-                        border: `1px solid ${COLORS.lighGray}`,
-                        borderRadius: "5px",
-                        m: 1,
-                      }}
-                      // name={"finalCost"}
-                      // value={formData.expectedAmount}
-                      // onChange={handleChange}
-                      placeholder="0"
-                      startAdornment={
-                        <InputAdornment
-                          position="start"
-                          sx={{
-                            backgroundColor: COLORS.lighGray,
-                            height: "20px",
-                            py: 2,
-                            px: 1,
-                            borderRadius: "5px",
-                          }}
-                        >
-                          ₹
-                        </InputAdornment>
-                      }
-                    />
-                  </Box>
-                </Box>
-              </Grid>
-            </Grid> */}
         <RenderHeading title={"More Details"} />
         <Box display={"flex"} justifyContent={"center"}>
           <br />
@@ -236,12 +205,23 @@ const PaymentsDialog = ({ onClose, setTrackChanges, subCategoryId }) => {
             onChange={handleChange}
             rows={3}
             sx={{ width: "96%" }}
+            required
+            error={!!errors.details}
+            FormHelperTextProps={{ style: { fontSize: 2 } }}
+            helperText={
+              errors.details && (
+                <Typography variant="caption" sx={{ mx: "-10px" }}>
+                  {errors.details}
+                </Typography>
+              )
+            }
           />
         </Box>
         <Button
           onClick={handleSubmit}
-          variant="contained"
-          sx={{ color: "red", width: "96%", m: 1, borderRadius: "5px" }}
+          // className={`bg-[${COLORS.primary}]`}
+          // variant="contained"
+          sx={{ width: "96%", m: 1, borderRadius: "5px" }}
         >
           Save{" "}
         </Button>

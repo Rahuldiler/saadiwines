@@ -9,11 +9,15 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+
     extend: {
       fontFamily: {
         Alex: ["Alex Brush"],
         Cardo: ["Cardo"],
       },
+      colors: {
+        themePrimaryColor: '#9CAB8D'
+      }
     },
   },
   plugins: [],

@@ -18,7 +18,7 @@ const PlanningTabMobile = ({ category,loading, setTrackChanges }) => {
     },
     {
       label: "Payments",
-      component: <PaymentsMobile category={category} loading={loading}/>,
+      component: <PaymentsMobile category={category} loading={loading} setTrackChanges={setTrackChanges}/>,
     },
   ];
   const handleTabChange = (event, newValue) => {

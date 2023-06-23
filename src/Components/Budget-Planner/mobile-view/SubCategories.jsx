@@ -1,11 +1,11 @@
-import { Box, Button, Chip, Typography } from "@mui/material";
+import { Box, Chip, Typography } from "@mui/material";
 import React from "react";
 import MuiAccordionDetails from "@mui/material/AccordionDetails";
 import { styled } from "@mui/material/styles";
 import { COLORS } from "@/Components/utils/ConstantTheme";
-import { useRouter } from "next/router";
 import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutline";
 import BorderLinearProgress from "../Progress";
+import { calculateBudgetTransaction, calculateProgress } from "../calculate";
 const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   padding: theme.spacing(2),
   marginLeft: theme.spacing(1),
@@ -26,11 +26,10 @@ const SubCategoriesAccordian = ({
 
     return totalAmount;
   };
-  // const router = useRouter();
+ 
   // for Edit sub category
   const handleClick = (e, subCategory) => {
     e.stopPropagation();
-    // console.log("---");
     setIsEditingSubCategory({
       ...isEditingSubCategory,
       isEditing: true,
@@ -46,31 +45,7 @@ const SubCategoriesAccordian = ({
       subCategoryId: id,
     });
   };
-  const calculateBudgetTransaction = (items) => {
-    if (items) {
-      let total = items.reduce((sum, item) => {
-        return (sum += +item.amount);
-      }, 0);
-
-      return total;
-    }
-    return 0;
-  };
-  const calculateProgress = (estimatedBudget, final) => {
-    // console.log(estimatedBudget, final);
-    let percentageDifference;
-
-    if (estimatedBudget === 0 && final === 0) {
-      percentageDifference = 0; // Both values are 0, so the percentage difference is 0%
-    } else if (estimatedBudget === 0) {
-      percentageDifference = Infinity; // `a` is 0, so the percentage difference is infinity
-    } else {
-      percentageDifference = (final / estimatedBudget) * 100;
-    }
-    // console.log(percentageDifference);
-    return percentageDifference;
-  };
-  return (
+   return (
     <AccordionDetails sx={{ p: 1, m: 1, px: 2 }}>
       <Box display={"flex"} justifyContent={"space-between"} mb={1}>
         <Box display={"flex"}>

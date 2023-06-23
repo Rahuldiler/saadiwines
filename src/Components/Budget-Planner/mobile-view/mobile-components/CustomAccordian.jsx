@@ -47,6 +47,8 @@ import AddAndEditSubCategoryDialog from "../AddAndEditSubCategoryDialog";
 import DialogBox from "./DialogBoxMobile";
 import PaymentsDialog from "../PaymentsDialogMobile";
 import BorderLinearProgress from "../../Progress";
+import { RenderDialogForPayment, RenderDialogForSubCategory } from "./RenderDialog";
+import { calculateTotaEstimatedCost } from "../../calculate";
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -145,7 +147,7 @@ export default function CustomAccordian({
                 color={COLORS.gray}
                 variant="caption"
               >
-                Cost: ₹ {expectedAmount}
+                Cost: ₹ {calculateTotaEstimatedCost(category.subCategory)}
               </Typography>
             </Box>
           </Box>
@@ -169,7 +171,8 @@ export default function CustomAccordian({
           alignItems={"center"}
           mx={1}
         >
-          <RenderDialog
+          {/*  SUB CATEGORY DIALOG */}
+          <RenderDialogForSubCategory
             handleCloseDialog={handleCloseDialog}
             openDialog={openDialog}
             categoryId={id}
@@ -215,53 +218,3 @@ export default function CustomAccordian({
   );
 }
 
-function RenderDialog({
-  openDialog,
-  handleCloseDialog,
-  categoryId,
-  setTrackChanges,
-  isEditingSubCategory,
-}) {
-  // console.log(isEditingSubCategory);
-  //  const obj = category.find((item) => item.id == isEditingCategory.categoryId);
-  return (
-    <DialogBox open={openDialog} onClose={handleCloseDialog}>
-      <AddAndEditSubCategoryDialog
-        onClose={handleCloseDialog}
-        setTrackChanges={setTrackChanges}
-        categoryId={categoryId}
-        isEditingSubCategory={isEditingSubCategory}
-      />
-    </DialogBox>
-  );
-}
-// open,
-// setOpen,
-// data,
-// CateId,
-// setSubCategoryData,
-function RenderDialogForPayment({
-  openDialog,
-  handleCloseDialog,
-  subCategoryId,
-  setTrackChanges,
-}) {
-  //  const obj = category.find((item) => item.id == isEditingCategory.categoryId);
-  return (
-    <DialogBox open={openDialog} onClose={handleCloseDialog}>
-      <PaymentsDialog
-        onClose={handleCloseDialog}
-        setTrackChanges={setTrackChanges}
-        subCategoryId={subCategoryId}
-      />
-    </DialogBox>
-  );
-}
-// {
-//   "name" : "Razor --pay",
-//   "subCategoryId": 11,
-//   "dateAdded": "1685277946",
-//   "details": "some transaction done in --pay",
-//   "type": "CREDIT",
-//   "amount": 100
-// }
