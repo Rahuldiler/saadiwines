@@ -10,6 +10,8 @@ const addSubcategory = async (payload) => {
   });
 };
 const editSubcategory = async (payload) => {
+  console.log("payload")
+  console.log(payload)
   return await http.put({
     url: "/subCategory",
     isSecured: true,
