@@ -43,6 +43,7 @@ function VideoInvitation() {
               </Typography>
               <Box sx={{ marginTop: "40px" }}>
                 <Button
+                  className="bg-[#E21A9E]"
                   sx={{
                     backgroundColor: "#E21A9E",
                     color: "#fff",
@@ -57,7 +58,7 @@ function VideoInvitation() {
                     backgroundColor: "transparent",
                     border: "1px solid #000",
                     color: "#000",
-                    marginLeft: "10px",
+                    marginLeft: { lg: "10px", xs: 0 },
                     padding: "7px 26px",
                   }}
                 >
@@ -77,7 +78,7 @@ function VideoInvitation() {
                 alignItem: "center",
                 mt: { lg: 0, xs: "40px" },
                 width: "100%",
-                ml: "60px",
+                ml: { lg: "60px", xs: "0px" },
                 height: { lg: "350px", xs: "200px" },
               }}
             >

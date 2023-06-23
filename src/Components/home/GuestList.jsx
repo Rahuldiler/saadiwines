@@ -57,7 +57,7 @@ function GuestList() {
                 backgroundColor: "transparent",
                 border: "1px solid #E21A9E",
                 color: "#E21A9E",
-                marginLeft: "10px",
+                marginLeft: { lg: "10px" },
                 padding: "7px 26px",
               }}
             >
@@ -65,7 +65,7 @@ function GuestList() {
             </Button>
           </Box>
         </Box>
-        <Box
+        {/* <Box
           className="layoutMargin"
           sx={{ pb: 10, px: { lg: 0, xs: "20px" } }}
         >
@@ -77,7 +77,7 @@ function GuestList() {
             className="imgResGuest"
             style={{ width: "100%", height: "700px", borderRadius: "20px" }}
           />
-        </Box>
+        </Box> */}
       </Box>
       <Box sx={{ py: 10, background: "#FFF9F5" }}>
         <Box className="layoutMargin" sx={{ px: { lg: 0, xs: "20px" } }}>

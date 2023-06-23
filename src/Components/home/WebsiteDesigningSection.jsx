@@ -48,6 +48,7 @@ function WebsiteDesigningSection() {
               </Typography>
               <Box sx={{ marginTop: "40px" }}>
                 <Button
+                  className="bg-[#E21A9E]"
                   sx={{
                     backgroundColor: "#E21A9E",
                     color: "#fff",
@@ -82,7 +83,7 @@ function WebsiteDesigningSection() {
                 alignItem: "center",
                 mt: { lg: 0, xs: "40px" },
                 width: "100%",
-                ml:"60px",
+                ml: { lg: "60px", xs: "0px" },
                 height: { lg: "350px", xs: "200px" },
               }}
             >

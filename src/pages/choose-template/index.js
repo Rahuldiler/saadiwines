@@ -24,8 +24,8 @@ function ChooseTemplate() {
   const theme = useTheme();
   const [allTemplates, setAllTemplates] = useState(staticTemplateData);
   const [selectedTemplate, setSelectedTemplate] = useState({
-    id: staticTemplateData[0].id,
-    url: staticTemplateData[0].url,
+    id: staticTemplateData.id,
+    url: staticTemplateData.url,
   });
   const [userPreferenceData, setUserPreferenceData] = useState([]);
   const [open, setOpen] = useState(false);
@@ -34,12 +34,14 @@ function ChooseTemplate() {
   const handleChooseTemplate = () => {
     // router.push(selectedTemplate);
     const updatedData = {
-      id: userPreferenceData[0].id,
-      userId: userPreferenceData[0].userId,
-      templateId: selectedTemplate.id,
-      rsvpEnabled: userPreferenceData[0].rsvpEnabled,
-      budgetPlanningEnabled: userPreferenceData[0].budgetPlanningEnabled,
-      guestListEnabled: userPreferenceData[0].guestListEnabled,
+      id: userPreferenceData.id,
+      userId: userPreferenceData.userId,
+      templateId: selectedTemplate.id
+        ? selectedTemplate.id
+        : userPreferenceData.templateId,
+      rsvpEnabled: userPreferenceData.rsvpEnabled,
+      budgetPlanningEnabled: userPreferenceData.budgetPlanningEnabled,
+      guestListEnabled: userPreferenceData.guestListEnabled,
     };
     updateUserPreference(updatedData);
     handleOpen();
@@ -61,7 +63,7 @@ function ChooseTemplate() {
 
       const selectedTemplate = response
         ? allTemplates.map((template) => {
-            if (response[0].templateId === template.id) {
+            if (response.templateId === template.id) {
               return {
                 ...template,
                 isSelected: true,
@@ -146,7 +148,10 @@ function ChooseTemplate() {
           >
             Choose Later
           </Button>
-          <Link href={selectedTemplate.url} target="_blank">
+          <Link
+            href={selectedTemplate.url ? selectedTemplate.url : "/dashboard"}
+            target="_blank"
+          >
             <Button
               style={{
                 border: theme.border.primaryBorder,

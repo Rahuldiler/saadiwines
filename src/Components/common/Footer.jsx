@@ -1,5 +1,13 @@
 import React from "react";
-import { Box, Button, Grid, Link, List, ListItem, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Grid,
+  Link,
+  List,
+  ListItem,
+  Typography,
+} from "@mui/material";
 import { FaFacebookF, FaPhone, FaPinterest } from "react-icons/fa";
 import { FiInstagram } from "react-icons/fi";
 import { HiMail } from "react-icons/hi";
@@ -9,16 +17,16 @@ import Image from "next/image";
 function Footer() {
   const socialFooter = [
     {
-      icon: <FaFacebookF size={20}/>,
-      src: "https://www.facebook.com/shaadivines/"
+      icon: <FaFacebookF size={20} />,
+      src: "https://www.facebook.com/shaadivines/",
     },
     {
       icon: <FaPinterest size={20} />,
-      src: "https://in.pinterest.com/shaadivines/"
+      src: "https://in.pinterest.com/shaadivines/",
     },
     {
       icon: <FiInstagram size={20} />,
-      src: "https://www.instagram.com/shaadi.vines/"
+      src: "https://www.instagram.com/shaadi.vines/",
     },
   ];
 
@@ -144,8 +152,7 @@ function Footer() {
             sm={12}
             md={3}
             lg={2}
-            ml={20}
-            sx={{ mt: { lg: 0, xs: "40px" } }}
+            sx={{ mt: { lg: 0, xs: "40px" }, ml: { lg: 20, xs: "0px" } }}
           >
             <Typography variant="h6" sx={{ fontWeight: 300, fontSize: "26px" }}>
               Information
@@ -168,8 +175,7 @@ function Footer() {
             sm={12}
             md={3}
             lg={3}
-            ml={18.5}
-            sx={{ mt: { lg: 0, xs: "40px" }, pr: 6 }}
+            sx={{ mt: { lg: 0, xs: "40px" }, pr: 6, ml: { lg: 20, xs: "0px" } }}
           >
             <Typography variant="h6" sx={{ fontWeight: 300, fontSize: "26px" }}>
               Contact

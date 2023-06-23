@@ -87,6 +87,111 @@ p {
   width: 300px !important;
 }
 
+[contenteditable] {
+  outline: 0px solid transparent;
+}
+.MuiDataGrid-root .MuiDataGrid-cell:focus-within {
+  outline: none !important;
+}
+
+.elementor-item-active::after {
+  bottom: 0;
+  content: "";
+  background-color: #00000021;
+  height: 3px;
+  width: 100%;
+  left: 0;
+  z-index: 2;
+  position: absolute;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.slider-title {
+  -webkit-text-stroke-color: #80a0c2;
+  -webkit-text-stroke-width: 1px;
+}
+
+.Gallery {
+  left: calc(
+    (
+        100% / var(--columns) -
+          (var(--hgap) * (var(--columns) - 1) / var(--columns))
+      ) * var(--column) + (var(--hgap) * var(--column))
+  );
+  position: absolute;
+  width: calc(
+    100% / var(--columns) -
+      (var(--hgap) * (var(--columns) - 1) / var(--columns))
+  );
+  top: calc(var(--percent-height) + (var(--items-in-column) * var(--vgap)));
+}
+
+/* loader */
+
+.lds-heart {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+  transform: rotate(45deg);
+  transform-origin: 40px 40px;
+}
+.lds-heart div {
+  top: 32px;
+  left: 32px;
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  background: #f41953;
+  animation: lds-heart 1.2s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.lds-heart div:after,
+.lds-heart div:before {
+  content: " ";
+  position: absolute;
+  display: block;
+  width: 32px;
+  height: 32px;
+  background: #f41953;
+}
+.lds-heart div:before {
+  left: -24px;
+  border-radius: 50% 0 0 50%;
+}
+.lds-heart div:after {
+  top: -24px;
+  border-radius: 50% 50% 0 0;
+}
+.loading-text {
+  animation: lds-heart 1.2s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+@keyframes lds-heart {
+  0% {
+    transform: scale(0.95);
+  }
+  5% {
+    transform: scale(1.1);
+  }
+  39% {
+    transform: scale(0.85);
+  }
+  45% {
+    transform: scale(1);
+  }
+  60% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(0.9);
+  }
+}
+
 @media only screen and (max-width: 600px) {
   .videoResponsiveService {
     width: 100%;
@@ -107,47 +212,9 @@ p {
   .bottomPaper {
     bottom: -10px !important;
   }
-}
 
-
-[contenteditable] {
-  outline: 0px solid transparent;
-}
-.MuiDataGrid-root .MuiDataGrid-cell:focus-within {
-  outline: none !important;
-}
-
-
-
-.elementor-item-active::after {
-  bottom: 0;
-  content: "";
-  background-color: #00000021;
-  height: 3px;
-  width: 100%;
-  left: 0;
-  z-index: 2;
-  position: absolute;
-}
-
-
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-
-
-.slider-title {
-  -webkit-text-stroke-color: #80A0C2;
-  -webkit-text-stroke-width: 1PX;
-}
-
-.Gallery {
-  left: calc((100% / var(--columns) - (var(--hgap) * (var(--columns) - 1) / var(--columns))) * var(--column) + (var(--hgap) * var(--column)));
-  position: absolute;
-  width: calc(100% / var(--columns) - (var(--hgap) * (var(--columns) - 1) / var(--columns)));
-  top: calc(var(--percent-height) + (var(--items-in-column) * var(--vgap)));
+  .header-logo {
+    width: 200px !important;
+    margin-right: 0 !important;
+  }
 }
