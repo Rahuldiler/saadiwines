@@ -16,14 +16,16 @@ function YourTemplate({ userPreferenceData }) {
       templateImage: "/assets/placeholder.png",
       url: "/template/1",
       isSelected: true,
+      colors: ['#F21F3C', '#FA3991', '#BC8129']
     },
   ];
-
   const [selectedTemplate, setSelectedTemplate] = useState();
+  const [themeColor, setThemeColor] = useState("9CAB8D")
 
   const handleViewTemplate = async () => {
     const response = await getTemplateKey();
-    router.push(`/template/${response.userIdKey.replace("/", "%2F")}`);
+    // router.push(`/template/${response.userIdKey.replace("/", "%2F")}`);
+    router.push(`/template/1?color=${themeColor}`);
   };
 
   useEffect(() => {
@@ -76,6 +78,21 @@ function YourTemplate({ userPreferenceData }) {
                       }}
                     >
                       {templateData.templateName}
+                    </span>
+                  </Typography>
+                  <Typography variant="body1" sx={{ mt: 2, display: "flex" }}>
+                    Colors
+                    <span
+                      style={{
+                        color: theme.palette.primary.main,
+                        fontWeight: 500,
+                        paddingLeft: "10px",
+                        display: 'flex',
+                        alignItems: 'center',
+                      }}
+
+                    >
+                      {['F21F3C', 'FA3991', 'BC8129'].map(item => <div style={{ height: "30px", width: '30px', borderRadius: "50%", background: `#${item}`, margin: "0 3px", cursor: 'pointer', border: themeColor === item ? '2px solid #000' : 'none', }} onClick={() => setThemeColor(item)}></div>)}
                     </span>
                   </Typography>
                 </Grid>

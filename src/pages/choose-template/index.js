@@ -17,16 +17,16 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { COLORS } from "@/Components/utils/ConstantTheme";
 import { staticTemplateData } from "@/constants/template";
+import useAppContext from "@/hooks/useAppContext";
 import { set } from "date-fns";
 
 function ChooseTemplate() {
   const router = useRouter();
   const theme = useTheme();
+  const { selectedTemplate,
+    setSelectedTemplate } = useAppContext()
   const [allTemplates, setAllTemplates] = useState(staticTemplateData);
-  const [selectedTemplate, setSelectedTemplate] = useState({
-    id: staticTemplateData[0].id,
-    url: staticTemplateData[0].url,
-  });
+
   const [userPreferenceData, setUserPreferenceData] = useState([]);
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -59,39 +59,46 @@ function ChooseTemplate() {
       const response = await getUserPreference();
       setUserPreferenceData(response);
 
+      console.info('----------------------------');
+      console.info('response =>', response);
+      console.info('----------------------------');
       const selectedTemplate = response
-        ? allTemplates.map((template) => {
-            if (response[0].templateId === template.id) {
-              return {
-                ...template,
-                isSelected: true,
-              };
-            } else {
-              return {
-                ...template,
-                isSelected: false,
-              };
-            }
-          })
+        ? allTemplates?.map((template) => {
+          if (response?.templateId === template.id) {
+            return {
+              ...template,
+              isSelected: true,
+            };
+          } else {
+            return {
+              ...template,
+              isSelected: false,
+            };
+          }
+        })
         : allTemplates.map((template) => {
-            if (template.id === 1) {
-              return {
-                ...template,
-                isSelected: true,
-              };
-            } else {
-              return {
-                ...template,
-                isSelected: false,
-              };
-            }
-          });
+          if (template.id === 1) {
+            return {
+              ...template,
+              isSelected: true,
+            };
+          } else {
+            return {
+              ...template,
+              isSelected: false,
+            };
+          }
+        });
 
       setAllTemplates(selectedTemplate);
     }
 
     fetchData();
   }, []);
+
+  console.info('--------------------')
+  console.info('selectedTemplate.url', selectedTemplate?.id)
+  console.info('--------------------')
 
   return (
     <Box sx={{ position: "relative" }}>
@@ -146,7 +153,7 @@ function ChooseTemplate() {
           >
             Choose Later
           </Button>
-          <Link href={selectedTemplate.url} target="_blank">
+          <Link href={`${selectedTemplate?.url}?id=${selectedTemplate?.id}&color=${selectedTemplate?.color}`} target="_blank">
             <Button
               style={{
                 border: theme.border.primaryBorder,
