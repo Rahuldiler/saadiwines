@@ -65,6 +65,7 @@ export default function PlanningTabs() {
               selectedRow={selectedRow}
               setSelectedRow={setSelectedRow}
               loading={loading}
+              setTrackChanges={setTrackChanges}
             />
           </Grid>
           <Grid item xs={1} sm={4} md={6}>
@@ -86,6 +87,8 @@ export default function PlanningTabs() {
               <SubCategory
                 subCategory={categories[selectedRow.rowIndex]}
                 setTrackChanges={setTrackChanges}
+                setSelectedRow={setSelectedRow}
+                selectedRow={selectedRow}
               />
             )}
           </Grid>
@@ -94,7 +97,7 @@ export default function PlanningTabs() {
     },
     {
       label: "Payments",
-      component: <Payments data={categories} loading={loading} />,
+      component: <Payments data={categories} loading={loading} setTrackChanges={setTrackChanges}/>,
     },
   ];
   const handleTabChange = (event, newValue) => {

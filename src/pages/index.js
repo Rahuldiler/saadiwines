@@ -12,6 +12,7 @@ import About from "@/Components/home/About";
 import Feedbacks from "@/Components/home/Feedbacks";
 import Footer from "@/Components/common/Footer";
 import BottomBar from "@/Components/common/BottomBar";
+import Webcast from "@/Components/home/Webcast";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -46,6 +47,7 @@ export default function Home() {
         <VideoInvitation />
         <Budget />
         <GuestList />
+        <Webcast />
         <Feedbacks />
         <ContactUs />
         <Footer />

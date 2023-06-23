@@ -44,7 +44,7 @@ export default class HTTPClientHandler {
     delete = async (options) => {
         let headers = {...options.headers, ...this.headers};
         headers = options.isSecured ? {...headers, Authorization: `Bearer ${this.token}`} : headers;
-        return await axios.post(options.url,
+        return await axios.delete(options.url,
             {
                 params: options.params,
                 headers

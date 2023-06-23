@@ -10,6 +10,14 @@ const addMilestone = async (faqData) => {
   });
 };
 
+const updateMilestone = async (faqData) => {
+  await http.put({
+    url: "/milestone",
+    payload: faqData,
+    isSecured: true,
+  });
+};
+
 const getMilestone = async () => {
   const response = await http.get({
     url: "/milestone/me",
@@ -18,4 +26,4 @@ const getMilestone = async () => {
   return response.data;
 };
 
-export { addMilestone, getMilestone };
+export { addMilestone, updateMilestone, getMilestone };

@@ -51,10 +51,10 @@ function VideoInviTemplate() {
         if (entry.target.id == "myvideo") {
           if (entry.isIntersecting) {
             entry.target.play();
-            entry.target.muted = false;
+            // entry.target.muted = false;
           } else {
             entry.target.pause();
-            entry.target.muted = true;
+            // entry.target.muted = true;
           }
         }
       });

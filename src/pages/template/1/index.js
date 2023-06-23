@@ -12,11 +12,44 @@ import Cards from "@/Components/template-components/1/Cards";
 import { useEffect } from "react";
 import { templateInfoData } from "@/constants/templateInfo";
 import Steps from "@/Components/template-components/1/steps";
+import { useRouter } from "next/router";
+import { staticTemplateData } from "@/constants/template";
 
-function Template1({ formData }) {
+function Template1({ formData, color }) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [imageIndex, setImageIndex] = useState();
   const [isOpen, setIsOpen] = useState(false);
+  const router = useRouter();
+  const [id, setId] = useState(0)
+  const [selectTemplateData, setSelectTemplateData] = useState(null)
+  const [themeColor, setThemeColor] = useState(color);
+  const [textColor, setTextColor] = useState("#000");
+  const [textBGColor, setTextBGColor] = useState("#fff");
+
+  useEffect(() => {
+    staticTemplateData?.map(item => {
+
+      if (item.id == router?.query?.id) {
+        setSelectTemplateData(item)
+        setThemeColor(item.theme.bgColor)
+        setTextColor(item.theme.textColor)
+        setTextBGColor(item.theme.textBgColor)
+      }
+    })
+  }, [router.query])
+  console.info('----------------------------');
+  console.info('selectTemplateData =>', selectTemplateData);
+  console.info('----------------------------');
+
+
+  useEffect(() => {
+    if (router?.query?.color) {
+      setThemeColor(`#${router?.query?.color}`);
+    }
+    if (router?.query?.color) {
+      setId(Number(router?.query?.id) - 1)
+    }
+  }, [router.query]);
 
   const openLightbox = (img) => {
     setIsOpen(true);
@@ -203,19 +236,18 @@ function Template1({ formData }) {
   const [rsvp, setRsvp] = useState(true);
 
   const [templateData, setTemplateData] = useState();
+
   useEffect(() => {
     formData ? setTemplateData(formData) : setTemplateData(templateInfoData);
   }, [formData]);
-  console.log("templateData", templateData);
   return (
     <div className="lg:min-w-[1280px] ">
       <div className="h-[900px] relative">
         {slides.map((slide, index) => (
           <div
             key={index}
-            className={`absolute top-0 bg-black left-0 w-full h-full transition-opacity duration-500 ${
-              index === currentSlide ? "opacity-100" : "opacity-0"
-            }`}
+            className={`absolute top-0 bg-black left-0 w-full h-full transition-opacity duration-500 ${index === currentSlide ? "opacity-100" : "opacity-0"
+              }`}
           >
             <div className="absolute top-0 left-0 bg-black w-full h-full opacity-30">
               {" "}
@@ -227,9 +259,8 @@ function Template1({ formData }) {
             />
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 p-4 text-white  w-max ">
               <div
-                className={`!font-Alex text-center text-[50px] w-56 lg:w-auto lg:text-[120px] ${
-                  currentSlide ? "text-[120px]" : ""
-                } transition-all duration-500`}
+                className={`!font-Alex text-center text-[50px] w-56 lg:w-auto lg:text-[120px] ${currentSlide ? "text-[120px]" : ""
+                  } transition-all duration-500`}
               >
                 {templateData?.weddingInfo?.groom.name.split(" ")[0]} &{" "}
                 {templateData?.weddingInfo?.bride.name.split(" ")[0]}
@@ -264,15 +295,25 @@ function Template1({ formData }) {
         text="MISSING DAYS TO"
         img="/images/icon-02.png"
         propName="clock"
+        themeColor={themeColor}
+        weddingDayURL={selectTemplateData?.weddingDayURL}
+        waterColorIMG={selectTemplateData?.waterColorIMG}
+        swiperSlide1={selectTemplateData?.swiperSlide1}
+        swiperSlide2={selectTemplateData?.swiperSlide2}
+        swiperSlide3={selectTemplateData?.swiperSlide3}
+        swiperSlide4={selectTemplateData?.swiperSlide4}
+        swiperSlide5={selectTemplateData?.swiperSlide5}
+        swiperSlide6={selectTemplateData?.swiperSlide6}
       />
 
       {templateData && (
         <div
           className={`lg:p-24 py-28 p-4 lg:flex justify-between  `}
-          style={{ backgroundImage: "url('/images/c-paral-02.jpg')" }}
+          style={{ backgroundImage: selectTemplateData?.paral02 }}
         >
           <CoupleInfo
-            bgImage="/images/bg-watercolor-02.jpg"
+            textColor={textColor}
+            bgImage={selectTemplateData?.waterColor02}
             name={templateData?.weddingInfo?.groom.name}
             gender="THE GROOM"
             father={templateData?.weddingInfo?.groom.fatherName}
@@ -280,11 +321,12 @@ function Template1({ formData }) {
             grandfather={templateData?.weddingInfo?.groom.grandFatherName}
             grandmother={templateData?.weddingInfo?.groom.grandMotherName}
             infotext1={templateData?.weddingInfo?.groom.description}
-            // infotext2=" On this special day, I want to express my gratitude to my partner - my rock, my confidant, my love. Christin, you bring out the best in me, and I'm honored to call you my partner for life. I promise to love you always."
+          // infotext2=" On this special day, I want to express my gratitude to my partner - my rock, my confidant, my love. Christin, you bring out the best in me, and I'm honored to call you my partner for life. I promise to love you always."
           />
 
           <CoupleInfo
-            bgImage="/images/bg-watercolor.jpg"
+            textColor={textColor}
+            bgImage={selectTemplateData?.waterColor}
             name={templateData && templateData?.weddingInfo?.bride.name}
             gender="THE BRIDE"
             father={templateData && templateData?.weddingInfo?.bride.fatherName}
@@ -298,7 +340,7 @@ function Template1({ formData }) {
             infotext1={
               templateData && templateData?.weddingInfo?.bride.description
             }
-            // infotext2=" Today, I feel like I'm living in a fairytale - marrying the love of my life and surrounded by all of our family and friends. Every detail of this wedding has been a labor of love, as the carefully selected flowers."
+          // infotext2=" Today, I feel like I'm living in a fairytale - marrying the love of my life and surrounded by all of our family and friends. Every detail of this wedding has been a labor of love, as the carefully selected flowers."
           />
         </div>
       )}
@@ -306,24 +348,28 @@ function Template1({ formData }) {
       {templateData?.milestone?.map((milestone, index) => {
         return (
           <Double
-            img="/images/double1.jpg"
+            waterColor={selectTemplateData?.waterColor}
+            key={milestone.id}
+            img={selectTemplateData?.double1}
             title={milestone.title}
             subtitle="11:30 am In The Square"
             infotext={milestone.description}
             imgPostion={index % 2 == 0 ? "left" : ""}
             hoverTitle="St Paul Park"
             hoverText="Today, we celebrate the love and commitment of this wonderful couple."
+            themeColor={themeColor}
+            textBGColor={textBGColor}
           />
         );
       })}
       <div>
-        <p className="!font-Alex !text-[40px] lg:text-[100px] text-center mt-16">
+        <p className="!font-Alex !text-[40px] lg:text-[100px] text-center mt-16" style={{ color: textColor }}>
           Itinerary
         </p>
         {/* <p className="text-center mt-1 mb-10">WEDDING</p> */}
         <div className="grid lg:grid-cols-2  lg:px-20 py-14">
           <div className="px-8">
-            <img src="/images/double2.jpg" alt="" className="" />
+            <img src={selectTemplateData?.double2} alt="" className="" />
             {/* <p className="!font-Alex !text-[50px] text-center mt-5">
               Wedding Menu
             </p>
@@ -336,13 +382,15 @@ function Template1({ formData }) {
           </div>
           <div className="px-8 mt-16 lg:mt-auto">
             {templateData?.itinerary?.map((steps, index) => (
-              <div key={index} className={``}>
+              <div key={steps.id} className={``}>
                 <Steps
                   step={steps.id}
                   fctnName={steps.functionName}
                   location={steps.mapsLocation}
                   dateTime={moment(steps.dateTime).format("LLLL")}
                   fctnInfo={steps.details}
+                  themeColor={themeColor}
+                  textColor={textColor}
                 />
               </div>
             ))}
@@ -371,8 +419,8 @@ function Template1({ formData }) {
         images={images}
       />
 
-      <div style={{ backgroundImage: "url('/images/bg-watercolor-02.jpg')" }}>
-        <p className="!font-Alex !text-[40px] lg:!text-[100px] text-center mt-16 lg:mt-0 pt-16 ">
+      <div style={{ backgroundImage: selectTemplateData?.waterColor02, backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
+        <p className="!font-Alex !text-[40px] lg:!text-[100px] text-center mt-16 lg:mt-0 pt-16 " style={{ color: textColor }}>
           Important Family Members
         </p>
         <div
@@ -381,18 +429,23 @@ function Template1({ formData }) {
           {templateData?.familyMembers?.map((cards, index) => (
             <Cards
               key={index}
-              imgSrc="/images/gallery/c-gallery-10.jpg"
+              imgSrc={selectTemplateData?.gallery10}
               name={cards.name}
               relationship={cards.relation}
+              themeColor={themeColor}
+              textBGColor={textBGColor}
             />
           ))}
         </div>
       </div>
 
-      <div className="bg-[#9CAB8D] text-white relative">
+      <div
+        style={{ backgroundColor: themeColor, color: textBGColor }}
+        className={`bg-[${themeColor}] relative`}
+      >
         <div
           className="absolute top-0 left-0  opacity-100 mix-blend-multiply  w-[100%] h-[100%] bg-cover bg-no-repeat bg-[center_top]"
-          style={{ backgroundImage: "url('/images/bg-watercolor.jpg')" }}
+          style={{ backgroundImage: selectTemplateData?.waterColor, backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}
         />
         <div className="lg:px-36 px-4">
           <div className="py-20 text-center">
@@ -405,8 +458,8 @@ function Template1({ formData }) {
         </div>
       </div>
       <div></div>
-      <div style={{ backgroundImage: "url('/images/bg-watercolor-02.jpg')" }}>
-        <p className="!font-Alex !text-[40px] lg:!text-[100px] text-center mt-16 lg:mt-0 pt-16 ">
+      <div style={{ backgroundImage: selectTemplateData?.waterColor02, backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
+        <p className="!font-Alex !text-[40px] lg:!text-[100px] text-center mt-16 lg:mt-0 pt-16 " style={{ color: textColor }}>
           Points of contacts
         </p>
         <div
@@ -414,10 +467,13 @@ function Template1({ formData }) {
         >
           {templateData?.pocs?.map((cards, index) => (
             <Cards
+              key={index}
               imgSrc={cards.image}
               name={cards.firstName}
               relationship={cards.relationship}
               contactNo={`+91 ${cards.contactNumber}`}
+              themeColor={themeColor}
+              textBGColor={textBGColor}
             />
           ))}
         </div>
@@ -426,34 +482,34 @@ function Template1({ formData }) {
       {rsvp && (
         <div
           className=" lg:py-[32rem] py-[450px] relative bg-cover "
-          style={{ backgroundImage: "url('/images/c-paral-03.jpg')" }}
+          style={{ backgroundImage: selectTemplateData?.paral03 }}
         >
           <div className="absolute top-0 left-0  opacity-50  w-[100%] h-[100%] bg-black "></div>
           <div
             className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center max-w-[650px] mx-auto px-28 lg:px-auto py-28 bg-cover z-50"
-            style={{ backgroundImage: "url('/images/bg-watercolor-02.jpg')" }}
+            style={{ backgroundImage: selectTemplateData?.waterColor02 }}
           >
-            <p>R.S.V.P</p>
-            <p className="!font-Alex !text-[30px] lg:!text-[50px] lg:px-28 mb-12">
+            <p style={{ color: textColor }}>R.S.V.P</p>
+            <p className="!font-Alex !text-[30px] lg:!text-[50px] lg:px-28 mb-12" style={{ color: textColor }}>
               Confirmation at Marriage
             </p>
-            <ContactForm />
+            <ContactForm themeColor={themeColor} textBGColor={textBGColor} />
           </div>
         </div>
       )}
       <div
         className="text-center py-20 lg:py-14  bg-right-top bg-no-repeat bg-contain relative"
-        style={{ backgroundImage: "url('/images/bg-watercolor-02.jpg')" }}
+        style={{ backgroundImage: selectTemplateData?.waterColor02 }}
       >
         <span
           className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-50  lg:w-[240px] lg:h-[260px] bg-[length:235px_auto] bg-no-repeat"
-          style={{ backgroundImage: "url('/images/gr-leaf-03.png')" }}
+          style={{ backgroundImage: selectTemplateData?.leaf03 }}
         ></span>
-        <p className="!font-Alex !text-[30px] lg:!text-[50px] mb-3">
+        <p className="!font-Alex !text-[30px] lg:!text-[50px] mb-3" style={{ color: textColor }} >
           {templateData?.weddingInfo?.groom.name.split(" ")[0]} &
           {templateData?.weddingInfo?.bride.name.split(" ")[0]}
         </p>
-        <p className="!font-Cardo">MADE WITH LOVE IN NEW YORK</p>
+        <p className="!font-Cardo" style={{ color: textColor }}>MADE WITH LOVE IN NEW YORK</p>
       </div>
     </div>
   );

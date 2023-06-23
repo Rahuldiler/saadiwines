@@ -10,6 +10,14 @@ const addItinerary = async (ItineraryData) => {
   });
 };
 
+const updateItinerary = async (ItineraryData) => {
+  await http.put({
+    url: "/itinerary",
+    payload: ItineraryData,
+    isSecured: true,
+  });
+};
+
 const getItinerary = async () => {
   const response = await http.get({
     url: "/itinerary/me",
@@ -18,4 +26,4 @@ const getItinerary = async () => {
   return response.data;
 };
 
-export { addItinerary, getItinerary };
+export { addItinerary, updateItinerary, getItinerary };

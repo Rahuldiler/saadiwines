@@ -9,6 +9,8 @@ const TextFieldInput = ({
   name,
   id,
   autoComplete,
+  required,
+  error,
 }) => {
   return (
     <TextField
@@ -32,11 +34,12 @@ const TextFieldInput = ({
         },
       }}
       margin="normal"
-      required
+      required={required}
       fullWidth
       id={id}
       label={label}
       name={name}
+      error={error}
       autoComplete={autoComplete}
       autoFocus
       type={type}
@@ -46,7 +49,7 @@ const TextFieldInput = ({
   );
 };
 
-const MultilineTextField = ({ name, value, handleCh, label }) => {
+const MultilineTextField = ({ name, value, handleCh, label, required }) => {
   return (
     <TextField
       sx={{

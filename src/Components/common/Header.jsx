@@ -15,10 +15,12 @@ import {
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
+import { useRouter } from "next/router";
+import Image from "next/image";
 
 function Header({ handleOpen, setHandle, navItems, isHome }) {
   const [colorChange, setColorchange] = useState(false);
-
+  const router = useRouter();
   const changeNavbarColor = () => {
     if (window.scrollY >= 80) {
       setColorchange(true);
@@ -45,7 +47,7 @@ function Header({ handleOpen, setHandle, navItems, isHome }) {
       <Divider />
       <List>
         {navItems.map((item, index) => (
-          <Box key={item?.id}>
+          <Box key={index}>
             {item && (
               <ListItem disablePadding>
                 <Link
@@ -66,6 +68,11 @@ function Header({ handleOpen, setHandle, navItems, isHome }) {
       </List>
     </Box>
   );
+
+  const handleLogout = () => {
+    localStorage.removeItem("jwtToken");
+    router.push("/");
+  };
 
   const handleOpenDialog = () => {
     handleOpen();
@@ -95,6 +102,9 @@ function Header({ handleOpen, setHandle, navItems, isHome }) {
         <Toolbar
           sx={{
             color: colorChange ? "#000" : "#fff",
+            display: { xs: "flex" },
+            justifyContent: { xs: "space-between" },
+            alignItems: { xs: "center" },
           }}
         >
           <IconButton
@@ -106,27 +116,45 @@ function Header({ handleOpen, setHandle, navItems, isHome }) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography
-            variant="h6"
-            component="div"
-            className="vibeFont"
-            sx={{
-              flexGrow: 1,
-              // display: { xs: "none", sm: "block" },
-              fontSize: "36px",
-              fontWeight: 700,
-              mt: "5px",
-            }}
-          >
-            <img
-              src="/assets/Logo.svg"
-              alt="Logo"
-              style={{ height: "40px", marginRight: "10px" }}
-            />
-          </Typography>
+
+          <Image
+            width={1000}
+            height={1000}
+            src="/assets/Logo.svg"
+            alt="Logo"
+            className="header-logo"
+            style={{ height: "40px", width: "auto", marginRight: "10px" }}
+          />
+          <Box sx={{ display: { lg: "none", sm: "block" } }}>
+            {isHome ? (
+              <Button
+                onClick={handleOpenDialog}
+                style={{
+                  backgroundColor: "#E21A9E",
+                  color: "#fff",
+                  padding: "7px 16px",
+                }}
+              >
+                Login
+              </Button>
+            ) : (
+              <Button
+                onClick={handleLogout}
+                style={{
+                  color: "#E21A9E",
+                  // color: "#fff",
+                  fontWeight: 500,
+
+                  padding: "7px 16px",
+                }}
+              >
+                Logout
+              </Button>
+            )}
+          </Box>
           <Box sx={{ display: { xs: "none", sm: "flex" } }}>
             {navItems.map((item, index) => (
-              <Box key={item?.id}>
+              <Box key={index}>
                 {item && (
                   <Link
                     href={item.url}
@@ -143,35 +171,34 @@ function Header({ handleOpen, setHandle, navItems, isHome }) {
                 )}
               </Box>
             ))}
+            {isHome ? (
+              <Button
+                onClick={handleOpenDialog}
+                style={{
+                  backgroundColor: "#E21A9E",
+                  color: "#fff",
+                  marginLeft: "16px",
+                  padding: "7px 16px",
+                }}
+              >
+                Login
+              </Button>
+            ) : (
+              <Button
+                onClick={handleLogout}
+                style={{
+                  color: "#E21A9E",
+                  // color: "#fff",
+                  fontWeight: 500,
+
+                  marginLeft: "16px",
+                  padding: "7px 16px",
+                }}
+              >
+                Logout
+              </Button>
+            )}
           </Box>
-
-          {isHome ? (
-            <Button
-              onClick={handleOpenDialog}
-              style={{
-                backgroundColor: "#E21A9E",
-                color: "#fff",
-                marginLeft: "16px",
-                padding: "7px 16px",
-              }}
-            >
-              Login
-            </Button>
-          ) : (
-            <Button
-              // onClick={handleOpenDialog}
-              style={{
-                color: "#E21A9E",
-                // color: "#fff",
-                fontWeight: 500,
-
-                marginLeft: "16px",
-                padding: "7px 16px",
-              }}
-            >
-              Logout
-            </Button>
-          )}
         </Toolbar>
         {mobileOpen && (
           <Box

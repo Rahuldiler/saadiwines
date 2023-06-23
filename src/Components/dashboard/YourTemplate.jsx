@@ -16,22 +16,23 @@ function YourTemplate({ userPreferenceData }) {
       templateImage: "/assets/placeholder.png",
       url: "/template/1",
       isSelected: true,
+      colors: ["#F21F3C", "#FA3991", "#BC8129"],
     },
   ];
-
   const [selectedTemplate, setSelectedTemplate] = useState();
+  const [themeColor, setThemeColor] = useState("9CAB8D");
 
   const handleViewTemplate = async () => {
     const response = await getTemplateKey();
-    router.push(`/template/${response.userIdKey.replace("/", "%2F")}`);
+    // router.push(`/template/${response.userIdKey.replace("/", "%2F")}`);
+    router.push(`/template/1?color=${themeColor}`);
   };
 
   useEffect(() => {
-    const id = userPreferenceData[0]?.templateId;
+    const id = userPreferenceData.templateId;
     const filterTemplate = staticTemplateData.filter((item) => item.id === id);
     setSelectedTemplate(filterTemplate);
   }, [userPreferenceData]);
-  console.log(userPreferenceData, selectedTemplate);
   return (
     <Box sx={{ mt: 14 }}>
       <Box sx={{ px: { lg: "100px", xs: "20px" } }}>
@@ -43,42 +44,55 @@ function YourTemplate({ userPreferenceData }) {
             {selectedTemplate?.map((templateData) => {
               return (
                 <Grid item lg={3} key={templateData.id}>
-                  <Box
-                    sx={{
-                      boxShadow: theme.boxShadow.pinkShadow,
-                      "&:hover": {
-                        outline: theme.border.primaryBorder,
-                        borderRadius: "7px",
-                      },
-                    }}
-                  >
-                    <Image
-                      src={templateData.templateImage}
-                      alt="..."
-                      width={800}
-                      height={900}
-                      onClick={() => handleViewTemplate(templateData.id)}
-                      style={{
-                        width: "512px",
-                        minHeight: "560px",
-                        objectFit: "cover",
-                        borderRadius: "7px",
-                        cursor: "pointer",
-                      }}
-                    />
-                  </Box>
-                  <Typography variant="body1" sx={{ mt: 2, display: "flex" }}>
-                    Template
-                    <span
-                      style={{
-                        color: theme.palette.primary.main,
-                        fontWeight: 500,
-                        paddingLeft: "10px",
-                      }}
-                    >
-                      {templateData.templateName}
-                    </span>
-                  </Typography>
+                  {userPreferenceData.shouldShowTemplate ? (
+                    <Box>
+                      <Box
+                        sx={{
+                          boxShadow: theme.boxShadow.pinkShadow,
+                          "&:hover": {
+                            outline: theme.border.primaryBorder,
+                            borderRadius: "7px",
+                          },
+                        }}
+                      >
+                        <Image
+                          src={templateData.templateImage}
+                          alt="..."
+                          width={800}
+                          height={900}
+                          onClick={() => handleViewTemplate(templateData.id)}
+                          style={{
+                            width: "512px",
+                            minHeight: "560px",
+                            objectFit: "cover",
+                            borderRadius: "7px",
+                            cursor: "pointer",
+                          }}
+                        />
+                      </Box>
+                      <Typography
+                        variant="body1"
+                        sx={{ mt: 2, display: "flex" }}
+                      >
+                        Template
+                        <span
+                          style={{
+                            color: theme.palette.primary.main,
+                            fontWeight: 500,
+                            paddingLeft: "10px",
+                          }}
+                        >
+                          {templateData.templateName}
+                        </span>
+                      </Typography>
+                    </Box>
+                  ) : (
+                    <Box>
+                      <Typography sx={{ color: "#00000060" }}>
+                        Your template will be visible here, once ready.
+                      </Typography>
+                    </Box>
+                  )}
                 </Grid>
               );
             })}
