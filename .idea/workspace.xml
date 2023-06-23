@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="369879d0-c866-4b70-8022-d857b0c9b9fe" name="Changes" comment="fixed errors">
+    <list default="true" id="369879d0-c866-4b70-8022-d857b0c9b9fe" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Budget-Planner/table-components/CustomCell.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Budget-Planner/table-components/CustomCell.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,6 +54,7 @@
     <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="javascript.nodejs.core.library.configured.version" value="18.13.0" />
     <property name="javascript.nodejs.core.library.typings.version" value="18.13.0" />
@@ -104,7 +105,7 @@
       <workItem from="1686738620695" duration="103000" />
       <workItem from="1686820135641" duration="1058000" />
       <workItem from="1686845697768" duration="3652000" />
-      <workItem from="1687525164762" duration="770000" />
+      <workItem from="1687525164762" duration="1117000" />
     </task>
     <task id="LOCAL-00001" summary="Removed react-lightbox library">
       <created>1685289296459</created>
@@ -190,7 +191,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686820361379</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="fixed errors">
+      <created>1687526096052</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1687526096052</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -270,8 +278,8 @@
     <MESSAGE value="Merged code" />
     <MESSAGE value="config for CORS" />
     <MESSAGE value="handling for cors" />
-    <MESSAGE value="fixed errors" />
     <MESSAGE value="Added favicon.png" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added favicon.png" />
+    <MESSAGE value="fixed errors" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed errors" />
   </component>
 </project>
