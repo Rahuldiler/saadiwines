@@ -153,8 +153,8 @@ function Template3() {
         { id: 5, image: "/assets/templete/3/contact/pic3.jpg",  name:"rajat", relationship:"brother" },
       ];
       const coupleinfo = [
-        { id: 1, groomFather: "A",  groomMother:"B", groomGrandFather:"C", groomGrandMother:"D" },
-        { id: 2, brideFather: "w",  brideMother:"X", brideGrandFather:"Y", brideGrandMother:"Z" },
+        { id: 1, groomFather: "A",  groomMother:"B", groomGrandFather:"C", groomGrandMother:"D", descriptionGroom:"smallcase Technologies builds platforms & investment products to invest better in Indian equities. A smallcase is a basket of stocks/ETFs curated to reflect an idea" },
+        { id: 2, brideFather: "w",  brideMother:"X", brideGrandFather:"Y", brideGrandMother:"Z", descriptionBride:"Investing in Stocks/ETFs (Exchange Traded Funds) are subject to market risks. Read all the related documents before investing. Investors should consider all risk factors and consult their financial advisor before investing" },
         { id: 3, brideName: "Tessa Craw ",  groomName:"Chris Brown" },
       ];
 
@@ -165,13 +165,9 @@ return(
             <div className="flex justify-center relative md:col-span-2">
               <div className="px-6 md:px-0 font-lora">
                 <img src="/assets/templete/3/coupleData/gallery-02-1.jpg" alt="" className=" md:w-[22rem] w-[10rem] h-[10rem]  md:h-[27rem] object-cover rounded-full md:rounded-b-full mt-28 mx-auto" />
-                  <p className='text-center mt-10'> d/o Mr. {coupleinfo[0].groomFather} and Mrs. {coupleinfo[0].groomMother}</p>
-                  <p className='text-center'> g/d Mr. {coupleinfo[0].groomGrandFather} and Mrs. {coupleinfo[0].groomGrandMother}</p>
               </div>
               <div className="px-6">
               <img src="/assets/templete/3/coupleData/gallery-01-1.jpg" alt="" className="object-cover  w-[10rem] h-[10rem] rounded-t-full mt-28 md:hidden"  />
-                <p className='text-center mt-10 ml-5 md:hidden'> s/o Mr. {coupleinfo[1].brideFather} and Mrs. {coupleinfo[1].brideMother}</p>
-                <p className='text-center ml-5 md:hidden'> g/s Mr. {coupleinfo[1].brideGrandFather} and Mrs. {coupleinfo[1].brideGrandMother}</p>
               </div>
                 <img src="/assets/templete/3/frame-09.png" alt="" className="w-56 absolute -top-[75px]  left-0 z-30 "/>
             </div>
@@ -181,18 +177,31 @@ return(
                     <p>Forever Starts Today</p>
                 </div>
                 <div className="text-center md:text-[100px]  text-6xl  md:leading-[6rem] my-9 font-lora"><span className="block">{coupleinfo[2].brideName}</span> <span className="block">&</span> <span className="block">{coupleinfo[2].groomName}</span></div>
-                <div className="text-center text-[20px] font-Poppins ">2023-12-01</div>
+                <div className="text-center text-[50px] font-Poppins ">2023-12-01</div>
                 <img src="/assets/templete/3/frame-05.png" alt="" className="w-16 absolute -bottom-[90px] left-0 z-30"/>
             </div>
             <div className="md:flex justify-center relative col-span-2 hidden ">
               <div>
                 <img src="/assets/templete/3/coupleData/gallery-01-1.jpg" alt="" className="object-cover w-[22rem]  h-[27rem] rounded-t-full mt-28"  />
-                <p className='text-center mt-10'> s/o Mr. {coupleinfo[1].brideFather} and Mrs. {coupleinfo[1].brideMother}</p>
-                <p className='text-center'> g/s Mr. {coupleinfo[1].brideGrandFather} and Mrs. {coupleinfo[1].brideGrandMother}</p>
               </div>
                 <img src="/assets/templete/3/frame-06.png" alt="" className="w-20 absolute top-0 left-[53px] z-30"/>
                 <img src="/assets/templete/3/frame-08.png" alt="" className="w-64 absolute -bottom-[90px] -right-[120px] z-30"/>
             </div>
+        </div>
+
+        <div className="md:grid md:grid-cols-2 text-center font-Poppins  mx-10">
+          <div>
+            <h2 className="text-[50px] ">{coupleinfo[2].brideName}</h2>
+            <p className='mt-5 !text-[30px]'> s/o Mr. {coupleinfo[1].brideFather} and Mrs. {coupleinfo[1].brideMother}</p>
+            <p className='mt-1 !text-[30px]'> g/s Mr. {coupleinfo[1].brideGrandFather} and Mrs. {coupleinfo[1].brideGrandMother}</p>
+            <p className="md:px-20 mt-5 ">{coupleinfo[1].descriptionBride}</p>
+          </div>
+          <div className="mt-10 md:mt-0">
+            <h2 className=" text-[50px] ">{coupleinfo[2].groomName}</h2>
+              <p className=' mt-5 !text-[30px]'> d/o Mr. {coupleinfo[0].groomFather} and Mrs. {coupleinfo[0].groomMother}</p>
+              <p className=' mt-1 !text-[30px]'> g/d Mr. {coupleinfo[0].groomGrandFather} and Mrs. {coupleinfo[0].groomGrandMother}</p>
+              <p className="md:px-20 mt-5 ">{coupleinfo[0].descriptionGroom}</p>
+          </div>
         </div>
       
         <div className="relative ">
@@ -303,10 +312,10 @@ return(
         </div>
 
         <div className="pt-10" style={{ backgroundImage: "url('/assets/templete/3/img-grey-light.png')" }}>
-        <div className="text-center max-w-4xl mx-auto" >
+        <div className="text-center max-w-4xl mx-auto my-10 px-10 md:my-0 md:px-0" >
             <p  className="!font-Poppins !text-[14px]">YOU'RE INVITED TO SHARE IN OUR JOY & HAPPINESS</p>
             <p className="!font-Poppins md:!text-[100px] !text-[40px] py-6">Let's Celebrate True Love</p>
-            <p className="!font-Poppins !text-[16px]">Please take a moment to fill out the RSVP form below to confirm your attendance. We understand that your plans may change, so please feel free to update us if any adjustments.</p>
+            <p className="!font-Poppins !text-[16px] mb-9">Please take a moment to fill out the RSVP form below to confirm your attendance. We understand that your plans may change, so please feel free to update us if any adjustments.</p>
             <ContactFormRsvp clasNme="mt-[100px] pb-[30px] px-[20px]"/>
         </div>
 
