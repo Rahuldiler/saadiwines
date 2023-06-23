@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="369879d0-c866-4b70-8022-d857b0c9b9fe" name="Changes" comment="fixed errors">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/_document.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/_document.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,9 +35,9 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/.env.local" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/services/HTTPClientHandler.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/pages/authenticate.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/services/auth/auth.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/services/HTTPClientHandler.js" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -104,6 +104,7 @@
       <workItem from="1686738620695" duration="103000" />
       <workItem from="1686820135641" duration="1058000" />
       <workItem from="1686845697768" duration="3652000" />
+      <workItem from="1687525164762" duration="770000" />
     </task>
     <task id="LOCAL-00001" summary="Removed react-lightbox library">
       <created>1685289296459</created>
