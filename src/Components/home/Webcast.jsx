@@ -38,7 +38,7 @@ function Webcast() {
               essential details of the day, then tie everything together with
               delightful music.
             </Typography>
-            <Box sx={{ marginTop: "40px" }}>
+            {/* <Box sx={{ marginTop: "40px" }}>
               <Button
                 className="bg-[#E21A9E]"
                 sx={{
@@ -61,7 +61,7 @@ function Webcast() {
               >
                 Explore
               </Button>
-            </Box>
+            </Box> */}
           </Box>
         </Grid>
         <Grid item lg={6}>

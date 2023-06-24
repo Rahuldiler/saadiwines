@@ -100,10 +100,8 @@ function index() {
   const router = useRouter();
   const [activeStep, setActiveStep] = React.useState(0);
 
-  console.log(activeStep, "activeStep");
   const handleNext = async (values) => {
     if (activeStep === 0) {
-      console.log(values.id);
       try {
         values.id
           ? await updateWebsiteInfo(values)

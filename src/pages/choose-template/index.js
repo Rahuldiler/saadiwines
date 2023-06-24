@@ -29,19 +29,15 @@ function ChooseTemplate() {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const handleChooseTemplate = () => {
+  const handleChooseTemplate = async () => {
     // router.push(selectedTemplate);
     const updatedData = {
-      id: userPreferenceData.id,
-      userId: userPreferenceData.userId,
+      ...userPreferenceData,
       templateId: selectedTemplate.id
         ? selectedTemplate.id
         : userPreferenceData.templateId,
-      rsvpEnabled: userPreferenceData.rsvpEnabled,
-      budgetPlanningEnabled: userPreferenceData.budgetPlanningEnabled,
-      guestListEnabled: userPreferenceData.guestListEnabled,
     };
-    updateUserPreference(updatedData);
+    await updateUserPreference(updatedData);
     handleOpen();
   };
 
@@ -58,10 +54,6 @@ function ChooseTemplate() {
     async function fetchData() {
       const response = await getUserPreference();
       setUserPreferenceData(response);
-
-      console.info("----------------------------");
-      console.info("response =>", response);
-      console.info("----------------------------");
       const selectedTemplate = response
         ? allTemplates.map((template) => {
             if (response.templateId === template.id) {
@@ -95,10 +87,6 @@ function ChooseTemplate() {
 
     fetchData();
   }, []);
-
-  console.info("--------------------");
-  console.info("selectedTemplate.url", selectedTemplate?.id);
-  console.info("--------------------");
 
   return (
     <Box sx={{ position: "relative" }}>
@@ -153,10 +141,7 @@ function ChooseTemplate() {
           >
             Choose Later
           </Button>
-          <Link
-            href={`${selectedTemplate?.url}?id=${selectedTemplate?.id}&color=${selectedTemplate?.color}`}
-            target="_blank"
-          >
+          <Link href={`${selectedTemplate?.url}`} target="_blank">
             <Button
               style={{
                 border: theme.border.primaryBorder,

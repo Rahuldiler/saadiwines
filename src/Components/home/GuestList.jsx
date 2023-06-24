@@ -51,7 +51,7 @@ function GuestList() {
             segregated into different categories like family, work, friends etc.
             Use this feature to send your invitations in 1 click to all guests
           </Typography>
-          <Box sx={{ marginTop: "40px" }}>
+          {/* <Box sx={{ marginTop: "40px" }}>
             <Button
               sx={{
                 backgroundColor: "transparent",
@@ -63,7 +63,7 @@ function GuestList() {
             >
               Explore
             </Button>
-          </Box>
+          </Box> */}
         </Box>
         {/* <Box
           className="layoutMargin"

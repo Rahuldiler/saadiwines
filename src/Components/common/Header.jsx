@@ -105,6 +105,7 @@ function Header({ handleOpen, setHandle, navItems, isHome }) {
             display: { xs: "flex" },
             justifyContent: { xs: "space-between" },
             alignItems: { xs: "center" },
+            p: 2,
           }}
         >
           <IconButton
@@ -112,7 +113,7 @@ function Header({ handleOpen, setHandle, navItems, isHome }) {
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: "none" } }}
+            sx={{ display: { sm: "none" } }}
           >
             <MenuIcon />
           </IconButton>
@@ -152,7 +153,9 @@ function Header({ handleOpen, setHandle, navItems, isHome }) {
               </Button>
             )}
           </Box>
-          <Box sx={{ display: { xs: "none", sm: "flex" } }}>
+          <Box
+            sx={{ display: { xs: "none", sm: "flex" }, alignItems: "center" }}
+          >
             {navItems.map((item, index) => (
               <Box key={index}>
                 {item && (

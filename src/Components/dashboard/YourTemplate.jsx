@@ -9,23 +9,12 @@ import { staticTemplateData } from "@/constants/template";
 function YourTemplate({ userPreferenceData }) {
   const theme = useTheme();
   const router = useRouter();
-  const dummyData = [
-    {
-      id: 1,
-      templateName: "Classic",
-      templateImage: "/assets/placeholder.png",
-      url: "/template/1",
-      isSelected: true,
-      colors: ["#F21F3C", "#FA3991", "#BC8129"],
-    },
-  ];
   const [selectedTemplate, setSelectedTemplate] = useState();
   const [themeColor, setThemeColor] = useState("9CAB8D");
 
   const handleViewTemplate = async () => {
     const response = await getTemplateKey();
-    // router.push(`/template/${response.userIdKey.replace("/", "%2F")}`);
-    router.push(`/template/1?color=${themeColor}`);
+    router.push(`/template/${response.userIdKey.replace("/", "%2F")}`);
   };
 
   useEffect(() => {
