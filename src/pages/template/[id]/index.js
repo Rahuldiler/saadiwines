@@ -10,10 +10,12 @@ import { templateInfoData } from "@/constants/templateInfo";
 import { staticTemplateData } from "@/constants/template";
 import NewTemplate from "../2";
 import TemplateOne from "@/Components/all-templates/TemplateOne";
+import Loader from "@/Components/common/Loader";
 
 function Template() {
   const [formData, setFormData] = useState({});
   const [templateId, setTemplateId] = useState();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function fetchTemplate() {
@@ -31,6 +33,7 @@ function Template() {
           responseKey.userIdKey
         );
         setFormData(responseTemplateData);
+        setLoading(false);
       } catch (err) {}
     }
     fetchData();
@@ -65,7 +68,11 @@ function Template() {
   };
   return (
     <Box>
-      {templateId ? getTemplate(templateId) : <Box>No template found </Box>}
+      {loading ? (
+        <Loader message="Loading template" />
+      ) : (
+        getTemplate(templateId)
+      )}
     </Box>
   );
 }

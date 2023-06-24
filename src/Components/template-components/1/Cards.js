@@ -18,7 +18,8 @@ function Cards({
         <img src={imgSrc} alt="" className="rounded-2xl w-28 h-28 shadow-2xl" />
       </div>
       <div
-        className={`text-[${theme?.textColor}] !font-Cardo mt-2`}
+        style={{ color: theme.textColor }}
+        className={` !font-Cardo mt-2`}
         // style={{ color: theme.textColor }}
       >
         <p className="">{name}</p>

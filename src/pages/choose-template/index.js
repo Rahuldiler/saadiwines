@@ -29,19 +29,15 @@ function ChooseTemplate() {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const handleChooseTemplate = () => {
+  const handleChooseTemplate = async () => {
     // router.push(selectedTemplate);
     const updatedData = {
-      id: userPreferenceData.id,
-      userId: userPreferenceData.userId,
+      ...userPreferenceData,
       templateId: selectedTemplate.id
         ? selectedTemplate.id
         : userPreferenceData.templateId,
-      rsvpEnabled: userPreferenceData.rsvpEnabled,
-      budgetPlanningEnabled: userPreferenceData.budgetPlanningEnabled,
-      guestListEnabled: userPreferenceData.guestListEnabled,
     };
-    updateUserPreference(updatedData);
+    await updateUserPreference(updatedData);
     handleOpen();
   };
 
