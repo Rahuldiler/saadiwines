@@ -41,7 +41,6 @@ function Dashboard() {
       ) : (
         <Box>
           <Header navItems={navItems} isHome={false} />
-
           <YourTemplate userPreferenceData={userPreferenceData} />
         </Box>
       )}

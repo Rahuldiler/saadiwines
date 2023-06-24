@@ -15,10 +15,6 @@ function Template() {
   const [formData, setFormData] = useState({});
   const [templateId, setTemplateId] = useState();
 
-  const [componentTemplate, setComponentTemplate] = useState(
-    <Box>Template 2 </Box>
-  );
-
   useEffect(() => {
     async function fetchTemplate() {
       const response = await getUserPreference();
@@ -39,28 +35,6 @@ function Template() {
     }
     fetchData();
   }, [templateId]);
-
-  console.log("formData", formData, templateId);
-  console.info("--------------------");
-  // console.info('staticTemplateData[templateId]?.color', staticTemplateData[templateId]?.color )
-  console.info("--------------------");
-
-  // useEffect(() => {
-  //   switch (templateId) {
-  //     case 0:
-  //       setComponentTemplate(<Template0 formData={formData} templateId={templateId} color={staticTemplateData[templateId]?.color} />);
-  //       break;
-  //     case 1:
-  //       setComponentTemplate(<Template1 formData={formData} color={staticTemplateData[templateId]?.color} />);
-  //       break;
-  //     case 2:
-  //       setComponentTemplate(<Box>Template 2 </Box>);
-  //       break;
-  //     default:
-  //       setComponentTemplate(<Box>No template found56987252153465465 </Box>);
-  //   }
-
-  // }, [formData]);
 
   const getTemplate = (templateId) => {
     switch (templateId) {

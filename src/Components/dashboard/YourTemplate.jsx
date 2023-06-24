@@ -9,7 +9,6 @@ import { staticTemplateData } from "@/constants/template";
 function YourTemplate({ userPreferenceData }) {
   const theme = useTheme();
   const router = useRouter();
-
   const [selectedTemplate, setSelectedTemplate] = useState();
   const [themeColor, setThemeColor] = useState("9CAB8D");
 
