@@ -17,16 +17,6 @@ import TemplateOne from "@/Components/all-templates/TemplateOne";
 import { staticTemplateData } from "@/constants/template";
 
 function Template1({ formData }) {
-  // useEffect(() => {
-  //   if (router?.query?.color !== undefined) {
-  //     setThemeColor(`#${router?.query?.color}`);
-  //   }
-  // }, [router.query]);
-
-  useEffect(() => {
-    formData ? setTemplateData(formData) : setTemplateData(templateInfoData);
-  }, [formData]);
-
   return (
     <TemplateOne
       formData={formData}

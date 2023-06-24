@@ -250,7 +250,7 @@ function TemplateOne({ formData, staticTemplateData }) {
           </div>
         ))}
 
-        <div className="mt-4 ">
+        <div>
           <button
             className="px-4 py-2 text-white absolute top-1/2 left-0 transform -translate-x-0 -translate-y-1/2"
             onClick={prevSlide}
@@ -413,8 +413,11 @@ function TemplateOne({ formData, staticTemplateData }) {
       </div>
 
       <div
-        style={{ backgroundColor: staticTemplateData.theme.bgColor }}
-        className={`bg-[${staticTemplateData.theme.bgColor}] text-[${staticTemplateData?.theme.textColor}] relative`}
+        style={{
+          backgroundColor: staticTemplateData.theme.bgColor,
+          color: staticTemplateData.theme.textColor,
+        }}
+        className={`bg-[${staticTemplateData.theme.bgColor}]  relative`}
       >
         <div
           className="absolute top-0 left-0  opacity-100 mix-blend-multiply  w-[100%] h-[100%] bg-cover bg-no-repeat bg-[center_top]"

@@ -78,9 +78,10 @@ function GreenStrip({
         style={{ backgroundImage: waterColorIMG }}
       ></div>
       <div
+        style={{ color: theme.textColor }}
         className={` ${
           propName === "clock" ? "lg:w-[30%]" : "lg:w-[50%]"
-        } lg:w-[30%] text-[${theme?.textColor}] lg:flex items-center `}
+        } lg:w-[30%]  lg:flex items-center `}
       >
         <img
           src={img}
@@ -148,7 +149,8 @@ function GreenStrip({
 
       {propName === "clock" && (
         <div
-          className={`text-[${theme?.textColor}] text-[20px] lg:w-[70%] grid grid-cols-4 text-center`}
+          style={{ color: theme.textColor }}
+          className={` text-[20px] lg:w-[70%] grid grid-cols-4 text-center`}
         >
           <div>
             <p className="!font-Alex !text-[30px] lg:!text-[60px]">

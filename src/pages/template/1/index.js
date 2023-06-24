@@ -17,9 +17,6 @@ import { staticTemplateData } from "@/constants/template";
 import TemplateOne from "@/Components/all-templates/TemplateOne";
 
 function Template2({ formData }) {
-  useEffect(() => {
-    formData ? setTemplateData(formData) : setTemplateData(templateInfoData);
-  }, [formData]);
   return (
     <TemplateOne
       formData={formData}
