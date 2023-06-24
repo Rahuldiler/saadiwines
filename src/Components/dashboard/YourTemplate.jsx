@@ -34,7 +34,7 @@ function YourTemplate({ userPreferenceData }) {
             {selectedTemplate?.map((templateData) => {
               return (
                 <Grid item lg={3} key={templateData.id}>
-                  {!userPreferenceData.shouldShowTemplate ? (
+                  {userPreferenceData.shouldShowTemplate ? (
                     <Box>
                       <Box
                         sx={{
