@@ -5,12 +5,12 @@ const staticTemplateData = [
     templateName: "Classic",
     templateImage:
       "https://sv-landing-page-assets.s3.eu-north-1.amazonaws.com/Screenshot+2023-05-27+at+11.38.02+AM.png",
-    url: "/template/1",
+    url: "/template/0",
     isSelected: false,
     theme: {
-      bgColor: '9CAB8D',
-      textColor: '#000',
-      textBgColor: '#fff',
+      bgColor: "#9CAB8D",
+      textColor: "#000",
+      textBgColor: "#fff",
     },
     weddingDayURL: `url("https://wedding.nicdark.com/wedding-day/wp-content/uploads/sites/7/2023/03/gr-leaf-10.png")`,
     waterColorIMG: "url('/images/bg-watercolor-02.jpg')",
@@ -27,23 +27,22 @@ const staticTemplateData = [
     double1: "/images/double1.jpg",
     double2: "/images/double2.jpg",
     gallery10: "/images/gallery/c-gallery-10.jpg",
-    leaf03: "url('/images/gr-leaf-03.png')"
+    leaf03: "url('/images/gr-leaf-03.png')",
   },
   {
     id: 2,
-    templateId: 1,
+    templateId: 2,
     templateName: "Classic",
-    templateImage:
-      "/images/theme2-img.png",
+    templateImage: "/images/theme2-img.png",
     url: "/template/1",
     isSelected: true,
     theme: {
-      bgColor: 'c21919',
-      textColor: '#000',
-      textBgColor: '#fff',
+      bgColor: "#c21919",
+      textColor: "#fff",
+      textBgColor: "#000",
     },
     weddingDayURL: `url("https://wedding.nicdark.com/wedding-day/wp-content/uploads/sites/7/2023/03/gr-leaf-10.png")`,
-    waterColorIMG: "url('/images/bg-watercolor-02.jpg')",
+    waterColorIMG: "url('/images/bg-watercolor-02-c21919.jpg')",
     swiperSlide1: "/images/venders/avatar-02.png",
     swiperSlide2: "/images/venders/logo-white-01.png",
     swiperSlide3: "/images/venders/logo-white-02.png",
@@ -57,7 +56,7 @@ const staticTemplateData = [
     double1: "/images/double1.jpg",
     double2: "/images/double2.jpg",
     gallery10: "/images/gallery/c-gallery-10.jpg",
-    leaf03: "url('/images/gr-leaf-03.png')"
+    leaf03: "url('/images/gr-leaf-03.png')",
   },
 
   {
@@ -67,7 +66,7 @@ const staticTemplateData = [
       "https://sv-landing-page-assets.s3.eu-north-1.amazonaws.com/Screenshot+2023-05-27+at+11.59.18+AM.png",
     url: "/template/2",
     isSelected: false,
-    color: 'blue'
+    color: "blue",
   },
   {
     id: 4,

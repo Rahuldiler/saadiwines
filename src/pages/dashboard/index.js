@@ -20,12 +20,12 @@ function Dashboard() {
     setNavItems([
       { id: 1, title: "Templates", url: "/choose-template" },
       { id: 2, title: "Wedding Info", url: "/form" },
-      response[0]?.budgetPlanningEnabled && {
+      response?.budgetPlanningEnabled && {
         id: 3,
         title: "Budget",
         url: "/budget-planner",
       },
-      response[0]?.guestListEnabled && { id: 4, title: "Guests", url: "/" },
+      response?.guestListEnabled && { id: 4, title: "Guests", url: "/" },
     ]);
     setLoading(false);
   };
@@ -41,11 +41,7 @@ function Dashboard() {
       ) : (
         <Box>
           <Header navItems={navItems} isHome={false} />
-          <Notification
-            type="success"
-            open={true}
-            message="This is a success message!"
-          />
+
           <YourTemplate userPreferenceData={userPreferenceData} />
         </Box>
       )}

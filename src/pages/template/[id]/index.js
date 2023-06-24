@@ -9,6 +9,7 @@ import Template1 from "../1";
 import { templateInfoData } from "@/constants/templateInfo";
 import { staticTemplateData } from "@/constants/template";
 import NewTemplate from "../2";
+import TemplateOne from "@/Components/all-templates/TemplateOne";
 
 function Template() {
   const [formData, setFormData] = useState({});
@@ -63,29 +64,29 @@ function Template() {
 
   const getTemplate = (templateId) => {
     switch (templateId) {
-      case 0:
-        return (
-          <Template0
-            formData={formData}
-            templateId={templateId}
-            color={staticTemplateData[templateId]?.theme?.bgColor}
-          />
-        );
-
       case 1:
         return (
-          <Template1
+          <TemplateOne
             formData={formData}
             templateId={templateId}
-            color={staticTemplateData[templateId]?.theme?.bgColor}
+            staticTemplateData={staticTemplateData[0]}
           />
         );
 
       case 2:
+        return (
+          <TemplateOne
+            formData={formData}
+            templateId={templateId}
+            staticTemplateData={staticTemplateData[1]}
+          />
+        );
+
+      case 3:
         return <Box>Template 2 </Box>;
 
       default:
-        return <Box>No template found56987252153465465 </Box>;
+        return <Box>No template found </Box>;
     }
   };
   return (
