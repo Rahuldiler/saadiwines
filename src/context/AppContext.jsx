@@ -6,12 +6,7 @@ import { useRouter } from "next/router";
 export const AppContext = createContext({});
 
 export const AppProvider = ({ children }) => {
-
-  const router = useRouter()
-
-  console.info('--------------------')
-  console.info('router----------------------------------', router )
-  console.info('--------------------')
+  const router = useRouter();
 
   const [selectedTemplate, setSelectedTemplate] = useState({
     id: staticTemplateData[1].id,
@@ -20,13 +15,9 @@ export const AppProvider = ({ children }) => {
     templateId: staticTemplateData[1].templateId,
   });
 
-  console.info('--------------------')
-  console.info('selectedTemplate', selectedTemplate )
-  console.info('--------------------')
-
   const context = {
-    selectedTemplate, 
-    setSelectedTemplate
+    selectedTemplate,
+    setSelectedTemplate,
   };
   return <AppContext.Provider value={context}>{children}</AppContext.Provider>;
 };

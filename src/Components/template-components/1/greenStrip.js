@@ -12,6 +12,7 @@ function GreenStrip({
   text,
   img,
   propName,
+  theme,
   themeColor,
   weddingDayURL,
   waterColorIMG,
@@ -68,7 +69,7 @@ function GreenStrip({
 
   return (
     <div
-      style={{ backgroundColor: themeColor, backgroundImage: weddingDayURL }}
+      style={{ backgroundColor: theme.bgColor, backgroundImage: weddingDayURL }}
       className={`p-12  bg-no-repeat lg:flex relative`}
     >
       <div
@@ -77,8 +78,9 @@ function GreenStrip({
         style={{ backgroundImage: waterColorIMG }}
       ></div>
       <div
-        className={` ${propName === "clock" ? "lg:w-[30%]" : "lg:w-[50%]"
-          } lg:w-[30%] text-white lg:flex items-center `}
+        className={` ${
+          propName === "clock" ? "lg:w-[30%]" : "lg:w-[50%]"
+        } lg:w-[30%] text-[${theme?.textColor}] lg:flex items-center `}
       >
         <img
           src={img}
@@ -145,7 +147,9 @@ function GreenStrip({
       )}
 
       {propName === "clock" && (
-        <div className="text-white text-[20px] lg:w-[70%] grid grid-cols-4 text-center">
+        <div
+          className={`text-[${theme?.textColor}] text-[20px] lg:w-[70%] grid grid-cols-4 text-center`}
+        >
           <div>
             <p className="!font-Alex !text-[30px] lg:!text-[60px]">
               {timeRemaining.days}

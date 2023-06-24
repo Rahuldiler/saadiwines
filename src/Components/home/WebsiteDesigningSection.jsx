@@ -46,7 +46,7 @@ function WebsiteDesigningSection() {
                 It can tell your beautiful love story, your relationship goals,
                 milestones, itinerary, locations and much more…
               </Typography>
-              <Box sx={{ marginTop: "40px" }}>
+              {/* <Box sx={{ marginTop: "40px" }}>
                 <Button
                   className="bg-[#E21A9E]"
                   sx={{
@@ -69,7 +69,7 @@ function WebsiteDesigningSection() {
                 >
                   Explore
                 </Button>
-              </Box>
+              </Box> */}
             </Box>
           </Grid>
           <Grid item lg={6}>

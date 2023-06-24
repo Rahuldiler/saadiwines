@@ -22,7 +22,7 @@ h5.h6,
 p,
 span {
   font-family: "Jost", sans-serif !important;
-} 
+}
 
 p {
   font-size: 1.2rem !important;
@@ -192,6 +192,11 @@ p {
   }
 }
 
+.header-logo {
+  position: relative !important;
+  margin-top: -7px !important;
+}
+
 @media only screen and (max-width: 600px) {
   .videoResponsiveService {
     width: 100%;
@@ -216,5 +221,7 @@ p {
   .header-logo {
     width: 200px !important;
     margin-right: 0 !important;
+    position: relative !important;
+    margin-top: -7px !important;
   }
 }
