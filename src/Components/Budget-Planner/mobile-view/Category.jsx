@@ -18,7 +18,7 @@ import { useState } from "react";
 import DialogBox from "./mobile-components/DialogBoxMobile";
 import AddCategoryDialog from "./AddCategoryDialog";
 import { RenderDialogForCategory } from "./mobile-components/RenderDialog";
-const Category = ({ category, loading, setTrackChanges }) => {
+const Category = ({ categories, loading, setTrackChanges }) => {
   const [openDialog, setOpenDialog] = useState(false);
   const [isEditingCategory, setIsEditingCategory] = useState({
     isEditing: false,
@@ -90,22 +90,15 @@ const Category = ({ category, loading, setTrackChanges }) => {
     }
     return 0;
   };
-  const calculateFinalCost = (data) => {
-    let totalAmount = 0;
+  const calculateFinalCost = (items) => {
+     if (items) {
+      let total = items.reduce((sum, item) => {
+        return (sum += +item.finalCost);
+      }, 0);
 
-    data.forEach((category) => {
-      category.subCategory.forEach((subcategory) => {
-        if (subcategory.budgetTransaction.length > 0) {
-          const subcategoryAmount = subcategory.budgetTransaction.reduce(
-            (acc, transaction) => acc + transaction.amount,
-            0
-          );
-          totalAmount += subcategoryAmount;
-        }
-      });
-    });
-
-    return totalAmount;
+      return total;
+    }
+    return 0;
   };
   const navigateToNewBudget = () => {
     // to add categories
@@ -170,14 +163,14 @@ const Category = ({ category, loading, setTrackChanges }) => {
             <RenderGridItem
               icon={<AccountBalanceWalletOutlinedIcon />}
               title="ESTIMATED COST"
-              amount={calculateTotaEstimatedCost(category)}
+              amount={calculateTotaEstimatedCost(categories)}
               handleClick={() => {}}
               isEditable={true}
             />
             <RenderDialogForCategory
               handleCloseDialog={handleCloseDialog}
               openDialog={openDialog}
-              category={category}
+              category={categories}
               setTrackChanges={setTrackChanges}
               isEditingCategory={isEditingCategory}
             />
@@ -186,23 +179,23 @@ const Category = ({ category, loading, setTrackChanges }) => {
               <RenderGridItem
                 icon={<CurrencyRupeeOutlinedIcon />}
                 title="FINAL COST"
-                amount={calculateFinalCost(category)}
+                amount={calculateFinalCost(categories)}
                 handleClick={() => {}}
               />
             </Grid>
           </Grid>
-          {category.length == 0 && (
+          {categories.length == 0 && (
             <Typography textAlign={"center"} mt={5}>
               No categories. Please add one
             </Typography>
           )}
-          {category.map((item) => {
+          {categories.map((item) => {
             // console.log(item)
             return (
               <CustomAccordian
                 key={item.id}
                 category={item}
-                allCategory={category}
+                allCategory={categories}
                 handleClick={navigateToNewBudget}
                 setIsEditingCategory={setIsEditingCategory}
                 isEditingCategory={isEditingCategory}

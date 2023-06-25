@@ -1,9 +1,9 @@
 import React from "react";
 import PlanningTabMobile from "./PlanningTabMobile";
 
-const Budget = ({ loading, category, setTrackChanges }) => {
+const Budget = ({ loading, categories, transactions, setTrackChanges }) => {
   return (
-    <PlanningTabMobile category={category} setTrackChanges={setTrackChanges} loading={loading}/>
+    <PlanningTabMobile categories={categories} transactions={transactions} setTrackChanges={setTrackChanges} loading={loading}/>
   );
 };
 

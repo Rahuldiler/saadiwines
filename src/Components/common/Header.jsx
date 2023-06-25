@@ -84,7 +84,7 @@ function Header({ handleOpen, setHandle, navItems, isHome }) {
   }, [colorChange]);
 
   return (
-    <header style={{ position: "absolute", left: 0 }}>
+    <header style={{ position: "sticky", left: 0,  top: 0}}>
       <AppBar
         component="nav"
         sx={{

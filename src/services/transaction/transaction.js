@@ -17,4 +17,11 @@ const deleteTransaction = async (id) => {
   });
 };
 
-export { addTransaction, deleteTransaction };
+const fetchAllTransactions = async () => {
+  return http.get({
+    url: `/transaction/me`,
+    isSecured: true,
+  });
+};
+
+export { addTransaction, deleteTransaction, fetchAllTransactions };

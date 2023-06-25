@@ -4,7 +4,7 @@ import Category from "./Category";
 import { COLORS } from "@/Components/utils/ConstantTheme";
 import PaymentsMobile from "./PaymentsMobile";
 
-const PlanningTabMobile = ({ category,loading, setTrackChanges }) => {
+const PlanningTabMobile = ({ categories, transactions, setTrackChanges, loading }) => {
   const theme = useTheme();
   const [activeTab, setActiveTab] = React.useState(0);
   //   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
@@ -13,12 +13,12 @@ const PlanningTabMobile = ({ category,loading, setTrackChanges }) => {
     {
       label: "Expense",
       component: (
-        <Category category={category} setTrackChanges={setTrackChanges} loading={loading}/>
+        <Category categories={categories} setTrackChanges={setTrackChanges} loading={loading}/>
       ),
     },
     {
       label: "Payments",
-      component: <PaymentsMobile category={category} loading={loading} setTrackChanges={setTrackChanges}/>,
+      component: <PaymentsMobile transactions={transactions} loading={loading} setTrackChanges={setTrackChanges}/>,
     },
   ];
   const handleTabChange = (event, newValue) => {

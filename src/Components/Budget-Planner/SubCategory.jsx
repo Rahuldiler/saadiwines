@@ -105,7 +105,7 @@ const SubCategory = ({
             Estimated budget:{" "}
             <span style={{ fontWeight: "bold", color: COLORS.primary }}>
               {" "}
-              ₹ {calculateTotaEstimatedCost(subCategory.subCategory)}
+              ₹ {subCategory.expectedAmount}
             </span>
           </Typography>
           <Typography variant="body3" mr={2}>
@@ -113,8 +113,7 @@ const SubCategory = ({
             <span style={{ fontWeight: "bold", color: COLORS.green }}>
               {" "}
               ₹{" "}
-              {subCategory.subCategory &&
-                calculateFinalCost(subCategory.subCategory)}
+              {subCategory.finalCost}
             </span>
           </Typography>
           <Box
@@ -223,7 +222,7 @@ const SubCategory = ({
             <TableBody>
               {subCategory &&
                 subCategory.length != 0 &&
-                subCategory.subCategory.map((subCat) => (
+                subCategory.subCategories.map((subCat) => (
                   <TableRow key={subCat.id} sx={{ textAlign: "center" }}>
                     <TableCell id="expense">
                       <Box display={"flex"}>
@@ -259,7 +258,7 @@ const SubCategory = ({
                     </TableCell>
                     <TableCell>
                       <Typography variant="body3">
-                        {calculateBudgetTransaction(subCat.budgetTransaction)}
+                        {subCat.amountPaid}
                       </Typography>
                     </TableCell>
                     <TableCell
@@ -282,7 +281,7 @@ const SubCategory = ({
                       <BorderLinearProgress
                         progress={calculateProgress(
                           subCat.expectedAmount,
-                          calculateBudgetTransaction(subCat.budgetTransaction)
+                          subCat.amountPaid
                         )}
                       />
                     </TableCell>

@@ -56,9 +56,9 @@ export default function PaymentsDialog({
   });
 
   const formatDate = (dateString) => {
-    const date = new Date(dateString);
-    const unixTimestamp = Math.floor(date.getTime() / 1000);
-    return unixTimestamp;
+    return new Date(dateString);
+    // const unixTimestamp = Math.floor(date.getTime() / 1000);
+    // return unixTimestamp;
   };
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
