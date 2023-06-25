@@ -105,7 +105,7 @@ const SubCategory = ({
             Estimated budget:{" "}
             <span style={{ fontWeight: "bold", color: COLORS.primary }}>
               {" "}
-              ₹ {subCategory.expectedAmount}
+              ₹ {calculateTotaEstimatedCost(subCategory.subCategory)}
             </span>
           </Typography>
           <Typography variant="body3" mr={2}>
