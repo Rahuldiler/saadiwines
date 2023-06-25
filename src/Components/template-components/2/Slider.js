@@ -1,35 +1,33 @@
-import React from 'react'
+import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import Image from 'next/image'
+import Image from "next/image";
 import "swiper/css";
 import "swiper/css/effect-fade";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { EffectFade, Autoplay, Pagination, Navigation } from "swiper";
 
-export default function SwiperMain({SliderImg}) {
-    return (
-        <div>
-            <Swiper
-                spaceBetween={30}
-                centeredSlides={true}
-                autoplay={{
-                    delay: 2500,
-                    disableOnInteraction: false,
-                }}
-                modules={[Autoplay]}
-                className="mySwiper"
-            >
-                {
-                    SliderImg.map((img, id) => {
-                        return (
-                            <SwiperSlide id={id}><Image src={img.link} fill className="!relative" /></SwiperSlide>
-                        );
-                    }
-                    )
-                }
-
-            </Swiper>
-        </div>
-    )
+export default function SwiperMain({ SliderImg }) {
+  return (
+    <div>
+      <Swiper
+        spaceBetween={30}
+        centeredSlides={true}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
+        modules={[Autoplay]}
+        className="mySwiper"
+      >
+        {SliderImg.map((img, id) => {
+          return (
+            <SwiperSlide key={id}>
+              <Image src={img.link} fill className="!relative" alt="" />
+            </SwiperSlide>
+          );
+        })}
+      </Swiper>
+    </div>
+  );
 }

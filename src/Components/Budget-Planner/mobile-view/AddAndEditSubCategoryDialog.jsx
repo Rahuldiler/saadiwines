@@ -1,26 +1,17 @@
 import {
   Box,
   Button,
-  CircularProgress,
   Divider,
-  Grid,
-  InputAdornment,
   TextField,
   Typography,
 } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import { COLORS } from "@/Components/utils/ConstantTheme";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
-import Input from "@mui/material/Input";
-import { useRouter } from "next/router";
 import {
   addSubcategory,
   editSubcategory,
 } from "@/services/subCategory/subCategory";
-import { addCategory, editCategory } from "@/services/category/category";
 const AddAndEditSubCategoryDialog = ({
   onClose,
   setTrackChanges,
@@ -32,7 +23,12 @@ const AddAndEditSubCategoryDialog = ({
     expectedAmount: isEditingSubCategory.subCategory?.expectedAmount ?? 0,
     categoryId: categoryId,
   });
-
+  const [errors, setErrors] = useState({});
+  const style = {
+    color: COLORS.primary,
+    ml: -1,
+    variant: "caption",
+  };
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevFormData) => ({
@@ -42,29 +38,37 @@ const AddAndEditSubCategoryDialog = ({
   };
 
   const handleSubmit = () => {
-    if (
-      formData.name &&
-      formData.expectedAmount &&
-      !isEditingSubCategory.isEditing
-    ) {
-      addSubcategory({
-        ...formData,
-        categoryId: categoryId,
-      }).then((res) => {
-        setTrackChanges((prev) => !prev);
-        onClose();
-      });
+    const newErrors = {};
+    if (formData.name.trim() === "") {
+      newErrors.name = "Name is required";
+    }
+    if (formData.expectedAmount === 0) {
+      newErrors.expectedAmount = "Amount is required";
+    }
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
     } else {
-      const obj = isEditingSubCategory.subCategory;
-      editSubcategory({
-        ...obj,
-        name: formData.name,
-        expectedAmount: formData.expectedAmount,
-        categoryId: categoryId,
-      }).then((_) => {
-        setTrackChanges((prev) => !prev);
-        onClose();
-      });
+      if (isEditingSubCategory.isEditing === false) {
+        console.log("ADDING SUB CAT", formData, categoryId);
+        addSubcategory({
+          ...formData,
+          categoryId: categoryId,
+        }).then((_) => {
+          setTrackChanges((prev) => !prev);
+          onClose();
+        });
+      } else {
+        const obj = isEditingSubCategory.subCategory;
+        editSubcategory({
+          ...obj,
+          name: formData.name,
+          expectedAmount: formData.expectedAmount,
+          categoryId: categoryId,
+        }).then((_) => {
+          setTrackChanges((prev) => !prev);
+          onClose();
+        });
+      }
     }
   };
   const RenderHeading = ({ title }) => {
@@ -160,7 +164,15 @@ const AddAndEditSubCategoryDialog = ({
           placeholder="Enter Name"
           name="name"
           variant="outlined"
-          // value={subCategoryData.name}
+          required
+          error={!!errors.name}
+          helperText={
+            errors.name && (
+              <Typography variant="caption" sx={{ mx: "-10px" }}>
+                {errors.name}
+              </Typography>
+            )
+          }
           onChange={handleChange}
         />
         <RenderHeading title={"Amount"} />
@@ -174,6 +186,15 @@ const AddAndEditSubCategoryDialog = ({
           placeholder="Enter Amount"
           name="expectedAmount"
           variant="outlined"
+          required
+          error={!!errors.expectedAmount}
+          helperText={
+            errors.expectedAmount && (
+              <Typography variant="caption" sx={{ mx: "-10px" }}>
+                {errors.expectedAmount}
+              </Typography>
+            )
+          }
           // value={subCategoryData.name}
           onChange={handleChange}
         />
@@ -252,8 +273,7 @@ const AddAndEditSubCategoryDialog = ({
         </Box>
         <Button
           onClick={handleSubmit}
-          variant="contained"
-          sx={{ color: "red", width: "96%", m: 1, borderRadius: "5px" }}
+          sx={{ width: "96%", m: 1, borderRadius: "5px" }}
         >
           Save{" "}
         </Button>

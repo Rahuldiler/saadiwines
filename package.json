@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 3000",
     "build": "next build && next export",
     "start": "next start",
     "lint": "next lint"
@@ -17,6 +17,7 @@
     "@mui/x-data-grid": "^6.7.0",
     "@mui/x-date-pickers": "^6.5.0",
     "axios": "^1.4.0",
+    "classnames": "^2.3.2",
     "date-fns": "^2.30.0",
     "dayjs": "^1.11.8",
     "formik": "^2.4.1",
@@ -25,12 +26,13 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-grid-gallery": "^1.0.0",
+    "react-hydration-provider": "^1.0.2",
     "react-icons": "^4.8.0",
     "react-player": "^2.12.0",
     "react-simple-image-slider": "^2.4.1",
     "react-slideshow-image": "^4.2.1",
     "swiper": "^9.3.2",
-    "yup": "^1.0.2"
+    "yup": "^1.2.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.14",

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const ContactForm = () => {
+const ContactForm = ({ themeColor, textBGColor = "#000" }) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -80,7 +80,11 @@ const ContactForm = () => {
       </div>
       <button
         type="submit"
-        className="w-full lg:px-4 py-2 text-white bg-[#9CAB8D]  rounded-md  focus:outline-none focus:bg-blue-600"
+        style={{
+          backgroundColor: themeColor.bgColor,
+          color: themeColor.textColor,
+        }}
+        className={`w-full lg:px-4 py-2 text-white bg-[${themeColor.bgColor}]  rounded-md  focus:outline-none focus:bg-blue-600`}
       >
         Submit
       </button>

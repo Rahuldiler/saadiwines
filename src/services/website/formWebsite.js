@@ -10,6 +10,14 @@ const addWebsiteInfo = async (websiteForm) => {
   });
 };
 
+const updateWebsiteInfo = async (websiteForm) => {
+  await http.put({
+    url: "/wedding_info",
+    payload: websiteForm,
+    isSecured: true,
+  });
+};
+
 const getWebsiteInfo = async () => {
   const response = await http.get({
     url: "/wedding_info/me",
@@ -18,4 +26,4 @@ const getWebsiteInfo = async () => {
   return response.data;
 };
 
-export { addWebsiteInfo, getWebsiteInfo };
+export { addWebsiteInfo, updateWebsiteInfo, getWebsiteInfo };

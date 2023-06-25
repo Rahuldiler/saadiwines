@@ -1,4 +1,4 @@
-import ChooseTemplateCard from "@/Components/ChooseTemplate/ChooseTemplateCard";
+import ChooseTemplateCard from "@/Components/choose-template/ChooseTemplateCard";
 import {
   getUserPreference,
   updateUserPreference,
@@ -17,39 +17,75 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { COLORS } from "@/Components/utils/ConstantTheme";
 import { staticTemplateData } from "@/constants/template";
+import useAppContext from "@/hooks/useAppContext";
+import { set } from "date-fns";
 
 function ChooseTemplate() {
   const router = useRouter();
   const theme = useTheme();
+  const { selectedTemplate, setSelectedTemplate } = useAppContext();
   const [allTemplates, setAllTemplates] = useState(staticTemplateData);
-  const [selectedTemplate, setSelectedTemplate] = useState({
-    id: staticTemplateData[0].id,
-    url: staticTemplateData[0].url,
-  });
   const [userPreferenceData, setUserPreferenceData] = useState([]);
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
-  console.log("selectedTemplate", selectedTemplate);
-  const handleChooseTemplate = () => {
+  const handleChooseTemplate = async () => {
     // router.push(selectedTemplate);
     const updatedData = {
-      id: userPreferenceData[0].id,
-      userId: userPreferenceData[0].userId,
-      templateId: selectedTemplate.id,
-      rsvpEnabled: userPreferenceData[0].rsvpEnabled,
-      budgetPlanningEnabled: userPreferenceData[0].budgetPlanningEnabled,
-      guestListEnabled: userPreferenceData[0].guestListEnabled,
+      ...userPreferenceData,
+      templateId: selectedTemplate.id
+        ? selectedTemplate.id
+        : userPreferenceData.templateId,
     };
-    updateUserPreference(updatedData);
+    await updateUserPreference(updatedData);
     handleOpen();
   };
 
+  const handleCloseModal = () => {
+    handleClose();
+    router.push("/dashboard");
+  };
+
+  const handleChooseLater = () => {
+    router.push("/dashboard");
+  };
+
   useEffect(() => {
-    getUserPreference().then((response) => {
+    async function fetchData() {
+      const response = await getUserPreference();
       setUserPreferenceData(response);
-    });
+      const selectedTemplate = response
+        ? allTemplates.map((template) => {
+            if (response.templateId === template.id) {
+              return {
+                ...template,
+                isSelected: true,
+              };
+            } else {
+              return {
+                ...template,
+                isSelected: false,
+              };
+            }
+          })
+        : allTemplates.map((template) => {
+            if (template.id === 1) {
+              return {
+                ...template,
+                isSelected: true,
+              };
+            } else {
+              return {
+                ...template,
+                isSelected: false,
+              };
+            }
+          });
+
+      setAllTemplates(selectedTemplate);
+    }
+
+    fetchData();
   }, []);
 
   return (
@@ -98,13 +134,14 @@ function ChooseTemplate() {
           sx={{ display: "flex", justifyContent: "flex-end", pr: 4 }}
         >
           <Button
+            onClick={handleChooseLater}
             style={{
               color: COLORS.primary,
             }}
           >
             Choose Later
           </Button>
-          <Link href={selectedTemplate.url} target="_blank">
+          <Link href={`${selectedTemplate?.url}`} target="_blank">
             <Button
               style={{
                 border: theme.border.primaryBorder,
@@ -140,7 +177,7 @@ function ChooseTemplate() {
           </Typography>
           <Divider />
           <Button
-            onClick={handleClose}
+            onClick={handleCloseModal}
             sx={{
               px: 4,
               py: 2,

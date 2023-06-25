@@ -4,48 +4,77 @@ import { Box } from "@mui/material";
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
+import Template0 from "../0";
 import Template1 from "../1";
 import { templateInfoData } from "@/constants/templateInfo";
+import { staticTemplateData } from "@/constants/template";
+import NewTemplate from "../2";
+import TemplateOne from "@/Components/all-templates/TemplateOne";
+import Loader from "@/Components/common/Loader";
 
 function Template() {
   const [formData, setFormData] = useState({});
   const [templateId, setTemplateId] = useState();
-
-  const [componentTemplate, setComponentTemplate] = useState();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function fetchTemplate() {
       const response = await getUserPreference();
-      console.log(response);
-      setTemplateId(response[0]?.templateId);
+      setTemplateId(response.templateId);
     }
     fetchTemplate();
   }, []);
 
   useEffect(() => {
     async function fetchData() {
-      const responseKey = await getTemplateKey();
-      const responseTemplateData = await getTemplateData(responseKey.userIdKey);
-      setFormData(responseTemplateData);
+      try {
+        const responseKey = await getTemplateKey();
+        const responseTemplateData = await getTemplateData(
+          responseKey.userIdKey
+        );
+        setFormData(responseTemplateData);
+        setLoading(false);
+      } catch (err) {}
     }
     fetchData();
   }, [templateId]);
 
-  console.log("formData", formData, templateId);
-
-  useEffect(() => {
+  const getTemplate = (templateId) => {
     switch (templateId) {
       case 1:
-        setComponentTemplate(<Template1 formData={formData} />);
-        break;
+        return (
+          <TemplateOne
+            formData={formData}
+            templateId={templateId}
+            staticTemplateData={staticTemplateData[0]}
+          />
+        );
+
       case 2:
-        setComponentTemplate(<Box>Template 2 </Box>);
-        break;
-      // default:
-      //   componentTemplate = <Box>No template found</Box>;
+        return (
+          <TemplateOne
+            formData={formData}
+            templateId={templateId}
+            staticTemplateData={staticTemplateData[1]}
+          />
+        );
+
+      case 3:
+        return <Box>Template 2 </Box>;
+
+      default:
+        return <Box>No template found </Box>;
     }
-  }, [formData]);
-  return <Box>{componentTemplate}</Box>;
+  };
+  return (
+    <Box>
+      {loading ? (
+        <Loader message="Loading template" />
+      ) : (
+        getTemplate(templateId)
+      )}
+    </Box>
+  );
 }
 
 export default Template;

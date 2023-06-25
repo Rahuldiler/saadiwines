@@ -1,10 +1,10 @@
 import {
   Box,
-  FormControl,
-  FormControlLabel,
+  BoxLabel,
   FormLabel,
   Radio,
   RadioGroup,
+  FormHelperText,
   Typography,
 } from "@mui/material";
 import React, { useState } from "react";
@@ -23,49 +23,88 @@ import {
 } from "../common/TextFieldInput";
 import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 import { useEffect } from "react";
-function Step1Website({ websiteForm, setWebsiteForm }) {
+import { useFormik } from "formik";
+import * as Yup from "yup";
+
+import NavigationSteps from "./NavigationSteps";
+function Step1Website({
+  websiteForm,
+  setWebsiteForm,
+  handleNext,
+  activeStep,
+  handleBack,
+}) {
   // const [valueTime, setValueTime] = React.useState(dayjs("2022-04-17T15:30"));
   // const [valueDate, setValueDate] = React.useState(dayjs("2022-04-17T15:30"));
   const [valueDateTime, setValueDateTime] = useState();
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setWebsiteForm((prevData) => {
-      return {
-        ...prevData,
-        [name]: value,
-      };
-    });
-  };
+  const formik = useFormik({
+    initialValues: {
+      id: "",
+      groom: {
+        name: "",
+        fatherName: "",
+        motherName: "",
+        grandMotherName: "",
+        grandFatherName: "",
+        description: "",
+      },
+      bride: {
+        name: "",
+        fatherName: "",
+        motherName: "",
+        grandMotherName: "",
+        grandFatherName: "",
+        description: "",
+      },
+      dateTime: "",
+      thankYouMessage: "",
+      pics: ["D", "E", "F"],
+      placesToVisit: ["Dont know", "Don know 2"],
+    },
+    validationSchema: Yup.object({
+      groom: Yup.object({
+        name: Yup.string()
+          .matches(/^[a-zA-Z\s]*$/, "No special characters allowed")
+          .required("Required groom name"),
+        fatherName: Yup.string()
+          .matches(/^[a-zA-Z\s]*$/, "No special characters allowed")
+          .required("Required groom father Name"),
+        motherName: Yup.string()
+          .matches(/^[a-zA-Z\s]*$/, "No special characters allowed")
+          .required("Required groom mother Name"),
+        description: Yup.string().required("Required groom description "),
+      }),
+      bride: Yup.object({
+        name: Yup.string()
+          .matches(/^[a-zA-Z\s]*$/, "No special characters allowed")
+          .required("Required bride name"),
+        fatherName: Yup.string()
+          .matches(/^[a-zA-Z\s]*$/, "No special characters allowed")
+          .required("Required bride father Name"),
+        motherName: Yup.string()
+          .matches(/^[a-zA-Z\s]*$/, "No special characters allowed")
+          .required("Required bride mother Name"),
+        description: Yup.string().required("Required bride description "),
+      }),
+      dateTime: Yup.string().required("Required Date"),
+      thankYouMessage: Yup.string().required("Required Thank You Message"),
+    }),
+    onSubmit: (values) => {
+      handleNext(values);
+    },
+  });
 
-  // const handleTime = (newValue) => {
-  //   setValueTime(newValue);
-  //   setWebsiteForm((prevData) => {
-  //     return {
-  //       ...prevData,
-  //       time: moment(newValue?.$d).format("LT"),
-  //     };
-  //   });
-  // };
-
-  // const handleDate = (newValue) => {
-  //   setValueDate(newValue);
-  //   setWebsiteForm((prevData) => {
-  //     return {
-  //       ...prevData,
-  //       date: moment(newValue?.$d).format("L"),
-  //     };
-  //   });
-  // };
+  useEffect(() => {
+    websiteForm && formik.setValues(websiteForm);
+  }, [websiteForm]);
 
   const handleDateTime = (newValue) => {
     setValueDateTime(newValue);
-    setWebsiteForm((prevData) => {
-      return {
-        ...prevData,
-        dateTime: String(moment(newValue?.$d).format()),
-      };
-    });
+    formik.setFieldValue(
+      "dateTime",
+      String(moment(newValue?.$d).toISOString())
+    );
   };
 
   useEffect(() => {
@@ -82,201 +121,260 @@ function Step1Website({ websiteForm, setWebsiteForm }) {
       <Typography variant="h6" sx={{ mb: 2 }}>
         Website Details
       </Typography>
-      <FormControl sx={{ width: "100%" }}>
-        <Box sx={{ display: "flex", width: "100%", gap: 2 }}>
-          <Box sx={{ width: "50%" }}>
-            <TextFieldInput
-              id="groom"
-              label="Groom Name"
-              name="groom"
-              type="text"
-              value={websiteForm?.groom}
-              onChange={handleChange}
-            />
-            {(websiteForm?.groom.match(/\W/) ||
-              /\d/.test(websiteForm?.groom)) && (
-              <Box sx={{ color: "red", fontSize: "14px" }}>
-                Please don't add any special character and number
+      <form onSubmit={formik.handleSubmit}>
+        <Box
+          sx={{ width: "100%", display: "flex", flexDirection: "row", gap: 2 }}
+        >
+          <Box
+            sx={{
+              paddingBottom: 4,
+              width: "50%",
+            }}
+          >
+            <Typography variant="body1">Groom Details</Typography>
+            <Box sx={{ gap: 2 }}>
+              <Box sx={{ width: "100%" }}>
+                <TextFieldInput
+                  id="name"
+                  label="Groom Name *"
+                  name="groom.name"
+                  type="text"
+                  value={formik.values?.groom?.name}
+                  onChange={formik.handleChange}
+                />
+                {formik.touched.groom?.name && formik.errors.groom?.name ? (
+                  <div style={{ color: "Red" }}>
+                    {formik.errors.groom?.name}
+                  </div>
+                ) : null}
               </Box>
-            )}
+            </Box>
+            <Box sx={{ width: "100%", gap: 2 }}>
+              <Box>
+                <TextFieldInput
+                  id="fatherName"
+                  label="Groom Father Name *"
+                  name="groom.fatherName"
+                  type="text"
+                  value={formik.values?.groom.fatherName}
+                  onChange={formik.handleChange}
+                />
+                {formik.touched.groom?.fatherName &&
+                formik.errors.groom?.fatherName ? (
+                  <div style={{ color: "Red" }}>
+                    {formik.errors.groom?.fatherName}
+                  </div>
+                ) : null}
+              </Box>
+              <Box>
+                <TextFieldInput
+                  id="motherName"
+                  label="Groom Mother Name *"
+                  name="groom.motherName"
+                  type="text"
+                  value={formik.values?.groom?.motherName}
+                  onChange={formik.handleChange}
+                />
+                {formik.touched.groom?.motherName &&
+                formik.errors.groom?.motherName ? (
+                  <div style={{ color: "Red" }}>
+                    {formik.errors.groom?.motherName}
+                  </div>
+                ) : null}
+              </Box>
+            </Box>
+            <Box sx={{ width: "100%", gap: 2 }}>
+              <Box>
+                <TextFieldInput
+                  id="grandFatherName"
+                  label="Groom Grand Father Name (optional)"
+                  name="groom.grandFatherName"
+                  type="text"
+                  required={false}
+                  value={formik.values?.groom?.grandFatherName}
+                  onChange={formik.handleChange}
+                />
+                {formik.touched.groom?.grandFatherName &&
+                formik.errors.groom?.grandFatherName ? (
+                  <div style={{ color: "Red" }}>
+                    {formik.errors.groom?.grandFatherName}
+                  </div>
+                ) : null}
+              </Box>
+              <Box>
+                <TextFieldInput
+                  id="grandMotherName"
+                  label="Groom Grand Mother Name (optional)"
+                  name="groom.grandMotherName"
+                  type="text"
+                  required={false}
+                  value={formik.values?.groom?.grandMotherName}
+                  onChange={formik.handleChange}
+                />
+                {formik.touched.groom?.grandMotherName &&
+                formik.errors.groom?.grandMotherName ? (
+                  <div style={{ color: "Red" }}>
+                    {formik.errors.groom?.grandMotherName}
+                  </div>
+                ) : null}
+              </Box>
+            </Box>
+            <Box sx={{ mt: 2 }}>
+              <MultilineTextField
+                name="groom.description"
+                label="Groom Description *"
+                value={formik.values?.groom?.description}
+                handleCh={formik.handleChange}
+              />
+              {formik.touched.groom?.description &&
+              formik.errors.groom?.description ? (
+                <div style={{ color: "Red" }}>
+                  {formik.errors.groom?.description}
+                </div>
+              ) : null}
+            </Box>
           </Box>
-          <Box sx={{ width: "50%" }}>
-            <TextFieldInput
-              id="bride"
-              label="Bride Name"
-              name="bride"
-              type="text"
-              value={websiteForm?.bride}
-              onChange={handleChange}
-            />
-            {(websiteForm?.bride.match(/\W/) ||
-              /\d/.test(websiteForm?.bride)) && (
-              <Box sx={{ color: "red", fontSize: "14px" }}>
-                Please don't add any special character and number
+          {/* bride */}
+          <Box
+            sx={{
+              paddingBottom: 4,
+              width: "50%",
+            }}
+          >
+            <Typography variant="body1">Bride Details</Typography>
+            <Box sx={{ display: "flex", gap: 2 }}>
+              <Box sx={{ width: "100%" }}>
+                <TextFieldInput
+                  id="name"
+                  label="Bride Name *"
+                  name="bride.name"
+                  type="text"
+                  value={formik.values?.bride?.name}
+                  onChange={formik.handleChange}
+                />
+                {formik.touched.bride?.name && formik.errors.bride?.name ? (
+                  <div style={{ color: "Red" }}>
+                    {formik.errors.bride?.name}
+                  </div>
+                ) : null}
               </Box>
-            )}
+            </Box>
+            <Box sx={{ width: "100%", gap: 2 }}>
+              <Box>
+                <TextFieldInput
+                  id="fatherName"
+                  label="Bride Father Name *"
+                  name="bride.fatherName"
+                  type="text"
+                  value={formik.values?.bride.fatherName}
+                  onChange={formik.handleChange}
+                />
+                {formik.touched.bride?.fatherName &&
+                formik.errors.bride?.fatherName ? (
+                  <div style={{ color: "Red" }}>
+                    {formik.errors.bride?.fatherName}
+                  </div>
+                ) : null}
+              </Box>
+              <Box>
+                <TextFieldInput
+                  id="motherName"
+                  label="Bride Mother Name *"
+                  name="bride.motherName"
+                  type="text"
+                  value={formik.values?.bride.motherName}
+                  onChange={formik.handleChange}
+                />
+                {formik.touched.bride?.motherName &&
+                formik.errors.bride?.motherName ? (
+                  <div style={{ color: "Red" }}>
+                    {formik.errors.bride?.motherName}
+                  </div>
+                ) : null}
+              </Box>
+            </Box>
+            <Box sx={{ width: "100%", gap: 2 }}>
+              <Box>
+                <TextFieldInput
+                  id="grandFatherName"
+                  label="Bride Grand Father Name (optional)"
+                  name="bride.grandFatherName"
+                  type="text"
+                  required={false}
+                  value={formik.values?.bride?.grandFatherName}
+                  onChange={formik.handleChange}
+                />
+                {formik.touched.bride?.grandFatherName &&
+                formik.errors.bride?.grandFatherName ? (
+                  <div style={{ color: "Red" }}>
+                    {formik.errors.bride?.grandFatherName}
+                  </div>
+                ) : null}
+              </Box>
+              <Box>
+                <TextFieldInput
+                  id="grandMotherName"
+                  label="Bride Grand Mother Name (optional)"
+                  name="bride.grandMotherName"
+                  type="text"
+                  required={false}
+                  value={formik.values?.bride?.grandMotherName}
+                  onChange={formik.handleChange}
+                />
+                {formik.touched.bride?.grandMotherName &&
+                formik.errors.bride?.grandMotherName ? (
+                  <div style={{ color: "Red" }}>
+                    {formik.errors.bride?.grandMotherName}
+                  </div>
+                ) : null}
+              </Box>
+            </Box>
+            <Box sx={{ mt: 2 }}>
+              <MultilineTextField
+                name="bride.description"
+                label="Bride Description *"
+                value={formik.values?.bride?.description}
+                handleCh={formik.handleChange}
+              />
+              {formik.touched.bride?.description &&
+              formik.errors.bride?.description ? (
+                <div style={{ color: "Red" }}>
+                  {formik.errors.bride?.description}
+                </div>
+              ) : null}
+            </Box>
           </Box>
         </Box>
-        <Box sx={{ display: "flex", width: "100%", gap: 2 }}>
-          <Box sx={{ width: "50%" }}>
-            <TextFieldInput
-              id="motherName"
-              label="Mother Name"
-              name="motherName"
-              type="text"
-              value={websiteForm?.motherName}
-              onChange={handleChange}
-            />
-            {(websiteForm?.motherName.match(/\W/) ||
-              /\d/.test(websiteForm?.motherName)) && (
-              <Box sx={{ color: "red", fontSize: "14px" }}>
-                Please don't add any special character and number
-              </Box>
-            )}
-          </Box>
-          <Box sx={{ width: "50%" }}>
-            <TextFieldInput
-              id="fatherName"
-              label="Father Name"
-              name="fatherName"
-              type="text"
-              value={websiteForm?.fatherName}
-              onChange={handleChange}
-            />
-            {(websiteForm?.fatherName.match(/\W/) ||
-              /\d/.test(websiteForm?.fatherName)) && (
-              <Box sx={{ color: "red", fontSize: "14px" }}>
-                Please don't add any special character and number
-              </Box>
-            )}
-          </Box>
-        </Box>
-        <Box sx={{ display: "flex", width: "100%", gap: 2 }}>
-          <Box sx={{ width: "50%" }}>
-            <TextFieldInput
-              id="grandMotherName"
-              label="Grand Mother Name"
-              name="grandMotherName"
-              type="text"
-              value={websiteForm?.grandMotherName}
-              onChange={handleChange}
-            />
-            {(websiteForm?.grandMotherName.match(/\W/) ||
-              /\d/.test(websiteForm?.grandMotherName)) && (
-              <Box sx={{ color: "red", fontSize: "14px" }}>
-                Please don't add any special character and number
-              </Box>
-            )}
-          </Box>
-          <Box sx={{ width: "50%" }}>
-            <TextFieldInput
-              id="grandFatherName"
-              label="Grand Father Name"
-              name="grandFatherName"
-              type="text"
-              value={websiteForm?.grandFatherName}
-              onChange={handleChange}
-            />
-            {(websiteForm?.grandFatherName.match(/\W/) ||
-              /\d/.test(websiteForm?.grandFatherName)) && (
-              <Box sx={{ color: "red", fontSize: "14px" }}>
-                Please don't add any special character and number
-              </Box>
-            )}
-          </Box>
-        </Box>
-        <Box sx={{ mt: 2 }}>
+        <Box>
           <MultilineTextField
             name="thankYouMessage"
-            label="Thank You Message"
-            value={websiteForm.thankYouMessage}
-            handleCh={(e) => handleChange(e)}
+            label="Thank You Message *"
+            value={formik.values?.thankYouMessage}
+            handleCh={formik.handleChange}
           />
-          {(websiteForm?.thankYouMessage.match(/\W/) ||
-            /\d/.test(websiteForm?.thankYouMessage)) && (
-            <Box sx={{ color: "red", fontSize: "14px" }}>
-              Please don't add any special character and number
-            </Box>
-          )}
+          {formik.touched.thankYouMessage && formik.errors.thankYouMessage ? (
+            <div style={{ color: "Red" }}>{formik.errors.thankYouMessage}</div>
+          ) : null}
+          <LocalizationProvider required dateAdapter={AdapterDayjs}>
+            <DatePicker
+              label="Pick a date *"
+              name="valueDateTime"
+              value={valueDateTime || ""}
+              disablePast
+              onChange={(newValue) => handleDateTime(newValue)}
+              sx={{ mt: 2, width: "100%" }}
+            />
+            {formik.touched.dateTime && formik.errors.dateTime ? (
+              <div style={{ color: "Red" }}>{formik.errors.dateTime}</div>
+            ) : null}
+          </LocalizationProvider>
         </Box>
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <DatePicker
-            label="Pick a date"
-            name="valueDateTime"
-            value={valueDateTime}
-            disablePast
-            onChange={(newValue) => handleDateTime(newValue)}
-            sx={{ mt: 2 }}
-          />
-        </LocalizationProvider>
-        {/* <Box sx={{ display: "flex", gap: 4 }}>
-          <Box>
-            <LocalizationProvider
-              dateAdapter={AdapterDayjs}
-              sx={{ width: "100%" }}
-            >
-              <DatePicker
-                sx={{
-                  "& .MuiTextField-root": {
-                    width: "100%",
-                  },
-                }}
-                label="Pick a date"
-                name="valueDate"
-                value={valueDate}
-                onChange={(newValue) => handleDate(newValue)}
-                // slotProps={{
-                //   textField: {
-                //     helperText: "MM/DD/YYYY",
-                //   },
-                // }}
-              />
-            </LocalizationProvider>
-          </Box>
-          <Box>
-            <LocalizationProvider dateAdapter={AdapterDayjs}>
-              <TimePicker
-                sx={{
-                  "& .MuiTextField-root": {
-                    width: "100%",
-                  },
-                }}
-                label="Pick a time"
-                name="valueTime"
-                value={valueTime}
-                onChange={(newValue) => handleTime(newValue)}
-              />
-            </LocalizationProvider>
-          </Box>
-        </Box> */}
-        <FormLabel
-          id="demo-radio-buttons-group-label"
-          sx={{ fontWeight: 500, mt: 2 }}
-        >
-          Add Images
-        </FormLabel>
-        <Box
-          sx={{
-            my: "20px",
-            display: "flex",
-            gap: "20px",
-            flexWrap: "wrap",
-          }}
-        >
-          <div className={styles.uploadBtnWrapper}>
-            <button className={styles.btn}>+</button>
-            <input type="file" name="myfile" />
-          </div>
-
-          <Image
-            src="/assets/weddingimg1.jpg"
-            alt=".."
-            width={100}
-            height={100}
-            style={{ borderRadius: "5px" }}
-          />
-        </Box>
-      </FormControl>
+        <NavigationSteps
+          activeStep={activeStep}
+          handleNext={handleNext}
+          handleBack={handleBack}
+        />
+      </form>
     </Box>
   );
 }

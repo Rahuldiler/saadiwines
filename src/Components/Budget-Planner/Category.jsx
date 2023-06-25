@@ -3,7 +3,12 @@ import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableRow from "@mui/material/TableRow";
-import { Box, Typography, Paper, TextField } from "@mui/material";
+import {
+  Box,
+  Typography,
+  Paper,
+  TextField,
+} from "@mui/material";
 import { useState } from "react";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
@@ -11,6 +16,7 @@ import CustomCircularProgress from "./CustomCircularProgress";
 import { addCategory, getCategories } from "@/services/category/category";
 import { BORDER, COLORS } from "../utils/ConstantTheme";
 import Modal from "./Modal";
+import { calculateTotaEstimatedCost } from "./calculate";
 
 const Category = ({
   categories,
@@ -18,21 +24,12 @@ const Category = ({
   selectedRow,
   setSelectedRow,
   loading,
+  setTrackChanges,
 }) => {
   const handleRowClick = (rowIndex, id) => {
     setSelectedRow({ ...selectedRow, rowIndex: rowIndex, rowId: id });
   };
   const [dialogOpenCategory, setDialogOpenCategory] = useState(false);
-  const finishEditing = (name, expectedAmount) => {
-    if (name && expectedAmount) {
-      addCategory({ name, expectedAmount }).then(() =>
-        getCategories().then((category) => {
-          setCategories(category.data);
-          setDialogOpenCategory(false);
-        })
-      );
-    }
-  };
 
   return (
     <Box
@@ -52,7 +49,7 @@ const Category = ({
         <CategoryDialog
           open={dialogOpenCategory}
           setOpen={setDialogOpenCategory}
-          saveCallback={finishEditing}
+          setTrackChanges={setTrackChanges}
         />
         <Box
           sx={{ display: "flex", pt: "20px", cursor: "pointer" }}
@@ -67,10 +64,7 @@ const Category = ({
           </Typography>
         </Box>
 
-        <Table
-          sx={{ width: "100%",}}
-          aria-label="simple table"
-        >
+        <Table sx={{ width: "100%" }} aria-label="simple table">
           <TableBody>
             {categories &&
               categories.map((category, index) => (
@@ -94,9 +88,9 @@ const Category = ({
                   component={selectedRow.rowId === category.id ? Paper : ""}
                   elevation={selectedRow.rowId === category.id ? 1 : 0}
                 >
-                  <TableCell sx={{width:"100%"}}>
+                  <TableCell sx={{ width: "100%" }}>
                     <Typography
-                      style={{ whiteSpace: "pre-line", }}
+                      style={{ whiteSpace: "pre-line" }}
                       variant="body3"
                       fontWeight={600}
                     >
@@ -105,13 +99,14 @@ const Category = ({
                   </TableCell>
 
                   <TableCell>
-                    <Box display={"flex"}>
+                    <Box display={"flex"} justifyContent={"end"}>
                       <Typography
                         style={{ whiteSpace: "pre-line" }}
                         variant="body3"
                         fontWeight={600}
                       >
-                        {category.expectedAmount}
+                        {/* {category.expectedAmount} */}
+                        {calculateTotaEstimatedCost(category.subCategory)}
                       </Typography>
                       <ArrowForwardIosIcon
                         fontSize="15px"
@@ -128,50 +123,86 @@ const Category = ({
   );
 };
 
-function CategoryDialog({ open, setOpen, saveCallback }) {
+function CategoryDialog({ open, setOpen, setTrackChanges }) {
   const [formData, setFormData] = useState({
     name: "",
     expectedAmount: 0,
   });
-
+  const [errors, setErrors] = useState({});
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
+  const style = {
+    color: COLORS.primary,
+    ml: -1,
+    variant: "caption",
+  };
+  const handleSubmit = () => {
+    const newErrors = {};
+    if (formData.name.trim() === "") {
+      newErrors.name = "Name is required";
+    }
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+    } else {
+      addCategory(formData).then(() => {
+        setTrackChanges((p) => !p);
+        setFormData({ name: "", expectedAmount: 0 });
+        setOpen(false);
+      });
+    }
+  };
   return (
     <div>
       <Modal
         open={open}
-        saveCallback={() =>
-          saveCallback(formData.name, formData.expectedAmount)
-        }
+        saveCallback={handleSubmit}
         title={"Category"}
         setOpen={setOpen}
         fields={
-          <>
-            <TextField
-              name="name"
-              placeholder={"Enter Name"}
-              sx={{
-                border: 0,
-                mb: 2,
-                mt: 2,
-              }}
-              onChange={handleChange}
-            />
-            <br />
-            <Typography>Enter Amount</Typography>
-            <TextField
-              name="expectedAmount"
-              placeholder={"Enter Amount"}
-              sx={{
-                border: 0,
-                mb: 2,
-                mt: 2,
-              }}
-              onChange={handleChange}
-            />
-          </>
+          // <>
+          <TextField
+            required
+            error={!!errors.name}
+            helperText={
+              errors.name && (
+                <Typography variant="caption" sx={{ mx: "-10px" }}>
+                  {errors.name}
+                </Typography>
+              )
+            }
+            name="name"
+            placeholder={"Enter Name"}
+            sx={{
+              border: 0,
+              mb: 2,
+              mt: 2,
+              width: "100%",
+              // fontSize: 1,
+            }}
+            onChange={handleChange}
+          />
+          // {/* <br /> */}
+          // {/* <Typography>Enter Amount</Typography>
+          // <TextField
+          //   error={!!errors.expectedAmount}
+          //   helperText={
+          //     errors.expectedAmount && (
+          //       <FormHelperText sx={style}>
+          //         {errors.expectedAmount}
+          //       </FormHelperText>
+          //     )
+          //   }
+          //   name="expectedAmount"
+          //   placeholder={"Enter Amount"}
+          //   sx={{
+          //     border: 0,
+          //     mb: 2,
+          //     mt: 2,
+          //   }}
+          //   onChange={handleChange}
+          // /> */}
+          // </>
         }
       />
     </div>

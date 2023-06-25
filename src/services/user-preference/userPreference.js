@@ -1,4 +1,5 @@
 import HTTPClientHandler from "@/services/HTTPClientHandler";
+import { tr } from "date-fns/locale";
 
 const http = new HTTPClientHandler();
 
@@ -12,11 +13,13 @@ const getUserPreference = async () => {
 };
 
 const updateUserPreference = async (data) => {
-  await http.put({
-    url: "/user_preference",
-    payload: data,
-    isSecured: true,
-  });
+  try {
+    await http.put({
+      url: "/user_preference",
+      payload: data,
+      isSecured: true,
+    });
+  } catch (error) {}
 };
 
 export { getUserPreference, updateUserPreference };

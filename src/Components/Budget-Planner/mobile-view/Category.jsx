@@ -17,6 +17,7 @@ import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import { useState } from "react";
 import DialogBox from "./mobile-components/DialogBoxMobile";
 import AddCategoryDialog from "./AddCategoryDialog";
+import { RenderDialogForCategory } from "./mobile-components/RenderDialog";
 const Category = ({ category, loading, setTrackChanges }) => {
   const [openDialog, setOpenDialog] = useState(false);
   const [isEditingCategory, setIsEditingCategory] = useState({
@@ -149,13 +150,6 @@ const Category = ({ category, loading, setTrackChanges }) => {
         >
           ADD Category
         </Button>
-        <RenderDialog
-          handleCloseDialog={handleCloseDialog}
-          openDialog={openDialog}
-          category={category}
-          setTrackChanges={setTrackChanges}
-          isEditingCategory={isEditingCategory}
-        />
       </Box>
       <Divider />
       {loading ? (
@@ -180,6 +174,13 @@ const Category = ({ category, loading, setTrackChanges }) => {
               handleClick={() => {}}
               isEditable={true}
             />
+            <RenderDialogForCategory
+              handleCloseDialog={handleCloseDialog}
+              openDialog={openDialog}
+              category={category}
+              setTrackChanges={setTrackChanges}
+              isEditingCategory={isEditingCategory}
+            />
             <Divider orientation="vertical" flexItem></Divider>
             <Grid item xs>
               <RenderGridItem
@@ -188,9 +189,6 @@ const Category = ({ category, loading, setTrackChanges }) => {
                 amount={calculateFinalCost(category)}
                 handleClick={() => {}}
               />
-              {/* <RenderGrayText title={"Paid:"} amount={"₹ 40"} />
-              <br />
-              <RenderGrayText title={"Pending:"} amount={"₹ 160"} /> */}
             </Grid>
           </Grid>
           {category.length == 0 && (
@@ -219,25 +217,5 @@ const Category = ({ category, loading, setTrackChanges }) => {
     </Box>
   );
 };
-
-function RenderDialog({
-  openDialog,
-  handleCloseDialog,
-  category,
-  setTrackChanges,
-  isEditingCategory,
-}) {
-  const obj = category.find((item) => item.id == isEditingCategory.categoryId);
-  return (
-    <DialogBox open={openDialog} onClose={handleCloseDialog}>
-      <AddCategoryDialog
-        onClose={handleCloseDialog}
-        setTrackChanges={setTrackChanges}
-        obj={obj}
-        isEditingCategory={isEditingCategory.isEditing}
-      />
-    </DialogBox>
-  );
-}
 
 export default Category;
