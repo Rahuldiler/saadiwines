@@ -32,13 +32,11 @@ function Template() {
   }, [id]);
 
   useEffect(() => {
+    const encodeId = id?.replace("%2F", "/");
     async function fetchData() {
       try {
         if (id?.length > 3) {
-          const responseKey = await getTemplateKey();
-          const responseTemplateData = await getTemplateData(
-            responseKey.userIdKey
-          );
+          const responseTemplateData = await getTemplateData(encodeId);
           setFormData(responseTemplateData);
         } else {
           setFormData(templateInfoData);

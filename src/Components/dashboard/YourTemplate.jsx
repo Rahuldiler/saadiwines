@@ -23,7 +23,7 @@ function YourTemplate({ userPreferenceData }) {
     setSelectedTemplate(filterTemplate);
   }, [userPreferenceData]);
   return (
-    <Box>
+    <Box sx={{ mt: 14 }}>
       <Box sx={{ px: { lg: "100px", xs: "20px" } }}>
         <Typography variant="h3" sx={{ textAlign: "left", fontWeight: 500 }}>
           Your Templates

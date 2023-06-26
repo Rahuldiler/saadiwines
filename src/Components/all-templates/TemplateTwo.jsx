@@ -19,7 +19,7 @@ import { useEffect } from "react";
 import { templateInfoData } from "@/constants/templateInfo";
 import moment from "moment";
 
-export default function TemplateTwo({ templateData }) {
+export default function TemplateTwo({ templateData, staticTemplateData }) {
   const [selectedItem, setSelectedItem] = useState("All");
   const [imageIndex, setImageIndex] = useState();
   const [isOpen, setIsOpen] = useState(false);
