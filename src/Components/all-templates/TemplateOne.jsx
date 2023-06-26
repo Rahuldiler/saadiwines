@@ -14,7 +14,7 @@ import { templateInfoData } from "@/constants/templateInfo";
 import Steps from "@/Components/template-components/1/steps";
 import { useRouter } from "next/router";
 
-function TemplateOne({ formData, staticTemplateData }) {
+function TemplateOne({ templateData, staticTemplateData }) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [imageIndex, setImageIndex] = useState();
   const [isOpen, setIsOpen] = useState(false);
@@ -210,11 +210,11 @@ function TemplateOne({ formData, staticTemplateData }) {
 
   const [rsvp, setRsvp] = useState(true);
 
-  const [templateData, setTemplateData] = useState();
+  // const [templateData, setTemplateData] = useState();
 
-  useEffect(() => {
-    formData ? setTemplateData(formData) : setTemplateData(templateInfoData);
-  }, [formData]);
+  // useEffect(() => {
+  //   formData ? setTemplateData(formData) : setTemplateData(templateInfoData);
+  // }, [formData]);
 
   return (
     <div className="lg:min-w-[1280px] ">

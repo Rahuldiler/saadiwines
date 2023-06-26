@@ -4,47 +4,59 @@ import { Box } from "@mui/material";
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
-import Template0 from "../0";
-import Template1 from "../1";
 import { templateInfoData } from "@/constants/templateInfo";
 import { staticTemplateData } from "@/constants/template";
-import NewTemplate from "../2";
 import TemplateOne from "@/Components/all-templates/TemplateOne";
 import Loader from "@/Components/common/Loader";
+import { useRouter } from "next/router";
+import TemplateTwo from "@/Components/all-templates/TemplateTwo";
 
 function Template() {
   const [formData, setFormData] = useState({});
   const [templateId, setTemplateId] = useState();
   const [loading, setLoading] = useState(true);
 
+  const router = useRouter();
+  const id = router.query.id;
+
   useEffect(() => {
     async function fetchTemplate() {
-      const response = await getUserPreference();
-      setTemplateId(response.templateId);
+      if (id?.length > 3) {
+        const response = await getUserPreference();
+        setTemplateId(response.templateId);
+      } else {
+        setTemplateId(Number(id));
+      }
     }
     fetchTemplate();
-  }, []);
+  }, [id]);
 
   useEffect(() => {
     async function fetchData() {
       try {
-        const responseKey = await getTemplateKey();
-        const responseTemplateData = await getTemplateData(
-          responseKey.userIdKey
-        );
-        setFormData(responseTemplateData);
+        if (id?.length > 3) {
+          console.log("f");
+          const responseKey = await getTemplateKey();
+          const responseTemplateData = await getTemplateData(
+            responseKey.userIdKey
+          );
+          setFormData(responseTemplateData);
+        } else {
+          setFormData(templateInfoData);
+        }
         setLoading(false);
       } catch (err) {}
     }
-    fetchData();
-  }, [templateId]);
+    id && fetchData();
+  }, [id]);
 
   const getTemplate = (templateId) => {
+    console.log(templateId, formData, "templateId");
     switch (templateId) {
       case 1:
         return (
           <TemplateOne
-            formData={formData}
+            templateData={formData}
             templateId={templateId}
             staticTemplateData={staticTemplateData[0]}
           />
@@ -53,19 +65,26 @@ function Template() {
       case 2:
         return (
           <TemplateOne
-            formData={formData}
+            templateData={formData}
             templateId={templateId}
             staticTemplateData={staticTemplateData[1]}
           />
         );
 
-      case 3:
-        return <Box>Template 2 </Box>;
+      case 11:
+        return (
+          <TemplateTwo
+            templateData={formData}
+            templateId={templateId}
+            staticTemplateData={staticTemplateData[2]}
+          />
+        );
 
       default:
         return <Box>No template found </Box>;
     }
   };
+
   return (
     <Box>
       {loading ? (

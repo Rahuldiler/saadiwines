@@ -5,7 +5,7 @@ const staticTemplateData = [
     templateName: "Classic",
     templateImage:
       "https://sv-landing-page-assets.s3.eu-north-1.amazonaws.com/Screenshot+2023-05-27+at+11.38.02+AM.png",
-    url: "/template/0",
+    url: "/template/1",
     isSelected: false,
     theme: {
       bgColor: "#9CAB8D",
@@ -34,7 +34,7 @@ const staticTemplateData = [
     templateId: 2,
     templateName: "Classic",
     templateImage: "/images/theme2-img.png",
-    url: "/template/1",
+    url: "/template/2",
     isSelected: true,
     theme: {
       bgColor: "#c21919",
@@ -60,11 +60,12 @@ const staticTemplateData = [
   },
 
   {
-    id: 3,
+    id: 11,
+    templateId: 11,
     templateName: "Classic",
     templateImage:
       "https://sv-landing-page-assets.s3.eu-north-1.amazonaws.com/Screenshot+2023-05-27+at+11.59.18+AM.png",
-    url: "/template/2",
+    url: "/template/11",
     isSelected: false,
     color: "blue",
   },
