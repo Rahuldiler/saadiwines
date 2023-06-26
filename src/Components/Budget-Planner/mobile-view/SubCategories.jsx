@@ -96,13 +96,13 @@ const SubCategoriesAccordian = ({
             <BorderLinearProgress
               progress={calculateProgress(
                 subCategory.expectedAmount,
-                calculateBudgetTransaction(subCategory.budgetTransaction)
+                subCategory.amountPaid
               )}
             />
           </Box>
         </Box>
         <Typography color={COLORS.gray} variant="caption" mt={2}>
-          Paid: ₹ {subCategory && calculateFinalCost(subCategory)}
+          Paid: ₹ {subCategory && subCategory.amountPaid}
         </Typography>
       </Box>
     </AccordionDetails>

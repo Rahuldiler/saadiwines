@@ -106,7 +106,7 @@ const Category = ({
                         fontWeight={600}
                       >
                         {/* {category.expectedAmount} */}
-                        {calculateTotaEstimatedCost(category.subCategory)}
+                        {calculateTotaEstimatedCost(category.subCategories)}
                       </Typography>
                       <ArrowForwardIosIcon
                         fontSize="15px"

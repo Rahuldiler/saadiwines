@@ -89,7 +89,7 @@ export default function CustomAccordian({
   isEditingSubCategory,
 }) {
   // const router = useRouter();
-  const { id, name, expectedAmount, subCategory } = category;
+  const { id, name, expectedAmount, subCategories } = category;
   const [openDialog, setOpenDialog] = useState(false);
   const [openPaymentDialog, setOpenPaymentDialog] = useState({
     openDialog: false,
@@ -147,12 +147,12 @@ export default function CustomAccordian({
                 color={COLORS.gray}
                 variant="caption"
               >
-                Cost: ₹ {calculateTotaEstimatedCost(category.subCategory)}
+                Cost: ₹ {category.expectedAmount}
               </Typography>
             </Box>
           </Box>
         </AccordionSummary>
-        {subCategory.map((el) => (
+        {subCategories.map((el) => (
           <SubCategoriesAccordian
             key={el.id}
             subCategory={el}
