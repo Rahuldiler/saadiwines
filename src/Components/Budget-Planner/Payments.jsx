@@ -26,16 +26,17 @@ import CustomCircularProgress from "./CustomCircularProgress";
 import { BORDER, COLORS } from "../utils/ConstantTheme";
 import { CustomCell } from "./table-components/CustomCell";
 import { CustomHeader } from "./table-components/CustomHeader";
-import { useState } from "react";
-import { deleteTransaction } from "@/services/transaction/transaction";
+import { useState, useEffect } from "react";
+import { deleteTransaction, fetchAllTransactions } from "@/services/transaction/transaction";
+
 
 export default function Payments({ data, loading, setTrackChanges }) {
+
   const renderButton = (id) => {
-    console.log("TRANSACTION ID", id);
     return (
       <Button
-        onClick={() =>
-          deleteTransaction(id).then(() => setTrackChanges((p) => !p))
+        onClick={ () => 
+          deleteTransaction(id).then(() => setTrackChanges((p) => !p))  
         }
         sx={{ color: COLORS.primary }}
       >
@@ -69,7 +70,7 @@ export default function Payments({ data, loading, setTrackChanges }) {
     },
   };
   const covertDate = (dateString) => {
-    const date = new Date(dateString);
+    const date = dateString ? new Date(dateString) : new Date();
     const options = {
       year: "numeric",
       month: "long",
@@ -100,35 +101,26 @@ export default function Payments({ data, loading, setTrackChanges }) {
     }
     if (
       selectedCategories.length > 0 &&
-      !selectedCategories.includes(category.name)
+      !selectedCategories.includes(category.categoryName)
     ) {
       return false; // Filter by selected categories
     }
     if (selectedSubcategories.length > 0) {
-      // console.log("SELECTED :::", selectedSubcategories);
-      const matchingSubcategories = category.subCategory.filter(
-        (subCategory) => {
-          // console.log("NAME ::", subCategory.name);
-          return selectedSubcategories.includes(subCategory.name);
-        }
-      );
-      // console.log("MATCHING :::", matchingSubcategories);
-      return matchingSubcategories.length > 0; // Filter by selected subcategories
+          return selectedSubcategories.includes(category.subCategoryName);
     }
     // console.log("NOT FOUND :::", category);
     return true;
   });
 
   // Get unique categories from the data
-  const categories = [...new Set(data.map((item) => item.name))];
+  const categories = [...new Set(data.map((item) => item.categoryName))];
 
   // Get subcategories based on selected categories
   let subcategories = [];
   if (selectedCategories.length > 0) {
     subcategories = data
-      .filter((item) => selectedCategories.includes(item.name))
-      .flatMap((item) => item.subCategory)
-      .map((subCategory) => subCategory.name);
+      .filter((item) => selectedCategories.includes(item.categoryName))
+      .map((item) => item.subCategoryName);
     subcategories = [...new Set(subcategories)];
     // console.log(selectedSubcategories)
   }
@@ -207,8 +199,10 @@ export default function Payments({ data, loading, setTrackChanges }) {
         </FormControl>
         {loading ? (
           <CustomCircularProgress />
-        ) : data.length == 0 ? (
-          <Box>No Transactions</Box>
+        ) : searchedData.length == 0 ? (
+          <Box
+          sx={{display: "flex", height: "10vh", justifyContent: "center", alignItems: "center"}}
+          >No Payments</Box>
         ) : (
           <Table aria-label="simple table">
             <TableHead>
@@ -229,30 +223,10 @@ export default function Payments({ data, loading, setTrackChanges }) {
                   <TableCell colSpan={4}>No results found.</TableCell>
                 </TableRow>
               ) : (
-                searchedData.map((category) => {
-                  return category.subCategory.map((subCategory) => {
-                    if (subCategory.budgetTransaction.length == 0) {
-                      return;
-                      // (
-                      //   <TableRow key={subCategory.id}>
-                      //     {/* <CustomCell title={category.name} /> */}
-                      //     {/* <CustomCell title={subCategory.name} /> */}
-                      //     {/* <CustomCell title={""} />
-                      //     <CustomCell title={""} />
-                      //     <CustomCell title={""} />
-                      //     <CustomCell title={""} />
-                      //     <CustomCell title={""} />
-                      //     <CustomCell title={""} />
-                      //     <CustomCell title={""} /> */}
-                      //     {/* <CustomCell title={renderButton()} /> */}
-                      //   </TableRow>
-                      // );
-                    }
-                    return subCategory.budgetTransaction.map((transaction) => {
-                      return (
-                        <TableRow key={subCategory.id}>
-                          <CustomCell title={category.name} />
-                          <CustomCell title={subCategory.name} />
+                searchedData.map((transaction) => (
+                        <TableRow key={transaction.id}>
+                          <CustomCell title={transaction.categoryName} />
+                          <CustomCell title={transaction.subCategoryName} />
                           <CustomCell title={transaction.name} />
                           <CustomCell
                             title={covertDate(transaction.dateAdded)}
@@ -262,10 +236,8 @@ export default function Payments({ data, loading, setTrackChanges }) {
                           <CustomCell title={transaction.type} />
                           <CustomCell title={renderButton(transaction.id)} />
                         </TableRow>
-                      );
-                    });
-                  });
-                })
+                      )
+                )
               )}
             </TableBody>
           </Table>

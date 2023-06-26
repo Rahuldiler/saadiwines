@@ -18,14 +18,13 @@ function Dashboard() {
     const response = await getUserPreference();
     setUserPreferenceData(response);
     setNavItems([
-      { id: 1, title: "Templates", url: "/choose-template" },
-      { id: 2, title: "Wedding Info", url: "/form" },
+      ...navItems,
       response?.budgetPlanningEnabled && {
         id: 3,
         title: "Budget",
         url: "/budget-planner",
       },
-      response?.guestListEnabled && { id: 4, title: "Guests", url: "/" },
+      response?.guestListEnabled && { id: 4, title: "Guests", url: "/guests" },
     ]);
     setLoading(false);
   };

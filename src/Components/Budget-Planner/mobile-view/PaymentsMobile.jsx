@@ -11,7 +11,7 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   marginLeft: theme.spacing(1),
   borderTop: "1px solid rgba(0, 0, 0, .125)",
 }));
-const PaymentsMobile = ({ category, loading, setTrackChanges }) => {
+const PaymentsMobile = ({ transactions, loading, setTrackChanges }) => {
   const formateData = (dateString) => {
     const date = new Date(dateString);
     const formattedDate = date.toLocaleDateString().split("/").join("-");
@@ -47,19 +47,13 @@ const PaymentsMobile = ({ category, loading, setTrackChanges }) => {
         >
           <CircularProgress />
         </Box>
-      ) : !loading && category.length === 0 ? (
+      ) : !loading && transactions.length === 0 ? (
         <Box textAlign={"center"}>
           <Typography>No Transactions found</Typography>
         </Box>
       ) : (
         <Box>
-          {category.map((category) => {
-            return category.subCategory.map((subCategory) => {
-              if (subCategory.budgetTransaction.length == 0) {
-                return;
-              }
-              return subCategory.budgetTransaction.map((transaction) => {
-                return (
+          {transactions.map((transaction) => (
                   <AccordionDetails
                     sx={{ p: 1, m: 1, px: 2 }}
                     key={transaction.id}
@@ -109,7 +103,7 @@ const PaymentsMobile = ({ category, loading, setTrackChanges }) => {
                             mr={0.4}
                             textAlign={"center"}
                           >
-                            {category.name}
+                            {transaction.categoryName}
                           </Typography>
                           <ArrowRightAltIcon />
                           <Typography
@@ -120,7 +114,7 @@ const PaymentsMobile = ({ category, loading, setTrackChanges }) => {
                             noWrap={true}
                             overflow={"clip"}
                           >
-                            {subCategory.name}
+                            {transaction.subCategoryName}
                           </Typography>
                           <br />
                           <Typography
@@ -144,10 +138,8 @@ const PaymentsMobile = ({ category, loading, setTrackChanges }) => {
                       </Typography>
                     </Box>
                   </AccordionDetails>
-                );
-              });
-            });
-          })}
+                )
+          )}
         </Box>
       )}
     </Box>
