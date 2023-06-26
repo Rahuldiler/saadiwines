@@ -74,11 +74,12 @@ const staticTemplateData = [
     color: "blue",
   },
   {
-    id: 4,
+    id: 21,
+    templateId: 21,
     templateName: "Classic",
     templateImage:
       "https://sv-landing-page-assets.s3.eu-north-1.amazonaws.com/Screenshot+2023-05-27+at+12.00.52+PM.png",
-    url: "/template/3",
+    url: "/template/21",
     isSelected: false,
   },
   {

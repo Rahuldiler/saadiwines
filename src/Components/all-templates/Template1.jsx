@@ -14,7 +14,7 @@ import { templateInfoData } from "@/constants/templateInfo";
 import Steps from "@/Components/template-components/1/steps";
 import { useRouter } from "next/router";
 
-function TemplateOne({ templateData, staticTemplateData }) {
+function Template1({ templateData, staticTemplateData, images }) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [imageIndex, setImageIndex] = useState();
   const [isOpen, setIsOpen] = useState(false);
@@ -50,7 +50,7 @@ function TemplateOne({ templateData, staticTemplateData }) {
     },
   ];
 
-  const images = [
+  const imagesLightBox = [
     { id: 1, image: "/images/gallery/c-gallery-01.jpg" },
     { id: 2, image: "/images/gallery/c-gallery-02.jpg" },
     { id: 3, image: "/images/gallery/c-gallery-03.jpg" },
@@ -219,7 +219,7 @@ function TemplateOne({ templateData, staticTemplateData }) {
   return (
     <div className="lg:min-w-[1280px] ">
       <div className="h-[900px] relative">
-        {slides.map((slide, index) => (
+        {imagesLightBox.map((slide, index) => (
           <div
             key={index}
             className={`absolute top-0 bg-black left-0 w-full h-full transition-opacity duration-500 ${
@@ -229,11 +229,7 @@ function TemplateOne({ templateData, staticTemplateData }) {
             <div className="absolute top-0 left-0 bg-black w-full h-full opacity-30">
               {" "}
             </div>
-            <img
-              src={slide.image}
-              alt={slide.caption1}
-              className="object-cover w-full h-full"
-            />
+            <img src={slide.image} className="object-cover w-full h-full" />
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 p-4 text-white  w-max ">
               <div
                 className={`!font-Alex text-center text-[50px] w-56 lg:w-auto lg:text-[120px] ${
@@ -274,23 +270,23 @@ function TemplateOne({ templateData, staticTemplateData }) {
         img="/images/icon-02.png"
         propName="clock"
         theme={staticTemplateData?.theme}
-        weddingDayURL={staticTemplateData?.weddingDayURL}
-        waterColorIMG={staticTemplateData?.waterColorIMG}
-        swiperSlide1={staticTemplateData?.swiperSlide1}
-        swiperSlide2={staticTemplateData?.swiperSlide2}
-        swiperSlide3={staticTemplateData?.swiperSlide3}
-        swiperSlide4={staticTemplateData?.swiperSlide4}
-        swiperSlide5={staticTemplateData?.swiperSlide5}
-        swiperSlide6={staticTemplateData?.swiperSlide6}
+        weddingDayURL={staticTemplateData?.images.weddingDayURL}
+        waterColorIMG={staticTemplateData?.images.waterColorIMG}
+        swiperSlide1={staticTemplateData?.images.swiperSlide1}
+        swiperSlide2={staticTemplateData?.images.swiperSlide2}
+        swiperSlide3={staticTemplateData?.images.swiperSlide3}
+        swiperSlide4={staticTemplateData?.images.swiperSlide4}
+        swiperSlide5={staticTemplateData?.images.swiperSlide5}
+        swiperSlide6={staticTemplateData?.images.swiperSlide6}
       />
 
       {templateData && (
         <div
           className={`lg:p-24 py-28 p-4 lg:flex justify-between  `}
-          style={{ backgroundImage: staticTemplateData?.paral02 }}
+          style={{ backgroundImage: staticTemplateData?.images.paral02 }}
         >
           <CoupleInfo
-            bgImage={staticTemplateData?.waterColor}
+            bgImage={staticTemplateData?.images.waterColor}
             name={templateData?.weddingInfo?.groom.name}
             gender="THE GROOM"
             father={templateData?.weddingInfo?.groom.fatherName}
@@ -302,7 +298,7 @@ function TemplateOne({ templateData, staticTemplateData }) {
           />
 
           <CoupleInfo
-            bgImage={staticTemplateData?.waterColor}
+            bgImage={staticTemplateData?.images.waterColor}
             name={templateData && templateData?.weddingInfo?.bride.name}
             gender="THE BRIDE"
             father={templateData && templateData?.weddingInfo?.bride.fatherName}
@@ -324,9 +320,9 @@ function TemplateOne({ templateData, staticTemplateData }) {
       {templateData?.milestone?.map((milestone, index) => {
         return (
           <Double
-            waterColor={staticTemplateData?.waterColor02}
+            waterColor={staticTemplateData?.images.waterColor02}
             key={index}
-            img={staticTemplateData?.double1}
+            img={staticTemplateData?.images.double1}
             title={milestone.title}
             subtitle="11:30 am In The Square"
             infotext={milestone.description}
@@ -344,7 +340,7 @@ function TemplateOne({ templateData, staticTemplateData }) {
         {/* <p className="text-center mt-1 mb-10">WEDDING</p> */}
         <div className="grid lg:grid-cols-2  lg:px-20 py-14">
           <div className="px-8">
-            <img src={staticTemplateData?.double2} alt="" className="" />
+            <img src={staticTemplateData?.images.double2} alt="" className="" />
             {/* <p className="!font-Alex !text-[50px] text-center mt-5">
               Wedding Menu
             </p>
@@ -374,7 +370,7 @@ function TemplateOne({ templateData, staticTemplateData }) {
 
       <div>
         <div className="grid grid-cols-4 cursor-pointer">
-          {images.map((image, index) => (
+          {imagesLightBox.map((image, index) => (
             <div key={index} className={``} onClick={() => openLightbox(index)}>
               <img
                 src={image.image}
@@ -393,7 +389,7 @@ function TemplateOne({ templateData, staticTemplateData }) {
         images={images}
       />
 
-      <div style={{ backgroundImage: staticTemplateData?.waterColor02 }}>
+      <div style={{ backgroundImage: staticTemplateData?.images.waterColor02 }}>
         <p className="!font-Alex !text-[40px] lg:!text-[100px] text-center mt-16 lg:mt-0 pt-16 ">
           Important Family Members
         </p>
@@ -404,7 +400,7 @@ function TemplateOne({ templateData, staticTemplateData }) {
             <Cards
               theme={staticTemplateData?.theme}
               key={index}
-              imgSrc={staticTemplateData?.gallery10}
+              imgSrc={staticTemplateData?.images.gallery10}
               name={cards.name}
               relationship={cards.relation}
             />
@@ -421,7 +417,7 @@ function TemplateOne({ templateData, staticTemplateData }) {
       >
         <div
           className="absolute top-0 left-0  opacity-100 mix-blend-multiply  w-[100%] h-[100%] bg-cover bg-no-repeat bg-[center_top]"
-          style={{ backgroundImage: staticTemplateData?.waterColor02 }}
+          style={{ backgroundImage: staticTemplateData?.images.waterColor02 }}
         />
         <div className="lg:px-36 px-4">
           <div className="py-20 text-center">
@@ -434,7 +430,7 @@ function TemplateOne({ templateData, staticTemplateData }) {
         </div>
       </div>
       <div></div>
-      <div style={{ backgroundImage: staticTemplateData?.waterColor02 }}>
+      <div style={{ backgroundImage: staticTemplateData?.images.waterColor02 }}>
         <p className="!font-Alex !text-[40px] lg:!text-[100px] text-center mt-16 lg:mt-0 pt-16 ">
           Points of contacts
         </p>
@@ -445,9 +441,8 @@ function TemplateOne({ templateData, staticTemplateData }) {
             <Cards
               theme={staticTemplateData?.theme}
               key={index}
-              imgSrc={staticTemplateData?.gallery10}
+              imgSrc={staticTemplateData?.images.gallery10}
               name={cards.firstName}
-              relationship={cards.relationship}
               contactNo={`+91 ${cards.contactNumber}`}
             />
           ))}
@@ -457,30 +452,30 @@ function TemplateOne({ templateData, staticTemplateData }) {
       {rsvp && (
         <div
           className=" lg:py-[32rem] py-[450px] relative bg-cover "
-          style={{ backgroundImage: staticTemplateData?.paral03 }}
+          style={{ backgroundImage: staticTemplateData?.images.paral03 }}
         >
           <div className="absolute top-0 left-0  opacity-50  w-[100%] h-[100%] bg-black "></div>
           <div
             className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center max-w-[650px] mx-auto px-28 lg:px-auto py-28 bg-cover z-50"
             style={{
-              backgroundImage: staticTemplateData?.waterColor02,
+              backgroundImage: staticTemplateData?.images.waterColor02,
             }}
           >
             <p>R.S.V.P</p>
             <p className="!font-Alex !text-[30px] lg:!text-[50px] lg:px-28 mb-12">
               Confirmation at Marriage
             </p>
-            <ContactForm themeColor={staticTemplateData.theme} />
+            <ContactForm themeColor={staticTemplateData?.theme} />
           </div>
         </div>
       )}
       <div
         className="text-center py-20 lg:py-14  bg-right-top bg-no-repeat bg-contain relative"
-        style={{ backgroundImage: staticTemplateData?.waterColor02 }}
+        style={{ backgroundImage: staticTemplateData?.images.waterColor02 }}
       >
         <span
           className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-50  lg:w-[240px] lg:h-[260px] bg-[length:235px_auto] bg-no-repeat"
-          style={{ backgroundImage: staticTemplateData?.leaf03 }}
+          style={{ backgroundImage: staticTemplateData?.images.leaf03 }}
         ></span>
         <p className="!font-Alex !text-[30px] lg:!text-[50px] mb-3">
           {templateData?.weddingInfo?.groom.name.split(" ")[0]} &
@@ -492,4 +487,4 @@ function TemplateOne({ templateData, staticTemplateData }) {
   );
 }
 
-export default TemplateOne;
+export default Template1;

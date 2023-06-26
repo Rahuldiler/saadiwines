@@ -6,10 +6,11 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { templateInfoData } from "@/constants/templateInfo";
 import { staticTemplateData } from "@/constants/template";
-import TemplateOne from "@/Components/all-templates/TemplateOne";
 import Loader from "@/Components/common/Loader";
 import { useRouter } from "next/router";
-import TemplateTwo from "@/Components/all-templates/TemplateTwo";
+import Template3 from "@/Components/all-templates/Template3";
+import Template2 from "@/Components/all-templates/Template2";
+import Template1 from "@/Components/all-templates/Template1";
 
 function Template() {
   const [formData, setFormData] = useState({});
@@ -51,28 +52,40 @@ function Template() {
     switch (templateId) {
       case 1:
         return (
-          <TemplateOne
+          <Template1
             templateData={formData}
             templateId={templateId}
             staticTemplateData={staticTemplateData[0]}
+            images={staticTemplateData[0].images}
           />
         );
 
       case 2:
         return (
-          <TemplateOne
+          <Template1
             templateData={formData}
             templateId={templateId}
             staticTemplateData={staticTemplateData[1]}
+            images={staticTemplateData[1].images}
           />
         );
 
       case 11:
         return (
-          <TemplateTwo
+          <Template2
             templateData={formData}
             templateId={templateId}
             staticTemplateData={staticTemplateData[2]}
+            images={staticTemplateData[2].images}
+          />
+        );
+      case 21:
+        return (
+          <Template3
+            templateData={formData}
+            templateId={templateId}
+            staticTemplateData={staticTemplateData[3]}
+            images={staticTemplateData[3].images}
           />
         );
 
