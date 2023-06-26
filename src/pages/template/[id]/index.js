@@ -35,7 +35,6 @@ function Template() {
     async function fetchData() {
       try {
         if (id?.length > 3) {
-          console.log("f");
           const responseKey = await getTemplateKey();
           const responseTemplateData = await getTemplateData(
             responseKey.userIdKey
@@ -51,7 +50,6 @@ function Template() {
   }, [id]);
 
   const getTemplate = (templateId) => {
-    console.log(templateId, formData, "templateId");
     switch (templateId) {
       case 1:
         return (
