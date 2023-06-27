@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 
-const ContactForm = () => {
+const ContactForm = ({staticTemplateData}) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -80,7 +80,8 @@ const ContactForm = () => {
           </div>
           <button
             type="submit"
-            className="w-full lg:px-4 py-2 text-white bg-[#80A0C2]  rounded-md  focus:outline-none focus:bg-blue-600"
+            style={{backgroundColor: staticTemplateData?.theme?.bgColor}}
+            className="w-full lg:px-4 py-2 text-white rounded-md  focus:outline-none focus:bg-blue-600"
           >
             Submit
           </button>
