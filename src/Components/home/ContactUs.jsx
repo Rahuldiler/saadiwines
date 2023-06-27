@@ -1,13 +1,17 @@
 import { Box, Button, Grid, TextField, Typography } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import { FaFacebookF, FaPhone } from "react-icons/fa";
 import { BsTwitter } from "react-icons/bs";
 import { FiInstagram } from "react-icons/fi";
 import { HiMail } from "react-icons/hi";
 import { ImLocation } from "react-icons/im";
 import { COLORS } from "../utils/ConstantTheme";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import { addContactUs } from "@/services/Contact/contact-us";
 
 function ContactUs() {
+  const [contactForm, setContactForm] = useState();
   const contactInfo = [
     {
       title: "Write us at",
@@ -25,6 +29,32 @@ function ContactUs() {
       icon: <ImLocation style={{ marginRight: 4 }} size={24} />,
     },
   ];
+  const phoneRegExp =
+    /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
+  const formik = useFormik({
+    initialValues: {
+      name: String,
+      contactNumber: String,
+      email: String,
+      pass: String,
+    },
+    validationSchema: Yup.object({
+      name: Yup.string()
+        .matches(/^[a-zA-Z\s]*$/, "No special characters allowed")
+        .required("Required"),
+      contactNumber: Yup.string().matches(
+        phoneRegExp,
+        "Phone number is not valid"
+      ),
+      pass: Yup.string().required("Required"),
+      email: Yup.string().required("Required").email(),
+    }),
+    onSubmit: async (values) => {
+      await addContactUs(values);
+    },
+  });
+
+  console.log(formik.values, formik.errors);
   return (
     <section id="contact">
       <Box>
@@ -103,43 +133,102 @@ function ContactUs() {
                 mx: { lg: 0, xs: "20px" },
               }}
             >
-              <TextField
-                placeholder="Name"
-                sx={{ background: "#FFF9F5", border: 0, width: "100%" }}
-                required
-              />
-              <TextField
-                placeholder="Phone Number"
-                sx={{ background: "#FFF9F5", border: 0, width: "100%", mt: 4 }}
-                required
-              />
-              <TextField
-                placeholder="Email Address"
-                sx={{ background: "#FFF9F5", border: 0, width: "100%", mt: 4 }}
-                required
-              />
-              <TextField
-                placeholder="Write Message"
-                multiline
-                rows={5}
-                sx={{ background: "#FFF9F5", border: 0, width: "100%", mt: 4 }}
-              />
-              <Button
-                className={`bg-[${COLORS.primary}]`}
-                sx={{
-                  backgroundColor: "#BC8129",
-                  color: "#fff",
-                  border: 0,
-                  p: "7px 30px",
-                  width: "100%",
-                  mt: 4,
-                  "&:hover": {
-                    background: "#BC812990",
-                  },
-                }}
-              >
-                Send Message
-              </Button>
+              <form onSubmit={formik.handleSubmit}>
+                <TextField
+                  type="text"
+                  name="name"
+                  value={formik.values?.name}
+                  onChange={formik.handleChange}
+                  placeholder="Name *"
+                  sx={{ background: "#FFF9F5", border: 0, width: "100%" }}
+                />
+                {formik.touched.name && formik.errors.name ? (
+                  <div style={{ color: "Red" }}>{formik.errors.name}</div>
+                ) : null}
+                <TextField
+                  type="number"
+                  name="contactNumber"
+                  value={formik.values?.contactNumber}
+                  onChange={formik.handleChange}
+                  placeholder="Phone Number *"
+                  sx={{
+                    background: "#FFF9F5",
+                    border: 0,
+                    width: "100%",
+                    mt: 4,
+                    "&.MuiTextField-root": {
+                      width: "100%",
+                    },
+                    "& input[type=number]": {
+                      MozAppearance: "textfield",
+                    },
+                    "& input[type=number]::-webkit-outer-spin-button": {
+                      WebkitAppearance: "none",
+                      margin: 0,
+                    },
+                    "& input[type=number]::-webkit-inner-spin-button": {
+                      WebkitAppearance: "none",
+                      margin: 0,
+                    },
+                  }}
+                />
+                {formik.touched.contactNumber && formik.errors.contactNumber ? (
+                  <div style={{ color: "Red" }}>
+                    {formik.errors.contactNumber}
+                  </div>
+                ) : null}
+                <TextField
+                  type="email"
+                  name="email"
+                  value={formik.values?.email}
+                  onChange={formik.handleChange}
+                  placeholder="Email Address *"
+                  sx={{
+                    background: "#FFF9F5",
+                    border: 0,
+                    width: "100%",
+                    mt: 4,
+                  }}
+                />
+                {formik.touched.email && formik.errors.email ? (
+                  <div style={{ color: "Red" }}>{formik.errors.email}</div>
+                ) : null}
+                <TextField
+                  type="text"
+                  name="pass"
+                  value={formik.values?.pass}
+                  onChange={formik.handleChange}
+                  placeholder="Write Message *"
+                  multiline
+                  rows={5}
+                  sx={{
+                    background: "#FFF9F5",
+                    border: 0,
+                    width: "100%",
+                    mt: 4,
+                  }}
+                />
+                {formik.touched.pass && formik.errors.pass ? (
+                  <div style={{ color: "Red" }}>{formik.errors.pass}</div>
+                ) : null}
+                <Button
+                  type="submit"
+                  className={`bg-[${COLORS.primary}]`}
+                  sx={{
+                    backgroundColor: "#BC8129",
+                    color: "#fff",
+                    border: 0,
+                    p: "7px 30px",
+                    width: "100%",
+                    mt: 4,
+                    "&:hover": {
+                      background: "#BC812990",
+                    },
+                  }}
+                >
+                  Send Message
+                </Button>
+              </form>
             </Box>
           </Grid>
         </Grid>
@@ -149,5 +238,3 @@ function ContactUs() {
 }
 
 export default ContactUs;
-
-

@@ -19,7 +19,7 @@ import { useEffect } from "react";
 import { templateInfoData } from "@/constants/templateInfo";
 import moment from "moment";
 
-export default function NewTemplate({ formData }) {
+export default function Template2({ templateData, staticTemplateData }) {
   const [selectedItem, setSelectedItem] = useState("All");
   const [imageIndex, setImageIndex] = useState();
   const [isOpen, setIsOpen] = useState(false);
@@ -317,11 +317,6 @@ export default function NewTemplate({ formData }) {
       contactNo: "+9190909090",
     },
   ];
-
-  const [templateData, setTemplateData] = useState();
-  useEffect(() => {
-    formData ? setTemplateData(formData) : setTemplateData(templateInfoData);
-  }, [formData]);
 
   return (
     <>
