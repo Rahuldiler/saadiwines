@@ -20,7 +20,7 @@ function Steps({
         <p className="!font-Alex !text-[35px] ">
           {fctnName}{" "}
           <span
-            style={{ backgroundColor: themeColor.bgColor }}
+            style={{ backgroundColor: themeColor.bgColor, color: themeColor?.textColor }}
             className={`bg-[${themeColor.bgColor}] text-white px-3 py-1 text-base`}
           >
             <a href={location}>map</a>

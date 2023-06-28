@@ -80,8 +80,8 @@ const ContactForm = ({staticTemplateData}) => {
           </div>
           <button
             type="submit"
-            style={{backgroundColor: staticTemplateData?.theme?.bgColor}}
-            className="w-full lg:px-4 py-2 text-white rounded-md  focus:outline-none focus:bg-blue-600"
+            style={{backgroundColor: staticTemplateData?.theme?.bgColor, color: staticTemplateData?.theme?.textColor}}
+            className="w-full lg:px-4 py-2 rounded-md  focus:outline-none focus:bg-blue-600"
           >
             Submit
           </button>
