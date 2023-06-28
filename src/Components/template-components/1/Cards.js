@@ -15,7 +15,7 @@ function Cards({
       className={`text-center bg-[${theme.bgColor}] px-28 pt-16 pb-6 rounded-lg shadow-2xl relative`}
     >
       <div className=" rounded-lg absolute top-[-50px] left-1/2 transform -translate-x-1/2 ">
-        <img src={imgSrc} alt="" className="rounded-2xl w-28 h-28 shadow-2xl" />
+        <img src={imgSrc} alt="" className="object-cover rounded-2xl w-28 h-28 shadow-2xl" />
       </div>
       <div
         style={{ color: theme.textColor }}

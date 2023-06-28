@@ -44,7 +44,7 @@ function Double({
         ></div>
         <p className="!font-Alex !text-[50px] mb-3">{title}</p>
         {/* <p className=' lg:!text-[14px] !text-[16px] mb-3'>{subtitle}</p> */}
-        <p className=" lg:!text-[14px] !text-[16px] mb-3">{infotext}</p>
+        <p className=" lg:!text-[18px] !text-[20px] mb-3">{infotext}</p>
       </div>
     </div>
   );

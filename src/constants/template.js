@@ -22,12 +22,14 @@ const staticTemplateData = [
       swiperSlide5: "/images/venders/logo-white-04.png",
       swiperSlide6: "/images/venders/logo-white-06.png",
       paral02: "url('/images/c-paral-02.jpg')",
-      paral03: "url('/images/c-paral-03.jpg')",
+      paral03: "url('https://template-assets-sv.s3.amazonaws.com/template1/DSC_4389.JPG')",
       waterColor02: "url('/images/bg-watercolor-02.jpg')",
       waterColor: "url('/images/bg-watercolor.jpg')",
-      double1: "/images/double1.jpg",
+      double1:
+        "https://template-assets-sv.s3.amazonaws.com/template1/SNY_1945.JPG",
       double2: "/images/double2.jpg",
-      gallery10: "/images/gallery/c-gallery-10.jpg",
+      gallery10:
+        "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4388.JPG",
       leaf03: "url('/images/gr-leaf-03.png')",
     },
   },

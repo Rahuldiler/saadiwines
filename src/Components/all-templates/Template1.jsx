@@ -38,27 +38,60 @@ function Template1({ templateData, staticTemplateData, images }) {
   const slides = [
     {
       id: 1,
-      image: "/images/c-paral-14.jpg",
-      caption1: " Christin & Thomas ",
+      image:
+        "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4055.jpg",
+      caption1: " Saanvi & Krishna ",
       caption2: " 16/04/2030",
     },
     {
       id: 2,
-      image: "/images/package-lock.jpeg",
-      caption1: " Christin & Thomas ",
+      image:
+        "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4280.JPG",
+      caption1: " Saanvi & Krishna ",
       caption2: " 16/04/2030",
     },
   ];
-
   const imagesLightBox = [
-    { id: 1, image: "/images/gallery/c-gallery-01.jpg" },
-    { id: 2, image: "/images/gallery/c-gallery-02.jpg" },
-    { id: 3, image: "/images/gallery/c-gallery-03.jpg" },
-    { id: 4, image: "/images/gallery/c-gallery-04.jpg" },
-    { id: 5, image: "/images/gallery/c-gallery-07.jpg" },
-    { id: 6, image: "/images/gallery/c-gallery-08.jpg" },
-    { id: 7, image: "/images/gallery/c-gallery-09.jpg" },
-    { id: 8, image: "/images/gallery/c-gallery-10.jpg" },
+    {
+      id: 1,
+      image:
+        "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4262.JPG",
+    },
+    {
+      id: 2,
+      image:
+        "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4094.JPG",
+    },
+    {
+      id: 3,
+      image:
+        "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4125.JPG",
+    },
+    {
+      id: 4,
+      image:
+        "https://template-assets-sv.s3.amazonaws.com/template1/SNY_1945.JPG",
+    },
+    {
+      id: 5,
+      image:
+        "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4059.JPG",
+    },
+    {
+      id: 6,
+      image:
+        "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4379.JPG",
+    },
+    {
+      id: 7,
+      image:
+        "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4390.JPG",
+    },
+    {
+      id: 8,
+      image:
+        "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4260.JPG",
+    },
   ];
 
   const impoFamily = [
@@ -219,7 +252,7 @@ function Template1({ templateData, staticTemplateData, images }) {
   return (
     <div className="lg:min-w-[1280px] ">
       <div className="h-[900px] relative">
-        {imagesLightBox.map((slide, index) => (
+        {slides.map((slide, index) => (
           <div
             key={index}
             className={`absolute top-0 bg-black left-0 w-full h-full transition-opacity duration-500 ${
@@ -283,7 +316,14 @@ function Template1({ templateData, staticTemplateData, images }) {
       {templateData && (
         <div
           className={`lg:p-24 py-28 p-4 lg:flex justify-between  `}
-          style={{ backgroundImage: staticTemplateData?.images.paral02 }}
+          style={{
+            backgroundImage:
+              "url('https://template-assets-sv.s3.amazonaws.com/template1/DSC_4268.JPG",
+            backgroundClip: "border-box",
+            backgroundPosition: "top",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+          }}
         >
           <CoupleInfo
             bgImage={staticTemplateData?.images.waterColor}
@@ -375,7 +415,7 @@ function Template1({ templateData, staticTemplateData, images }) {
               <img
                 src={image.image}
                 alt=""
-                className="object-contain w-full h-full"
+                className="object-cover w-full h-full"
               />
             </div>
           ))}
@@ -481,7 +521,7 @@ function Template1({ templateData, staticTemplateData, images }) {
           {templateData?.weddingInfo?.groom.name.split(" ")[0]} &
           {templateData?.weddingInfo?.bride.name.split(" ")[0]}
         </p>
-        <p className="!font-Cardo">MADE WITH LOVE IN NEW YORK</p>
+        <p className="!font-Cardo">MADE WITH LOVE IN JAIPUR</p>
       </div>
     </div>
   );

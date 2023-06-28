@@ -10,31 +10,31 @@ const templateInfoData = {
     {
       id: 2,
 
-      title: "Lunch at the Villa",
+      title: "Wedding Feast",
       description:
-        "The villa's garden is truly a work of art, with carefully cultivated flower beds and winding paths that invite us to explore the natural beauty around us. The gentle breeze that brushes against our skin and the chirping of the birds add to the enchanting ambiance that surrounds us. It's the perfect setting for a wedding reception, as it allows us to enjoy delicious food and drinks while basking in the splendor of the best flowery nature.",
+        "As you enter the magnificent wedding venue adorned with opulent decorations, the tantalizing aroma of Indian spices fills the air, immediately whetting your appetite. The ambiance is abuzz with laughter, conversations, and the clinking of glasses, creating an atmosphere of joy and celebration. You can't help but feel the anticipation of embarking on a culinary adventure that promises to indulge your senses.",
     },
   ],
   familyMembers: [
     {
       id: 1,
-      name: "Vibhor",
-      relation: "Brother",
+      name: "Sameer",
+      relation: "Father",
     },
     {
       id: 2,
-      name: "Arpit",
-      relation: "Brother",
+      name: "Nikita",
+      relation: "Mother",
     },
     {
       id: 3,
-      name: "Vibhor",
-      relation: "Brother",
+      name: "Rajat",
+      relation: "Father-in-law",
     },
     {
       id: 4,
-      name: "Arpit",
-      relation: "Brother",
+      name: "Rachna",
+      relation: "Mother-in-law",
     },
     {
       id: 5,
@@ -48,42 +48,42 @@ const templateInfoData = {
     },
     {
       id: 7,
-      name: "Vibhor",
-      relation: "Brother",
+      name: "Ananya",
+      relation: "Sister",
     },
     {
       id: 8,
-      name: "Arpit",
-      relation: "Brother",
+      name: "Jaya",
+      relation: "Sister",
     },
     {
       id: 9,
-      name: "Vibhor",
-      relation: "Brother",
+      name: "Saloni",
+      relation: "Sister",
     },
     {
       id: 10,
-      name: "Arpit",
-      relation: "Brother",
+      name: "Sachin",
+      relation: "Maternal uncle",
     },
     {
       id: 11,
-      name: "Vibhor",
-      relation: "Brother",
+      name: "Sumit",
+      relation: "Maternal uncle",
     },
     {
       id: 12,
-      name: "Arpit",
-      relation: "Brother",
+      name: "Shivam",
+      relation: "Cousin",
     },
   ],
   itinerary: [
     {
       id: 1,
 
-      functionName: "Wedding Ceremony",
+      functionName: "The Vibrant Mehendi Ceremony",
       details:
-        "The wedding ceremony is the heart of any celebration. It's the moment when the couple exchange vows and commit to spending the rest of their lives together.",
+        "Explore the significance and beauty of the Mehendi ceremony, where intricate henna designs are applied to the hands and feet of the bride, symbolizing love, happiness, and fertility.",
       dateTime: "2024-06-18T08:29:53.796",
       address: "string",
       mapsLocation:
@@ -92,9 +92,9 @@ const templateInfoData = {
     },
     {
       id: 2,
-      functionName: "Lunch Time",
+      functionName: "Joyful Sangeet Celebration",
       details:
-        "After the wedding ceremony, it's time for lunch! This is a time for guests to relax and enjoy a delicious meal together, while catching up with old friends and making new ones.",
+        "Experience the lively and energetic Sangeet ceremony, filled with music, dance performances, and revelry, as both families come together to celebrate and honor the union of the couple.",
       dateTime: "2024-06-18T09:29:53.796",
       address: "string",
       mapsLocation:
@@ -104,9 +104,9 @@ const templateInfoData = {
     {
       id: 3,
 
-      functionName: "Party with Music",
+      functionName: "Grandeur of Baraat",
       details:
-        "The party with music is the perfect way to celebrate the newlyweds and their love story. This is a time for guests to let loose, hit the dance floor, and enjoy some great music.",
+        "Dive into the joyous and exuberant Baraat procession, where the groom arrives at the wedding venue with his family and friends, accompanied by music, dancing, and revelry.",
       dateTime: "2024-06-18T08:29:53.796",
       address: "string",
       mapsLocation:
@@ -116,9 +116,9 @@ const templateInfoData = {
     {
       id: 4,
 
-      functionName: "Cake Cutting",
+      functionName: "Sacred Seven Steps",
       details:
-        "The cake cutting is a special moment that symbolizes the couple's union and their commitment to sharing their lives together and it's a tradition that dates back centuries.",
+        "Discover the deep-rooted tradition of the Saptapadi or Seven Steps, a sacred ritual where the bride and groom take seven vows around the holy fire, representing their lifelong commitment to each other.",
       dateTime: "2024-06-18T08:29:53.796",
       address: "string",
       mapsLocation:
@@ -129,40 +129,40 @@ const templateInfoData = {
   pocs: [
     {
       id: 2,
-      firstName: "Vibhor",
-      lastName: "Vibhor",
-      contactNumber: "90909090",
+      firstName: "Shivam",
+      lastName: "Shivam",
+      contactNumber: "8770123453",
       fromSide: "Bride",
-      image: "/images/gallery/c-gallery-01.jpg",
+      image: "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4268.JPG",
     },
     {
       id: 1,
-      firstName: "Arpit",
-      lastName: "Arpit",
-      contactNumber: "90909090",
+      firstName: "Sumit",
+      lastName: "Sumit",
+      contactNumber: "97648536584",
       fromSide: "GROOM",
-      image: "/images/gallery/c-gallery-01.jpg",
+      image: "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4268.JPG",
     },
   ],
   weddingInfo: {
     id: 1,
     bride: {
-      name: "Christin Martin",
-      motherName: "Y",
-      fatherName: "X",
-      grandMotherName: "B",
-      grandFatherName: "A",
+      name: "Saanvi Mehta",
+      motherName: "Nikita",
+      fatherName: "Sameer",
+      grandMotherName: "Aditi",
+      grandFatherName: "Ishaan",
       description:
-        "Hello everyone, my name is Christin, and I'm overjoyed to share this special moment with all of you. I've always been a hopeless romantic, and I've dreamt of this day for as long as I can remember.",
+        "Hello everyone, my name is Saanvi, and I'm overjoyed to share this special moment with all of you. I've always been a hopeless romantic, and I've dreamt of this day for as long as I can remember.",
     },
     groom: {
-      name: "Thomas Mcnroo",
-      motherName: "Y",
-      fatherName: "X",
-      grandMotherName: "B",
-      grandFatherName: "A",
+      name: "Krishna Jhosi",
+      motherName: "Rachna",
+      fatherName: "Rajat",
+      grandMotherName: "Adhya",
+      grandFatherName: "Arjun",
       description:
-        "My name is Thomas, and I'm filled with joy and excitement to be marrying the love of my life. I feel overwhelmed with gratitude for the love and support that we've received from our family and friends.",
+        "My name is Krishna, and I'm filled with joy and excitement to be marrying the love of my life. I feel overwhelmed with gratitude for the love and support that we've received from our family and friends.",
     },
     thankYouMessage:
       "As I look back on our friendship, I can't help but remember all of the fun times we've had together, from the crazy adventures to the quiet moments of reflection.",
