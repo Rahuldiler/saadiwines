@@ -70,7 +70,7 @@ function Template() {
           />
         );
 
-      case 11:
+      case 3:
         return (
           <Template2
             templateData={formData}
@@ -79,15 +79,34 @@ function Template() {
             images={staticTemplateData[2].images}
           />
         );
-      case 21:
+      case 4:
         return (
-          <Template3
+          <Template2
             templateData={formData}
             templateId={templateId}
             staticTemplateData={staticTemplateData[3]}
             images={staticTemplateData[3].images}
           />
         );
+      case 5:
+        return (
+          <Template3
+            templateData={formData}
+            templateId={templateId}
+            staticTemplateData={staticTemplateData[4]}
+            images={staticTemplateData[4].images}
+          />
+        );
+      case 6:
+        return (
+          <Template3
+            templateData={formData}
+            templateId={templateId}
+            staticTemplateData={staticTemplateData[5]}
+            images={staticTemplateData[5].images}
+          />
+        );
+   
 
       default:
         return <Box>No template found </Box>;
