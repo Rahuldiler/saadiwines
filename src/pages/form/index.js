@@ -37,6 +37,9 @@ import {
   getFamilyMember,
   updateFamilyMember,
 } from "@/services/familyMember/formFamilyMember";
+import { getUserPreference } from "@/services/user-preference/userPreference";
+import CustomCircularProgress from "@/Components/Budget-Planner/CustomCircularProgress";
+import Loader from "@/Components/common/Loader";
 
 function index() {
   const [websiteForm, setWebsiteForm] = useState({
@@ -99,6 +102,8 @@ function index() {
   ]);
   const router = useRouter();
   const [activeStep, setActiveStep] = React.useState(0);
+  const [formLoading, setFormLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
 
   const handleNext = async (values) => {
     if (activeStep === 0) {
@@ -106,7 +111,6 @@ function index() {
         values.id
           ? await updateWebsiteInfo(values)
           : await addWebsiteInfo(values);
-
         setActiveStep(1);
       } catch (error) {
         return error.message;
@@ -130,7 +134,6 @@ function index() {
           milestoneList.id
             ? await updateMilestone(milestoneList)
             : await addMilestone(milestoneList);
-
           setActiveStep(3);
         } catch (error) {
           return error.message;
@@ -159,6 +162,7 @@ function index() {
           return error.message;
         }
       }
+
       router.push("/choose-template");
     }
     // activeStep !== 4 && setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -170,7 +174,7 @@ function index() {
 
   const steps = [
     {
-      label: "Website",
+      label: "Basic Info",
       components: (
         <Step1Website
           websiteForm={websiteForm}
@@ -178,6 +182,7 @@ function index() {
           handleNext={handleNext}
           activeStep={activeStep}
           handleBack={handleBack}
+          setFormLoading={setFormLoading}
         />
       ),
     },
@@ -190,6 +195,7 @@ function index() {
           handleNext={handleNext}
           activeStep={activeStep}
           handleBack={handleBack}
+          setFormLoading={setFormLoading}
         />
       ),
     },
@@ -202,6 +208,7 @@ function index() {
           handleNext={handleNext}
           activeStep={activeStep}
           handleBack={handleBack}
+          setFormLoading={setFormLoading}
         />
       ),
     },
@@ -214,6 +221,7 @@ function index() {
           handleNext={handleNext}
           activeStep={activeStep}
           handleBack={handleBack}
+          setFormLoading={setFormLoading}
         />
       ),
     },
@@ -226,131 +234,131 @@ function index() {
           handleNext={handleNext}
           activeStep={activeStep}
           handleBack={handleBack}
+          setFormLoading={setFormLoading}
         />
       ),
     },
   ];
+
   useEffect(() => {
-    const token = localStorage.getItem("jwtToken");
-    if (!token) {
-      router.push("/");
-    }
+    getUserPreference();
   }, []);
 
   const getWebsiteInfoData = async () => {
-    const token = localStorage.getItem("jwtToken");
-    if (token) {
-      if (activeStep === 0) {
-        const resWebsite = await getWebsiteInfo();
-        resWebsite && setWebsiteForm(resWebsite);
-      }
-      if (activeStep === 1) {
-        const resItinerary = await getItinerary();
-        let arrayIdItinerary = 1;
-        resItinerary.length !== 0 &&
-          setItineraryLists(
-            resItinerary.map((itinerary) => {
-              return {
-                ...itinerary,
-                arrayId: arrayIdItinerary++,
-              };
-            })
-          );
-      }
-      if (activeStep === 2) {
-        const resMilestone = await getMilestone();
-        let arrayIdMilestone = 1;
-        resMilestone.length !== 0 &&
-          setMilestoneLists(
-            resMilestone.map((milestone) => {
-              return {
-                ...milestone,
-                arrayId: arrayIdMilestone++,
-              };
-            })
-          );
-      }
-
-      if (activeStep === 3) {
-        const resContact = await getContact();
-        let arrayIdContact = 1;
-        resContact.length !== 0 &&
-          setContactDetails(
-            resContact.map((contact) => {
-              return {
-                ...contact,
-                arrayId: arrayIdContact++,
-              };
-            })
-          );
-      }
-
-      if (activeStep === 4) {
-        const resFamily = await getFamilyMember();
-        let arrayIdFamily = 1;
-        resFamily.length !== 0 &&
-          setFamilyMemberLists(
-            resFamily.map((family) => {
-              return {
-                ...family,
-                arrayId: arrayIdFamily++,
-              };
-            })
-          );
-      }
+    if (activeStep === 0) {
+      const resWebsite = await getWebsiteInfo();
+      resWebsite && setWebsiteForm(resWebsite);
+      setFormLoading(false);
+      setLoading(false);
+    } else if (activeStep === 1) {
+      const resItinerary = await getItinerary();
+      let arrayIdItinerary = 1;
+      resItinerary.length !== 0 &&
+        setItineraryLists(
+          resItinerary.map((itinerary) => {
+            return {
+              ...itinerary,
+              arrayId: arrayIdItinerary++,
+            };
+          })
+        );
+      setFormLoading(false);
+    } else if (activeStep === 2) {
+      const resMilestone = await getMilestone();
+      let arrayIdMilestone = 1;
+      resMilestone.length !== 0 &&
+        setMilestoneLists(
+          resMilestone.map((milestone) => {
+            return {
+              ...milestone,
+              arrayId: arrayIdMilestone++,
+            };
+          })
+        );
+      setFormLoading(false);
+    } else if (activeStep === 3) {
+      const resContact = await getContact();
+      let arrayIdContact = 1;
+      resContact.length !== 0 &&
+        setContactDetails(
+          resContact.map((contact) => {
+            return {
+              ...contact,
+              arrayId: arrayIdContact++,
+            };
+          })
+        );
+      setFormLoading(false);
+    } else if (activeStep === 4) {
+      const resFamily = await getFamilyMember();
+      let arrayIdFamily = 1;
+      resFamily.length !== 0 &&
+        setFamilyMemberLists(
+          resFamily.map((family) => {
+            return {
+              ...family,
+              arrayId: arrayIdFamily++,
+            };
+          })
+        );
+      setFormLoading(false);
     }
   };
+
   useEffect(() => {
     getWebsiteInfoData();
   }, [activeStep]);
+
   return (
     <Box>
-      <Grid container sx={{ position: "relative" }}>
-        <Grid lg={12} item>
-          <Box sx={{ maxWidth: "1000px", mx: "auto" }}>
-            <Box
-              sx={{
-                m: { lg: "20px 100px", xs: "20px 20px" },
-                p: "18px",
-                borderBottom: "0.5px solid #BC8129",
-                position: "relative",
-              }}
-            >
-              <Stepper activeStep={activeStep}>
-                {steps.map((item, index) => {
-                  const stepProps = {};
-                  const labelProps = {};
-                  //   if (isStepOptional(index)) {
-                  //     labelProps.optional = (
-                  //       <Typography variant="caption">Optional</Typography>
-                  //     );
-                  //   }
-
-                  return (
-                    <Step
-                      key={index}
-                      sx={{
-                        "& .MuiStepIcon-root.Mui-active": {
-                          color: "#BC8129",
-                        },
-                        "& .MuiStepIcon-root.Mui-completed": {
-                          color: "#BC8129",
-                        },
-                      }}
-                    >
-                      <StepLabel {...labelProps}>{item.label}</StepLabel>
-                    </Step>
-                  );
-                })}
-              </Stepper>
+      {loading ? (
+        <Loader />
+      ) : (
+        <Grid container sx={{ position: "relative" }}>
+          <Grid lg={12} item>
+            <Box sx={{ maxWidth: "1000px", mx: "auto" }}>
+              <Box
+                sx={{
+                  m: { lg: "20px 100px", xs: "20px 20px" },
+                  p: "18px",
+                  borderBottom: "0.5px solid #BC8129",
+                  position: "relative",
+                }}
+              >
+                <Stepper activeStep={activeStep}>
+                  {steps.map((item, index) => {
+                    const labelProps = {};
+                    return (
+                      <Step
+                        key={index}
+                        sx={{
+                          "& .MuiStepIcon-root.Mui-active": {
+                            color: "#BC8129",
+                          },
+                          "& .MuiStepIcon-root.Mui-completed": {
+                            color: "#BC8129",
+                          },
+                        }}
+                      >
+                        <StepLabel {...labelProps}>{item.label}</StepLabel>
+                      </Step>
+                    );
+                  })}
+                </Stepper>
+              </Box>
+              <Box>
+                {formLoading ? (
+                  <Box mt={20}>
+                    <CustomCircularProgress />
+                  </Box>
+                ) : (
+                  steps[activeStep]?.components
+                )}
+              </Box>
             </Box>
-            <Box>{steps[activeStep]?.components}</Box>
-          </Box>
+          </Grid>
         </Grid>
-      </Grid>
-      {/* <Header /> */}
-
-      {/* <Footer /> */}
+      )}
     </Box>
   );
 }
