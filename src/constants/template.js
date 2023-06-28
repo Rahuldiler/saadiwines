@@ -63,13 +63,13 @@ const staticTemplateData = [
     },
   },
 
-  
+
   {
     id: 3,
     templateId: 3,
     templateName: "Classic",
     templateImage:
-      "https://sv-landing-page-assets.s3.eu-north-1.amazonaws.com/Screenshot+2023-05-27+at+11.59.18+AM.png",
+      "/images/theme-3.png",
     url: "/template/3",
     isSelected: false,
     color: "blue",
@@ -99,14 +99,14 @@ const staticTemplateData = [
     gallery17: "/assets/templete/2/gallery-17.jpg",
     gallery21: "/assets/templete/2/gallery-21.jpg",
     paral06: "/assets/templete/2/paral_06.jpg",
-   
+
   },
   {
     id: 4,
     templateId: 4,
     templateName: "Classic",
     templateImage:
-      "https://sv-landing-page-assets.s3.eu-north-1.amazonaws.com/Screenshot+2023-05-27+at+11.59.18+AM.png",
+      "/images/theme-4.png",
     url: "/template/4",
     isSelected: false,
     color: "blue",
@@ -136,14 +136,14 @@ const staticTemplateData = [
     gallery17: "/assets/templete/2/gallery-17.jpg",
     gallery21: "/assets/templete/2/gallery-21.jpg",
     paral06: "/assets/templete/2/paral_06.jpg",
-   
+
   },
   {
     id: 5,
     templateId: 5,
     templateName: "Classic",
     templateImage:
-      "https://sv-landing-page-assets.s3.eu-north-1.amazonaws.com/Screenshot+2023-05-27+at+12.00.52+PM.png",
+      "/images/theme-5.png",
     url: "/template/5",
     isSelected: false,
     theme: {
@@ -167,7 +167,7 @@ const staticTemplateData = [
     templateId: 6,
     templateName: "Classic",
     templateImage:
-      "https://sv-landing-page-assets.s3.eu-north-1.amazonaws.com/Screenshot+2023-05-27+at+12.00.52+PM.png",
+      "/images/theme-6.png",
     url: "/template/6",
     isSelected: false,
     theme: {
@@ -186,30 +186,30 @@ const staticTemplateData = [
     greyLight: "url('/assets/templete/3/img-grey-light-c21919.png')",
     pic2: "/assets/templete/3/contact/pic2.jpg",
   },
-  {
-    id: 7,
-    templateName: "Classic",
-    templateImage:
-      "https://sv-landing-page-assets.s3.eu-north-1.amazonaws.com/Screenshot+2023-05-27+at+11.59.18+AM.png",
-    url: "/template/2",
-    isSelected: false,
-  },
-  {
-    id: 8,
-    templateName: "Classic",
-    templateImage:
-      "https://sv-landing-page-assets.s3.eu-north-1.amazonaws.com/Screenshot+2023-05-27+at+11.59.18+AM.png",
-    url: "/template/5",
-    isSelected: false,
-  },
-  {
-    id: 9,
-    templateName: "Classic",
-    templateImage:
-      "https://sv-landing-page-assets.s3.eu-north-1.amazonaws.com/Screenshot+2023-05-27+at+12.00.52+PM.png",
-    url: "/template/6",
-    isSelected: false,
-  },
+  // {
+  //   id: 7,
+  //   templateName: "Classic",
+  //   templateImage:
+  //     "https://sv-landing-page-assets.s3.eu-north-1.amazonaws.com/Screenshot+2023-05-27+at+11.59.18+AM.png",
+  //   url: "/template/2",
+  //   isSelected: false,
+  // },
+  // {
+  //   id: 8,
+  //   templateName: "Classic",
+  //   templateImage:
+  //     "https://sv-landing-page-assets.s3.eu-north-1.amazonaws.com/Screenshot+2023-05-27+at+11.59.18+AM.png",
+  //   url: "/template/5",
+  //   isSelected: false,
+  // },
+  // {
+  //   id: 9,
+  //   templateName: "Classic",
+  //   templateImage:
+  //     "https://sv-landing-page-assets.s3.eu-north-1.amazonaws.com/Screenshot+2023-05-27+at+12.00.52+PM.png",
+  //   url: "/template/6",
+  //   isSelected: false,
+  // },
 ];
 
 export { staticTemplateData };
