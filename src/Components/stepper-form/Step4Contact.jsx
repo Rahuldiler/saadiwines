@@ -16,7 +16,13 @@ import { AiOutlineDelete } from "react-icons/ai";
 import NavigationSteps from "./NavigationSteps";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-function Step4Contact({ contactDetails, handleNext, activeStep, handleBack }) {
+function Step4Contact({
+  contactDetails,
+  handleNext,
+  activeStep,
+  handleBack,
+  setFormLoading,
+}) {
   const addNewContact = (id) => {
     formik.setValues([
       ...formik.values,
@@ -54,6 +60,7 @@ function Step4Contact({ contactDetails, handleNext, activeStep, handleBack }) {
     ),
     onSubmit: (values) => {
       handleNext(values);
+      setFormLoading(true);
     },
   });
 

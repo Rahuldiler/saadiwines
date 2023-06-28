@@ -5,6 +5,7 @@ import Header from "@/Components/common/Header";
 import YourTemplate from "@/Components/dashboard/YourTemplate";
 import Notification from "@/Components/common/Notification";
 import Loader from "@/Components/common/Loader";
+import { getUser } from "@/services/users/user";
 
 function Dashboard() {
   const [navItems, setNavItems] = useState([

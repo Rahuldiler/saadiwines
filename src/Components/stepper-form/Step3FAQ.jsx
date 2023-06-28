@@ -25,26 +25,13 @@ function Step3FAQ({
   steps,
   handleBack,
   validationBoolean,
+  setFormLoading,
 }) {
   const addNewMilestone = (id) => {
-    // setValidationBoolean(false);
     formik.setValues([
       ...formik.values,
       { arrayId: id + 1, title: "", description: "" },
     ]);
-    // formik.values.push({
-    //   arrayId: id + 1,
-    //   title: "",
-    //   description: "",
-    // });
-    // setMilestoneLists((prevData) => [
-    //   ...prevData,
-    //   {
-    //     arrayId: prevData[prevData.length - 1].arrayId + 1,
-    //     title: "",
-    //     description: "",
-    //   },
-    // ]);
   };
 
   const formik = useFormik({
@@ -64,6 +51,7 @@ function Step3FAQ({
     ),
     onSubmit: (values) => {
       handleNext(values);
+      setFormLoading(true);
     },
   });
 

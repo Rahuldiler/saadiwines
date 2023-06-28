@@ -4,12 +4,18 @@ import { tr } from "date-fns/locale";
 const http = new HTTPClientHandler();
 
 const getUserPreference = async () => {
-  const response = await http.get({
-    url: "/user_preference/me",
-    isSecured: true,
-  });
+  try {
+    const response = await http.get({
+      url: "/user_preference/me",
+      isSecured: true,
+    });
 
-  return response.data;
+    return response.data;
+  } catch (error) {
+    if (error.request.status === 403) {
+      window.location.href = "/";
+    }
+  }
 };
 
 const updateUserPreference = async (data) => {

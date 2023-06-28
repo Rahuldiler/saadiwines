@@ -25,6 +25,7 @@ function Step5Family({
   handleNext,
   activeStep,
   handleBack,
+  setFormLoading,
 }) {
   const addNewFamilyMember = (id) => {
     formik.setValues([
@@ -58,6 +59,7 @@ function Step5Family({
     ),
     onSubmit: (values) => {
       handleNext(values);
+      setFormLoading(true);
     },
   });
 

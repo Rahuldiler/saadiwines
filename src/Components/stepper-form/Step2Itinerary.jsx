@@ -30,6 +30,7 @@ function Step2Itinerary({
   handleNext,
   activeStep,
   handleBack,
+  setFormLoading,
 }) {
   const [valueDateTime, setValueDateTime] = useState();
   const addNewItinerary = (id) => {
@@ -80,6 +81,7 @@ function Step2Itinerary({
     ),
     onSubmit: (values) => {
       handleNext(values);
+      setFormLoading(true);
     },
   });
 

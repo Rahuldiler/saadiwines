@@ -33,10 +33,10 @@ function ContactUs() {
     /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
   const formik = useFormik({
     initialValues: {
-      name: String,
-      contactNumber: String,
-      email: String,
-      pass: String,
+      name: "",
+      contactNumber: "",
+      email: "",
+      pass: "",
     },
     validationSchema: Yup.object({
       name: Yup.string()
@@ -137,7 +137,7 @@ function ContactUs() {
                 <TextField
                   type="text"
                   name="name"
-                  value={formik.values?.name}
+                  value={formik.values?.name || ""}
                   onChange={formik.handleChange}
                   placeholder="Name *"
                   sx={{ background: "#FFF9F5", border: 0, width: "100%" }}
@@ -148,7 +148,7 @@ function ContactUs() {
                 <TextField
                   type="number"
                   name="contactNumber"
-                  value={formik.values?.contactNumber}
+                  value={formik.values?.contactNumber || ""}
                   onChange={formik.handleChange}
                   placeholder="Phone Number *"
                   sx={{
@@ -180,7 +180,7 @@ function ContactUs() {
                 <TextField
                   type="email"
                   name="email"
-                  value={formik.values?.email}
+                  value={formik.values?.email || ""}
                   onChange={formik.handleChange}
                   placeholder="Email Address *"
                   sx={{
@@ -196,7 +196,7 @@ function ContactUs() {
                 <TextField
                   type="text"
                   name="pass"
-                  value={formik.values?.pass}
+                  value={formik.values?.pass || ""}
                   onChange={formik.handleChange}
                   placeholder="Write Message *"
                   multiline

@@ -22,7 +22,8 @@ const staticTemplateData = [
       swiperSlide5: "/images/venders/logo-white-04.png",
       swiperSlide6: "/images/venders/logo-white-06.png",
       paral02: "url('/images/c-paral-02.jpg')",
-      paral03: "url('https://template-assets-sv.s3.amazonaws.com/template1/DSC_4389.JPG')",
+      paral03:
+        "url('https://template-assets-sv.s3.amazonaws.com/template1/DSC_4389.JPG')",
       waterColor02: "url('/images/bg-watercolor-02.jpg')",
       waterColor: "url('/images/bg-watercolor.jpg')",
       double1:
@@ -65,13 +66,11 @@ const staticTemplateData = [
     },
   },
 
-
   {
     id: 3,
     templateId: 3,
     templateName: "Classic",
-    templateImage:
-      "/images/theme-3.png",
+    templateImage: "/images/theme-3.png",
     url: "/template/3",
     isSelected: false,
     color: "blue",
@@ -101,14 +100,12 @@ const staticTemplateData = [
     gallery17: "/assets/templete/2/gallery-17.jpg",
     gallery21: "/assets/templete/2/gallery-21.jpg",
     paral06: "/assets/templete/2/paral_06.jpg",
-
   },
   {
     id: 4,
     templateId: 4,
     templateName: "Classic",
-    templateImage:
-      "/images/theme-4.png",
+    templateImage: "/images/theme-4.png",
     url: "/template/4",
     isSelected: false,
     color: "blue",
@@ -138,14 +135,12 @@ const staticTemplateData = [
     gallery17: "/assets/templete/2/gallery-17.jpg",
     gallery21: "/assets/templete/2/gallery-21.jpg",
     paral06: "/assets/templete/2/paral_06.jpg",
-
   },
   {
     id: 5,
     templateId: 5,
     templateName: "Classic",
-    templateImage:
-      "/images/theme-5.png",
+    templateImage: "/images/theme-5.png",
     url: "/template/5",
     isSelected: false,
     theme: {
@@ -168,8 +163,7 @@ const staticTemplateData = [
     id: 6,
     templateId: 6,
     templateName: "Classic",
-    templateImage:
-      "/images/theme-6.png",
+    templateImage: "/images/theme-6.png",
     url: "/template/6",
     isSelected: false,
     theme: {

@@ -27,12 +27,16 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 
 import NavigationSteps from "./NavigationSteps";
+import Loader from "../common/Loader";
+import CustomCircularProgress from "../Budget-Planner/CustomCircularProgress";
+import Notification from "../common/Notification";
 function Step1Website({
   websiteForm,
   setWebsiteForm,
   handleNext,
   activeStep,
   handleBack,
+  setFormLoading,
 }) {
   // const [valueTime, setValueTime] = React.useState(dayjs("2022-04-17T15:30"));
   // const [valueDate, setValueDate] = React.useState(dayjs("2022-04-17T15:30"));
@@ -92,6 +96,7 @@ function Step1Website({
     }),
     onSubmit: (values) => {
       handleNext(values);
+      setFormLoading(true);
     },
   });
 
@@ -110,7 +115,6 @@ function Step1Website({
   useEffect(() => {
     setValueDateTime(dayjs(websiteForm?.dateTime));
   }, [websiteForm.dateTime]);
-
   return (
     <Box
       sx={{
@@ -123,7 +127,12 @@ function Step1Website({
       </Typography>
       <form onSubmit={formik.handleSubmit}>
         <Box
-          sx={{ width: "100%", display: "flex", flexDirection: "row", gap: 2 }}
+          sx={{
+            width: "100%",
+            display: "flex",
+            flexDirection: "row",
+            gap: 2,
+          }}
         >
           <Box
             sx={{
@@ -145,6 +154,10 @@ function Step1Website({
                 {formik.touched.groom?.name && formik.errors.groom?.name ? (
                   <div style={{ color: "Red" }}>
                     {formik.errors.groom?.name}
+                    <Notification
+                      type="error"
+                      message={formik.errors.groom?.name}
+                    />
                   </div>
                 ) : null}
               </Box>
@@ -163,6 +176,10 @@ function Step1Website({
                 formik.errors.groom?.fatherName ? (
                   <div style={{ color: "Red" }}>
                     {formik.errors.groom?.fatherName}
+                    <Notification
+                      type="error"
+                      message={formik.errors.groom?.fatherName}
+                    />
                   </div>
                 ) : null}
               </Box>

@@ -252,7 +252,7 @@ function Template1({ templateData, staticTemplateData, images }) {
   return (
     <div className="lg:min-w-[1280px] ">
       <div className="h-[900px] relative">
-        {slides.map((slide, index) => (
+        {imagesLightBox.map((slide, index) => (
           <div
             key={index}
             className={`absolute top-0 bg-black left-0 w-full h-full transition-opacity duration-500 ${

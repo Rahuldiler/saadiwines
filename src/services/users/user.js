@@ -11,7 +11,7 @@ const getUser = async () => {
     });
     return response.data;
   } catch (error) {
-    window.location.href = "/";
+    // window.location.href = "/";
   }
 };
 
