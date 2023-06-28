@@ -82,9 +82,9 @@ const ContactForm = ({ themeColor, textBGColor = "#000" }) => {
         type="submit"
         style={{
           backgroundColor: themeColor?.bgColor,
-          color: themeColor?.textColor,
+          color: themeColor?.textBgColor,
         }}
-        className={`w-full lg:px-4 py-2 text-white bg-[${themeColor?.bgColor}]  rounded-md  focus:outline-none focus:bg-blue-600`}
+        className={`w-full lg:px-4 py-2 rounded-md  focus:outline-none focus:bg-blue-600`}
       >
         Submit
       </button>

@@ -221,20 +221,20 @@ function Template3({ templateData, staticTemplateData }) {
         <div className="flex justify-center relative md:col-span-2">
           <div className="px-6 md:px-0 font-lora">
             <img
-              src="/assets/templete/3/coupleData/gallery-02-1.jpg"
+              src={staticTemplateData?.gallery_02_1}
               alt=""
               className=" md:w-[22rem] w-[10rem] h-[10rem]  md:h-[27rem] object-cover rounded-full md:rounded-b-full mt-28 mx-auto"
             />
           </div>
           <div className="px-6">
             <img
-              src="/assets/templete/3/coupleData/gallery-01-1.jpg"
+              src={staticTemplateData?.gallery_01_1}
               alt=""
               className="object-cover  w-[10rem] h-[10rem] rounded-t-full mt-28 md:hidden"
             />
           </div>
           <img
-            src="/assets/templete/3/frame-09.png"
+            src={staticTemplateData?.frame09}
             alt=""
             className="w-56 absolute -top-[75px]  left-0 z-30 "
           />
@@ -242,7 +242,7 @@ function Template3({ templateData, staticTemplateData }) {
         <div className="col-span-3 relative">
           <div className="text-center ">
             <img
-              src="/assets/templete/3/couple.png"
+              src={staticTemplateData?.couple}
               alt=""
               className="w-16 mb-3 mx-auto"
             />
@@ -261,7 +261,7 @@ function Template3({ templateData, staticTemplateData }) {
             {moment(templateData?.weddingInfo?.dateTime).format("YYYY-MM-DD")}
           </div>
           <img
-            src="/assets/templete/3/frame-05.png"
+            src={staticTemplateData?.frame05}
             alt=""
             className="w-16 absolute -bottom-[90px] left-0 z-30"
           />
@@ -269,18 +269,18 @@ function Template3({ templateData, staticTemplateData }) {
         <div className="md:flex justify-center relative col-span-2 hidden ">
           <div>
             <img
-              src="/assets/templete/3/coupleData/gallery-01-1.jpg"
+              src={staticTemplateData?.gallery_01_1}
               alt=""
               className="object-cover w-[22rem]  h-[27rem] rounded-t-full mt-28"
             />
           </div>
           <img
-            src="/assets/templete/3/frame-06.png"
+            src={staticTemplateData?.frame06}
             alt=""
             className="w-20 absolute top-0 left-[53px] z-30"
           />
           <img
-            src="/assets/templete/3/frame-08.png"
+            src={staticTemplateData?.frame08}
             alt=""
             className="w-64 absolute -bottom-[90px] -right-[120px] z-30"
           />
@@ -371,7 +371,7 @@ function Template3({ templateData, staticTemplateData }) {
           {/* <div><button className="px-8 py-3 cursor-pointer mt-10 border-black rounded-3xl text-[12px] border-[1px] " onClick={() => openRsvpLightbox()}>RSPV</button></div> */}
 
           <img
-            src="/assets/templete/3/frame.png"
+            src={staticTemplateData?.frame}
             alt=""
             className="absolute top-14 -z-10"
           />
@@ -401,6 +401,7 @@ function Template3({ templateData, staticTemplateData }) {
           {templateData?.itinerary?.map((steps, index) => (
             <div key={index} className={``}>
               <Itinerary
+                theme={staticTemplateData?.theme}
                 step={steps.id}
                 fctnName={steps.functionName}
                 location={steps.mapsLocation}
@@ -438,7 +439,7 @@ function Template3({ templateData, staticTemplateData }) {
       <div
         className="mb-12 mt-16 relative pb-7"
         style={{
-          backgroundImage: "url('/assets/templete/3/img-grey-light.png')",
+          backgroundImage: staticTemplateData?.greyLight,
         }}
       >
         <p className="md:!text-[100px] !text-[40px] !font-lora !text-center">
@@ -447,7 +448,7 @@ function Template3({ templateData, staticTemplateData }) {
         <div className="grid md:grid-cols-3 grid-cols-2  md:gap-24 gap-8 md:mt-14 mt-6 mb-16 ">
           {templateData?.familyMembers?.map((cards, index) => (
             <Temp3Crds
-              imgSrc="/assets/templete/3/contact/pic2.jpg"
+              imgSrc={staticTemplateData?.pic2}
               name={cards.name}
               relationship={cards.relation}
             />
@@ -462,7 +463,7 @@ function Template3({ templateData, staticTemplateData }) {
         <div className="grid md:grid-cols-3  mt-12">
           {templateData?.pocs?.map((cards, index) => (
             <Temp3Crds
-              imgSrc="/assets/templete/3/contact/pic2.jpg"
+              imgSrc={staticTemplateData?.pic2}
               name={cards.firstName}
               relationship={cards.relationship}
               contactNo={`+91 ${cards.contactNumber}`}
@@ -474,7 +475,7 @@ function Template3({ templateData, staticTemplateData }) {
       <div
         className="pt-10"
         style={{
-          backgroundImage: "url('/assets/templete/3/img-grey-light.png')",
+          backgroundImage: staticTemplateData?.greyLight,
         }}
       >
         <div className="text-center max-w-4xl mx-auto my-10 px-10 md:my-0 md:px-0">
@@ -489,7 +490,10 @@ function Template3({ templateData, staticTemplateData }) {
             attendance. We understand that your plans may change, so please feel
             free to update us if any adjustments.
           </p>
-          <ContactFormRsvp clasNme="mt-[100px] pb-[30px] px-[20px]" />
+          <ContactFormRsvp
+            themeColor={staticTemplateData?.themeColor}
+            clasNme="mt-[100px] pb-[30px] px-[20px]"
+          />
         </div>
       </div>
     </div>

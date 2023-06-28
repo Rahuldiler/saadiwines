@@ -25,6 +25,10 @@ export default function Template2({ templateData, staticTemplateData }) {
   const [isOpen, setIsOpen] = useState(false);
   const targetDate = new Date(2023, 5, 18);
 
+  console.info("--------------------");
+  console.info("staticTemplateData", staticTemplateData);
+  console.info("--------------------");
+
   const openLightbox = (img) => {
     setIsOpen(true);
     setImageIndex(img);
@@ -149,49 +153,6 @@ export default function Template2({ templateData, staticTemplateData }) {
       percentHeight: "62.58640202781701%",
       column: 1,
       itemsInColumn: 2,
-    },
-  ];
-
-  const stepss = [
-    {
-      id: 1,
-      stp: "1",
-      functionName: " Wedding Ceremony ",
-      dateTime: "5/jun/2023 | 12:30pm",
-      location:
-        "https://www.google.com/maps/place/Indira+Gandhi+International+Airport/@28.527554,77.0438314,11z/data=!4m6!3m5!1s0x390d1b85fc2a2d89:0xbef376182c43ed9d!8m2!3d28.5563529!4d77.1006963!16zL20vMDEyNDQ0?entry=ttu",
-      functionInfo:
-        " The wedding ceremony is the heart of any celebration. It's the moment when the couple exchange vows and commit to spending the rest of their lives together.",
-    },
-    {
-      id: 2,
-      stp: "2",
-      functionName: " Lunch Time ",
-      dateTime: "5/jun/2023 | 12:30pm",
-      location:
-        "https://www.google.com/maps/place/Mazaar+Restaurant/@28.5688605,77.2328845,15z/data=!4m6!3m5!1s0x390ce3ad97db2cb5:0xdce447161ff5833!8m2!3d28.5701715!4d77.2443807!16s%2Fg%2F1v7pwvx2?entry=ttu",
-      functionInfo:
-        " After the wedding ceremony, it's time for lunch! This is a time for guests to relax and enjoy a delicious meal together, while catching up with old friends and making new ones.",
-    },
-    {
-      id: 3,
-      stp: "3",
-      functionName: " Party with Music ",
-      dateTime: "5/jun/2023 | 12:30pm",
-      location:
-        "https://www.google.com/maps/place/C+R+Park+Market+No.1/@28.5350621,77.2431712,13.75z/data=!4m6!3m5!1s0x390ce3d83e0cb4b7:0xb7ece1334b216b84!8m2!3d28.5401153!4d77.2486233!16s%2Fg%2F1wk4bfx6?entry=ttu",
-      functionInfo:
-        " The party with music is the perfect way to celebrate the newlyweds and their love story. This is a time for guests to let loose, hit the dance floor, and enjoy some great music.",
-    },
-    {
-      id: 4,
-      stp: "4",
-      functionName: " Cake Cutting ",
-      dateTime: "5/jun/2023 | 12:30pm",
-      location:
-        "https://www.google.com/maps/place/Vivanta+Surajkund/@28.5435843,77.2614842,12.28z/data=!4m9!3m8!1s0x390cdc0daaaaaaab:0xd76f205f7679d870!5m2!4m1!1i2!8m2!3d28.4898296!4d77.2849204!16s%2Fg%2F11c71b1922?entry=ttu",
-      functionInfo:
-        " The cake cutting is a special moment that symbolizes the couple's union and their commitment to sharing their lives together and it's a tradition that dates back centuries.",
     },
   ];
 
@@ -339,15 +300,17 @@ export default function Template2({ templateData, staticTemplateData }) {
         </div>
       </div>
       <div
-        className="bg-[url('/assets/templete/2/bg-01.jpg')] bg-no-repeat pt-[150px] pb-[320px] relative "
+        className="bg-no-repeat pt-[150px] pb-[320px] relative "
         style={{
+          backgroundImage: staticTemplateData?.bg01,
           backgroundPosition: "top center",
           backgroundSize: "606px auto",
         }}
       >
         <div
-          className="bg-[url('/assets/templete/2/bg-02.jpg')] bg-no-repeat h-full w-full top-[0px] left-0 absolute lg:opacity-100 opacity-0"
+          className=" bg-no-repeat h-full w-full top-[0px] left-0 absolute lg:opacity-100 opacity-0"
           style={{
+            backgroundImage: staticTemplateData?.bg02,
             backgroundPosition: "center left",
             backgroundSize: "550px auto",
           }}
@@ -423,15 +386,17 @@ export default function Template2({ templateData, staticTemplateData }) {
       </div>
       <div>
         <div
-          className="bg-[url('/assets/templete/2/bg-03.jpg')] bg-no-repeat relative pt-[670px] pb-[220px] "
+          className=" bg-no-repeat relative pt-[670px] pb-[220px] "
           style={{
+            backgroundImage: staticTemplateData?.bg03,
             backgroundPosition: "center center",
             backgroundSize: "790px auto",
           }}
         >
           <div
-            className="bg-[url('/assets/templete/2/bg-04.jpg')] bg-no-repeat h-full w-full left-0 top-0 opacity-100 absolute"
+            className=" bg-no-repeat h-full w-full left-0 top-0 opacity-100 absolute"
             style={{
+              backgroundImage: staticTemplateData?.bg03,
               backgroundPosition: "top left",
               backgroundSize: "284px auto",
             }}
@@ -439,7 +404,7 @@ export default function Template2({ templateData, staticTemplateData }) {
           <div className="max-w-[1350px] lg:mx-auto ml-auto mt-[-460px] mb-5 flex">
             <div className="w-[30%] sm:block hidden pr-[100px]"></div>
             <div className="sm:w-[40%] w-full text-center z-10">
-              <h6 className="text-[14px] font-normal tracking-[1px] mb-[20px]">
+              <h6 className="text-[14px] text-#000 font-normal tracking-[1px] mb-[20px]">
                 Stepping Into Forever
               </h6>
               <h1 className="sm:text-[50px] text-[30px] sm:leading-[60px]">
@@ -451,7 +416,7 @@ export default function Template2({ templateData, staticTemplateData }) {
           <div className="max-w-[1350px] lg:mx-auto ml-auto sm:flex">
             <div className="lg:w-[33.33%] sm:w-1/4 lg:pr-[100px] sm:px-0 px-3">
               <Image
-                src="/assets/templete/2/gallery-08.jpg"
+                src={staticTemplateData?.gallery08}
                 alt=""
                 width={700}
                 height={600}
@@ -463,7 +428,7 @@ export default function Template2({ templateData, staticTemplateData }) {
             </div>
             <div className="lg:w-[33.33%] sm:w-1/4 flex justify-end">
               <Image
-                src="/assets/templete/2/gallery-05.jpg"
+                src={staticTemplateData?.gallery05}
                 alt=""
                 fill
                 className="!relative rounded-full rounded-r-none lg:!w-[50%] sm:!w-[85%] !w-[60%] !h-[200px]"
@@ -507,15 +472,17 @@ export default function Template2({ templateData, staticTemplateData }) {
           </div>
           <div className="lg:w-[50%] relative sm:px-[100px] px-[10px]">
             <div
-              className="bg-[url('/assets/templete/2/bg-05.jpg')] bg-no-repeat h-full w-full left-0 z-[-9] absolute"
+              className=" bg-no-repeat h-full w-full left-0 z-[-9] absolute"
               style={{
+                backgroundImage: staticTemplateData?.bg05,
                 backgroundPosition: "top right",
                 backgroundSize: "322px auto",
               }}
             ></div>
             <div
-              className="bg-[url('/assets/templete/2/bg-06.jpg')] bg-no-repeat opacity-100 h-full w-full left-0 top-0 z-[-10] absolute"
+              className=" bg-no-repeat opacity-100 h-full w-full left-0 top-0 z-[-10] absolute"
               style={{
+                backgroundImage: staticTemplateData?.bg06,
                 backgroundPosition: "bottom left",
                 backgroundSize: "154px auto",
               }}
@@ -541,10 +508,18 @@ export default function Template2({ templateData, staticTemplateData }) {
       </div>
 
       <div
-        className="bg-[url('/assets/templete/2/bg-07.png')] bg-no-repeat bg-[#80A0C2] relative"
-        style={{ backgroundPosition: "top left", backgroundSize: "121px auto" }}
+        className="bg-no-repeat  relative"
+        style={{
+          backgroundColor: staticTemplateData?.theme?.bgColor,
+          backgroundPosition: "top left",
+          backgroundSize: "121px auto",
+          backgroundImage: staticTemplateData?.bg07,
+        }}
       >
-        <div className="bg-[url('/assets/templete/2/bg-08.jpg')] h-full w-full top-0 left-0 absolute mix-blend-multiply opacity-50"></div>
+        <div
+          className=" h-full w-full top-0 left-0 absolute mix-blend-multiply opacity-50"
+          style={{ backgroundImage: staticTemplateData?.bg08 }}
+        ></div>
         <div className="container mx-auto max-w-[1350px] relative">
           <div className="py-[220px] px-[15px]">
             <div className="text-center mb-5">
@@ -630,15 +605,17 @@ export default function Template2({ templateData, staticTemplateData }) {
         </div>
       </div>
       <div
-        className="bg-[url('/assets/templete/2/bg-08.jpg')] bg-no-repeat relative "
+        className="bg-no-repeat relative "
         style={{
+          backgroundImage: staticTemplateData?.bg08,
           backgroundPosition: "center center",
           backgroundSize: "1000px auto",
         }}
       >
         <div
-          className="bg-[url('/assets/templete/2/bg-09.jpg')] bg-no-repeat h-full w-full left-0 top-0 absolute z-[-10]"
+          className=" bg-no-repeat h-full w-full left-0 top-0 absolute z-[-10]"
           style={{
+            backgroundImage: staticTemplateData?.bg09,
             backgroundPosition: "top right",
             backgroundSize: "100px auto",
           }}
@@ -647,7 +624,7 @@ export default function Template2({ templateData, staticTemplateData }) {
           <div className="lg:w-[30%] sm:w-1/4 sm:block hidden relative">
             <div className="mt-[-35px]">
               <Image
-                src="/assets/templete/2/gallery-16.jpg"
+                src={staticTemplateData?.gallery16}
                 alt=""
                 width={200}
                 height={200}
@@ -656,7 +633,7 @@ export default function Template2({ templateData, staticTemplateData }) {
             </div>
             <div className="absolute lg:bottom-[190px] bottom-[290px] lg:left-[50px]">
               <Image
-                src="/assets/templete/2/gallery-18.jpg"
+                src={staticTemplateData?.gallery18}
                 alt=""
                 width={100}
                 height={100}
@@ -665,7 +642,7 @@ export default function Template2({ templateData, staticTemplateData }) {
             </div>
             <div className="absolute bottom-[0px] lg:left-[50px]">
               <Image
-                src="/assets/templete/2/gallery-14.jpg"
+                src={staticTemplateData?.gallery14}
                 alt=""
                 width={300}
                 height={400}
@@ -704,7 +681,7 @@ export default function Template2({ templateData, staticTemplateData }) {
             <div className="mt-[50px]">
               <Image
                 alt=""
-                src="/assets/templete/2/gallery-20.jpg"
+                src={staticTemplateData?.gallery20}
                 width={100}
                 height={100}
                 className="object-cover"
@@ -713,7 +690,7 @@ export default function Template2({ templateData, staticTemplateData }) {
             <div className="absolute bottom-[120px] right-[0px]">
               <Image
                 alt=""
-                src="/assets/templete/2/gallery-17.jpg"
+                src={staticTemplateData?.gallery17}
                 width={300}
                 height={400}
                 className=""
@@ -722,7 +699,7 @@ export default function Template2({ templateData, staticTemplateData }) {
             <div className="absolute bottom-[0px] right-[200px]">
               <Image
                 alt=""
-                src="/assets/templete/2/gallery-21.jpg"
+                src={staticTemplateData?.gallery21}
                 width={100}
                 height={100}
                 className="rounded-full rounded-b-none"
@@ -732,10 +709,20 @@ export default function Template2({ templateData, staticTemplateData }) {
         </div>
       </div>
       <div
-        className="bg-[url('/assets/templete/2/bg-07.png')] bg-no-repeat bg-[#80A0C2] relative"
-        style={{ backgroundPosition: "top left", backgroundSize: "150px auto" }}
+        className="bg-no-repeat  relative"
+        style={{
+          backgroundColor: staticTemplateData?.theme?.bgColor,
+          backgroundPosition: "top left",
+          backgroundSize: "150px auto",
+          backgroundImage: staticTemplateData?.bg07,
+        }}
       >
-        <div className="bg-[url('/assets/templete/2/bg-01.jpg')] h-full w-full top-0 left-0 absolute mix-blend-multiply opacity-50"></div>
+        <div
+          style={{
+            backgroundImage: staticTemplateData?.bg01,
+          }}
+          className=" h-full w-full top-0 left-0 absolute mix-blend-multiply opacity-50"
+        ></div>
         <div className="container mx-auto max-w-[1350px] relative">
           <div className="py-[220px] lg:flex">
             <div className="w-[20%]"></div>
@@ -749,21 +736,26 @@ export default function Template2({ templateData, staticTemplateData }) {
               >
                 Let's Celebrate True Love
               </h1>
-              <ContactForm />
+              <ContactForm staticTemplateData={staticTemplateData} />
             </div>
             <div className="w-[20%"></div>
           </div>
         </div>
       </div>
       <div
-        className="bg-[url('/assets/templete/2/bg-10.jpg')] bg-no-repeat relative pt-[100px] lg:pb-[120px]"
-        style={{ backgroundPosition: "top left", backgroundSize: "393px auto" }}
+        className=" bg-no-repeat relative pt-[100px] lg:pb-[120px]"
+        style={{
+          backgroundPosition: "top left",
+          backgroundSize: "393px auto",
+          backgroundImage: staticTemplateData?.bg01,
+        }}
       >
         <div
-          className="bg-[url('/assets/templete/2/bg-11.jpg')] h-full w-full left-0 top-0 absolute bg-no-repeat opacity-100"
+          className=" h-full w-full left-0 top-0 absolute bg-no-repeat opacity-100"
           style={{
             backgroundPosition: "top right",
             backgroundSize: "600px auto",
+            backgroundImage: staticTemplateData?.bg11,
           }}
         ></div>
         <div className="container mx-auto max-w-[1350px] relative">
@@ -776,7 +768,7 @@ export default function Template2({ templateData, staticTemplateData }) {
             {templateData?.familyMembers?.map((card, index) => (
               <FamilyCard
                 key={card.id}
-                imgSrc="/assets/templete/2/gallery-02.jpg"
+                imgSrc={staticTemplateData?.gallery02}
                 name={card.name}
                 relationship={card.relation}
               />
@@ -785,8 +777,9 @@ export default function Template2({ templateData, staticTemplateData }) {
         </div>
       </div>
       <div
-        className="bg-[url('/assets/templete/2/bg-12.jpg')] bg-no-repeat relative pt-[120px] pb-[120px]"
+        className="bg-no-repeat relative pt-[120px] pb-[120px]"
         style={{
+          backgroundImage: staticTemplateData?.bg12,
           backgroundPosition: "bottom center",
           backgroundSize: "1000px auto",
         }}
@@ -807,7 +800,7 @@ export default function Template2({ templateData, staticTemplateData }) {
             {templateData?.pocs?.map((card, index) => (
               <FamilyCard
                 key={card.id}
-                imgSrc="/assets/templete/2/gallery-02.jpg"
+                imgSrc={staticTemplateData?.gallery02}
                 name={card.firstName}
                 relationship={card.relationship}
                 contactNo={`+91 ${card.contactNumber}`}
