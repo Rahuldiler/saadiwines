@@ -13,7 +13,6 @@ const getTemplateKey = async () => {
 const getTemplateData = async (apiKey) => {
   const response = await http.get({
     url: `/getTemplateData/${apiKey}`,
-    isSecured: true,
   });
   return response.data;
 };

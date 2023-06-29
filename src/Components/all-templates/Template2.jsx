@@ -19,7 +19,7 @@ import { useEffect } from "react";
 import { templateInfoData } from "@/constants/templateInfo";
 import moment from "moment";
 
-export default function TemplateTwo({ formData, staticTemplateData }) {
+export default function Template2({ templateData, staticTemplateData }) {
   const [selectedItem, setSelectedItem] = useState("All");
   const [imageIndex, setImageIndex] = useState();
   const [isOpen, setIsOpen] = useState(false);
@@ -178,10 +178,106 @@ export default function TemplateTwo({ formData, staticTemplateData }) {
     },
   ];
 
-  const [templateData, setTemplateData] = useState();
-  useEffect(() => {
-    formData ? setTemplateData(formData) : setTemplateData(templateInfoData);
-  }, [formData]);
+  const weddingImg = [
+    {
+      id: 1,
+      link: "/assets/templete/2/post-01.jpg",
+    },
+    {
+      id: 2,
+      link: "/assets/templete/2/post-02.jpg",
+    },
+    {
+      id: 3,
+      link: "/assets/templete/2/post-03.jpg",
+    },
+  ];
+
+  const information = [
+    {
+      id: "01",
+      title: "Official Ceremony",
+      shorttextinfo: "Official Ceremony",
+      description1:
+        "Welcome to this beautiful park, where we gather to celebrate our wedding. As we look around us, we can't help but be struck by the natural beauty that surrounds us. From the vibrant flowers and trees to the gently flowing streams, this park provides the perfect backdrop for this joyous occasion. As we stand here today, surrounded by the beauty of this park, we are reminded of the enduring power of love.",
+    },
+    {
+      id: "02",
+      title: "Lunch at the Villa",
+      shorttextinfo: "Lunch at the Villa",
+      description1:
+        "The villa's garden is truly a work of art, with carefully cultivated flower beds and winding paths that invite us to explore the natural beauty around us. The gentle breeze that brushes against our skin and the chirping of the birds add to the enchanting ambiance that surrounds us. It's the perfect setting for a wedding reception, as it allows us to enjoy delicious food and drinks while basking in the splendor of the best flowery nature.",
+    },
+  ];
+
+  const impoFamily = [
+    {
+      id: 1,
+      image: "/assets/templete/2/gallery-02.jpg",
+      name: "rajat",
+      relationship: "brother",
+      contactNo: "+9190909090",
+    },
+    {
+      id: 2,
+      image: "/assets/templete/2/gallery-02.jpg",
+      name: "rajat",
+      relationship: "brother",
+      contactNo: "+9190909090",
+    },
+    {
+      id: 3,
+      image: "/assets/templete/2/gallery-02.jpg",
+      name: "rajat",
+      relationship: "brother",
+      contactNo: "+9190909090",
+    },
+    {
+      id: 4,
+      image: "/assets/templete/2/gallery-02.jpg",
+      name: "rajat",
+      relationship: "brother",
+      contactNo: "+9190909090",
+    },
+    {
+      id: 5,
+      image: "/assets/templete/2/gallery-02.jpg",
+      name: "rajat",
+      relationship: "brother",
+      contactNo: "+9190909090",
+    },
+    {
+      id: 6,
+      image: "/assets/templete/2/gallery-02.jpg",
+      name: "rajat",
+      relationship: "brother",
+      contactNo: "+9190909090",
+    },
+  ];
+
+  const contant = [
+    {
+      id: 1,
+      image: "/assets/templete/2/gallery-02.jpg",
+      name: "rajat",
+      relationship: "brother",
+      contactNo: "+9190909090",
+    },
+    {
+      id: 2,
+      image: "/assets/templete/2/gallery-02.jpg",
+      name: "rajat",
+      relationship: "brother",
+      contactNo: "+9190909090",
+    },
+    {
+      id: 3,
+      image: "/assets/templete/2/gallery-02.jpg",
+      name: "rajat",
+      relationship: "brother",
+      contactNo: "+9190909090",
+    },
+  ];
 
   return (
     <>

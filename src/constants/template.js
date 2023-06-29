@@ -22,7 +22,8 @@ const staticTemplateData = [
       swiperSlide5: "/images/venders/logo-white-04.png",
       swiperSlide6: "/images/venders/logo-white-06.png",
       paral02: "url('/images/c-paral-02.jpg')",
-      paral03: "url('https://template-assets-sv.s3.amazonaws.com/template1/DSC_4389.JPG')",
+      paral03:
+        "url('https://template-assets-sv.s3.amazonaws.com/template1/DSC_4389.JPG')",
       waterColor02: "url('/images/bg-watercolor-02.jpg')",
       waterColor: "url('/images/bg-watercolor.jpg')",
       double1:
@@ -162,7 +163,6 @@ const staticTemplateData = [
     gallery17: "/assets/templete/2/gallery-17.jpg",
     gallery21: "/assets/templete/2/gallery-21.jpg",
     paral06: "/assets/templete/2/paral_06.jpg",
-
   },
   {
     id: 6,
@@ -198,7 +198,6 @@ const staticTemplateData = [
     gallery17: "/assets/templete/2/gallery-17.jpg",
     gallery21: "/assets/templete/2/gallery-21.jpg",
     paral06: "/assets/templete/2/paral_06.jpg",
-
   },
   {
     id: 7,

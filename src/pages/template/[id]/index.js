@@ -1,4 +1,4 @@
-import { getTemplateData, getTemplateKey } from "@/services/template/template";
+import { getTemplateData } from "@/services/template/template";
 import { getUserPreference } from "@/services/user-preference/userPreference";
 import { Box } from "@mui/material";
 import React from "react";
@@ -21,29 +21,19 @@ function Template() {
   const id = router.query.id;
 
   useEffect(() => {
-    async function fetchTemplate() {
-      if (id?.length > 3) {
-        const response = await getUserPreference();
-        setTemplateId(response.templateId);
-      } else {
-        setTemplateId(Number(id));
-      }
-    }
-    fetchTemplate();
-  }, [id]);
-
-  useEffect(() => {
     const encodeId = id?.replace("%2F", "/");
     async function fetchData() {
       try {
         if (id?.length > 3) {
           const responseTemplateData = await getTemplateData(encodeId);
           setFormData(responseTemplateData);
+          setTemplateId(responseTemplateData.templateId);
         } else {
           setFormData(templateInfoData);
+          setTemplateId(Number(id));
         }
         setLoading(false);
-      } catch (err) {}
+      } catch (err) { }
     }
     id && fetchData();
   }, [id]);
@@ -176,7 +166,7 @@ function Template() {
       //       images={staticTemplateData[5].images}
       //     />
       //   );
-   
+
 
       default:
         return <Box>No template found </Box>;

@@ -275,12 +275,12 @@ function Template3({ templateData, staticTemplateData }) {
             />
           </div>
           <img
-              src={staticTemplateData?.frame06}
+            src={staticTemplateData?.frame06}
             alt=""
             className="w-20 absolute top-0 left-[53px] z-30"
           />
           <img
-              src={staticTemplateData?.frame08}
+            src={staticTemplateData?.frame08}
             alt=""
             className="w-64 absolute -bottom-[90px] -right-[120px] z-30"
           />
@@ -401,7 +401,7 @@ function Template3({ templateData, staticTemplateData }) {
           {templateData?.itinerary?.map((steps, index) => (
             <div key={index} className={``}>
               <Itinerary
-              theme={staticTemplateData?.theme}
+                theme={staticTemplateData?.theme}
                 step={steps.id}
                 fctnName={steps.functionName}
                 location={steps.mapsLocation}
@@ -490,7 +490,10 @@ function Template3({ templateData, staticTemplateData }) {
             attendance. We understand that your plans may change, so please feel
             free to update us if any adjustments.
           </p>
-          <ContactFormRsvp themeColor={staticTemplateData?.themeColor} clasNme="mt-[100px] pb-[30px] px-[20px]" />
+          <ContactFormRsvp
+            themeColor={staticTemplateData?.themeColor}
+            clasNme="mt-[100px] pb-[30px] px-[20px]"
+          />
         </div>
       </div>
     </div>
