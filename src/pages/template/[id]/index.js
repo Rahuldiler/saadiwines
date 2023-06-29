@@ -33,7 +33,7 @@ function Template() {
           setTemplateId(Number(id));
         }
         setLoading(false);
-      } catch (err) {}
+      } catch (err) { }
     }
     id && fetchData();
   }, [id]);
@@ -49,7 +49,6 @@ function Template() {
             images={staticTemplateData[0].images}
           />
         );
-
       case 2:
         return (
           <Template1
@@ -59,10 +58,9 @@ function Template() {
             images={staticTemplateData[1].images}
           />
         );
-
       case 3:
         return (
-          <Template2
+          <Template1
             templateData={formData}
             templateId={templateId}
             staticTemplateData={staticTemplateData[2]}
@@ -71,7 +69,7 @@ function Template() {
         );
       case 4:
         return (
-          <Template2
+          <Template1
             templateData={formData}
             templateId={templateId}
             staticTemplateData={staticTemplateData[3]}
@@ -80,7 +78,7 @@ function Template() {
         );
       case 5:
         return (
-          <Template3
+          <Template2
             templateData={formData}
             templateId={templateId}
             staticTemplateData={staticTemplateData[4]}
@@ -89,13 +87,86 @@ function Template() {
         );
       case 6:
         return (
-          <Template3
+          <Template2
             templateData={formData}
             templateId={templateId}
             staticTemplateData={staticTemplateData[5]}
             images={staticTemplateData[5].images}
           />
         );
+      case 7:
+        return (
+          <Template2
+            templateData={formData}
+            templateId={templateId}
+            staticTemplateData={staticTemplateData[6]}
+            images={staticTemplateData[6]}
+          />
+        );
+      case 8:
+        return (
+          <Template2
+            templateData={formData}
+            templateId={templateId}
+            staticTemplateData={staticTemplateData[7]}
+            images={staticTemplateData[7]}
+          />
+        );
+      case 9:
+        return (
+          <Template3
+            templateData={formData}
+            templateId={templateId}
+            staticTemplateData={staticTemplateData[8]}
+            images={staticTemplateData[8]}
+          />
+        );
+      case 10:
+        return (
+          <Template3
+            templateData={formData}
+            templateId={templateId}
+            staticTemplateData={staticTemplateData[9]}
+            images={staticTemplateData[9]}
+          />
+        );
+      case 11:
+        return (
+          <Template3
+            templateData={formData}
+            templateId={templateId}
+            staticTemplateData={staticTemplateData[10]}
+            images={staticTemplateData[10]}
+          />
+        );
+      case 12:
+        return (
+          <Template3
+            templateData={formData}
+            templateId={templateId}
+            staticTemplateData={staticTemplateData[11]}
+            images={staticTemplateData[11]}
+          />
+        );
+      // case 5:
+      //   return (
+      //     <Template3
+      //       templateData={formData}
+      //       templateId={templateId}
+      //       staticTemplateData={staticTemplateData[4]}
+      //       images={staticTemplateData[4].images}
+      //     />
+      //   );
+      // case 6:
+      //   return (
+      //     <Template3
+      //       templateData={formData}
+      //       templateId={templateId}
+      //       staticTemplateData={staticTemplateData[5]}
+      //       images={staticTemplateData[5].images}
+      //     />
+      //   );
+
 
       default:
         return <Box>No template found </Box>;

@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { ArrowRightIcon, MapPinIcon } from "@heroicons/react/24/solid";
 
 
-function Steps({ step, fctnName, fctnInfo, dateTime, location }) {
+function Steps({ step, fctnName, fctnInfo, dateTime, location, theme }) {
 
     return (
         <div className='flex mb-[50px] '>
@@ -12,7 +12,7 @@ function Steps({ step, fctnName, fctnInfo, dateTime, location }) {
             </div>
             <div className='mt-4 lg:mt-0'>
                 <p className=" text-3xl">
-                    {fctnName} <Link href={location}><MapPinIcon className="w-7 h-7 inline-block text-[#80A0C2]" /></Link>
+                    {fctnName} <Link href={location}><MapPinIcon style={{color: theme?.bgColor}} className="w-7 h-7 inline-block " /></Link>
                 </p>
                 <p className='!text-[25px] '>{dateTime}</p>
                 <p className='mt-2 lg:mt-0'>{fctnInfo}</p>

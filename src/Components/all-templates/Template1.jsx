@@ -262,7 +262,7 @@ function Template1({ templateData, staticTemplateData, images }) {
             <div className="absolute top-0 left-0 bg-black w-full h-full opacity-30">
               {" "}
             </div>
-            <img src={slide.image} className="object-cover w-full h-full" />
+            <img src={slide?.image} className="object-cover w-full h-full" />
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 p-4 text-white  w-max ">
               <div
                 className={`!font-Alex text-center text-[50px] w-56 lg:w-auto lg:text-[120px] ${
@@ -426,7 +426,7 @@ function Template1({ templateData, staticTemplateData, images }) {
         isOpen={isOpen}
         imageIndex={imageIndex}
         onClose={closeLightbox}
-        images={images}
+        images={imagesLightBox}
       />
 
       <div style={{ backgroundImage: staticTemplateData?.images.waterColor02 }}>

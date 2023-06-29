@@ -404,7 +404,7 @@ export default function Template2({ templateData, staticTemplateData }) {
           <div className="max-w-[1350px] lg:mx-auto ml-auto mt-[-460px] mb-5 flex">
             <div className="w-[30%] sm:block hidden pr-[100px]"></div>
             <div className="sm:w-[40%] w-full text-center z-10">
-              <h6 className="text-[14px] text-#000 font-normal tracking-[1px] mb-[20px]">
+              <h6 style={{color: staticTemplateData?.theme?.textColor}} className="text-[14px] font-normal tracking-[1px] mb-[20px]">
                 Stepping Into Forever
               </h6>
               <h1 className="sm:text-[50px] text-[30px] sm:leading-[60px]">
@@ -491,7 +491,7 @@ export default function Template2({ templateData, staticTemplateData }) {
               {templateData?.milestone?.map((info, id) => {
                 return (
                   <div key={info.id} className="lg:mt-[50%]">
-                    <h1 className="sm:text-[150px] text-[100px] text-[#02010100] slider-title mb-5">
+                    <h1  className="sm:text-[150px] text-[100px] text-[#02010100] slider-title mb-5">
                       {id + 1}
                     </h1>
                     <h6 className="text-[15px] mb-5">{info.title}</h6>
@@ -523,12 +523,12 @@ export default function Template2({ templateData, staticTemplateData }) {
         <div className="container mx-auto max-w-[1350px] relative">
           <div className="py-[220px] px-[15px]">
             <div className="text-center mb-5">
-              <h1 className="sm:text-[100px] text-[30px] text-white">
+              <h1 style={{color: staticTemplateData?.theme?.textColor}} className="sm:text-[100px] text-[30px]">
                 Our Love
               </h1>
             </div>
             <div className="text-center mb-5 lg:px-[400px]">
-              <p className="text-white">
+              <p style={{color: staticTemplateData?.theme?.textColor}} >
                 Our couple gallery is a beautiful reflection of our love story.
                 Each photograph tells a unique and personal moment of our
                 journey together, from the laughter and joy of our engagement to
@@ -539,7 +539,8 @@ export default function Template2({ templateData, staticTemplateData }) {
             <div>
               <ul className="flex justify-center mb-10">
                 <li
-                  className={`font-medium sm:px-[14px] pr-[12px] py-[7px] text-white relative ${
+                style={{color: staticTemplateData?.theme?.textColor}}
+                  className={`font-medium sm:px-[14px] pr-[12px] py-[7px] relative ${
                     selectedItem == "All" && "elementor-item-active"
                   }`}
                   onClick={() => setSelectedItem("All")}
@@ -547,7 +548,8 @@ export default function Template2({ templateData, staticTemplateData }) {
                   All
                 </li>
                 <li
-                  className={`font-medium sm:px-[14px] pr-[12px] py-[7px] text-white relative ${
+                style={{color: staticTemplateData?.theme?.textColor}}
+                  className={`font-medium sm:px-[14px] pr-[12px] py-[7px] relative ${
                     selectedItem == "CapturedMemories" &&
                     "elementor-item-active"
                   }`}
@@ -556,7 +558,8 @@ export default function Template2({ templateData, staticTemplateData }) {
                   Captured Memories
                 </li>
                 <li
-                  className={`font-medium sm:px-[14px] pr-[12px] py-[7px] text-white relative ${
+                style={{color: staticTemplateData?.theme?.textColor}}
+                  className={`font-medium sm:px-[14px] pr-[12px] py-[7px] relative ${
                     selectedItem == "UnforgettableMoments" &&
                     "elementor-item-active"
                   }`}
@@ -654,8 +657,8 @@ export default function Template2({ templateData, staticTemplateData }) {
             <div className="mx-[15px] my-[120px]">
               <div className="text-center">
                 <h1
-                  className="text-[50px] font-normal text-black mb-5"
-                  style={{ textShadow: "2px 2px 0px #FFFFFF" }}
+                  className="text-[50px] font-normal mb-5"
+                  style={{ textShadow: "2px 2px 0px #FFFFFF", color: staticTemplateData?.theme?.textColor }}
                 >
                   Itinerary
                 </h1>
@@ -663,6 +666,7 @@ export default function Template2({ templateData, staticTemplateData }) {
               {templateData?.itinerary?.map((steps, index) => (
                 <div key={steps.id} className={``}>
                   <Steps
+                  theme={staticTemplateData?.theme}
                     step={steps.id}
                     fctnName={steps.functionName}
                     location={steps.mapsLocation}
@@ -731,8 +735,8 @@ export default function Template2({ templateData, staticTemplateData }) {
                 Forever in Our Hearts
               </h6>
               <h1
-                className="sm:text-[100px] text-[30px] font-normal text-white mb-5"
-                style={{ textShadow: "5px 5px 0px rgba(0, 0, 0, 0.15)" }}
+                className="sm:text-[100px] text-[30px] font-normal mb-5"
+                style={{ textShadow: "5px 5px 0px rgba(0, 0, 0, 0.15)", color: staticTemplateData?.theme?.textColor }}
               >
                 Let's Celebrate True Love
               </h1>
@@ -760,7 +764,7 @@ export default function Template2({ templateData, staticTemplateData }) {
         ></div>
         <div className="container mx-auto max-w-[1350px] relative">
           <div className="text-center">
-            <h1 className="sm:text-[50px] text-[30px] font-normal text-black mb-5">
+            <h1 style={{color: staticTemplateData?.theme?.textColor}} className="sm:text-[50px] text-[30px] font-normal mb-5">
               Important Family Members
             </h1>
           </div>
@@ -789,7 +793,7 @@ export default function Template2({ templateData, staticTemplateData }) {
             <div className="sm:w-[30%]"></div>
             <div className="sm:w-[40%] text-center">
               <div>
-                <h2 className="lg:text-[50px] text-[35px] text-black font-normal">
+                <h2 style={{color: staticTemplateData?.theme?.textColor}} className="lg:text-[50px] text-[35px] font-normal">
                   Points of contacts
                 </h2>
               </div>
