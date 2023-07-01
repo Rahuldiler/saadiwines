@@ -16,6 +16,8 @@ import { AiOutlineDelete } from "react-icons/ai";
 import NavigationSteps from "./NavigationSteps";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import FormErrorMessage from "../common/FormErrorMessage";
+import Notification from "../common/Notification";
 function Step4Contact({
   contactDetails,
   handleNext,
@@ -87,6 +89,9 @@ function Step4Contact({
         position: "relative",
       }}
     >
+      {/* {contactDetails && (
+        <Notification message="Contact Details Info Loaded" type="success" />
+      )} */}
       <Box
         sx={{
           display: "Flex",
@@ -149,9 +154,9 @@ function Step4Contact({
               />
               {formik.touched[index]?.firstName &&
               formik.errors[index]?.firstName ? (
-                <div style={{ color: "Red" }}>
-                  {formik.errors[index]?.firstName}
-                </div>
+                <FormErrorMessage
+                  errorMessage={formik.errors[index]?.firstName}
+                />
               ) : null}
               <TextFieldInput
                 id="lastName"
@@ -163,9 +168,9 @@ function Step4Contact({
               />
               {formik.touched[index]?.lastName &&
               formik.errors[index]?.lastName ? (
-                <div style={{ color: "Red" }}>
-                  {formik.errors[index]?.lastName}
-                </div>
+                <FormErrorMessage
+                  errorMessage={formik.errors[index]?.lastName}
+                />
               ) : null}
               <TextFieldInput
                 id="contactNumber"
@@ -177,9 +182,9 @@ function Step4Contact({
               />
               {formik.touched[index]?.contactNumber &&
               formik.errors[index]?.contactNumber ? (
-                <div style={{ color: "Red" }}>
-                  {formik.errors[index]?.contactNumber}
-                </div>
+                <FormErrorMessage
+                  errorMessage={formik.errors[index]?.contactNumber}
+                />
               ) : null}
             </FormControl>
           );

@@ -24,6 +24,8 @@ import { useEffect } from "react";
 import NavigationSteps from "./NavigationSteps";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import FormErrorMessage from "../common/FormErrorMessage";
+import Notification from "../common/Notification";
 
 function Step2Itinerary({
   itineraryLists,
@@ -120,6 +122,9 @@ function Step2Itinerary({
         position: "relative",
       }}
     >
+      {/* {itineraryLists && (
+        <Notification message="Itinerary Lists Info Loaded" type="success" />
+      )} */}
       <Box
         sx={{
           display: "Flex",
@@ -182,9 +187,9 @@ function Step2Itinerary({
               />
               {formik.touched[index]?.functionName &&
               formik.errors[index]?.functionName ? (
-                <div style={{ color: "Red" }}>
-                  {formik.errors[index]?.functionName}
-                </div>
+                <FormErrorMessage
+                  errorMessage={formik.errors[index]?.functionName}
+                />
               ) : null}
               <TextFieldInput
                 id="mapsLocation"
@@ -196,9 +201,9 @@ function Step2Itinerary({
               />
               {formik.touched[index]?.mapsLocation &&
               formik.errors[index]?.mapsLocation ? (
-                <div style={{ color: "Red" }}>
-                  {formik.errors[index]?.mapsLocation}
-                </div>
+                <FormErrorMessage
+                  errorMessage={formik.errors[index]?.mapsLocation}
+                />
               ) : null}
               <TextFieldInput
                 id="details"
@@ -210,9 +215,9 @@ function Step2Itinerary({
               />
               {formik.touched[index]?.details &&
               formik.errors[index]?.details ? (
-                <div style={{ color: "Red" }}>
-                  {formik.errors[index]?.details}
-                </div>
+                <FormErrorMessage
+                  errorMessage={formik.errors[index]?.details}
+                />
               ) : null}
               <Box sx={{ mt: 2 }}>
                 <MultilineTextField
@@ -224,9 +229,9 @@ function Step2Itinerary({
               </Box>
               {formik.touched[index]?.address &&
               formik.errors[index]?.address ? (
-                <div style={{ color: "Red" }}>
-                  {formik.errors[index]?.address}
-                </div>
+                <FormErrorMessage
+                  errorMessage={formik.errors[index]?.address}
+                />
               ) : null}
               <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DateTimePicker
@@ -239,9 +244,9 @@ function Step2Itinerary({
                 />
                 {formik.touched[index]?.dateTime &&
                 formik.errors[index]?.dateTime ? (
-                  <div style={{ color: "Red" }}>
-                    {formik.errors[index]?.dateTime}
-                  </div>
+                  <FormErrorMessage
+                    errorMessage={formik.errors[index]?.dateTime}
+                  />
                 ) : null}
               </LocalizationProvider>
             </Box>

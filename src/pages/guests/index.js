@@ -44,6 +44,7 @@ import { boolean } from "yup";
 import { CancelOutlined } from "@mui/icons-material";
 import Header from "@/Components/common/Header";
 import { useNavItemsStore } from "../../store";
+import { getUserPreference } from "@/services/user-preference/userPreference";
 
 const table = {
   minWidth: 750,
@@ -373,6 +374,10 @@ export default function index() {
     getItineraryColumns();
     initNavItems();
     setIsLoading(false);
+  }, []);
+
+  useEffect(() => {
+    getUserPreference();
   }, []);
 
   return (

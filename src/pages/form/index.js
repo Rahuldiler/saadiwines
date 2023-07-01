@@ -40,6 +40,7 @@ import {
 import { getUserPreference } from "@/services/user-preference/userPreference";
 import CustomCircularProgress from "@/Components/Budget-Planner/CustomCircularProgress";
 import Loader from "@/Components/common/Loader";
+import Notification from "@/Components/common/Notification";
 
 function index() {
   const [websiteForm, setWebsiteForm] = useState({
@@ -104,7 +105,7 @@ function index() {
   const [activeStep, setActiveStep] = React.useState(0);
   const [formLoading, setFormLoading] = useState(true);
   const [loading, setLoading] = useState(true);
-
+  const [notificationActive, setNotificationActive] = useState(false);
   const handleNext = async (values) => {
     if (activeStep === 0) {
       try {
@@ -112,6 +113,7 @@ function index() {
           ? await updateWebsiteInfo(values)
           : await addWebsiteInfo(values);
         setActiveStep(1);
+        setNotificationActive(true);
       } catch (error) {
         return error.message;
       }
@@ -183,6 +185,8 @@ function index() {
           activeStep={activeStep}
           handleBack={handleBack}
           setFormLoading={setFormLoading}
+          notificationActive={notificationActive}
+          setNotificationActive={setNotificationActive}
         />
       ),
     },
@@ -196,6 +200,8 @@ function index() {
           activeStep={activeStep}
           handleBack={handleBack}
           setFormLoading={setFormLoading}
+          notificationActive={notificationActive}
+          setNotificationActive={setNotificationActive}
         />
       ),
     },
@@ -209,6 +215,8 @@ function index() {
           activeStep={activeStep}
           handleBack={handleBack}
           setFormLoading={setFormLoading}
+          notificationActive={notificationActive}
+          setNotificationActive={setNotificationActive}
         />
       ),
     },
@@ -222,6 +230,8 @@ function index() {
           activeStep={activeStep}
           handleBack={handleBack}
           setFormLoading={setFormLoading}
+          notificationActive={notificationActive}
+          setNotificationActive={setNotificationActive}
         />
       ),
     },
@@ -235,6 +245,8 @@ function index() {
           activeStep={activeStep}
           handleBack={handleBack}
           setFormLoading={setFormLoading}
+          notificationActive={notificationActive}
+          setNotificationActive={setNotificationActive}
         />
       ),
     },
@@ -244,6 +256,7 @@ function index() {
     getUserPreference();
   }, []);
 
+  let notification;
   const getWebsiteInfoData = async () => {
     if (activeStep === 0) {
       const resWebsite = await getWebsiteInfo();
@@ -311,6 +324,21 @@ function index() {
 
   return (
     <Box>
+      {notificationActive && activeStep === 1 && (
+        <Notification message="Basic Info data has been added" type="success" />
+      )}
+      {notificationActive && activeStep === 2 && (
+        <Notification message="Itinerary data has been added" type="success" />
+      )}
+      {notificationActive && activeStep === 3 && (
+        <Notification message="Milestone data has been added" type="success" />
+      )}
+      {notificationActive && activeStep === 4 && (
+        <Notification message="Contact data has been added" type="success" />
+      )}
+      {notificationActive && activeStep === 5 && (
+        <Notification message="Family data has been added" type="success" />
+      )}
       {loading ? (
         <Loader />
       ) : (

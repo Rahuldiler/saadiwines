@@ -30,6 +30,7 @@ import NavigationSteps from "./NavigationSteps";
 import Loader from "../common/Loader";
 import CustomCircularProgress from "../Budget-Planner/CustomCircularProgress";
 import Notification from "../common/Notification";
+import FormErrorMessage from "../common/FormErrorMessage";
 function Step1Website({
   websiteForm,
   setWebsiteForm,
@@ -77,6 +78,14 @@ function Step1Website({
         motherName: Yup.string()
           .matches(/^[a-zA-Z\s]*$/, "No special characters allowed")
           .required("Required groom mother Name"),
+        grandFatherName: Yup.string().matches(
+          /^[a-zA-Z\s]*$/,
+          "No special characters allowed"
+        ),
+        grandMotherName: Yup.string().matches(
+          /^[a-zA-Z\s]*$/,
+          "No special characters allowed"
+        ),
         description: Yup.string().required("Required groom description "),
       }),
       bride: Yup.object({
@@ -89,6 +98,14 @@ function Step1Website({
         motherName: Yup.string()
           .matches(/^[a-zA-Z\s]*$/, "No special characters allowed")
           .required("Required bride mother Name"),
+        grandFatherName: Yup.string().matches(
+          /^[a-zA-Z\s]*$/,
+          "No special characters allowed"
+        ),
+        grandMotherName: Yup.string().matches(
+          /^[a-zA-Z\s]*$/,
+          "No special characters allowed"
+        ),
         description: Yup.string().required("Required bride description "),
       }),
       dateTime: Yup.string().required("Required Date"),
@@ -115,6 +132,7 @@ function Step1Website({
   useEffect(() => {
     setValueDateTime(dayjs(websiteForm?.dateTime));
   }, [websiteForm.dateTime]);
+
   return (
     <Box
       sx={{
@@ -152,13 +170,7 @@ function Step1Website({
                   onChange={formik.handleChange}
                 />
                 {formik.touched.groom?.name && formik.errors.groom?.name ? (
-                  <div style={{ color: "Red" }}>
-                    {formik.errors.groom?.name}
-                    <Notification
-                      type="error"
-                      message={formik.errors.groom?.name}
-                    />
-                  </div>
+                  <FormErrorMessage errorMessage={formik.errors.groom?.name} />
                 ) : null}
               </Box>
             </Box>
@@ -174,13 +186,9 @@ function Step1Website({
                 />
                 {formik.touched.groom?.fatherName &&
                 formik.errors.groom?.fatherName ? (
-                  <div style={{ color: "Red" }}>
-                    {formik.errors.groom?.fatherName}
-                    <Notification
-                      type="error"
-                      message={formik.errors.groom?.fatherName}
-                    />
-                  </div>
+                  <FormErrorMessage
+                    errorMessage={formik.errors.groom?.fatherName}
+                  />
                 ) : null}
               </Box>
               <Box>
@@ -194,9 +202,9 @@ function Step1Website({
                 />
                 {formik.touched.groom?.motherName &&
                 formik.errors.groom?.motherName ? (
-                  <div style={{ color: "Red" }}>
-                    {formik.errors.groom?.motherName}
-                  </div>
+                  <FormErrorMessage
+                    errorMessage={formik.errors.groom?.motherName}
+                  />
                 ) : null}
               </Box>
             </Box>
@@ -213,9 +221,9 @@ function Step1Website({
                 />
                 {formik.touched.groom?.grandFatherName &&
                 formik.errors.groom?.grandFatherName ? (
-                  <div style={{ color: "Red" }}>
-                    {formik.errors.groom?.grandFatherName}
-                  </div>
+                  <FormErrorMessage
+                    errorMessage={formik.errors.groom?.grandFatherName}
+                  />
                 ) : null}
               </Box>
               <Box>
@@ -230,9 +238,9 @@ function Step1Website({
                 />
                 {formik.touched.groom?.grandMotherName &&
                 formik.errors.groom?.grandMotherName ? (
-                  <div style={{ color: "Red" }}>
-                    {formik.errors.groom?.grandMotherName}
-                  </div>
+                  <FormErrorMessage
+                    errorMessage={formik.errors.groom?.grandMotherName}
+                  />
                 ) : null}
               </Box>
             </Box>
@@ -245,9 +253,9 @@ function Step1Website({
               />
               {formik.touched.groom?.description &&
               formik.errors.groom?.description ? (
-                <div style={{ color: "Red" }}>
-                  {formik.errors.groom?.description}
-                </div>
+                <FormErrorMessage
+                  errorMessage={formik.errors.groom?.description}
+                />
               ) : null}
             </Box>
           </Box>
@@ -270,9 +278,7 @@ function Step1Website({
                   onChange={formik.handleChange}
                 />
                 {formik.touched.bride?.name && formik.errors.bride?.name ? (
-                  <div style={{ color: "Red" }}>
-                    {formik.errors.bride?.name}
-                  </div>
+                  <FormErrorMessage errorMessage={formik.errors.bride?.name} />
                 ) : null}
               </Box>
             </Box>
@@ -288,9 +294,9 @@ function Step1Website({
                 />
                 {formik.touched.bride?.fatherName &&
                 formik.errors.bride?.fatherName ? (
-                  <div style={{ color: "Red" }}>
-                    {formik.errors.bride?.fatherName}
-                  </div>
+                  <FormErrorMessage
+                    errorMessage={formik.errors.bride?.fatherName}
+                  />
                 ) : null}
               </Box>
               <Box>
@@ -304,9 +310,9 @@ function Step1Website({
                 />
                 {formik.touched.bride?.motherName &&
                 formik.errors.bride?.motherName ? (
-                  <div style={{ color: "Red" }}>
-                    {formik.errors.bride?.motherName}
-                  </div>
+                  <FormErrorMessage
+                    errorMessage={formik.errors.bride?.motherName}
+                  />
                 ) : null}
               </Box>
             </Box>
@@ -323,9 +329,9 @@ function Step1Website({
                 />
                 {formik.touched.bride?.grandFatherName &&
                 formik.errors.bride?.grandFatherName ? (
-                  <div style={{ color: "Red" }}>
-                    {formik.errors.bride?.grandFatherName}
-                  </div>
+                  <FormErrorMessage
+                    errorMessage={formik.errors.bride?.grandFatherName}
+                  />
                 ) : null}
               </Box>
               <Box>
@@ -340,9 +346,9 @@ function Step1Website({
                 />
                 {formik.touched.bride?.grandMotherName &&
                 formik.errors.bride?.grandMotherName ? (
-                  <div style={{ color: "Red" }}>
-                    {formik.errors.bride?.grandMotherName}
-                  </div>
+                  <FormErrorMessage
+                    errorMessage={formik.errors.bride?.grandMotherName}
+                  />
                 ) : null}
               </Box>
             </Box>
@@ -355,9 +361,9 @@ function Step1Website({
               />
               {formik.touched.bride?.description &&
               formik.errors.bride?.description ? (
-                <div style={{ color: "Red" }}>
-                  {formik.errors.bride?.description}
-                </div>
+                <FormErrorMessage
+                  errorMessage={formik.errors.bride?.description}
+                />
               ) : null}
             </Box>
           </Box>
@@ -370,7 +376,7 @@ function Step1Website({
             handleCh={formik.handleChange}
           />
           {formik.touched.thankYouMessage && formik.errors.thankYouMessage ? (
-            <div style={{ color: "Red" }}>{formik.errors.thankYouMessage}</div>
+            <FormErrorMessage errorMessage={formik.errors.thankYouMessage} />
           ) : null}
           <LocalizationProvider required dateAdapter={AdapterDayjs}>
             <DatePicker

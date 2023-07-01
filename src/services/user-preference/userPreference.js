@@ -13,7 +13,7 @@ const getUserPreference = async () => {
     return response.data;
   } catch (error) {
     if (error.request.status === 403) {
-      window.location.href = "/";
+      window.location.href = "/login";
     }
   }
 };
