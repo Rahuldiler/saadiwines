@@ -65,7 +65,6 @@ function Step3FAQ({
 
   const handleChange = (e, index, newValue, reason) => {
     const { name, value } = e.target;
-    console.log(name, value);
     const list = [...formik.values];
     removedQuesAnsData.map((rmQna) => {
       if (rmQna.title === formik.values[index]?.title) {
@@ -118,7 +117,6 @@ function Step3FAQ({
     const updatedList = formik.values.filter((list) => list.arrayId !== id);
     formik.setValues(updatedList);
   };
-  console.log("removedQuesAnsData", removedQuesAnsData);
 
   useEffect(() => {
     milestoneLists && formik.setValues(milestoneLists);
@@ -134,8 +132,6 @@ function Step3FAQ({
     }
   }, [milestoneLists]);
 
-  console.log("formik.values", formik.values);
-  console.log("quesAnsData", quesAnsData);
   return (
     <Box
       sx={{
