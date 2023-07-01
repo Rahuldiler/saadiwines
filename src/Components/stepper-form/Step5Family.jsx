@@ -19,6 +19,8 @@ import { AiOutlineDelete } from "react-icons/ai";
 import NavigationSteps from "./NavigationSteps";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import FormErrorMessage from "../common/FormErrorMessage";
+import Notification from "../common/Notification";
 
 function Step5Family({
   familyMemberLists,
@@ -86,6 +88,9 @@ function Step5Family({
         position: "relative",
       }}
     >
+      {/* {familyMemberLists && (
+        <Notification message="Family Member Info Loaded" type="success" />
+      )} */}
       <Box
         sx={{
           display: "Flex",
@@ -147,7 +152,7 @@ function Step5Family({
                 onChange={(e) => handleChange(e, index)}
               />
               {formik.touched[index]?.name && formik.errors[index]?.name ? (
-                <div style={{ color: "Red" }}>{formik.errors[index]?.name}</div>
+                <FormErrorMessage errorMessage={formik.errors[index]?.name} />
               ) : null}
               <TextFieldInput
                 id="relation"
@@ -159,9 +164,9 @@ function Step5Family({
               />
               {formik.touched[index]?.relation &&
               formik.errors[index]?.relation ? (
-                <div style={{ color: "Red" }}>
-                  {formik.errors[index]?.relation}
-                </div>
+                <FormErrorMessage
+                  errorMessage={formik.errors[index]?.relation}
+                />
               ) : null}
             </Box>
           );

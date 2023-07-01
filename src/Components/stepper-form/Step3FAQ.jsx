@@ -1,4 +1,5 @@
 import {
+  Autocomplete,
   Box,
   Button,
   FormControl,
@@ -6,6 +7,7 @@ import {
   FormLabel,
   Radio,
   RadioGroup,
+  TextField,
   Typography,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
@@ -16,6 +18,10 @@ import { AiOutlineDelete } from "react-icons/ai";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import NavigationSteps from "./NavigationSteps";
+import FormErrorMessage from "../common/FormErrorMessage";
+import Notification from "../common/Notification";
+import { faqsData } from "@/constants/faqData";
+import { set } from "date-fns";
 function Step3FAQ({
   setValidationBoolean,
   milestoneLists,
@@ -27,6 +33,8 @@ function Step3FAQ({
   validationBoolean,
   setFormLoading,
 }) {
+  const [quesAnsData, setQuesAnsData] = useState(faqsData);
+  const [removedQuesAnsData, setRemovedQuesAnsData] = useState([]);
   const addNewMilestone = (id) => {
     formik.setValues([
       ...formik.values,
@@ -55,10 +63,54 @@ function Step3FAQ({
     },
   });
 
-  const handleChange = (e, index) => {
+  const handleChange = (e, index, newValue, reason) => {
     const { name, value } = e.target;
+    console.log(name, value);
     const list = [...formik.values];
-    list[index][name] = value;
+    removedQuesAnsData.map((rmQna) => {
+      if (rmQna.title === formik.values[index]?.title) {
+        setQuesAnsData((prevData) => [...prevData, rmQna]);
+        setRemovedQuesAnsData((prevData) =>
+          prevData.filter((qna) => qna.title !== rmQna.title)
+        );
+      }
+    });
+    if (typeof newValue === "string") {
+      list[index].title = newValue;
+      const filteredData = quesAnsData.filter((faq) => faq.title === newValue);
+      setRemovedQuesAnsData((prevData) => [...prevData, filteredData[0]]);
+      list[index].description = filteredData[0].description;
+      setQuesAnsData((prevData) => [
+        ...prevData.filter((qna) => qna.title !== newValue),
+      ]);
+    }
+    if (typeof value === "string") {
+      list[index][name] = value;
+    }
+
+    if (reason === "clear") {
+      removedQuesAnsData.map((rmQna) => {
+        if (rmQna.title === formik.values[index]?.title) {
+          setQuesAnsData((prevData) => [...prevData, rmQna]);
+          setRemovedQuesAnsData((prevData) =>
+            prevData.filter((qna) => qna.title !== rmQna.title)
+          );
+        }
+      });
+      list[index].title = "";
+      list[index].description = "";
+    }
+
+    // else if (newValue && newValue.inputValue) {
+    //   setValue({
+    //     title: newValue.inputValue,
+    //   });
+    //   console.log("if else", newValue);
+    // } else {
+    //   setValue(newValue);
+    //   console.log("else", newValue);
+    // }
+
     formik.setValues(list);
   };
 
@@ -66,11 +118,24 @@ function Step3FAQ({
     const updatedList = formik.values.filter((list) => list.arrayId !== id);
     formik.setValues(updatedList);
   };
+  console.log("removedQuesAnsData", removedQuesAnsData);
 
   useEffect(() => {
     milestoneLists && formik.setValues(milestoneLists);
+
+    for (let i = 0; i < milestoneLists.length; i++) {
+      setQuesAnsData((prevData) =>
+        prevData.filter((qna) => qna.title !== milestoneLists[i].title)
+      );
+      const filteredData = quesAnsData.filter(
+        (faq) => faq.title === milestoneLists[i].title
+      );
+      setRemovedQuesAnsData((prevData) => [...prevData, filteredData[0]]);
+    }
   }, [milestoneLists]);
 
+  console.log("formik.values", formik.values);
+  console.log("quesAnsData", quesAnsData);
   return (
     <Box
       sx={{
@@ -78,6 +143,9 @@ function Step3FAQ({
         position: "relative",
       }}
     >
+      {/* {milestoneLists && (
+        <Notification message="Milestone  Lists Info Loaded" type="success" />
+      )} */}
       <Box
         sx={{
           display: "Flex",
@@ -140,33 +208,56 @@ function Step3FAQ({
                 )}
               </Box>
 
-              <TextFieldInput
+              <Autocomplete
+                name="title"
+                label="Title *"
+                value={milestone.title}
+                onChange={(e, newValue, reason) => {
+                  handleChange(e, index, newValue, reason);
+                }}
+                freeSolo
+                options={quesAnsData.map((option) => option.title)}
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    type="text"
+                    id="title"
+                    label="Title *"
+                    name="title"
+                    value={milestone.title}
+                    onChange={(e, newValue, reason) =>
+                      handleChange(e, index, newValue, reason)
+                    }
+                  />
+                )}
+              />
+              {/* <TextFieldInput
                 id="title"
                 label="Title *"
                 name="title"
                 type="text"
                 value={milestone.title}
                 onChange={(e) => handleChange(e, index)}
-              />
+              /> */}
               {formik.touched[index]?.title && formik.errors[index]?.title ? (
-                <div style={{ color: "Red" }}>
-                  {formik.errors[index]?.title}
-                </div>
+                <FormErrorMessage errorMessage={formik.errors[index]?.title} />
               ) : null}
-              <TextFieldInput
-                id="description"
-                label="Description *"
-                name="description"
-                type="text"
-                value={milestone.description}
-                onChange={(e) => handleChange(e, index)}
-              />
-              {formik.touched[index]?.description &&
-              formik.errors[index]?.description ? (
-                <div style={{ color: "Red" }}>
-                  {formik.errors[index]?.description}
-                </div>
-              ) : null}
+              <Box sx={{ mt: 2 }}>
+                <MultilineTextField
+                  id="description"
+                  label="Description *"
+                  name="description"
+                  type="text"
+                  value={milestone.description}
+                  onChange={(e) => handleChange(e, index)}
+                />
+                {formik.touched[index]?.description &&
+                formik.errors[index]?.description ? (
+                  <FormErrorMessage
+                    errorMessage={formik.errors[index]?.description}
+                  />
+                ) : null}
+              </Box>
             </Box>
           );
         })}

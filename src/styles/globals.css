@@ -131,6 +131,14 @@ p {
   top: calc(var(--percent-height) + (var(--items-in-column) * var(--vgap)));
 }
 
+/* snackbar */
+
+/* .MuiSnackbar-root:nth-child(n) {
+  --margin-multiplier: 100px;
+
+  top: calc(var(--margin-multiplier) * n);
+} */
+
 /* loader */
 
 .lds-heart {
