@@ -130,8 +130,9 @@ function index() {
         }
       }
     } else if (activeStep === 2) {
-      for (let i = 0; i < milestoneLists.length; i++) {
-        const { arrayId, ...milestoneList } = milestoneLists[i];
+      for (let i = 0; i < values.length; i++) {
+        const { arrayId, ...milestoneList } = values[i];
+        console.log(milestoneList, "milestoneList");
         try {
           milestoneList.id
             ? await updateMilestone(milestoneList)
@@ -142,8 +143,8 @@ function index() {
         }
       }
     } else if (activeStep === 3) {
-      for (let i = 0; i < contactDetails.length; i++) {
-        const { arrayId, ...contactDetail } = contactDetails[i];
+      for (let i = 0; i < values.length; i++) {
+        const { arrayId, ...contactDetail } = values[i];
         try {
           contactDetail.id
             ? await updateContact(contactDetail)
@@ -154,8 +155,8 @@ function index() {
         }
       }
     } else if (activeStep === 4) {
-      for (let i = 0; i < familyMemberLists.length; i++) {
-        const { arrayId, ...familyMemberList } = familyMemberLists[i];
+      for (let i = 0; i < values.length; i++) {
+        const { arrayId, ...familyMemberList } = values[i];
         try {
           familyMemberList.id
             ? await updateFamilyMember(familyMemberList)

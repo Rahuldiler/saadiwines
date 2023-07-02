@@ -58,6 +58,7 @@ function Step3FAQ({
       })
     ),
     onSubmit: (values) => {
+      console.log(values, "values");
       handleNext(values);
       setFormLoading(true);
     },
@@ -67,11 +68,13 @@ function Step3FAQ({
     const { name, value } = e.target;
     const list = [...formik.values];
     removedQuesAnsData.map((rmQna) => {
-      if (rmQna.title === formik.values[index]?.title) {
-        setQuesAnsData((prevData) => [...prevData, rmQna]);
-        setRemovedQuesAnsData((prevData) =>
-          prevData.filter((qna) => qna.title !== rmQna.title)
-        );
+      if (formik.values[index].title) {
+        if (rmQna?.title === formik.values[index]?.title) {
+          setQuesAnsData((prevData) => [...prevData, rmQna]);
+          setRemovedQuesAnsData((prevData) =>
+            prevData.filter((qna) => qna?.title !== rmQna?.title)
+          );
+        }
       }
     });
     if (typeof newValue === "string") {
@@ -89,10 +92,10 @@ function Step3FAQ({
 
     if (reason === "clear") {
       removedQuesAnsData.map((rmQna) => {
-        if (rmQna.title === formik.values[index]?.title) {
+        if (rmQna?.title === formik.values[index]?.title) {
           setQuesAnsData((prevData) => [...prevData, rmQna]);
           setRemovedQuesAnsData((prevData) =>
-            prevData.filter((qna) => qna.title !== rmQna.title)
+            prevData.filter((qna) => qna?.title !== rmQna?.title)
           );
         }
       });
@@ -131,6 +134,8 @@ function Step3FAQ({
       setRemovedQuesAnsData((prevData) => [...prevData, filteredData[0]]);
     }
   }, [milestoneLists]);
+
+  console.log(formik.values, "formik.values");
 
   return (
     <Box
@@ -192,7 +197,7 @@ function Step3FAQ({
                 }}
               >
                 <Typography variant="body1">Milestone {index + 1}</Typography>
-                {milestoneLists.length > 1 && (
+                {formik.values.length > 1 && (
                   <Button
                     onClick={() => deleteMilestone(milestone.arrayId)}
                     sx={{
@@ -216,6 +221,8 @@ function Step3FAQ({
                 renderInput={(params) => (
                   <TextField
                     {...params}
+                    multiline
+                    rows={2}
                     type="text"
                     id="title"
                     label="Title *"
