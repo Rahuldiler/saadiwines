@@ -33,7 +33,7 @@ const Notification = ({ type, message }) => {
       open={open}
       ref={ref}
       className="custom-snackbar"
-      // autoHideDuration={6000}
+      autoHideDuration={6000}
       onClose={handleClose}
       anchorOrigin={{ vertical: "top", horizontal: "right" }}
     >

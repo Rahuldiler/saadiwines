@@ -4,7 +4,7 @@ const http = new HTTPClientHandler();
 
 const addContactUs = async (contactData) => {
   await http.post({
-    url: "/contact-us",
+    url: "/communication/contact",
     payload: contactData,
     isSecured: true,
   });

@@ -13,6 +13,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
 }
+/* * {
+  outline: 1px solid blue;
+} */
 button,
 h1,
 h2,
@@ -227,7 +230,7 @@ p {
   }
 
   .header-logo {
-    width: 200px !important;
+    width: 180px !important;
     margin-right: 0 !important;
     position: relative !important;
     margin-top: -7px !important;
