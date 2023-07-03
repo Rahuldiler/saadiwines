@@ -9,9 +9,14 @@ import { COLORS } from "../utils/ConstantTheme";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { addContactUs } from "@/services/Contact/contact-us";
+import Notification from "../common/Notification";
 
 function ContactUs() {
   const [contactForm, setContactForm] = useState();
+  const [isNotification, setIsNotification] = useState({
+    type: "",
+    message: "",
+  });
   const contactInfo = [
     {
       title: "Write us at",
@@ -31,12 +36,13 @@ function ContactUs() {
   ];
   const phoneRegExp =
     /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
+
   const formik = useFormik({
     initialValues: {
       name: "",
       contactNumber: "",
-      email: "",
-      pass: "",
+      fromMail: "",
+      issueInfo: "",
     },
     validationSchema: Yup.object({
       name: Yup.string()
@@ -46,17 +52,32 @@ function ContactUs() {
         phoneRegExp,
         "Phone number is not valid"
       ),
-      pass: Yup.string().required("Required"),
-      email: Yup.string().required("Required").email(),
+      issueInfo: Yup.string().required("Required"),
+      fromMail: Yup.string().required("Required").email(),
     }),
     onSubmit: async (values) => {
-      await addContactUs(values);
+      try {
+        await addContactUs(values);
+        setIsNotification({
+          type: "success",
+          message: "Message send successfully",
+        });
+        formik.resetForm();
+      } catch (err) {
+        setIsNotification({
+          type: "error",
+          message: "Message not able to send",
+        });
+      }
     },
   });
 
-  console.log(formik.values, formik.errors);
   return (
     <section id="contact">
+      <Notification
+        message={isNotification.message}
+        type={isNotification.type}
+      />
       <Box>
         <Typography
           variant="h2"
@@ -71,7 +92,7 @@ function ContactUs() {
         </Typography>
         <Grid
           container
-          sx={{ my: { lg: 10, xs: "40px" } }}
+          sx={{ my: { lg: 10, xs: "40px" }, px: { lg: 0, xs: "20px" } }}
           className="layoutMargin"
         >
           <Grid
@@ -81,7 +102,6 @@ function ContactUs() {
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
-              px: { lg: 0, xs: "20px" },
             }}
           >
             <Typography variant="h6" sx={{ fontSize: "30px" }}>
@@ -101,8 +121,8 @@ function ContactUs() {
                   <Box
                     sx={{
                       background: "#BC8129",
-                      p: 3,
-                      mr: 4,
+                      p: { lg: 3, xs: 2 },
+                      mr: { lg: 4, xs: 2 },
                       borderRadius: "7px",
                       display: "flex",
                       alignItems: "center",
@@ -130,7 +150,6 @@ function ContactUs() {
                 p: 4,
                 borderRadius: "7px",
                 mt: { lg: 0, xs: "40px" },
-                mx: { lg: 0, xs: "20px" },
               }}
             >
               <form onSubmit={formik.handleSubmit}>
@@ -179,8 +198,8 @@ function ContactUs() {
                 ) : null}
                 <TextField
                   type="email"
-                  name="email"
-                  value={formik.values?.email || ""}
+                  name="fromMail"
+                  value={formik.values?.fromMail || ""}
                   onChange={formik.handleChange}
                   placeholder="Email Address *"
                   sx={{
@@ -190,13 +209,13 @@ function ContactUs() {
                     mt: 4,
                   }}
                 />
-                {formik.touched.email && formik.errors.email ? (
-                  <div style={{ color: "Red" }}>{formik.errors.email}</div>
+                {formik.touched.fromMail && formik.errors.fromMail ? (
+                  <div style={{ color: "Red" }}>{formik.errors.fromMail}</div>
                 ) : null}
                 <TextField
                   type="text"
-                  name="pass"
-                  value={formik.values?.pass || ""}
+                  name="issueInfo"
+                  value={formik.values?.issueInfo || ""}
                   onChange={formik.handleChange}
                   placeholder="Write Message *"
                   multiline
@@ -208,8 +227,8 @@ function ContactUs() {
                     mt: 4,
                   }}
                 />
-                {formik.touched.pass && formik.errors.pass ? (
-                  <div style={{ color: "Red" }}>{formik.errors.pass}</div>
+                {formik.touched.issueInfo && formik.errors.issueInfo ? (
+                  <div style={{ color: "Red" }}>{formik.errors.issueInfo}</div>
                 ) : null}
                 <Button
                   type="submit"
