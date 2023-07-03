@@ -29,7 +29,7 @@ const ContactForm = ({staticTemplateData}) => {
       <div className="grid sm:grid-cols-2 grid-cols-1 bg-white">
         <div>
           <Image
-            src="/assets/templete/2/paral_06.jpg"
+            src="https://template-assets-sv.s3.amazonaws.com/template2/024A2433.JPG"
             fill
             alt=""
             className="!relative object-cover"

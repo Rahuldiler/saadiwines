@@ -3,7 +3,7 @@ import { ArrowRightIcon } from "@heroicons/react/24/solid";
 
 function Occasions3({fctnName,fctnInfo,img}) {
     return(
-        <div className=' mb-11'>
+        <div className='mt-40 mb-11'>
             <div className='mt-3 '>
                 <img src={img} alt=' ' className='w-52 mx-auto'/>
             </div>

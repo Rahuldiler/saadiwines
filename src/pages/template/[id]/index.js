@@ -4,7 +4,9 @@ import { Box } from "@mui/material";
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
-import { templateInfoData } from "@/constants/templateInfo";
+import { templateInfoData } from "@/constants/1";
+import { template2InfoData } from "@/constants/2";
+import { template3InfoData } from "@/constants/3";
 import { staticTemplateData } from "@/constants/template";
 import Loader from "@/Components/common/Loader";
 import { useRouter } from "next/router";
@@ -29,11 +31,17 @@ function Template() {
           setFormData(responseTemplateData);
           setTemplateId(responseTemplateData.templateId);
         } else {
-          setFormData(templateInfoData);
+          if (id >= 5 && id < 9) {
+            setFormData(template2InfoData);
+          } else if (id >= 9) {
+            setFormData(template3InfoData);
+          } else {
+            setFormData(templateInfoData);
+          }
           setTemplateId(Number(id));
         }
         setLoading(false);
-      } catch (err) { }
+      } catch (err) {}
     }
     id && fetchData();
   }, [id]);
@@ -166,7 +174,6 @@ function Template() {
       //       images={staticTemplateData[5].images}
       //     />
       //   );
-
 
       default:
         return <Box>No template found </Box>;

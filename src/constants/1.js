@@ -3,16 +3,17 @@ const templateInfoData = {
     {
       id: 1,
 
-      title: "Official Ceremony",
+      title:
+        "What's the most romantic gesture you've ever experienced or witnessed with your partner?",
       description:
-        "Welcome to this beautiful park, where we gather to celebrate our wedding. As we look around us, we can't help but be struck by the natural beauty that surrounds us. From the vibrant flowers and trees to the gently flowing streams, this park provides the perfect backdrop for this joyous occasion. As we stand here today, surrounded by the beauty of this park, we are reminded of the enduring power of love.",
+        "I once witnessed a romantic gesture when my partner surprised me with a bouquet of my favorite flowers and a candlelit dinner at home. It was a beautiful and intimate gesture that made me feel incredibly loved and special.",
     },
     {
       id: 2,
 
-      title: "Wedding Feast",
+      title: "A song that you would like to dedicate to your partner?",
       description:
-        "As you enter the magnificent wedding venue adorned with opulent decorations, the tantalizing aroma of Indian spices fills the air, immediately whetting your appetite. The ambiance is abuzz with laughter, conversations, and the clinking of glasses, creating an atmosphere of joy and celebration. You can't help but feel the anticipation of embarking on a culinary adventure that promises to indulge your senses.",
+        "If I were to dedicate a song to my partner, I would choose 'Tum Hi Ho' from the movie Aashiqui 2. It's a beautiful and melodious song that expresses the depth of love and the feeling of finding one's soulmate.",
     },
   ],
   familyMembers: [
@@ -133,7 +134,8 @@ const templateInfoData = {
       lastName: "Shivam",
       contactNumber: "8770123453",
       fromSide: "Bride",
-      image: "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4268.JPG",
+      image:
+        "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4268.JPG",
     },
     {
       id: 1,
@@ -141,7 +143,8 @@ const templateInfoData = {
       lastName: "Sumit",
       contactNumber: "97648536584",
       fromSide: "GROOM",
-      image: "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4268.JPG",
+      image:
+        "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4268.JPG",
     },
   ],
   weddingInfo: {
@@ -165,11 +168,70 @@ const templateInfoData = {
         "My name is Krishna, and I'm filled with joy and excitement to be marrying the love of my life. I feel overwhelmed with gratitude for the love and support that we've received from our family and friends.",
     },
     thankYouMessage:
-      "As I look back on our friendship, I can't help but remember all of the fun times we've had together, from the crazy adventures to the quiet moments of reflection.",
+      "We have exciting news to share - we're getting married! ❤️ We want to take a moment to express our heartfelt gratitude for being such an important part of our lives. Your presence has always meant the world to us, and we deeply appreciate your love and support. On our special day, we would be honored to have you join us in celebrating our love and commitment. Your presence would make the day even more memorable and joyous. Please save the date as we exchange vows and begin this beautiful journey together.",
     dateTime: "2024-06-18T08:29:53.796",
     pics: ["D", "E", "F"],
     placesToVisit: ["Dont know", "Don know 2"],
   },
+
+  slides: [
+    {
+      id: 1,
+      image:
+        "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4055.JPG",
+      caption1: " Saanvi & Krishna ",
+      caption2: " 16/04/2030",
+    },
+    {
+      id: 2,
+      image:
+        "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4280.JPG",
+      caption1: " Saanvi & Krishna ",
+      caption2: " 16/04/2030",
+    },
+  ],
+  imagesLightBox: [
+    {
+      id: 1,
+      image:
+        "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4262.JPG",
+    },
+    {
+      id: 2,
+      image:
+        "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4094.JPG",
+    },
+    {
+      id: 3,
+      image:
+        "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4125.JPG",
+    },
+    {
+      id: 4,
+      image:
+        "https://template-assets-sv.s3.amazonaws.com/template1/SNY_1945.JPG",
+    },
+    {
+      id: 5,
+      image:
+        "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4059.JPG",
+    },
+    {
+      id: 6,
+      image:
+        "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4379.JPG",
+    },
+    {
+      id: 7,
+      image:
+        "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4390.JPG",
+    },
+    {
+      id: 8,
+      image:
+        "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4260.JPG",
+    },
+  ],
 };
 
 export { templateInfoData };
