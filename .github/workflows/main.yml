@@ -1,0 +1,20 @@
+# .github/workflows/main.yml
+name: CI
+on:
+  push:
+    branches: [ develop ]
+  pull_request:
+    branches: [ develop ]
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '16.x'
+      - name: Install NPM dependencies
+        run: npm install
+      - name: Deploy Next.js app
+        run: npm run dev
