@@ -38,7 +38,7 @@ function HeroSection() {
           <Typography variant="body1" sx={{ color: "#fff", fontSize: "18px" }}>
             Your special day deserves a special invitation.
             <br></br>
-            With smart e-card,, creating a digital invitation is something your near and
+            With smart e-card, creating a digital invitation is something your near and
             <br></br>
             dear ones will never forget.
           </Typography>
