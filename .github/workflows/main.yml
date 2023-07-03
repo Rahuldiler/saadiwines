@@ -19,4 +19,4 @@ jobs:
       - name: Create build
         run: npm run build
       - name: Deploy Next.js app
-        run: npm run start
+        run: pm2 start ecosystem.config.json
