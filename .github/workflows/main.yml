@@ -16,5 +16,7 @@ jobs:
           node-version: '16.x'
       - name: Install NPM dependencies
         run: npm install
+      - name: Create build
+        run: npm run build
       - name: Deploy Next.js app
-        run: npm run dev
+        run: node -v
