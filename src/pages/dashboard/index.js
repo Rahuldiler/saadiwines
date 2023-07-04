@@ -36,14 +36,14 @@ function Dashboard() {
 
   return (
     <>
-      {loading ? (
-        <Loader message="Loading dashboard page" />
-      ) : (
-        <Box>
-          <Header navItems={navItems} isHome={false} />
-          <YourTemplate userPreferenceData={userPreferenceData} />
-        </Box>
-      )}
+      <Box>
+        {loading && (
+          <Loader message="Loading dashboard page" isLoading={loading} />
+        )}
+
+        <Header navItems={navItems} isHome={false} />
+        <YourTemplate userPreferenceData={userPreferenceData} />
+      </Box>
     </>
   );
 }

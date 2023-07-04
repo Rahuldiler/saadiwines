@@ -340,54 +340,52 @@ function index() {
       {notificationActive && activeStep === 5 && (
         <Notification message="Family data has been added" type="success" />
       )}
-      {loading ? (
-        <Loader />
-      ) : (
-        <Grid container sx={{ position: "relative" }}>
-          <Grid lg={12} item>
-            <Box sx={{ maxWidth: "1000px", mx: "auto" }}>
-              <Box
-                sx={{
-                  m: { lg: "20px 100px", xs: "20px 20px" },
-                  p: "18px",
-                  borderBottom: "0.5px solid #BC8129",
-                  position: "relative",
-                }}
-              >
-                <Stepper activeStep={activeStep}>
-                  {steps.map((item, index) => {
-                    const labelProps = {};
-                    return (
-                      <Step
-                        key={index}
-                        sx={{
-                          "& .MuiStepIcon-root.Mui-active": {
-                            color: "#BC8129",
-                          },
-                          "& .MuiStepIcon-root.Mui-completed": {
-                            color: "#BC8129",
-                          },
-                        }}
-                      >
-                        <StepLabel {...labelProps}>{item.label}</StepLabel>
-                      </Step>
-                    );
-                  })}
-                </Stepper>
-              </Box>
-              <Box>
-                {formLoading ? (
-                  <Box mt={20}>
-                    <CustomCircularProgress />
-                  </Box>
-                ) : (
-                  steps[activeStep]?.components
-                )}
-              </Box>
+
+      <Grid container sx={{ position: "relative" }}>
+        <Grid lg={12} item>
+          <Box sx={{ maxWidth: "1000px", mx: "auto" }}>
+            <Box
+              sx={{
+                m: { lg: "20px 100px", xs: "20px 20px" },
+                p: "18px",
+                borderBottom: "0.5px solid #BC8129",
+                position: "relative",
+              }}
+            >
+              <Stepper activeStep={activeStep}>
+                {steps.map((item, index) => {
+                  const labelProps = {};
+                  return (
+                    <Step
+                      key={index}
+                      sx={{
+                        "& .MuiStepIcon-root.Mui-active": {
+                          color: "#BC8129",
+                        },
+                        "& .MuiStepIcon-root.Mui-completed": {
+                          color: "#BC8129",
+                        },
+                      }}
+                    >
+                      <StepLabel {...labelProps}>{item.label}</StepLabel>
+                    </Step>
+                  );
+                })}
+              </Stepper>
             </Box>
-          </Grid>
+            <Box>
+              {formLoading && (
+                <Loader
+                  message="Loading dashboard page"
+                  isLoading={formLoading}
+                />
+              )}
+
+              {steps[activeStep]?.components}
+            </Box>
+          </Box>
         </Grid>
-      )}
+      </Grid>
     </Box>
   );
 }

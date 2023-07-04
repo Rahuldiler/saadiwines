@@ -8,17 +8,17 @@ function GuestList() {
     {
       title: "Organize your guests.",
       info: "Assign plus ones, group families and dates together, and organize guests with tags.",
-      img: "/assets/OrganizeYourGuests.png",
+      img: "/assets/Everything-guest-at-a-glance/Organize guests.svg",
     },
     {
       title: "Communicate with your guests.",
-      info: "Send Save the Dates, invites, custom eCards and more, right from your guest list.",
-      img: "/assets/CommunicateWithYourGuests.png",
+      info: `Send Save the Dates, invites, custom WEDsiteTM and more, right from your guest list.`,
+      img: "/assets/Everything-guest-at-a-glance/Communicate with guests.svg",
     },
     {
       title: "Track your guests’ responses.",
       info: "See guests’ RSVPs, who has opened your invite,  all in one place.",
-      img: "/assets/TrackGuestResponse.png",
+      img: "/assets/Everything-guest-at-a-glance/Track guests responses.svg",
     },
   ];
   return (

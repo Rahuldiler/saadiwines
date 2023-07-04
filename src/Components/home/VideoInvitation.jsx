@@ -4,7 +4,7 @@ import VideoInviTemplate from "../common/VideoInviTemplate";
 import Image from "next/image";
 
 function VideoInvitation() {
-  const heroImg = "/assets/VideoInvitation.jpg";
+  const heroImg = "/assets/video invation.webp";
   return (
     <section>
       <Box className="layoutMargin" id="video-invitation">
@@ -79,7 +79,7 @@ function VideoInvitation() {
                 mt: { lg: 0, xs: "40px" },
                 width: "100%",
                 ml: { lg: "60px", xs: "0px" },
-                height: { lg: "350px", xs: "200px" },
+                height: "auto",
               }}
             >
               <Image
