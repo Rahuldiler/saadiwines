@@ -30,7 +30,7 @@ const Gallery = ({images, paddingBottom,columngapcount,openLightbox}) => {
                     className="Gallery"
                 >
 
-                    <Image src={image.image} alt={image.alt} fill className="!relative object-cover" />
+                    <Image src={image.image} alt={image.alt} fill className="!relative" />
 
                 </div>
             ))}
