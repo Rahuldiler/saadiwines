@@ -7,17 +7,17 @@ function Budget() {
     {
       title: "Let us do the math",
       info: "Enter your wedding budget and we’ll calculate estimated costs by category for you.",
-      img: "/assets/OKBWRX1.png",
+      img: "/assets/icon/Let us do the math.svg",
     },
     {
       title: "Customise as needed",
       info: "Adjust your budget according to your wedding and create new categories as needed.",
-      img: "/assets/money.png",
+      img: "/assets/icon/Customise as needed.svg",
     },
     {
       title: "Track your expenses",
       info: "Monitor your spending and get a breakdown of your wedding expenses.",
-      img: "/assets/pie.png",
+      img: "/assets/icon/Track your expenses.svg",
     },
   ];
   return (

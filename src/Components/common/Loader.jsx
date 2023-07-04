@@ -1,16 +1,22 @@
 import { Box, Typography } from "@mui/material";
+import Backdrop from "@mui/material/Backdrop";
 import Image from "next/image";
 import React from "react";
 
-function Loader({ message }) {
+function Loader({ message, isLoading }) {
   return (
-    <Box
+    <Backdrop
+      open={isLoading}
       sx={{
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
         height: "100vh",
+        backgroundColor: "#00000080",
+        position: "fixed",
+        // color: "#fff",
+        zIndex: 1201,
       }}
     >
       {/* <Box sx={{ position: "relative" }}>
@@ -47,7 +53,7 @@ function Loader({ message }) {
       >
         {message}
       </Typography>
-    </Box>
+    </Backdrop>
   );
 }
 

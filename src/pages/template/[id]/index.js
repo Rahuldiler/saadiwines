@@ -166,24 +166,6 @@ function Template() {
             images={staticTemplateData[11]}
           />
         );
-      // case 5:
-      //   return (
-      //     <Template3
-      //       templateData={formData}
-      //       templateId={templateId}
-      //       staticTemplateData={staticTemplateData[4]}
-      //       images={staticTemplateData[4].images}
-      //     />
-      //   );
-      // case 6:
-      //   return (
-      //     <Template3
-      //       templateData={formData}
-      //       templateId={templateId}
-      //       staticTemplateData={staticTemplateData[5]}
-      //       images={staticTemplateData[5].images}
-      //     />
-      //   );
 
       default:
         return <Box>No template found </Box>;

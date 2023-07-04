@@ -11,24 +11,27 @@ function Feedbacks() {
   const dummyData = [
     {
       name: "Raj Malhotra",
-      description: "Shaadivines really rescued us in my daughters wedding. I could never imagine such a\n" +
-          "good use of tech to solve basic day to day life problems. Kudos to the team.",
-      image: "/assets/RajMalhotra.png"
+      description:
+        "Shaadivines really rescued us in my daughters wedding. I could never imagine such a\n" +
+        "good use of tech to solve basic day to day life problems. Kudos to the team.",
+      image: "/assets/RajMalhotra.png",
     },
     {
       name: "Sanjana Rawat",
-      description: "I must say, I have saved atleast 30-40% of my budget due to impeccable planning\n" +
-          "done by Shaadivines Team. Specially their guests invite and RSVP feature helped us\n" +
-          "get accurate guests list and we catered accordingly.",
-      image: "/assets/SanjanaRawat.png"
+      description:
+        "I must say, I have saved atleast 30-40% of my budget due to impeccable planning\n" +
+        "done by Shaadivines Team. Specially their guests invite and RSVP feature helped us\n" +
+        "get accurate guests list and we catered accordingly.",
+      image: "/assets/SanjanaRawat.png",
     },
     {
       name: "Akshay Agrawal",
-      description: "My sisters wedding was one of the most special day for me and weddingvines saved\n" +
-          "our day.\n" +
-          "Everyone was amazed with wedding website as rarely anyone has seen something like\n" +
-          "this in India",
-      image: "/assets/AkshayAgrawal.png"
+      description:
+        "My sisters wedding was one of the most special day for me and weddingvines saved\n" +
+        "our day.\n" +
+        "Everyone was amazed with wedding website as rarely anyone has seen something like\n" +
+        "this in India",
+      image: "/assets/AkshayAgrawal.png",
     },
   ];
   const [step, setStep] = useState(1);

@@ -4,7 +4,7 @@ import WebsiteTemplateContainer from "../common/WebsiteTemplateContainer";
 import Image from "next/image";
 
 function WebsiteDesigningSection() {
-  const heroImg = "/assets/webDesign.png";
+  const heroImg = "/assets/for website designing-trans.webp";
 
   return (
     <section style={{ background: "#FBF8F8" }} id="services">
@@ -38,10 +38,11 @@ function WebsiteDesigningSection() {
                 everything can be done with the use of tech, why should your
                 most important day of the life be devoid of technology?
                 <br></br>
-                Shaadivines introduces e-card, which is the coolest way of
-                sending out invites to your guests. Say Bye to 2 page hard copy
-                printed cards, and Hello to new age customised designed wedding
-                website where people get to see your memorable story.
+                Shaadivines introduces WEDsite<sup>TM</sup>, which is the
+                coolest way of sending out invites to your guests. Say Bye to 2
+                page hard copy printed cards, and Hello to new age customised
+                designed WEDsite<sup>TM</sup> where people get to see your
+                memorable story.
                 <br></br>
                 It can tell your beautiful love story, your relationship goals,
                 milestones, itinerary, locations and much more…
@@ -84,7 +85,7 @@ function WebsiteDesigningSection() {
                 mt: { lg: 0, xs: "40px" },
                 width: "100%",
                 ml: { lg: "60px", xs: "0px" },
-                height: { lg: "350px", xs: "200px" },
+                height: "auto",
               }}
             >
               <Image

@@ -24,7 +24,7 @@ function Webcast() {
               className="vibeFont"
               sx={{ color: "#bc8129", mt: { lg: 0, xs: "40px" } }}
             >
-              Live Webcast
+              Live Wedcast
             </Typography>
             <Typography
               variant="body1"
@@ -76,11 +76,11 @@ function Webcast() {
               mt: { lg: 0, xs: "40px" },
               width: "100%",
               ml: { lg: "60px", xs: "0px" },
-              height: { lg: "350px", xs: "200px" },
+              height: "auto",
             }}
           >
             <Image
-              src="/assets/wedding-live.webp"
+              src="/assets/live webcast.webp"
               alt="img"
               width={1000}
               height={1000}

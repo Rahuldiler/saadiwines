@@ -1,5 +1,5 @@
 import { Box, Grid, Typography, useTheme } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import GuestListCard from "../common/GuestListCard";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -10,18 +10,28 @@ function YourTemplate({ userPreferenceData }) {
   const theme = useTheme();
   const router = useRouter();
   const [selectedTemplate, setSelectedTemplate] = useState();
+  const [userIdKey, setUserIdKey] = useState();
   const [themeColor, setThemeColor] = useState("9CAB8D");
 
   const handleViewTemplate = async () => {
-    const response = await getTemplateKey();
-    router.push(`/template/${response.userIdKey.replace("/", "%2F")}`);
+    router.push(`/template/${userIdKey}`);
   };
+
+  useEffect(() => {
+    async function fetchUserKey() {
+      const response = await getTemplateKey();
+      setUserIdKey(response.userIdKey.replace("/", "%2F"));
+    }
+
+    fetchUserKey();
+  }, []);
 
   useEffect(() => {
     const id = userPreferenceData?.templateId;
     const filterTemplate = staticTemplateData.filter((item) => item.id === id);
     setSelectedTemplate(filterTemplate);
   }, [userPreferenceData]);
+
   return (
     <Box sx={{ mt: 14 }}>
       <Box sx={{ px: { lg: "100px", xs: "20px" } }}>
@@ -29,7 +39,11 @@ function YourTemplate({ userPreferenceData }) {
           Your Templates
         </Typography>
         <Box>
-          <Grid container sx={{ mt: 4 }}>
+          <Grid
+            container
+            sx={{ mt: 4 }}
+            onClick={() => handleViewTemplate(selectedTemplate[0].id)}
+          >
             {selectedTemplate?.map((templateData) => {
               return (
                 <Grid item lg={3} key={templateData.id}>
@@ -38,13 +52,38 @@ function YourTemplate({ userPreferenceData }) {
                       <Box
                         sx={{
                           boxShadow: theme.boxShadow.pinkShadow,
+                          position: "relative",
                           "&:hover": {
                             outline: theme.border.primaryBorder,
                             borderRadius: "7px",
                           },
                         }}
                       >
-                        <Image
+                        <a
+                          href={`/template/${userIdKey}`}
+                          style={{
+                            position: "absolute",
+                            top: "0",
+                            left: "0",
+                            width: "100%",
+                            height: "100%",
+                            zIndex: 10,
+                          }}
+                        ></a>
+                        <iframe
+                          style={{
+                            width: "100%",
+                            minHeight: "560px",
+                            objectFit: "cover",
+                            borderRadius: "7px",
+                            cursor: "pointer",
+                            zIndex: 1,
+                          }}
+                          scrolling="no"
+                          src={`http://localhost:3000/template/${userIdKey}`}
+                        ></iframe>
+
+                        {/* <Image
                           src={templateData.templateImage}
                           alt="..."
                           width={800}
@@ -57,7 +96,7 @@ function YourTemplate({ userPreferenceData }) {
                             borderRadius: "7px",
                             cursor: "pointer",
                           }}
-                        />
+                        /> */}
                       </Box>
                       <Typography
                         variant="body1"
