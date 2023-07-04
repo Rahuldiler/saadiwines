@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="369879d0-c866-4b70-8022-d857b0c9b9fe" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Budget-Planner/table-components/CustomCell.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Budget-Planner/table-components/CustomCell.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/template/[id]/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/template/[id]/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,10 +20,11 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="sagar/template-form" />
+        <entry key="$PROJECT_DIR$" value="develop" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -36,7 +37,6 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/.env.local" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/services/HTTPClientHandler.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/pages/authenticate.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/services/auth/auth.js" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -106,6 +106,8 @@
       <workItem from="1686820135641" duration="1058000" />
       <workItem from="1686845697768" duration="3652000" />
       <workItem from="1687525164762" duration="1117000" />
+      <workItem from="1688389987030" duration="8436000" />
+      <workItem from="1688480630366" duration="83000" />
     </task>
     <task id="LOCAL-00001" summary="Removed react-lightbox library">
       <created>1685289296459</created>
