@@ -21,62 +21,45 @@ const templateInfoData = {
       id: 1,
       name: "Sameer",
       relation: "Father",
+      image:
+        "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Blank&hairColor=Brown&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=Hoodie&clotheColor=Blue01&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Tanned",
     },
     {
       id: 2,
       name: "Nikita",
       relation: "Mother",
+      image:
+        "https://avataaars.io/?avatarStyle=Transparent&topType=LongHairStraight&accessoriesType=Blank&hairColor=BrownDark&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light",
     },
     {
       id: 3,
       name: "Rajat",
-      relation: "Father-in-law",
+      relation: "Uncle",
+      image:
+        "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Prescription02&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=Hoodie&clotheColor=Heather&eyeType=Happy&eyebrowType=RaisedExcitedNatural&mouthType=Smile&skinColor=Pale",
     },
     {
       id: 4,
       name: "Rachna",
-      relation: "Mother-in-law",
+      relation: "Sister",
+      image:
+        "https://avataaars.io/?avatarStyle=Transparent&topType=LongHairMiaWallace&accessoriesType=Prescription02&hairColor=Black&facialHairType=Blank&clotheType=ShirtScoopNeck&clotheColor=Heather&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Pale",
     },
     {
       id: 5,
       name: "Vibhor",
       relation: "Brother",
+      image:
+        "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairDreads01&accessoriesType=Blank&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=ShirtCrewNeck&clotheColor=PastelYellow&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Pale",
     },
     {
       id: 6,
       name: "Arpit",
       relation: "Brother",
+      image:
+        "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortCurly&accessoriesType=Blank&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=CollarSweater&clotheColor=Red&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Twinkle&skinColor=Light",
     },
-    {
-      id: 7,
-      name: "Ananya",
-      relation: "Sister",
-    },
-    {
-      id: 8,
-      name: "Jaya",
-      relation: "Sister",
-    },
-    {
-      id: 9,
-      name: "Saloni",
-      relation: "Sister",
-    },
-    {
-      id: 10,
-      name: "Sachin",
-      relation: "Maternal uncle",
-    },
-    {
-      id: 11,
-      name: "Sumit",
-      relation: "Maternal uncle",
-    },
-    {
-      id: 12,
-      name: "Shivam",
-      relation: "Cousin",
-    },
+   
   ],
   itinerary: [
     {
@@ -135,8 +118,8 @@ const templateInfoData = {
       contactNumber: "8770123453",
       fromSide: "Bride",
       image:
-        "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4268.JPG",
-    },
+        "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortCurly&accessoriesType=Blank&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=CollarSweater&clotheColor=Red&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Twinkle&skinColor=Light",
+     },
     {
       id: 1,
       firstName: "Sumit",
@@ -144,8 +127,8 @@ const templateInfoData = {
       contactNumber: "97648536584",
       fromSide: "GROOM",
       image:
-        "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4268.JPG",
-    },
+      "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairDreads01&accessoriesType=Blank&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=ShirtCrewNeck&clotheColor=PastelYellow&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Pale",
+   },
   ],
   weddingInfo: {
     id: 1,

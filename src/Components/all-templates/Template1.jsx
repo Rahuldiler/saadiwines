@@ -62,7 +62,7 @@ function Template1({ templateData, staticTemplateData, images }) {
                 {templateData?.weddingInfo?.bride.name.split(" ")[0]}
               </div>
               <div className="text-center text-[30px] tracking-wider">
-                {moment(templateData?.weddingInfo?.dateTime).format("L")}
+                {moment(templateData?.weddingInfo?.dateTime).format("DD-MM-YYYY")}
               </div>
             </div>
           </div>
@@ -229,7 +229,7 @@ function Template1({ templateData, staticTemplateData, images }) {
             <Cards
               theme={staticTemplateData?.theme}
               key={index}
-              imgSrc={staticTemplateData?.images.gallery10}
+              imgSrc={cards.image}
               name={cards.name}
               relationship={cards.relation}
             />
@@ -270,7 +270,7 @@ function Template1({ templateData, staticTemplateData, images }) {
             <Cards
               theme={staticTemplateData?.theme}
               key={index}
-              imgSrc={staticTemplateData?.images.gallery10}
+              imgSrc={cards.image}
               name={cards.firstName}
               contactNo={`+91 ${cards.contactNumber}`}
             />
