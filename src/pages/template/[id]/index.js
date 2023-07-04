@@ -13,6 +13,7 @@ import { useRouter } from "next/router";
 import Template3 from "@/Components/all-templates/Template3";
 import Template2 from "@/Components/all-templates/Template2";
 import Template1 from "@/Components/all-templates/Template1";
+import Template4 from "@/Components/all-templates/Template4";
 
 function Template() {
   const [formData, setFormData] = useState({});
@@ -150,6 +151,15 @@ function Template() {
       case 12:
         return (
           <Template3
+            templateData={formData}
+            templateId={templateId}
+            staticTemplateData={staticTemplateData[11]}
+            images={staticTemplateData[11]}
+          />
+        );
+        case 13:
+        return (
+          <Template4
             templateData={formData}
             templateId={templateId}
             staticTemplateData={staticTemplateData[11]}
