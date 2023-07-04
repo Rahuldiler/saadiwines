@@ -29,7 +29,9 @@ function Double({
         <img src={img} alt="" className="h-full object-cover " />
       </div>
       <div
-        style={{ backgroundColor: theme.bgColor, color: theme?.textColor }}
+        style={{ backgroundColor: theme.bgColor, color: theme?.textColor,display:'flex',
+          flexDirection: 'column',
+          justifyContent: 'center' }}
         className={`${
           bgColor === "white"
             ? "bg-white text-black"
@@ -42,7 +44,7 @@ function Double({
           className="absolute top-0 left-0  opacity-100 mix-blend-multiply  w-[100%] h-[100%] bg-cover bg-no-repeat bg-[center_top]"
           style={{ backgroundImage: waterColor }}
         ></div>
-        <p className="!font-Alex !text-[50px] mb-3">{title}</p>
+        <p className="!font-Alex !text-[42px] mb-3">{title}</p>
         {/* <p className=' lg:!text-[14px] !text-[16px] mb-3'>{subtitle}</p> */}
         <p className=" lg:!text-[18px] !text-[20px] mb-3">{infotext}</p>
       </div>

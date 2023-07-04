@@ -4,13 +4,16 @@ import { Box } from "@mui/material";
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
-import { templateInfoData } from "@/constants/templateInfo";
+import { templateInfoData } from "@/constants/1";
+import { template2InfoData } from "@/constants/2";
+import { template3InfoData } from "@/constants/3";
 import { staticTemplateData } from "@/constants/template";
 import Loader from "@/Components/common/Loader";
 import { useRouter } from "next/router";
 import Template3 from "@/Components/all-templates/Template3";
 import Template2 from "@/Components/all-templates/Template2";
 import Template1 from "@/Components/all-templates/Template1";
+import Template4 from "@/Components/all-templates/Template4";
 
 function Template() {
   const [formData, setFormData] = useState({});
@@ -29,11 +32,17 @@ function Template() {
           setFormData(responseTemplateData);
           setTemplateId(responseTemplateData.templateId);
         } else {
-          setFormData(templateInfoData);
+          if (id >= 5 && id < 9) {
+            setFormData(template2InfoData);
+          } else if (id >= 9) {
+            setFormData(template3InfoData);
+          } else {
+            setFormData(templateInfoData);
+          }
           setTemplateId(Number(id));
         }
         setLoading(false);
-      } catch (err) { }
+      } catch (err) {}
     }
     id && fetchData();
   }, [id]);
@@ -148,25 +157,15 @@ function Template() {
             images={staticTemplateData[11]}
           />
         );
-      // case 5:
-      //   return (
-      //     <Template3
-      //       templateData={formData}
-      //       templateId={templateId}
-      //       staticTemplateData={staticTemplateData[4]}
-      //       images={staticTemplateData[4].images}
-      //     />
-      //   );
-      // case 6:
-      //   return (
-      //     <Template3
-      //       templateData={formData}
-      //       templateId={templateId}
-      //       staticTemplateData={staticTemplateData[5]}
-      //       images={staticTemplateData[5].images}
-      //     />
-      //   );
-
+        case 13:
+        return (
+          <Template4
+            templateData={formData}
+            templateId={templateId}
+            staticTemplateData={staticTemplateData[11]}
+            images={staticTemplateData[11]}
+          />
+        );
 
       default:
         return <Box>No template found </Box>;
