@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="369879d0-c866-4b70-8022-d857b0c9b9fe" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/template/[id]/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/template/[id]/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/home/ContactUs.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/home/ContactUs.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -282,6 +282,7 @@
     <MESSAGE value="handling for cors" />
     <MESSAGE value="Added favicon.png" />
     <MESSAGE value="fixed errors" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed errors" />
+    <MESSAGE value="removed commented code" />
+    <option name="LAST_COMMIT_MESSAGE" value="removed commented code" />
   </component>
 </project>

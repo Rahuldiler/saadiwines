@@ -33,7 +33,78 @@ const staticTemplateData = [
       gallery10:
         "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4388.JPG",
       leaf03: "url('/images/gr-leaf-03.png')",
+      slides: [
+        {
+          id: 1,
+          image:
+            "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4055.JPG",
+          caption1: " Saanvi & Krishna ",
+          caption2: " 16/04/2030",
+        },
+        {
+          id: 2,
+          image:
+            "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4280.JPG",
+          caption1: " Saanvi & Krishna ",
+          caption2: " 16/04/2030",
+        },
+      ],
+      imagesLightBox: [
+        {
+          id: 1,
+          image:
+            "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4262.JPG",
+        },
+        {
+          id: 2,
+          image:
+            "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4094.JPG",
+        },
+        {
+          id: 3,
+          image:
+            "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4125.JPG",
+        },
+        {
+          id: 4,
+          image:
+            "https://template-assets-sv.s3.amazonaws.com/template1/SNY_1945.JPG",
+        },
+        {
+          id: 5,
+          image:
+            "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4059.JPG",
+        },
+        {
+          id: 6,
+          image:
+            "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4379.JPG",
+        },
+        {
+          id: 7,
+          image:
+            "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4390.JPG",
+        },
+        {
+          id: 8,
+          image:
+            "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4260.JPG",
+        },
+      ],
     },
+    avatars: [
+      "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Blank&hairColor=Brown&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=Hoodie&clotheColor=Blue01&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Tanned",
+
+      "https://avataaars.io/?avatarStyle=Transparent&topType=LongHairStraight&accessoriesType=Blank&hairColor=BrownDark&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light",
+
+      "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Prescription02&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=Hoodie&clotheColor=Heather&eyeType=Happy&eyebrowType=RaisedExcitedNatural&mouthType=Smile&skinColor=Pale",
+
+      "https://avataaars.io/?avatarStyle=Transparent&topType=LongHairMiaWallace&accessoriesType=Prescription02&hairColor=Black&facialHairType=Blank&clotheType=ShirtScoopNeck&clotheColor=Heather&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Pale",
+
+      "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairDreads01&accessoriesType=Blank&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=ShirtCrewNeck&clotheColor=PastelYellow&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Pale",
+
+      "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortCurly&accessoriesType=Blank&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=CollarSweater&clotheColor=Red&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Twinkle&skinColor=Light",
+    ],
   },
   {
     id: 2,
@@ -68,7 +139,78 @@ const staticTemplateData = [
       gallery10:
         "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4388.JPG",
       leaf03: "url('/images/gr-leaf-03.png')",
+      slides: [
+        {
+          id: 1,
+          image:
+            "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4055.JPG",
+          caption1: " Saanvi & Krishna ",
+          caption2: " 16/04/2030",
+        },
+        {
+          id: 2,
+          image:
+            "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4280.JPG",
+          caption1: " Saanvi & Krishna ",
+          caption2: " 16/04/2030",
+        },
+      ],
+      imagesLightBox: [
+        {
+          id: 1,
+          image:
+            "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4262.JPG",
+        },
+        {
+          id: 2,
+          image:
+            "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4094.JPG",
+        },
+        {
+          id: 3,
+          image:
+            "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4125.JPG",
+        },
+        {
+          id: 4,
+          image:
+            "https://template-assets-sv.s3.amazonaws.com/template1/SNY_1945.JPG",
+        },
+        {
+          id: 5,
+          image:
+            "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4059.JPG",
+        },
+        {
+          id: 6,
+          image:
+            "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4379.JPG",
+        },
+        {
+          id: 7,
+          image:
+            "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4390.JPG",
+        },
+        {
+          id: 8,
+          image:
+            "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4260.JPG",
+        },
+      ],
     },
+    avatars: [
+      "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Blank&hairColor=Brown&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=Hoodie&clotheColor=Blue01&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Tanned",
+
+      "https://avataaars.io/?avatarStyle=Transparent&topType=LongHairStraight&accessoriesType=Blank&hairColor=BrownDark&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light",
+
+      "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Prescription02&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=Hoodie&clotheColor=Heather&eyeType=Happy&eyebrowType=RaisedExcitedNatural&mouthType=Smile&skinColor=Pale",
+
+      "https://avataaars.io/?avatarStyle=Transparent&topType=LongHairMiaWallace&accessoriesType=Prescription02&hairColor=Black&facialHairType=Blank&clotheType=ShirtScoopNeck&clotheColor=Heather&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Pale",
+
+      "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairDreads01&accessoriesType=Blank&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=ShirtCrewNeck&clotheColor=PastelYellow&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Pale",
+
+      "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortCurly&accessoriesType=Blank&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=CollarSweater&clotheColor=Red&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Twinkle&skinColor=Light",
+    ],
   },
   {
     id: 3,
@@ -103,7 +245,78 @@ const staticTemplateData = [
       gallery10:
         "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4388.JPG",
       leaf03: "url('/images/gr-leaf-03.png')",
+      slides: [
+        {
+          id: 1,
+          image:
+            "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4055.JPG",
+          caption1: " Saanvi & Krishna ",
+          caption2: " 16/04/2030",
+        },
+        {
+          id: 2,
+          image:
+            "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4280.JPG",
+          caption1: " Saanvi & Krishna ",
+          caption2: " 16/04/2030",
+        },
+      ],
+      imagesLightBox: [
+        {
+          id: 1,
+          image:
+            "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4262.JPG",
+        },
+        {
+          id: 2,
+          image:
+            "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4094.JPG",
+        },
+        {
+          id: 3,
+          image:
+            "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4125.JPG",
+        },
+        {
+          id: 4,
+          image:
+            "https://template-assets-sv.s3.amazonaws.com/template1/SNY_1945.JPG",
+        },
+        {
+          id: 5,
+          image:
+            "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4059.JPG",
+        },
+        {
+          id: 6,
+          image:
+            "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4379.JPG",
+        },
+        {
+          id: 7,
+          image:
+            "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4390.JPG",
+        },
+        {
+          id: 8,
+          image:
+            "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4260.JPG",
+        },
+      ],
     },
+    avatars: [
+      "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Blank&hairColor=Brown&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=Hoodie&clotheColor=Blue01&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Tanned",
+
+      "https://avataaars.io/?avatarStyle=Transparent&topType=LongHairStraight&accessoriesType=Blank&hairColor=BrownDark&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light",
+
+      "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Prescription02&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=Hoodie&clotheColor=Heather&eyeType=Happy&eyebrowType=RaisedExcitedNatural&mouthType=Smile&skinColor=Pale",
+
+      "https://avataaars.io/?avatarStyle=Transparent&topType=LongHairMiaWallace&accessoriesType=Prescription02&hairColor=Black&facialHairType=Blank&clotheType=ShirtScoopNeck&clotheColor=Heather&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Pale",
+
+      "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairDreads01&accessoriesType=Blank&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=ShirtCrewNeck&clotheColor=PastelYellow&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Pale",
+
+      "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortCurly&accessoriesType=Blank&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=CollarSweater&clotheColor=Red&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Twinkle&skinColor=Light",
+    ],
   },
   {
     id: 4,
@@ -138,7 +351,78 @@ const staticTemplateData = [
       gallery10:
         "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4388.JPG",
       leaf03: "url('/images/gr-leaf-03.png')",
+      slides: [
+        {
+          id: 1,
+          image:
+            "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4055.JPG",
+          caption1: " Saanvi & Krishna ",
+          caption2: " 16/04/2030",
+        },
+        {
+          id: 2,
+          image:
+            "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4280.JPG",
+          caption1: " Saanvi & Krishna ",
+          caption2: " 16/04/2030",
+        },
+      ],
+      imagesLightBox: [
+        {
+          id: 1,
+          image:
+            "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4262.JPG",
+        },
+        {
+          id: 2,
+          image:
+            "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4094.JPG",
+        },
+        {
+          id: 3,
+          image:
+            "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4125.JPG",
+        },
+        {
+          id: 4,
+          image:
+            "https://template-assets-sv.s3.amazonaws.com/template1/SNY_1945.JPG",
+        },
+        {
+          id: 5,
+          image:
+            "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4059.JPG",
+        },
+        {
+          id: 6,
+          image:
+            "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4379.JPG",
+        },
+        {
+          id: 7,
+          image:
+            "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4390.JPG",
+        },
+        {
+          id: 8,
+          image:
+            "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4260.JPG",
+        },
+      ],
     },
+    avatars: [
+      "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Blank&hairColor=Brown&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=Hoodie&clotheColor=Blue01&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Tanned",
+
+      "https://avataaars.io/?avatarStyle=Transparent&topType=LongHairStraight&accessoriesType=Blank&hairColor=BrownDark&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light",
+
+      "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Prescription02&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=Hoodie&clotheColor=Heather&eyeType=Happy&eyebrowType=RaisedExcitedNatural&mouthType=Smile&skinColor=Pale",
+
+      "https://avataaars.io/?avatarStyle=Transparent&topType=LongHairMiaWallace&accessoriesType=Prescription02&hairColor=Black&facialHairType=Blank&clotheType=ShirtScoopNeck&clotheColor=Heather&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Pale",
+
+      "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairDreads01&accessoriesType=Blank&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=ShirtCrewNeck&clotheColor=PastelYellow&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Pale",
+
+      "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortCurly&accessoriesType=Blank&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=CollarSweater&clotheColor=Red&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Twinkle&skinColor=Light",
+    ],
   },
 
   {
@@ -184,6 +468,134 @@ const staticTemplateData = [
     gallery21:
       "https://template-assets-sv.s3.amazonaws.com/template2/024A2699.JPG",
     paral06: "/assets/templete/2/paral_06.jpg",
+    avatars: [
+      "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Blank&hairColor=Brown&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=Hoodie&clotheColor=Blue01&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Tanned",
+
+      "https://avataaars.io/?avatarStyle=Transparent&topType=LongHairStraight&accessoriesType=Blank&hairColor=BrownDark&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light",
+
+      "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Prescription02&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=Hoodie&clotheColor=Heather&eyeType=Happy&eyebrowType=RaisedExcitedNatural&mouthType=Smile&skinColor=Pale",
+
+      "https://avataaars.io/?avatarStyle=Transparent&topType=LongHairMiaWallace&accessoriesType=Prescription02&hairColor=Black&facialHairType=Blank&clotheType=ShirtScoopNeck&clotheColor=Heather&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Pale",
+
+      "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairDreads01&accessoriesType=Blank&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=ShirtCrewNeck&clotheColor=PastelYellow&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Pale",
+
+      "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortCurly&accessoriesType=Blank&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=CollarSweater&clotheColor=Red&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Twinkle&skinColor=Light",
+    ],
+    GalleryImg: [
+      {
+        image:
+          "https://template-assets-sv.s3.amazonaws.com/template2/024A2373.JPG",
+        alt: "Image 1",
+        itemHeight: "67.29166666666667%",
+        percentHeight: "0%",
+        column: 0,
+        itemsInColumn: 0,
+      },
+      {
+        image:
+          "https://template-assets-sv.s3.amazonaws.com/template2/024A2409.JPG",
+        alt: "Image 2",
+        itemHeight: "100%",
+        percentHeight: "0%",
+        column: 1,
+        itemsInColumn: 0,
+      },
+      {
+        image:
+          "https://template-assets-sv.s3.amazonaws.com/template2/024A2406.JPG",
+        alt: "Image 3",
+        itemHeight: "100%",
+        percentHeight: "17.491809735226195%",
+        column: 0,
+        itemsInColumn: 1,
+      },
+      {
+        image:
+          "https://template-assets-sv.s3.amazonaws.com/template2/024A2699.JPG",
+        alt: "Image 4",
+        itemHeight: "100%",
+        percentHeight: "25.994020659159673%",
+        column: 1,
+        itemsInColumn: 1,
+      },
+      {
+        image:
+          "https://template-assets-sv.s3.amazonaws.com/template2/024A2719.JPG",
+        alt: "Image 5",
+        itemHeight: "100%",
+        percentHeight: "43.48583039438586%",
+        column: 0,
+        itemsInColumn: 2,
+      },
+      {
+        image:
+          "https://template-assets-sv.s3.amazonaws.com/template2/024A2483.JPG",
+        alt: "Image 6",
+        itemHeight: "66.66666666666666%",
+        percentHeight: "51.98804131831935%",
+        column: 1,
+        itemsInColumn: 2,
+      },
+      {
+        image:
+          "https://template-assets-sv.s3.amazonaws.com/template2/024A2650.JPG",
+        alt: "Image 7",
+        itemHeight: "48.541666666666664%",
+        percentHeight: "69.47985105354553%",
+        column: 0,
+        itemsInColumn: 3,
+      },
+      {
+        image:
+          "https://template-assets-sv.s3.amazonaws.com/template2/024A2684.JPG",
+        alt: "Image 8",
+        itemHeight: "68.87052341597796%",
+        percentHeight: "69.31738842442579%",
+        column: 1,
+        itemsInColumn: 3,
+      },
+      {
+        image:
+          "https://template-assets-sv.s3.amazonaws.com/template2/024A2596.JPG",
+        alt: "Image 9",
+        itemHeight: "68.87052341597796%",
+        percentHeight: "82.0977819151793%",
+        column: 0,
+        itemsInColumn: 4,
+      },
+    ],
+
+    SliderImg: [
+      {
+        id: 1,
+        link: "https://template-assets-sv.s3.amazonaws.com/template2/024A2684.JPG",
+      },
+      {
+        id: 2,
+        link: "https://template-assets-sv.s3.amazonaws.com/template2/024A2373.JPG",
+      },
+    ],
+    SliderImg2: [
+      {
+        id: 2,
+        link: "https://template-assets-sv.s3.amazonaws.com/template2/024A2483.JPG",
+      },
+      {
+        id: 1,
+        link: "https://template-assets-sv.s3.amazonaws.com/template2/024A2596.JPG",
+      },
+    ],
+
+    SliderImg1: [
+      {
+        id: 1,
+        link: "https://template-assets-sv.s3.amazonaws.com/template2/024A2433.JPG",
+      },
+      {
+        id: 2,
+        link: "https://template-assets-sv.s3.amazonaws.com/template2/024A2406.JPG",
+      },
+    ],
   },
   {
     id: 6,
@@ -228,6 +640,134 @@ const staticTemplateData = [
     gallery21:
       "https://template-assets-sv.s3.amazonaws.com/template2/024A2699.JPG",
     paral06: "/assets/templete/2/paral_06.jpg",
+    avatars: [
+      "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Blank&hairColor=Brown&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=Hoodie&clotheColor=Blue01&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Tanned",
+
+      "https://avataaars.io/?avatarStyle=Transparent&topType=LongHairStraight&accessoriesType=Blank&hairColor=BrownDark&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light",
+
+      "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Prescription02&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=Hoodie&clotheColor=Heather&eyeType=Happy&eyebrowType=RaisedExcitedNatural&mouthType=Smile&skinColor=Pale",
+
+      "https://avataaars.io/?avatarStyle=Transparent&topType=LongHairMiaWallace&accessoriesType=Prescription02&hairColor=Black&facialHairType=Blank&clotheType=ShirtScoopNeck&clotheColor=Heather&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Pale",
+
+      "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairDreads01&accessoriesType=Blank&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=ShirtCrewNeck&clotheColor=PastelYellow&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Pale",
+
+      "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortCurly&accessoriesType=Blank&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=CollarSweater&clotheColor=Red&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Twinkle&skinColor=Light",
+    ],
+    GalleryImg: [
+      {
+        image:
+          "https://template-assets-sv.s3.amazonaws.com/template2/024A2373.JPG",
+        alt: "Image 1",
+        itemHeight: "67.29166666666667%",
+        percentHeight: "0%",
+        column: 0,
+        itemsInColumn: 0,
+      },
+      {
+        image:
+          "https://template-assets-sv.s3.amazonaws.com/template2/024A2409.JPG",
+        alt: "Image 2",
+        itemHeight: "100%",
+        percentHeight: "0%",
+        column: 1,
+        itemsInColumn: 0,
+      },
+      {
+        image:
+          "https://template-assets-sv.s3.amazonaws.com/template2/024A2406.JPG",
+        alt: "Image 3",
+        itemHeight: "100%",
+        percentHeight: "17.491809735226195%",
+        column: 0,
+        itemsInColumn: 1,
+      },
+      {
+        image:
+          "https://template-assets-sv.s3.amazonaws.com/template2/024A2699.JPG",
+        alt: "Image 4",
+        itemHeight: "100%",
+        percentHeight: "25.994020659159673%",
+        column: 1,
+        itemsInColumn: 1,
+      },
+      {
+        image:
+          "https://template-assets-sv.s3.amazonaws.com/template2/024A2719.JPG",
+        alt: "Image 5",
+        itemHeight: "100%",
+        percentHeight: "43.48583039438586%",
+        column: 0,
+        itemsInColumn: 2,
+      },
+      {
+        image:
+          "https://template-assets-sv.s3.amazonaws.com/template2/024A2483.JPG",
+        alt: "Image 6",
+        itemHeight: "66.66666666666666%",
+        percentHeight: "51.98804131831935%",
+        column: 1,
+        itemsInColumn: 2,
+      },
+      {
+        image:
+          "https://template-assets-sv.s3.amazonaws.com/template2/024A2650.JPG",
+        alt: "Image 7",
+        itemHeight: "48.541666666666664%",
+        percentHeight: "69.47985105354553%",
+        column: 0,
+        itemsInColumn: 3,
+      },
+      {
+        image:
+          "https://template-assets-sv.s3.amazonaws.com/template2/024A2684.JPG",
+        alt: "Image 8",
+        itemHeight: "68.87052341597796%",
+        percentHeight: "69.31738842442579%",
+        column: 1,
+        itemsInColumn: 3,
+      },
+      {
+        image:
+          "https://template-assets-sv.s3.amazonaws.com/template2/024A2596.JPG",
+        alt: "Image 9",
+        itemHeight: "68.87052341597796%",
+        percentHeight: "82.0977819151793%",
+        column: 0,
+        itemsInColumn: 4,
+      },
+    ],
+
+    SliderImg: [
+      {
+        id: 1,
+        link: "https://template-assets-sv.s3.amazonaws.com/template2/024A2684.JPG",
+      },
+      {
+        id: 2,
+        link: "https://template-assets-sv.s3.amazonaws.com/template2/024A2373.JPG",
+      },
+    ],
+    SliderImg2: [
+      {
+        id: 2,
+        link: "https://template-assets-sv.s3.amazonaws.com/template2/024A2483.JPG",
+      },
+      {
+        id: 1,
+        link: "https://template-assets-sv.s3.amazonaws.com/template2/024A2596.JPG",
+      },
+    ],
+
+    SliderImg1: [
+      {
+        id: 1,
+        link: "https://template-assets-sv.s3.amazonaws.com/template2/024A2433.JPG",
+      },
+      {
+        id: 2,
+        link: "https://template-assets-sv.s3.amazonaws.com/template2/024A2406.JPG",
+      },
+    ],
   },
   {
     id: 7,
@@ -272,6 +812,134 @@ const staticTemplateData = [
     gallery21:
       "https://template-assets-sv.s3.amazonaws.com/template2/024A2699.JPG",
     paral06: "/assets/templete/2/paral_06.jpg",
+    avatars: [
+      "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Blank&hairColor=Brown&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=Hoodie&clotheColor=Blue01&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Tanned",
+
+      "https://avataaars.io/?avatarStyle=Transparent&topType=LongHairStraight&accessoriesType=Blank&hairColor=BrownDark&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light",
+
+      "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Prescription02&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=Hoodie&clotheColor=Heather&eyeType=Happy&eyebrowType=RaisedExcitedNatural&mouthType=Smile&skinColor=Pale",
+
+      "https://avataaars.io/?avatarStyle=Transparent&topType=LongHairMiaWallace&accessoriesType=Prescription02&hairColor=Black&facialHairType=Blank&clotheType=ShirtScoopNeck&clotheColor=Heather&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Pale",
+
+      "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairDreads01&accessoriesType=Blank&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=ShirtCrewNeck&clotheColor=PastelYellow&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Pale",
+
+      "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortCurly&accessoriesType=Blank&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=CollarSweater&clotheColor=Red&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Twinkle&skinColor=Light",
+    ],
+    GalleryImg: [
+      {
+        image:
+          "https://template-assets-sv.s3.amazonaws.com/template2/024A2373.JPG",
+        alt: "Image 1",
+        itemHeight: "67.29166666666667%",
+        percentHeight: "0%",
+        column: 0,
+        itemsInColumn: 0,
+      },
+      {
+        image:
+          "https://template-assets-sv.s3.amazonaws.com/template2/024A2409.JPG",
+        alt: "Image 2",
+        itemHeight: "100%",
+        percentHeight: "0%",
+        column: 1,
+        itemsInColumn: 0,
+      },
+      {
+        image:
+          "https://template-assets-sv.s3.amazonaws.com/template2/024A2406.JPG",
+        alt: "Image 3",
+        itemHeight: "100%",
+        percentHeight: "17.491809735226195%",
+        column: 0,
+        itemsInColumn: 1,
+      },
+      {
+        image:
+          "https://template-assets-sv.s3.amazonaws.com/template2/024A2699.JPG",
+        alt: "Image 4",
+        itemHeight: "100%",
+        percentHeight: "25.994020659159673%",
+        column: 1,
+        itemsInColumn: 1,
+      },
+      {
+        image:
+          "https://template-assets-sv.s3.amazonaws.com/template2/024A2719.JPG",
+        alt: "Image 5",
+        itemHeight: "100%",
+        percentHeight: "43.48583039438586%",
+        column: 0,
+        itemsInColumn: 2,
+      },
+      {
+        image:
+          "https://template-assets-sv.s3.amazonaws.com/template2/024A2483.JPG",
+        alt: "Image 6",
+        itemHeight: "66.66666666666666%",
+        percentHeight: "51.98804131831935%",
+        column: 1,
+        itemsInColumn: 2,
+      },
+      {
+        image:
+          "https://template-assets-sv.s3.amazonaws.com/template2/024A2650.JPG",
+        alt: "Image 7",
+        itemHeight: "48.541666666666664%",
+        percentHeight: "69.47985105354553%",
+        column: 0,
+        itemsInColumn: 3,
+      },
+      {
+        image:
+          "https://template-assets-sv.s3.amazonaws.com/template2/024A2684.JPG",
+        alt: "Image 8",
+        itemHeight: "68.87052341597796%",
+        percentHeight: "69.31738842442579%",
+        column: 1,
+        itemsInColumn: 3,
+      },
+      {
+        image:
+          "https://template-assets-sv.s3.amazonaws.com/template2/024A2596.JPG",
+        alt: "Image 9",
+        itemHeight: "68.87052341597796%",
+        percentHeight: "82.0977819151793%",
+        column: 0,
+        itemsInColumn: 4,
+      },
+    ],
+
+    SliderImg: [
+      {
+        id: 1,
+        link: "https://template-assets-sv.s3.amazonaws.com/template2/024A2684.JPG",
+      },
+      {
+        id: 2,
+        link: "https://template-assets-sv.s3.amazonaws.com/template2/024A2373.JPG",
+      },
+    ],
+    SliderImg2: [
+      {
+        id: 2,
+        link: "https://template-assets-sv.s3.amazonaws.com/template2/024A2483.JPG",
+      },
+      {
+        id: 1,
+        link: "https://template-assets-sv.s3.amazonaws.com/template2/024A2596.JPG",
+      },
+    ],
+
+    SliderImg1: [
+      {
+        id: 1,
+        link: "https://template-assets-sv.s3.amazonaws.com/template2/024A2433.JPG",
+      },
+      {
+        id: 2,
+        link: "https://template-assets-sv.s3.amazonaws.com/template2/024A2406.JPG",
+      },
+    ],
   },
   {
     id: 8,
@@ -316,6 +984,134 @@ const staticTemplateData = [
     gallery21:
       "https://template-assets-sv.s3.amazonaws.com/template2/024A2699.JPG",
     paral06: "/assets/templete/2/paral_06.jpg",
+    avatars: [
+      "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Blank&hairColor=Brown&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=Hoodie&clotheColor=Blue01&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Tanned",
+
+      "https://avataaars.io/?avatarStyle=Transparent&topType=LongHairStraight&accessoriesType=Blank&hairColor=BrownDark&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light",
+
+      "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Prescription02&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=Hoodie&clotheColor=Heather&eyeType=Happy&eyebrowType=RaisedExcitedNatural&mouthType=Smile&skinColor=Pale",
+
+      "https://avataaars.io/?avatarStyle=Transparent&topType=LongHairMiaWallace&accessoriesType=Prescription02&hairColor=Black&facialHairType=Blank&clotheType=ShirtScoopNeck&clotheColor=Heather&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Pale",
+
+      "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairDreads01&accessoriesType=Blank&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=ShirtCrewNeck&clotheColor=PastelYellow&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Pale",
+
+      "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortCurly&accessoriesType=Blank&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=CollarSweater&clotheColor=Red&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Twinkle&skinColor=Light",
+    ],
+    GalleryImg: [
+      {
+        image:
+          "https://template-assets-sv.s3.amazonaws.com/template2/024A2373.JPG",
+        alt: "Image 1",
+        itemHeight: "67.29166666666667%",
+        percentHeight: "0%",
+        column: 0,
+        itemsInColumn: 0,
+      },
+      {
+        image:
+          "https://template-assets-sv.s3.amazonaws.com/template2/024A2409.JPG",
+        alt: "Image 2",
+        itemHeight: "100%",
+        percentHeight: "0%",
+        column: 1,
+        itemsInColumn: 0,
+      },
+      {
+        image:
+          "https://template-assets-sv.s3.amazonaws.com/template2/024A2406.JPG",
+        alt: "Image 3",
+        itemHeight: "100%",
+        percentHeight: "17.491809735226195%",
+        column: 0,
+        itemsInColumn: 1,
+      },
+      {
+        image:
+          "https://template-assets-sv.s3.amazonaws.com/template2/024A2699.JPG",
+        alt: "Image 4",
+        itemHeight: "100%",
+        percentHeight: "25.994020659159673%",
+        column: 1,
+        itemsInColumn: 1,
+      },
+      {
+        image:
+          "https://template-assets-sv.s3.amazonaws.com/template2/024A2719.JPG",
+        alt: "Image 5",
+        itemHeight: "100%",
+        percentHeight: "43.48583039438586%",
+        column: 0,
+        itemsInColumn: 2,
+      },
+      {
+        image:
+          "https://template-assets-sv.s3.amazonaws.com/template2/024A2483.JPG",
+        alt: "Image 6",
+        itemHeight: "66.66666666666666%",
+        percentHeight: "51.98804131831935%",
+        column: 1,
+        itemsInColumn: 2,
+      },
+      {
+        image:
+          "https://template-assets-sv.s3.amazonaws.com/template2/024A2650.JPG",
+        alt: "Image 7",
+        itemHeight: "48.541666666666664%",
+        percentHeight: "69.47985105354553%",
+        column: 0,
+        itemsInColumn: 3,
+      },
+      {
+        image:
+          "https://template-assets-sv.s3.amazonaws.com/template2/024A2684.JPG",
+        alt: "Image 8",
+        itemHeight: "68.87052341597796%",
+        percentHeight: "69.31738842442579%",
+        column: 1,
+        itemsInColumn: 3,
+      },
+      {
+        image:
+          "https://template-assets-sv.s3.amazonaws.com/template2/024A2596.JPG",
+        alt: "Image 9",
+        itemHeight: "68.87052341597796%",
+        percentHeight: "82.0977819151793%",
+        column: 0,
+        itemsInColumn: 4,
+      },
+    ],
+
+    SliderImg: [
+      {
+        id: 1,
+        link: "https://template-assets-sv.s3.amazonaws.com/template2/024A2684.JPG",
+      },
+      {
+        id: 2,
+        link: "https://template-assets-sv.s3.amazonaws.com/template2/024A2373.JPG",
+      },
+    ],
+    SliderImg2: [
+      {
+        id: 2,
+        link: "https://template-assets-sv.s3.amazonaws.com/template2/024A2483.JPG",
+      },
+      {
+        id: 1,
+        link: "https://template-assets-sv.s3.amazonaws.com/template2/024A2596.JPG",
+      },
+    ],
+
+    SliderImg1: [
+      {
+        id: 1,
+        link: "https://template-assets-sv.s3.amazonaws.com/template2/024A2433.JPG",
+      },
+      {
+        id: 2,
+        link: "https://template-assets-sv.s3.amazonaws.com/template2/024A2406.JPG",
+      },
+    ],
   },
   {
     id: 9,
@@ -341,6 +1137,122 @@ const staticTemplateData = [
     frame: "/assets/templete/3/frame.png",
     greyLight: "url('/assets/templete/3/img-grey-light.png')",
     pic2: "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0021.jpg",
+    avatars: [
+      "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Blank&hairColor=Brown&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=Hoodie&clotheColor=Blue01&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Tanned",
+
+      "https://avataaars.io/?avatarStyle=Transparent&topType=LongHairStraight&accessoriesType=Blank&hairColor=BrownDark&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light",
+
+      "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Prescription02&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=Hoodie&clotheColor=Heather&eyeType=Happy&eyebrowType=RaisedExcitedNatural&mouthType=Smile&skinColor=Pale",
+
+      "https://avataaars.io/?avatarStyle=Transparent&topType=LongHairMiaWallace&accessoriesType=Prescription02&hairColor=Black&facialHairType=Blank&clotheType=ShirtScoopNeck&clotheColor=Heather&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Pale",
+
+      "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairDreads01&accessoriesType=Blank&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=ShirtCrewNeck&clotheColor=PastelYellow&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Pale",
+
+      "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortCurly&accessoriesType=Blank&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=CollarSweater&clotheColor=Red&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Twinkle&skinColor=Light",
+    ],
+    images: [
+      {
+        id: 1,
+        image:
+          "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0046.jpg",
+      },
+      {
+        id: 3,
+        image:
+          "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0021.jpg",
+      },
+      {
+        id: 4,
+        image:
+          "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0023.jpg",
+      },
+      {
+        id: 2,
+        image:
+          "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0042.jpg",
+      },
+      {
+        id: 5,
+        image:
+          "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0028.jpg",
+      },
+      {
+        id: 6,
+        image:
+          "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0033.jpg",
+      },
+      {
+        id: 7,
+        image:
+          "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0045.jpg",
+      },
+      {
+        id: 8,
+        image:
+          "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0037.jpg",
+      },
+    ],
+    occasions3: [
+      {
+        id: 1,
+        stp: "1",
+        img: "/assets/templete/3/occasions/icon-04.png",
+        functionName: " The Ceremony ",
+        functionInfo:
+          " The Ceremony is the moment when two people officially become partners for life.",
+      },
+      {
+        id: 2,
+        stp: "2",
+        img: "/assets/templete/3/occasions/icon-06.png",
+        functionName: "Lunch Together ",
+        functionInfo:
+          " Moment to relax, enjoy good food, and create unforgettable memories, a cherished tradition.",
+      },
+      {
+        id: 3,
+        stp: "3",
+        img: "/assets/templete/3/occasions/icon-05.png",
+        functionName: "Photo Boo ",
+        functionInfo:
+          " Fun and interactive way to capture memories with silly props and other.",
+      },
+    ],
+    stepss: [
+      {
+        id: 1,
+        stp: "1",
+        img: "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0037.jpg",
+        functionName: " Wedding Ceremony ",
+        dateTime: "5/jun/2023 | 12:30pm",
+        location:
+          "https://www.google.com/maps/place/Indira+Gandhi+International+Airport/@28.527554,77.0438314,11z/data=!4m6!3m5!1s0x390d1b85fc2a2d89:0xbef376182c43ed9d!8m2!3d28.5563529!4d77.1006963!16zL20vMDEyNDQ0?entry=ttu",
+        functionInfo:
+          " The wedding ceremony is the heart of any celebration. It's the moment when the couple exchange vows and commit to spending the rest of their lives together.",
+      },
+      {
+        id: 2,
+        stp: "2",
+        functionName: " Lunch Time ",
+        img: "/assets/templete/3/itenary/gallery-16-1.jpg",
+        dateTime: "5/jun/2023 | 12:30pm",
+        location:
+          "https://www.google.com/maps/place/Mazaar+Restaurant/@28.5688605,77.2328845,15z/data=!4m6!3m5!1s0x390ce3ad97db2cb5:0xdce447161ff5833!8m2!3d28.5701715!4d77.2443807!16s%2Fg%2F1v7pwvx2?entry=ttu",
+        functionInfo:
+          " After the wedding ceremony, it's time for lunch! This is a time for guests to relax and enjoy a delicious meal together, while catching up with old friends and making new ones.",
+      },
+      {
+        id: 3,
+        stp: "3",
+        functionName: " Party with Music ",
+        img: "/assets/templete/3/itenary/gallery-12-1.jpg",
+        dateTime: "5/jun/2023 | 12:30pm",
+        location:
+          "https://www.google.com/maps/place/C+R+Park+Market+No.1/@28.5350621,77.2431712,13.75z/data=!4m6!3m5!1s0x390ce3d83e0cb4b7:0xb7ece1334b216b84!8m2!3d28.5401153!4d77.2486233!16s%2Fg%2F1wk4bfx6?entry=ttu",
+        functionInfo:
+          " The party with music is the perfect way to celebrate the newlyweds and their love story. This is a time for guests to let loose, hit the dance floor, and enjoy some great music.",
+      },
+    ],
   },
   {
     id: 10,
@@ -366,6 +1278,122 @@ const staticTemplateData = [
     frame: "/assets/templete/3/frame-c21919.png",
     greyLight: "url('/assets/templete/3/img-grey-light-c21919.png')",
     pic2: "/assets/templete/3/contact/pic2.jpg",
+    avatars: [
+      "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Blank&hairColor=Brown&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=Hoodie&clotheColor=Blue01&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Tanned",
+
+      "https://avataaars.io/?avatarStyle=Transparent&topType=LongHairStraight&accessoriesType=Blank&hairColor=BrownDark&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light",
+
+      "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Prescription02&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=Hoodie&clotheColor=Heather&eyeType=Happy&eyebrowType=RaisedExcitedNatural&mouthType=Smile&skinColor=Pale",
+
+      "https://avataaars.io/?avatarStyle=Transparent&topType=LongHairMiaWallace&accessoriesType=Prescription02&hairColor=Black&facialHairType=Blank&clotheType=ShirtScoopNeck&clotheColor=Heather&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Pale",
+
+      "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairDreads01&accessoriesType=Blank&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=ShirtCrewNeck&clotheColor=PastelYellow&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Pale",
+
+      "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortCurly&accessoriesType=Blank&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=CollarSweater&clotheColor=Red&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Twinkle&skinColor=Light",
+    ],
+    images: [
+      {
+        id: 1,
+        image:
+          "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0046.jpg",
+      },
+      {
+        id: 3,
+        image:
+          "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0021.jpg",
+      },
+      {
+        id: 4,
+        image:
+          "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0023.jpg",
+      },
+      {
+        id: 2,
+        image:
+          "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0042.jpg",
+      },
+      {
+        id: 5,
+        image:
+          "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0028.jpg",
+      },
+      {
+        id: 6,
+        image:
+          "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0033.jpg",
+      },
+      {
+        id: 7,
+        image:
+          "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0045.jpg",
+      },
+      {
+        id: 8,
+        image:
+          "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0037.jpg",
+      },
+    ],
+    occasions3: [
+      {
+        id: 1,
+        stp: "1",
+        img: "/assets/templete/3/occasions/icon-04.png",
+        functionName: " The Ceremony ",
+        functionInfo:
+          " The Ceremony is the moment when two people officially become partners for life.",
+      },
+      {
+        id: 2,
+        stp: "2",
+        img: "/assets/templete/3/occasions/icon-06.png",
+        functionName: "Lunch Together ",
+        functionInfo:
+          " Moment to relax, enjoy good food, and create unforgettable memories, a cherished tradition.",
+      },
+      {
+        id: 3,
+        stp: "3",
+        img: "/assets/templete/3/occasions/icon-05.png",
+        functionName: "Photo Boo ",
+        functionInfo:
+          " Fun and interactive way to capture memories with silly props and other.",
+      },
+    ],
+    stepss: [
+      {
+        id: 1,
+        stp: "1",
+        img: "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0037.jpg",
+        functionName: " Wedding Ceremony ",
+        dateTime: "5/jun/2023 | 12:30pm",
+        location:
+          "https://www.google.com/maps/place/Indira+Gandhi+International+Airport/@28.527554,77.0438314,11z/data=!4m6!3m5!1s0x390d1b85fc2a2d89:0xbef376182c43ed9d!8m2!3d28.5563529!4d77.1006963!16zL20vMDEyNDQ0?entry=ttu",
+        functionInfo:
+          " The wedding ceremony is the heart of any celebration. It's the moment when the couple exchange vows and commit to spending the rest of their lives together.",
+      },
+      {
+        id: 2,
+        stp: "2",
+        functionName: " Lunch Time ",
+        img: "/assets/templete/3/itenary/gallery-16-1.jpg",
+        dateTime: "5/jun/2023 | 12:30pm",
+        location:
+          "https://www.google.com/maps/place/Mazaar+Restaurant/@28.5688605,77.2328845,15z/data=!4m6!3m5!1s0x390ce3ad97db2cb5:0xdce447161ff5833!8m2!3d28.5701715!4d77.2443807!16s%2Fg%2F1v7pwvx2?entry=ttu",
+        functionInfo:
+          " After the wedding ceremony, it's time for lunch! This is a time for guests to relax and enjoy a delicious meal together, while catching up with old friends and making new ones.",
+      },
+      {
+        id: 3,
+        stp: "3",
+        functionName: " Party with Music ",
+        img: "/assets/templete/3/itenary/gallery-12-1.jpg",
+        dateTime: "5/jun/2023 | 12:30pm",
+        location:
+          "https://www.google.com/maps/place/C+R+Park+Market+No.1/@28.5350621,77.2431712,13.75z/data=!4m6!3m5!1s0x390ce3d83e0cb4b7:0xb7ece1334b216b84!8m2!3d28.5401153!4d77.2486233!16s%2Fg%2F1wk4bfx6?entry=ttu",
+        functionInfo:
+          " The party with music is the perfect way to celebrate the newlyweds and their love story. This is a time for guests to let loose, hit the dance floor, and enjoy some great music.",
+      },
+    ],
   },
   {
     id: 11,
@@ -391,7 +1419,124 @@ const staticTemplateData = [
     frame: "/assets/templete/3/frame-efc0fe.png",
     greyLight: "url('/assets/templete/3/img-grey-light-efc0fe.png')",
     pic2: "/assets/templete/3/contact/pic2.jpg",
+    avatars: [
+      "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Blank&hairColor=Brown&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=Hoodie&clotheColor=Blue01&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Tanned",
+
+      "https://avataaars.io/?avatarStyle=Transparent&topType=LongHairStraight&accessoriesType=Blank&hairColor=BrownDark&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light",
+
+      "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Prescription02&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=Hoodie&clotheColor=Heather&eyeType=Happy&eyebrowType=RaisedExcitedNatural&mouthType=Smile&skinColor=Pale",
+
+      "https://avataaars.io/?avatarStyle=Transparent&topType=LongHairMiaWallace&accessoriesType=Prescription02&hairColor=Black&facialHairType=Blank&clotheType=ShirtScoopNeck&clotheColor=Heather&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Pale",
+
+      "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairDreads01&accessoriesType=Blank&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=ShirtCrewNeck&clotheColor=PastelYellow&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Pale",
+
+      "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortCurly&accessoriesType=Blank&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=CollarSweater&clotheColor=Red&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Twinkle&skinColor=Light",
+    ],
+    images: [
+      {
+        id: 1,
+        image:
+          "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0046.jpg",
+      },
+      {
+        id: 3,
+        image:
+          "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0021.jpg",
+      },
+      {
+        id: 4,
+        image:
+          "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0023.jpg",
+      },
+      {
+        id: 2,
+        image:
+          "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0042.jpg",
+      },
+      {
+        id: 5,
+        image:
+          "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0028.jpg",
+      },
+      {
+        id: 6,
+        image:
+          "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0033.jpg",
+      },
+      {
+        id: 7,
+        image:
+          "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0045.jpg",
+      },
+      {
+        id: 8,
+        image:
+          "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0037.jpg",
+      },
+    ],
+    occasions3: [
+      {
+        id: 1,
+        stp: "1",
+        img: "/assets/templete/3/occasions/icon-04.png",
+        functionName: " The Ceremony ",
+        functionInfo:
+          " The Ceremony is the moment when two people officially become partners for life.",
+      },
+      {
+        id: 2,
+        stp: "2",
+        img: "/assets/templete/3/occasions/icon-06.png",
+        functionName: "Lunch Together ",
+        functionInfo:
+          " Moment to relax, enjoy good food, and create unforgettable memories, a cherished tradition.",
+      },
+      {
+        id: 3,
+        stp: "3",
+        img: "/assets/templete/3/occasions/icon-05.png",
+        functionName: "Photo Boo ",
+        functionInfo:
+          " Fun and interactive way to capture memories with silly props and other.",
+      },
+    ],
+    stepss: [
+      {
+        id: 1,
+        stp: "1",
+        img: "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0037.jpg",
+        functionName: " Wedding Ceremony ",
+        dateTime: "5/jun/2023 | 12:30pm",
+        location:
+          "https://www.google.com/maps/place/Indira+Gandhi+International+Airport/@28.527554,77.0438314,11z/data=!4m6!3m5!1s0x390d1b85fc2a2d89:0xbef376182c43ed9d!8m2!3d28.5563529!4d77.1006963!16zL20vMDEyNDQ0?entry=ttu",
+        functionInfo:
+          " The wedding ceremony is the heart of any celebration. It's the moment when the couple exchange vows and commit to spending the rest of their lives together.",
+      },
+      {
+        id: 2,
+        stp: "2",
+        functionName: " Lunch Time ",
+        img: "/assets/templete/3/itenary/gallery-16-1.jpg",
+        dateTime: "5/jun/2023 | 12:30pm",
+        location:
+          "https://www.google.com/maps/place/Mazaar+Restaurant/@28.5688605,77.2328845,15z/data=!4m6!3m5!1s0x390ce3ad97db2cb5:0xdce447161ff5833!8m2!3d28.5701715!4d77.2443807!16s%2Fg%2F1v7pwvx2?entry=ttu",
+        functionInfo:
+          " After the wedding ceremony, it's time for lunch! This is a time for guests to relax and enjoy a delicious meal together, while catching up with old friends and making new ones.",
+      },
+      {
+        id: 3,
+        stp: "3",
+        functionName: " Party with Music ",
+        img: "/assets/templete/3/itenary/gallery-12-1.jpg",
+        dateTime: "5/jun/2023 | 12:30pm",
+        location:
+          "https://www.google.com/maps/place/C+R+Park+Market+No.1/@28.5350621,77.2431712,13.75z/data=!4m6!3m5!1s0x390ce3d83e0cb4b7:0xb7ece1334b216b84!8m2!3d28.5401153!4d77.2486233!16s%2Fg%2F1wk4bfx6?entry=ttu",
+        functionInfo:
+          " The party with music is the perfect way to celebrate the newlyweds and their love story. This is a time for guests to let loose, hit the dance floor, and enjoy some great music.",
+      },
+    ],
   },
+
   {
     id: 12,
     templateId: 12,
@@ -416,6 +1561,122 @@ const staticTemplateData = [
     frame: "/assets/templete/3/frame-ffe54c.png",
     greyLight: "url('/assets/templete/3/img-grey-light-ffe54c.png')",
     pic2: "/assets/templete/3/contact/pic2.jpg",
+    avatars: [
+      "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Blank&hairColor=Brown&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=Hoodie&clotheColor=Blue01&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Tanned",
+
+      "https://avataaars.io/?avatarStyle=Transparent&topType=LongHairStraight&accessoriesType=Blank&hairColor=BrownDark&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light",
+
+      "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Prescription02&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=Hoodie&clotheColor=Heather&eyeType=Happy&eyebrowType=RaisedExcitedNatural&mouthType=Smile&skinColor=Pale",
+
+      "https://avataaars.io/?avatarStyle=Transparent&topType=LongHairMiaWallace&accessoriesType=Prescription02&hairColor=Black&facialHairType=Blank&clotheType=ShirtScoopNeck&clotheColor=Heather&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Pale",
+
+      "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairDreads01&accessoriesType=Blank&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=ShirtCrewNeck&clotheColor=PastelYellow&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Pale",
+
+      "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortCurly&accessoriesType=Blank&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=CollarSweater&clotheColor=Red&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Twinkle&skinColor=Light",
+    ],
+    images: [
+      {
+        id: 1,
+        image:
+          "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0046.jpg",
+      },
+      {
+        id: 3,
+        image:
+          "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0021.jpg",
+      },
+      {
+        id: 4,
+        image:
+          "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0023.jpg",
+      },
+      {
+        id: 2,
+        image:
+          "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0042.jpg",
+      },
+      {
+        id: 5,
+        image:
+          "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0028.jpg",
+      },
+      {
+        id: 6,
+        image:
+          "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0033.jpg",
+      },
+      {
+        id: 7,
+        image:
+          "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0045.jpg",
+      },
+      {
+        id: 8,
+        image:
+          "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0037.jpg",
+      },
+    ],
+    occasions3: [
+      {
+        id: 1,
+        stp: "1",
+        img: "/assets/templete/3/occasions/icon-04.png",
+        functionName: " The Ceremony ",
+        functionInfo:
+          " The Ceremony is the moment when two people officially become partners for life.",
+      },
+      {
+        id: 2,
+        stp: "2",
+        img: "/assets/templete/3/occasions/icon-06.png",
+        functionName: "Lunch Together ",
+        functionInfo:
+          " Moment to relax, enjoy good food, and create unforgettable memories, a cherished tradition.",
+      },
+      {
+        id: 3,
+        stp: "3",
+        img: "/assets/templete/3/occasions/icon-05.png",
+        functionName: "Photo Boo ",
+        functionInfo:
+          " Fun and interactive way to capture memories with silly props and other.",
+      },
+    ],
+    stepss: [
+      {
+        id: 1,
+        stp: "1",
+        img: "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0037.jpg",
+        functionName: " Wedding Ceremony ",
+        dateTime: "5/jun/2023 | 12:30pm",
+        location:
+          "https://www.google.com/maps/place/Indira+Gandhi+International+Airport/@28.527554,77.0438314,11z/data=!4m6!3m5!1s0x390d1b85fc2a2d89:0xbef376182c43ed9d!8m2!3d28.5563529!4d77.1006963!16zL20vMDEyNDQ0?entry=ttu",
+        functionInfo:
+          " The wedding ceremony is the heart of any celebration. It's the moment when the couple exchange vows and commit to spending the rest of their lives together.",
+      },
+      {
+        id: 2,
+        stp: "2",
+        functionName: " Lunch Time ",
+        img: "/assets/templete/3/itenary/gallery-16-1.jpg",
+        dateTime: "5/jun/2023 | 12:30pm",
+        location:
+          "https://www.google.com/maps/place/Mazaar+Restaurant/@28.5688605,77.2328845,15z/data=!4m6!3m5!1s0x390ce3ad97db2cb5:0xdce447161ff5833!8m2!3d28.5701715!4d77.2443807!16s%2Fg%2F1v7pwvx2?entry=ttu",
+        functionInfo:
+          " After the wedding ceremony, it's time for lunch! This is a time for guests to relax and enjoy a delicious meal together, while catching up with old friends and making new ones.",
+      },
+      {
+        id: 3,
+        stp: "3",
+        functionName: " Party with Music ",
+        img: "/assets/templete/3/itenary/gallery-12-1.jpg",
+        dateTime: "5/jun/2023 | 12:30pm",
+        location:
+          "https://www.google.com/maps/place/C+R+Park+Market+No.1/@28.5350621,77.2431712,13.75z/data=!4m6!3m5!1s0x390ce3d83e0cb4b7:0xb7ece1334b216b84!8m2!3d28.5401153!4d77.2486233!16s%2Fg%2F1wk4bfx6?entry=ttu",
+        functionInfo:
+          " The party with music is the perfect way to celebrate the newlyweds and their love story. This is a time for guests to let loose, hit the dance floor, and enjoy some great music.",
+      },
+    ],
   },
   // {
   //   id: 7,

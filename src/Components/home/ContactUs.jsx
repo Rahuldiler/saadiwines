@@ -20,12 +20,12 @@ function ContactUs() {
   const contactInfo = [
     {
       title: "Write us at",
-      value: "admin@shaadivines.com",
+      value: "query@shaadivines.com",
       icon: <HiMail style={{ marginRight: 4 }} size={24} />,
     },
     {
       title: "Call us",
-      value: "+91 9412817667",
+      value: "+91 88001 91621",
       icon: <FaPhone style={{ marginRight: 4 }} size={24} />,
     },
     {

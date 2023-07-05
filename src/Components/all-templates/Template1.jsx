@@ -26,13 +26,13 @@ function Template1({ templateData, staticTemplateData, images }) {
 
   const nextSlide = () => {
     setCurrentSlide((prevSlide) =>
-      prevSlide === templateData.slides.length - 1 ? 0 : prevSlide + 1
+      prevSlide === staticTemplateData.slides.length - 1 ? 0 : prevSlide + 1
     );
   };
 
   const prevSlide = () => {
     setCurrentSlide((prevSlide) =>
-      prevSlide === 0 ? templateData.slides.length - 1 : prevSlide - 1
+      prevSlide === 0 ? staticTemplateData.slides.length - 1 : prevSlide - 1
     );
   };
 
@@ -41,7 +41,7 @@ function Template1({ templateData, staticTemplateData, images }) {
   return (
     <div className="lg:min-w-[1280px] ">
       <div className="h-[900px] relative">
-        {templateData.slides.map((slide, index) => (
+        {staticTemplateData.images.slides.map((slide, index) => (
           <div
             key={index}
             className={`absolute top-0 bg-black left-0 w-full h-full transition-opacity duration-500 ${
@@ -201,7 +201,7 @@ function Template1({ templateData, staticTemplateData, images }) {
 
       <div>
         <div className="grid grid-cols-4 cursor-pointer">
-          {templateData.imagesLightBox.map((image, index) => (
+          {staticTemplateData.images.imagesLightBox.map((image, index) => (
             <div key={index} className={``} onClick={() => openLightbox(index)}>
               <img
                 src={image.image}
@@ -231,7 +231,7 @@ function Template1({ templateData, staticTemplateData, images }) {
             <Cards
               theme={staticTemplateData?.theme}
               key={index}
-              imgSrc={cards.image}
+              imgSrc={staticTemplateData.avatars[index]}
               name={cards.name}
               relationship={cards.relation}
             />
@@ -272,7 +272,7 @@ function Template1({ templateData, staticTemplateData, images }) {
             <Cards
               theme={staticTemplateData?.theme}
               key={index}
-              imgSrc={cards.image}
+              imgSrc={staticTemplateData.avatars[0]}
               name={cards.firstName}
               contactNo={`+91 ${cards.contactNumber}`}
             />

@@ -21,43 +21,31 @@ const templateInfoData = {
       id: 1,
       name: "Sameer",
       relation: "Father",
-      image:
-        "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Blank&hairColor=Brown&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=Hoodie&clotheColor=Blue01&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Tanned",
     },
     {
       id: 2,
       name: "Nikita",
       relation: "Mother",
-      image:
-        "https://avataaars.io/?avatarStyle=Transparent&topType=LongHairStraight&accessoriesType=Blank&hairColor=BrownDark&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light",
     },
     {
       id: 3,
       name: "Rajat",
       relation: "Uncle",
-      image:
-        "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Prescription02&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=Hoodie&clotheColor=Heather&eyeType=Happy&eyebrowType=RaisedExcitedNatural&mouthType=Smile&skinColor=Pale",
     },
     {
       id: 4,
       name: "Rachna",
       relation: "Sister",
-      image:
-        "https://avataaars.io/?avatarStyle=Transparent&topType=LongHairMiaWallace&accessoriesType=Prescription02&hairColor=Black&facialHairType=Blank&clotheType=ShirtScoopNeck&clotheColor=Heather&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Pale",
     },
     {
       id: 5,
       name: "Vibhor",
       relation: "Brother",
-      image:
-        "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairDreads01&accessoriesType=Blank&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=ShirtCrewNeck&clotheColor=PastelYellow&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Pale",
     },
     {
       id: 6,
       name: "Arpit",
       relation: "Brother",
-      image:
-        "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortCurly&accessoriesType=Blank&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=CollarSweater&clotheColor=Red&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Twinkle&skinColor=Light",
     },
   ],
   itinerary: [
@@ -116,8 +104,6 @@ const templateInfoData = {
       lastName: "Shivam",
       contactNumber: "8770123453",
       fromSide: "Bride",
-      image:
-        "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortCurly&accessoriesType=Blank&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=CollarSweater&clotheColor=Red&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Twinkle&skinColor=Light",
     },
     {
       id: 1,
@@ -125,8 +111,6 @@ const templateInfoData = {
       lastName: "Sumit",
       contactNumber: "97648536584",
       fromSide: "GROOM",
-      image:
-        "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairDreads01&accessoriesType=Blank&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=ShirtCrewNeck&clotheColor=PastelYellow&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Pale",
     },
   ],
   weddingInfo: {
@@ -155,65 +139,6 @@ const templateInfoData = {
     pics: ["D", "E", "F"],
     placesToVisit: ["Dont know", "Don know 2"],
   },
-
-  slides: [
-    {
-      id: 1,
-      image:
-        "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4055.JPG",
-      caption1: " Saanvi & Krishna ",
-      caption2: " 16/04/2030",
-    },
-    {
-      id: 2,
-      image:
-        "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4280.JPG",
-      caption1: " Saanvi & Krishna ",
-      caption2: " 16/04/2030",
-    },
-  ],
-  imagesLightBox: [
-    {
-      id: 1,
-      image:
-        "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4262.JPG",
-    },
-    {
-      id: 2,
-      image:
-        "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4094.JPG",
-    },
-    {
-      id: 3,
-      image:
-        "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4125.JPG",
-    },
-    {
-      id: 4,
-      image:
-        "https://template-assets-sv.s3.amazonaws.com/template1/SNY_1945.JPG",
-    },
-    {
-      id: 5,
-      image:
-        "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4059.JPG",
-    },
-    {
-      id: 6,
-      image:
-        "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4379.JPG",
-    },
-    {
-      id: 7,
-      image:
-        "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4390.JPG",
-    },
-    {
-      id: 8,
-      image:
-        "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4260.JPG",
-    },
-  ],
 };
 
 export { templateInfoData };

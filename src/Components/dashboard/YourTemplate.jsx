@@ -13,6 +13,8 @@ function YourTemplate({ userPreferenceData }) {
   const [userIdKey, setUserIdKey] = useState();
   const [themeColor, setThemeColor] = useState("9CAB8D");
 
+  console.log(router.query);
+
   const handleViewTemplate = async () => {
     router.push(`/template/${userIdKey}`);
   };

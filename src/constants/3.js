@@ -30,43 +30,31 @@ const template3InfoData = {
       id: 1,
       name: "Yash",
       relation: "Father",
-      image:
-        "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Blank&hairColor=Brown&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=Hoodie&clotheColor=Blue01&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Tanned",
     },
     {
       id: 2,
       name: "Monika",
       relation: "Mother",
-      image:
-        "https://avataaars.io/?avatarStyle=Transparent&topType=LongHairStraight&accessoriesType=Blank&hairColor=BrownDark&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light",
     },
     {
       id: 3,
       name: "Kapil",
       relation: "Uncle",
-      image:
-        "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Prescription02&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=Hoodie&clotheColor=Heather&eyeType=Happy&eyebrowType=RaisedExcitedNatural&mouthType=Smile&skinColor=Pale",
     },
     {
       id: 4,
       name: "Shreya",
       relation: "Sister",
-      image:
-        "https://avataaars.io/?avatarStyle=Transparent&topType=LongHairMiaWallace&accessoriesType=Prescription02&hairColor=Black&facialHairType=Blank&clotheType=ShirtScoopNeck&clotheColor=Heather&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Pale",
     },
     {
       id: 5,
       name: "Govind",
       relation: "Brother",
-      image:
-        "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairDreads01&accessoriesType=Blank&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=ShirtCrewNeck&clotheColor=PastelYellow&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Pale",
     },
     {
       id: 6,
       name: "Vishal",
       relation: "Brother",
-      image:
-        "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortCurly&accessoriesType=Blank&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=CollarSweater&clotheColor=Red&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Twinkle&skinColor=Light",
     },
   ],
   itinerary: [
@@ -113,16 +101,12 @@ const template3InfoData = {
       lastName: "Shivam",
       contactNumber: "8770123453",
       fromSide: "Bride",
-      image:
-        "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortCurly&accessoriesType=Blank&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=CollarSweater&clotheColor=Red&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Twinkle&skinColor=Light",
     },
     {
       id: 1,
       firstName: "Dhruv",
       lastName: "Sumit",
       contactNumber: "97648536584",
-      image:
-        "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairDreads01&accessoriesType=Blank&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=ShirtCrewNeck&clotheColor=PastelYellow&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Pale",
     },
   ],
   weddingInfo: {
@@ -151,111 +135,6 @@ const template3InfoData = {
     pics: ["D", "E", "F"],
     placesToVisit: ["Dont know", "Don know 2"],
   },
-  images: [
-    {
-      id: 1,
-      image:
-        "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0046.jpg",
-    },
-    {
-      id: 3,
-      image:
-        "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0021.jpg",
-    },
-    {
-      id: 4,
-      image:
-        "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0023.jpg",
-    },
-    {
-      id: 2,
-      image:
-        "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0042.jpg",
-    },
-    {
-      id: 5,
-      image:
-        "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0028.jpg",
-    },
-    {
-      id: 6,
-      image:
-        "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0033.jpg",
-    },
-    {
-      id: 7,
-      image:
-        "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0045.jpg",
-    },
-    {
-      id: 8,
-      image:
-        "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0037.jpg",
-    },
-  ],
-
-  occasions3: [
-    {
-      id: 1,
-      stp: "1",
-      img: "/assets/templete/3/occasions/icon-04.png",
-      functionName: " The Ceremony ",
-      functionInfo:
-        " The Ceremony is the moment when two people officially become partners for life.",
-    },
-    {
-      id: 2,
-      stp: "2",
-      img: "/assets/templete/3/occasions/icon-06.png",
-      functionName: "Lunch Together ",
-      functionInfo:
-        " Moment to relax, enjoy good food, and create unforgettable memories, a cherished tradition.",
-    },
-    {
-      id: 3,
-      stp: "3",
-      img: "/assets/templete/3/occasions/icon-05.png",
-      functionName: "Photo Boo ",
-      functionInfo:
-        " Fun and interactive way to capture memories with silly props and other.",
-    },
-  ],
-
-  stepss: [
-    {
-      id: 1,
-      stp: "1",
-      img: "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0037.jpg",
-      functionName: " Wedding Ceremony ",
-      dateTime: "5/jun/2023 | 12:30pm",
-      location:
-        "https://www.google.com/maps/place/Indira+Gandhi+International+Airport/@28.527554,77.0438314,11z/data=!4m6!3m5!1s0x390d1b85fc2a2d89:0xbef376182c43ed9d!8m2!3d28.5563529!4d77.1006963!16zL20vMDEyNDQ0?entry=ttu",
-      functionInfo:
-        " The wedding ceremony is the heart of any celebration. It's the moment when the couple exchange vows and commit to spending the rest of their lives together.",
-    },
-    {
-      id: 2,
-      stp: "2",
-      functionName: " Lunch Time ",
-      img: "/assets/templete/3/itenary/gallery-16-1.jpg",
-      dateTime: "5/jun/2023 | 12:30pm",
-      location:
-        "https://www.google.com/maps/place/Mazaar+Restaurant/@28.5688605,77.2328845,15z/data=!4m6!3m5!1s0x390ce3ad97db2cb5:0xdce447161ff5833!8m2!3d28.5701715!4d77.2443807!16s%2Fg%2F1v7pwvx2?entry=ttu",
-      functionInfo:
-        " After the wedding ceremony, it's time for lunch! This is a time for guests to relax and enjoy a delicious meal together, while catching up with old friends and making new ones.",
-    },
-    {
-      id: 3,
-      stp: "3",
-      functionName: " Party with Music ",
-      img: "/assets/templete/3/itenary/gallery-12-1.jpg",
-      dateTime: "5/jun/2023 | 12:30pm",
-      location:
-        "https://www.google.com/maps/place/C+R+Park+Market+No.1/@28.5350621,77.2431712,13.75z/data=!4m6!3m5!1s0x390ce3d83e0cb4b7:0xb7ece1334b216b84!8m2!3d28.5401153!4d77.2486233!16s%2Fg%2F1wk4bfx6?entry=ttu",
-      functionInfo:
-        " The party with music is the perfect way to celebrate the newlyweds and their love story. This is a time for guests to let loose, hit the dance floor, and enjoy some great music.",
-    },
-  ],
 };
 
 export { template3InfoData };
