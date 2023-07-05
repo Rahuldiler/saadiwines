@@ -59,7 +59,6 @@ const templateInfoData = {
       image:
         "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortCurly&accessoriesType=Blank&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=CollarSweater&clotheColor=Red&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Twinkle&skinColor=Light",
     },
-   
   ],
   itinerary: [
     {
@@ -119,7 +118,7 @@ const templateInfoData = {
       fromSide: "Bride",
       image:
         "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortCurly&accessoriesType=Blank&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=CollarSweater&clotheColor=Red&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Twinkle&skinColor=Light",
-     },
+    },
     {
       id: 1,
       firstName: "Sumit",
@@ -127,8 +126,8 @@ const templateInfoData = {
       contactNumber: "97648536584",
       fromSide: "GROOM",
       image:
-      "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairDreads01&accessoriesType=Blank&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=ShirtCrewNeck&clotheColor=PastelYellow&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Pale",
-   },
+        "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairDreads01&accessoriesType=Blank&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=ShirtCrewNeck&clotheColor=PastelYellow&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Pale",
+    },
   ],
   weddingInfo: {
     id: 1,

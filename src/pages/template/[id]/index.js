@@ -14,6 +14,7 @@ import Template3 from "@/Components/all-templates/Template3";
 import Template2 from "@/Components/all-templates/Template2";
 import Template1 from "@/Components/all-templates/Template1";
 import Template4 from "@/Components/all-templates/Template4";
+import html2canvas from "html2canvas";
 
 function Template() {
   const [formData, setFormData] = useState({});
@@ -157,7 +158,7 @@ function Template() {
             images={staticTemplateData[11]}
           />
         );
-        case 13:
+      case 13:
         return (
           <Template4
             templateData={formData}
@@ -172,12 +173,31 @@ function Template() {
     }
   };
 
+  const captureSnapshot = () => {
+    const targetElement = document.getElementById("targetElement");
+
+    html2canvas(targetElement).then((canvas) => {
+      const imageDataURL = canvas.toDataURL();
+      console.log(imageDataURL);
+      // Use the image data as needed
+    });
+  };
+
   return (
     <Box>
       {loading ? (
         <Loader message="Loading template" />
       ) : (
-        getTemplate(templateId)
+        <div>
+          {/* The element you want to capture */}
+          <div id="targetElement">
+            {/* Contents of the element */}
+            {getTemplate(templateId)}
+          </div>
+
+          {/* Button to trigger the snapshot capture */}
+          <button onClick={captureSnapshot}>Capture Snapshot</button>
+        </div>
       )}
     </Box>
   );

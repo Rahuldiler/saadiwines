@@ -355,9 +355,9 @@ const staticTemplateData = [
       textBgColor: "#fff",
     },
     gallery_02_1:
-    "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0036.jpg",
-  gallery_01_1:
-    "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0021.jpg",
+      "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0036.jpg",
+    gallery_01_1:
+      "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0021.jpg",
     couple: "/assets/templete/3/couple.png",
     frame09: "/assets/templete/3/frame-09-c21919.png",
     frame05: "/assets/templete/3/frame-05-c21919.png",
@@ -380,9 +380,9 @@ const staticTemplateData = [
       textBgColor: "#fff",
     },
     gallery_02_1:
-    "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0036.jpg",
-  gallery_01_1:
-    "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0021.jpg",
+      "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0036.jpg",
+    gallery_01_1:
+      "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0021.jpg",
     couple: "/assets/templete/3/couple.png",
     frame09: "/assets/templete/3/frame-09-efc0fe.png",
     frame05: "/assets/templete/3/frame-05-efc0fe.png",
@@ -405,9 +405,9 @@ const staticTemplateData = [
       textBgColor: "#fff",
     },
     gallery_02_1:
-    "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0036.jpg",
-  gallery_01_1:
-    "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0021.jpg",
+      "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0036.jpg",
+    gallery_01_1:
+      "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0021.jpg",
     couple: "/assets/templete/3/couple.png",
     frame09: "/assets/templete/3/frame-09-ffe54c.png",
     frame05: "/assets/templete/3/frame-05-ffe54c.png",

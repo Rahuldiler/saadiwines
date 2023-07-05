@@ -6,7 +6,7 @@ import React from "react";
 function Loader({ message, isLoading }) {
   return (
     <Backdrop
-      open={isLoading ? isLoading : false}
+      open={isLoading ?? false}
       sx={{
         display: "flex",
         flexDirection: "column",

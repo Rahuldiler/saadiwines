@@ -62,7 +62,9 @@ function Template1({ templateData, staticTemplateData, images }) {
                 {templateData?.weddingInfo?.bride.name.split(" ")[0]}
               </div>
               <div className="text-center text-[30px] tracking-wider">
-                {moment(templateData?.weddingInfo?.dateTime).format("DD-MM-YYYY")}
+                {moment(templateData?.weddingInfo?.dateTime).format(
+                  "DD-MM-YYYY"
+                )}
               </div>
             </div>
           </div>
