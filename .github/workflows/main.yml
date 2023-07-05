@@ -12,8 +12,10 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '18.x'
-      - name: Set stage env variable
+      - name: Copy .env.stage to .env.local
         run: cp .env.stage .env.local
+      - name: Remove env files
+        run: rm -rf .env.production .env.stage
       - name: Install NPM dependencies
         run: npm install
       - name: Create build
