@@ -187,7 +187,6 @@ function Template() {
 
   const takeScreenShot = async (node) => {
     const dataURI = node && (await htmlToImage.toJpeg(node));
-    console.log(dataURI);
     setThumbnail(dataURI);
     // return dataURI;
   };
@@ -204,11 +203,18 @@ function Template() {
     takeScreenShot(ref.current);
   }, [ref]);
 
+  console.log(formData.weddingInfo);
+
   return (
     <Box>
       <SEO
-        title="Shaadi Vines"
-        desc=""
+        title={
+          formData?.weddingInfo?.groom?.name +
+          " & " +
+          formData?.weddingInfo?.bride?.name +
+          " | Shaadi Vines"
+        }
+        description="Test"
         keywords=""
         url="https://stage.shaadivines.com/"
         socialImg={thumbnail}
