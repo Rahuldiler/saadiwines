@@ -26,13 +26,13 @@ function Template1({ templateData, staticTemplateData, images }) {
 
   const nextSlide = () => {
     setCurrentSlide((prevSlide) =>
-      prevSlide === staticTemplateData.slides.length - 1 ? 0 : prevSlide + 1
+      prevSlide === staticTemplateData.images.slides.length - 1 ? 0 : prevSlide + 1
     );
   };
 
   const prevSlide = () => {
     setCurrentSlide((prevSlide) =>
-      prevSlide === 0 ? staticTemplateData.slides.length - 1 : prevSlide - 1
+      prevSlide === 0 ? staticTemplateData.images.slides.length - 1 : prevSlide - 1
     );
   };
 
@@ -63,7 +63,7 @@ function Template1({ templateData, staticTemplateData, images }) {
               </div>
               <div className="text-center text-[30px] tracking-wider">
                 {moment(templateData?.weddingInfo?.dateTime).format(
-                  "DD-MM-YYYY"
+                  "DD-MMM-YYYY"
                 )}
               </div>
             </div>

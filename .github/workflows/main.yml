@@ -11,7 +11,11 @@ jobs:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
         with:
-          node-version: '16.x'
+          node-version: '18.x'
+      - name: Copy .env.stage to .env.local
+        run: cp .env.stage .env.local
+      - name: Remove env files
+        run: rm -rf .env.production .env.stage
       - name: Install NPM dependencies
         run: npm install
       - name: Create build

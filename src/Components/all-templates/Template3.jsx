@@ -101,7 +101,7 @@ function Template3({ templateData, staticTemplateData }) {
             </span>
           </div>
           <div className="text-center text-[50px] font-Poppins ">
-            {moment(templateData?.weddingInfo?.dateTime).format("DD-MM-YYYY")}
+            {moment(templateData?.weddingInfo?.dateTime).format("DD-MMM-YYYY")}
           </div>
           <img
             src={staticTemplateData?.frame05}
