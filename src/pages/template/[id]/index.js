@@ -171,6 +171,8 @@ function Template({ singleTemplate, responseTemplateData, templateId }) {
     }
   }, [ref]);
 
+  console.log(formData.weddingInfo);
+
   return (
     <Box>
       <SEO
