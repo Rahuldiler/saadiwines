@@ -63,7 +63,7 @@ function Template1({ templateData, staticTemplateData, images }) {
               </div>
               <div className="text-center text-[30px] tracking-wider">
                 {moment(templateData?.weddingInfo?.dateTime).format(
-                  "DD-MM-YYYY"
+                  "DD-MMM-YYYY"
                 )}
               </div>
             </div>
