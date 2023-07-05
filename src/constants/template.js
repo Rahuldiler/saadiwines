@@ -5,6 +5,8 @@ const staticTemplateData = [
     templateName: "Classic",
     templateImage:
       "https://sv-landing-page-assets.s3.eu-north-1.amazonaws.com/Screenshot+2023-05-27+at+11.38.02+AM.png",
+    socialImage:
+      "https://drive.google.com/uc?id=1arMmugFZHQncROtkI0e6iDbSg_CMu1Lj",
     url: "/template/1",
     isSelected: false,
     theme: {
@@ -111,6 +113,9 @@ const staticTemplateData = [
     templateId: 2,
     templateName: "Classic",
     templateImage: "/images/theme2-img.png",
+    socialImage:
+      "https://drive.google.com/uc?id=1arMmugFZHQncROtkI0e6iDbSg_CMu1Lj",
+
     url: "/template/2",
     isSelected: true,
     theme: {
@@ -217,6 +222,9 @@ const staticTemplateData = [
     templateId: 3,
     templateName: "Classic",
     templateImage: "/images/theme-3.png",
+    socialImage:
+      "https://drive.google.com/uc?id=1arMmugFZHQncROtkI0e6iDbSg_CMu1Lj",
+
     url: "/template/3",
     isSelected: true,
     theme: {
@@ -323,6 +331,9 @@ const staticTemplateData = [
     templateId: 4,
     templateName: "Classic",
     templateImage: "/images/theme-4.png",
+    socialImage:
+      "https://drive.google.com/uc?id=1arMmugFZHQncROtkI0e6iDbSg_CMu1Lj",
+
     url: "/template/4",
     isSelected: true,
     theme: {
@@ -430,6 +441,9 @@ const staticTemplateData = [
     templateId: 5,
     templateName: "Classic",
     templateImage: "/images/theme-5.png",
+    socialImage:
+      "https://drive.google.com/uc?id=1arMmugFZHQncROtkI0e6iDbSg_CMu1Lj",
+
     url: "/template/5",
     isSelected: false,
     color: "blue",

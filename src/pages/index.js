@@ -13,6 +13,7 @@ import Feedbacks from "@/Components/home/Feedbacks";
 import Footer from "@/Components/common/Footer";
 import BottomBar from "@/Components/common/BottomBar";
 import Webcast from "@/Components/home/Webcast";
+import SEO from "@/Components/utils/seo";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -33,6 +34,11 @@ export default function Home() {
   return (
     <>
       <main>
+        <SEO
+          title="Shaadi Vines"
+          description="Shaadi Vines"
+          keywords="Shaadi Vines"
+        />
         {/* <TopBar /> */}
         <Header
           handleOpen={handleOpen}

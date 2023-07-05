@@ -7,15 +7,15 @@ import { HydrationProvider, Client } from "react-hydration-provider";
 export default function App({ Component, pageProps }) {
   return (
     <>
-      <HydrationProvider>
-        <Client>
-          <AppProvider>
-            <ThemeProvider theme={theme}>
-              <Component {...pageProps} />
-            </ThemeProvider>
-          </AppProvider>
-        </Client>
-      </HydrationProvider>
+      {/* <HydrationProvider>
+        <Client> */}
+      <AppProvider>
+        <ThemeProvider theme={theme}>
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </AppProvider>
+      {/* </Client>
+      </HydrationProvider> */}
     </>
   );
 }
