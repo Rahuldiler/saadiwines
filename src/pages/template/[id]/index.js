@@ -14,7 +14,17 @@ import Template3 from "@/Components/all-templates/Template3";
 import Template2 from "@/Components/all-templates/Template2";
 import Template1 from "@/Components/all-templates/Template1";
 import Template4 from "@/Components/all-templates/Template4";
-import html2canvas from "html2canvas";
+import { createRef } from "react";
+import * as htmlToImage from "html-to-image";
+import SEO from "@/Components/utils/seo";
+
+const createFileName = (extension = "", ...names) => {
+  if (!extension) {
+    return "";
+  }
+
+  return `${names.join("")}.${extension}`;
+};
 
 function Template() {
   const [formData, setFormData] = useState({});
@@ -172,33 +182,46 @@ function Template() {
         return <Box>No template found </Box>;
     }
   };
+  const ref = createRef(null);
+  const [thumbnail, setThumbnail] = useState(null);
 
-  const captureSnapshot = () => {
-    const targetElement = document.getElementById("targetElement");
-
-    html2canvas(targetElement).then((canvas) => {
-      const imageDataURL = canvas.toDataURL();
-      console.log(imageDataURL);
-      // Use the image data as needed
-    });
+  const takeScreenShot = async (node) => {
+    const dataURI = node && (await htmlToImage.toJpeg(node));
+    console.log(dataURI);
+    setThumbnail(dataURI);
+    // return dataURI;
   };
+
+  // const download = (image, { name = "img", extension = "jpg" } = {}) => {
+  //   const a = document.createElement("a");
+  //   console.log("img", image);
+  //   a.href = image;
+  //   // a.download = createFileName(extension, name);
+  //   // a.click();
+  // };
+
+  useEffect(() => {
+    takeScreenShot(ref.current);
+  }, [ref]);
 
   return (
     <Box>
+      <SEO
+        title="Shaadi Vines"
+        desc=""
+        keywords=""
+        url="https://stage.shaadivines.com/"
+        socialImg={thumbnail}
+      />
       {loading ? (
         <Loader message="Loading template" />
       ) : (
-        <div>
-          {/* The element you want to capture */}
-          <div id="targetElement">
-            {/* Contents of the element */}
-            {getTemplate(templateId)}
-          </div>
-
-          {/* Button to trigger the snapshot capture */}
-          <button onClick={captureSnapshot}>Capture Snapshot</button>
+        <div ref={ref} style={{ height: "720px" }}>
+          {getTemplate(templateId)}
         </div>
       )}
+      {/* <button onClick={downloadScreenshot}>Download screenshot</button> */}
+      {/* <img src={thumbnail} style={{ width: "500px", height: "500px" }} /> */}
     </Box>
   );
 }
