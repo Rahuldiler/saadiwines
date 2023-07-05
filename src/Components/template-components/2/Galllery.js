@@ -3,7 +3,6 @@ import Image from 'next/image';
 
 
 const Gallery = ({images, paddingBottom,columngapcount,openLightbox}) => {
-
     return (
         <div className="relative flex"
             style={{

@@ -228,7 +228,7 @@ function Template3({ templateData, staticTemplateData }) {
         {templateData?.milestone?.map((steps, index) => (
           <div key={index} className={`text-center`}>
             <Occasions3
-              img={templateData.occasions3[0].img}
+              img={staticTemplateData.occasions3[0].img}
               fctnName={steps.title}
               fctnInfo={steps.description}
             />
@@ -252,7 +252,7 @@ function Template3({ templateData, staticTemplateData }) {
                   "DD/MMM/YYYY " + " | " + " h:mm A"
                 )}
                 fctnInfo={steps.details}
-                img={templateData.stepss[0].img}
+                img={staticTemplateData.stepss[0].img}
               />
             </div>
           ))}
@@ -261,7 +261,7 @@ function Template3({ templateData, staticTemplateData }) {
 
       <div className="">
         <div className="grid md:grid-cols-4 grid-cols-2 md:gap-2 gap-4 md:px-10 px-2 cursor-pointer my-10">
-          {templateData.images.map((image, index) => (
+          {staticTemplateData.images.map((image, index) => (
             <div key={index} className={``} onClick={() => openLightbox(index)}>
               <img
                 src={image.image}
@@ -291,7 +291,7 @@ function Template3({ templateData, staticTemplateData }) {
         <div className="grid md:grid-cols-3 grid-cols-2  md:gap-24 gap-8 md:mt-14 mt-6 mb-16 ">
           {templateData?.familyMembers?.map((cards, index) => (
             <Temp3Crds
-              imgSrc={cards.image}
+              imgSrc={staticTemplateData.avatars[index]}
               name={cards.name}
               relationship={cards.relation}
             />
@@ -306,7 +306,7 @@ function Template3({ templateData, staticTemplateData }) {
         <div className="grid md:grid-cols-3  mt-12">
           {templateData?.pocs?.map((cards, index) => (
             <Temp3Crds
-              imgSrc={cards.image}
+              imgSrc={staticTemplateData.avatars[0]}
               name={cards.firstName}
               relationship={cards.relationship}
               contactNo={`+91 ${cards.contactNumber}`}

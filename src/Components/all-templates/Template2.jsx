@@ -38,7 +38,7 @@ export default function Template2({ templateData, staticTemplateData }) {
     <>
       <div className="lg:flex mb-[-265px]">
         <div className="lg:w-[55%] w-full">
-          <SwiperMain SliderImg={templateData.SliderImg} />
+          <SwiperMain SliderImg={staticTemplateData.SliderImg} />
         </div>
         <div className="lg:w-[45%] relative lg:flex hidden items-center text-center z-10 px-8">
           <div className=" mb-5">
@@ -136,7 +136,7 @@ export default function Template2({ templateData, staticTemplateData }) {
           </div>
         </div>
         <div className="lg:w-[55%] w-full">
-          <SwiperMain SliderImg={templateData.SliderImg2} />
+          <SwiperMain SliderImg={staticTemplateData.SliderImg2} />
         </div>
       </div>
       <div>
@@ -214,7 +214,7 @@ export default function Template2({ templateData, staticTemplateData }) {
               modules={[EffectFade, Autoplay]}
               className="mySwiper"
             >
-              {templateData.SliderImg1.map((img, id) => {
+              {staticTemplateData.SliderImg1.map((img, id) => {
                 return (
                   <SwiperSlide key={id}>
                     <Image
@@ -333,8 +333,8 @@ export default function Template2({ templateData, staticTemplateData }) {
               {/* {(selectedItem == "All" ||
                 selectedItem == "CapturedMemories") && ( */}
               <>
-                <Gallery
-                  images={templateData.GalleryImg}
+                {/* <Gallery
+                  images={staticTemplateData.GalleryImg}
                   paddingBottom="186.523%"
                   columngapcount="4"
                   openLightbox={openLightbox}
@@ -344,7 +344,7 @@ export default function Template2({ templateData, staticTemplateData }) {
                   imageIndex={imageIndex}
                   onClose={closeLightbox}
                   images={templateData.GalleryImg}
-                />
+                /> */}
               </>
               {/* )} */}
 
@@ -506,7 +506,7 @@ export default function Template2({ templateData, staticTemplateData }) {
             {templateData?.familyMembers?.map((card, index) => (
               <FamilyCard
                 key={card.id}
-                imgSrc={card.image}
+                imgSrc={staticTemplateData.avatars[index]}
                 name={card.name}
                 relationship={card.relation}
               />
@@ -541,7 +541,7 @@ export default function Template2({ templateData, staticTemplateData }) {
             {templateData?.pocs?.map((card, index) => (
               <FamilyCard
                 key={card.id}
-                imgSrc={card.image}
+                imgSrc={staticTemplateData.avatars[0]}
                 name={card.firstName}
                 relationship={card.relationship}
                 contactNo={`+91 ${card.contactNumber}`}
