@@ -6,7 +6,7 @@ const addContactUs = async (contactData) => {
   await http.post({
     url: "/communication/contact",
     payload: contactData,
-    isSecured: true,
+    isSecured: false,
   });
 };
 

@@ -4,7 +4,7 @@ import WebsiteTemplateContainer from "../common/WebsiteTemplateContainer";
 import Image from "next/image";
 
 function WebsiteDesigningSection() {
-  const heroImg = "/assets/for website designing-trans.webp";
+  const heroImg = "/assets/Website-designing.webp";
 
   return (
     <section style={{ background: "#FBF8F8" }} id="services">
@@ -73,30 +73,35 @@ function WebsiteDesigningSection() {
               </Box> */}
             </Box>
           </Grid>
-          <Grid item lg={6}>
+          <Grid
+            item
+            lg={6}
+            sx={{
+              display: "flex",
+              alignItem: "center",
+              justifyContent: "center",
+            }}
+          >
             <Box
               sx={{
-                background: "#fff",
+                //   background: "#fff",
                 p: 1,
-                borderRadius: "10px",
-                boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
+                //   borderRadius: "10px",
+                //   boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
                 display: "flex",
+                justifyContent: "end",
                 alignItem: "center",
                 mt: { lg: 0, xs: "40px" },
                 width: "100%",
-                ml: { lg: "60px", xs: "0px" },
                 height: "auto",
               }}
             >
               <Image
                 src={heroImg}
-                style={{
-                  objectFit: "fill",
-                  borderRadius: "10px",
-                }}
                 alt="img"
                 width={1000}
                 height={1000}
+                style={{ width: "650px", height: "auto" }}
               />
             </Box>
           </Grid>

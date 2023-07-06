@@ -118,7 +118,6 @@ function VideoInviTemplate() {
           </Box>
         );
       })} */}
-
       <Swiper
         spaceBetween={0}
         initialSlide={step}

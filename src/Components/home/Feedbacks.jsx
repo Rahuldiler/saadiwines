@@ -1,11 +1,12 @@
 import { Box, Typography } from "@mui/material";
 import React, { useState } from "react";
+
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
-import { Autoplay, Grid, Navigation, Pagination } from "swiper";
+import { Autoplay, Navigation, Pagination } from "swiper";
 import "swiper/css";
 import "swiper/css/pagination";
-import TestimonialCard from "../common/TestimonialCard";
 import "swiper/css/bundle";
+import TestimonialCard from "../common/TestimonialCard";
 
 function Feedbacks() {
   const dummyData = [
@@ -23,6 +24,12 @@ function Feedbacks() {
         "done by Shaadivines Team. Specially their guests invite and RSVP feature helped us\n" +
         "get accurate guests list and we catered accordingly.",
       image: "/assets/SanjanaRawat.png",
+    },
+    {
+      name: "Raj Mathew",
+      description:
+        "Shaddivines is a great platform for wedding planning. Its a one stop solution for all your wedding needs. I would highly recommend it to everyone.",
+      image: "/assets/raj-mathew.png",
     },
     {
       name: "Akshay Agrawal",
@@ -61,10 +68,6 @@ function Feedbacks() {
             spaceBetween={0}
             initialSlide={step}
             loop={true}
-            grid={{
-              rows: 1,
-              fill: "row",
-            }}
             className="mySwiper"
             breakpoints={{
               640: {
@@ -80,7 +83,7 @@ function Feedbacks() {
                 spaceBetween: 30,
               },
             }}
-            modules={[Grid, Navigation, Pagination, Autoplay]}
+            modules={[Navigation, Pagination, Autoplay]}
             pagination={{
               el: ".custom-pagination",
               clickable: true,
@@ -89,10 +92,10 @@ function Feedbacks() {
               prevEl: ".swiper-button-prev",
               nextEl: ".swiper-button-next",
             }}
-            autoplay={{
-              delay: 2500,
-              disableOnInteraction: false,
-            }}
+            // autoplay={{
+            //   delay: 2500,
+            //   disableOnInteraction: true,
+            // }}
             // onSlideChange={() => console.log("slide change")}
             // onSwiper={handleOnSetSwiper}
           >

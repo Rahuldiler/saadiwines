@@ -18,14 +18,6 @@ import { createRef } from "react";
 import * as htmlToImage from "html-to-image";
 import SEO from "@/Components/utils/seo";
 
-const createFileName = (extension = "", ...names) => {
-  if (!extension) {
-    return "";
-  }
-
-  return `${names.join("")}.${extension}`;
-};
-
 function Template({ singleTemplate, responseTemplateData, templateId }) {
   const [formData, setFormData] = useState({});
 
@@ -171,8 +163,6 @@ function Template({ singleTemplate, responseTemplateData, templateId }) {
   useEffect(() => {
     setLoading(false);
   }, [responseTemplateData]);
-
-  console.log(responseTemplateData);
 
   return (
     <Box>

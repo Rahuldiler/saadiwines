@@ -3,8 +3,7 @@ const staticTemplateData = [
     id: 1,
     templateId: 1,
     templateName: "Classic",
-    templateImage:
-      "https://sv-landing-page-assets.s3.eu-north-1.amazonaws.com/Screenshot+2023-05-27+at+11.38.02+AM.png",
+    templateImage: "/images/template/template1.webp",
     socialImage:
       "https://drive.google.com/uc?id=1arMmugFZHQncROtkI0e6iDbSg_CMu1Lj",
     url: "/template/1",
@@ -112,7 +111,7 @@ const staticTemplateData = [
     id: 2,
     templateId: 2,
     templateName: "Classic",
-    templateImage: "/images/theme2-img.png",
+    templateImage: "/images/template/template2.webp",
     socialImage:
       "https://drive.google.com/uc?id=1arMmugFZHQncROtkI0e6iDbSg_CMu1Lj",
 
@@ -221,7 +220,7 @@ const staticTemplateData = [
     id: 3,
     templateId: 3,
     templateName: "Classic",
-    templateImage: "/images/theme-3.png",
+    templateImage: "/images/template/template3.webp",
     socialImage:
       "https://drive.google.com/uc?id=1arMmugFZHQncROtkI0e6iDbSg_CMu1Lj",
 
@@ -330,7 +329,7 @@ const staticTemplateData = [
     id: 4,
     templateId: 4,
     templateName: "Classic",
-    templateImage: "/images/theme-4.png",
+    templateImage: "/images/template/template4.webp",
     socialImage:
       "https://drive.google.com/uc?id=1arMmugFZHQncROtkI0e6iDbSg_CMu1Lj",
 
@@ -440,7 +439,8 @@ const staticTemplateData = [
     id: 5,
     templateId: 5,
     templateName: "Classic",
-    templateImage: "/images/theme-5.png",
+    templateImage: "/images/template/template5.webp",
+
     socialImage:
       "https://drive.google.com/uc?id=1arMmugFZHQncROtkI0e6iDbSg_CMu1Lj",
 
@@ -615,7 +615,8 @@ const staticTemplateData = [
     id: 6,
     templateId: 6,
     templateName: "Classic",
-    templateImage: "/images/theme-6.png",
+    templateImage: "/images/template/template6.webp",
+
     url: "/template/6",
     isSelected: false,
     color: "blue",
@@ -787,7 +788,8 @@ const staticTemplateData = [
     id: 7,
     templateId: 7,
     templateName: "Classic",
-    templateImage: "/images/theme-7.png",
+    templateImage: "/images/template/template7.webp",
+
     url: "/template/7",
     isSelected: false,
     color: "blue",
@@ -959,7 +961,8 @@ const staticTemplateData = [
     id: 8,
     templateId: 8,
     templateName: "Classic",
-    templateImage: "/images/theme-8.png",
+    templateImage: "/images/template/template8.webp",
+
     url: "/template/8",
     isSelected: false,
     color: "blue",
@@ -1131,7 +1134,8 @@ const staticTemplateData = [
     id: 9,
     templateId: 9,
     templateName: "Classic",
-    templateImage: "/images/theme-9.png",
+    templateImage: "/images/template/template9.webp",
+
     url: "/template/9",
     isSelected: false,
     theme: {
@@ -1272,7 +1276,8 @@ const staticTemplateData = [
     id: 10,
     templateId: 10,
     templateName: "Classic",
-    templateImage: "/images/theme-10.png",
+    templateImage: "/images/template/template10.webp",
+
     url: "/template/10",
     isSelected: false,
     theme: {
@@ -1413,7 +1418,8 @@ const staticTemplateData = [
     id: 11,
     templateId: 11,
     templateName: "Classic",
-    templateImage: "/images/theme-11.png",
+    templateImage: "/images/template/template11.webp",
+
     url: "/template/11",
     isSelected: false,
     theme: {
@@ -1555,7 +1561,8 @@ const staticTemplateData = [
     id: 12,
     templateId: 12,
     templateName: "Classic",
-    templateImage: "/images/theme-12.png",
+    templateImage: "/images/template/template12.webp",
+
     url: "/template/12",
     isSelected: false,
     theme: {
