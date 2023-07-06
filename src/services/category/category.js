@@ -33,7 +33,7 @@ const addCategory = async (payload) => {
 const editCategory = async (payload) => {
   console.log("CATEGORY EDITED")
   return await http.put({
-    url: "/category",
+    url: `/category/${payload.id}`,
     isSecured: true,
     payload: payload,
   });

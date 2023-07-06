@@ -9,6 +9,7 @@ import ContactForm from "@/Components/template-components/1/rsvpForm";
 import Lightbox from "@/Components/template-components/1/lightBox";
 import Cards from "@/Components/template-components/1/Cards";
 import Steps from "@/Components/template-components/1/steps";
+import TemplateFooter from "../template-components/Footer/footer";
 
 function Template1({ templateData, staticTemplateData, images }) {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -26,13 +27,17 @@ function Template1({ templateData, staticTemplateData, images }) {
 
   const nextSlide = () => {
     setCurrentSlide((prevSlide) =>
-      prevSlide === staticTemplateData.images.slides.length - 1 ? 0 : prevSlide + 1
+      prevSlide === staticTemplateData.images.slides.length - 1
+        ? 0
+        : prevSlide + 1
     );
   };
 
   const prevSlide = () => {
     setCurrentSlide((prevSlide) =>
-      prevSlide === 0 ? staticTemplateData.images.slides.length - 1 : prevSlide - 1
+      prevSlide === 0
+        ? staticTemplateData.images.slides.length - 1
+        : prevSlide - 1
     );
   };
 
@@ -300,7 +305,7 @@ function Template1({ templateData, staticTemplateData, images }) {
           </div>
         </div>
       )}
-      <div
+      {/* <div
         className="text-center py-20 lg:py-14  bg-right-top bg-no-repeat bg-contain relative"
         style={{ backgroundImage: staticTemplateData?.images.waterColor02 }}
       >
@@ -313,7 +318,11 @@ function Template1({ templateData, staticTemplateData, images }) {
           {templateData?.weddingInfo?.bride.name.split(" ")[0]}
         </p>
         <p className="!font-Cardo">MADE WITH LOVE IN JAIPUR</p>
-      </div>
+      </div> */}
+      <TemplateFooter
+        image1={staticTemplateData?.images.waterColor02}
+        image2={staticTemplateData?.images.leaf03}
+      />
     </div>
   );
 }

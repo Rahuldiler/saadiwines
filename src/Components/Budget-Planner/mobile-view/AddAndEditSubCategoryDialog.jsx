@@ -24,11 +24,7 @@ const AddAndEditSubCategoryDialog = ({
     categoryId: categoryId,
   });
   const [errors, setErrors] = useState({});
-  const style = {
-    color: COLORS.primary,
-    ml: -1,
-    variant: "caption",
-  };
+  
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevFormData) => ({
@@ -62,7 +58,7 @@ const AddAndEditSubCategoryDialog = ({
         editSubcategory({
           ...obj,
           name: formData.name,
-          expectedAmount: formData.expectedAmount,
+          expectedAmount: +formData.expectedAmount,
           categoryId: categoryId,
         }).then((_) => {
           setTrackChanges((prev) => !prev);

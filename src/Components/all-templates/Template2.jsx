@@ -15,6 +15,7 @@ import Steps from "@/Components/template-components/2/steps";
 import ContactForm from "@/Components/template-components/2/RsvpForm";
 import FamilyCard from "@/Components/template-components/2/FamilyCard";
 import moment from "moment";
+import TemplateFooter from "../template-components/Footer/footer";
 
 export default function Template2({ templateData, staticTemplateData }) {
   const [imageIndex, setImageIndex] = useState();
@@ -587,6 +588,10 @@ export default function Template2({ templateData, staticTemplateData }) {
           </div>
         </div>
       </div>
+      <TemplateFooter
+        image1={staticTemplateData.bg12}
+        image2={staticTemplateData.bg01}
+      />
     </>
   );
 }
