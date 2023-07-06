@@ -1,4 +1,4 @@
-const staticTemplateData = [
+let staticTemplateData = [
   {
     id: 1,
     templateId: 1,
