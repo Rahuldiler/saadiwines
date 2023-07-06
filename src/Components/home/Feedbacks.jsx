@@ -26,9 +26,9 @@ function Feedbacks() {
       image: "/assets/SanjanaRawat.png",
     },
     {
-      name: "Raj Mathew",
+      name: "Sanjay Malhotra",
       description:
-        "Shaddivines is a great platform for wedding planning. Its a one stop solution for all your wedding needs. I would highly recommend it to everyone.",
+        "Shaadivines is a great platform for wedding websites. Its a one stop solution for all your wedding needs. I would highly recommend it to everyone.",
       image: "/assets/raj-mathew.png",
     },
     {
