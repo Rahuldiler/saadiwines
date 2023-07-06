@@ -3,7 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="369879d0-c866-4b70-8022-d857b0c9b9fe" name="Changes" comment="Minor text updates">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/home/Feedbacks.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/home/Feedbacks.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/common/WebsiteTemplateContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/common/WebsiteTemplateContainer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/home/About.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/home/About.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/home/ContactUs.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/home/ContactUs.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/constants/template.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/template.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

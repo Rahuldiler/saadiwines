@@ -6,10 +6,10 @@ import TaskAltIcon from "@mui/icons-material/TaskAlt";
 function About() {
   const listData = [
     "WEDsite",
-    "V-Card (Video card)",
+    "WEDcast",
+    "Video Invite",
     "Budget Planner",
     "Guest Management",
-    "Wedcast",
     "RSVP",
   ];
   return (

@@ -86,10 +86,6 @@ function ContactUs() {
         >
           Contact Us
         </Typography>
-
-        <Typography variant="body1" sx={{ textAlign: "center" }}>
-          Have Questions? Feel Free to Write Us
-        </Typography>
         <Grid
           container
           sx={{ my: { lg: 10, xs: "40px" }, px: { lg: 0, xs: "20px" } }}
