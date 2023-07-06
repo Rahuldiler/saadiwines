@@ -26,155 +26,123 @@ const createFileName = (extension = "", ...names) => {
   return `${names.join("")}.${extension}`;
 };
 
-function Template() {
+function Template({ singleTemplate, responseTemplateData, templateId }) {
   const [formData, setFormData] = useState({});
-  const [templateId, setTemplateId] = useState();
-  const [loading, setLoading] = useState(true);
 
+  const [loading, setLoading] = useState(true);
   const router = useRouter();
   const id = router.query.id;
+  const ref = createRef(null);
+  const [thumbnail, setThumbnail] = useState(null);
 
   useEffect(() => {
-    const encodeId = id?.replace("%2F", "/");
-    async function fetchData() {
-      try {
-        if (id?.length > 3) {
-          const responseTemplateData = await getTemplateData(encodeId);
-          setFormData(responseTemplateData);
-          setTemplateId(responseTemplateData.templateId);
-        } else {
-          if (id >= 5 && id < 9) {
-            setFormData(template2InfoData);
-          } else if (id >= 9) {
-            setFormData(template3InfoData);
-          } else {
-            setFormData(templateInfoData);
-          }
-          setTemplateId(Number(id));
-        }
-        setLoading(false);
-      } catch (err) {}
-    }
-    id && fetchData();
-  }, [id]);
+    setLoading(false);
+  }, [responseTemplateData]);
 
   const getTemplate = (templateId) => {
     switch (templateId) {
       case 1:
         return (
           <Template1
-            templateData={formData}
+            templateData={responseTemplateData}
             templateId={templateId}
-            staticTemplateData={staticTemplateData[0]}
-            images={staticTemplateData[0].images}
+            staticTemplateData={singleTemplate[0]}
           />
         );
       case 2:
         return (
           <Template1
-            templateData={formData}
+            templateData={responseTemplateData}
             templateId={templateId}
-            staticTemplateData={staticTemplateData[1]}
-            images={staticTemplateData[1].images}
+            staticTemplateData={singleTemplate[0]}
           />
         );
       case 3:
         return (
           <Template1
-            templateData={formData}
+            templateData={responseTemplateData}
             templateId={templateId}
-            staticTemplateData={staticTemplateData[2]}
-            images={staticTemplateData[2].images}
+            staticTemplateData={singleTemplate[0]}
           />
         );
       case 4:
         return (
           <Template1
-            templateData={formData}
+            templateData={responseTemplateData}
             templateId={templateId}
-            staticTemplateData={staticTemplateData[3]}
-            images={staticTemplateData[3].images}
+            staticTemplateData={singleTemplate[0]}
           />
         );
       case 5:
         return (
           <Template2
-            templateData={formData}
+            templateData={responseTemplateData}
             templateId={templateId}
-            staticTemplateData={staticTemplateData[4]}
-            images={staticTemplateData[4].images}
+            staticTemplateData={singleTemplate[0]}
           />
         );
       case 6:
         return (
           <Template2
-            templateData={formData}
+            templateData={responseTemplateData}
             templateId={templateId}
-            staticTemplateData={staticTemplateData[5]}
-            images={staticTemplateData[5].images}
+            staticTemplateData={singleTemplate[0]}
           />
         );
       case 7:
         return (
           <Template2
-            templateData={formData}
+            templateData={responseTemplateData}
             templateId={templateId}
-            staticTemplateData={staticTemplateData[6]}
-            images={staticTemplateData[6]}
+            staticTemplateData={singleTemplate[0]}
           />
         );
       case 8:
         return (
           <Template2
-            templateData={formData}
+            templateData={responseTemplateData}
             templateId={templateId}
-            staticTemplateData={staticTemplateData[7]}
-            images={staticTemplateData[7]}
+            staticTemplateData={singleTemplate[0]}
           />
         );
       case 9:
         return (
           <Template3
-            templateData={formData}
+            templateData={responseTemplateData}
             templateId={templateId}
-            staticTemplateData={staticTemplateData[8]}
-            images={staticTemplateData[8]}
+            staticTemplateData={singleTemplate[0]}
           />
         );
       case 10:
         return (
           <Template3
-            templateData={formData}
+            templateData={responseTemplateData}
             templateId={templateId}
-            staticTemplateData={staticTemplateData[9]}
-            images={staticTemplateData[9]}
+            staticTemplateData={singleTemplate[0]}
           />
         );
       case 11:
         return (
           <Template3
-            templateData={formData}
+            templateData={responseTemplateData}
             templateId={templateId}
-            staticTemplateData={staticTemplateData[10]}
-            images={staticTemplateData[10]}
+            staticTemplateData={singleTemplate[0]}
           />
         );
       case 12:
         return (
           <Template3
-            templateData={formData}
+            templateData={responseTemplateData}
             templateId={templateId}
-            staticTemplateData={staticTemplateData[11]}
-            images={staticTemplateData[11]}
+            staticTemplateData={singleTemplate[0]}
           />
         );
       case 13:
         return (
           <Template4
-            templateData={formData}
+            templateData={responseTemplateData}
             templateId={templateId}
-            staticTemplateData={staticTemplateData[11]}
-            images={staticTemplateData[11]}
+            staticTemplateData={singleTemplate[0]}
           />
         );
 
@@ -182,12 +150,9 @@ function Template() {
         return <Box>No template found </Box>;
     }
   };
-  const ref = createRef(null);
-  const [thumbnail, setThumbnail] = useState(null);
 
   const takeScreenShot = async (node) => {
     const dataURI = node && (await htmlToImage.toJpeg(node));
-    console.log(dataURI);
     setThumbnail(dataURI);
     // return dataURI;
   };
@@ -201,20 +166,30 @@ function Template() {
   // };
 
   useEffect(() => {
-    takeScreenShot(ref.current);
+    if (id?.length > 3) {
+      takeScreenShot(ref.current);
+    }
   }, [ref]);
+
+  console.log(formData.weddingInfo);
 
   return (
     <Box>
       <SEO
-        title="Shaadi Vines"
-        desc=""
-        keywords=""
-        url="https://stage.shaadivines.com/"
-        socialImg={thumbnail}
+        title={
+          responseTemplateData?.weddingInfo?.groom?.name +
+          " weds " +
+          responseTemplateData?.weddingInfo?.bride?.name +
+          " | Shaadi Vines"
+        }
+        description={responseTemplateData?.weddingInfo.thankYouMessage}
+        keywords="Test1"
+        url={`https://stage.shaadivines.com/template/${templateId}`}
+        ogImage={singleTemplate ? singleTemplate[0]?.socialImage : ""}
       />
+
       {loading ? (
-        <Loader message="Loading template" />
+        <Loader message="Loading template" isLoading={loading} />
       ) : (
         <div ref={ref} style={{ height: "720px" }}>
           {getTemplate(templateId)}
@@ -227,3 +202,43 @@ function Template() {
 }
 
 export default Template;
+
+export async function getStaticPaths() {
+  const paths = staticTemplateData.map((template) => ({
+    params: { id: template.templateId.toString() },
+  }));
+
+  return { paths, fallback: true };
+}
+
+// This also gets called at build time
+export async function getStaticProps({ params }) {
+  const encodeId = params.id?.replace("%2F", "/");
+  let responseTemplateData;
+  let templateId;
+  let singleTemplate;
+  if (params.id?.length > 3) {
+    responseTemplateData = await getTemplateData(encodeId);
+    templateId = Number(responseTemplateData.templateId);
+    singleTemplate = staticTemplateData.filter(
+      (template) =>
+        template.templateId === Number(responseTemplateData.templateId)
+    );
+  } else {
+    singleTemplate = staticTemplateData.filter(
+      (template) => template.templateId === Number(params.id)
+    );
+    if (params.id >= 5 && params.id < 9) {
+      responseTemplateData = template2InfoData;
+    } else if (params.id >= 9) {
+      responseTemplateData = template3InfoData;
+    } else {
+      responseTemplateData = templateInfoData;
+    }
+    templateId = Number(params.id);
+  }
+
+  return {
+    props: { singleTemplate, responseTemplateData, templateId },
+  };
+}
