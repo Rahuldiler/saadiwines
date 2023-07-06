@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="369879d0-c866-4b70-8022-d857b0c9b9fe" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.env.local" beforeDir="false" afterPath="$PROJECT_DIR$/.env.local" afterDir="false" />
+    <list default="true" id="369879d0-c866-4b70-8022-d857b0c9b9fe" name="Changes" comment="Minor text updates">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/all-templates/TemplateOne.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/all-templates/TemplateOne.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/template/0/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/template/0/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/common/WebsiteTemplateContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/common/WebsiteTemplateContainer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/home/About.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/home/About.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/home/ContactUs.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/home/ContactUs.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/constants/template.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/template.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,6 +112,8 @@
       <workItem from="1687525164762" duration="1117000" />
       <workItem from="1688389987030" duration="8436000" />
       <workItem from="1688480630366" duration="83000" />
+      <workItem from="1688637712563" duration="3592000" />
+      <workItem from="1688654786522" duration="2393000" />
     </task>
     <task id="LOCAL-00001" summary="Removed react-lightbox library">
       <created>1685289296459</created>
@@ -203,7 +206,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687526096052</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Minor text updates">
+      <created>1688649380035</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1688649380035</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -286,6 +296,7 @@
     <MESSAGE value="Added favicon.png" />
     <MESSAGE value="fixed errors" />
     <MESSAGE value="removed commented code" />
-    <option name="LAST_COMMIT_MESSAGE" value="removed commented code" />
+    <MESSAGE value="Minor text updates" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor text updates" />
   </component>
 </project>

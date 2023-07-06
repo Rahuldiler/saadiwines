@@ -1,15 +1,16 @@
-import { Box, Grid, Link } from "@mui/material";
+import {Box, Grid, Link} from "@mui/material";
 import Image from "next/image";
-import React, { useState } from "react";
-import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
-import { Autoplay, Navigation, Pagination } from "swiper";
+import React, {useState} from "react";
+import {Swiper, SwiperSlide, useSwiper} from "swiper/react";
+import {Autoplay, Navigation, Pagination} from "swiper";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/bundle";
 import TestimonialCard from "./TestimonialCard";
-import { staticTemplateData } from "@/constants/template";
+import {staticTemplateData} from "@/constants/template";
 
 function WebsiteTemplateContainer() {
+
   const templateDesign = [
     {
       id: 1,
@@ -44,6 +45,12 @@ function WebsiteTemplateContainer() {
   ];
 
   const [step, setStep] = useState(1);
+  const [templateData, setTemplateData] = useState([
+    ...staticTemplateData.filter(data => data.id % 4 === 0),
+    ...staticTemplateData.filter(data => data.id % 4 === 1),
+    ...staticTemplateData.filter(data => data.id % 4 === 2),
+    ...staticTemplateData.filter(data => data.id % 4 === 3)
+  ])
 
   return (
     <Box
@@ -51,13 +58,14 @@ function WebsiteTemplateContainer() {
         display: "flex",
         justifyContent: "space-around",
         flexWrap: "wrap",
-        pb: { lg: 10, xs: 0 },
+        pb: {lg: 10, xs: 0},
       }}
     >
       <Swiper
         spaceBetween={0}
         initialSlide={step}
         loop={true}
+        speed={2000}
         className="mySwiper"
         breakpoints={{
           640: {
@@ -83,18 +91,18 @@ function WebsiteTemplateContainer() {
           nextEl: ".swiper-button-next",
         }}
         autoplay={{
-          delay: 2500,
+          delay: 4000,
           disableOnInteraction: false,
         }}
         // onSlideChange={() => console.log("slide change")}
         // onSwiper={handleOnSetSwiper}
       >
-        {staticTemplateData.map((listOfImg, index) => {
+        {templateData.map((listOfImg, index) => {
           return (
-            <SwiperSlide key={index} style={{ width: "300px" }}>
+            <SwiperSlide key={index} style={{width: "300px"}}>
               <Box
                 sx={{
-                  flex: { lg: "1 1 25%", xs: "1 1 50%" },
+                  flex: {lg: "1 1 25%", xs: "1 1 50%"},
                   display: "flex",
                   justifyContent: "center",
                 }}
@@ -103,8 +111,8 @@ function WebsiteTemplateContainer() {
                 <Link
                   href={listOfImg.url}
                   sx={{
-                    px: { lg: 8, xs: "20px" },
-                    py: { lg: 4, xs: "20px" },
+                    px: {lg: 8, xs: "20px"},
+                    py: {lg: 4, xs: "20px"},
 
                     // "&:hover": {},
                   }}
@@ -116,7 +124,6 @@ function WebsiteTemplateContainer() {
                     height={1000}
                     src={listOfImg.templateImage}
                     style={{
-                      height: "auto",
                       width: "100%",
                       height: "500px",
                       objectFit: "cover",
