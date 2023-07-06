@@ -33,11 +33,8 @@ function Template({ singleTemplate, responseTemplateData, templateId }) {
   const router = useRouter();
   const id = router.query.id;
   const ref = createRef(null);
+  const [uploadThumbnail, setUploadThumbnail] = useState(null);
   const [thumbnail, setThumbnail] = useState(null);
-
-  useEffect(() => {
-    setLoading(false);
-  }, [responseTemplateData]);
 
   const getTemplate = (templateId) => {
     switch (templateId) {
@@ -153,7 +150,7 @@ function Template({ singleTemplate, responseTemplateData, templateId }) {
 
   const takeScreenShot = async (node) => {
     const dataURI = node && (await htmlToImage.toJpeg(node));
-    setThumbnail(dataURI);
+    setUploadThumbnail(dataURI);
     // return dataURI;
   };
 
@@ -171,7 +168,11 @@ function Template({ singleTemplate, responseTemplateData, templateId }) {
     }
   }, [ref]);
 
-  console.log(formData.weddingInfo);
+  useEffect(() => {
+    setLoading(false);
+  }, [responseTemplateData]);
+
+  console.log(responseTemplateData);
 
   return (
     <Box>
@@ -185,7 +186,13 @@ function Template({ singleTemplate, responseTemplateData, templateId }) {
         description={responseTemplateData?.weddingInfo.thankYouMessage}
         keywords="Test1"
         url={`https://stage.shaadivines.com/template/${templateId}`}
-        ogImage={singleTemplate ? singleTemplate[0]?.socialImage : ""}
+        ogImage={
+          id?.length > 3
+            ? responseTemplateData?.thumbnail
+            : singleTemplate
+            ? singleTemplate[0]?.socialImage
+            : ""
+        }
       />
 
       {loading ? (
@@ -196,7 +203,7 @@ function Template({ singleTemplate, responseTemplateData, templateId }) {
         </div>
       )}
       {/* <button onClick={downloadScreenshot}>Download screenshot</button> */}
-      {/* <img src={thumbnail} style={{ width: "500px", height: "500px" }} /> */}
+      {/* <img src={uploadThumbnail} style={{ width: "500px", height: "500px" }} /> */}
     </Box>
   );
 }
