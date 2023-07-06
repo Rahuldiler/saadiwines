@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 function Double({
   img,
@@ -26,7 +27,13 @@ function Double({
                 </div>
             </div> */}
 
-        <img src={img} alt="" className="h-full object-cover " />
+        {/* <img src={img} alt="" className="h-full object-cover " /> */}
+        <Image
+              src={img}
+              alt=""
+              layout="fill"
+              className="h-full w-full object-cover "
+            />
       </div>
       <div
         style={{ backgroundColor: theme.bgColor, color: theme?.textColor,display:'flex',

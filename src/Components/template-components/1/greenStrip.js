@@ -6,6 +6,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper";
+import Image from "next/image";
+
 
 function GreenStrip({
   title,
@@ -83,9 +85,17 @@ function GreenStrip({
           propName === "clock" ? "lg:w-[30%]" : "lg:w-[50%]"
         } lg:w-[30%]  lg:flex items-center `}
       >
-        <img
+        {/* <img
           src={img}
           alt="glasses"
+          className="w-24 h-20 mr-3 mb-6 hidden lg:block"
+        /> */}
+         <Image
+          src={img}
+          alt="glasses"
+          width={24}
+          height={20}
+          // layout="fill"
           className="w-24 h-20 mr-3 mb-6 hidden lg:block"
         />
         <div className="text-center lg:text-left">
@@ -103,44 +113,92 @@ function GreenStrip({
           className="mySwiper "
         >
           <SwiperSlide>
-            <img
+            {/* <img
               src={swiperSlide1}
               alt=""
               className="w-52 h-20 object-contain"
+            /> */}
+             <Image
+              src={swiperSlide1}
+              alt=""
+              width={52}
+              height={20}
+              // layout="fill"
+              className="w-52 h-20 object-contain"
             />
           </SwiperSlide>
           <SwiperSlide>
-            <img
+            {/* <img
               src={swiperSlide2}
               alt=""
               className="w-52 h-20 object-contain"
+            /> */}
+             <Image
+              src={swiperSlide2}
+              alt=""
+              width={52}
+              height={20}
+              // layout="fill"
+              className="w-52 h-20 object-contain"
             />
           </SwiperSlide>
           <SwiperSlide>
-            <img
+            {/* <img
               src={swiperSlide3}
               alt=""
               className="w-52 h-20 object-contain"
+            /> */}
+             <Image
+              src={swiperSlide3}
+              alt=""
+              width={52}
+              height={20}
+              // layout="fill"
+              className="w-52 h-20 object-contain"
             />
           </SwiperSlide>
           <SwiperSlide>
-            <img
+            {/* <img
               src={swiperSlide4}
               alt=""
               className="w-52 h-20 object-contain"
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img
-              src={swiperSlide5}
+            /> */}
+             <Image
+              src={swiperSlide4}
               alt=""
+              width={52}
+              height={20}
+              // layout="fill"
               className="w-52 h-20 object-contain"
             />
           </SwiperSlide>
           <SwiperSlide>
-            <img
+            {/* <img
+              src={swiperSlide5}
+              alt=""
+              className="w-52 h-20 object-contain"
+            /> */}
+             <Image
+              src={swiperSlide5}
+              alt=""
+              width={52}
+              height={20}
+              // layout="fill"
+              className="w-52 h-20 object-contain"
+            />
+          </SwiperSlide>
+          <SwiperSlide>
+            {/* <img
               src={swiperSlide6}
               alt=""
+              className="w-52 h-20 object-contain"
+            /> */}
+             <Image
+              src={swiperSlide6}
+              alt=""
+              width={52}
+              height={20}
+              // layout="fill"
               className="w-52 h-20 object-contain"
             />
           </SwiperSlide>

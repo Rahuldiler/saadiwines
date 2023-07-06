@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
+import Image from "next/image";
 
 
 const Lightbox = ({ isOpen, imageIndex, onClose, images }) => {
@@ -26,7 +27,15 @@ const Lightbox = ({ isOpen, imageIndex, onClose, images }) => {
       <div className='absolute cursor-pointer right-0  text-white  top-1/2  transform -translate-x-1/2 -translate-y-1/2' onClick={()=>imgSlide("nxt")}><ChevronRightIcon className='text-white w-10 h-10'/></div>
 
       <div className="max-w-3xl w-full ">
-          <img src={images[nextImage].image} alt="Lightbox" className="rounded-lg shadow-lg" />
+          {/* <img src={images[nextImage].image} alt="Lightbox" className="rounded-lg shadow-lg" /> */}
+          <Image
+              src={images[nextImage].image}
+              alt="Lightbox"
+              // width={52}
+              // height={20}
+              layout="fill"
+              className="rounded-lg shadow-lg" 
+            />
           <button
             className="absolute top-0 right-0 m-4 text-gray-400 hover:text-white"
             onClick={onClose}
