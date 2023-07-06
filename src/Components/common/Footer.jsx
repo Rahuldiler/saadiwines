@@ -51,11 +51,11 @@ function Footer() {
 
   const contactInfo = [
     {
-      value: "admin@shaadivines.com",
+      value: "query@shaadivines.com",
       icon: <HiMail style={{ marginRight: 4 }} />,
     },
     {
-      value: "+91 9412817667",
+      value: "+91 8800191621",
       icon: <FaPhone style={{ marginRight: 4 }} />,
     },
     {
