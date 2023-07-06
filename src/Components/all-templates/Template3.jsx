@@ -6,6 +6,7 @@ import RsvpLightbox from "@/Components/template-components/3/rsvpLightbox";
 import React, { useEffect, useState } from "react";
 import ContactFormRsvp from "@/Components/template-components/1/rsvpForm";
 import moment from "moment";
+import TemplateFooter from "../template-components/Footer/footer";
 
 function Template3({ templateData, staticTemplateData }) {
   const useTimeRemaining = (targetDate) => {
@@ -321,7 +322,7 @@ function Template3({ templateData, staticTemplateData }) {
           backgroundImage: staticTemplateData?.greyLight,
         }}
       >
-        <div className="text-center max-w-4xl mx-auto my-10 px-10 md:my-0 md:px-0">
+        <div className="text-center max-w-4xl mx-auto my-0 px-10 md:my-0 md:px-0">
           <p className="!font-Poppins !text-[14px]">
             YOU'RE INVITED TO SHARE IN OUR JOY & HAPPINESS
           </p>
@@ -339,6 +340,7 @@ function Template3({ templateData, staticTemplateData }) {
           />
         </div>
       </div>
+      <TemplateFooter image1={staticTemplateData.couple} image2={staticTemplateData.couple}/>
     </div>
   );
 }

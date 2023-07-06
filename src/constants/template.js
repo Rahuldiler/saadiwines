@@ -1717,5 +1717,5 @@ const staticTemplateData = [
   //   isSelected: false,
   // },
 ];
-
-export { staticTemplateData };
+const footerString = "Designed and developed by";
+export { staticTemplateData, footerString };

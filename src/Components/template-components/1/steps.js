@@ -17,7 +17,7 @@ function Steps({
         <ArrowRightIcon className="w-6 h-w-6" color={textColor} />
       </div>
       <div className="mt-4 lg:mt-0" style={{ color: textColor }}>
-        <p className="!font-Alex !text-[35px] ">
+        <p className="!font-Nunito font-medium !text-[32px] ">
           {fctnName}{" "}
           <span
             style={{ backgroundColor: themeColor.bgColor, color: themeColor?.textColor }}
@@ -26,7 +26,7 @@ function Steps({
             <a href={location}>map</a>
           </span>
         </p>
-        <p className="!font-Alex !text-[25px] ">{dateTime}</p>
+        <p className="!font-Nunito !text-[24px] ">{dateTime}</p>
         <p className="mt-2 lg:mt-0">{fctnInfo}</p>
       </div>
     </div>

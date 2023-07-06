@@ -126,7 +126,7 @@ const Category = ({
 function CategoryDialog({ open, setOpen, setTrackChanges }) {
   const [formData, setFormData] = useState({
     name: "",
-    expectedAmount: 0,
+    // expectedAmount: 0,
   });
   const [errors, setErrors] = useState({});
   const handleChange = (e) => {
@@ -147,7 +147,7 @@ function CategoryDialog({ open, setOpen, setTrackChanges }) {
     } else {
       addCategory(formData).then(() => {
         setTrackChanges((p) => !p);
-        setFormData({ name: "", expectedAmount: 0 });
+        setFormData({ name: "", });
         setOpen(false);
       });
     }

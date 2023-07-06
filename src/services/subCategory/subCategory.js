@@ -3,6 +3,8 @@ import HTTPClientHandler from "@/services/HTTPClientHandler";
 const http = new HTTPClientHandler();
 
 const addSubcategory = async (payload) => {
+  console.log("ADDING SUBCATEGORY");
+
   return await http.post({
     url: "/subCategory",
     isSecured: true,
@@ -10,20 +12,13 @@ const addSubcategory = async (payload) => {
   });
 };
 const editSubcategory = async (payload) => {
-  console.log("payload")
-  console.log(payload)
+  console.log("EDITING SUBCATEGORY");
   return await http.put({
-    url: "/subCategory",
-    isSecured: true,
-    payload: payload,
-  });
-};
-const addTransaction = async (payload) => {
-  return http.post({
-    url: "/transaction",
+    url: `/subCategory/${payload.id}`,
     isSecured: true,
     payload: payload,
   });
 };
 
-export { addSubcategory, addTransaction, editSubcategory };
+
+export { addSubcategory, editSubcategory };

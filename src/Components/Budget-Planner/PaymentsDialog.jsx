@@ -67,7 +67,11 @@ export default function PaymentsDialog({
   //   setAge(event.target.value as string);
   // };
   const handleTypeChange = (e) => {
-    setFormData({ ...formData, type: e.target.value });
+    console.log('------------------00000000000-------------------')
+    const value =
+      e.target.type === "number" ? parseFloat(e.target.value) : e.target.value;
+    setFormData({ ...formData, [e.target.name]: value });
+    // setFormData({ ...formData, type: e.target.value });
   };
   const handleDateChange = (date) => {
     setFormData({ ...formData, dateAdded: formatDate(date) });

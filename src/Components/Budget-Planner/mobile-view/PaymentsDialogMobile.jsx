@@ -22,16 +22,16 @@ const PaymentsDialog = ({ onClose, setTrackChanges, subCategoryId }) => {
   });
   const [valueDateTime, setValueDateTime] = useState();
   const [errors, setErrors] = useState({});
-  const style = {
-    ml: -1,
-    variant: "caption",
-  };
+  
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      [name]: value,
-    }));
+    console.log('-------------------------------------')
+    e.target.type === "number" ? parseFloat(e.target.value) : e.target.value;
+    setFormData({ ...formData, [e.target.name]: value });
+    // const { name, value } = e.target;
+    // setFormData((prevFormData) => ({
+    //   ...prevFormData,
+    //   [name]: value,
+    // }));
   };
   const handleDateTime = (newValue) => {
     setValueDateTime(newValue);
@@ -174,6 +174,7 @@ const PaymentsDialog = ({ onClose, setTrackChanges, subCategoryId }) => {
           name="amount"
           variant="outlined"
           required
+          type="number"
           error={!!errors.amount}
           helperText={
             errors.amount && (
