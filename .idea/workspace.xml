@@ -2,12 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="369879d0-c866-4b70-8022-d857b0c9b9fe" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.env.production" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.env.stage" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build-prod.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build-stage.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env.local" beforeDir="false" afterPath="$PROJECT_DIR$/.env.local" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/all-templates/TemplateOne.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/all-templates/TemplateOne.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/template/0/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/template/0/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
