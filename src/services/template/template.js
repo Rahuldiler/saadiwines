@@ -12,7 +12,7 @@ const getTemplateKey = async () => {
 
 const getTemplateData = async (apiKey) => {
   const response = await http.get({
-    url: `/getTemplateData/${apiKey}`,
+    url: `/getTemplateData?apiKey=${apiKey}`,
   });
   return response.data;
 };
