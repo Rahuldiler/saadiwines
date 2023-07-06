@@ -24,7 +24,7 @@ function Webcast() {
               className="vibeFont"
               sx={{ color: "#bc8129", mt: { lg: 0, xs: "40px" } }}
             >
-              Live Wedcast
+              Wedcast<sup>Live</sup>
             </Typography>
             <Typography
               variant="body1"

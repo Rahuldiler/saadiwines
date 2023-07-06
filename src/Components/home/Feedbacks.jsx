@@ -26,16 +26,13 @@ function Feedbacks() {
       image: "/assets/SanjanaRawat.png",
     },
     {
-      name: "Akshay Agrawal",
+      name: "Raj Mathew",
       description:
-        "My sisters wedding was one of the most special day for me and weddingvines saved\n" +
-        "our day.\n" +
-        "Everyone was amazed with wedding website as rarely anyone has seen something like\n" +
-        "this in India",
-      image: "/assets/AkshayAgrawal.png",
+        "Shaddivines is a great platform for wedding planning. Its a one stop solution for all your wedding needs. I would highly recommend it to everyone.",
+      image: "/assets/raj-mathew.png",
     },
     {
-      name: "Akshay Agrawal 2",
+      name: "Akshay Agrawal",
       description:
         "My sisters wedding was one of the most special day for me and weddingvines saved\n" +
         "our day.\n" +

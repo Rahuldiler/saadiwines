@@ -4,7 +4,7 @@ import VideoInviTemplate from "../common/VideoInviTemplate";
 import Image from "next/image";
 
 function VideoInvitation() {
-  const heroImg = "/assets/video invation.webp";
+  const heroImg = "/assets/video-invitation.webp";
   return (
     <section>
       <Box className="layoutMargin" id="video-invitation">
@@ -70,27 +70,24 @@ function VideoInvitation() {
           <Grid item lg={6}>
             <Box
               sx={{
-                background: "#fff",
+                //   background: "#fff",
                 p: 1,
-                borderRadius: "10px",
-                boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
+                //   borderRadius: "10px",
+                //   boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
                 display: "flex",
+                justifyContent: "end",
                 alignItem: "center",
                 mt: { lg: 0, xs: "40px" },
                 width: "100%",
-                ml: { lg: "60px", xs: "0px" },
                 height: "auto",
               }}
             >
               <Image
                 src={heroImg}
-                style={{
-                  objectFit: "fill",
-                  borderRadius: "10px",
-                }}
                 alt="img"
                 width={1000}
                 height={1000}
+                style={{ width: "450px ", height: "100%" }}
               />
             </Box>
           </Grid>
