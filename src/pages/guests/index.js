@@ -1,254 +1,148 @@
-import React, { useEffect, useState, useCallback } from "react";
-import Box from "@mui/material/Box";
+import { useEffect, useState, useCallback, Fragment } from "react";
 import {
-  DataGrid,
-  useGridApiContext,
-  GRID_CHECKBOX_SELECTION_COL_DEF,
-  GridRowModes,
-  GridToolbarContainer,
-  GridActionsCellItem,
-  GridRowEditStopReasons,
-} from "@mui/x-data-grid";
-import TextField from "@mui/material/TextField";
-import ClearIcon from "@mui/icons-material/Clear";
-import Select from "@mui/material/Select";
-import MenuItem from "@mui/material/MenuItem";
-import CustomNoRowsOverLay from "./CustomNoRowsOverLay";
-import GuestAcionDialog from "./GuestActionDialog";
-import { getAllGuestsList } from "@/services/guests/guestService";
-import { getItineraryConfig } from "@/services/itinerary/formItinerary";
-import Stack from "@mui/material/Stack";
-import InputLabel from "@mui/material/InputLabel";
-import Chip from "@mui/material/Chip";
-import FormControl from "@mui/material/FormControl";
-import Button from "@mui/material/Button";
-import Grid from "@mui/material/Unstable_Grid2";
+  Box,
+  Button,
+  Chip,
+  IconButton,
+  Stack,
+  Tooltip,
+  Container,
+} from "@mui/material";
+import { Edit } from "@mui/icons-material";
+import { green, red } from "@mui/material/colors";
 import Fab from "@mui/material/Fab";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
+import AddCircleOutlinedIcon from "@mui/icons-material/AddCircleOutlined";
+import HighlightOffOutlinedIcon from "@mui/icons-material/HighlightOffOutlined";
+import CssBaseline from "@mui/material/CssBaseline";
+import {
+  getAllGuestsList,
+  deleteGuests,
+  updateGuestItinerary,
+} from "@/services/guests/guestService";
+import { getItineraryConfig } from "@/services/itinerary/formItinerary";
 import Checkbox from "@mui/material/Checkbox";
-import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
-import TablePagination from "@mui/material/TablePagination";
-import DeleteIcon from "@mui/icons-material/Delete";
-import EditIcon from "@mui/icons-material/Edit";
-import AddIcon from "@mui/icons-material/Add";
-import SaveIcon from "@mui/icons-material/Save";
-import CancelIcon from "@mui/icons-material/Close";
-import LinearProgress from "@mui/material/LinearProgress";
-import { boolean } from "yup";
-import { CancelOutlined } from "@mui/icons-material";
 import Header from "@/Components/common/Header";
 import { useNavItemsStore } from "../../store";
-import { getUserPreference } from "@/services/user-preference/userPreference";
-
-const table = {
-  minWidth: 750,
-};
-const sticky = {
-  position: "sticky",
-  background: "white",
-  zIndex: "100",
-};
-const stickyHeader = {
-  position: "sticky",
-  zIndex: "101",
-};
-
-const guestListColumns = [
-  {
-    ...GRID_CHECKBOX_SELECTION_COL_DEF,
-    width: 50,
-  },
-  {
-    field: "fullName",
-    headerName: "Name",
-    width: 200,
-    pos: "12%",
-    editable: false,
-  },
-  {
-    field: "nickName",
-    headerName: "Nick Name",
-    width: 160,
-    pos: "17%",
-    editable: false,
-  },
-  {
-    field: "family",
-    headerName: "Family Name",
-    width: 120,
-    pos: "24%",
-    editable: false,
-  },
-  {
-    field: "cohort",
-    headerName: "Cohort",
-    description: "This column has a value getter and is not sortable.",
-    sortable: false,
-    width: 100,
-    type: "singleSelect",
-    valueOptions: ["Family", "Friends", "Work", "Others"],
-    pos: "31%",
-    editable: false,
-  },
-  {
-    field: "contact",
-    headerName: "Phone Numbers",
-    description: "This column has a value getter and is not sortable.",
-    sortable: false,
-    editable: false,
-    pos: "36%",
-    width: 250,
-    renderCell: (params) => (
-      <Grid
-        container
-        rowSpacing={0.5}
-        columnSpacing={{ xs: 0.5, sm: 1, md: 1.5 }}
-      >
-        {params.value &&
-          params.value
-            .split(",")
-            .splice(0, 2)
-            .map((val, index) => (
-              <Grid xs="auto">
-                <Chip
-                  variant="outlined"
-                  color={index == 1 ? "primary" : "success"}
-                  size="small"
-                  label={val}
-                  onDelete={handleDelete}
-                />
-              </Grid>
-            ))}
-      </Grid>
-    ),
-  },
-  {
-    field: "headCount",
-    headerName: "No. of Guests",
-    description: "This column has a value getter and is not sortable.",
-    sortable: false,
-    editable: false,
-    pos: "49%",
-    width: 120,
-  },
-  {
-    field: "isInvitationSent",
-    headerName: "Wedding Invitation",
-    description: "This column has a value getter and is not sortable.",
-    sortable: false,
-    editable: false,
-    type: "boolean",
-    pos: "55%",
-    width: 130,
-  },
-];
-
-function convertToTableColumnHeader(item) {
-  return {
-    field: item.functionName,
-    headerName: item.functionName,
-    description: "This column has a value getter and is not sortable.",
-    sortable: false,
-    editable: false,
-    type: "boolean",
-    width: 130,
-    renderCell: (params) => (
-      <Checkbox
-        style={{ width: 25 }}
-        color="primary"
-        checked={params.value}
-        inputProps={{ "aria-label": "select all desserts" }}
-      />
-    ),
-  };
-}
-
-const handleDelete = () => {
-  console.info("You clicked the delete icon.");
-};
+import {
+  MaterialReactTable,
+  MRT_FullScreenToggleButton,
+} from "material-react-table";
+import GuestAcionDialog from "../../Components/guest/GuestActionDialog";
+import DeleteGuestModal from "../../Components/guest/DeleteGuestModal";
+import { isEmpty, debounce } from "lodash";
 
 const cohortOptions = ["Family", "Friends", "Work", "Others"];
 
-const actions = [
+const guestHeaders = [
   {
-    field: "actions",
-    type: "actions",
-    width: 80,
-    getActions: (params) => [
-      <GridActionsCellItem
-        icon={<EditIcon />}
-        label="Delete"
-        onClick={deleteGuest(params.id)}
-      />,
-      <GridActionsCellItem
-        icon={<DeleteIcon />}
-        label="Delete"
-        onClick={deleteGuest(params.id)}
-      />,
+    accessorKey: "fullName",
+    header: "Name",
+    size: 130,
+    minSize: 130,
+    maxSize: 130,
+    filterFn: "startsWith",
+    enableEditing: "false",
+    type: "text",
+    muiTableBodyCellProps: {
+      display: "inline",
+    },
+  },
+  {
+    accessorKey: "nickName",
+    header: "Nick Name",
+    size: 130,
+    minSize: 130,
+    maxSize: 130,
+    filterFn: "startsWith",
+    enableEditing: "false",
+    type: "text",
+    muiTableBodyCellProps: {
+      display: "inline",
+    },
+    muiTableHeadCellProps: {
+      width: "80%",
+    },
+  },
+  {
+    accessorKey: "family",
+    header: "Family Name",
+    size: 140,
+    minSize: 140,
+    maxSize: 140,
+    filterFn: "startsWith",
+    enableEditing: "false",
+    type: "text",
+  },
+  {
+    accessorKey: "cohort",
+    header: "Cohort",
+    description: "This column has a value getter and is not sortable.",
+    size: 130,
+    type: "singleSelect",
+    valueOptions: cohortOptions,
+    filterVariant: "select",
+    enableEditing: "false",
+    filterSelectOptions: cohortOptions,
+    type: "select",
+  },
+  {
+    accessorKey: "contact",
+    header: "Phone Numbers",
+    description: "This column has a value getter and is not sortable.",
+    enableSorting: false,
+    enableEditing: "false",
+    type: "number",
+    size: 200,
+    Cell: ({ cell }) => (
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+        }}
+      >
+        {cell
+          .getValue()
+          .split(",")
+          .splice(0, 2)
+          .map((val, index) => (
+            <Chip
+              variant="outlined"
+              color={index == 0 ? "success" : "primary"}
+              size="small"
+              label={val}
+              // onDelete={() => handlePhoneNumberDelete(val)}
+            />
+          ))}
+      </Box>
+    ),
+  },
+  {
+    accessorKey: "headCount",
+    header: "No. of Guests",
+    description: "This column has a value getter and is not sortable.",
+    type: "number",
+    enableEditing: "false",
+    size: 140,
+    muiTableBodyCellProps: {
+      align: "center",
+    },
+  },
+  {
+    accessorKey: "isInvitationSent",
+    header: "Is Invited",
+    description: "This column has a value getter and is not sortable.",
+    size: 130,
+    type: "checkBox",
+    enableEditing: "false",
+    filterVariant: "select",
+    enableEditing: "false",
+    filterSelectOptions: [
+      { text: "Yes", value: "true" },
+      { text: "No", value: "false" },
     ],
+    Cell: ({ cell }) => <Checkbox disabled checked={cell.getValue()} />,
   },
 ];
-
-function EditToolbar(props) {
-  const { setGuestListData, setRowModesModel } = props;
-
-  const newRow = {
-    id: 0,
-    fullName: "",
-    nickName: "",
-    family: "",
-    contact: "",
-    cohort: "",
-    headCount: 1,
-    isInvitationSent: false,
-  };
-
-  const handleClick = () => {
-    const id = 0;
-    setGuestListData((oldRows) => [...oldRows, newRow, newRow, newRow]);
-    setRowModesModel((oldModel) => ({
-      ...oldModel,
-      [id]: { mode: GridRowModes.Edit, fieldToFocus: "fullName" },
-    }));
-  };
-
-  return (
-    <GridToolbarContainer>
-      <Button
-        variant="outlined"
-        color="secondary"
-        startIcon={<AddIcon />}
-        onClick={handleClick}
-      >
-        Add Guests
-      </Button>
-      <Button
-        variant="outlined"
-        color="primary"
-        startIcon={<EditIcon />}
-        onClick={handleClick}
-      >
-        Edit Guest
-      </Button>
-      <Button
-        variant="outlined"
-        color="primary"
-        startIcon={<DeleteIcon />}
-        onClick={handleClick}
-      >
-        Delete Guest
-      </Button>
-    </GridToolbarContainer>
-  );
-}
-
-function deleteGuest(id) {}
 
 function mapItinerary(itinerary) {
   var obj = {};
@@ -256,7 +150,7 @@ function mapItinerary(itinerary) {
   return obj;
 }
 
-function convertToGuestData(item) {
+function mapGuestDataRow(item) {
   var mergedItems = [];
   if (Array.isArray(item.iternaryList) && item.iternaryList.length) {
     const convertedItems = item.iternaryList.map((singleItem) =>
@@ -267,7 +161,7 @@ function convertToGuestData(item) {
 
   return {
     id: item.id,
-    fullName: item.salutation + " " + item.fullName,
+    fullName: item.fullName,
     nickName: item.nickName,
     family: item.family,
     contact: item.contact.join(","),
@@ -278,202 +172,468 @@ function convertToGuestData(item) {
   };
 }
 
+const mapAllGuestsData = (responseData) => {
+  return responseData.allGuestsData?.map((data) => mapGuestDataRow(data));
+};
+
+const getGuestsRequestFilters = (columnFilters) => {
+  const filterObj = {};
+  if (!isEmpty(columnFilters)) {
+    columnFilters.forEach((element) => {
+      if (Object.keys(element).length === 2) {
+        filterObj[element.id] = element.value;
+      }
+    });
+  }
+  return filterObj;
+};
+
+const fetchGuestsData = async (pagination, sorting, columnFilters) => {
+  const search = getGuestsRequestFilters(columnFilters);
+  const requestPayload = {
+    limit: pagination.pageSize ? pagination.pageSize : 10,
+    offset:
+      pagination.pageIndex && pagination.pageSize
+        ? pagination.pageIndex * pagination.pageSize
+        : 0,
+    sortDirection:
+      sorting && sorting.length > 0 && !sorting[0].desc ? "ASC" : "DESC",
+    sortColumn: sorting && sorting.length > 0 ? sorting[0].id : "name",
+    ...search,
+  };
+  const response = await getAllGuestsList(requestPayload);
+  return response;
+};
+
 export default function index() {
-  const [nbRows, setNbRows] = React.useState(3);
-
-  const [page, setPage] = React.useState(0);
-
-  const [isLoading, setIsLoading] = React.useState(true);
-
-  const [rowsPerPage, setRowsPerPage] = React.useState(10);
-
+  //data and fetching state
+  const [trackChange, setTrackChange] = useState(false);
   const [guestListData, setGuestListData] = useState([]);
+  const [isError, setIsError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isRefetching, setIsRefetching] = useState(false);
+  const [rowCount, setRowCount] = useState(0);
 
-  const [rowModesModel, setRowModesModel] = React.useState({});
+  // track change anywhere
+  const registerChange = () =>
+    setTrackChange((prevTrackChange) => !prevTrackChange);
+
+  // Modal Data
+  const [modalItem, setModalItem] = useState({});
+
+  // Add new guest state
+  const [createModalOpen, setCreateModalOpen] = useState(false);
+  const [deleteModalOpen, setDeleteModalOpen] = useState(false);
+  const [validationErrors, setValidationErrors] = useState({});
+  const [isNewGuest, setIsNewGuest] = useState(true);
+
+  //table state
+  const [rowSelection, setRowSelection] = useState({});
+  const [sorting, setSorting] = useState([
+    {
+      id: "fullName",
+      desc: true,
+    },
+  ]);
+
+  // pagination
+  const [pagination, setPagination] = useState({
+    pageIndex: 0,
+    pageSize: 10,
+  });
+
+  // guest table search filters
+  const [columnFilters, setColumnFilters] = useState([]);
+  // Delay search by 600ms
+  const delayedGuestSearch = useCallback(
+    debounce((searchValue) => {
+      setPagination({ ...pagination, pageIndex: 0 });
+      setColumnFilters(searchValue);
+    }, 1000),
+    []
+  );
 
   const [itineraryColumns, setItineraryColumns] = useState([]);
 
   const navItems = useNavItemsStore((state) => state.navItems);
 
-  console.log("Header nav items");
-  console.log(navItems);
+  const initNavItems = useNavItemsStore((state) => state.initNavItems);
 
-  const [paginationModel, setPaginationModel] = React.useState({
-    pageSize: 25,
-    page: 0,
-  });
-
-  const addRow = () => setNbRows((x) => Math.min(100, x + 1));
-
-  const handleRowEditStop = (params, event) => {
-    if (params.reason === GridRowEditStopReasons.rowFocusOut) {
-      event.defaultMuiPrevented = true;
+  const deleteSelectedGuests = async (rowSelection) => {
+    if (Object.keys(rowSelection).length > 0) {
+      const guestIds = Object.keys(rowSelection);
+      try {
+        await deleteGuests(guestIds.toString());
+      } catch (error) {
+        setIsError(true);
+        setDeleteModalOpen(false);
+        setRowSelection({});
+        return;
+      }
+      registerChange();
+      setRowSelection({});
+      setDeleteModalOpen(false);
     }
   };
 
-  const handleEditClick = (id) => () => {
-    setRowModesModel({ ...rowModesModel, [id]: { mode: GridRowModes.Edit } });
+  const handleUpdateGuestItinerary = async (
+    guestId,
+    itineraryId,
+    isSelected
+  ) => {
+    const requestParams = {
+      id: guestId,
+      itemId: itineraryId,
+      selected: isSelected,
+    };
+    try {
+      await updateGuestItinerary(requestParams);
+      registerChange();
+    } catch (error) {}
   };
 
-  const handleSaveClick = (id) => () => {
-    setRowModesModel({ ...rowModesModel, [id]: { mode: GridRowModes.View } });
-  };
-
-  const handleDeleteClick = (id) => () => {
-    setRows(rows.filter((row) => row.id !== id));
-  };
-
-  const handleCancelClick = (id) => () => {
-    setRowModesModel({
-      ...rowModesModel,
-      [id]: { mode: GridRowModes.View, ignoreModifications: true },
-    });
-
-    const editedRow = rows.find((row) => row.id === id);
-    if (editedRow.isNew) {
-      setRows(rows.filter((row) => row.id !== id));
-    }
-  };
-
-  const processRowUpdate = (newRow) => {
-    const updatedRow = { ...newRow, isNew: false };
-    setRows(rows.map((row) => (row.id === newRow.id ? updatedRow : row)));
-    return updatedRow;
-  };
-
-  const handleRowModesModelChange = (newRowModesModel) => {
-    setRowModesModel(newRowModesModel);
-  };
+  function convertToTableColumnHeader(item) {
+    return {
+      id: item.id,
+      accessorKey: item.functionName,
+      header: item.functionName,
+      sortable: false,
+      type: "checkBox",
+      size: 130,
+      enableSorting: false,
+      enableColumnFilter: false,
+      Cell: ({ cell, row }) => (
+        <Checkbox
+          color="primary"
+          checked={cell.getValue()}
+          onChange={(event) =>
+            handleUpdateGuestItinerary(
+              row.original.id,
+              item.id,
+              event.target.checked
+            )
+          }
+        />
+      ),
+    };
+  }
 
   const getItineraryColumns = async () => {
     const response = await getItineraryConfig();
-    const fetchedItineraryColumns =
-      Array.isArray(response) && response.length
-        ? response.map((col) => convertToTableColumnHeader(col))
-        : [];
-    setItineraryColumns(fetchedItineraryColumns);
+    return Array.isArray(response) && response.length
+      ? response.map((col) => convertToTableColumnHeader(col))
+      : [];
   };
-
-  const getGuestListData = async () => {
-    const requestPayload = {
-      limit: 20,
-      offset: 0,
-      sortDirection: "DESC",
-      sortColumn: "name",
-    };
-    const response = await getAllGuestsList(requestPayload);
-    setGuestListData(
-      response.allGuestsData.map((data) => convertToGuestData(data))
-    );
-  };
-  const initNavItems = useNavItemsStore((state) => state.initNavItems);
 
   useEffect(() => {
-    setIsLoading(true);
-    getGuestListData();
-    getItineraryColumns();
     initNavItems();
-    setIsLoading(false);
+    getItineraryColumns().then((response) => setItineraryColumns(response));
   }, []);
 
   useEffect(() => {
-    getUserPreference();
-  }, []);
+    const fetchData = async () => {
+      if (!guestListData.length) {
+        setIsLoading(true);
+      } else {
+        setIsRefetching(true);
+      }
+      try {
+        const response = await fetchGuestsData(
+          pagination,
+          sorting,
+          columnFilters
+        );
+        setGuestListData(mapAllGuestsData(response));
+        setRowCount(response.total);
+      } catch (error) {
+        setIsError(true);
+        return;
+      }
+      setIsError(false);
+      setIsLoading(false);
+      setIsRefetching(false);
+    };
+    setRowSelection({});
+    fetchData();
+  }, [
+    columnFilters,
+    pagination.pageIndex,
+    pagination.pageSize,
+    sorting,
+    trackChange,
+  ]);
 
   return (
-    <Box
-      sx={{
-        height: "100%",
-        width: "100%",
-        position: "absolute",
-        overflow: "hidden",
-        p: "1%",
-        paddingTop: "6%",
-        // mt: "4%",
-        boxShadow: "border-box",
-        overflowY: "hidden",
-      }}
-    >
-      <Header navItems={navItems} isHome={false} />
-      <Stack
-        direction="row"
-        spacing={1}
-        sx={{ mb: 1 }}
-        alignItems="center"
-        justifyContent="flex-start"
+    <Fragment>
+      <CssBaseline />
+      <Container
+        maxWidth={false}
+        disableGutters
+        sx={{
+          display: "flex",
+          boxSizing: "border-box",
+          flexDirection: "column",
+        }}
       >
-        <TextField
-          id="outlined-basic"
-          label="Name"
-          variant="outlined"
-          size="small"
-        />
-        <TextField
-          id="filled-basic"
-          label="Nick Name"
-          variant="outlined"
-          size="small"
-        />
-        <TextField
-          id="filled-basic"
-          label="Family Name"
-          variant="outlined"
-          size="small"
-        />
-        <TextField
-          id="standard-basic"
-          label="Phone Number"
-          variant="outlined"
-          size="small"
-        />
-        <TextField
-          id="outlined-select-currency"
-          select
-          label="Cohort"
-          defaultValue=""
-          size="small"
-          sx={{ minWidth: 160 }}
-        >
-          {cohortOptions.map((option) => (
-            <MenuItem value={option}>{option}</MenuItem>
-          ))}
-        </TextField>
-        <Button
-          color="primary"
-          startIcon={<ClearIcon />}
-          // onClick={handleClick}
-          sx={{ marginLeft: 10 }}
-        >
-          Clear
-        </Button>
-      </Stack>
-      <Box sx={{ height: "92%", width: "100%" }}>
-        <DataGrid
-          rows={guestListData}
-          columns={guestListColumns.concat(itineraryColumns).concat(actions)}
-          paginationModel={paginationModel}
-          onPaginationModelChange={setPaginationModel}
-          rowsPerPageOptions={[10, 20, 100]}
-          paginationMode="server"
-          checkboxSelection
-          disableRowSelectionOnClick
-          disableColumnMenu={true}
-          getRowId={(row) => row.id}
-          rowHeight={40}
-          getRowHeight={() => "auto"}
-          sx={{}}
-          slots={{
-            loadingOverlay: LinearProgress,
-            noRowsOverlay: CustomNoRowsOverLay,
-            toolbar: EditToolbar,
+        <Header navItems={navItems} isHome={false} />
+        <Box
+          sx={{
+            height: "94%",
+            width: "100%",
+            overflow: "hidden",
+            p: "1%",
+            mt: "5rem",
+            boxShadow: "border-box",
+            overflowY: "hidden",
           }}
-          slotProps={{
-            toolbar: { setGuestListData, setRowModesModel },
-          }}
-          loading={isLoading}
-          getEstimatedRowHeight={() => 40}
-        />
-      </Box>
-    </Box>
+        >
+          <MaterialReactTable
+            columns={guestHeaders.concat(itineraryColumns)}
+            data={guestListData}
+            enablePinning
+            enableRowSelection
+            onRowSelectionChange={setRowSelection}
+            enableColumnActions={false}
+            // enableColumnFilters={false}
+            positionToolbarAlertBanner="bottom"
+            enableSortingRemoval={false}
+            enableStickyHeader
+            enableStickyFooter
+            manualFiltering
+            manualPagination
+            manualSorting
+            // enableExpanding={true}
+            getRowId={(row) => row.id}
+            initialState={{
+              columnPinning: {
+                left: [
+                  "mrt-row-select",
+                  "mrt-row-actions",
+                  "internal",
+                  "fullName",
+                ],
+              },
+              showColumnFilters: true,
+              density: "compact",
+            }}
+            muiToolbarAlertBannerProps={
+              isError
+                ? {
+                    color: "error",
+                    children: "Error loading data",
+                  }
+                : { color: "primary" }
+            }
+            muiTableProps={{
+              sx: {
+                tableLayout: "fixed",
+              },
+            }}
+            muiTableHeadCellProps={{
+              sx: (theme) => ({
+                color: theme.palette.primary.main,
+                fontSize: "15px",
+                paddingLeft: "0.1",
+                paddingRight: "0.1",
+              }),
+            }}
+            muiTableBodyCellProps={{
+              sx: {
+                paddingLeft: "0.1",
+                paddingRight: "0.1",
+              },
+            }}
+            enableRowActions
+            displayColumnDefOptions={{
+              "mrt-row-select": {
+                size: 13,
+                muiTableHeadCellProps: {
+                  paddingLeft: "0",
+                  paddingRight: "0",
+                },
+                muiTableBodyCellProps: {
+                  sx: {
+                    paddingLeft: "0",
+                    paddingRight: "0",
+                  },
+                },
+              },
+              "mrt-row-actions": {
+                size: 15,
+                align: "right",
+                color: "primary",
+                padding: "0",
+                margin: "0",
+                header: " ",
+                Cell: ({ row, table }) => (
+                  <Tooltip arrow placement="left" title="Edit">
+                    <IconButton
+                      size="small"
+                      color="primary"
+                      onClick={() => {
+                        setModalItem(row.original);
+                        setIsNewGuest(false);
+                        setCreateModalOpen(true);
+                      }}
+                    >
+                      <Edit fontSize="inherit" />
+                    </IconButton>
+                  </Tooltip>
+                ),
+                muiTableHeadCellProps: {
+                  align: "center",
+                  sx: {
+                    paddingLeft: "0",
+                    paddingRight: "0",
+                  },
+                },
+                muiTableBodyCellProps: {
+                  sx: {
+                    paddingLeft: "0",
+                    paddingRight: "0",
+                  },
+                },
+              },
+            }}
+            enableFullScreenToggle={true}
+            enableToolbarInternalActions={true}
+            muiTableContainerProps={{ sx: { maxHeight: 500 } }}
+            onColumnFiltersChange={delayedGuestSearch}
+            onPaginationChange={setPagination}
+            onSortingChange={setSorting}
+            rowCount={rowCount}
+            state={{
+              columnFilters,
+              isLoading,
+              pagination,
+              showAlertBanner: isError,
+              showProgressBars: isRefetching || isLoading,
+              sorting,
+              rowSelection,
+            }}
+            muiTableHeadCellFilterTextFieldProps={{
+              sx: { paddingInline: "1", pr: "1" },
+              variant: "outlined",
+              fullWidth: "true",
+              margin: "dense",
+              size: "small",
+              placeholder: "",
+              InputProps: {
+                // endAdornment: (
+                //   <InputAdornment position="end">
+                //     <CloseIcon
+                //       onClick={(column) => {
+                //         column.setFilterValue({});
+                //       }}
+                //     />
+                //   </InputAdornment>
+                // ),
+              },
+            }}
+            muiTablePaginationProps={{
+              rowsPerPageOptions: [10, 20, 50, 100, 200],
+              labelRowsPerPage: "Total",
+            }}
+            muiTablePaperProps={{
+              elevation: 0, //change the mui box shadow
+              //customize paper styles
+              sx: {
+                borderRadius: "0",
+                border: "1px dashed #e0e0e0",
+              },
+            }}
+            renderTopToolbarCustomActions={({ table }) => (
+              <Stack
+                direction="row"
+                spacing={1}
+                sx={{ width: "100%" }}
+                justifyContent={"space-between"}
+                useFlexGap
+              >
+                <Stack
+                  direction="row"
+                  spacing={1}
+                  sx={{ width: "60%" }}
+                  justifyContent={"flex-start"}
+                  useFlexGap
+                >
+                  <Fab
+                    variant="extended"
+                    size="medium"
+                    onClick={() => {
+                      setModalItem({});
+                      setIsNewGuest(true);
+                      setCreateModalOpen(true);
+                    }}
+                  >
+                    <AddCircleOutlinedIcon
+                      sx={{ color: green[500], mr: 0.5 }}
+                    />
+                    Add Guest
+                  </Fab>
+                  <div style={{ minWidth: "10px", maxWidth: "10px" }}></div>
+                  <Fab
+                    variant="extended"
+                    size="medium"
+                    onClick={() => setDeleteModalOpen(true)}
+                    disabled={Object.entries(rowSelection).length <= 0}
+                  >
+                    <HighlightOffOutlinedIcon
+                      sx={{ color: red[600], mr: 0.5 }}
+                    />
+                    Delete
+                  </Fab>
+                </Stack>
+                <Stack
+                  direction="row"
+                  spacing={1}
+                  sx={{ width: "38%" }}
+                  justifyContent={"flex-end"}
+                  useFlexGap
+                >
+                  <Button
+                    disabled={isEmpty(columnFilters)}
+                    onClick={() => {
+                      setPagination({ ...pagination, pageIndex: 0 });
+                      setColumnFilters([]);
+                    }}
+                  >
+                    Clear All
+                  </Button>
+                  <MRT_FullScreenToggleButton table={table} sx={{ mr: 1 }} />
+                </Stack>
+              </Stack>
+            )}
+            renderToolbarInternalActions={({ table }) => (
+              <Stack
+                direction="row"
+                spacing={1}
+                sx={{ width: "100%" }}
+                justifyContent={"space-between"}
+                useFlexGap
+              ></Stack>
+            )}
+          />
+          <GuestAcionDialog
+            data={modalItem}
+            guestColumns={guestHeaders}
+            itineraryColumns={itineraryColumns}
+            open={createModalOpen}
+            isNewGuest={isNewGuest}
+            onClose={() => {
+              setCreateModalOpen(false);
+            }}
+            registerChange={registerChange}
+          />
+          <DeleteGuestModal
+            open={deleteModalOpen}
+            onClose={() => setDeleteModalOpen(false)}
+            selectedCount={Object.keys(rowSelection).length}
+            handleDelete={() => deleteSelectedGuests(rowSelection)}
+          />
+        </Box>
+        {/* </Box> */}
+      </Container>
+    </Fragment>
   );
 }
