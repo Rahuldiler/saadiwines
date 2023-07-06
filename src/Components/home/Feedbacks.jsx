@@ -1,11 +1,12 @@
 import { Box, Typography } from "@mui/material";
 import React, { useState } from "react";
+
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
-import { Autoplay, Grid, Navigation, Pagination } from "swiper";
+import { Autoplay, Navigation, Pagination } from "swiper";
 import "swiper/css";
 import "swiper/css/pagination";
-import TestimonialCard from "../common/TestimonialCard";
 import "swiper/css/bundle";
+import TestimonialCard from "../common/TestimonialCard";
 
 function Feedbacks() {
   const dummyData = [
@@ -26,6 +27,15 @@ function Feedbacks() {
     },
     {
       name: "Akshay Agrawal",
+      description:
+        "My sisters wedding was one of the most special day for me and weddingvines saved\n" +
+        "our day.\n" +
+        "Everyone was amazed with wedding website as rarely anyone has seen something like\n" +
+        "this in India",
+      image: "/assets/AkshayAgrawal.png",
+    },
+    {
+      name: "Akshay Agrawal 2",
       description:
         "My sisters wedding was one of the most special day for me and weddingvines saved\n" +
         "our day.\n" +
@@ -61,10 +71,6 @@ function Feedbacks() {
             spaceBetween={0}
             initialSlide={step}
             loop={true}
-            grid={{
-              rows: 1,
-              fill: "row",
-            }}
             className="mySwiper"
             breakpoints={{
               640: {
@@ -80,7 +86,7 @@ function Feedbacks() {
                 spaceBetween: 30,
               },
             }}
-            modules={[Grid, Navigation, Pagination, Autoplay]}
+            modules={[Navigation, Pagination, Autoplay]}
             pagination={{
               el: ".custom-pagination",
               clickable: true,
@@ -89,10 +95,10 @@ function Feedbacks() {
               prevEl: ".swiper-button-prev",
               nextEl: ".swiper-button-next",
             }}
-            autoplay={{
-              delay: 2500,
-              disableOnInteraction: false,
-            }}
+            // autoplay={{
+            //   delay: 2500,
+            //   disableOnInteraction: true,
+            // }}
             // onSlideChange={() => console.log("slide change")}
             // onSwiper={handleOnSetSwiper}
           >

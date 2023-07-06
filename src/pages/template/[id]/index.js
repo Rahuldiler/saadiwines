@@ -172,8 +172,6 @@ function Template({ singleTemplate, responseTemplateData, templateId }) {
     setLoading(false);
   }, [responseTemplateData]);
 
-  console.log(responseTemplateData);
-
   return (
     <Box>
       <SEO
