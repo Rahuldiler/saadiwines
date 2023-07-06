@@ -28,7 +28,7 @@ function WebsiteDesigningSection() {
                 className="vibeFont"
                 sx={{ color: "#bc8129" }}
               >
-                Website Designing
+                Wedding Website
               </Typography>
               <Typography
                 variant="body1"

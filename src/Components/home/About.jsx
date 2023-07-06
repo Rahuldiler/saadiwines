@@ -11,7 +11,6 @@ function About() {
     "Guest Management",
     "Wedcast",
     "RSVP",
-    "Photos organiser",
   ];
   return (
     <section id="about">
