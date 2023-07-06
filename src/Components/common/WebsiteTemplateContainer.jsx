@@ -65,6 +65,7 @@ function WebsiteTemplateContainer() {
         spaceBetween={0}
         initialSlide={step}
         loop={true}
+        speed={2000}
         className="mySwiper"
         breakpoints={{
           640: {
@@ -90,7 +91,7 @@ function WebsiteTemplateContainer() {
           nextEl: ".swiper-button-next",
         }}
         autoplay={{
-          delay: 2500,
+          delay: 4000,
           disableOnInteraction: false,
         }}
         // onSlideChange={() => console.log("slide change")}
