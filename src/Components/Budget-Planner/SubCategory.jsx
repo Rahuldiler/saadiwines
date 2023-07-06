@@ -105,15 +105,14 @@ const SubCategory = ({
             Estimated budget:{" "}
             <span style={{ fontWeight: "bold", color: COLORS.primary }}>
               {" "}
-              ₹ {subCategory.expectedAmount}
+              ₹ {calculateTotaEstimatedCost(subCategory.subCategory)}
             </span>
           </Typography>
           <Typography variant="body3" mr={2}>
             Final Cost:{" "}
             <span style={{ fontWeight: "bold", color: COLORS.green }}>
               {" "}
-              ₹{" "}
-              {subCategory.finalCost}
+              ₹ {subCategory.finalCost}
             </span>
           </Typography>
           <Box
@@ -368,7 +367,7 @@ function SubCategoryDialog({
     expectedAmount: expectedAmount,
   });
   const [errors, setErrors] = useState({});
- 
+
   const postSubCategory = () => {
     const newErrors = {};
     if (formData.name.trim() === "") {
@@ -391,7 +390,10 @@ function SubCategoryDialog({
     }
   };
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const value =
+      e.target.type === "number" ? parseFloat(e.target.value) : e.target.value;
+    setFormData({ ...formData, [e.target.name]: value });
+    // setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   return (
