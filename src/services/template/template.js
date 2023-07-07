@@ -11,11 +11,11 @@ const getTemplateKey = async () => {
 };
 
 const getTemplateData = async (apiKey) => {
-  console.log("apiKey", apiKey);
-  const response = await http.get({
-    url: `/getTemplateData?apiKey=${apiKey}`,
-  });
+    var response = await http.get({
+      url: `/getTemplateData`,
+      params: {apiKey}
+    });
   return response.data;
 };
 
-export { getTemplateKey, getTemplateData };
+export {getTemplateKey, getTemplateData};
