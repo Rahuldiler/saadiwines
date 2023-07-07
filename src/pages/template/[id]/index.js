@@ -217,7 +217,7 @@ export async function getStaticPaths() {
 // This also gets called at build time
 export async function getStaticProps({ params }) {
   const encodeId = params.id?.replace("%2F", "/");
-  console.log(encodeId);
+  console.log(encodeId, params.id);
   let responseTemplateData;
   let templateId;
   let singleTemplate;
