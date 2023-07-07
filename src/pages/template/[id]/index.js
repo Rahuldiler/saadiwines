@@ -24,10 +24,9 @@ function Template({ singleTemplate, responseTemplateData, templateId }) {
   const [loading, setLoading] = useState(true);
   const router = useRouter();
   const id = router.query.id;
-  const ref = createRef(null);
+  const ref = createRef();
   const [uploadThumbnail, setUploadThumbnail] = useState(null);
   const [thumbnail, setThumbnail] = useState(null);
-  console.log(loading);
   const getTemplate = (templateId) => {
     switch (templateId) {
       case 1:
@@ -216,8 +215,8 @@ export async function getStaticPaths() {
 
 // This also gets called at build time
 export async function getStaticProps({ params }) {
+  console.log("Inside static props");
   const encodeId = params.id?.replace("%2F", "/");
-  console.log(encodeId, params.id);
   let responseTemplateData;
   let templateId;
   let singleTemplate;
