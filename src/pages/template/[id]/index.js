@@ -1,6 +1,6 @@
 import { getTemplateData } from "@/services/template/template";
 import { getUserPreference } from "@/services/user-preference/userPreference";
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -27,14 +27,13 @@ function Template({ singleTemplate, responseTemplateData, templateId }) {
   const ref = createRef(null);
   const [uploadThumbnail, setUploadThumbnail] = useState(null);
   const [thumbnail, setThumbnail] = useState(null);
-
+  console.log(loading);
   const getTemplate = (templateId) => {
     switch (templateId) {
       case 1:
         return (
           <Template1
             templateData={responseTemplateData}
-            templateId={templateId}
             staticTemplateData={singleTemplate[0]}
           />
         );
@@ -42,7 +41,6 @@ function Template({ singleTemplate, responseTemplateData, templateId }) {
         return (
           <Template1
             templateData={responseTemplateData}
-            templateId={templateId}
             staticTemplateData={singleTemplate[0]}
           />
         );
@@ -50,7 +48,6 @@ function Template({ singleTemplate, responseTemplateData, templateId }) {
         return (
           <Template1
             templateData={responseTemplateData}
-            templateId={templateId}
             staticTemplateData={singleTemplate[0]}
           />
         );
@@ -58,7 +55,6 @@ function Template({ singleTemplate, responseTemplateData, templateId }) {
         return (
           <Template1
             templateData={responseTemplateData}
-            templateId={templateId}
             staticTemplateData={singleTemplate[0]}
           />
         );
@@ -66,7 +62,6 @@ function Template({ singleTemplate, responseTemplateData, templateId }) {
         return (
           <Template2
             templateData={responseTemplateData}
-            templateId={templateId}
             staticTemplateData={singleTemplate[0]}
           />
         );
@@ -74,7 +69,6 @@ function Template({ singleTemplate, responseTemplateData, templateId }) {
         return (
           <Template2
             templateData={responseTemplateData}
-            templateId={templateId}
             staticTemplateData={singleTemplate[0]}
           />
         );
@@ -82,7 +76,6 @@ function Template({ singleTemplate, responseTemplateData, templateId }) {
         return (
           <Template2
             templateData={responseTemplateData}
-            templateId={templateId}
             staticTemplateData={singleTemplate[0]}
           />
         );
@@ -90,7 +83,6 @@ function Template({ singleTemplate, responseTemplateData, templateId }) {
         return (
           <Template2
             templateData={responseTemplateData}
-            templateId={templateId}
             staticTemplateData={singleTemplate[0]}
           />
         );
@@ -98,7 +90,6 @@ function Template({ singleTemplate, responseTemplateData, templateId }) {
         return (
           <Template3
             templateData={responseTemplateData}
-            templateId={templateId}
             staticTemplateData={singleTemplate[0]}
           />
         );
@@ -106,7 +97,6 @@ function Template({ singleTemplate, responseTemplateData, templateId }) {
         return (
           <Template3
             templateData={responseTemplateData}
-            templateId={templateId}
             staticTemplateData={singleTemplate[0]}
           />
         );
@@ -114,7 +104,6 @@ function Template({ singleTemplate, responseTemplateData, templateId }) {
         return (
           <Template3
             templateData={responseTemplateData}
-            templateId={templateId}
             staticTemplateData={singleTemplate[0]}
           />
         );
@@ -122,7 +111,6 @@ function Template({ singleTemplate, responseTemplateData, templateId }) {
         return (
           <Template3
             templateData={responseTemplateData}
-            templateId={templateId}
             staticTemplateData={singleTemplate[0]}
           />
         );
@@ -130,13 +118,29 @@ function Template({ singleTemplate, responseTemplateData, templateId }) {
         return (
           <Template4
             templateData={responseTemplateData}
-            templateId={templateId}
             staticTemplateData={singleTemplate[0]}
           />
         );
 
       default:
-        return <Box>No template found </Box>;
+        return (
+          <Box>
+            {loading ? (
+              <Loader message="Loading template" isLoading={loading} />
+            ) : (
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  height: "100vh",
+                }}
+              >
+                <Typography variant="h5"> No template found </Typography>
+              </Box>
+            )}
+          </Box>
+        );
     }
   };
 
@@ -161,17 +165,19 @@ function Template({ singleTemplate, responseTemplateData, templateId }) {
   }, [ref]);
 
   useEffect(() => {
-    setLoading(false);
+    responseTemplateData && setLoading(false);
   }, [responseTemplateData]);
 
   return (
     <Box>
       <SEO
         title={
-          responseTemplateData?.weddingInfo?.groom?.name +
-          " weds " +
-          responseTemplateData?.weddingInfo?.bride?.name +
-          " | Shaadi Vines"
+          responseTemplateData
+            ? responseTemplateData?.weddingInfo?.groom?.name +
+              " weds " +
+              responseTemplateData?.weddingInfo?.bride?.name +
+              " | Shaadi Vines"
+            : "Shaadi Vines"
         }
         description={responseTemplateData?.weddingInfo.thankYouMessage}
         keywords="Test1"
@@ -211,6 +217,7 @@ export async function getStaticPaths() {
 // This also gets called at build time
 export async function getStaticProps({ params }) {
   const encodeId = params.id?.replace("%2F", "/");
+  console.log(encodeId);
   let responseTemplateData;
   let templateId;
   let singleTemplate;

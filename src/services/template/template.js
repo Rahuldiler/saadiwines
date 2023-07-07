@@ -11,6 +11,7 @@ const getTemplateKey = async () => {
 };
 
 const getTemplateData = async (apiKey) => {
+  console.log("apiKey", apiKey);
   const response = await http.get({
     url: `/getTemplateData?apiKey=${apiKey}`,
   });
