@@ -11,11 +11,14 @@ const TextFieldInput = ({
   autoComplete,
   required,
   error,
+  bg,
 }) => {
   return (
     <TextField
       sx={{
-        // background: "#FFF9F5",
+        background: bg,
+        color: "#000",
+        borderRadius: "7px",
         border: 0,
         width: "100%",
         "&.MuiTextField-root": {

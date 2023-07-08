@@ -101,8 +101,9 @@ function About() {
                     color: "green",
                   }}
                 />
-                {list} {list === "WEDsite" && <sup>TM</sup>}
-                {list === "Wedcast" && <sup>Live</sup>}
+                {list}
+                {/* {list === "WEDsite" && <sup>TM</sup>}
+                {list === "Wedcast" && <sup>Live</sup>} */}
               </ListItem>
             ))}
           </List>
