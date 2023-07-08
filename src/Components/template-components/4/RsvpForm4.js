@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 
-const ContactForm = () => {
+const ContactForm = ({staticTemplateData}) => {
     const [formData, setFormData] = useState({
         name: "",
         email: "",
@@ -27,7 +27,7 @@ const ContactForm = () => {
     return (
         <>
             <div className="grid sm:grid-cols-2 grid-cols-1 bg-white">
-                <div><Image src='/assets/templete/2/paral_06.jpg' fill className="!relative object-cover"/></div>
+                <div><Image src={staticTemplateData?.paral_06} fill className="!relative object-cover"/></div>
                 <form className="sm:my-20 my-4 mx-8" onSubmit={handleSubmit}>
                 <div className="mb-4 relative">
                     <div>
@@ -71,6 +71,7 @@ const ContactForm = () => {
                 </div>
                 <button
                     type="submit"
+                    style={{backgroundColor: staticTemplateData?.theme?.bgColor, color: staticTemplateData?.theme?.textBgColor}}
                     className="w-full lg:px-4 py-2 text-white bg-[#80A0C2]  rounded-md  focus:outline-none focus:bg-blue-600"
                 >
                     Submit

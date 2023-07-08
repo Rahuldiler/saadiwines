@@ -117,7 +117,36 @@ function Template({ singleTemplate, responseTemplateData, templateId }) {
         return (
           <Template4
             templateData={responseTemplateData}
-            staticTemplateData={singleTemplate[0]}
+            templateId={templateId}
+            staticTemplateData={staticTemplateData[12]}
+            images={staticTemplateData[12]}
+          />
+        );
+      case 14:
+        return (
+          <Template4
+            templateData={responseTemplateData}
+            templateId={templateId}
+            staticTemplateData={staticTemplateData[13]}
+            images={staticTemplateData[13]}
+          />
+        );
+      case 15:
+        return (
+          <Template4
+            templateData={responseTemplateData}
+            templateId={templateId}
+            staticTemplateData={staticTemplateData[14]}
+            images={staticTemplateData[14]}
+          />
+        );
+      case 16:
+        return (
+          <Template4
+            templateData={responseTemplateData}
+            templateId={templateId}
+            staticTemplateData={staticTemplateData[15]}
+            images={staticTemplateData[15]}
           />
         );
 
@@ -173,9 +202,9 @@ function Template({ singleTemplate, responseTemplateData, templateId }) {
         title={
           responseTemplateData
             ? responseTemplateData?.weddingInfo?.groom?.name +
-              " weds " +
-              responseTemplateData?.weddingInfo?.bride?.name +
-              " | Shaadi Vines"
+            " weds " +
+            responseTemplateData?.weddingInfo?.bride?.name +
+            " | Shaadi Vines"
             : "Shaadi Vines"
         }
         description={responseTemplateData?.weddingInfo.thankYouMessage}
@@ -185,8 +214,8 @@ function Template({ singleTemplate, responseTemplateData, templateId }) {
           id?.length > 3
             ? responseTemplateData?.thumbnail
             : singleTemplate
-            ? singleTemplate[0]?.socialImage
-            : ""
+              ? singleTemplate[0]?.socialImage
+              : ""
         }
       />
 

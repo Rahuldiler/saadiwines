@@ -29,16 +29,21 @@ function Double({
 
         {/* <img src={img} alt="" className="h-full object-cover " /> */}
         <Image
-              src={img}
-              alt=""
-              layout="fill"
-              className="h-full w-full object-cover "
-            />
+          src={img}
+          alt=""
+          layout="fill"
+          className="h-full w-full object-cover "
+        />
+          
       </div>
       <div
-        style={{ backgroundColor: theme.bgColor, color: theme?.textColor,display:'flex',
-          flexDirection: 'column',
-          justifyContent: 'center' }}
+        style={{
+          backgroundColor: theme.bgColor,
+          color: theme?.textColor,
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+        }}
         className={`${
           bgColor === "white"
             ? "bg-white text-black"

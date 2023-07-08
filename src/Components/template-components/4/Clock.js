@@ -2,7 +2,7 @@ import React, { useState,useEffect } from 'react';
 
 
 
-function Clock4({title,text,img,propName}) {
+function Clock4({title,text,img,propName, staticTemplateData}) {
 
     const targetDate = new Date('2023-8-01');
     const calculateTimeRemaining = () => {
@@ -32,30 +32,31 @@ function Clock4({title,text,img,propName}) {
     
     return(
         <div className='  relative ' >
-
-            {propName==="clock"&&<div className=' text-[#5880a2] text-[20px] lg:w-[70%] grid grid-cols-4 text-center mx-auto lg:pt-32 lg:pb-20 pt-20 pb-4'>
+            {propName==="clock"&&<div
+            style={{color: staticTemplateData?.theme?.textColor}}
+            className=' text-[20px] lg:w-[70%] grid grid-cols-4 text-center mx-auto lg:pt-32 lg:pb-20 pt-20 pb-4'>
               <div className='bg-no-repeat relative object-contain' >
                 <p className='!font-Hind !text-[30px]  lg:!text-[60px]'>{timeRemaining.days}</p>
                 <p className='!text-[10px] lg:!text-base'>DAYS</p>
-                <img src='/assets/templete/4/time/clock-bg.png' alt='' className='bg-no-repeat absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ' />
+                <img src={staticTemplateData?.clock_bg} alt='' className='bg-no-repeat absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ' />
               </div>
 
               <div className='bg-no-repeat relative object-contain' >
                 <p className='!font-Hind !text-[30px] lg:!text-[60px]'>{timeRemaining.hours}</p>
                 <p className='!text-[10px] lg:!text-base'>Hours</p>
-                <img src='/assets/templete/4/time/clock-bg.png' alt='' className='bg-no-repeat absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ' />
+                <img src={staticTemplateData?.clock_bg} alt='' className='bg-no-repeat absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ' />
               </div>
 
               <div className='bg-no-repeat relative object-contain' >
                 <p className='!font-Hind !text-[30px]  lg:!text-[60px]'>{timeRemaining.minutes}</p>
                 <p className='!text-[10px] lg:!text-base'>Minutes</p>
-                <img src='/assets/templete/4/time/clock-bg.png' alt='' className='bg-no-repeat absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ' />
+                <img src={staticTemplateData?.clock_bg} alt='' className='bg-no-repeat absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ' />
               </div>
 
               <div className='bg-no-repeat relative object-contain ' >
                 <p className='!font-Hind !text-[30px]  lg:!text-[60px]'>{timeRemaining.seconds}</p>
                 <p className='!text-[10px] lg:!text-base'>Second</p>
-                <img src='/assets/templete/4/time/clock-bg.png' alt='' className='bg-no-repeat absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ' />
+                <img src={staticTemplateData?.clock_bg} alt='' className='bg-no-repeat absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ' />
               </div>
             </div>}
         </div>
