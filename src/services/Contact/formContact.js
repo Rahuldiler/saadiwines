@@ -26,4 +26,11 @@ const getContact = async () => {
   return response.data;
 };
 
-export { addContact, updateContact, getContact };
+const deleteContact = async (id) => {
+  await http.delete({
+    url: `/poc/${id}`,
+    isSecured: true,
+  });
+};
+
+export { addContact, updateContact, getContact, deleteContact };

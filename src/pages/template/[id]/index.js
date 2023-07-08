@@ -219,13 +219,10 @@ function Template({ singleTemplate, responseTemplateData, templateId }) {
         }
       />
 
-      {loading ? (
-        <Loader message="Loading template" isLoading={loading} />
-      ) : (
-        <div ref={ref} style={{ height: "720px" }}>
-          {getTemplate(templateId)}
-        </div>
-      )}
+      {loading && <Loader message="Loading template" isLoading={loading} />}
+      <div ref={ref} style={{ height: "720px" }}>
+        {getTemplate(templateId)}
+      </div>
       {/* <button onClick={downloadScreenshot}>Download screenshot</button> */}
       {/* <img src={uploadThumbnail} style={{ width: "500px", height: "500px" }} /> */}
     </Box>
@@ -244,7 +241,7 @@ export async function getStaticPaths() {
 
 // This also gets called at build time
 export async function getStaticProps({ params }) {
-  console.log("Inside static props")
+  console.log("Inside static props");
   const encodeId = params.id?.replace("%2F", "/");
   let responseTemplateData;
   let templateId;
