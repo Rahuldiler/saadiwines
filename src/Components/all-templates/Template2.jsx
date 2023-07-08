@@ -22,10 +22,6 @@ export default function Template2({ templateData, staticTemplateData }) {
   const [isOpen, setIsOpen] = useState(false);
   const targetDate = new Date(2024, 5, 18);
 
-  console.info("--------------------");
-  console.info("staticTemplateData", staticTemplateData);
-  console.info("--------------------");
-
   const openLightbox = (img) => {
     setIsOpen(true);
     setImageIndex(img);

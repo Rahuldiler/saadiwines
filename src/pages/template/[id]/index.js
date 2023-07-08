@@ -241,7 +241,6 @@ export async function getStaticPaths() {
 
 // This also gets called at build time
 export async function getStaticProps({ params }) {
-  console.log("Inside static props");
   const encodeId = params.id?.replace("%2F", "/");
   let responseTemplateData;
   let templateId;
