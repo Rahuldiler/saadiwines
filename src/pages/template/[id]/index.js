@@ -202,20 +202,20 @@ function Template({ singleTemplate, responseTemplateData, templateId }) {
         title={
           responseTemplateData
             ? responseTemplateData?.weddingInfo?.groom?.name +
-            " weds " +
-            responseTemplateData?.weddingInfo?.bride?.name +
-            " | Shaadi Vines"
+              " weds " +
+              responseTemplateData?.weddingInfo?.bride?.name +
+              " | Shaadi Vines"
             : "Shaadi Vines"
         }
         description={responseTemplateData?.weddingInfo.thankYouMessage}
         keywords="Test1"
-        url={`https://stage.shaadivines.com/template/${templateId}`}
+        url={`/template/${templateId}`}
         ogImage={
           id?.length > 3
             ? responseTemplateData?.thumbnail
             : singleTemplate
-              ? singleTemplate[0]?.socialImage
-              : ""
+            ? singleTemplate[0]?.socialImage
+            : ""
         }
       />
 
@@ -231,16 +231,16 @@ function Template({ singleTemplate, responseTemplateData, templateId }) {
 
 export default Template;
 
-export async function getStaticPaths() {
-  const paths = staticTemplateData.map((template) => ({
-    params: { id: template.templateId.toString() },
-  }));
+// export async function getStaticPaths() {
+//   const paths = staticTemplateData.map((template) => ({
+//     params: { id: template.templateId.toString() },
+//   }));
 
-  return { paths, fallback: true };
-}
+//   return { paths, fallback: true };
+// }
 
 // This also gets called at build time
-export async function getStaticProps({ params }) {
+export async function getServerSideProps({ params }) {
   const encodeId = params.id?.replace("%2F", "/");
   let responseTemplateData;
   let templateId;
@@ -268,6 +268,5 @@ export async function getStaticProps({ params }) {
 
   return {
     props: { singleTemplate, responseTemplateData, templateId },
-    revalidate: 1,
   };
 }
