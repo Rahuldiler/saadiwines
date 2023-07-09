@@ -222,7 +222,7 @@ function Template1({ templateData, staticTemplateData, images }) {
         isOpen={isOpen}
         imageIndex={imageIndex}
         onClose={closeLightbox}
-        images={templateData.imagesLightBox}
+        images={templateData?.imagesLightBox}
       />
 
       <div style={{ backgroundImage: staticTemplateData?.images.waterColor02 }}>

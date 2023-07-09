@@ -8,7 +8,6 @@ import "swiper/css/pagination";
 import { Pagination } from "swiper";
 import Image from "next/image";
 
-
 function GreenStrip({
   title,
   text,
