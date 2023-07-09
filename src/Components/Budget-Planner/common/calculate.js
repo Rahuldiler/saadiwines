@@ -1,5 +1,5 @@
 const calculateTotaEstimatedCost = (items) => {
-  let total = items?.reduce((sum, item) => {
+  let total = items.reduce((sum, item) => {
     return (sum += +item.expectedAmount);
   }, 0);
   return total;

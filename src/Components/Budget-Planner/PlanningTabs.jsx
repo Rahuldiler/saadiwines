@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState } from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
@@ -7,52 +7,54 @@ import SubCategory from "./SubCategory";
 import { Grid, Typography, useMediaQuery, useTheme } from "@mui/material";
 import Payments from "./Payments";
 import { getCategories } from "@/services/category/category";
-import { fetchAllTransactions } from "@/services/transaction/transaction";
-import CustomCircularProgress from "./CustomCircularProgress";
+import CustomCircularProgress from "./common/CustomCircularProgress";
 import { COLORS } from "../utils/ConstantTheme";
-import Budget from "./mobile-view/Budget";
-
+import PlanningTabMobile from "./mobile-view/PlanningTabMobile";
+import { useEffect } from "react";
 export default function PlanningTabs() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-  const [activeTab, setActiveTab] = React.useState(0);
-  const [loading, setLoading] = React.useState(false);
-  const [categories, setCategories] = React.useState([]);
-  const [transactions, setTransactions] = React.useState([]);
-  const [trackChange, setTrackChanges] = React.useState(false);
-  const [selectedRow, setSelectedRow] = React.useState({
+  const [activeTab, setActiveTab] = useState(0); // Budget planning and payments tabs
+  const [loading, setLoading] = useState(false);
+  const [categories, setCategories] = useState([]);
+  const [trackChange, setTrackChanges] = useState(false);
+  const [selectedRow, setSelectedRow] = useState({
     rowIndex: 0,
     rowId: 0,
   });
 
-  const selectedSubCategoryData = (id) => {
-    let data = [];
-    if (id) {
-      const found = categories.find((obj) => obj.id === id);
-      if (found.subCategories.length == 0) {
-        data.push({
-          id: 5,
-          categoryId: 6,
-          name: "Please enter a sub-category",
-          expectedAmount: 0,
-          budgetTransaction: [],
-        });
-      } else {
-        data = found.subCategories;
-      }
-    }
-    return data;
-  };
+  // const selectedSubCategoryData = (id) => {
+  //   let data = [];
+  //   if (id) {
+  //     const found = categories.find((obj) => obj.id === id);
+  //     if (found.subCategories.length == 0) {
+  //       data.push({
+  //         id: 52,
+  //         name: "PORT --edited",
+  //         expectedAmount: 12335565,
+  //         categoryId: 53,
+  //         amountPaid: 5000,
+  //       });
+  //     } else {
+  //       data = found.subCategories;
+  //     }
+  //   }
+  //   return data;
+  // };
 
-  React.useEffect(() => {
+  useEffect(() => {
     setLoading(true);
     getCategories().then((category) => {
       setCategories(category.data);
-    });
-    fetchAllTransactions().then((transaction) => {
-      setTransactions(transaction.data);
+      if (category.data.length > 0 && selectedRow.rowId == 0) {
+        setSelectedRow({
+          ...selectedRow,
+          rowIndex: 0,
+          rowId: category.data[0].id,
+        });
+      }
       setLoading(false);
-    })
+    });
   }, [trackChange]);
   const tabs = [
     {
@@ -79,7 +81,7 @@ export default function PlanningTabs() {
               <Box mt={20}>
                 <CustomCircularProgress />
               </Box>
-            ) : selectedSubCategoryData(selectedRow.rowId).length == 0 ? (
+            ) : categories.length == 0 ? (
               <Box
                 height={"50vh"}
                 display={"flex"}
@@ -89,7 +91,6 @@ export default function PlanningTabs() {
                 <Typography>No Sub-Category Selected</Typography>
               </Box>
             ) : (
-              // <Box>{categories[selectedRow.rowIndex].name}</Box>
               <SubCategory
                 subCategory={categories[selectedRow.rowIndex]}
                 setTrackChanges={setTrackChanges}
@@ -103,7 +104,13 @@ export default function PlanningTabs() {
     },
     {
       label: "Payments",
-      component: <Payments data={transactions} loading={loading} setTrackChanges={setTrackChanges}/>,
+      component: (
+        <Payments
+          data={categories}
+          loading={loading}
+          setTrackChanges={setTrackChanges}
+        />
+      ),
     },
   ];
   const handleTabChange = (event, newValue) => {
@@ -112,11 +119,10 @@ export default function PlanningTabs() {
   return (
     <Box>
       {isMobile ? (
-        <Budget
-          loading={loading}
-          categories={categories}
-          transactions={transactions}
+        <PlanningTabMobile
+          category={categories}
           setTrackChanges={setTrackChanges}
+          loading={loading}
         />
       ) : (
         // Render table component for desktop view

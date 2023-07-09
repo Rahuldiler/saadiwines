@@ -21,22 +21,36 @@ import {
   MenuItem,
   Select,
 } from "@mui/material";
-import CustomCircularProgress from "./CustomCircularProgress";
+import CustomCircularProgress from "./common/CustomCircularProgress";
 
 import { BORDER, COLORS } from "../utils/ConstantTheme";
-import { CustomCell } from "./table-components/CustomCell";
-import { CustomHeader } from "./table-components/CustomHeader";
-import { useState, useEffect } from "react";
-import { deleteTransaction, fetchAllTransactions } from "@/services/transaction/transaction";
+import { CustomCell } from "./common/table-components/CustomCell";
+import { CustomHeader } from "./common/table-components/CustomHeader";
+import { useState } from "react";
+import {
+  deleteTransaction,
+  editTransaction,
+  fetchAllTransactions,
+} from "@/services/transaction/transaction";
+import { useEffect } from "react";
+import { RenderDialogForPayment } from "./common/RenderDialog";
 
-
-export default function Payments({ data, loading, setTrackChanges }) {
-
-  const renderButton = (id) => {
+export default function Payments() {
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [trackChange, setTrackChanges] = useState(false);
+  useEffect(() => {
+    setLoading(true);
+    fetchAllTransactions().then((transaction) => {
+      setData(transaction.data);
+      setLoading(false);
+    });
+  }, [trackChange]);
+  const renderDeleteButton = (id) => {
     return (
       <Button
-        onClick={ () => 
-          deleteTransaction(id).then(() => setTrackChanges((p) => !p))  
+        onClick={() =>
+          deleteTransaction(id).then(() => setTrackChanges((p) => !p))
         }
         sx={{ color: COLORS.primary }}
       >
@@ -44,33 +58,34 @@ export default function Payments({ data, loading, setTrackChanges }) {
       </Button>
     );
   };
-  const ITEM_HEIGHT = 48;
-  const ITEM_PADDING_TOP = 8;
-  const MenuProps = {
-    PaperProps: {
-      style: {
-        maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-        width: 250,
-        width: 140,
-        renderCell: (cellValues) => {
-          return (
-            <Button
-              sx={{
-                color: "#BC8129",
-              }}
-              onClick={(event) => {
-                handleClick(event, cellValues);
-              }}
-            >
-              Delete
-            </Button>
-          );
-        },
-      },
-    },
+  // Edit transaction -->
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [selectedItemForDialog, setSelectedItemForDialog] = useState(null);
+  const [isEditingTransaction, setIsEditingTransaction] = useState({
+    isEditing: false,
+    transaction: {},
+  });
+  const renderEditButton = (id, transaction) => {
+    return (
+      <Button
+        onClick={() => {
+          setIsEditingTransaction({
+            ...isEditingTransaction,
+            isEditing: true,
+            transaction: transaction,
+          });
+          setSelectedItemForDialog(id);
+          setDialogOpen(true);
+        }}
+        sx={{ color: COLORS.primary }}
+      >
+        Edit
+      </Button>
+    );
   };
+
   const covertDate = (dateString) => {
-    const date = dateString ? new Date(dateString) : new Date();
+    const date = new Date(dateString);
     const options = {
       year: "numeric",
       month: "long",
@@ -79,63 +94,6 @@ export default function Payments({ data, loading, setTrackChanges }) {
     const formattedDate = date.toLocaleDateString("en-US", options);
     return formattedDate;
   };
-
-  // Logic of Category and SubCategory Selection
-  const [selectedCategories, setSelectedCategories] = useState([]);
-  const [selectedSubcategories, setSelectedSubcategories] = useState([]);
-  const handleCategorySelection = (event) => {
-    const { value } = event.target;
-    setSelectedCategories(value);
-    setSelectedSubcategories([]);
-  };
-
-  const handleSubcategorySelection = (event) => {
-    const { value } = event.target;
-    setSelectedSubcategories(value);
-  };
-
-  // Filter the data based on selected categories and subcategories
-  const filteredData = data.filter((category) => {
-    if (selectedCategories.length === 0 && selectedSubcategories.length === 0) {
-      return true; // No filters selected, show all data
-    }
-    if (
-      selectedCategories.length > 0 &&
-      !selectedCategories.includes(category.categoryName)
-    ) {
-      return false; // Filter by selected categories
-    }
-    if (selectedSubcategories.length > 0) {
-          return selectedSubcategories.includes(category.subCategoryName);
-    }
-    // console.log("NOT FOUND :::", category);
-    return true;
-  });
-
-  // Get unique categories from the data
-  const categories = [...new Set(data.map((item) => item.categoryName))];
-
-  // Get subcategories based on selected categories
-  let subcategories = [];
-  if (selectedCategories.length > 0) {
-    subcategories = data
-      .filter((item) => selectedCategories.includes(item.categoryName))
-      .map((item) => item.subCategoryName);
-    subcategories = [...new Set(subcategories)];
-    // console.log(selectedSubcategories)
-  }
-
-  // Search functions
-  const [searchQuery, setSearchQuery] = useState("");
-  const handleSearchInputChange = (event) => {
-    setSearchQuery(event.target.value);
-  };
-
-  // Perform search on filtered data
-  const searchedData = filteredData.filter((item) => {
-    // console.log("FILTERED DATA :::",filteredData)
-    return item.name.toLowerCase().includes(searchQuery.toLowerCase());
-  });
 
   return (
     <Box
@@ -149,7 +107,127 @@ export default function Payments({ data, loading, setTrackChanges }) {
       }}
     >
       <>
-        <TextField
+        {selectedItemForDialog && (
+          <RenderDialogForPayment
+            handleCloseDialog={() => setDialogOpen(false)}
+            openDialog={dialogOpen}
+            subCategoryId={selectedItemForDialog}
+            setTrackChanges={setTrackChanges}
+            isEditingTransaction={isEditingTransaction}
+            isDesktop
+          />
+        )}
+        {loading ? (
+          <Box m={4}>
+            <CustomCircularProgress />
+          </Box>
+        ) : data.length == 0 ? (
+          <Box display={"flex"} justifyContent={"center"}>
+            No Transactions
+          </Box>
+        ) : (
+          <Table aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                <CustomHeader title={"Category"} />
+                <CustomHeader title={"Sub Category"} />
+                <CustomHeader title={"Transaction Name"} />
+                <CustomHeader title={"Date"} />
+                <CustomHeader title={"Transaction Amount"} />
+                <CustomHeader title={"Transaction Details"} />
+                <CustomHeader title={"Transaction Type"} />
+                <CustomHeader title={"Edit"} />
+                <CustomHeader title={"Delete"} />
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {loading ? (
+                <CircularProgress />
+              ) : (
+                data.map((el) => {
+                  return (
+                    <TableRow key={el.id}>
+                      <CustomCell title={el.categoryName} />
+                      <CustomCell title={el.subCategoryName} />
+                      <CustomCell title={el.name} />
+                      <CustomCell title={covertDate(el.createdDate)} />
+                      <CustomCell title={el.amount} />
+                      <CustomCell title={el.details} />
+                      <CustomCell title={el.type} />
+                      <CustomCell
+                        title={renderEditButton(el.subCategoryId, el)}
+                      />
+                      <CustomCell title={renderDeleteButton(el.id)} />
+                    </TableRow>
+                  );
+                })
+              )}
+            </TableBody>
+          </Table>
+        )}
+      </>
+    </Box>
+  );
+}
+
+{
+  /* <TableBody>
+  {data.length === 0 ? (
+    <TableRow>
+      <TableCell colSpan={4}>No results found.</TableCell>
+    </TableRow>
+  ) : (
+    searchedData.map((category) => {
+      return category.subCategory.map((subCategory) => {
+        if (subCategory.budgetTransaction.length == 0) {
+          return;
+          // (
+          //   <TableRow key={subCategory.id}>
+          //     {/* <CustomCell title={category.name} /> */
+}
+//     {/* <CustomCell title={subCategory.name} /> */}
+//     {/* <CustomCell title={""} />
+//     <CustomCell title={""} />
+//     <CustomCell title={""} />
+//     <CustomCell title={""} />
+//     <CustomCell title={""} />
+//     <CustomCell title={""} />
+//     <CustomCell title={""} /> */}
+//     {/* <CustomCell title={renderButton()} /> */}
+//   </TableRow>
+// );
+// }
+// {
+//   "id": 154,
+//   "subCategoryId": 252,
+//   "subCategoryName": "Vikas Sub-cat",
+//   "categoryId": 253,
+//   "categoryName": "Vikas",
+//   "amount": 1000,
+//   "name": "Raj Mandloi",
+//   "type": "DEBIT",
+//   "details": "This are the transaction"
+// }
+// return data.map((transaction) => {
+//         return (
+//           <TableRow key={subCategory.id}>
+//             <CustomCell title={category.name} />
+//             <CustomCell title={subCategory.name} />
+//             <CustomCell title={transaction.name} />
+//             <CustomCell title={covertDate(transaction.dateAdded)} />
+//             <CustomCell title={transaction.amount} />
+//             <CustomCell title={transaction.details} />
+//             <CustomCell title={transaction.type} />
+//             <CustomCell title={renderButton(transaction.id)} />
+//           </TableRow>
+//         );
+//       });
+//     });
+//   })
+// )
+
+{
+  /* <TextField
           label="Search"
           value={searchQuery}
           onChange={handleSearchInputChange}
@@ -196,53 +274,5 @@ export default function Payments({ data, loading, setTrackChanges }) {
               </MenuItem>
             ))}
           </Select>
-        </FormControl>
-        {loading ? (
-          <CustomCircularProgress />
-        ) : searchedData.length == 0 ? (
-          <Box
-          sx={{display: "flex", height: "10vh", justifyContent: "center", alignItems: "center"}}
-          >No Payments</Box>
-        ) : (
-          <Table aria-label="simple table">
-            <TableHead>
-              <TableRow>
-                <CustomHeader title={"Category"} />
-                <CustomHeader title={"Sub Category"} />
-                <CustomHeader title={"Transaction Name"} />
-                <CustomHeader title={"Date"} />
-                <CustomHeader title={"Transaction Amount"} />
-                <CustomHeader title={"Transaction Details"} />
-                <CustomHeader title={"Transaction Type"} />
-                <CustomHeader title={"Delete"} />
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {filteredData.length === 0 ? (
-                <TableRow>
-                  <TableCell colSpan={4}>No results found.</TableCell>
-                </TableRow>
-              ) : (
-                searchedData.map((transaction) => (
-                        <TableRow key={transaction.id}>
-                          <CustomCell title={transaction.categoryName} />
-                          <CustomCell title={transaction.subCategoryName} />
-                          <CustomCell title={transaction.name} />
-                          <CustomCell
-                            title={covertDate(transaction.dateAdded)}
-                          />
-                          <CustomCell title={transaction.amount} />
-                          <CustomCell title={transaction.details} />
-                          <CustomCell title={transaction.type} />
-                          <CustomCell title={renderButton(transaction.id)} />
-                        </TableRow>
-                      )
-                )
-              )}
-            </TableBody>
-          </Table>
-        )}
-      </>
-    </Box>
-  );
+        </FormControl> */
 }

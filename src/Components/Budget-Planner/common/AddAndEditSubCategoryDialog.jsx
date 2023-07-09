@@ -1,10 +1,4 @@
-import {
-  Box,
-  Button,
-  Divider,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Box, Button, Divider, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import { COLORS } from "@/Components/utils/ConstantTheme";
@@ -24,13 +18,11 @@ const AddAndEditSubCategoryDialog = ({
     categoryId: categoryId,
   });
   const [errors, setErrors] = useState({});
-  
+
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      [name]: value,
-    }));
+    const value =
+      e.target.type === "number" ? parseFloat(e.target.value) : e.target.value;
+    setFormData({ ...formData, [e.target.name]: value });
   };
 
   const handleSubmit = () => {
@@ -45,7 +37,6 @@ const AddAndEditSubCategoryDialog = ({
       setErrors(newErrors);
     } else {
       if (isEditingSubCategory.isEditing === false) {
-        console.log("ADDING SUB CAT", formData, categoryId);
         addSubcategory({
           ...formData,
           categoryId: categoryId,
@@ -54,8 +45,10 @@ const AddAndEditSubCategoryDialog = ({
           onClose();
         });
       } else {
-        const obj = isEditingSubCategory.subCategory;
-        editSubcategory({
+        const obj = { ...isEditingSubCategory.subCategory };
+        delete obj.amountPaid;
+        delete obj.id;
+        editSubcategory(isEditingSubCategory.subCategory.id, {
           ...obj,
           name: formData.name,
           expectedAmount: +formData.expectedAmount,
@@ -79,37 +72,6 @@ const AddAndEditSubCategoryDialog = ({
       </Typography>
     );
   };
-  // const RenderInputField = ({ label, name, handleChange, value }) => {
-  //   return (
-  //     // <FormControl>
-  //     <Input
-  //       disableUnderline={true}
-  //       sx={{
-  //         border: `1px solid ${COLORS.lighGray}`,
-  //         borderRadius: "5px",
-  //         m: 1,
-  //       }}
-  //       name={name}
-  //       value={value}
-  //       onChange={handleChange}
-  //       placeholder="0"
-  //       startAdornment={
-  //         <InputAdornment
-  //           position="start"
-  //           sx={{
-  //             backgroundColor: COLORS.lighGray,
-  //             height: "20px",
-  //             py: 2,
-  //             px: 1,
-  //             borderRadius: "5px",
-  //           }}
-  //         >
-  //           {label}
-  //         </InputAdornment>
-  //       }
-  //     />
-  //   );
-  // };
   return (
     <>
       <Box>
@@ -119,19 +81,23 @@ const AddAndEditSubCategoryDialog = ({
           color={COLORS.gray}
           onClick={() => onClose()}
         >
-          <ArrowBackIosIcon fontSize="10px" sx={{ mt: 0.2 }} />
+          <ArrowBackIosIcon
+            fontSize="10px"
+            sx={{ mt: 0.2, cursor: "pointer" }}
+          />
           <Typography
             variant="caption"
             fontWeight={400}
             fontFamily={"inherit"}
             ml={1}
+            sx={{ cursor: "pointer" }}
           >
             BUDGET PLANNER
           </Typography>
         </Box>
         <Typography m={1} fontWeight={500} fontFamily={"inherit"} variant="h6">
           {/* {subId == 0 ? "Add New Category" : subCategoryData.name} */}
-          Add Sub Category
+          {isEditingSubCategory.subCategory?.name ?? "Add Sub Category"}
         </Typography>
         <Divider />
         <Box m={1}></Box>
@@ -173,6 +139,7 @@ const AddAndEditSubCategoryDialog = ({
         />
         <RenderHeading title={"Amount"} />
         <TextField
+          type="number"
           size="small"
           sx={{
             m: 1,
@@ -262,11 +229,11 @@ const AddAndEditSubCategoryDialog = ({
                 </Box>
               </Grid>
             </Grid> */}
-        <RenderHeading title={"Notes"} />
-        <Box display={"flex"} justifyContent={"center"}>
+        {/* <RenderHeading title={"Notes"} /> */}
+        {/* <Box display={"flex"} justifyContent={"center"}>
           <br />
           <TextField multiline={true} disabled rows={3} sx={{ width: "96%" }} />
-        </Box>
+        </Box> */}
         <Button
           onClick={handleSubmit}
           sx={{ width: "96%", m: 1, borderRadius: "5px" }}
