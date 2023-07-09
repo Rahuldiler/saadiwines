@@ -152,9 +152,7 @@ function HeroSection() {
               mt: { lg: 6, xs: 2 },
             }}
           >
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt
-            iste sed, ex error delectus doloribus eaque molestiae veniam et
-            voluptate!
+            Share below details to book a free DEMO!
           </Typography>
           <Box sx={{ mx: { lg: 10, xs: 4 }, mt: 2 }}>
             <form
