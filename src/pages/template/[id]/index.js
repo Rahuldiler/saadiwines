@@ -268,5 +268,6 @@ export async function getStaticProps({ params }) {
 
   return {
     props: { singleTemplate, responseTemplateData, templateId },
+    revalidate: 1,
   };
 }

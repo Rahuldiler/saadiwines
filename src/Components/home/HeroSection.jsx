@@ -44,7 +44,6 @@ function HeroSection() {
       fromMail: Yup.string().required("Required").email(),
     }),
     onSubmit: async (values) => {
-      console.log(values);
       try {
         await addContactUs(values);
         setIsNotification({
@@ -63,7 +62,6 @@ function HeroSection() {
       }
     },
   });
-  console.log(formik.values);
   const handleDateTime = (newValue) => {
     const dayjsFormat = dayjs(newValue).$d;
     setValueDateTime(newValue);
