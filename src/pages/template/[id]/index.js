@@ -18,7 +18,12 @@ import { createRef } from "react";
 import * as htmlToImage from "html-to-image";
 import SEO from "@/Components/utils/seo";
 
-function Template({ singleTemplate, responseTemplateData, templateId }) {
+function Template({
+  singleTemplate,
+  responseTemplateData,
+  templateId,
+  hostname,
+}) {
   const [formData, setFormData] = useState({});
 
   const [loading, setLoading] = useState(true);
@@ -202,20 +207,20 @@ function Template({ singleTemplate, responseTemplateData, templateId }) {
         title={
           responseTemplateData
             ? responseTemplateData?.weddingInfo?.groom?.name +
-            " weds " +
-            responseTemplateData?.weddingInfo?.bride?.name +
-            " | Shaadi Vines"
+              " weds " +
+              responseTemplateData?.weddingInfo?.bride?.name +
+              " | Shaadi Vines"
             : "Shaadi Vines"
         }
         description={responseTemplateData?.weddingInfo.thankYouMessage}
         keywords="Test1"
-        url={`https://stage.shaadivines.com/template/${templateId}`}
+        url={`${hostname}/template/${templateId}`}
         ogImage={
           id?.length > 3
             ? responseTemplateData?.thumbnail
             : singleTemplate
-              ? singleTemplate[0]?.socialImage
-              : ""
+            ? singleTemplate[0]?.socialImage
+            : ""
         }
       />
 
@@ -231,16 +236,17 @@ function Template({ singleTemplate, responseTemplateData, templateId }) {
 
 export default Template;
 
-export async function getStaticPaths() {
-  const paths = staticTemplateData.map((template) => ({
-    params: { id: template.templateId.toString() },
-  }));
+// export async function getStaticPaths() {
+//   const paths = staticTemplateData.map((template) => ({
+//     params: { id: template.templateId.toString() },
+//   }));
 
-  return { paths, fallback: true };
-}
+//   return { paths, fallback: true };
+// }
 
 // This also gets called at build time
-export async function getStaticProps({ params }) {
+export async function getServerSideProps({ params, req }) {
+  const hostname = "https://" + req.headers.host;
   const encodeId = params.id?.replace("%2F", "/");
   let responseTemplateData;
   let templateId;
@@ -266,8 +272,7 @@ export async function getStaticProps({ params }) {
     templateId = Number(params.id);
   }
 
-  return {
-    props: { singleTemplate, responseTemplateData, templateId },
-    revalidate: 1,
+return {
+    props: { singleTemplate, responseTemplateData, templateId, hostname },
   };
 }

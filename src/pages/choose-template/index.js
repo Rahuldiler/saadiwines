@@ -46,11 +46,11 @@ function ChooseTemplate() {
 
   const handleCloseModal = () => {
     handleClose();
-    window.location.href = "/dashboard";
+    router.push("/dashboard");
   };
 
   const handleChooseLater = () => {
-    window.location.href = "/dashboard";
+    router.push("/dashboard");
   };
 
   useEffect(() => {
