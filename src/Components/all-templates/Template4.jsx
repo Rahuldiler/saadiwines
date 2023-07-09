@@ -11,7 +11,6 @@ import ContactForm from "@/Components/template-components/4/RsvpForm4";
 import Lightbox from "../template-components/4/lightBox";
 
 function Template4({ templateData, staticTemplateData }) {
-  console.log(templateData);
   const [currentSlide, setCurrentSlide] = useState(0);
   
   const [isOpen, setIsOpen] = useState(false);
@@ -22,9 +21,6 @@ function Template4({ templateData, staticTemplateData }) {
   // useEffect(() => {
   //     formData ? setTemplateData(formData) : setTemplateData(templateInfoData);
   //   }, [formData]);
-
-  console.log("templateData", templateData);
-
   const slides = [
     {
       id: 1,
