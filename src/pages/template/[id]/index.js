@@ -18,7 +18,12 @@ import { createRef } from "react";
 import * as htmlToImage from "html-to-image";
 import SEO from "@/Components/utils/seo";
 
-function Template({ singleTemplate, responseTemplateData, templateId }) {
+function Template({
+  singleTemplate,
+  responseTemplateData,
+  templateId,
+  hostname,
+}) {
   const [formData, setFormData] = useState({});
 
   const [loading, setLoading] = useState(true);
@@ -209,7 +214,7 @@ function Template({ singleTemplate, responseTemplateData, templateId }) {
         }
         description={responseTemplateData?.weddingInfo.thankYouMessage}
         keywords="Test1"
-        url={`/template/${templateId}`}
+        url={`${hostname}/template/${templateId}`}
         ogImage={
           id?.length > 3
             ? responseTemplateData?.thumbnail
@@ -240,7 +245,8 @@ export default Template;
 // }
 
 // This also gets called at build time
-export async function getServerSideProps({ params }) {
+export async function getServerSideProps({ params, req }) {
+  const hostname = "https://" + req.headers.host;
   const encodeId = params.id?.replace("%2F", "/");
   let responseTemplateData;
   let templateId;
@@ -267,6 +273,6 @@ export async function getServerSideProps({ params }) {
   }
 
   return {
-    props: { singleTemplate, responseTemplateData, templateId },
+    props: { singleTemplate, responseTemplateData, templateId, hostname },
   };
 }
