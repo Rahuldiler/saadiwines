@@ -272,7 +272,7 @@ export async function getServerSideProps({ params, req }) {
     templateId = Number(params.id);
   }
 
-  return {
+return {
     props: { singleTemplate, responseTemplateData, templateId, hostname },
   };
 }
