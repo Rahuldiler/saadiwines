@@ -22,6 +22,7 @@ import FormErrorMessage from "../common/FormErrorMessage";
 import Notification from "../common/Notification";
 import { faqsData } from "@/constants/faqData";
 import { set } from "date-fns";
+import { deleteMilestone } from "@/services/FAQ/formFaq";
 function Step3FAQ({
   setValidationBoolean,
   milestoneLists,
@@ -58,7 +59,6 @@ function Step3FAQ({
       })
     ),
     onSubmit: (values) => {
-      console.log(values, "values");
       handleNext(values);
       setFormLoading(true);
     },
@@ -116,9 +116,12 @@ function Step3FAQ({
     formik.setValues(list);
   };
 
-  const deleteMilestone = (id) => {
-    const updatedList = formik.values.filter((list) => list.arrayId !== id);
+  const deleteMilestoneBox = async (arrayId, id) => {
+    const updatedList = formik.values.filter(
+      (list) => list.arrayId !== arrayId
+    );
     formik.setValues(updatedList);
+    id && (await deleteMilestone(id));
   };
 
   useEffect(() => {
@@ -134,8 +137,6 @@ function Step3FAQ({
       setRemovedQuesAnsData((prevData) => [...prevData, filteredData[0]]);
     }
   }, [milestoneLists]);
-
-  console.log(formik.values, "formik.values");
 
   return (
     <Box
@@ -199,7 +200,9 @@ function Step3FAQ({
                 <Typography variant="body1">Milestone {index + 1}</Typography>
                 {formik.values.length > 1 && (
                   <Button
-                    onClick={() => deleteMilestone(milestone.arrayId)}
+                    onClick={() =>
+                      deleteMilestoneBox(milestone.arrayId, milestone.id)
+                    }
                     sx={{
                       color: "#BC8129",
                     }}
@@ -246,13 +249,16 @@ function Step3FAQ({
                 <FormErrorMessage errorMessage={formik.errors[index]?.title} />
               ) : null}
               <Box sx={{ mt: 2 }}>
-                <MultilineTextField
+                <TextField
                   id="description"
+                  multiline
+                  rows={2}
                   label="Description *"
                   name="description"
                   type="text"
                   value={milestone.description}
                   onChange={(e) => handleChange(e, index)}
+                  sx={{ width: "100%" }}
                 />
                 {formik.touched[index]?.description &&
                 formik.errors[index]?.description ? (

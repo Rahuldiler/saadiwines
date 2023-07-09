@@ -102,7 +102,7 @@ function index() {
     },
   ]);
   const router = useRouter();
-  const [activeStep, setActiveStep] = React.useState(0);
+  const [activeStep, setActiveStep] = React.useState(2);
   const [formLoading, setFormLoading] = useState(true);
   const [loading, setLoading] = useState(true);
   const [notificationActive, setNotificationActive] = useState(false);
@@ -120,6 +120,7 @@ function index() {
     } else if (activeStep === 1) {
       for (let i = 0; i < values.length; i++) {
         const { arrayId, ...itineraryList } = values[i];
+
         try {
           itineraryList.id
             ? await updateItinerary(itineraryList)
@@ -132,7 +133,6 @@ function index() {
     } else if (activeStep === 2) {
       for (let i = 0; i < values.length; i++) {
         const { arrayId, ...milestoneList } = values[i];
-        console.log(milestoneList, "milestoneList");
         try {
           milestoneList.id
             ? await updateMilestone(milestoneList)
@@ -272,6 +272,7 @@ function index() {
           resItinerary.map((itinerary) => {
             return {
               ...itinerary,
+              image: "test",
               arrayId: arrayIdItinerary++,
             };
           })
@@ -374,12 +375,12 @@ function index() {
               </Stepper>
             </Box>
             <Box>
-              {formLoading && (
+              {/* {formLoading && (
                 <Loader
                   message="Loading dashboard page"
                   isLoading={formLoading}
                 />
-              )}
+              )} */}
 
               {steps[activeStep]?.components}
             </Box>

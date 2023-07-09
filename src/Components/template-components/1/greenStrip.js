@@ -8,7 +8,6 @@ import "swiper/css/pagination";
 import { Pagination } from "swiper";
 import Image from "next/image";
 
-
 function GreenStrip({
   title,
   text,
@@ -16,6 +15,7 @@ function GreenStrip({
   propName,
   theme,
   themeColor,
+  targetDate,
   weddingDayURL,
   waterColorIMG,
   swiperSlide1,
@@ -25,31 +25,37 @@ function GreenStrip({
   swiperSlide5,
   swiperSlide6,
 }) {
-  const targetDate = new Date("2023-06-01");
-  const calculateTimeRemaining = () => {
-    const currentDate = new Date();
-    const timeDifference = targetDate.getTime() - currentDate.getTime();
-
-    const totalSeconds = Math.floor(timeDifference / 1000);
-    const days = Math.floor(totalSeconds / (24 * 60 * 60));
-    const hours = Math.floor((totalSeconds % (24 * 60 * 60)) / (60 * 60));
-    const minutes = Math.floor((totalSeconds % (60 * 60)) / 60);
-    const seconds = Math.floor(totalSeconds % 60);
-
-    return { days, hours, minutes, seconds };
-  };
-
-  const [timeRemaining, setTimeRemaining] = useState(calculateTimeRemaining());
+  const [timeRemaining, setTimeRemaining] = useState({});
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setTimeRemaining(calculateTimeRemaining());
-    }, 1000); // Update every second
+      const now = new Date().getTime();
+      const difference = targetDate.getTime() - now;
 
-    return () => {
-      clearInterval(interval);
-    };
-  }, []);
+      if (difference <= 0) {
+        clearInterval(interval);
+        setTimeRemaining({
+          days: 0,
+          hours: 0,
+          minutes: 0,
+          seconds: 0,
+        });
+      } else {
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+          (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        const minutes = Math.floor(
+          (difference % (1000 * 60 * 60)) / (1000 * 60)
+        );
+        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+        setTimeRemaining({ days, hours, minutes, seconds });
+      }
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [targetDate]);
 
   const getThemeImage = () => {
     const imageUrl = "/images/bg-watercolor-02.jpg";
@@ -90,7 +96,7 @@ function GreenStrip({
           alt="glasses"
           className="w-24 h-20 mr-3 mb-6 hidden lg:block"
         /> */}
-         <Image
+        <Image
           src={img}
           alt="glasses"
           width={24}
@@ -118,7 +124,7 @@ function GreenStrip({
               alt=""
               className="w-52 h-20 object-contain"
             /> */}
-             <Image
+            <Image
               src={swiperSlide1}
               alt=""
               width={52}
@@ -133,7 +139,7 @@ function GreenStrip({
               alt=""
               className="w-52 h-20 object-contain"
             /> */}
-             <Image
+            <Image
               src={swiperSlide2}
               alt=""
               width={52}
@@ -148,7 +154,7 @@ function GreenStrip({
               alt=""
               className="w-52 h-20 object-contain"
             /> */}
-             <Image
+            <Image
               src={swiperSlide3}
               alt=""
               width={52}
@@ -163,7 +169,7 @@ function GreenStrip({
               alt=""
               className="w-52 h-20 object-contain"
             /> */}
-             <Image
+            <Image
               src={swiperSlide4}
               alt=""
               width={52}
@@ -178,7 +184,7 @@ function GreenStrip({
               alt=""
               className="w-52 h-20 object-contain"
             /> */}
-             <Image
+            <Image
               src={swiperSlide5}
               alt=""
               width={52}
@@ -193,7 +199,7 @@ function GreenStrip({
               alt=""
               className="w-52 h-20 object-contain"
             /> */}
-             <Image
+            <Image
               src={swiperSlide6}
               alt=""
               width={52}

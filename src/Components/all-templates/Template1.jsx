@@ -15,6 +15,7 @@ function Template1({ templateData, staticTemplateData, images }) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [imageIndex, setImageIndex] = useState();
   const [isOpen, setIsOpen] = useState(false);
+  const targetDate = new Date(2024, 5, 18);
 
   const openLightbox = (img) => {
     setIsOpen(true);
@@ -99,6 +100,7 @@ function Template1({ templateData, staticTemplateData, images }) {
         img="/images/icon-02.png"
         propName="clock"
         theme={staticTemplateData?.theme}
+        targetDate={targetDate}
         weddingDayURL={staticTemplateData?.images.weddingDayURL}
         waterColorIMG={staticTemplateData?.images.waterColorIMG}
         swiperSlide1={staticTemplateData?.images.swiperSlide1}
@@ -222,7 +224,7 @@ function Template1({ templateData, staticTemplateData, images }) {
         isOpen={isOpen}
         imageIndex={imageIndex}
         onClose={closeLightbox}
-        images={templateData.imagesLightBox}
+        images={templateData?.imagesLightBox}
       />
 
       <div style={{ backgroundImage: staticTemplateData?.images.waterColor02 }}>

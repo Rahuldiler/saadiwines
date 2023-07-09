@@ -26,6 +26,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import FormErrorMessage from "../common/FormErrorMessage";
 import Notification from "../common/Notification";
+import { deleteItinerary } from "@/services/itinerary/formItinerary";
 
 function Step2Itinerary({
   itineraryLists,
@@ -89,9 +90,13 @@ function Step2Itinerary({
 
   const handleDateTime = (newValue, index) => {
     // setValueDateTime(newValue);
+    const dayjsFormat = dayjs(newValue).$d;
+
     const list = [...formik.values];
 
-    list[index].dateTime = String(moment(newValue?.$d).toISOString());
+    list[index].dateTime = String(
+      moment(dayjsFormat).format("YYYY-MM-DDTHH:MM:SS[Z]")
+    );
 
     const listOfDates = [...valueDateTime];
     listOfDates[index] = newValue;
@@ -99,9 +104,12 @@ function Step2Itinerary({
     setValueDateTime(listOfDates);
   };
 
-  const deleteItinerary = (id) => {
-    const updatedList = formik.values.filter((list) => list.arrayId !== id);
+  const deleteItineraryBox = async (arrayId, id) => {
+    const updatedList = formik.values.filter(
+      (list) => list.arrayId !== arrayId
+    );
     formik.setValues(updatedList);
+    id && (await deleteItinerary(id));
   };
 
   useEffect(() => {
@@ -112,9 +120,8 @@ function Step2Itinerary({
       valueDate.push(dayjs(itineraryLists[i].dateTime));
     }
 
-    setValueDateTime(valueDate);
+    itineraryLists && setValueDateTime(valueDate);
   }, [itineraryLists]);
-
   return (
     <Box
       sx={{
@@ -168,7 +175,7 @@ function Step2Itinerary({
                 <Typography variant="body1">Itinerary {index + 1}</Typography>
                 {formik.values.length > 1 && (
                   <Button
-                    onClick={() => deleteItinerary(list.arrayId)}
+                    onClick={() => deleteItineraryBox(list.arrayId, list.id)}
                     sx={{
                       color: "#BC8129",
                     }}

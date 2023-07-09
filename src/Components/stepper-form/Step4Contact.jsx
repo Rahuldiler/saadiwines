@@ -18,6 +18,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import FormErrorMessage from "../common/FormErrorMessage";
 import Notification from "../common/Notification";
+import { deleteContact } from "@/services/Contact/formContact";
 function Step4Contact({
   contactDetails,
   handleNext,
@@ -73,9 +74,12 @@ function Step4Contact({
     formik.setValues(list);
   };
 
-  const deleteContact = (id) => {
-    const updatedList = formik.values.filter((list) => list.arrayId !== id);
+  const deleteContactBox = async (arrayId, id) => {
+    const updatedList = formik.values.filter(
+      (list) => list.arrayId !== arrayId
+    );
     formik.setValues(updatedList);
+    id && (await deleteContact(id));
   };
 
   useEffect(() => {
@@ -135,7 +139,9 @@ function Step4Contact({
                 <Typography variant="body1">Contact {index + 1}</Typography>
                 {formik.values.length > 1 && (
                   <Button
-                    onClick={() => deleteContact(contact.arrayId)}
+                    onClick={() =>
+                      deleteContactBox(contact.arrayId, contact.id)
+                    }
                     sx={{
                       color: "#BC8129",
                     }}

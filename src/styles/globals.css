@@ -53,6 +53,13 @@ p {
   align-items: center;
 }
 
+.contact-form-hero-section {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+}
+
 .swiper-pagination-bullet {
   width: 0.75rem;
   height: 0.75rem;
@@ -234,5 +241,10 @@ p {
     margin-right: 0 !important;
     position: relative !important;
     margin-top: -7px !important;
+  }
+
+  .contact-form-hero-section {
+    flex-direction: column;
+    gap: 0px;
   }
 }

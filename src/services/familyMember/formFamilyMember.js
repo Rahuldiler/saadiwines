@@ -26,4 +26,16 @@ const getFamilyMember = async () => {
   return response.data;
 };
 
-export { addFamilyMember, updateFamilyMember, getFamilyMember };
+const deleteFamilyMember = async (id) => {
+  await http.delete({
+    url: `/family_member/${id}`,
+    isSecured: true,
+  });
+};
+
+export {
+  addFamilyMember,
+  updateFamilyMember,
+  getFamilyMember,
+  deleteFamilyMember,
+};

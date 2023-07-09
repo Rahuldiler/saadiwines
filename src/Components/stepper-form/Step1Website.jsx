@@ -122,17 +122,18 @@ function Step1Website({
   }, [websiteForm]);
 
   const handleDateTime = (newValue) => {
+    const dayjsFormat = dayjs(newValue).$d;
     setValueDateTime(newValue);
     formik.setFieldValue(
       "dateTime",
-      String(moment(newValue?.$d).toISOString())
+      String(moment(dayjsFormat).format("YYYY-MM-DDTHH:MM:SS[Z]"))
     );
   };
-
   useEffect(() => {
-    setValueDateTime(dayjs(websiteForm?.dateTime));
+    websiteForm && setValueDateTime(dayjs(websiteForm?.dateTime));
   }, [websiteForm.dateTime]);
 
+  console.log(formik.values, "formik.values");
   return (
     <Box
       sx={{
@@ -378,7 +379,7 @@ function Step1Website({
           {formik.touched.thankYouMessage && formik.errors.thankYouMessage ? (
             <FormErrorMessage errorMessage={formik.errors.thankYouMessage} />
           ) : null}
-          <LocalizationProvider required dateAdapter={AdapterDayjs}>
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DatePicker
               label="Pick a date *"
               name="valueDateTime"

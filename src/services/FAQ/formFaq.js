@@ -26,4 +26,11 @@ const getMilestone = async () => {
   return response.data;
 };
 
-export { addMilestone, updateMilestone, getMilestone };
+const deleteMilestone = async (id) => {
+  await http.delete({
+    url: `/milestone/${id}`,
+    isSecured: true,
+  });
+};
+
+export { addMilestone, updateMilestone, getMilestone, deleteMilestone };

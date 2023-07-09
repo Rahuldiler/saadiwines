@@ -1,6 +1,6 @@
 import { getTemplateData } from "@/services/template/template";
 import { getUserPreference } from "@/services/user-preference/userPreference";
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -18,23 +18,26 @@ import { createRef } from "react";
 import * as htmlToImage from "html-to-image";
 import SEO from "@/Components/utils/seo";
 
-function Template({ singleTemplate, responseTemplateData, templateId }) {
+function Template({
+  singleTemplate,
+  responseTemplateData,
+  templateId,
+  hostname,
+}) {
   const [formData, setFormData] = useState({});
 
   const [loading, setLoading] = useState(true);
   const router = useRouter();
   const id = router.query.id;
-  const ref = createRef(null);
+  const ref = createRef();
   const [uploadThumbnail, setUploadThumbnail] = useState(null);
   const [thumbnail, setThumbnail] = useState(null);
-
   const getTemplate = (templateId) => {
     switch (templateId) {
       case 1:
         return (
           <Template1
             templateData={responseTemplateData}
-            templateId={templateId}
             staticTemplateData={singleTemplate[0]}
           />
         );
@@ -42,7 +45,6 @@ function Template({ singleTemplate, responseTemplateData, templateId }) {
         return (
           <Template1
             templateData={responseTemplateData}
-            templateId={templateId}
             staticTemplateData={singleTemplate[0]}
           />
         );
@@ -50,7 +52,6 @@ function Template({ singleTemplate, responseTemplateData, templateId }) {
         return (
           <Template1
             templateData={responseTemplateData}
-            templateId={templateId}
             staticTemplateData={singleTemplate[0]}
           />
         );
@@ -58,7 +59,6 @@ function Template({ singleTemplate, responseTemplateData, templateId }) {
         return (
           <Template1
             templateData={responseTemplateData}
-            templateId={templateId}
             staticTemplateData={singleTemplate[0]}
           />
         );
@@ -66,7 +66,6 @@ function Template({ singleTemplate, responseTemplateData, templateId }) {
         return (
           <Template2
             templateData={responseTemplateData}
-            templateId={templateId}
             staticTemplateData={singleTemplate[0]}
           />
         );
@@ -74,7 +73,6 @@ function Template({ singleTemplate, responseTemplateData, templateId }) {
         return (
           <Template2
             templateData={responseTemplateData}
-            templateId={templateId}
             staticTemplateData={singleTemplate[0]}
           />
         );
@@ -82,7 +80,6 @@ function Template({ singleTemplate, responseTemplateData, templateId }) {
         return (
           <Template2
             templateData={responseTemplateData}
-            templateId={templateId}
             staticTemplateData={singleTemplate[0]}
           />
         );
@@ -90,7 +87,6 @@ function Template({ singleTemplate, responseTemplateData, templateId }) {
         return (
           <Template2
             templateData={responseTemplateData}
-            templateId={templateId}
             staticTemplateData={singleTemplate[0]}
           />
         );
@@ -98,7 +94,6 @@ function Template({ singleTemplate, responseTemplateData, templateId }) {
         return (
           <Template3
             templateData={responseTemplateData}
-            templateId={templateId}
             staticTemplateData={singleTemplate[0]}
           />
         );
@@ -106,7 +101,6 @@ function Template({ singleTemplate, responseTemplateData, templateId }) {
         return (
           <Template3
             templateData={responseTemplateData}
-            templateId={templateId}
             staticTemplateData={singleTemplate[0]}
           />
         );
@@ -114,7 +108,6 @@ function Template({ singleTemplate, responseTemplateData, templateId }) {
         return (
           <Template3
             templateData={responseTemplateData}
-            templateId={templateId}
             staticTemplateData={singleTemplate[0]}
           />
         );
@@ -122,7 +115,6 @@ function Template({ singleTemplate, responseTemplateData, templateId }) {
         return (
           <Template3
             templateData={responseTemplateData}
-            templateId={templateId}
             staticTemplateData={singleTemplate[0]}
           />
         );
@@ -131,12 +123,57 @@ function Template({ singleTemplate, responseTemplateData, templateId }) {
           <Template4
             templateData={responseTemplateData}
             templateId={templateId}
-            staticTemplateData={singleTemplate[0]}
+            staticTemplateData={staticTemplateData[12]}
+            images={staticTemplateData[12]}
+          />
+        );
+      case 14:
+        return (
+          <Template4
+            templateData={responseTemplateData}
+            templateId={templateId}
+            staticTemplateData={staticTemplateData[13]}
+            images={staticTemplateData[13]}
+          />
+        );
+      case 15:
+        return (
+          <Template4
+            templateData={responseTemplateData}
+            templateId={templateId}
+            staticTemplateData={staticTemplateData[14]}
+            images={staticTemplateData[14]}
+          />
+        );
+      case 16:
+        return (
+          <Template4
+            templateData={responseTemplateData}
+            templateId={templateId}
+            staticTemplateData={staticTemplateData[15]}
+            images={staticTemplateData[15]}
           />
         );
 
       default:
-        return <Box>No template found </Box>;
+        return (
+          <Box>
+            {loading ? (
+              <Loader message="Loading template" isLoading={loading} />
+            ) : (
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  height: "100vh",
+                }}
+              >
+                <Typography variant="h5"> No template found </Typography>
+              </Box>
+            )}
+          </Box>
+        );
     }
   };
 
@@ -161,21 +198,23 @@ function Template({ singleTemplate, responseTemplateData, templateId }) {
   }, [ref]);
 
   useEffect(() => {
-    setLoading(false);
+    responseTemplateData && setLoading(false);
   }, [responseTemplateData]);
 
   return (
     <Box>
       <SEO
         title={
-          responseTemplateData?.weddingInfo?.groom?.name +
-          " weds " +
-          responseTemplateData?.weddingInfo?.bride?.name +
-          " | Shaadi Vines"
+          responseTemplateData
+            ? responseTemplateData?.weddingInfo?.groom?.name +
+              " weds " +
+              responseTemplateData?.weddingInfo?.bride?.name +
+              " | Shaadi Vines"
+            : "Shaadi Vines"
         }
         description={responseTemplateData?.weddingInfo.thankYouMessage}
         keywords="Test1"
-        url={`https://stage.shaadivines.com/template/${templateId}`}
+        url={`${hostname}/template/${templateId}`}
         ogImage={
           id?.length > 3
             ? responseTemplateData?.thumbnail
@@ -185,13 +224,10 @@ function Template({ singleTemplate, responseTemplateData, templateId }) {
         }
       />
 
-      {loading ? (
-        <Loader message="Loading template" isLoading={loading} />
-      ) : (
-        <div ref={ref} style={{ height: "720px" }}>
-          {getTemplate(templateId)}
-        </div>
-      )}
+      {loading && <Loader message="Loading template" isLoading={loading} />}
+      <div ref={ref} style={{ height: "720px" }}>
+        {getTemplate(templateId)}
+      </div>
       {/* <button onClick={downloadScreenshot}>Download screenshot</button> */}
       {/* <img src={uploadThumbnail} style={{ width: "500px", height: "500px" }} /> */}
     </Box>
@@ -200,16 +236,17 @@ function Template({ singleTemplate, responseTemplateData, templateId }) {
 
 export default Template;
 
-export async function getStaticPaths() {
-  const paths = staticTemplateData.map((template) => ({
-    params: { id: template.templateId.toString() },
-  }));
+// export async function getStaticPaths() {
+//   const paths = staticTemplateData.map((template) => ({
+//     params: { id: template.templateId.toString() },
+//   }));
 
-  return { paths, fallback: true };
-}
+//   return { paths, fallback: true };
+// }
 
 // This also gets called at build time
-export async function getStaticProps({ params }) {
+export async function getServerSideProps({ params, req }) {
+  const hostname = "https://" + req.headers.host;
   const encodeId = params.id?.replace("%2F", "/");
   let responseTemplateData;
   let templateId;
@@ -235,7 +272,7 @@ export async function getStaticProps({ params }) {
     templateId = Number(params.id);
   }
 
-  return {
-    props: { singleTemplate, responseTemplateData, templateId },
+return {
+    props: { singleTemplate, responseTemplateData, templateId, hostname },
   };
 }

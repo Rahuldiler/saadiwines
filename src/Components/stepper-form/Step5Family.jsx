@@ -21,6 +21,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import FormErrorMessage from "../common/FormErrorMessage";
 import Notification from "../common/Notification";
+import { deleteFamilyMember } from "@/services/familyMember/formFamilyMember";
 
 function Step5Family({
   familyMemberLists,
@@ -72,9 +73,12 @@ function Step5Family({
     formik.setValues(list);
   };
 
-  const deleteFamilyMember = (id) => {
-    const updatedList = formik.values.filter((list) => list.arrayId !== id);
+  const deleteFamilyMemberBox = async (arrayId, id) => {
+    const updatedList = formik.values.filter(
+      (list) => list.arrayId !== arrayId
+    );
     formik.setValues(updatedList);
+    id && (await deleteFamilyMember(id));
   };
 
   useEffect(() => {
@@ -134,7 +138,9 @@ function Step5Family({
                 <Typography variant="body1">Member {index + 1}</Typography>
                 {formik.values.length > 1 && (
                   <Button
-                    onClick={() => deleteFamilyMember(family.arrayId)}
+                    onClick={() =>
+                      deleteFamilyMemberBox(family.arrayId, family.id)
+                    }
                     sx={{
                       color: "#BC8129",
                     }}

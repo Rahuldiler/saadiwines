@@ -34,4 +34,17 @@ const getItineraryConfig = async () => {
   return response.data;
 };
 
-export { addItinerary, updateItinerary, getItinerary, getItineraryConfig };
+const deleteItinerary = async (id) => {
+  await http.delete({
+    url: `/itinerary/${id}`,
+    isSecured: true,
+  });
+};
+
+export {
+  addItinerary,
+  updateItinerary,
+  getItinerary,
+  getItineraryConfig,
+  deleteItinerary,
+};
