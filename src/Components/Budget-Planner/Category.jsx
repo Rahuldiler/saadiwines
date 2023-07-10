@@ -3,24 +3,16 @@ import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableRow from "@mui/material/TableRow";
-import {
-  Box,
-  Typography,
-  Paper,
-  TextField,
-} from "@mui/material";
+import { Box, Typography, Paper } from "@mui/material";
 import { useState } from "react";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import CustomCircularProgress from "./CustomCircularProgress";
-import { addCategory, getCategories } from "@/services/category/category";
+import CustomCircularProgress from "./common/CustomCircularProgress";
 import { BORDER, COLORS } from "../utils/ConstantTheme";
-import Modal from "./Modal";
-import { calculateTotaEstimatedCost } from "./calculate";
+import { RenderDialogForCategory } from "./common/RenderDialog";
 
 const Category = ({
   categories,
-  setCategories,
   selectedRow,
   setSelectedRow,
   loading,
@@ -29,8 +21,19 @@ const Category = ({
   const handleRowClick = (rowIndex, id) => {
     setSelectedRow({ ...selectedRow, rowIndex: rowIndex, rowId: id });
   };
+  const [isEditingCategory, setIsEditingCategory] = useState({
+    isEditing: false,
+    categoryId: 0,
+  });
   const [dialogOpenCategory, setDialogOpenCategory] = useState(false);
-
+  const handleDialogOpen = () => {
+    setIsEditingCategory({
+      ...isEditingCategory,
+      isEditing: false,
+      categoryId: 0,
+    });
+    setDialogOpenCategory(true);
+  };
   return (
     <Box
       sx={{
@@ -46,14 +49,17 @@ const Category = ({
             No Categories, Please Add One
           </Typography>
         )}
-        <CategoryDialog
-          open={dialogOpenCategory}
-          setOpen={setDialogOpenCategory}
+        <RenderDialogForCategory
+          openDialog={dialogOpenCategory}
+          handleCloseDialog={() => setDialogOpenCategory(false)}
+          category={categories}
           setTrackChanges={setTrackChanges}
+          isEditingCategory={isEditingCategory}
+          isDesktop={true}
         />
         <Box
           sx={{ display: "flex", pt: "20px", cursor: "pointer" }}
-          onClick={() => setDialogOpenCategory(true)}
+          onClick={handleDialogOpen}
         >
           <AddCircleOutlineIcon
             sx={{ mt: "0px", mr: "5px", color: COLORS.primary }}
@@ -105,8 +111,7 @@ const Category = ({
                         variant="body3"
                         fontWeight={600}
                       >
-                        {/* {category.expectedAmount} */}
-                        {calculateTotaEstimatedCost(category.subCategories)}
+                        {category.expectedAmount}
                       </Typography>
                       <ArrowForwardIosIcon
                         fontSize="15px"
@@ -123,89 +128,4 @@ const Category = ({
   );
 };
 
-function CategoryDialog({ open, setOpen, setTrackChanges }) {
-  const [formData, setFormData] = useState({
-    name: "",
-    // expectedAmount: 0,
-  });
-  const [errors, setErrors] = useState({});
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-  const style = {
-    color: COLORS.primary,
-    ml: -1,
-    variant: "caption",
-  };
-  const handleSubmit = () => {
-    const newErrors = {};
-    if (formData.name.trim() === "") {
-      newErrors.name = "Name is required";
-    }
-    if (Object.keys(newErrors).length > 0) {
-      setErrors(newErrors);
-    } else {
-      addCategory(formData).then(() => {
-        setTrackChanges((p) => !p);
-        setFormData({ name: "", });
-        setOpen(false);
-      });
-    }
-  };
-  return (
-    <div>
-      <Modal
-        open={open}
-        saveCallback={handleSubmit}
-        title={"Category"}
-        setOpen={setOpen}
-        fields={
-          // <>
-          <TextField
-            required
-            error={!!errors.name}
-            helperText={
-              errors.name && (
-                <Typography variant="caption" sx={{ mx: "-10px" }}>
-                  {errors.name}
-                </Typography>
-              )
-            }
-            name="name"
-            placeholder={"Enter Name"}
-            sx={{
-              border: 0,
-              mb: 2,
-              mt: 2,
-              width: "100%",
-              // fontSize: 1,
-            }}
-            onChange={handleChange}
-          />
-          // {/* <br /> */}
-          // {/* <Typography>Enter Amount</Typography>
-          // <TextField
-          //   error={!!errors.expectedAmount}
-          //   helperText={
-          //     errors.expectedAmount && (
-          //       <FormHelperText sx={style}>
-          //         {errors.expectedAmount}
-          //       </FormHelperText>
-          //     )
-          //   }
-          //   name="expectedAmount"
-          //   placeholder={"Enter Amount"}
-          //   sx={{
-          //     border: 0,
-          //     mb: 2,
-          //     mt: 2,
-          //   }}
-          //   onChange={handleChange}
-          // /> */}
-          // </>
-        }
-      />
-    </div>
-  );
-}
 export default Category;

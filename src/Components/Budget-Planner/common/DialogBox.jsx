@@ -8,8 +8,8 @@ const style = {
     "& .MuiDialog-container": {
       "& .MuiPaper-root": {
         width: "100%",
-        minWidth: "96%", // Set your width here
-        height: '100%'
+        minWidth: "96%", 
+        height: "100%",
       },
     },
   },
@@ -19,7 +19,7 @@ const style = {
     "& .MuiDialog-container": {
       "& .MuiPaper-root": {
         width: "100%",
-        // minWidth: "96%", // Set your width here
+        // minWidth: "96%", 
         // height: "100%",
       },
     },
@@ -31,7 +31,7 @@ const style = {
   },
 };
 
-const DialogBox = ({ open, onClose, children,isDesktop = false }) => {
+const DialogBox = ({ open, onClose, children, isDesktop = false }) => {
   return (
     <Dialog
       open={open}
@@ -39,7 +39,6 @@ const DialogBox = ({ open, onClose, children,isDesktop = false }) => {
       fullWidth
       maxWidth="sm"
       sx={isDesktop ? style.dialogDesktop : style.dialog}
-      //   className={classes.dialog}
     >
       <DialogContent sx={style.dialogContent}>{children}</DialogContent>
     </Dialog>

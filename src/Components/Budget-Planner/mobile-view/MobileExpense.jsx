@@ -51,7 +51,6 @@ export default function MobileExpense() {
       name: "",
       expectedAmount: 0,
     }));
-    console.log("SubCategory not found");
   };
 
   const [selectedCategory, setSelectedCategory] = useState(
@@ -75,12 +74,10 @@ export default function MobileExpense() {
       if (subId == 0) {
         addSubcategory({ ...formData, categoryId: selectedCategory }).then(
           (_) => {
-            console.log("ADDING");
             router.back();
           }
         );
       } else {
-        console.log("Editing");
         editSubcategory({ ...formData, categoryId: selectedCategory }).then(
           (_) => {
             router.back();

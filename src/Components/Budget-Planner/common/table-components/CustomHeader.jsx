@@ -1,13 +1,13 @@
 import { COLORS } from "@/Components/utils/ConstantTheme";
 import { TableCell, Typography } from "@mui/material";
 
-export const CustomHeader = ({ title }) => {
+export const CustomHeader = ({ title, weight, alignment }) => {
   return (
     <TableCell>
       <Typography
-        textAlign={"center"}
+        textAlign={alignment ?? "center"}
         variant="subtitle2"
-        fontWeight={600}
+        fontWeight={weight ?? 600}
         color={COLORS.black}
       >
         {title}

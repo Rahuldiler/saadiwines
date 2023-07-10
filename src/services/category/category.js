@@ -23,23 +23,21 @@ const getCategoriesById = async (id) => {
   }
 };
 const addCategory = async (payload) => {
-  console.log("CATEGORY ADDED")
   return await http.post({
     url: "/category",
     isSecured: true,
     payload: payload,
   });
 };
-const editCategory = async (payload) => {
-  console.log("CATEGORY EDITED")
+const editCategory = async (id,payload) => {
+  console.log(payload);
   return await http.put({
-    url: `/category/${payload.id}`,
+    url: `/category/${id}`,
     isSecured: true,
     payload: payload,
   });
 };
 const deleteCategory = async (id) => {
-  console.log("CATEGORY DELETED")
   return await http.delete({
     url: `/category/${id}`,
     isSecured: true,

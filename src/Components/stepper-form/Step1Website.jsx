@@ -1,36 +1,17 @@
-import {
-  Box,
-  BoxLabel,
-  FormLabel,
-  Radio,
-  RadioGroup,
-  FormHelperText,
-  Typography,
-} from "@mui/material";
-import React, { useState } from "react";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import { TimePicker } from "@mui/x-date-pickers/TimePicker";
-import styles from "../../styles/Form.module.css";
-import Image from "next/image";
+import {Box, Typography,} from "@mui/material";
+import React, {useEffect, useState} from "react";
+import {LocalizationProvider} from "@mui/x-date-pickers/LocalizationProvider";
+import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
+import {DatePicker} from "@mui/x-date-pickers/DatePicker";
 import dayjs from "dayjs";
 import moment from "moment";
-import {
-  FormLabelCustom,
-  MultilineTextField,
-  TextFieldInput,
-} from "../common/TextFieldInput";
-import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
-import { useEffect } from "react";
-import { useFormik } from "formik";
+import {MultilineTextField, TextFieldInput,} from "../common/TextFieldInput";
+import {useFormik} from "formik";
 import * as Yup from "yup";
 
 import NavigationSteps from "./NavigationSteps";
-import Loader from "../common/Loader";
-import CustomCircularProgress from "../Budget-Planner/CustomCircularProgress";
-import Notification from "../common/Notification";
 import FormErrorMessage from "../common/FormErrorMessage";
+
 function Step1Website({
   websiteForm,
   setWebsiteForm,

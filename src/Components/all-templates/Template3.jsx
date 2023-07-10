@@ -181,32 +181,32 @@ function Template3({ templateData, staticTemplateData }) {
               {templateData?.weddingInfo?.thankYouMessage}
             </p>
           </div>
-          <div className=" text-[20px] lg:w-[70%] grid grid-cols-4 text-center mx-auto z-50 mt-6">
+          <div className=" text-[20px] lg:w-[40%] grid grid-cols-4 text-center mx-auto z-50 mt-6">
             <div>
-              <p className="!font-lora !text-[50px] lg:!text-[60px]">
+              <p className="!font-lora !text-[50px] lg:!text-[50px]">
                 {timeRemaining.days}
               </p>
-              <p className="!text-[10px]  !font-Poppins lg:!text-base">DAYS</p>
+              <p className="!text-[8px]  !font-Poppins lg:!text-base">DAYS</p>
             </div>
             <div>
-              <p className="!font-lora  !text-[50px] lg:!text-[60px]">
+              <p className="!font-lora  !text-[50px] lg:!text-[50px]">
                 {timeRemaining.hours}
               </p>
-              <p className="!text-[10px] !font-Poppins lg:!text-base">HOURS</p>
+              <p className="!text-[8px] !font-Poppins lg:!text-base">HOURS</p>
             </div>
             <div>
-              <p className="!font-lora  !text-[50px] lg:!text-[60px]">
+              <p className="!font-lora  !text-[50px] lg:!text-[50px]">
                 {timeRemaining.minutes}
               </p>
-              <p className="!text-[10px] !font-Poppins lg:!text-base">
+              <p className="!text-[8px] !font-Poppins lg:!text-base">
                 MINUTES
               </p>
             </div>
             <div>
-              <p className="!font-lora  !text-[50px] lg:!text-[60px]">
+              <p className="!font-lora  !text-[50px] lg:!text-[50px]">
                 {timeRemaining.seconds}
               </p>
-              <p className="!text-[10px] !font-Poppins lg:!text-base">
+              <p className="!text-[8px] !font-Poppins lg:!text-base">
                 SECONDS
               </p>
             </div>

@@ -4,37 +4,56 @@ import {
   Divider,
   TextField,
   Typography,
-  FormHelperText,
+  Grid,
+  FormControl,
+  Select,
+  MenuItem,
 } from "@mui/material";
 import React, { useState } from "react";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import { COLORS } from "@/Components/utils/ConstantTheme";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { DesktopDatePicker } from "@mui/x-date-pickers";
-import { addTransaction } from "@/services/transaction/transaction";
-const PaymentsDialog = ({ onClose, setTrackChanges, subCategoryId }) => {
-  // console.log(subCategoryId);
+import {
+  addTransaction,
+  editTransaction,
+} from "@/services/transaction/transaction";
+const PaymentsDialog = ({
+  onClose,
+  setTrackChanges,
+  subCategoryId,
+  isEditingTransaction,
+}) => {
   const [formData, setFormData] = useState({
-    name: "",
-    amount: 0,
-    details: "",
+    name: isEditingTransaction?.transaction.name ?? "",
+    amount: isEditingTransaction?.transaction.amount ?? 0,
+    details: isEditingTransaction?.transaction.details ?? "",
+    type: isEditingTransaction?.transaction.type ?? "CREDIT",
+    subCategoryId: 0,
   });
-  const [valueDateTime, setValueDateTime] = useState();
+
   const [errors, setErrors] = useState({});
-  
+
   const handleChange = (e) => {
-    console.log('-------------------------------------')
-    e.target.type === "number" ? parseFloat(e.target.value) : e.target.value;
+    const value =
+      e.target.type === "number" ? parseFloat(e.target.value) : e.target.value;
     setFormData({ ...formData, [e.target.name]: value });
-    // const { name, value } = e.target;
-    // setFormData((prevFormData) => ({
-    //   ...prevFormData,
-    //   [name]: value,
-    // }));
   };
-  const handleDateTime = (newValue) => {
-    setValueDateTime(newValue);
+
+  const handleTypeChange = (e) => {
+    setFormData({ ...formData, type: e.target.value });
+  };
+
+  const fieldStyle = {
+    border: 0,
+    width: "90%",
+    mb: 0,
+    mt: 0,
+
+    "& 	.MuiFormHelperText-root": {
+      border: "none",
+      borderRadius: "0px",
+      background: "white",
+      width: "100%",
+    },
   };
   const handleSubmit = () => {
     const newErrors = {};
@@ -50,12 +69,21 @@ const PaymentsDialog = ({ onClose, setTrackChanges, subCategoryId }) => {
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
     } else {
-      addTransaction({
-        ...formData,
-        type: "CREDIT",
-        dateAdded: valueDateTime,
-        subCategoryId: subCategoryId,
-      }).then((_) => setTrackChanges((p) => !p));
+      if (isEditingTransaction?.isEditing) {
+        editTransaction(isEditingTransaction.transaction.id, {
+          ...formData,
+          subCategoryId: subCategoryId,
+        }).then((_) => {
+          setTrackChanges((p) => !p);
+          onClose();
+        });
+      } else {
+        console.log("ADDING ");
+        addTransaction({
+          ...formData,
+          subCategoryId: subCategoryId,
+        }).then((_) => setTrackChanges((p) => !p));
+      }
     }
   };
   const RenderHeading = ({ title }) => {
@@ -70,37 +98,7 @@ const PaymentsDialog = ({ onClose, setTrackChanges, subCategoryId }) => {
       </Typography>
     );
   };
-  // const RenderInputField = ({ label, name, handleChange, value }) => {
-  //   return (
-  //     // <FormControl>
-  //     <Input
-  //       disableUnderline={true}
-  //       sx={{
-  //         border: `1px solid ${COLORS.lighGray}`,
-  //         borderRadius: "5px",
-  //         m: 1,
-  //       }}
-  //       name={name}
-  //       value={value}
-  //       onChange={handleChange}
-  //       placeholder="0"
-  //       startAdornment={
-  //         <InputAdornment
-  //           position="start"
-  //           sx={{
-  //             backgroundColor: COLORS.lighGray,
-  //             height: "20px",
-  //             py: 2,
-  //             px: 1,
-  //             borderRadius: "5px",
-  //           }}
-  //         >
-  //           {label}
-  //         </InputAdornment>
-  //       }
-  //     />
-  //   );
-  // };
+
   return (
     <>
       <Box>
@@ -110,36 +108,25 @@ const PaymentsDialog = ({ onClose, setTrackChanges, subCategoryId }) => {
           color={COLORS.gray}
           onClick={() => onClose()}
         >
-          <ArrowBackIosIcon fontSize="10px" sx={{ mt: 0.2 }} />
+          <ArrowBackIosIcon
+            fontSize="10px"
+            sx={{ mt: 0.2, cursor: "pointer" }}
+          />
           <Typography
             variant="caption"
             fontWeight={400}
             fontFamily={"inherit"}
             ml={1}
+            sx={{ cursor: "pointer" }}
           >
             BUDGET PLANNER
           </Typography>
         </Box>
         <Typography m={1} fontWeight={500} fontFamily={"inherit"} variant="h6">
-          {/* {subId == 0 ? "Add New Category" : subCategoryData.name} */}
           Add Transaction
         </Typography>
         <Divider />
         <Box m={1}></Box>
-        {/* <RenderHeading title={"Category"} /> */}
-        {/* <FormControl sx={{ p: 1, width: "100%" }} size="small">
-              <Select
-                name="category"
-                value={selectedCategory}
-                onChange={handleChangeCategory}
-              >
-                {categories.map((el) => (
-                  <MenuItem key={el.id} value={el.id}>
-                    {el.name}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl> */}
         <RenderHeading title={"Name"} />
         <TextField
           size="small"
@@ -164,17 +151,17 @@ const PaymentsDialog = ({ onClose, setTrackChanges, subCategoryId }) => {
         />
         <RenderHeading title={"Amount"} />
         <TextField
+          type="number"
           size="small"
           sx={{
             mx: 1,
             width: "95%",
           }}
-          defaultValue={formData.expectedAmount}
+          defaultValue={formData.amount}
           placeholder="Enter Amount"
           name="amount"
           variant="outlined"
           required
-          type="number"
           error={!!errors.amount}
           helperText={
             errors.amount && (
@@ -185,23 +172,54 @@ const PaymentsDialog = ({ onClose, setTrackChanges, subCategoryId }) => {
           }
           onChange={handleChange}
         />
-        <RenderHeading title={"Date"} />
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <DesktopDatePicker
-            name="valueDateTime"
-            value={valueDateTime}
-            disablePast
-            format="DD/MM/YYYY"
-            onChange={(newValue) => handleDateTime(newValue)}
-            sx={{ mx: 1, width: "96%" }}
-            slotProps={{ textField: { size: "small" } }}
-          />
-        </LocalizationProvider>
+        <Grid container textAlign={"start"} py={0} m={"auto"} width={"96%"}>
+          <Grid item xs>
+            <Box>
+              <Box>
+                <RenderHeading title={"Type"} />
+                <FormControl fullWidth>
+                  <Select
+                    size="small"
+                    value={formData.type}
+                    onChange={handleTypeChange}
+                    sx={fieldStyle}
+                  >
+                    <MenuItem value={"CREDIT"}>Credit</MenuItem>
+                    <MenuItem value={"DEBIT"}>Debit</MenuItem>
+                  </Select>
+                </FormControl>
+              </Box>
+            </Box>
+          </Grid>
+          <Grid item xs mr={0}>
+            {/* <Box>
+              <RenderHeading title={"Date"} />
+              <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <DesktopDatePicker
+                  slotProps={{ textField: { size: "small" } }}
+                  format="DD/MM/YYYY"
+                  required
+                  error={!!errors.date}
+                  helperText={
+                    errors.date && (
+                      <Typography variant="caption" sx={{ mx: "-10px" }}>
+                        {errors.date}
+                      </Typography>
+                    )
+                  }
+                  onChange={handleDateChange}
+                  sx={fieldStyle}
+                />
+              </LocalizationProvider>
+            </Box> */}
+          </Grid>
+        </Grid>
         <RenderHeading title={"More Details"} />
         <Box display={"flex"} justifyContent={"center"}>
           <br />
           <TextField
             multiline={true}
+            defaultValue={formData.details}
             name="details"
             onChange={handleChange}
             rows={3}
@@ -222,7 +240,7 @@ const PaymentsDialog = ({ onClose, setTrackChanges, subCategoryId }) => {
           onClick={handleSubmit}
           // className={`bg-[${COLORS.primary}]`}
           // variant="contained"
-          sx={{ width: "96%", m: 1, borderRadius: "5px" }}
+          sx={{ width: "96%", m: 1, borderRadius: "5px", mt: 5 }}
         >
           Save{" "}
         </Button>

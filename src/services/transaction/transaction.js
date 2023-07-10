@@ -9,6 +9,14 @@ const addTransaction = async (payload) => {
     payload: payload,
   });
 };
+const editTransaction = async (id, payload) => {
+  console.log(payload);
+  return http.put({
+    url: `/transaction/${id}`,
+    isSecured: true,
+    payload: payload,
+  });
+};
 const deleteTransaction = async (id) => {
   return http.delete({
     url: `/transaction/${id}`,
@@ -24,4 +32,9 @@ const fetchAllTransactions = async () => {
   });
 };
 
-export { addTransaction, deleteTransaction, fetchAllTransactions };
+export {
+  addTransaction,
+  deleteTransaction,
+  fetchAllTransactions,
+  editTransaction,
+};

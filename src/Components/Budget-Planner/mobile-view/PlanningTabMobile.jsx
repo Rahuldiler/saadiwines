@@ -1,35 +1,43 @@
 import React from "react";
-import { useTheme, useMediaQuery, Tabs, Tab } from "@mui/material";
+import { Tabs, Tab, Box } from "@mui/material";
 import Category from "./Category";
 import { COLORS } from "@/Components/utils/ConstantTheme";
 import PaymentsMobile from "./PaymentsMobile";
 
-const PlanningTabMobile = ({ categories, transactions, setTrackChanges, loading }) => {
-  const theme = useTheme();
+const PlanningTabMobile = ({ category, loading, setTrackChanges }) => {
   const [activeTab, setActiveTab] = React.useState(0);
-  //   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   const tabs = [
     {
       label: "Expense",
       component: (
-        <Category categories={categories} setTrackChanges={setTrackChanges} loading={loading}/>
+        <Category
+          category={category}
+          setTrackChanges={setTrackChanges}
+          loading={loading}
+        />
       ),
     },
     {
       label: "Payments",
-      component: <PaymentsMobile transactions={transactions} loading={loading} setTrackChanges={setTrackChanges}/>,
+      component: (
+        <PaymentsMobile
+          category={category}
+          loading={loading}
+          setTrackChanges={setTrackChanges}
+        />
+      ),
     },
   ];
   const handleTabChange = (event, newValue) => {
     setActiveTab(newValue);
   };
   return (
-    <div>
-      <div>
+    <Box>
+      <Box>
         {tabs[activeTab].component}
         <Tabs
-          value={activeTab} // Set the initial active tab index
+          value={activeTab}
           variant="fullWidth"
           onChange={handleTabChange}
           centered
@@ -48,8 +56,8 @@ const PlanningTabMobile = ({ categories, transactions, setTrackChanges, loading 
             <Tab key={index} label={tab.label} />
           ))}
         </Tabs>
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 };
 

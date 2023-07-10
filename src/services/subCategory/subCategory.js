@@ -3,22 +3,24 @@ import HTTPClientHandler from "@/services/HTTPClientHandler";
 const http = new HTTPClientHandler();
 
 const addSubcategory = async (payload) => {
-  console.log("ADDING SUBCATEGORY");
-
   return await http.post({
     url: "/subCategory",
     isSecured: true,
     payload: payload,
   });
 };
-const editSubcategory = async (payload) => {
-  console.log("EDITING SUBCATEGORY");
+const editSubcategory = async (id,payload) => {
   return await http.put({
-    url: `/subCategory/${payload.id}`,
+    url: `/subCategory/${id}`,
     isSecured: true,
     payload: payload,
   });
 };
+const deleteSubCategory = async (id) => {
+  return await http.delete({
+    url: `/subCategory/${id}`,
+    isSecured: true,
+  });
+};
 
-
-export { addSubcategory, editSubcategory };
+export { addSubcategory, editSubcategory, deleteSubCategory };
