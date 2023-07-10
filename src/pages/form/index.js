@@ -1,45 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 import Box from "@mui/material/Box";
 import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
-import Button from "@mui/material/Button";
 
-import { Grid } from "@mui/material";
-import {
-  addWebsiteInfo,
-  getWebsiteInfo,
-  updateWebsiteInfo,
-} from "@/services/website/formWebsite";
-import {
-  addMilestone,
-  getMilestone,
-  updateMilestone,
-} from "@/services/FAQ/formFaq";
-import {
-  addContact,
-  getContact,
-  updateContact,
-} from "@/services/Contact/formContact";
-import { useRouter } from "next/router";
+import {Grid} from "@mui/material";
+import {addWebsiteInfo, getWebsiteInfo, updateWebsiteInfo,} from "@/services/website/formWebsite";
+import {addMilestone, getMilestone, updateMilestone,} from "@/services/FAQ/formFaq";
+import {addContact, getContact, updateContact,} from "@/services/Contact/formContact";
+import {useRouter} from "next/router";
 import Step1Website from "@/Components/stepper-form/Step1Website";
 import Step2Itinerary from "@/Components/stepper-form/Step2Itinerary";
 import Step3FAQ from "@/Components/stepper-form/Step3FAQ";
 import Step4Contact from "@/Components/stepper-form/Step4Contact";
-import {
-  addItinerary,
-  getItinerary,
-  updateItinerary,
-} from "@/services/itinerary/formItinerary";
+import {addItinerary, getItinerary, updateItinerary,} from "@/services/itinerary/formItinerary";
 import Step5Family from "@/Components/stepper-form/Step5Family";
-import {
-  addFamilyMember,
-  getFamilyMember,
-  updateFamilyMember,
-} from "@/services/familyMember/formFamilyMember";
-import { getUserPreference } from "@/services/user-preference/userPreference";
-import CustomCircularProgress from "@/Components/Budget-Planner/CustomCircularProgress";
-import Loader from "@/Components/common/Loader";
+import {addFamilyMember, getFamilyMember, updateFamilyMember,} from "@/services/familyMember/formFamilyMember";
+import {getUserPreference} from "@/services/user-preference/userPreference";
 import Notification from "@/Components/common/Notification";
 
 function index() {

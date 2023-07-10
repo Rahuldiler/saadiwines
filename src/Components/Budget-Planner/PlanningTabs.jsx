@@ -7,10 +7,10 @@ import SubCategory from "./SubCategory";
 import { Grid, Typography, useMediaQuery, useTheme } from "@mui/material";
 import Payments from "./Payments";
 import { getCategories } from "@/services/category/category";
-import CustomCircularProgress from "./common/CustomCircularProgress";
 import { COLORS } from "../utils/ConstantTheme";
 import PlanningTabMobile from "./mobile-view/PlanningTabMobile";
 import { useEffect } from "react";
+import CustomCircularProgress from "@/Components/Budget-Planner/common/CustomCircularProgress";
 export default function PlanningTabs() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
