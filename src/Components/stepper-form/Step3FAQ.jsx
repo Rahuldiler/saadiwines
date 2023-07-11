@@ -23,6 +23,8 @@ import Notification from "../common/Notification";
 import { faqsData } from "@/constants/faqData";
 import { set } from "date-fns";
 import { deleteMilestone } from "@/services/FAQ/formFaq";
+import FormUploadImageSection from "../common/FormUploadImageSection";
+
 function Step3FAQ({
   setValidationBoolean,
   milestoneLists,
@@ -64,12 +66,10 @@ function Step3FAQ({
     },
   });
 
-  const handleChange = (e, index, newValue, reason) => {
-    const { name, value } = e.target;
-    const list = [...formik.values];
+  function restoreQuesAnsData(formikTitle) {
     removedQuesAnsData.map((rmQna) => {
-      if (formik.values[index].title) {
-        if (rmQna?.title === formik.values[index]?.title) {
+      if (formikTitle) {
+        if (rmQna?.title === formikTitle) {
           setQuesAnsData((prevData) => [...prevData, rmQna]);
           setRemovedQuesAnsData((prevData) =>
             prevData.filter((qna) => qna?.title !== rmQna?.title)
@@ -77,11 +77,18 @@ function Step3FAQ({
         }
       }
     });
+  }
+
+  const handleChange = (e, index, newValue, reason) => {
+    const { name, value } = e.target;
+    const list = [...formik.values];
+    restoreQuesAnsData(formik.values[index]?.title);
+
     if (typeof newValue === "string") {
       list[index].title = newValue;
       const filteredData = quesAnsData.filter((faq) => faq.title === newValue);
-      setRemovedQuesAnsData((prevData) => [...prevData, filteredData[0]]);
       list[index].description = filteredData[0].description;
+      setRemovedQuesAnsData((prevData) => [...prevData, filteredData[0]]);
       setQuesAnsData((prevData) => [
         ...prevData.filter((qna) => qna.title !== newValue),
       ]);
@@ -91,35 +98,40 @@ function Step3FAQ({
     }
 
     if (reason === "clear") {
-      removedQuesAnsData.map((rmQna) => {
-        if (rmQna?.title === formik.values[index]?.title) {
-          setQuesAnsData((prevData) => [...prevData, rmQna]);
-          setRemovedQuesAnsData((prevData) =>
-            prevData.filter((qna) => qna?.title !== rmQna?.title)
-          );
-        }
-      });
+      restoreQuesAnsData(formik.values[index]?.title);
       list[index].title = "";
       list[index].description = "";
     }
 
-    // else if (newValue && newValue.inputValue) {
-    //   setValue({
-    //     title: newValue.inputValue,
-    //   });
-    //   console.log("if else", newValue);
-    // } else {
-    //   setValue(newValue);
-    //   console.log("else", newValue);
-    // }
-
     formik.setValues(list);
   };
+
+  const handleImgChange = (event, index) => {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      const base64Data = reader.result;
+      const list = [...formik.values];
+      list[index]["image"] = base64Data;
+      formik.setValues(list);
+    };
+
+    reader.readAsDataURL(file);
+  };
+
+  // const handleImgChange = (base64, index) => {
+  //   const list = [...formik.values];
+  //   list[index]["image"] = base64;
+  //   formik.setValues(list);
+  // };
 
   const deleteMilestoneBox = async (arrayId, id) => {
     const updatedList = formik.values.filter(
       (list) => list.arrayId !== arrayId
     );
+    restoreQuesAnsData(formik.values[arrayId - 1]?.title);
+
     formik.setValues(updatedList);
     id && (await deleteMilestone(id));
   };
@@ -220,7 +232,7 @@ function Step3FAQ({
                   handleChange(e, index, newValue, reason);
                 }}
                 freeSolo
-                options={quesAnsData.map((option) => option.title)}
+                options={quesAnsData.map((option) => option?.title)}
                 renderInput={(params) => (
                   <TextField
                     {...params}
@@ -267,6 +279,11 @@ function Step3FAQ({
                   />
                 ) : null}
               </Box>
+              <FormUploadImageSection
+                formikImg={formik.values[index]?.image}
+                handleImgChange={handleImgChange}
+                index={index}
+              />
             </Box>
           );
         })}
