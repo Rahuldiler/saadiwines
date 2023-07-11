@@ -1,35 +1,3 @@
-// import React from "react";
-// import {
-//   Accordion,
-//   AccordionDetails,
-//   AccordionSummary,
-//   Box,
-//   Typography,
-// } from "@mui/material";
-// import { GridExpandMoreIcon } from "@mui/x-data-grid";
-// import { BORDER, BOXSHADOW, COLORS } from "@/Components/utils/ConstantTheme";
-// const CustomAccordian = ({ title, amount, subCategories }) => {
-//   return (
-//     <Accordion sx={{boxShadow: BOXSHADOW.grayShadow,border:BORDER.primaryBorder}}>
-//       <AccordionSummary
-//         expandIcon={<GridExpandMoreIcon />}
-//         aria-controls="panel1a-content"
-//         id="panel1a-header"
-//       >
-//         <Box>
-//           <Typography variant="body2">{title}</Typography>
-//           <Typography variant="caption">₹ {amount}</Typography>
-//         </Box>
-//       </AccordionSummary>
-//       <AccordionDetails>
-//         <Typography variant="subtitle2">{subCategories}</Typography>
-//       </AccordionDetails>
-//     </Accordion>
-//   );
-// };
-
-// export default CustomAccordian;
-
 import * as React from "react";
 import { styled } from "@mui/material/styles";
 import ArrowForwardIosSharpIcon from "@mui/icons-material/ArrowForwardIosSharp";
@@ -41,14 +9,14 @@ import { useState } from "react";
 import { Box, Button, Divider } from "@mui/material";
 import { COLORS } from "@/Components/utils/ConstantTheme";
 import SubCategoriesAccordian from "../SubCategories";
-import { useRouter } from "next/router";
 import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutline";
-import AddAndEditSubCategoryDialog from "../AddAndEditSubCategoryDialog";
-import DialogBox from "./DialogBoxMobile";
-import PaymentsDialog from "../PaymentsDialogMobile";
-import BorderLinearProgress from "../../Progress";
-import { RenderDialogForPayment, RenderDialogForSubCategory } from "./RenderDialog";
-import { calculateTotaEstimatedCost } from "../../calculate";
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import {
+  RenderDialogForPayment,
+  RenderDialogForSubCategory,
+} from "../../common/RenderDialog";
+import { calculateTotaEstimatedCost } from "../../common/calculate";
+import { deleteCategory } from "@/services/category/category";
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -88,7 +56,6 @@ export default function CustomAccordian({
   setIsEditingSubCategory,
   isEditingSubCategory,
 }) {
-  // const router = useRouter();
   const { id, name, expectedAmount, subCategories } = category;
   const [openDialog, setOpenDialog] = useState(false);
   const [openPaymentDialog, setOpenPaymentDialog] = useState({
@@ -107,7 +74,21 @@ export default function CustomAccordian({
     });
     setOpenDialog(true);
   };
-
+  const handleCategoryEdit = () => {
+    setIsEditingCategory({
+      ...isEditingCategory,
+      isEditing: true,
+      categoryId: category.id,
+    });
+    handleClick();
+  };
+    // DELETE CATEGORY
+    const handleCategoryDelete = (e,id) => {
+      e.stopPropagation();
+      deleteCategory(id).then(() => {
+        setTrackChanges((p) => !p);
+      });
+    };
   return (
     <Box>
       <Accordion>
@@ -124,21 +105,23 @@ export default function CustomAccordian({
               </Typography>
               <DriveFileRenameOutlineIcon
                 fontSize="small"
-                onClick={() => {
-                  console.log(category.id);
-                  setIsEditingCategory({
-                    ...isEditingCategory,
-                    isEditing: true,
-                    categoryId: category.id,
-                  });
-                  handleClick();
-                }}
+                onClick={handleCategoryEdit}
                 sx={{
                   cursor: "pointer",
                   color: COLORS.primary,
                   ml: 0.5,
                   mt: 0.2,
                 }}
+              />
+              <DeleteOutlineIcon
+                fontSize="small"
+                sx={{
+                  cursor: "pointer",
+                  color: COLORS.primary,
+                  ml: 0.5,
+                  mt: 0.2,
+                }}
+                onClick={(e) => handleCategoryDelete(e,id)}
               />
             </Box>
             <Box display={"flex"} alignItems={"center"}>
@@ -147,7 +130,7 @@ export default function CustomAccordian({
                 color={COLORS.gray}
                 variant="caption"
               >
-                Cost: ₹ {category.expectedAmount}
+                Cost: ₹ {expectedAmount}
               </Typography>
             </Box>
           </Box>
@@ -157,6 +140,7 @@ export default function CustomAccordian({
             key={el.id}
             subCategory={el}
             categories={allCategory}
+            setTrackChanges={setTrackChanges}
             setIsEditingSubCategory={setIsEditingSubCategory}
             isEditingSubCategory={isEditingSubCategory}
             setOpenDialog={setOpenDialog}
@@ -199,22 +183,8 @@ export default function CustomAccordian({
           >
             Add Expense
           </Button>
-          {/* <DriveFileRenameOutlineIcon
-            height={20}
-            onClick={() => {
-              console.log(category.id);
-              setIsEditingCategory({
-                ...isEditingCategory,
-                isEditing: true,
-                categoryId: category.id,
-              });
-              handleClick();
-            }}
-            sx={{ cursor: "pointer", color: COLORS.primary }}
-          /> */}
         </Box>
       </Accordion>
     </Box>
   );
 }
-

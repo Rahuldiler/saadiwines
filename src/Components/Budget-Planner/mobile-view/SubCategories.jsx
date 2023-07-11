@@ -4,8 +4,10 @@ import MuiAccordionDetails from "@mui/material/AccordionDetails";
 import { styled } from "@mui/material/styles";
 import { COLORS } from "@/Components/utils/ConstantTheme";
 import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutline";
-import BorderLinearProgress from "../Progress";
-import { calculateBudgetTransaction, calculateProgress } from "../calculate";
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import BorderLinearProgress from "../common/Progress";
+import { calculateProgress } from "../common/calculate";
+import { deleteSubCategory } from "@/services/subCategory/subCategory";
 const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   padding: theme.spacing(2),
   marginLeft: theme.spacing(1),
@@ -18,15 +20,8 @@ const SubCategoriesAccordian = ({
   setOpenDialog,
   setOpenPaymentDialog,
   openPaymentDialog,
+  setTrackChanges
 }) => {
-  const calculateFinalCost = (data) => {
-    const totalAmount = data.budgetTransaction.reduce((acc, transaction) => {
-      return acc + transaction.amount;
-    }, 0);
-
-    return totalAmount;
-  };
- 
   // for Edit sub category
   const handleClick = (e, subCategory) => {
     e.stopPropagation();
@@ -38,6 +33,12 @@ const SubCategoriesAccordian = ({
     // setSelectedItemForDialog(subCat);
     setOpenDialog(true);
   };
+  // Delete SubCategory
+  const handleDeleteSubCategory = (e,id) => {
+    deleteSubCategory(id).then(() => {
+      setTrackChanges((p) => !p);
+    });
+  };
   const handleTransaction = (id) => {
     setOpenPaymentDialog({
       ...openPaymentDialog,
@@ -45,7 +46,7 @@ const SubCategoriesAccordian = ({
       subCategoryId: id,
     });
   };
-   return (
+  return (
     <AccordionDetails sx={{ p: 1, m: 1, px: 2 }}>
       <Box display={"flex"} justifyContent={"space-between"} mb={1}>
         <Box display={"flex"}>
@@ -61,10 +62,17 @@ const SubCategoriesAccordian = ({
             sx={{
               cursor: "pointer",
               color: COLORS.primary,
-              // ml: 0.5,
-              // mt: 0.2,
+              mx: 1,
             }}
             onClick={(e) => handleClick(e, subCategory)}
+          />
+          <DeleteOutlineIcon
+            fontSize="small"
+            sx={{
+              cursor: "pointer",
+              color: COLORS.primary,
+            }}
+            onClick={(e) => handleDeleteSubCategory(e, subCategory.id)}
           />
         </Box>
         <Chip
@@ -80,15 +88,15 @@ const SubCategoriesAccordian = ({
           }}
           size="small"
           label={"+"}
-        ></Chip>
+        />
       </Box>
       <Box display={"flex"} justifyContent={"space-between"}>
         <Box display={"flex"} alignItems={"center"}>
-          <Box ml={0} width={"100px"}>
+          <Box ml={0} maxWidth={"100px"} overflow={"clip"}>
             <Typography
               color={COLORS.gray}
               variant="caption"
-              ml={1}
+              // ml={1}
               textAlign={"center"}
             >
               Cost: ₹ {subCategory.expectedAmount}

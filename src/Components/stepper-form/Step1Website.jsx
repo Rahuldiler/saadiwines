@@ -1,36 +1,17 @@
-import {
-  Box,
-  BoxLabel,
-  FormLabel,
-  Radio,
-  RadioGroup,
-  FormHelperText,
-  Typography,
-} from "@mui/material";
-import React, { useState } from "react";
+import { Box, Typography } from "@mui/material";
+import React, { useEffect, useState } from "react";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import { TimePicker } from "@mui/x-date-pickers/TimePicker";
-import styles from "../../styles/Form.module.css";
-import Image from "next/image";
 import dayjs from "dayjs";
 import moment from "moment";
-import {
-  FormLabelCustom,
-  MultilineTextField,
-  TextFieldInput,
-} from "../common/TextFieldInput";
-import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
-import { useEffect } from "react";
+import { MultilineTextField, TextFieldInput } from "../common/TextFieldInput";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
 import NavigationSteps from "./NavigationSteps";
-import Loader from "../common/Loader";
-import CustomCircularProgress from "../Budget-Planner/CustomCircularProgress";
-import Notification from "../common/Notification";
 import FormErrorMessage from "../common/FormErrorMessage";
+
 function Step1Website({
   websiteForm,
   setWebsiteForm,
@@ -62,10 +43,8 @@ function Step1Website({
         grandFatherName: "",
         description: "",
       },
-      dateTime: "",
+      functionDateTime: "",
       thankYouMessage: "",
-      pics: ["D", "E", "F"],
-      placesToVisit: ["Dont know", "Don know 2"],
     },
     validationSchema: Yup.object({
       groom: Yup.object({
@@ -108,7 +87,7 @@ function Step1Website({
         ),
         description: Yup.string().required("Required bride description "),
       }),
-      dateTime: Yup.string().required("Required Date"),
+      functionDateTime: Yup.string().required("Required Date"),
       thankYouMessage: Yup.string().required("Required Thank You Message"),
     }),
     onSubmit: (values) => {
@@ -125,15 +104,14 @@ function Step1Website({
     const dayjsFormat = dayjs(newValue).$d;
     setValueDateTime(newValue);
     formik.setFieldValue(
-      "dateTime",
+      "functionDateTime",
       String(moment(dayjsFormat).format("YYYY-MM-DDTHH:MM:SS[Z]"))
     );
   };
   useEffect(() => {
-    websiteForm && setValueDateTime(dayjs(websiteForm?.dateTime));
-  }, [websiteForm.dateTime]);
+    websiteForm && setValueDateTime(dayjs(websiteForm?.functionDateTime));
+  }, [websiteForm.functionDateTime]);
 
-  console.log(formik.values, "formik.values");
   return (
     <Box
       sx={{
@@ -388,8 +366,11 @@ function Step1Website({
               onChange={(newValue) => handleDateTime(newValue)}
               sx={{ mt: 2, width: "100%" }}
             />
-            {formik.touched.dateTime && formik.errors.dateTime ? (
-              <div style={{ color: "Red" }}>{formik.errors.dateTime}</div>
+            {formik.touched.functionDateTime &&
+            formik.errors.functionDateTime ? (
+              <div style={{ color: "Red" }}>
+                {formik.errors.functionDateTime}
+              </div>
             ) : null}
           </LocalizationProvider>
         </Box>

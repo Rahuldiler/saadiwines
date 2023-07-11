@@ -1,21 +1,29 @@
-import AddCategoryDialog from "../AddCategoryDialog";
+import AddCategoryDialog from "./AddCategoryDialog";
 
 const {
   default: AddAndEditSubCategoryDialog,
-} = require("../AddAndEditSubCategoryDialog");
-const { default: PaymentsDialog } = require("../PaymentsDialogMobile");
-const { default: DialogBox } = require("./DialogBoxMobile");
+} = require("./AddAndEditSubCategoryDialog");
+const { default: PaymentsDialog } = require("./PaymentsDialog");
+const { default: DialogBox } = require("./DialogBox");
 function RenderDialogForCategory({
   openDialog,
   handleCloseDialog,
   category,
   setTrackChanges,
   isEditingCategory,
+  isDesktop,
 }) {
-  console.log(isEditingCategory.isEditing);
-  const obj = category.find((item) => item.id == isEditingCategory.categoryId);
+  const obj = Array.isArray(category)
+    ? category.find((item) => {
+        return item.id == isEditingCategory.categoryId;
+      })
+    : category;
   return (
-    <DialogBox open={openDialog} onClose={handleCloseDialog}>
+    <DialogBox
+      open={openDialog}
+      onClose={handleCloseDialog}
+      isDesktop={isDesktop}
+    >
       <AddCategoryDialog
         onClose={handleCloseDialog}
         setTrackChanges={setTrackChanges}
@@ -54,11 +62,17 @@ function RenderDialogForPayment({
   handleCloseDialog,
   subCategoryId,
   setTrackChanges,
+  isEditingTransaction,
+  isDesktop,
 }) {
-  //  const obj = category.find((item) => item.id == isEditingCategory.categoryId);
   return (
-    <DialogBox open={openDialog} onClose={handleCloseDialog}>
+    <DialogBox
+      open={openDialog}
+      onClose={handleCloseDialog}
+      isDesktop={isDesktop}
+    >
       <PaymentsDialog
+        isEditingTransaction={isEditingTransaction}
         onClose={handleCloseDialog}
         setTrackChanges={setTrackChanges}
         subCategoryId={subCategoryId}

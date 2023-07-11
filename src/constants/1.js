@@ -1,4 +1,29 @@
 const templateInfoData = {
+  images: {
+    date2: "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4055.JPG",
+    date1: "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4280.JPG",
+    introduction:
+      "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4268.JPG",
+    gallery1:
+      "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4262.JPG",
+    gallery2:
+      "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4094.JPG",
+    gallery3:
+      "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4125.JPG",
+    gallery4:
+      "https://template-assets-sv.s3.amazonaws.com/template1/SNY_1945.JPG",
+    gallery5:
+      "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4059.JPG",
+    gallery6:
+      "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4379.JPG",
+    gallery7:
+      "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4390.JPG",
+    gallery8:
+      "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4260.JPG",
+    itinerary:
+      "https://images.unsplash.com/photo-1548054238-3ad2739292c1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80",
+    rsvp: "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4389.JPG",
+  },
   milestone: [
     {
       id: 1,

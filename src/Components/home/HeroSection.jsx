@@ -1,4 +1,11 @@
-import { Box, Button, FormControl, Link, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  FormControl,
+  FormLabel,
+  Link,
+  Typography,
+} from "@mui/material";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import Image from "next/image";
@@ -67,7 +74,7 @@ function HeroSection() {
     setValueDateTime(newValue);
     formik.setFieldValue(
       "issueInfo",
-      String(moment(dayjsFormat).format("YYYY-MM-DDTHH:MM:SS[Z]"))
+      String(moment(dayjsFormat).format("DD-MMM-YYYY"))
     );
   };
   return (
@@ -159,37 +166,24 @@ function HeroSection() {
               onSubmit={formik.handleSubmit}
               className="contact-form-hero-section"
             >
-              {/* <TextFieldInput
-                type="text"
-                label="Question"
-                name="question"
-                value={formik.values?.question || ""}
-                onChange={formik.handleChange}
-                placeholder="Write Message *"
-                bg="#FFFFFF"
-              />
-              {formik.touched.question && formik.errors.question ? (
-                <div style={{ color: "Red" }}>{formik.errors.question}</div>
-              ) : null} */}
               <Box
                 sx={{
                   display: "flex",
-
                   width: "100%",
                   gap: { lg: "20px", xs: "10px" },
                 }}
               >
                 <Box
                   sx={{
+                    width: "50%",
                     display: "flex",
                     flexDirection: "column",
-                    width: "100%",
-                    gap: { lg: "20px", xs: "10px" },
+                    alignItems: "start",
                   }}
                 >
+                  <FormLabel sx={{ color: "#fff" }}>Wedding Date *</FormLabel>
                   <LocalizationProvider required dateAdapter={AdapterDayjs}>
                     <DatePicker
-                      label="Wedding Date"
                       name="valueDateTime"
                       value={valueDateTime || ""}
                       disablePast
@@ -208,18 +202,28 @@ function HeroSection() {
                     ) : null}
                   </LocalizationProvider>
                 </Box>
-                <TextFieldInput
-                  type="text"
-                  name="name"
-                  label="Name"
-                  value={formik.values?.name || ""}
-                  onChange={formik.handleChange}
-                  placeholder="Name *"
-                  bg="#FFFFFF"
-                />
-                {formik.touched.name && formik.errors.name ? (
-                  <div style={{ color: "Red" }}>{formik.errors.name}</div>
-                ) : null}
+                <Box
+                  sx={{
+                    width: "50%",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "start",
+                  }}
+                >
+                  <FormLabel sx={{ color: "#fff" }}>Name *</FormLabel>
+
+                  <TextFieldInput
+                    type="text"
+                    name="name"
+                    value={formik.values?.name || ""}
+                    onChange={formik.handleChange}
+                    placeholder="Name *"
+                    bg="#FFFFFF"
+                  />
+                  {formik.touched.name && formik.errors.name ? (
+                    <div style={{ color: "Red" }}>{formik.errors.name}</div>
+                  ) : null}
+                </Box>
               </Box>
               <Box
                 sx={{
@@ -228,32 +232,53 @@ function HeroSection() {
                   gap: { lg: "20px", xs: "10px" },
                 }}
               >
-                <TextFieldInput
-                  type="number"
-                  name="contactNumber"
-                  label="Phone Number"
-                  value={formik.values?.contactNumber || ""}
-                  onChange={formik.handleChange}
-                  placeholder="Phone Number *"
-                  bg="#FFFFFF"
-                />
-                {formik.touched.contactNumber && formik.errors.contactNumber ? (
-                  <div style={{ color: "Red" }}>
-                    {formik.errors.contactNumber}
-                  </div>
-                ) : null}
-                <TextFieldInput
-                  type="email"
-                  name="fromMail"
-                  label="Email Address"
-                  value={formik.values?.fromMail || ""}
-                  onChange={formik.handleChange}
-                  placeholder="Email Address *"
-                  bg="#FFFFFF"
-                />
-                {formik.touched.fromMail && formik.errors.fromMail ? (
-                  <div style={{ color: "Red" }}>{formik.errors.fromMail}</div>
-                ) : null}
+                <Box
+                  sx={{
+                    width: "50%",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "start",
+                  }}
+                >
+                  <FormLabel sx={{ color: "#fff" }}>Phone Number *</FormLabel>
+
+                  <TextFieldInput
+                    type="number"
+                    name="contactNumber"
+                    value={formik.values?.contactNumber || ""}
+                    onChange={formik.handleChange}
+                    placeholder="Phone Number *"
+                    bg="#FFFFFF"
+                  />
+                  {formik.touched.contactNumber &&
+                  formik.errors.contactNumber ? (
+                    <div style={{ color: "Red" }}>
+                      {formik.errors.contactNumber}
+                    </div>
+                  ) : null}
+                </Box>
+                <Box
+                  sx={{
+                    width: "50%",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "start",
+                  }}
+                >
+                  <FormLabel sx={{ color: "#fff" }}>Email Address *</FormLabel>
+
+                  <TextFieldInput
+                    type="email"
+                    name="fromMail"
+                    value={formik.values?.fromMail || ""}
+                    onChange={formik.handleChange}
+                    placeholder="Email Address *"
+                    bg="#FFFFFF"
+                  />
+                  {formik.touched.fromMail && formik.errors.fromMail ? (
+                    <div style={{ color: "Red" }}>{formik.errors.fromMail}</div>
+                  ) : null}
+                </Box>
               </Box>
 
               <Button
@@ -263,7 +288,7 @@ function HeroSection() {
                   backgroundColor: theme.palette.primary.main,
                   color: "#fff",
                   padding: "16px 14px",
-                  marginTop: "10px",
+                  marginTop: "30px",
                   border: 0,
                   width: { lg: "50%", xs: "100%" },
                   height: "100%",

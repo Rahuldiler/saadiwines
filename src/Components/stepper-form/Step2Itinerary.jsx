@@ -27,6 +27,8 @@ import * as Yup from "yup";
 import FormErrorMessage from "../common/FormErrorMessage";
 import Notification from "../common/Notification";
 import { deleteItinerary } from "@/services/itinerary/formItinerary";
+import Image from "next/image";
+import FormUploadImageSection from "../common/FormUploadImageSection";
 
 function Step2Itinerary({
   itineraryLists,
@@ -36,6 +38,35 @@ function Step2Itinerary({
   setFormLoading,
 }) {
   const [valueDateTime, setValueDateTime] = useState();
+  const formik = useFormik({
+    initialValues: [
+      {
+        id: "",
+        arrayId: 1,
+        functionName: "",
+        details: "",
+        address: "",
+        mapsLocation: "",
+        functionDateTime: "",
+        image: "",
+      },
+    ],
+    validationSchema: Yup.array().of(
+      Yup.object().shape({
+        functionName: Yup.string()
+          .matches(/^[a-zA-Z\s]*$/, "No special characters allowed")
+          .required("Required"),
+        details: Yup.string().required("Required"),
+        address: Yup.string().required("Required"),
+        mapsLocation: Yup.string().required("Required"),
+        functionDateTime: Yup.string().required("Required Date & Time"),
+      })
+    ),
+    onSubmit: (values) => {
+      handleNext(values);
+      setFormLoading(true);
+    },
+  });
   const addNewItinerary = (id) => {
     formik.setValues([
       ...formik.values,
@@ -45,7 +76,8 @@ function Step2Itinerary({
         details: "",
         address: "",
         mapsLocation: "",
-        dateTime: "",
+        functionDateTime: "",
+        image: "",
       },
     ]);
 
@@ -59,34 +91,19 @@ function Step2Itinerary({
     formik.setValues(list);
   };
 
-  const formik = useFormik({
-    initialValues: [
-      {
-        id: "",
-        arrayId: 1,
-        functionName: "",
-        details: "",
-        address: "",
-        mapsLocation: "",
-        dateTime: "",
-      },
-    ],
-    validationSchema: Yup.array().of(
-      Yup.object().shape({
-        functionName: Yup.string()
-          .matches(/^[a-zA-Z\s]*$/, "No special characters allowed")
-          .required("Required"),
-        details: Yup.string().required("Required"),
-        address: Yup.string().required("Required"),
-        mapsLocation: Yup.string().required("Required"),
-        dateTime: Yup.string().required("Required Date & Time"),
-      })
-    ),
-    onSubmit: (values) => {
-      handleNext(values);
-      setFormLoading(true);
-    },
-  });
+  const handleImgChange = (event, index) => {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      const base64Data = reader.result;
+      const list = [...formik.values];
+      list[index]["image"] = base64Data;
+      formik.setValues(list);
+    };
+
+    reader.readAsDataURL(file);
+  };
 
   const handleDateTime = (newValue, index) => {
     // setValueDateTime(newValue);
@@ -94,7 +111,7 @@ function Step2Itinerary({
 
     const list = [...formik.values];
 
-    list[index].dateTime = String(
+    list[index].functionDateTime = String(
       moment(dayjsFormat).format("YYYY-MM-DDTHH:MM:SS[Z]")
     );
 
@@ -117,11 +134,12 @@ function Step2Itinerary({
     let valueDate = [];
 
     for (let i = 0; i < itineraryLists.length; i++) {
-      valueDate.push(dayjs(itineraryLists[i].dateTime));
+      valueDate.push(dayjs(itineraryLists[i].functionDateTime));
     }
 
     itineraryLists && setValueDateTime(valueDate);
   }, [itineraryLists]);
+
   return (
     <Box
       sx={{
@@ -249,16 +267,22 @@ function Step2Itinerary({
                   onChange={(newValue) => handleDateTime(newValue, index)}
                   sx={{ mt: 2, width: "100%" }}
                 />
-                {formik.touched[index]?.dateTime &&
-                formik.errors[index]?.dateTime ? (
+                {formik.touched[index]?.functionDateTime &&
+                formik.errors[index]?.functionDateTime ? (
                   <FormErrorMessage
-                    errorMessage={formik.errors[index]?.dateTime}
+                    errorMessage={formik.errors[index]?.functionDateTime}
                   />
                 ) : null}
               </LocalizationProvider>
+              <FormUploadImageSection
+                formikImg={formik.values[index]?.image}
+                handleImgChange={handleImgChange}
+                index={index}
+              />
             </Box>
           );
         })}
+
         <NavigationSteps
           activeStep={activeStep}
           handleNext={handleNext}

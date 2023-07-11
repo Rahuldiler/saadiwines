@@ -10,15 +10,13 @@ import React from "react";
 import ControlPointIcon from "@mui/icons-material/ControlPoint";
 import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalanceWalletOutlined";
 import { COLORS } from "@/Components/utils/ConstantTheme";
-import CustomAccordian from "./mobile-components/CustomAccordian";
+import CustomAccordian from "./common/CustomAccordian";
 import CurrencyRupeeOutlinedIcon from "@mui/icons-material/CurrencyRupeeOutlined";
-import { useRouter } from "next/router";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import { useState } from "react";
-import DialogBox from "./mobile-components/DialogBoxMobile";
-import AddCategoryDialog from "./AddCategoryDialog";
-import { RenderDialogForCategory } from "./mobile-components/RenderDialog";
-const Category = ({ categories, loading, setTrackChanges }) => {
+import { RenderDialogForCategory } from "../common/RenderDialog";
+import { calculateTotaEstimatedCost } from "../common/calculate";
+const Category = ({ category, loading, setTrackChanges }) => {
   const [openDialog, setOpenDialog] = useState(false);
   const [isEditingCategory, setIsEditingCategory] = useState({
     isEditing: false,
@@ -28,7 +26,14 @@ const Category = ({ categories, loading, setTrackChanges }) => {
     isEditing: false,
     subCategory: {},
   });
-  const router = useRouter();
+  const handleAddCategory = () => {
+    setIsEditingCategory({
+      ...isEditingCategory,
+      isEditing: false,
+      categoryId: 0,
+    });
+    setOpenDialog(true);
+  };
   const RenderGridItem = ({ icon, title, amount, handleClick }) => {
     return (
       <Grid item xs mt={2}>
@@ -44,68 +49,15 @@ const Category = ({ categories, loading, setTrackChanges }) => {
           ₹ {amount}
         </Typography>
         <br />
-        {/* {isEditable && (
-          <Button
-            onClick={handleClick}
-            sx={{ color: COLORS.primary, fontSize: "small" }}
-          >
-            Edit
-          </Button>
-        )} */}
       </Grid>
     );
   };
-  const RenderGrayText = ({ title, amount }) => {
-    return (
-      <>
-        <Typography
-          as="span"
-          fontFamily={"inherit"}
-          variant="subtitle2"
-          color={COLORS.gray}
-          fontWeight={400}
-        >
-          {title}
-        </Typography>
-        <Typography
-          as="span"
-          fontFamily={"inherit"}
-          variant="subtitle2"
-          color={COLORS.gray}
-          fontWeight={600}
-        >
-          {amount}
-        </Typography>
-      </>
-    );
-  };
 
-  const calculateTotaEstimatedCost = (items) => {
-    if (items) {
-      let total = items.reduce((sum, item) => {
-        return (sum += +item.expectedAmount);
-      }, 0);
-
-      return total;
-    }
-    return 0;
-  };
-  const calculateFinalCost = (items) => {
-     if (items) {
-      let total = items.reduce((sum, item) => {
-        return (sum += +item.finalCost);
-      }, 0);
-
-      return total;
-    }
-    return 0;
-  };
-  const navigateToNewBudget = () => {
-    // to add categories
-    setOpenDialog(true);
-  };
   const handleCloseDialog = () => {
     setOpenDialog(false);
+  };
+  const navigateToNewBudget = () => {
+    setOpenDialog(true);
   };
   return (
     <Box mb={8}>
@@ -113,7 +65,7 @@ const Category = ({ categories, loading, setTrackChanges }) => {
         display={"flex"}
         m={2}
         color={COLORS.gray}
-        onClick={() => router.back()}
+        onClick={handleCloseDialog}
       >
         <ArrowBackIosIcon fontSize="10px" sx={{ mt: 0.3 }} />
         <Typography variant="caption" fontWeight={400} fontFamily={"inherit"}>
@@ -132,14 +84,7 @@ const Category = ({ categories, loading, setTrackChanges }) => {
         <Button
           sx={{ color: COLORS.primary, fontSize: "small" }}
           startIcon={<ControlPointIcon fontSize="small" />}
-          onClick={() => {
-            setIsEditingCategory({
-              ...isEditingCategory,
-              isEditing: false,
-              categoryId: 0,
-            });
-            navigateToNewBudget();
-          }}
+          onClick={handleAddCategory}
         >
           ADD Category
         </Button>
@@ -163,14 +108,14 @@ const Category = ({ categories, loading, setTrackChanges }) => {
             <RenderGridItem
               icon={<AccountBalanceWalletOutlinedIcon />}
               title="ESTIMATED COST"
-              amount={calculateTotaEstimatedCost(categories)}
+              amount={category[0]?.expectedAmount || 0}
               handleClick={() => {}}
               isEditable={true}
             />
             <RenderDialogForCategory
               handleCloseDialog={handleCloseDialog}
               openDialog={openDialog}
-              category={categories}
+              category={category}
               setTrackChanges={setTrackChanges}
               isEditingCategory={isEditingCategory}
             />
@@ -179,23 +124,22 @@ const Category = ({ categories, loading, setTrackChanges }) => {
               <RenderGridItem
                 icon={<CurrencyRupeeOutlinedIcon />}
                 title="FINAL COST"
-                amount={calculateFinalCost(categories)}
+                amount={category[0]?.finalCost || 0}
                 handleClick={() => {}}
               />
             </Grid>
           </Grid>
-          {categories.length == 0 && (
+          {category.length == 0 && (
             <Typography textAlign={"center"} mt={5}>
               No categories. Please add one
             </Typography>
           )}
-          {categories.map((item) => {
-            // console.log(item)
+          {category.map((item) => {
             return (
               <CustomAccordian
                 key={item.id}
                 category={item}
-                allCategory={categories}
+                allCategory={category}
                 handleClick={navigateToNewBudget}
                 setIsEditingCategory={setIsEditingCategory}
                 isEditingCategory={isEditingCategory}

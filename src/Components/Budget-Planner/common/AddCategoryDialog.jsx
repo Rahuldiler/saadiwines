@@ -11,7 +11,7 @@ const AddCategoryDialog = ({
 }) => {
   const [formData, setFormData] = useState({
     name: obj?.name ?? "",
-    expectedAmount: obj?.expectedAmount ?? 0,
+    // expectedAmount: obj?.expectedAmount ?? 0,
   });
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,11 +21,7 @@ const AddCategoryDialog = ({
     }));
   };
   const [errors, setErrors] = useState({});
-  const style = {
-    color: COLORS.primary,
-    ml: -1,
-    variant: "caption",
-  };
+
   const handleSubmit = () => {
     const newErrors = {};
     if (formData.name.trim() === "") {
@@ -40,10 +36,8 @@ const AddCategoryDialog = ({
           setTrackChanges((p) => !p);
         });
       } else {
-        editCategory({
-          ...obj,
+        editCategory(obj.id, {
           name: formData.name,
-          expectedAmount: formData.expectedAmount,
         }).then(() => {
           onClose();
           setTrackChanges((p) => !p);
@@ -72,12 +66,16 @@ const AddCategoryDialog = ({
           color={COLORS.gray}
           onClick={() => onClose()}
         >
-          <ArrowBackIosIcon fontSize="10px" sx={{ mt: 0.2 }} />
+          <ArrowBackIosIcon
+            fontSize="10px"
+            sx={{ mt: 0.2, cursor: "pointer" }}
+          />
           <Typography
             variant="caption"
             fontWeight={400}
             fontFamily={"inherit"}
             ml={1}
+            sx={{ cursor: "pointer" }}
           >
             BUDGET PLANNER
           </Typography>
@@ -122,11 +120,11 @@ const AddCategoryDialog = ({
           variant="outlined"
           onChange={handleChange}
         /> */}
-        <RenderHeading title={"Notes"} />
-        <Box display={"flex"} justifyContent={"center"}>
+        {/* <RenderHeading title={"Notes"} /> */}
+        {/* <Box display={"flex"} justifyContent={"center"}>
           <br />
           <TextField multiline={true} disabled rows={3} sx={{ width: "96%" }} />
-        </Box>
+        </Box> */}
         <Button
           onClick={handleSubmit}
           sx={{ width: "96%", m: 1, borderRadius: "5px" }}
