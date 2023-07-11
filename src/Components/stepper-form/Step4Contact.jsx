@@ -19,6 +19,9 @@ import * as Yup from "yup";
 import FormErrorMessage from "../common/FormErrorMessage";
 import Notification from "../common/Notification";
 import { deleteContact } from "@/services/Contact/formContact";
+import Image from "next/image";
+import FormUploadImageSection from "../common/FormUploadImageSection";
+
 function Step4Contact({
   contactDetails,
   handleNext,
@@ -73,6 +76,24 @@ function Step4Contact({
     list[index][name] = value;
     formik.setValues(list);
   };
+  const handleImgChange = (event, index) => {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      const base64Data = reader.result;
+      const list = [...formik.values];
+      list[index]["image"] = base64Data;
+      formik.setValues(list);
+    };
+
+    reader.readAsDataURL(file);
+  };
+  // const handleImgChange = (base64, index) => {
+  //   const list = [...formik.values];
+  //   list[index]["image"] = base64;
+  //   formik.setValues(list);
+  // };
 
   const deleteContactBox = async (arrayId, id) => {
     const updatedList = formik.values.filter(
@@ -192,6 +213,11 @@ function Step4Contact({
                   errorMessage={formik.errors[index]?.contactNumber}
                 />
               ) : null}
+              <FormUploadImageSection
+                formikImg={formik.values[index]?.image}
+                handleImgChange={handleImgChange}
+                index={index}
+              />
             </FormControl>
           );
         })}

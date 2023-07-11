@@ -18,7 +18,7 @@ function Footer() {
   const socialFooter = [
     {
       icon: <FaFacebookF size={20} />,
-      src: "https://www.facebook.com/shaadivines/",
+      src: "https://www.facebook.com/shaadivines23/",
     },
     {
       icon: <FaPinterest size={20} />,
@@ -26,7 +26,7 @@ function Footer() {
     },
     {
       icon: <FiInstagram size={20} />,
-      src: "https://www.instagram.com/shaadi.vines/",
+      src: "https://www.instagram.com/shaadivines23/",
     },
   ];
 

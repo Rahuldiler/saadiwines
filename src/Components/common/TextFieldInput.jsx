@@ -10,6 +10,7 @@ const TextFieldInput = ({
   id,
   autoComplete,
   required,
+  placeholder,
   error,
   bg,
 }) => {
@@ -38,6 +39,7 @@ const TextFieldInput = ({
       }}
       margin="normal"
       required={required}
+      placeholder={placeholder}
       fullWidth
       id={id}
       label={label}

@@ -1,22 +1,42 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
 
-import {Grid} from "@mui/material";
-import {addWebsiteInfo, getWebsiteInfo, updateWebsiteInfo,} from "@/services/website/formWebsite";
-import {addMilestone, getMilestone, updateMilestone,} from "@/services/FAQ/formFaq";
-import {addContact, getContact, updateContact,} from "@/services/Contact/formContact";
-import {useRouter} from "next/router";
+import { Grid } from "@mui/material";
+import {
+  addWebsiteInfo,
+  getWebsiteInfo,
+  updateWebsiteInfo,
+} from "@/services/website/formWebsite";
+import {
+  addMilestone,
+  getMilestone,
+  updateMilestone,
+} from "@/services/FAQ/formFaq";
+import {
+  addContact,
+  getContact,
+  updateContact,
+} from "@/services/Contact/formContact";
+import { useRouter } from "next/router";
 import Step1Website from "@/Components/stepper-form/Step1Website";
 import Step2Itinerary from "@/Components/stepper-form/Step2Itinerary";
 import Step3FAQ from "@/Components/stepper-form/Step3FAQ";
 import Step4Contact from "@/Components/stepper-form/Step4Contact";
-import {addItinerary, getItinerary, updateItinerary,} from "@/services/itinerary/formItinerary";
+import {
+  addItinerary,
+  getItinerary,
+  updateItinerary,
+} from "@/services/itinerary/formItinerary";
 import Step5Family from "@/Components/stepper-form/Step5Family";
-import {addFamilyMember, getFamilyMember, updateFamilyMember,} from "@/services/familyMember/formFamilyMember";
-import {getUserPreference} from "@/services/user-preference/userPreference";
+import {
+  addFamilyMember,
+  getFamilyMember,
+  updateFamilyMember,
+} from "@/services/familyMember/formFamilyMember";
+import { getUserPreference } from "@/services/user-preference/userPreference";
 import Notification from "@/Components/common/Notification";
 
 function index() {
@@ -37,10 +57,8 @@ function index() {
       grandFatherName: "",
       description: "",
     },
-    dateTime: "",
+    functionDateTime: "",
     thankYouMessage: "",
-    pics: ["D", "E", "F"],
-    placesToVisit: ["Dont know", "Don know 2"],
   });
   const [itineraryLists, setItineraryLists] = useState([
     {
@@ -49,7 +67,8 @@ function index() {
       details: "",
       address: "",
       mapsLocation: "",
-      dateTime: "",
+      functionDateTime: "",
+      image: "",
     },
   ]);
   const [milestoneLists, setMilestoneLists] = useState([
@@ -72,23 +91,37 @@ function index() {
   const [familyMemberLists, setFamilyMemberLists] = useState([
     {
       arrayId: 1,
-      id: 0,
-      userId: 0,
       name: "",
       relation: "",
     },
   ]);
   const router = useRouter();
-  const [activeStep, setActiveStep] = React.useState(2);
+  const [activeStep, setActiveStep] = React.useState(4);
   const [formLoading, setFormLoading] = useState(true);
   const [loading, setLoading] = useState(true);
   const [notificationActive, setNotificationActive] = useState(false);
+
+  const getBase64FromUrl = async (url) => {
+    if (url) {
+      const data = await fetch(url);
+      const blob = await data.blob();
+      return new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(blob);
+        reader.onloadend = () => {
+          const base64data = reader.result;
+          resolve(base64data);
+        };
+      });
+    }
+  };
   const handleNext = async (values) => {
     if (activeStep === 0) {
+      const { createdDate, ...weedingInfo } = values;
       try {
-        values.id
-          ? await updateWebsiteInfo(values)
-          : await addWebsiteInfo(values);
+        weedingInfo.id
+          ? await updateWebsiteInfo(weedingInfo)
+          : await addWebsiteInfo(weedingInfo);
         setActiveStep(1);
         setNotificationActive(true);
       } catch (error) {
@@ -96,12 +129,15 @@ function index() {
       }
     } else if (activeStep === 1) {
       for (let i = 0; i < values.length; i++) {
-        const { arrayId, ...itineraryList } = values[i];
-
+        const { arrayId, createdDate, image, ...itineraryList } = values[i];
+        let urlToImg;
+        if (itineraryList.id) {
+          urlToImg = image && (await getBase64FromUrl(image));
+        }
         try {
           itineraryList.id
-            ? await updateItinerary(itineraryList)
-            : await addItinerary(itineraryList);
+            ? await updateItinerary({ ...itineraryList, image: urlToImg })
+            : await addItinerary({ ...itineraryList, image });
           setActiveStep(2);
         } catch (error) {
           return error.message;
@@ -109,7 +145,7 @@ function index() {
       }
     } else if (activeStep === 2) {
       for (let i = 0; i < values.length; i++) {
-        const { arrayId, ...milestoneList } = values[i];
+        const { arrayId, createdDate, ...milestoneList } = values[i];
         try {
           milestoneList.id
             ? await updateMilestone(milestoneList)
@@ -121,11 +157,17 @@ function index() {
       }
     } else if (activeStep === 3) {
       for (let i = 0; i < values.length; i++) {
-        const { arrayId, ...contactDetail } = values[i];
+        const { arrayId, createdDate, image, ...contactDetail } = values[i];
+
+        let urlToImg;
+        if (contactDetail.id) {
+          urlToImg = image && (await getBase64FromUrl(image));
+        }
+
         try {
           contactDetail.id
-            ? await updateContact(contactDetail)
-            : await addContact(contactDetail);
+            ? await updateContact({ ...contactDetail, image: urlToImg })
+            : await addContact({ ...contactDetail, image });
           setActiveStep(4);
         } catch (error) {
           return error.message;
@@ -133,7 +175,7 @@ function index() {
       }
     } else if (activeStep === 4) {
       for (let i = 0; i < values.length; i++) {
-        const { arrayId, ...familyMemberList } = values[i];
+        const { arrayId, createdDate, ...familyMemberList } = values[i];
         try {
           familyMemberList.id
             ? await updateFamilyMember(familyMemberList)
@@ -235,10 +277,19 @@ function index() {
   }, []);
 
   let notification;
+
+  //    function convertImageToBase64Async(imagUrl) {
+  //     return new Promise(resovle => convertImageToBase64(imgUrl, resolve))
+  //  }
+
   const getWebsiteInfoData = async () => {
     if (activeStep === 0) {
       const resWebsite = await getWebsiteInfo();
-      resWebsite && setWebsiteForm(resWebsite);
+      resWebsite &&
+        setWebsiteForm({
+          ...resWebsite,
+          functionDateTime: resWebsite.functionDateTime + "Z",
+        });
       setFormLoading(false);
       setLoading(false);
     } else if (activeStep === 1) {
@@ -249,8 +300,8 @@ function index() {
           resItinerary.map((itinerary) => {
             return {
               ...itinerary,
-              image: "test",
               arrayId: arrayIdItinerary++,
+              functionDateTime: itinerary.functionDateTime + "Z",
             };
           })
         );
