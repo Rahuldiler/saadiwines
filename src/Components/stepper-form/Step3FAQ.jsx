@@ -20,7 +20,7 @@ import * as Yup from "yup";
 import NavigationSteps from "./NavigationSteps";
 import FormErrorMessage from "../common/FormErrorMessage";
 import Notification from "../common/Notification";
-import { faqsData } from "@/constants/faqData";
+import { faqsData } from "@/constants/form/faqData";
 import { set } from "date-fns";
 import { deleteMilestone } from "@/services/FAQ/formFaq";
 import FormUploadImageSection from "../common/FormUploadImageSection";

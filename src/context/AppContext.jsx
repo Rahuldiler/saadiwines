@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { createContext } from "react";
-import { staticTemplateData } from "@/constants/template";
+import { staticTemplateData } from "@/constants/template/template";
 import { useRouter } from "next/router";
 
 export const AppContext = createContext({});

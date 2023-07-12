@@ -4,7 +4,7 @@ import GuestListCard from "../common/GuestListCard";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { getTemplateKey } from "@/services/template/template";
-import { staticTemplateData } from "@/constants/template";
+import { staticTemplateData } from "@/constants/template/template";
 
 function YourTemplate({ userPreferenceData }) {
   const theme = useTheme();
