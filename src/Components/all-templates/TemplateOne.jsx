@@ -12,7 +12,7 @@ import Cards from "@/Components/template-components/1/Cards";
 import { useEffect } from "react";
 import Steps from "@/Components/template-components/1/steps";
 import { useRouter } from "next/router";
-import {templateInfoData} from "@/constants/1";
+import {templateInfoData} from "@/constants/template/1";
 
 function TemplateOne({ formData, staticTemplateData }) {
   const [currentSlide, setCurrentSlide] = useState(0);

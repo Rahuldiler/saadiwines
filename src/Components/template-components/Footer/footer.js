@@ -1,4 +1,4 @@
-import { footerString } from "@/constants/template";
+import { footerString } from "@/constants/template/template";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";

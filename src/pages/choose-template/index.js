@@ -16,7 +16,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { COLORS } from "@/Components/utils/ConstantTheme";
-import { staticTemplateData } from "@/constants/template";
+import { staticTemplateData } from "@/constants/template/template";
 import useAppContext from "@/hooks/useAppContext";
 import { set } from "date-fns";
 import Loader from "@/Components/common/Loader";
