@@ -20,7 +20,7 @@ import TemplateFooter from "../template-components/Footer/footer";
 export default function Template2({ templateData, staticTemplateData }) {
   const [imageIndex, setImageIndex] = useState();
   const [isOpen, setIsOpen] = useState(false);
-  const targetDate = new Date(2024, 5, 18);
+  const targetDate = new Date(templateData.weddingInfo.functionDateTime);
 
   const openLightbox = (img) => {
     setIsOpen(true);

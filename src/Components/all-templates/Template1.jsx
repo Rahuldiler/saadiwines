@@ -15,8 +15,7 @@ function Template1({ templateData, staticTemplateData, images }) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [imageIndex, setImageIndex] = useState();
   const [isOpen, setIsOpen] = useState(false);
-  const targetDate = new Date(2024, 5, 18);
-
+  const targetDate = new Date(templateData?.weddingInfo?.functionDateTime);
   const openLightbox = (img) => {
     setIsOpen(true);
     setImageIndex(img);
@@ -27,7 +26,13 @@ function Template1({ templateData, staticTemplateData, images }) {
   };
   // Filter the images for DATE1 and DATE2 labels
   const slideShowImages = Object.entries(templateData.images)
-    .filter(([label]) => label === "date1" || label === "date2")
+    .filter(
+      ([label]) =>
+        label === "date1" ||
+        label === "date2" ||
+        label === "DATE1" ||
+        label === "DATE2"
+    )
     .reduce((acc, [label, imageUrl]) => {
       acc[label] = imageUrl;
       return acc;
@@ -84,7 +89,7 @@ function Template1({ templateData, staticTemplateData, images }) {
                 {templateData?.weddingInfo?.bride.name.split(" ")[0]}
               </div>
               <div className="text-center text-[30px] tracking-wider">
-                {moment(templateData?.weddingInfo?.dateTime).format(
+                {moment(templateData?.weddingInfo?.functionDateTime).format(
                   "DD-MMM-YYYY"
                 )}
               </div>
