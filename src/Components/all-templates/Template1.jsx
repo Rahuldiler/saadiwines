@@ -16,16 +16,6 @@ function Template1({ templateData, staticTemplateData, images }) {
   const [imageIndex, setImageIndex] = useState();
   const [isOpen, setIsOpen] = useState(false);
   const targetDate = new Date(templateData?.weddingInfo?.functionDateTime);
-  // console.log(templateData.weddingInfo.functionDateTime);
-  // console.log(
-  //   templateData.weddingInfo.functionDateTime
-  //     .toLocaleDateString("en-US", {
-  //       year: "numeric",
-  //       month: "2-digit",
-  //       day: "2-digit",
-  //     })
-  //     .replace(/\//g, ", ")
-  // );
   const openLightbox = (img) => {
     setIsOpen(true);
     setImageIndex(img);
