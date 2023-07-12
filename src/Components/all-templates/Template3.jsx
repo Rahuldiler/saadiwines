@@ -38,7 +38,7 @@ function Template3({ templateData, staticTemplateData }) {
     return timeRemaining;
   };
 
-  const targetDate = new Date("2023-12-01");
+  const targetDate = new Date(templateData.weddingInfo.functionDateTime);
   const timeRemaining = useTimeRemaining(targetDate);
 
   const [isOpen, setIsOpen] = useState(false);
@@ -102,7 +102,7 @@ function Template3({ templateData, staticTemplateData }) {
             </span>
           </div>
           <div className="text-center text-[50px] font-Poppins ">
-            {moment(templateData?.weddingInfo?.dateTime).format("DD-MMM-YYYY")}
+            {moment(templateData?.weddingInfo?.functionDateTime).format("DD-MMM-YYYY")}
           </div>
           <img
             src={staticTemplateData?.frame05}

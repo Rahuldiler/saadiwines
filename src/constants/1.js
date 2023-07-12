@@ -160,7 +160,7 @@ const templateInfoData = {
     },
     thankYouMessage:
       "We have exciting news to share - we're getting married! ❤️ We want to take a moment to express our heartfelt gratitude for being such an important part of our lives. Your presence has always meant the world to us, and we deeply appreciate your love and support. On our special day, we would be honored to have you join us in celebrating our love and commitment. Your presence would make the day even more memorable and joyous. Please save the date as we exchange vows and begin this beautiful journey together.",
-    dateTime: "2024-06-18T08:29:53.796",
+    functionDateTime: "2024-06-18T08:29:53.796",
     pics: ["D", "E", "F"],
     placesToVisit: ["Dont know", "Don know 2"],
   },
