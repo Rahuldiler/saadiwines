@@ -38,6 +38,7 @@ import {
 } from "@/services/familyMember/formFamilyMember";
 import { getUserPreference } from "@/services/user-preference/userPreference";
 import Notification from "@/Components/common/Notification";
+import imageToBase64 from "image-to-base64/browser";
 
 function index() {
   const [websiteForm, setWebsiteForm] = useState({
@@ -96,24 +97,20 @@ function index() {
     },
   ]);
   const router = useRouter();
-  const [activeStep, setActiveStep] = React.useState(4);
+  const [activeStep, setActiveStep] = React.useState(0);
   const [formLoading, setFormLoading] = useState(true);
   const [loading, setLoading] = useState(true);
   const [notificationActive, setNotificationActive] = useState(false);
 
   const getBase64FromUrl = async (url) => {
-    if (url) {
-      const data = await fetch(url);
-      const blob = await data.blob();
-      return new Promise((resolve) => {
-        const reader = new FileReader();
-        reader.readAsDataURL(blob);
-        reader.onloadend = () => {
-          const base64data = reader.result;
-          resolve(base64data);
-        };
+    const imgData = imageToBase64(url) // Path to the image
+      .then((response) => {
+        return response; // "cGF0aC90by9maWxlLmpwZw=="
+      })
+      .catch((error) => {
+        console.log(error); // Logs an error if there was one
       });
-    }
+    return imgData;
   };
   const handleNext = async (values) => {
     if (activeStep === 0) {
@@ -134,9 +131,13 @@ function index() {
         if (itineraryList.id) {
           urlToImg = image && (await getBase64FromUrl(image));
         }
+        console.log("data:image/jpeg;base64," + urlToImg);
         try {
           itineraryList.id
-            ? await updateItinerary({ ...itineraryList, image: urlToImg })
+            ? await updateItinerary({
+                ...itineraryList,
+                image: "data:image/jpeg;base64," + urlToImg,
+              })
             : await addItinerary({ ...itineraryList, image });
           setActiveStep(2);
         } catch (error) {
