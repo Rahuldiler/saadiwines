@@ -29,7 +29,7 @@ const Lightbox = ({ isOpen, imageIndex, onClose, images }) => {
       <div className="max-w-3xl w-full ">
           {/* <img src={images[nextImage].image} alt="Lightbox" className="rounded-lg shadow-lg" /> */}
           <Image
-              src={images[nextImage].image}
+              src={images[nextImage]}
               alt="Lightbox"
               width={1000}
               height={1000}

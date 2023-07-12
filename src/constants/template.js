@@ -23,75 +23,76 @@ let staticTemplateData = [
       swiperSlide5: "/images/venders/logo-white-04.png",
       swiperSlide6: "/images/venders/logo-white-06.png",
       paral02: "url('/images/c-paral-02.jpg')",
-      paral03:
-        "url('https://template-assets-sv.s3.amazonaws.com/template1/DSC_4389.JPG')",
+      // paral03:
+      //   "url('https://template-assets-sv.s3.amazonaws.com/template1/DSC_4389.JPG')",
       waterColor02: "url('/images/bg-watercolor-02.jpg')",
       waterColor: "url('/images/bg-watercolor.jpg')",
       double1:
         "https://template-assets-sv.s3.amazonaws.com/template1/SNY_1945.JPG",
-      double2:
-        "https://images.unsplash.com/photo-1548054238-3ad2739292c1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80",
+      // double2:
+      //   "https://images.unsplash.com/photo-1548054238-3ad2739292c1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80",
       gallery10:
         "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4388.JPG",
       leaf03: "url('/images/gr-leaf-03.png')",
-      slides: [
-        {
-          id: 1,
-          image:
-            "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4055.JPG",
-          caption1: " Saanvi & Krishna ",
-          caption2: " 16/04/2030",
-        },
-        {
-          id: 2,
-          image:
-            "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4280.JPG",
-          caption1: " Saanvi & Krishna ",
-          caption2: " 16/04/2030",
-        },
-      ],
-      imagesLightBox: [
-        {
-          id: 1,
-          image:
-            "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4262.JPG",
-        },
-        {
-          id: 2,
-          image:
-            "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4094.JPG",
-        },
-        {
-          id: 3,
-          image:
-            "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4125.JPG",
-        },
-        {
-          id: 4,
-          image:
-            "https://template-assets-sv.s3.amazonaws.com/template1/SNY_1945.JPG",
-        },
-        {
-          id: 5,
-          image:
-            "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4059.JPG",
-        },
-        {
-          id: 6,
-          image:
-            "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4379.JPG",
-        },
-        {
-          id: 7,
-          image:
-            "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4390.JPG",
-        },
-        {
-          id: 8,
-          image:
-            "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4260.JPG",
-        },
-      ],
+      // slides: [
+      //   {
+      //     id: 1,
+      //     image:
+      //       "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4055.JPG",
+      //     caption1: " Saanvi & Krishna ",
+      //     caption2: " 16/04/2030",
+      //   },
+      //   {
+      //     id: 2,
+      //     image:
+      //       "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4280.JPG",
+      //     caption1: " Saanvi & Krishna ",
+      //     caption2: " 16/04/2030",
+      //   },
+      // ],
+      // Gallery Section Images --> 
+      // imagesLightBox: [
+      //   {
+      //     id: 1,
+      //     image:
+      //       "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4262.JPG",
+      //   },
+      //   {
+      //     id: 2,
+      //     image:
+      //       "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4094.JPG",
+      //   },
+      //   {
+      //     id: 3,
+      //     image:
+      //       "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4125.JPG",
+      //   },
+      //   {
+      //     id: 4,
+      //     image:
+      //       "https://template-assets-sv.s3.amazonaws.com/template1/SNY_1945.JPG",
+      //   },
+      //   {
+      //     id: 5,
+      //     image:
+      //       "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4059.JPG",
+      //   },
+      //   {
+      //     id: 6,
+      //     image:
+      //       "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4379.JPG",
+      //   },
+      //   {
+      //     id: 7,
+      //     image:
+      //       "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4390.JPG",
+      //   },
+      //   {
+      //     id: 8,
+      //     image:
+      //       "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4260.JPG",
+      //   },
+      // ],
     },
     avatars: [
       "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Blank&hairColor=Brown&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=Hoodie&clotheColor=Blue01&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Tanned",
@@ -1156,8 +1157,8 @@ let staticTemplateData = [
     greyLight: "url('/assets/templete/3/img-grey-light.png')",
     pic2: "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0021.jpg",
     avatars: [
+      
       "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Blank&hairColor=Brown&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=Hoodie&clotheColor=Blue01&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Tanned",
-
       "https://avataaars.io/?avatarStyle=Transparent&topType=LongHairStraight&accessoriesType=Blank&hairColor=BrownDark&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light",
 
       "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Prescription02&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=Hoodie&clotheColor=Heather&eyeType=Happy&eyebrowType=RaisedExcitedNatural&mouthType=Smile&skinColor=Pale",

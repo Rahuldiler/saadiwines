@@ -179,7 +179,7 @@ const template2InfoData = {
     },
     thankYouMessage:
       "Thank you so much for your love and support. I am so grateful for everything you have done for me, both leading up to my wedding and on my special day. I couldn't have asked for a better wedding to share this day with. Your love and support mean the world to me. I am so lucky to have you in my life.",
-    dateTime: "2024-06-18T08:29:53.796",
+    functionDateTime: "2024-06-18T08:29:53.796",
     pics: ["D", "E", "F"],
     placesToVisit: ["Dont know", "Don know 2"],
   },

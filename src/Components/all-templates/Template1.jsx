@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
 import "react-slideshow-image/dist/styles.css";
 import moment from "moment";
@@ -15,8 +15,7 @@ function Template1({ templateData, staticTemplateData, images }) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [imageIndex, setImageIndex] = useState();
   const [isOpen, setIsOpen] = useState(false);
-  const targetDate = new Date(2024, 5, 18);
-
+  const targetDate = new Date(templateData?.weddingInfo?.functionDateTime);
   const openLightbox = (img) => {
     setIsOpen(true);
     setImageIndex(img);
@@ -25,29 +24,51 @@ function Template1({ templateData, staticTemplateData, images }) {
   const closeLightbox = () => {
     setIsOpen(false);
   };
+  // Filter the images for DATE1 and DATE2 labels
+  const slideShowImages = Object.entries(templateData.images)
+    .filter(
+      ([label]) =>
+        label === "date1" ||
+        label === "date2" ||
+        label === "DATE1" ||
+        label === "DATE2"
+    )
+    .reduce((acc, [label, imageUrl]) => {
+      acc[label] = imageUrl;
+      return acc;
+    }, {});
+
+  const galleryImages = () => {
+    const galleryKeys = Object.keys(templateData.images).filter((key) =>
+      key.startsWith("gallery")
+    );
+    const imageArray = galleryKeys.map((key) => templateData.images[key]);
+    return imageArray;
+  };
 
   const nextSlide = () => {
     setCurrentSlide((prevSlide) =>
-      prevSlide === staticTemplateData.images.slides.length - 1
-        ? 0
-        : prevSlide + 1
+      prevSlide === Object.keys(slideShowImages).length - 1 ? 0 : prevSlide + 1
     );
   };
 
   const prevSlide = () => {
     setCurrentSlide((prevSlide) =>
-      prevSlide === 0
-        ? staticTemplateData.images.slides.length - 1
-        : prevSlide - 1
+      prevSlide === 0 ? Object.keys(slideShowImages).length - 1 : prevSlide - 1
     );
   };
-
+  useEffect(() => {
+    const interval = setInterval(nextSlide, 3000);
+    return () => {
+      clearInterval(interval); // Clean up the interval on component unmount
+    };
+  }, []);
   const [rsvp, setRsvp] = useState(true);
 
   return (
     <div className="lg:min-w-[1280px] ">
       <div className="h-[900px] relative">
-        {staticTemplateData.images.slides.map((slide, index) => (
+        {Object.entries(slideShowImages).map(([label, imageUrl], index) => (
           <div
             key={index}
             className={`absolute top-0 bg-black left-0 w-full h-full transition-opacity duration-500 ${
@@ -57,7 +78,7 @@ function Template1({ templateData, staticTemplateData, images }) {
             <div className="absolute top-0 left-0 bg-black w-full h-full opacity-30">
               {" "}
             </div>
-            <img src={slide?.image} className="object-cover w-full h-full" />
+            <img src={imageUrl} className="object-cover w-full h-full" />
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 p-4 text-white  w-max ">
               <div
                 className={`!font-Alex text-center text-[50px] w-56 lg:w-auto lg:text-[120px] ${
@@ -68,7 +89,7 @@ function Template1({ templateData, staticTemplateData, images }) {
                 {templateData?.weddingInfo?.bride.name.split(" ")[0]}
               </div>
               <div className="text-center text-[30px] tracking-wider">
-                {moment(templateData?.weddingInfo?.dateTime).format(
+                {moment(templateData?.weddingInfo?.functionDateTime).format(
                   "DD-MMM-YYYY"
                 )}
               </div>
@@ -115,8 +136,7 @@ function Template1({ templateData, staticTemplateData, images }) {
         <div
           className={`lg:p-24 py-28 p-4 lg:flex justify-between  `}
           style={{
-            backgroundImage:
-              "url('https://template-assets-sv.s3.amazonaws.com/template1/DSC_4268.JPG",
+            backgroundImage: `url(${templateData?.images.introduction})`,
             backgroundClip: "border-box",
             backgroundPosition: "top",
             backgroundRepeat: "no-repeat",
@@ -178,7 +198,7 @@ function Template1({ templateData, staticTemplateData, images }) {
         {/* <p className="text-center mt-1 mb-10">WEDDING</p> */}
         <div className="grid lg:grid-cols-2  lg:px-20 py-14">
           <div className="px-8">
-            <img src={staticTemplateData?.images.double2} alt="" className="" />
+            <img src={templateData?.images.itinerary} alt="" className="" />
             {/* <p className="!font-Alex !text-[50px] text-center mt-5">
               Wedding Menu
             </p>
@@ -208,15 +228,21 @@ function Template1({ templateData, staticTemplateData, images }) {
 
       <div>
         <div className="grid grid-cols-4 cursor-pointer">
-          {staticTemplateData.images.imagesLightBox.map((image, index) => (
-            <div key={index} className={``} onClick={() => openLightbox(index)}>
-              <img
-                src={image.image}
-                alt=""
-                className="object-cover w-full h-full"
-              />
-            </div>
-          ))}
+          {galleryImages().map((image, index) => {
+            return (
+              <div
+                key={index}
+                className={``}
+                onClick={() => openLightbox(index)}
+              >
+                <img
+                  src={image}
+                  alt=""
+                  className="object-cover w-full h-full"
+                />
+              </div>
+            );
+          })}
         </div>
         <div></div>
       </div>
@@ -224,7 +250,7 @@ function Template1({ templateData, staticTemplateData, images }) {
         isOpen={isOpen}
         imageIndex={imageIndex}
         onClose={closeLightbox}
-        images={templateData?.imagesLightBox}
+        images={galleryImages()}
       />
 
       <div style={{ backgroundImage: staticTemplateData?.images.waterColor02 }}>
@@ -290,7 +316,7 @@ function Template1({ templateData, staticTemplateData, images }) {
       {rsvp && (
         <div
           className=" lg:py-[32rem] py-[450px] relative bg-cover "
-          style={{ backgroundImage: staticTemplateData?.images.paral03 }}
+          style={{ backgroundImage: `url(${templateData?.images.rsvp})` }}
         >
           <div className="absolute top-0 left-0  opacity-50  w-[100%] h-[100%] bg-black "></div>
           <div
