@@ -2,8 +2,10 @@ import { Box, Grid, List, ListItem, Typography } from "@mui/material";
 import Image from "next/image";
 import React from "react";
 import TaskAltIcon from "@mui/icons-material/TaskAlt";
+import { useEffect } from "react";
 
 function About() {
+  const video = "/videos/about-us.mp4";
   const listData = [
     "WEDsite",
     "WEDcast",
@@ -12,6 +14,35 @@ function About() {
     "Guest Management",
     "RSVP",
   ];
+  useEffect(() => {
+    let options = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.8,
+    };
+
+    let callback = (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.target.id == "myvideo") {
+          if (entry.isIntersecting) {
+            entry.target.play();
+            // entry.target.muted = false;
+          } else {
+            entry.target.pause();
+            // entry.target.muted = true;
+          }
+        }
+      });
+    };
+
+    let observer = new IntersectionObserver(callback, options);
+    const videos = document.querySelectorAll("video");
+
+    videos.forEach((vide) => {
+      observer.observe(vide);
+    });
+  }, []);
+
   return (
     <section id="about">
       <Typography
@@ -30,22 +61,31 @@ function About() {
           <Box
             sx={{ minHeight: "350px", height: "100%", position: "relative" }}
           >
-            <Image
-              src="/assets/About us image copy.webp"
-              alt="about e-brainee"
-              width={1000}
-              height={1000}
-              className="imgResAbout"
-              style={{
-                width: "100%",
-                height: "400px",
-                borderRadius: "7px",
-                objectFit: "cover",
-                position: "relative",
-                zIndex: 2,
-              }}
-            />
             <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                borderRadius: "7px",
+              }}
+            >
+              <video
+                autoPlay
+                loop
+                muted
+                width="100%"
+                style={{
+                  borderRadius: "10px",
+                  width: "350px",
+                  height: "auto",
+                  objectFit: "cover",
+                  boxShadow: "-1px 6px 25px #f8dcee",
+                }}
+              >
+                <source src={video} type="video/mp4" />
+                Sorry, your browser doesn't support embedded videos.
+              </video>
+            </Box>
+            {/* <Box
               sx={{
                 width: "100px",
                 height: "200px",
@@ -56,7 +96,7 @@ function About() {
                 borderRadius: "7px",
                 zIndex: 1,
               }}
-            />
+            ></Box> */}
           </Box>
         </Grid>
         <Grid

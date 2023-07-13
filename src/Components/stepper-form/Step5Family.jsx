@@ -1,64 +1,54 @@
-import {
-  Box,
-  FormControl,
-  FormControlLabel,
-  FormLabel,
-  Radio,
-  RadioGroup,
-  Button,
-  Typography,
-  Select,
-  MenuItem,
-  InputLabel,
-} from "@mui/material";
 import React, { useEffect } from "react";
 
-import styles from "../../styles/Form.module.css";
-import { MultilineTextField, TextFieldInput } from "../common/TextFieldInput";
-import { AiOutlineDelete } from "react-icons/ai";
-import NavigationSteps from "./NavigationSteps";
+import { Box, Button, Typography } from "@mui/material";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import FormErrorMessage from "../common/FormErrorMessage";
-import Notification from "../common/Notification";
+import { AiOutlineDelete } from "react-icons/ai";
+
 import { deleteFamilyMember } from "@/services/familyMember/formFamilyMember";
+import NavigationSteps from "./NavigationSteps";
+import { TextFieldInput } from "../common/TextFieldInput";
+import FormErrorMessage from "../common/FormErrorMessage";
 import FormUploadImageSection from "../common/FormUploadImageSection";
 
 function Step5Family({
   familyMemberLists,
+  setFamilyMemberLists,
   handleNext,
   activeStep,
   handleBack,
   setFormLoading,
 }) {
+  const formFields = {
+    name: "",
+    relation: "",
+  };
   const addNewFamilyMember = (id) => {
     formik.setValues([
       ...formik.values,
       {
         arrayId: id + 1,
-        name: "",
-        relation: "",
+        ...formFields,
       },
     ]);
   };
+
+  const nameSchema = Yup.string()
+    .matches(/^[a-zA-Z\s]*$/, "No special characters allowed")
+    .required("Required");
 
   const formik = useFormik({
     initialValues: [
       {
         id: "",
         arrayId: 1,
-        name: "",
-        relation: "",
+        ...formFields,
       },
     ],
     validationSchema: Yup.array().of(
       Yup.object().shape({
-        name: Yup.string()
-          .matches(/^[a-zA-Z\s]*$/, "No special characters allowed")
-          .required("Required"),
-        relation: Yup.string()
-          .matches(/^[a-zA-Z\s]*$/, "No special characters allowed")
-          .required("Required"),
+        name: nameSchema,
+        relation: nameSchema,
       })
     ),
     onSubmit: (values) => {
@@ -95,15 +85,30 @@ function Step5Family({
   // };
 
   const deleteFamilyMemberBox = async (arrayId, id) => {
-    const updatedList = formik.values.filter(
-      (list) => list.arrayId !== arrayId
-    );
-    formik.setValues(updatedList);
+    if (arrayId !== 1) {
+      const updatedList = formik.values.filter(
+        (list) => list.arrayId !== arrayId
+      );
+      formik.setValues(updatedList);
+    } else {
+      formik.resetForm();
+      setFamilyMemberLists([]);
+    }
+
     id && (await deleteFamilyMember(id));
   };
 
   useEffect(() => {
-    familyMemberLists && formik.setValues(familyMemberLists);
+    if (familyMemberLists.length !== 0) {
+      formik.setValues(familyMemberLists);
+    } else {
+      formik.setValues([
+        {
+          arrayId: 1,
+          ...formFields,
+        },
+      ]);
+    }
   }, [familyMemberLists]);
 
   return (
@@ -157,18 +162,16 @@ function Step5Family({
                 }}
               >
                 <Typography variant="body1">Member {index + 1}</Typography>
-                {formik.values.length > 1 && (
-                  <Button
-                    onClick={() =>
-                      deleteFamilyMemberBox(family.arrayId, family.id)
-                    }
-                    sx={{
-                      color: "#BC8129",
-                    }}
-                  >
-                    <AiOutlineDelete size={20} />
-                  </Button>
-                )}
+                <Button
+                  onClick={() =>
+                    deleteFamilyMemberBox(family.arrayId, family.id)
+                  }
+                  sx={{
+                    color: "#BC8129",
+                  }}
+                >
+                  <AiOutlineDelete size={20} />
+                </Button>
               </Box>
               <TextFieldInput
                 id="name"

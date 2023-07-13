@@ -1,43 +1,25 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import Box from "@mui/material/Box";
 import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
 
 import { Grid } from "@mui/material";
-import {
-  addWebsiteInfo,
-  getWebsiteInfo,
-  updateWebsiteInfo,
-} from "@/services/website/formWebsite";
-import {
-  addMilestone,
-  getMilestone,
-  updateMilestone,
-} from "@/services/FAQ/formFaq";
-import {
-  addContact,
-  getContact,
-  updateContact,
-} from "@/services/Contact/formContact";
+import { getWebsiteInfo } from "@/services/website/formWebsite";
+import { getMilestone } from "@/services/FAQ/formFaq";
+import { getContact } from "@/services/Contact/formContact";
 import { useRouter } from "next/router";
 import Step1Website from "@/Components/stepper-form/Step1Website";
 import Step2Itinerary from "@/Components/stepper-form/Step2Itinerary";
 import Step3FAQ from "@/Components/stepper-form/Step3FAQ";
 import Step4Contact from "@/Components/stepper-form/Step4Contact";
-import {
-  addItinerary,
-  getItinerary,
-  updateItinerary,
-} from "@/services/itinerary/formItinerary";
+import { getItinerary } from "@/services/itinerary/formItinerary";
 import Step5Family from "@/Components/stepper-form/Step5Family";
-import {
-  addFamilyMember,
-  getFamilyMember,
-  updateFamilyMember,
-} from "@/services/familyMember/formFamilyMember";
+import { getFamilyMember } from "@/services/familyMember/formFamilyMember";
 import { getUserPreference } from "@/services/user-preference/userPreference";
 import Notification from "@/Components/common/Notification";
+import { getBase64FromUrl } from "@/utils/imageUtil";
+import { STEPS } from "@/constants/form/stepper";
 
 function index() {
   const [websiteForm, setWebsiteForm] = useState({
@@ -72,11 +54,7 @@ function index() {
     },
   ]);
   const [milestoneLists, setMilestoneLists] = useState([
-    {
-      arrayId: 1,
-      title: "",
-      description: "",
-    },
+    { arrayId: 1, title: "", description: "" },
   ]);
   const [contactDetails, setContactDetails] = useState([
     {
@@ -89,105 +67,101 @@ function index() {
   ]);
 
   const [familyMemberLists, setFamilyMemberLists] = useState([
-    {
-      arrayId: 1,
-      name: "",
-      relation: "",
-    },
+    { arrayId: 1, name: "", relation: "" },
   ]);
   const router = useRouter();
-  const [activeStep, setActiveStep] = React.useState(4);
+  const [activeStep, setActiveStep] = React.useState(0);
   const [formLoading, setFormLoading] = useState(true);
   const [loading, setLoading] = useState(true);
   const [notificationActive, setNotificationActive] = useState(false);
+  const stepsData = useMemo(
+    () => ({
+      0: {
+        getData: getWebsiteInfo,
+        setData: setWebsiteForm,
+        transformData: (res) => ({
+          ...res,
+          functionDateTime: res.functionDateTime + "Z",
+        }),
+      },
+      1: {
+        getData: getItinerary,
+        setData: setItineraryLists,
+        transformData: (res, id) => ({
+          ...res,
+          arrayId: id,
+          functionDateTime: res.functionDateTime + "Z",
+        }),
+      },
+      2: {
+        getData: getMilestone,
+        setData: setMilestoneLists,
+        transformData: (res, id) => ({ ...res, arrayId: id }),
+      },
+      3: {
+        getData: getContact,
+        setData: setContactDetails,
+        transformData: (res, id) => ({ ...res, arrayId: id }),
+      },
+      4: {
+        getData: getFamilyMember,
+        setData: setFamilyMemberLists,
+        transformData: (res, id) => ({ ...res, arrayId: id }),
+      },
+    }),
+    []
+  );
 
-  const getBase64FromUrl = async (url) => {
-    if (url) {
-      const data = await fetch(url);
-      const blob = await data.blob();
-      return new Promise((resolve) => {
-        const reader = new FileReader();
-        reader.readAsDataURL(blob);
-        reader.onloadend = () => {
-          const base64data = reader.result;
-          resolve(base64data);
-        };
-      });
-    }
+  const handleData = async (action, data) => {
+    await action(data);
   };
   const handleNext = async (values) => {
-    if (activeStep === 0) {
-      const { createdDate, ...weedingInfo } = values;
-      try {
-        weedingInfo.id
-          ? await updateWebsiteInfo(weedingInfo)
-          : await addWebsiteInfo(weedingInfo);
-        setActiveStep(1);
-        setNotificationActive(true);
-      } catch (error) {
-        return error.message;
-      }
-    } else if (activeStep === 1) {
-      for (let i = 0; i < values.length; i++) {
-        const { arrayId, createdDate, image, ...itineraryList } = values[i];
-        let urlToImg;
-        if (itineraryList.id) {
-          urlToImg = image && (await getBase64FromUrl(image));
-        }
-        try {
-          itineraryList.id
-            ? await updateItinerary({ ...itineraryList, image: urlToImg })
-            : await addItinerary({ ...itineraryList, image });
-          setActiveStep(2);
-        } catch (error) {
-          return error.message;
-        }
-      }
-    } else if (activeStep === 2) {
-      for (let i = 0; i < values.length; i++) {
-        const { arrayId, createdDate, ...milestoneList } = values[i];
-        try {
-          milestoneList.id
-            ? await updateMilestone(milestoneList)
-            : await addMilestone(milestoneList);
-          setActiveStep(3);
-        } catch (error) {
-          return error.message;
-        }
-      }
-    } else if (activeStep === 3) {
-      for (let i = 0; i < values.length; i++) {
-        const { arrayId, createdDate, image, ...contactDetail } = values[i];
+    const step = STEPS[activeStep];
+    if (!step) return;
 
-        let urlToImg;
-        if (contactDetail.id) {
-          urlToImg = image && (await getBase64FromUrl(image));
-        }
+    /* Here is the explanation for the code below:
+1. First we destructure the steps functions from the step object.
+2. Then we create an array of promises from the values array.
+3. Inside the loop we create a new object that contains all the data that we want to send to the server (filteredData).
+4. If the getImage function is provided and the item has an id and an image we convert the image to base64.
+5. Then we call the handleData function with the right action and the filteredData.
+6. The handleData function returns a promise so we push it to the array of promises.
+7. Finally we use the Promise.all() function to wait for all the promises to resolve.
 
-        try {
-          contactDetail.id
-            ? await updateContact({ ...contactDetail, image: urlToImg })
-            : await addContact({ ...contactDetail, image });
-          setActiveStep(4);
-        } catch (error) {
-          return error.message;
-        }
-      }
-    } else if (activeStep === 4) {
-      for (let i = 0; i < values.length; i++) {
-        const { arrayId, createdDate, ...familyMemberList } = values[i];
-        try {
-          familyMemberList.id
-            ? await updateFamilyMember(familyMemberList)
-            : await addFamilyMember(familyMemberList);
-        } catch (error) {
-          return error.message;
-        }
-      }
+Now let's see the handleData function: */
 
-      router.push("/choose-template");
+    const { filter, updateAction, addAction, getImage } = step;
+    const dataPromises = [];
+    if (!Array.isArray(values)) values = [values];
+    for (const item of values) {
+      let filteredData = Object.keys(item).reduce((data, key) => {
+        if (!filter.includes(key)) data[key] = item[key];
+        return data;
+      }, {});
+
+      let image;
+      if (getImage && filteredData.id && item.image) {
+        image = await getBase64FromUrl(item.image);
+      }
+      dataPromises.push(
+        handleData(filteredData.id ? updateAction : addAction, {
+          ...filteredData,
+          image,
+        })
+      );
     }
-    // activeStep !== 4 && setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    try {
+      //TODO start loader here
+      await Promise.all(dataPromises);
+      setNotificationActive(true);
+      activeStep !== 4
+        ? setActiveStep((prevActiveStep) => prevActiveStep + 1)
+        : await router.push("/choose-template");
+    } catch (error) {
+      //TODO, show error notification
+    } finally {
+      // TODO hide loader here
+    }
   };
 
   const handleBack = () => {
@@ -205,8 +179,6 @@ function index() {
           activeStep={activeStep}
           handleBack={handleBack}
           setFormLoading={setFormLoading}
-          notificationActive={notificationActive}
-          setNotificationActive={setNotificationActive}
         />
       ),
     },
@@ -220,8 +192,6 @@ function index() {
           activeStep={activeStep}
           handleBack={handleBack}
           setFormLoading={setFormLoading}
-          notificationActive={notificationActive}
-          setNotificationActive={setNotificationActive}
         />
       ),
     },
@@ -235,8 +205,6 @@ function index() {
           activeStep={activeStep}
           handleBack={handleBack}
           setFormLoading={setFormLoading}
-          notificationActive={notificationActive}
-          setNotificationActive={setNotificationActive}
         />
       ),
     },
@@ -250,8 +218,6 @@ function index() {
           activeStep={activeStep}
           handleBack={handleBack}
           setFormLoading={setFormLoading}
-          notificationActive={notificationActive}
-          setNotificationActive={setNotificationActive}
         />
       ),
     },
@@ -265,8 +231,6 @@ function index() {
           activeStep={activeStep}
           handleBack={handleBack}
           setFormLoading={setFormLoading}
-          notificationActive={notificationActive}
-          setNotificationActive={setNotificationActive}
         />
       ),
     },
@@ -276,98 +240,43 @@ function index() {
     getUserPreference();
   }, []);
 
-  let notification;
+  const fetchData = async () => {
+    const step = stepsData[activeStep];
+    if (!step) return;
 
-  //    function convertImageToBase64Async(imagUrl) {
-  //     return new Promise(resovle => convertImageToBase64(imgUrl, resolve))
-  //  }
+    const { getData, setData, transformData } = step;
+    const res = await getData();
 
-  const getWebsiteInfoData = async () => {
-    if (activeStep === 0) {
-      const resWebsite = await getWebsiteInfo();
-      resWebsite &&
-        setWebsiteForm({
-          ...resWebsite,
-          functionDateTime: resWebsite.functionDateTime + "Z",
-        });
-      setFormLoading(false);
-      setLoading(false);
-    } else if (activeStep === 1) {
-      const resItinerary = await getItinerary();
-      let arrayIdItinerary = 1;
-      resItinerary.length !== 0 &&
-        setItineraryLists(
-          resItinerary.map((itinerary) => {
-            return {
-              ...itinerary,
-              arrayId: arrayIdItinerary++,
-              functionDateTime: itinerary.functionDateTime + "Z",
-            };
-          })
-        );
-      setFormLoading(false);
-    } else if (activeStep === 2) {
-      const resMilestone = await getMilestone();
-      let arrayIdMilestone = 1;
-      resMilestone.length !== 0 &&
-        setMilestoneLists(
-          resMilestone.map((milestone) => {
-            return {
-              ...milestone,
-              arrayId: arrayIdMilestone++,
-            };
-          })
-        );
-      setFormLoading(false);
-    } else if (activeStep === 3) {
-      const resContact = await getContact();
-      let arrayIdContact = 1;
-      resContact.length !== 0 &&
-        setContactDetails(
-          resContact.map((contact) => {
-            return {
-              ...contact,
-              arrayId: arrayIdContact++,
-            };
-          })
-        );
-      setFormLoading(false);
-    } else if (activeStep === 4) {
-      const resFamily = await getFamilyMember();
-      let arrayIdFamily = 1;
-      resFamily.length !== 0 &&
-        setFamilyMemberLists(
-          resFamily.map((family) => {
-            return {
-              ...family,
-              arrayId: arrayIdFamily++,
-            };
-          })
-        );
-      setFormLoading(false);
+    if (Array.isArray(res)) {
+      let arrayId = 1;
+      setData(res.map((item) => transformData(item, arrayId++)));
+    } else {
+      setData(transformData(res));
     }
+
+    setFormLoading(false);
   };
 
   useEffect(() => {
-    getWebsiteInfoData();
+    fetchData();
   }, [activeStep]);
+
+  const notificationMessages = [
+    "",
+    "Basic Info data has been added",
+    "Itinerary data has been added",
+    "Milestone data has been added",
+    "Contact data has been added",
+    "Family data has been added",
+  ];
 
   return (
     <Box>
-      {notificationActive && activeStep === 1 && (
-        <Notification message="Basic Info data has been added" type="success" />
-      )}
-      {notificationActive && activeStep === 2 && (
-        <Notification message="Itinerary data has been added" type="success" />
-      )}
-      {notificationActive && activeStep === 3 && (
-        <Notification message="Milestone data has been added" type="success" />
-      )}
-      {notificationActive && activeStep === 4 && (
-        <Notification message="Contact data has been added" type="success" />
-      )}
-      {notificationActive && activeStep === 5 && (
-        <Notification message="Family data has been added" type="success" />
+      {notificationActive && activeStep > 0 && (
+        <Notification
+          message={notificationMessages[activeStep]}
+          type="success"
+        />
       )}
 
       <Grid container sx={{ position: "relative" }}>
@@ -382,36 +291,24 @@ function index() {
               }}
             >
               <Stepper activeStep={activeStep}>
-                {steps.map((item, index) => {
-                  const labelProps = {};
-                  return (
-                    <Step
-                      key={index}
-                      sx={{
-                        "& .MuiStepIcon-root.Mui-active": {
-                          color: "#BC8129",
-                        },
-                        "& .MuiStepIcon-root.Mui-completed": {
-                          color: "#BC8129",
-                        },
-                      }}
-                    >
-                      <StepLabel {...labelProps}>{item.label}</StepLabel>
-                    </Step>
-                  );
-                })}
+                {steps.map((item, index) => (
+                  <Step
+                    key={index}
+                    sx={{
+                      "& .MuiStepIcon-root.Mui-active": {
+                        color: "#BC8129",
+                      },
+                      "& .MuiStepIcon-root.Mui-completed": {
+                        color: "#BC8129",
+                      },
+                    }}
+                  >
+                    <StepLabel>{item.label}</StepLabel>
+                  </Step>
+                ))}
               </Stepper>
             </Box>
-            <Box>
-              {/* {formLoading && (
-                <Loader
-                  message="Loading dashboard page"
-                  isLoading={formLoading}
-                />
-              )} */}
-
-              {steps[activeStep]?.components}
-            </Box>
+            <Box>{steps[activeStep]?.components}</Box>
           </Box>
         </Grid>
       </Grid>

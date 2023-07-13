@@ -1,25 +1,14 @@
-import {
-  Box,
-  FormControl,
-  FormControlLabel,
-  FormLabel,
-  Radio,
-  RadioGroup,
-  Button,
-  Typography,
-} from "@mui/material";
 import React, { useEffect } from "react";
 
-import styles from "../../styles/Form.module.css";
-import { MultilineTextField, TextFieldInput } from "../common/TextFieldInput";
+import { Box, FormControl, Button, Typography } from "@mui/material";
 import { AiOutlineDelete } from "react-icons/ai";
-import NavigationSteps from "./NavigationSteps";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import FormErrorMessage from "../common/FormErrorMessage";
-import Notification from "../common/Notification";
+
 import { deleteContact } from "@/services/Contact/formContact";
-import Image from "next/image";
+import NavigationSteps from "./NavigationSteps";
+import { TextFieldInput } from "../common/TextFieldInput";
+import FormErrorMessage from "../common/FormErrorMessage";
 import FormUploadImageSection from "../common/FormUploadImageSection";
 
 function Step4Contact({
@@ -28,39 +17,40 @@ function Step4Contact({
   activeStep,
   handleBack,
   setFormLoading,
+  setContactDetails,
 }) {
+  const formFields = {
+    firstName: "",
+    lastName: "",
+    contactNumber: "",
+    fromSide: "GROOM",
+  };
   const addNewContact = (id) => {
     formik.setValues([
       ...formik.values,
       {
         arrayId: id + 1,
-        firstName: "",
-        lastName: "",
-        contactNumber: "",
-        fromSide: "GROOM",
+        ...formFields,
       },
     ]);
   };
+
+  const nameSchema = Yup.string()
+    .matches(/^[a-zA-Z\s]*$/, "No special characters allowed")
+    .required("Required");
 
   const formik = useFormik({
     initialValues: [
       {
         id: "",
         arrayId: 1,
-        firstName: "",
-        lastName: "",
-        contactNumber: "",
-        fromSide: "GROOM",
+        ...formFields,
       },
     ],
     validationSchema: Yup.array().of(
       Yup.object().shape({
-        firstName: Yup.string()
-          .matches(/^[a-zA-Z\s]*$/, "No special characters allowed")
-          .required("Required"),
-        lastName: Yup.string()
-          .matches(/^[a-zA-Z\s]*$/, "No special characters allowed")
-          .required("Required"),
+        firstName: nameSchema,
+        lastName: nameSchema,
         contactNumber: Yup.number().required("Required"),
       })
     ),
@@ -96,15 +86,30 @@ function Step4Contact({
   // };
 
   const deleteContactBox = async (arrayId, id) => {
-    const updatedList = formik.values.filter(
-      (list) => list.arrayId !== arrayId
-    );
-    formik.setValues(updatedList);
+    if (arrayId !== 1) {
+      const updatedList = formik.values.filter(
+        (list) => list.arrayId !== arrayId
+      );
+      formik.setValues(updatedList);
+    } else {
+      formik.resetForm();
+      setContactDetails([]);
+    }
+
     id && (await deleteContact(id));
   };
 
   useEffect(() => {
-    contactDetails && formik.setValues(contactDetails);
+    if (contactDetails.length !== 0) {
+      formik.setValues(contactDetails);
+    } else {
+      formik.setValues([
+        {
+          arrayId: 1,
+          ...formFields,
+        },
+      ]);
+    }
   }, [contactDetails]);
 
   return (
@@ -158,18 +163,14 @@ function Step4Contact({
                 }}
               >
                 <Typography variant="body1">Contact {index + 1}</Typography>
-                {formik.values.length > 1 && (
-                  <Button
-                    onClick={() =>
-                      deleteContactBox(contact.arrayId, contact.id)
-                    }
-                    sx={{
-                      color: "#BC8129",
-                    }}
-                  >
-                    <AiOutlineDelete size={20} />
-                  </Button>
-                )}
+                <Button
+                  onClick={() => deleteContactBox(contact.arrayId, contact.id)}
+                  sx={{
+                    color: "#BC8129",
+                  }}
+                >
+                  <AiOutlineDelete size={20} />
+                </Button>
               </Box>
               <TextFieldInput
                 id="firstName"

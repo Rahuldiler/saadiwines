@@ -3,10 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="369879d0-c866-4b70-8022-d857b0c9b9fe" name="Changes" comment="Minor text updates">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/common/WebsiteTemplateContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/common/WebsiteTemplateContainer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/home/About.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/home/About.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/home/ContactUs.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/home/ContactUs.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constants/template.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/template.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/constants/form/stepper.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/form/stepper.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/form/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/form/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,7 +21,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="develop" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -73,10 +71,11 @@
       <recent name="$PROJECT_DIR$/public" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/constants/form" />
+      <recent name="$PROJECT_DIR$/src/constants/template" />
       <recent name="$PROJECT_DIR$/src/Components/template-components/1" />
       <recent name="$PROJECT_DIR$/src/Components/template components" />
       <recent name="$PROJECT_DIR$/src/Components/Common" />
-      <recent name="$PROJECT_DIR$/src/services/auth" />
     </key>
   </component>
   <component name="RunManager">
@@ -213,7 +212,14 @@
       <option name="project" value="LOCAL" />
       <updated>1688649380035</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Added cache control">
+      <created>1689174545191</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1689174545191</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -297,6 +303,7 @@
     <MESSAGE value="fixed errors" />
     <MESSAGE value="removed commented code" />
     <MESSAGE value="Minor text updates" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor text updates" />
+    <MESSAGE value="Added cache control" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added cache control" />
   </component>
 </project>

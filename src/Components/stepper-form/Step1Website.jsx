@@ -1,14 +1,17 @@
-import { Box, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
+
+import { Box, Typography } from "@mui/material";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+
 import dayjs from "dayjs";
 import moment from "moment";
-import { MultilineTextField, TextFieldInput } from "../common/TextFieldInput";
+
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
+import { MultilineTextField, TextFieldInput } from "../common/TextFieldInput";
 import NavigationSteps from "./NavigationSteps";
 import FormErrorMessage from "../common/FormErrorMessage";
 
@@ -22,7 +25,31 @@ function Step1Website({
 }) {
   // const [valueTime, setValueTime] = React.useState(dayjs("2022-04-17T15:30"));
   // const [valueDate, setValueDate] = React.useState(dayjs("2022-04-17T15:30"));
-  const [valueDateTime, setValueDateTime] = useState();
+  const [valueDateTime, setValueDateTime] = useState("");
+
+  const nameSchema = Yup.string()
+    .matches(/^[a-zA-Z\s]*$/, "No special characters allowed")
+    .required("Name is required");
+
+  const parentNameSchema = nameSchema
+    .clone()
+    .required("Parent name is required");
+
+  const grandParentNameSchema = Yup.string().matches(
+    /^[a-zA-Z\s]*$/,
+    "No special characters allowed"
+  );
+
+  const descriptionSchema = Yup.string().required("Description is required");
+
+  const personSchema = Yup.object({
+    name: nameSchema,
+    fatherName: parentNameSchema,
+    motherName: parentNameSchema,
+    grandFatherName: grandParentNameSchema,
+    grandMotherName: grandParentNameSchema,
+    description: descriptionSchema,
+  });
 
   const formik = useFormik({
     initialValues: {
@@ -47,48 +74,10 @@ function Step1Website({
       thankYouMessage: "",
     },
     validationSchema: Yup.object({
-      groom: Yup.object({
-        name: Yup.string()
-          .matches(/^[a-zA-Z\s]*$/, "No special characters allowed")
-          .required("Required groom name"),
-        fatherName: Yup.string()
-          .matches(/^[a-zA-Z\s]*$/, "No special characters allowed")
-          .required("Required groom father Name"),
-        motherName: Yup.string()
-          .matches(/^[a-zA-Z\s]*$/, "No special characters allowed")
-          .required("Required groom mother Name"),
-        grandFatherName: Yup.string().matches(
-          /^[a-zA-Z\s]*$/,
-          "No special characters allowed"
-        ),
-        grandMotherName: Yup.string().matches(
-          /^[a-zA-Z\s]*$/,
-          "No special characters allowed"
-        ),
-        description: Yup.string().required("Required groom description "),
-      }),
-      bride: Yup.object({
-        name: Yup.string()
-          .matches(/^[a-zA-Z\s]*$/, "No special characters allowed")
-          .required("Required bride name"),
-        fatherName: Yup.string()
-          .matches(/^[a-zA-Z\s]*$/, "No special characters allowed")
-          .required("Required bride father Name"),
-        motherName: Yup.string()
-          .matches(/^[a-zA-Z\s]*$/, "No special characters allowed")
-          .required("Required bride mother Name"),
-        grandFatherName: Yup.string().matches(
-          /^[a-zA-Z\s]*$/,
-          "No special characters allowed"
-        ),
-        grandMotherName: Yup.string().matches(
-          /^[a-zA-Z\s]*$/,
-          "No special characters allowed"
-        ),
-        description: Yup.string().required("Required bride description "),
-      }),
-      functionDateTime: Yup.string().required("Required Date"),
-      thankYouMessage: Yup.string().required("Required Thank You Message"),
+      groom: personSchema,
+      bride: personSchema,
+      functionDateTime: Yup.string().required("Date is required"),
+      thankYouMessage: Yup.string().required("Thank You Message is required"),
     }),
     onSubmit: (values) => {
       handleNext(values);
@@ -96,21 +85,23 @@ function Step1Website({
     },
   });
 
-  useEffect(() => {
-    websiteForm && formik.setValues(websiteForm);
-  }, [websiteForm]);
-
   const handleDateTime = (newValue) => {
     const dayjsFormat = dayjs(newValue).$d;
     setValueDateTime(newValue);
     formik.setFieldValue(
       "functionDateTime",
-      String(moment(dayjsFormat).format("YYYY-MM-DDTHH:MM:SS[Z]"))
+      dayjsFormat
+        ? String(moment(dayjsFormat).format("YYYY-MM-DDT00:00:00[Z]"))
+        : null
     );
   };
+
   useEffect(() => {
-    websiteForm && setValueDateTime(dayjs(websiteForm?.functionDateTime));
-  }, [websiteForm.functionDateTime]);
+    if (websiteForm.id) {
+      formik.setValues(websiteForm);
+      setValueDateTime(dayjs(websiteForm?.functionDateTime));
+    }
+  }, [websiteForm]);
 
   return (
     <Box
@@ -160,7 +151,7 @@ function Step1Website({
                   label="Groom Father Name *"
                   name="groom.fatherName"
                   type="text"
-                  value={formik.values?.groom.fatherName}
+                  value={formik.values?.groom?.fatherName}
                   onChange={formik.handleChange}
                 />
                 {formik.touched.groom?.fatherName &&
@@ -268,7 +259,7 @@ function Step1Website({
                   label="Bride Father Name *"
                   name="bride.fatherName"
                   type="text"
-                  value={formik.values?.bride.fatherName}
+                  value={formik.values?.bride?.fatherName}
                   onChange={formik.handleChange}
                 />
                 {formik.touched.bride?.fatherName &&
@@ -284,7 +275,7 @@ function Step1Website({
                   label="Bride Mother Name *"
                   name="bride.motherName"
                   type="text"
-                  value={formik.values?.bride.motherName}
+                  value={formik.values?.bride?.motherName}
                   onChange={formik.handleChange}
                 />
                 {formik.touched.bride?.motherName &&
@@ -361,7 +352,7 @@ function Step1Website({
             <DatePicker
               label="Pick a date *"
               name="valueDateTime"
-              value={valueDateTime || ""}
+              value={valueDateTime || null}
               disablePast
               onChange={(newValue) => handleDateTime(newValue)}
               sx={{ mt: 2, width: "100%" }}

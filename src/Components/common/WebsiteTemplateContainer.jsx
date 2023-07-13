@@ -7,7 +7,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/bundle";
 import TestimonialCard from "./TestimonialCard";
-import {staticTemplateData} from "@/constants/template";
+import {staticTemplateData} from "@/constants/template/template";
 
 function WebsiteTemplateContainer() {
 
