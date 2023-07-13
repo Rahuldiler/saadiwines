@@ -1,21 +1,23 @@
-import { getTemplateData } from "@/services/template/template";
-import { getUserPreference } from "@/services/user-preference/userPreference";
-import { Box, Typography } from "@mui/material";
 import React from "react";
+import { createRef } from "react";
 import { useState } from "react";
 import { useEffect } from "react";
+import { useRouter } from "next/router";
+
+import * as htmlToImage from "html-to-image";
+import { Box, Typography } from "@mui/material";
+
+import { getTemplateData } from "@/services/template/template";
+import { getUserPreference } from "@/services/user-preference/userPreference";
 import { templateInfoData } from "@/constants/template/1";
 import { template2InfoData } from "@/constants/template/2";
 import { template3InfoData } from "@/constants/template/3";
 import { staticTemplateData } from "@/constants/template/template";
 import Loader from "@/Components/common/Loader";
-import { useRouter } from "next/router";
 import Template3 from "@/Components/all-templates/Template3";
 import Template2 from "@/Components/all-templates/Template2";
 import Template1 from "@/Components/all-templates/Template1";
 import Template4 from "@/Components/all-templates/Template4";
-import { createRef } from "react";
-import * as htmlToImage from "html-to-image";
 import SEO from "@/Components/utils/seo";
 
 function Template({
@@ -272,7 +274,7 @@ export async function getServerSideProps({ params, req }) {
     templateId = Number(params.id);
   }
 
-return {
+  return {
     props: { singleTemplate, responseTemplateData, templateId, hostname },
   };
 }
