@@ -1,48 +1,39 @@
+import React, { useEffect, useState } from "react";
+
 import {
   Autocomplete,
   Box,
   Button,
-  FormControl,
-  FormControlLabel,
-  FormLabel,
-  Radio,
-  RadioGroup,
   TextField,
   Typography,
 } from "@mui/material";
-import React, { useEffect, useState } from "react";
-
-import styles from "../../styles/Form.module.css";
-import { MultilineTextField, TextFieldInput } from "../common/TextFieldInput";
 import { AiOutlineDelete } from "react-icons/ai";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+
+import { deleteMilestone } from "@/services/FAQ/formFaq";
 import NavigationSteps from "./NavigationSteps";
 import FormErrorMessage from "../common/FormErrorMessage";
-import Notification from "../common/Notification";
-import { faqsData } from "@/constants/form/faqData";
-import { set } from "date-fns";
-import { deleteMilestone } from "@/services/FAQ/formFaq";
 import FormUploadImageSection from "../common/FormUploadImageSection";
+import { faqsData } from "@/constants/form/faqData";
 
 function Step3FAQ({
-  setValidationBoolean,
   milestoneLists,
   setMilestoneLists,
   handleNext,
   activeStep,
-  steps,
   handleBack,
   validationBoolean,
   setFormLoading,
 }) {
+  const formFields = {
+    title: "",
+    description: "",
+  };
   const [quesAnsData, setQuesAnsData] = useState(faqsData);
   const [removedQuesAnsData, setRemovedQuesAnsData] = useState([]);
   const addNewMilestone = (id) => {
-    formik.setValues([
-      ...formik.values,
-      { arrayId: id + 1, title: "", description: "" },
-    ]);
+    formik.setValues([...formik.values, { arrayId: id + 1, ...formFields }]);
   };
 
   const formik = useFormik({
@@ -50,8 +41,7 @@ function Step3FAQ({
       {
         id: "",
         arrayId: 1,
-        title: "",
-        description: "",
+        ...formFields,
       },
     ],
     validationSchema: Yup.array().of(
@@ -127,26 +117,41 @@ function Step3FAQ({
   // };
 
   const deleteMilestoneBox = async (arrayId, id) => {
-    const updatedList = formik.values.filter(
-      (list) => list.arrayId !== arrayId
-    );
-    restoreQuesAnsData(formik.values[arrayId - 1]?.title);
+    if (arrayId !== 1) {
+      const updatedList = formik.values.filter(
+        (list) => list.arrayId !== arrayId
+      );
+      restoreQuesAnsData(formik.values[arrayId - 1]?.title);
 
-    formik.setValues(updatedList);
+      formik.setValues(updatedList);
+    } else {
+      formik.resetForm();
+      setMilestoneLists([]);
+    }
+
     id && (await deleteMilestone(id));
   };
 
   useEffect(() => {
-    milestoneLists && formik.setValues(milestoneLists);
+    if (milestoneLists.length !== 0) {
+      formik.setValues(milestoneLists);
 
-    for (let i = 0; i < milestoneLists.length; i++) {
-      setQuesAnsData((prevData) =>
-        prevData.filter((qna) => qna.title !== milestoneLists[i].title)
-      );
-      const filteredData = quesAnsData.filter(
-        (faq) => faq.title === milestoneLists[i].title
-      );
-      setRemovedQuesAnsData((prevData) => [...prevData, filteredData[0]]);
+      for (let i = 0; i < milestoneLists.length; i++) {
+        setQuesAnsData((prevData) =>
+          prevData.filter((qna) => qna.title !== milestoneLists[i].title)
+        );
+        const filteredData = quesAnsData.filter(
+          (faq) => faq.title === milestoneLists[i].title
+        );
+        setRemovedQuesAnsData((prevData) => [...prevData, filteredData[0]]);
+      }
+    } else {
+      formik.setValues([
+        {
+          arrayId: 1,
+          ...formFields,
+        },
+      ]);
     }
   }, [milestoneLists]);
 
@@ -210,18 +215,16 @@ function Step3FAQ({
                 }}
               >
                 <Typography variant="body1">Milestone {index + 1}</Typography>
-                {formik.values.length > 1 && (
-                  <Button
-                    onClick={() =>
-                      deleteMilestoneBox(milestone.arrayId, milestone.id)
-                    }
-                    sx={{
-                      color: "#BC8129",
-                    }}
-                  >
-                    <AiOutlineDelete size={20} />
-                  </Button>
-                )}
+                <Button
+                  onClick={() =>
+                    deleteMilestoneBox(milestone.arrayId, milestone.id)
+                  }
+                  sx={{
+                    color: "#BC8129",
+                  }}
+                >
+                  <AiOutlineDelete size={20} />
+                </Button>
               </Box>
 
               <Autocomplete

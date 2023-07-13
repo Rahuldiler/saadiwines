@@ -1,33 +1,18 @@
-import {
-  Box,
-  Button,
-  FormControl,
-  FormControlLabel,
-  FormLabel,
-  Radio,
-  RadioGroup,
-  Typography,
-} from "@mui/material";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Box, Button, Typography } from "@mui/material";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import { TimePicker } from "@mui/x-date-pickers/TimePicker";
-import styles from "../../styles/Form.module.css";
-import { MultilineTextField, TextFieldInput } from "../common/TextFieldInput";
+import { DateTimePicker } from "@mui/x-date-pickers";
 import moment from "moment";
 import dayjs from "dayjs";
-import { DateTimePicker } from "@mui/x-date-pickers";
-import { AiOutlineDelete } from "react-icons/ai";
-import { list } from "postcss";
-import { useEffect } from "react";
-import NavigationSteps from "./NavigationSteps";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import FormErrorMessage from "../common/FormErrorMessage";
-import Notification from "../common/Notification";
+
 import { deleteItinerary } from "@/services/itinerary/formItinerary";
-import Image from "next/image";
+import { MultilineTextField, TextFieldInput } from "../common/TextFieldInput";
+import { AiOutlineDelete } from "react-icons/ai";
+import NavigationSteps from "./NavigationSteps";
+import FormErrorMessage from "../common/FormErrorMessage";
 import FormUploadImageSection from "../common/FormUploadImageSection";
 
 function Step2Itinerary({
@@ -36,19 +21,23 @@ function Step2Itinerary({
   activeStep,
   handleBack,
   setFormLoading,
+  setItineraryLists,
 }) {
   const [valueDateTime, setValueDateTime] = useState();
+  const formFields = {
+    functionName: "",
+    details: "",
+    address: "",
+    mapsLocation: "",
+    functionDateTime: "",
+    image: "",
+  };
   const formik = useFormik({
     initialValues: [
       {
         id: "",
         arrayId: 1,
-        functionName: "",
-        details: "",
-        address: "",
-        mapsLocation: "",
-        functionDateTime: "",
-        image: "",
+        ...formFields,
       },
     ],
     validationSchema: Yup.array().of(
@@ -72,16 +61,11 @@ function Step2Itinerary({
       ...formik.values,
       {
         arrayId: id + 1,
-        functionName: "",
-        details: "",
-        address: "",
-        mapsLocation: "",
-        functionDateTime: "",
-        image: "",
+        ...formFields,
       },
     ]);
 
-    setValueDateTime((prevData) => [...prevData, dayjs]);
+    setValueDateTime((prevData) => [...prevData, null]);
   };
 
   const handleChange = (e, index) => {
@@ -106,38 +90,53 @@ function Step2Itinerary({
   };
 
   const handleDateTime = (newValue, index) => {
-    // setValueDateTime(newValue);
     const dayjsFormat = dayjs(newValue).$d;
 
     const list = [...formik.values];
 
     list[index].functionDateTime = String(
-      moment(dayjsFormat).format("YYYY-MM-DDTHH:MM:SS[Z]")
+      moment(dayjsFormat).format("YYYY-MM-DDTHH:mm:ss[Z]")
     );
 
-    const listOfDates = [...valueDateTime];
+    const listOfDates = valueDateTime ? [...valueDateTime] : [];
     listOfDates[index] = newValue;
     formik.setValues(list);
     setValueDateTime(listOfDates);
   };
 
   const deleteItineraryBox = async (arrayId, id) => {
-    const updatedList = formik.values.filter(
-      (list) => list.arrayId !== arrayId
-    );
-    formik.setValues(updatedList);
+    if (arrayId !== 1) {
+      const updatedList = formik.values.filter(
+        (list) => list.arrayId !== arrayId
+      );
+      formik.setValues(updatedList);
+    } else {
+      formik.resetForm();
+      setValueDateTime("");
+      setItineraryLists([]);
+    }
     id && (await deleteItinerary(id));
   };
 
   useEffect(() => {
-    itineraryLists && formik.setValues(itineraryLists);
-    let valueDate = [];
+    if (itineraryLists.length !== 0) {
+      formik.setValues(itineraryLists);
 
-    for (let i = 0; i < itineraryLists.length; i++) {
-      valueDate.push(dayjs(itineraryLists[i].functionDateTime));
+      const valueDate = itineraryLists.map((list) => {
+        const date = new Date(list.functionDateTime.slice(0, -1));
+        return dayjs(date);
+      });
+
+      setValueDateTime(valueDate);
+    } else {
+      formik.setValues([
+        {
+          arrayId: 1,
+          ...formFields,
+        },
+      ]);
+      setValueDateTime("");
     }
-
-    itineraryLists && setValueDateTime(valueDate);
   }, [itineraryLists]);
 
   return (
@@ -191,16 +190,14 @@ function Step2Itinerary({
                 }}
               >
                 <Typography variant="body1">Itinerary {index + 1}</Typography>
-                {formik.values.length > 1 && (
-                  <Button
-                    onClick={() => deleteItineraryBox(list.arrayId, list.id)}
-                    sx={{
-                      color: "#BC8129",
-                    }}
-                  >
-                    <AiOutlineDelete size={20} />
-                  </Button>
-                )}
+                <Button
+                  onClick={() => deleteItineraryBox(list.arrayId, list.id)}
+                  sx={{
+                    color: "#BC8129",
+                  }}
+                >
+                  <AiOutlineDelete size={20} />
+                </Button>
               </Box>
               <TextFieldInput
                 id="functionName"
@@ -263,7 +260,7 @@ function Step2Itinerary({
                   disablePast
                   label="Pick a date and time"
                   name="valueDateTime"
-                  value={valueDateTime ? valueDateTime[index] || "" : null}
+                  value={valueDateTime ? valueDateTime[index] || null : null}
                   onChange={(newValue) => handleDateTime(newValue, index)}
                   sx={{ mt: 2, width: "100%" }}
                 />
