@@ -57,22 +57,28 @@ function Template3({ templateData, staticTemplateData }) {
     setIsOpenRsv(false);
   };
 
-
-
+  const galleryImages = () => {
+    const galleryKeys = Object.keys(templateData.images).filter((key) =>
+      key.startsWith("gallery")
+    );
+    return galleryKeys.map((key) => templateData.images[key]);
+  };
   return (
     <div>
       <div className="md:grid md:grid-cols-7 py-20  ">
         <div className="flex justify-center relative md:col-span-2">
           <div className="px-6 md:px-0 font-lora">
             <img
-              src={staticTemplateData?.gallery_02_1}
+              // src={staticTemplateData?.gallery_02_1}
+              src={templateData?.images.date1}
               alt=""
               className=" md:w-[22rem] w-[10rem] h-[10rem]  md:h-[27rem] object-cover rounded-full md:rounded-b-full mt-28 mx-auto"
             />
           </div>
           <div className="px-6">
             <img
-              src={staticTemplateData?.gallery_01_1}
+              // src={staticTemplateData?.gallery_01_1}
+              src={templateData?.images.date2}
               alt=""
               className="object-cover  w-[10rem] h-[10rem] rounded-t-full mt-28 md:hidden"
             />
@@ -102,7 +108,9 @@ function Template3({ templateData, staticTemplateData }) {
             </span>
           </div>
           <div className="text-center text-[50px] font-Poppins ">
-            {moment(templateData?.weddingInfo?.functionDateTime).format("DD-MMM-YYYY")}
+            {moment(templateData?.weddingInfo?.functionDateTime).format(
+              "DD-MMM-YYYY"
+            )}
           </div>
           <img
             src={staticTemplateData?.frame05}
@@ -113,7 +121,8 @@ function Template3({ templateData, staticTemplateData }) {
         <div className="md:flex justify-center relative col-span-2 hidden ">
           <div>
             <img
-              src={staticTemplateData?.gallery_01_1}
+              // src={staticTemplateData?.gallery_01_1}
+              src={templateData?.images.date2}
               alt=""
               className="object-cover w-[22rem]  h-[27rem] rounded-t-full mt-28"
             />
@@ -198,17 +207,13 @@ function Template3({ templateData, staticTemplateData }) {
               <p className="!font-lora  !text-[50px] lg:!text-[50px]">
                 {timeRemaining.minutes}
               </p>
-              <p className="!text-[8px] !font-Poppins lg:!text-base">
-                MINUTES
-              </p>
+              <p className="!text-[8px] !font-Poppins lg:!text-base">MINUTES</p>
             </div>
             <div>
               <p className="!font-lora  !text-[50px] lg:!text-[50px]">
                 {timeRemaining.seconds}
               </p>
-              <p className="!text-[8px] !font-Poppins lg:!text-base">
-                SECONDS
-              </p>
+              <p className="!text-[8px] !font-Poppins lg:!text-base">SECONDS</p>
             </div>
           </div>
 
@@ -253,7 +258,8 @@ function Template3({ templateData, staticTemplateData }) {
                   "DD/MMM/YYYY " + " | " + " h:mm A"
                 )}
                 fctnInfo={steps.details}
-                img={staticTemplateData.stepss[0].img}
+                // img={staticTemplateData.stepss[0].img}
+                img={templateData?.images.itinerary}
               />
             </div>
           ))}
@@ -262,13 +268,9 @@ function Template3({ templateData, staticTemplateData }) {
 
       <div className="">
         <div className="grid md:grid-cols-4 grid-cols-2 md:gap-2 gap-4 md:px-10 px-2 cursor-pointer my-10">
-          {staticTemplateData.images.map((image, index) => (
+          {galleryImages().map((image, index) => (
             <div key={index} className={``} onClick={() => openLightbox(index)}>
-              <img
-                src={image.image}
-                alt=""
-                className="object-cover w-full h-full"
-              />
+              <img src={image} alt="" className="object-cover w-full h-full" />
             </div>
           ))}
         </div>
@@ -277,7 +279,7 @@ function Template3({ templateData, staticTemplateData }) {
         isOpen={isOpen}
         imageIndex={imageIndex}
         onClose={closeLightbox}
-        images={templateData.images}
+        images={galleryImages()}
       />
 
       <div
@@ -340,7 +342,10 @@ function Template3({ templateData, staticTemplateData }) {
           />
         </div>
       </div>
-      <TemplateFooter image1={staticTemplateData.couple} image2={staticTemplateData.couple}/>
+      <TemplateFooter
+        image1={staticTemplateData.couple}
+        image2={staticTemplateData.couple}
+      />
     </div>
   );
 }

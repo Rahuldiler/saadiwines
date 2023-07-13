@@ -1,4 +1,46 @@
 const template3InfoData = {
+  images: {
+    gallery4:
+      "https://sv-user-images.s3.ap-south-1.amazonaws.com/102/7bec30e8-93aa-4ac9-8712-3c8fa0943435.JPG",
+    TEST3:
+      "https://sv-user-images.s3.ap-south-1.amazonaws.com/102/69d7e89e-eace-41b7-b737-9c79753c35fe.JPG",
+    gallery5:
+      "https://sv-user-images.s3.ap-south-1.amazonaws.com/102/53288e79-7602-4d63-b82d-0aa5e2f0f7fd.JPG",
+    gallery2:
+      "https://sv-user-images.s3.ap-south-1.amazonaws.com/102/41b9eb11-3034-4db1-9491-f7d611cb8b6d.JPG",
+    gallery3:
+      "https://sv-user-images.s3.ap-south-1.amazonaws.com/102/26378ede-0176-47b9-be03-d4573b7ebf90.JPG",
+    gallery8:
+      "https://sv-user-images.s3.ap-south-1.amazonaws.com/102/f8230d26-40ce-484b-a940-c5dc9af7c0e8.JPG",
+    gallery6:
+      "https://sv-user-images.s3.ap-south-1.amazonaws.com/102/2363c197-728a-49ff-a9e0-23e930651b7a.JPG",
+    gallery7:
+      "https://sv-user-images.s3.ap-south-1.amazonaws.com/102/2c5c8ffb-9e16-48c4-b28c-064cabebaf4a.JPG",
+    date4:
+      "https://sv-user-images.s3.ap-south-1.amazonaws.com/102/a70df2fc-9932-4226-9c6d-9d93a07c55f2.JPG",
+    itinerary:
+      "https://sv-user-images.s3.ap-south-1.amazonaws.com/102/d3453073-8910-42ae-88ac-9782784e99f0.png",
+    date3:
+      "https://sv-user-images.s3.ap-south-1.amazonaws.com/102/d93735ab-8c36-490a-ad67-a96cb1f23df9.JPG",
+      
+    rsvp: "https://sv-user-images.s3.ap-south-1.amazonaws.com/102/d8947fa9-9e42-4ee8-8fb5-1fd8c4a885f9.JPG",
+    itinerary3:
+      "https://sv-user-images.s3.ap-south-1.amazonaws.com/102/f38a2fdf-86b2-4c98-8f31-5c87ae57eea4.JPG",
+    itinerary4:
+      "https://sv-user-images.s3.ap-south-1.amazonaws.com/102/d9f1db27-48e6-43db-b803-085c393eedd6.JPG",
+    itinerary5:
+      "https://sv-user-images.s3.ap-south-1.amazonaws.com/102/b96d827f-c2ee-4b14-ac27-7fcb1e9555b3.JPG",
+    date2:
+      "https://sv-user-images.s3.ap-south-1.amazonaws.com/102/615c7b86-1567-4c60-a24d-bcce4979f175.JPG",
+    gallery1:
+      "https://sv-user-images.s3.ap-south-1.amazonaws.com/102/c81febe7-8113-4346-872f-9bc06d58b43e.JPG",
+    introduction:
+      "https://sv-user-images.s3.ap-south-1.amazonaws.com/102/eb89caa4-c9ed-41b1-b0eb-3111a3ea3794.JPG",
+    date1:
+      "https://sv-user-images.s3.ap-south-1.amazonaws.com/102/2de0a9f3-c43a-40ff-bc1f-5f802508ea1f.JPG",
+    itinerary2:
+      "https://sv-user-images.s3.ap-south-1.amazonaws.com/102/59a14f1d-b644-4d18-8497-f1c95b3178c5.JPG",
+  },
   milestone: [
     {
       id: 1,
@@ -131,7 +173,7 @@ const template3InfoData = {
     },
     thankYouMessage:
       "Thank you so much for your love and support. I am so grateful for everything you have done for me, both leading up to my wedding and on my special day. I couldn't have asked for a better wedding to share this day with. Your love and support mean the world to me. I am so lucky to have you in my life.",
-      functionDateTime: "2024-06-18T08:29:53.796",
+    functionDateTime: "2024-06-18T08:29:53.796",
     pics: ["D", "E", "F"],
     placesToVisit: ["Dont know", "Don know 2"],
   },
