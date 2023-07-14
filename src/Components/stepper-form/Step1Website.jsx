@@ -53,7 +53,6 @@ function Step1Website({
 
   const formik = useFormik({
     initialValues: {
-      id: "",
       groom: {
         name: "",
         fatherName: "",

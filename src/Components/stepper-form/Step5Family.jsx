@@ -22,6 +22,7 @@ function Step5Family({
   const formFields = {
     name: "",
     relation: "",
+    image: "",
   };
   const addNewFamilyMember = (id) => {
     formik.setValues([

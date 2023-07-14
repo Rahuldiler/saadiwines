@@ -24,6 +24,7 @@ function Step4Contact({
     lastName: "",
     contactNumber: "",
     fromSide: "GROOM",
+    image: "",
   };
   const addNewContact = (id) => {
     formik.setValues([

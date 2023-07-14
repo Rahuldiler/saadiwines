@@ -14,6 +14,7 @@ import Footer from "@/Components/common/Footer";
 import BottomBar from "@/Components/common/BottomBar";
 import Webcast from "@/Components/home/Webcast";
 import SEO from "@/Components/utils/seo";
+import { WhatsappFloatingIcon } from "@/Components/common/WhatsappFloatingIcon";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -64,6 +65,8 @@ export default function Home() {
           handleClose={handleClose}
           setHandle={setHandle}
         />
+
+        <WhatsappFloatingIcon />
       </main>
     </>
   );
