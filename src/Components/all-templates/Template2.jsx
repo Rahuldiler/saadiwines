@@ -30,12 +30,23 @@ export default function Template2({ templateData, staticTemplateData }) {
   const closeLightbox = () => {
     setIsOpen(false);
   };
-
+  const slideShowImages = Object.entries(templateData.images)
+    .filter(
+      ([label]) =>
+        label === "date1" ||
+        label === "date2" ||
+        label === "date3" ||
+        label === "date4"
+    )
+    .reduce((acc, [label, imageUrl]) => {
+      acc.push({ ["link"]: imageUrl });
+      return acc;
+    }, []);
   return (
     <>
       <div className="lg:flex mb-[-265px]">
         <div className="lg:w-[55%] w-full">
-          <SwiperMain SliderImg={staticTemplateData.SliderImg} />
+          <SwiperMain SliderImg={slideShowImages.slice(0, 2)} />
         </div>
         <div className="lg:w-[45%] relative lg:flex hidden items-center text-center z-10 px-8">
           <div className=" mb-5">
@@ -133,7 +144,7 @@ export default function Template2({ templateData, staticTemplateData }) {
           </div>
         </div>
         <div className="lg:w-[55%] w-full">
-          <SwiperMain SliderImg={staticTemplateData.SliderImg2} />
+          <SwiperMain SliderImg={slideShowImages.slice(-2)} />
         </div>
       </div>
       <div>
@@ -171,7 +182,8 @@ export default function Template2({ templateData, staticTemplateData }) {
           <div className="max-w-[1350px] lg:mx-auto ml-auto sm:flex">
             <div className="lg:w-[33.33%] sm:w-1/4 lg:pr-[100px] sm:px-0 px-3">
               <Image
-                src={staticTemplateData?.gallery08}
+                src={templateData?.images.gallery8}
+                // src={staticTemplateData?.gallery08}
                 alt=""
                 width={700}
                 height={600}
@@ -183,7 +195,8 @@ export default function Template2({ templateData, staticTemplateData }) {
             </div>
             <div className="lg:w-[33.33%] sm:w-1/4 flex justify-end">
               <Image
-                src={staticTemplateData?.gallery05}
+                src={templateData?.images.gallery3}
+                // src={staticTemplateData?.gallery05}
                 alt=""
                 fill
                 className="!relative rounded-full rounded-r-none lg:!w-[50%] sm:!w-[85%] !w-[60%] !h-[200px] object-cover"
@@ -211,7 +224,7 @@ export default function Template2({ templateData, staticTemplateData }) {
               modules={[EffectFade, Autoplay]}
               className="mySwiper"
             >
-              {staticTemplateData.SliderImg1.map((img, id) => {
+              {slideShowImages.map((img, id) => {
                 return (
                   <SwiperSlide key={id}>
                     <Image
@@ -385,7 +398,8 @@ export default function Template2({ templateData, staticTemplateData }) {
           <div className="lg:w-[30%] sm:w-1/4 sm:block hidden relative">
             <div className="mt-[-35px]">
               <Image
-                src={staticTemplateData?.gallery16}
+                src={templateData.images?.itinerary2}
+                // src={staticTemplateData?.gallery16}
                 alt=""
                 width={200}
                 height={200}
@@ -394,7 +408,8 @@ export default function Template2({ templateData, staticTemplateData }) {
             </div>
             <div className="absolute lg:bottom-[190px] bottom-[290px] lg:left-[50px]">
               <Image
-                src={staticTemplateData?.gallery18}
+                // src={staticTemplateData?.gallery18}
+                src={templateData.images?.itinerary3}
                 alt=""
                 width={100}
                 height={100}
@@ -403,7 +418,8 @@ export default function Template2({ templateData, staticTemplateData }) {
             </div>
             <div className="absolute bottom-[0px] lg:left-[50px]">
               <Image
-                src={staticTemplateData?.gallery14}
+                // src={templateData.images?.gallery4}
+                src={templateData.images?.itinerary4}
                 alt=""
                 width={300}
                 height={400}
@@ -446,7 +462,7 @@ export default function Template2({ templateData, staticTemplateData }) {
             <div className="mt-[10px]">
               <Image
                 alt=""
-                src={staticTemplateData?.gallery20}
+                src={templateData.images?.itinerary5}
                 width={300}
                 height={500}
                 className="object-cover"
@@ -455,7 +471,7 @@ export default function Template2({ templateData, staticTemplateData }) {
             <div className="absolute bottom-[120px] right-[0px]">
               <Image
                 alt=""
-                src={staticTemplateData?.gallery17}
+                src={templateData.images?.itinerary2}
                 width={300}
                 height={400}
                 className=""
@@ -464,7 +480,7 @@ export default function Template2({ templateData, staticTemplateData }) {
             <div className="absolute bottom-[0px] right-[200px]">
               <Image
                 alt=""
-                src={staticTemplateData?.gallery21}
+                src={templateData.images?.itinerary3}
                 width={100}
                 height={100}
                 className="rounded-full rounded-b-none"
@@ -578,7 +594,10 @@ export default function Template2({ templateData, staticTemplateData }) {
               >
                 Let's Celebrate True Love
               </h2>
-              <ContactForm staticTemplateData={staticTemplateData} />
+              <ContactForm
+                staticTemplateData={staticTemplateData}
+                rsvpImage={templateData.images.rsvp}
+              />
             </div>
             <div className="w-[20%"></div>
           </div>

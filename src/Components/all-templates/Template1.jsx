@@ -24,15 +24,9 @@ function Template1({ templateData, staticTemplateData, images }) {
   const closeLightbox = () => {
     setIsOpen(false);
   };
-  // Filter the images for DATE1 and DATE2 labels
+  // Filter the images for date1 and date2 labels
   const slideShowImages = Object.entries(templateData.images)
-    .filter(
-      ([label]) =>
-        label === "date1" ||
-        label === "date2" ||
-        label === "DATE1" ||
-        label === "DATE2"
-    )
+    .filter(([label]) => label === "date1" || label === "date2")
     .reduce((acc, [label, imageUrl]) => {
       acc[label] = imageUrl;
       return acc;

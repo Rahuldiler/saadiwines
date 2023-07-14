@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 
-const ContactForm = ({staticTemplateData}) => {
+const ContactForm = ({staticTemplateData,rsvpImage}) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -29,7 +29,7 @@ const ContactForm = ({staticTemplateData}) => {
       <div className="grid sm:grid-cols-2 grid-cols-1 bg-white">
         <div>
           <Image
-            src="https://template-assets-sv.s3.amazonaws.com/template2/024A2433.JPG"
+            src={rsvpImage}
             fill
             alt=""
             className="!relative object-cover"
