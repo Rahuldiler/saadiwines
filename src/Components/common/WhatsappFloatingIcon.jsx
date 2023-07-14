@@ -15,7 +15,11 @@ export const WhatsappFloatingIcon = () => {
         width: "60px",
       }}
     >
-      <a target="_blank" href="https://wa.me/91" aria-label="Let's Connect">
+      <a
+        target="_blank"
+        href="https://wa.me/message/GIGZCF55W576F1"
+        aria-label="Let's Connect"
+      >
         <Image
           src="/assets/whatsapp.webp"
           alt="whatsapp"
