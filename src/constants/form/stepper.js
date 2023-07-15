@@ -32,6 +32,7 @@ export const STEPS = [
     filter: ["arrayId", "createdDate", "image"],
     updateAction: updateMilestone,
     addAction: addMilestone,
+    getImage: true,
   },
   {
     name: "Contact",
@@ -45,5 +46,6 @@ export const STEPS = [
     filter: ["arrayId", "createdDate", "image"],
     updateAction: updateFamilyMember,
     addAction: addFamilyMember,
+    getImage: true,
   },
 ];

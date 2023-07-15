@@ -8,11 +8,12 @@ export const WhatsappFloatingIcon = () => {
       className="whatsAppIcon"
       style={{
         position: "fixed",
-        left: "10px",
         zIndex: "999999999",
+        right: "20px",
+        zIndex: 999999999,
         top: "auto",
-        bottom: "7px",
-        width: "60px",
+        bottom: "20px",
+        width: "75px",
       }}
     >
       <a
