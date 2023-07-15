@@ -20,10 +20,16 @@ export default function SwiperMain({ SliderImg }) {
         modules={[Autoplay]}
         className="mySwiper"
       >
-        {SliderImg.map((img, id) => {
+        {SliderImg.map((img, index) => {
           return (
-            <SwiperSlide key={id}>
-              <Image src={img.link} fill className="!relative" alt="" />
+            <SwiperSlide key={index}>
+              <Image
+                id={img.id}
+                src={img.link}
+                fill
+                className="!relative"
+                alt=""
+              />
             </SwiperSlide>
           );
         })}

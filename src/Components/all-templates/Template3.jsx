@@ -69,7 +69,7 @@ function Template3({ templateData, staticTemplateData }) {
         <div className="flex justify-center relative md:col-span-2">
           <div className="px-6 md:px-0 font-lora">
             <img
-              // src={staticTemplateData?.gallery_02_1}
+              id="date1"
               src={templateData?.images.date1}
               alt=""
               className=" md:w-[22rem] w-[10rem] h-[10rem]  md:h-[27rem] object-cover rounded-full md:rounded-b-full mt-28 mx-auto"
@@ -77,7 +77,7 @@ function Template3({ templateData, staticTemplateData }) {
           </div>
           <div className="px-6">
             <img
-              // src={staticTemplateData?.gallery_01_1}
+              // id="date2"
               src={templateData?.images.date2}
               alt=""
               className="object-cover  w-[10rem] h-[10rem] rounded-t-full mt-28 md:hidden"
@@ -123,6 +123,7 @@ function Template3({ templateData, staticTemplateData }) {
             <img
               // src={staticTemplateData?.gallery_01_1}
               src={templateData?.images.date2}
+              id="date2"
               alt=""
               className="object-cover w-[22rem]  h-[27rem] rounded-t-full mt-28"
             />
@@ -147,14 +148,16 @@ function Template3({ templateData, staticTemplateData }) {
           </h2>
           <p className="mt-5 !text-[30px]">
             {" "}
-            s/o Mr. {templateData?.weddingInfo?.bride.fatherName} and Mrs.{" "}
+            S/O {templateData?.weddingInfo?.bride.fatherName} and{" "}
             {templateData?.weddingInfo?.bride.motherName}
           </p>
-          <p className="mt-1 !text-[30px]">
-            {" "}
-            g/s Mr. {templateData?.weddingInfo?.bride.grandFatherName} and Mrs.{" "}
-            {templateData?.weddingInfo?.bride.grandMotherName}
-          </p>
+          {templateData?.weddingInfo?.bride.grandFatherName && (
+            <p className="mt-1 !text-[30px]">
+              {" "}
+              G/S {templateData?.weddingInfo?.bride.grandFatherName} and{" "}
+              {templateData?.weddingInfo?.bride.grandMotherName}
+            </p>
+          )}
           <p className="md:px-20 mt-5 ">
             {templateData?.weddingInfo?.bride.description}
           </p>
@@ -165,14 +168,16 @@ function Template3({ templateData, staticTemplateData }) {
           </h2>
           <p className="mt-5 !text-[30px]">
             {" "}
-            s/o Mr. {templateData?.weddingInfo?.groom.fatherName} and Mrs.{" "}
+            S/O {templateData?.weddingInfo?.groom.fatherName} and{" "}
             {templateData?.weddingInfo?.groom.motherName}
           </p>
-          <p className="mt-1 !text-[30px]">
-            {" "}
-            g/s Mr. {templateData?.weddingInfo?.bride.grandFatherName} and Mrs.{" "}
-            {templateData?.weddingInfo?.groom.grandMotherName}
-          </p>
+          {templateData?.weddingInfo?.bride.grandFatherName && (
+            <p className="mt-1 !text-[30px]">
+              {" "}
+              G/S {templateData?.weddingInfo?.bride.grandFatherName} and{" "}
+              {templateData?.weddingInfo?.groom.grandMotherName}
+            </p>
+          )}
           <p className="md:px-20 mt-5 ">
             {templateData?.weddingInfo?.groom.description}
           </p>
@@ -258,6 +263,7 @@ function Template3({ templateData, staticTemplateData }) {
                   "DD/MMM/YYYY " + " | " + " h:mm A"
                 )}
                 fctnInfo={steps.details}
+                index={index}
                 // img={staticTemplateData.stepss[0].img}
                 img={templateData?.images.itinerary}
               />
@@ -270,7 +276,12 @@ function Template3({ templateData, staticTemplateData }) {
         <div className="grid md:grid-cols-4 grid-cols-2 md:gap-2 gap-4 md:px-10 px-2 cursor-pointer my-10">
           {galleryImages().map((image, index) => (
             <div key={index} className={``} onClick={() => openLightbox(index)}>
-              <img src={image} alt="" className="object-cover w-full h-full" />
+              <img
+                id={`gallery${index + 1}`}
+                src={image}
+                alt=""
+                className="object-cover w-full h-full"
+              />
             </div>
           ))}
         </div>
@@ -294,6 +305,7 @@ function Template3({ templateData, staticTemplateData }) {
         <div className="grid md:grid-cols-3 grid-cols-2  md:gap-24 gap-8 md:mt-14 mt-6 mb-16 ">
           {templateData?.familyMembers?.map((cards, index) => (
             <Temp3Crds
+              key={index}
               imgSrc={staticTemplateData.avatars[index]}
               name={cards.name}
               relationship={cards.relation}
@@ -309,6 +321,7 @@ function Template3({ templateData, staticTemplateData }) {
         <div className="grid md:grid-cols-3  mt-12">
           {templateData?.pocs?.map((cards, index) => (
             <Temp3Crds
+              key={index}
               imgSrc={staticTemplateData.avatars[0]}
               name={cards.firstName}
               relationship={cards.relationship}
