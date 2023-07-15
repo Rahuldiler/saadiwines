@@ -1,12 +1,12 @@
 import React, { useState,useEffect } from 'react';
 import { ArrowRightIcon } from "@heroicons/react/24/solid";
 
-function Itinerary({step,fctnName,fctnInfo,dateTime,location,img, theme}) {
+function Itinerary({step,fctnName,fctnInfo,dateTime,location,img, theme,index}) {
     return(
        
         <div className='text-center mb-16 md:mb-0'>
         <div className='mt-3 '>
-            <img src={img} alt=' ' className='w-52 mx-auto md:mb-14 mb-10 rounded-2xl'/>
+            <img id={`itinerary${index+1}`} src={img} alt=' ' className='w-52 mx-auto md:mb-14 mb-10 rounded-2xl'/>
         </div>
         <div className='mt-4 lg:mt-0'>
             <p className='!font-lora !text-[25px] mb-3 '>{fctnName} <span style={{backgroundColor: theme?.bgColor, color: theme?.textColor}} className=' px-3 py-1 text-base'><a href={location}>map</a></span> </p>

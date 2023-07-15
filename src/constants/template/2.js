@@ -17,7 +17,7 @@ const template2InfoData = {
     gallery7:
       "https://sv-user-images.s3.ap-south-1.amazonaws.com/102/2c5c8ffb-9e16-48c4-b28c-064cabebaf4a.JPG",
     date4: "https://template-assets-sv.s3.amazonaws.com/template2/024A2483.JPG",
-    itinerary:
+    itinerary1:
       "https://sv-user-images.s3.ap-south-1.amazonaws.com/102/d3453073-8910-42ae-88ac-9782784e99f0.png",
     itinerary2:
       "https://template-assets-sv.s3.amazonaws.com/template2/024A2699.JPG",
@@ -27,6 +27,11 @@ const template2InfoData = {
       "https://template-assets-sv.s3.amazonaws.com/template2/024A2719.JPG",
     itinerary5:
       "https://template-assets-sv.s3.amazonaws.com/template2/024A2719.JPG",
+    itinerary6:
+      "https://template-assets-sv.s3.amazonaws.com/template2/024A2719.JPG",
+    itinerary7:
+      "https://template-assets-sv.s3.amazonaws.com/template2/024A2719.JPG",
+
     date3: "https://template-assets-sv.s3.amazonaws.com/template2/024A2596.JPG",
     rsvp: "https://sv-user-images.s3.ap-south-1.amazonaws.com/102/d8947fa9-9e42-4ee8-8fb5-1fd8c4a885f9.JPG",
     date2: "https://template-assets-sv.s3.amazonaws.com/template2/024A2373.JPG",

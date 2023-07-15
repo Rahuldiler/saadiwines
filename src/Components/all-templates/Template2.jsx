@@ -39,7 +39,7 @@ export default function Template2({ templateData, staticTemplateData }) {
         label === "date4"
     )
     .reduce((acc, [label, imageUrl]) => {
-      acc.push({ ["link"]: imageUrl });
+      acc.push({ ["link"]: imageUrl, id: label });
       return acc;
     }, []);
   return (
@@ -183,7 +183,7 @@ export default function Template2({ templateData, staticTemplateData }) {
             <div className="lg:w-[33.33%] sm:w-1/4 lg:pr-[100px] sm:px-0 px-3">
               <Image
                 src={templateData?.images.gallery8}
-                // src={staticTemplateData?.gallery08}
+                id={"gallery8"}
                 alt=""
                 width={700}
                 height={600}
@@ -196,7 +196,7 @@ export default function Template2({ templateData, staticTemplateData }) {
             <div className="lg:w-[33.33%] sm:w-1/4 flex justify-end">
               <Image
                 src={templateData?.images.gallery3}
-                // src={staticTemplateData?.gallery05}
+                id={"gallery3"}
                 alt=""
                 fill
                 className="!relative rounded-full rounded-r-none lg:!w-[50%] sm:!w-[85%] !w-[60%] !h-[200px] object-cover"
@@ -230,6 +230,7 @@ export default function Template2({ templateData, staticTemplateData }) {
                     <Image
                       alt=""
                       src={img.link}
+                      id={img.id}
                       fill
                       className="!relative lg:!h-screen !h-[50vh] object-cover"
                     />
@@ -399,7 +400,7 @@ export default function Template2({ templateData, staticTemplateData }) {
             <div className="mt-[-35px]">
               <Image
                 src={templateData.images?.itinerary2}
-                // src={staticTemplateData?.gallery16}
+                id={"itinerary2"}
                 alt=""
                 width={200}
                 height={200}
@@ -410,7 +411,8 @@ export default function Template2({ templateData, staticTemplateData }) {
               <Image
                 // src={staticTemplateData?.gallery18}
                 src={templateData.images?.itinerary3}
-                alt=""
+                alt="itinerary3"
+                id=""
                 width={100}
                 height={100}
                 className=""
@@ -420,6 +422,7 @@ export default function Template2({ templateData, staticTemplateData }) {
               <Image
                 // src={templateData.images?.gallery4}
                 src={templateData.images?.itinerary4}
+                id="itinerary4"
                 alt=""
                 width={300}
                 height={400}
@@ -463,6 +466,7 @@ export default function Template2({ templateData, staticTemplateData }) {
               <Image
                 alt=""
                 src={templateData.images?.itinerary5}
+                id="itinerary5"
                 width={300}
                 height={500}
                 className="object-cover"
@@ -471,7 +475,8 @@ export default function Template2({ templateData, staticTemplateData }) {
             <div className="absolute bottom-[120px] right-[0px]">
               <Image
                 alt=""
-                src={templateData.images?.itinerary2}
+                src={templateData.images?.itinerary6}
+                id="itinerary6"
                 width={300}
                 height={400}
                 className=""
@@ -480,7 +485,8 @@ export default function Template2({ templateData, staticTemplateData }) {
             <div className="absolute bottom-[0px] right-[200px]">
               <Image
                 alt=""
-                src={templateData.images?.itinerary3}
+                src={templateData.images?.itinerary7}
+                id="itinerary7"
                 width={100}
                 height={100}
                 className="rounded-full rounded-b-none"
