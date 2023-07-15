@@ -87,7 +87,7 @@ function Step4Contact({
   // };
 
   const deleteContactBox = async (arrayId, id) => {
-    if (arrayId !== 1) {
+    if (formik.values.length !== 1) {
       const updatedList = formik.values.filter(
         (list) => list.arrayId !== arrayId
       );
