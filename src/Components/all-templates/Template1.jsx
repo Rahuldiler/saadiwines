@@ -24,15 +24,9 @@ function Template1({ templateData, staticTemplateData, images }) {
   const closeLightbox = () => {
     setIsOpen(false);
   };
-  // Filter the images for DATE1 and DATE2 labels
+  // Filter the images for date1 and date2 labels
   const slideShowImages = Object.entries(templateData.images)
-    .filter(
-      ([label]) =>
-        label === "date1" ||
-        label === "date2" ||
-        label === "DATE1" ||
-        label === "DATE2"
-    )
+    .filter(([label]) => label === "date1" || label === "date2")
     .reduce((acc, [label, imageUrl]) => {
       acc[label] = imageUrl;
       return acc;
@@ -78,7 +72,11 @@ function Template1({ templateData, staticTemplateData, images }) {
             <div className="absolute top-0 left-0 bg-black w-full h-full opacity-30">
               {" "}
             </div>
-            <img src={imageUrl} className="object-cover w-full h-full" />
+            <img
+              id={label}
+              src={imageUrl}
+              className="object-cover w-full h-full"
+            />
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 p-4 text-white  w-max ">
               <div
                 className={`!font-Alex text-center text-[50px] w-56 lg:w-auto lg:text-[120px] ${
@@ -135,6 +133,7 @@ function Template1({ templateData, staticTemplateData, images }) {
       {templateData && (
         <div
           className={`lg:p-24 py-28 p-4 lg:flex justify-between  `}
+          id={"introduction"}
           style={{
             backgroundImage: `url(${templateData?.images.introduction})`,
             backgroundClip: "border-box",
@@ -198,7 +197,12 @@ function Template1({ templateData, staticTemplateData, images }) {
         {/* <p className="text-center mt-1 mb-10">WEDDING</p> */}
         <div className="grid lg:grid-cols-2  lg:px-20 py-14">
           <div className="px-8">
-            <img src={templateData?.images.itinerary} alt="" className="" />
+            <img
+              id={"itinerary"}
+              src={templateData?.images.itinerary}
+              alt=""
+              className=""
+            />
             {/* <p className="!font-Alex !text-[50px] text-center mt-5">
               Wedding Menu
             </p>
@@ -237,6 +241,7 @@ function Template1({ templateData, staticTemplateData, images }) {
               >
                 <img
                   src={image}
+                  id={`gallery${index+1}`}
                   alt=""
                   className="object-cover w-full h-full"
                 />
@@ -315,6 +320,7 @@ function Template1({ templateData, staticTemplateData, images }) {
 
       {rsvp && (
         <div
+        id={"rsvp"}
           className=" lg:py-[32rem] py-[450px] relative bg-cover "
           style={{ backgroundImage: `url(${templateData?.images.rsvp})` }}
         >

@@ -29,6 +29,7 @@ function Step3FAQ({
   const formFields = {
     title: "",
     description: "",
+    image: "",
   };
   const [quesAnsData, setQuesAnsData] = useState(faqsData);
   const [removedQuesAnsData, setRemovedQuesAnsData] = useState([]);
@@ -117,7 +118,7 @@ function Step3FAQ({
   // };
 
   const deleteMilestoneBox = async (arrayId, id) => {
-    if (arrayId !== 1) {
+    if (formik.values.length !== 1) {
       const updatedList = formik.values.filter(
         (list) => list.arrayId !== arrayId
       );

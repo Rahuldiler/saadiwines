@@ -23,76 +23,13 @@ let staticTemplateData = [
       swiperSlide5: "/images/venders/logo-white-04.png",
       swiperSlide6: "/images/venders/logo-white-06.png",
       paral02: "url('/images/c-paral-02.jpg')",
-      // paral03:
-      //   "url('https://template-assets-sv.s3.amazonaws.com/template1/DSC_4389.JPG')",
       waterColor02: "url('/images/bg-watercolor-02.jpg')",
       waterColor: "url('/images/bg-watercolor.jpg')",
       double1:
         "https://template-assets-sv.s3.amazonaws.com/template1/SNY_1945.JPG",
-      // double2:
-      //   "https://images.unsplash.com/photo-1548054238-3ad2739292c1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80",
       gallery10:
         "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4388.JPG",
       leaf03: "url('/images/gr-leaf-03.png')",
-      // slides: [
-      //   {
-      //     id: 1,
-      //     image:
-      //       "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4055.JPG",
-      //     caption1: " Saanvi & Krishna ",
-      //     caption2: " 16/04/2030",
-      //   },
-      //   {
-      //     id: 2,
-      //     image:
-      //       "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4280.JPG",
-      //     caption1: " Saanvi & Krishna ",
-      //     caption2: " 16/04/2030",
-      //   },
-      // ],
-      // Gallery Section Images --> 
-      // imagesLightBox: [
-      //   {
-      //     id: 1,
-      //     image:
-      //       "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4262.JPG",
-      //   },
-      //   {
-      //     id: 2,
-      //     image:
-      //       "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4094.JPG",
-      //   },
-      //   {
-      //     id: 3,
-      //     image:
-      //       "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4125.JPG",
-      //   },
-      //   {
-      //     id: 4,
-      //     image:
-      //       "https://template-assets-sv.s3.amazonaws.com/template1/SNY_1945.JPG",
-      //   },
-      //   {
-      //     id: 5,
-      //     image:
-      //       "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4059.JPG",
-      //   },
-      //   {
-      //     id: 6,
-      //     image:
-      //       "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4379.JPG",
-      //   },
-      //   {
-      //     id: 7,
-      //     image:
-      //       "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4390.JPG",
-      //   },
-      //   {
-      //     id: 8,
-      //     image:
-      //       "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4260.JPG",
-      //   },
-      // ],
     },
     avatars: [
       "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Blank&hairColor=Brown&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=Hoodie&clotheColor=Blue01&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Tanned",
@@ -133,75 +70,14 @@ let staticTemplateData = [
       swiperSlide5: "/images/venders/logo-white-04.png",
       swiperSlide6: "/images/venders/logo-white-06.png",
       paral02: "url('/images/c-paral-02.jpg')",
-      paral03:
-        "url('https://template-assets-sv.s3.amazonaws.com/template1/DSC_4389.JPG')",
+
       waterColor02: "url('/images/bg-watercolor-02-c21919.jpg')",
       waterColor: "url('/images/bg-watercolor-c21919.jpg')",
       double1:
         "https://template-assets-sv.s3.amazonaws.com/template1/SNY_1945.JPG",
-      double2:
-        "https://images.unsplash.com/photo-1548054238-3ad2739292c1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80",
       gallery10:
         "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4388.JPG",
       leaf03: "url('/images/gr-leaf-03.png')",
-      slides: [
-        {
-          id: 1,
-          image:
-            "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4055.JPG",
-          caption1: " Saanvi & Krishna ",
-          caption2: " 16/04/2030",
-        },
-        {
-          id: 2,
-          image:
-            "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4280.JPG",
-          caption1: " Saanvi & Krishna ",
-          caption2: " 16/04/2030",
-        },
-      ],
-      imagesLightBox: [
-        {
-          id: 1,
-          image:
-            "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4262.JPG",
-        },
-        {
-          id: 2,
-          image:
-            "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4094.JPG",
-        },
-        {
-          id: 3,
-          image:
-            "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4125.JPG",
-        },
-        {
-          id: 4,
-          image:
-            "https://template-assets-sv.s3.amazonaws.com/template1/SNY_1945.JPG",
-        },
-        {
-          id: 5,
-          image:
-            "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4059.JPG",
-        },
-        {
-          id: 6,
-          image:
-            "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4379.JPG",
-        },
-        {
-          id: 7,
-          image:
-            "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4390.JPG",
-        },
-        {
-          id: 8,
-          image:
-            "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4260.JPG",
-        },
-      ],
     },
     avatars: [
       "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Blank&hairColor=Brown&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=Hoodie&clotheColor=Blue01&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Tanned",
@@ -242,75 +118,13 @@ let staticTemplateData = [
       swiperSlide5: "/images/venders/logo-white-04.png",
       swiperSlide6: "/images/venders/logo-white-06.png",
       paral02: "url('/images/c-paral-02.jpg')",
-      paral03:
-        "url('https://template-assets-sv.s3.amazonaws.com/template1/DSC_4389.JPG')",
       waterColor02: "url('/images/bg-watercolor-02-efc0fe.jpg')",
       waterColor: "url('/images/bg-watercolor-efc0fe.jpg')",
       double1:
         "https://template-assets-sv.s3.amazonaws.com/template1/SNY_1945.JPG",
-      double2:
-        "https://images.unsplash.com/photo-1548054238-3ad2739292c1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80",
       gallery10:
         "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4388.JPG",
       leaf03: "url('/images/gr-leaf-03.png')",
-      slides: [
-        {
-          id: 1,
-          image:
-            "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4055.JPG",
-          caption1: " Saanvi & Krishna ",
-          caption2: " 16/04/2030",
-        },
-        {
-          id: 2,
-          image:
-            "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4280.JPG",
-          caption1: " Saanvi & Krishna ",
-          caption2: " 16/04/2030",
-        },
-      ],
-      imagesLightBox: [
-        {
-          id: 1,
-          image:
-            "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4262.JPG",
-        },
-        {
-          id: 2,
-          image:
-            "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4094.JPG",
-        },
-        {
-          id: 3,
-          image:
-            "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4125.JPG",
-        },
-        {
-          id: 4,
-          image:
-            "https://template-assets-sv.s3.amazonaws.com/template1/SNY_1945.JPG",
-        },
-        {
-          id: 5,
-          image:
-            "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4059.JPG",
-        },
-        {
-          id: 6,
-          image:
-            "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4379.JPG",
-        },
-        {
-          id: 7,
-          image:
-            "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4390.JPG",
-        },
-        {
-          id: 8,
-          image:
-            "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4260.JPG",
-        },
-      ],
     },
     avatars: [
       "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Blank&hairColor=Brown&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=Hoodie&clotheColor=Blue01&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Tanned",
@@ -351,75 +165,13 @@ let staticTemplateData = [
       swiperSlide5: "/images/venders/logo-white-04.png",
       swiperSlide6: "/images/venders/logo-white-06.png",
       paral02: "url('/images/c-paral-02.jpg')",
-      paral03:
-        "url('https://template-assets-sv.s3.amazonaws.com/template1/DSC_4389.JPG')",
       waterColor02: "url('/images/bg-watercolor-02-ffe54c.jpg')",
       waterColor: "url('/images/bg-watercolor-ffe54c.jpg')",
       double1:
         "https://template-assets-sv.s3.amazonaws.com/template1/SNY_1945.JPG",
-      double2:
-        "https://images.unsplash.com/photo-1548054238-3ad2739292c1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80",
       gallery10:
         "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4388.JPG",
       leaf03: "url('/images/gr-leaf-03.png')",
-      slides: [
-        {
-          id: 1,
-          image:
-            "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4055.JPG",
-          caption1: " Saanvi & Krishna ",
-          caption2: " 16/04/2030",
-        },
-        {
-          id: 2,
-          image:
-            "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4280.JPG",
-          caption1: " Saanvi & Krishna ",
-          caption2: " 16/04/2030",
-        },
-      ],
-      imagesLightBox: [
-        {
-          id: 1,
-          image:
-            "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4262.JPG",
-        },
-        {
-          id: 2,
-          image:
-            "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4094.JPG",
-        },
-        {
-          id: 3,
-          image:
-            "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4125.JPG",
-        },
-        {
-          id: 4,
-          image:
-            "https://template-assets-sv.s3.amazonaws.com/template1/SNY_1945.JPG",
-        },
-        {
-          id: 5,
-          image:
-            "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4059.JPG",
-        },
-        {
-          id: 6,
-          image:
-            "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4379.JPG",
-        },
-        {
-          id: 7,
-          image:
-            "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4390.JPG",
-        },
-        {
-          id: 8,
-          image:
-            "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4260.JPG",
-        },
-      ],
     },
     avatars: [
       "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Blank&hairColor=Brown&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=Hoodie&clotheColor=Blue01&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Tanned",
@@ -435,7 +187,6 @@ let staticTemplateData = [
       "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortCurly&accessoriesType=Blank&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=CollarSweater&clotheColor=Red&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Twinkle&skinColor=Light",
     ],
   },
-
   {
     id: 5,
     templateId: 5,
@@ -464,24 +215,7 @@ let staticTemplateData = [
     bg09: "url('/assets/templete/2/bg-09.jpg')",
     bg11: "url('/assets/templete/2/bg-11.jpg')",
     bg12: "url('/assets/templete/2/bg-12.jpg')",
-    gallery02:
-      "https://template-assets-sv.s3.amazonaws.com/template2/024A2650.JPG",
-    gallery08:
-      "https://template-assets-sv.s3.amazonaws.com/template2/024A2406.JPG",
-    gallery05:
-      "https://template-assets-sv.s3.amazonaws.com/template2/024A2699.JPG",
-    gallery16:
-      "https://template-assets-sv.s3.amazonaws.com/template2/024A2699.JPG",
-    gallery18:
-      "https://template-assets-sv.s3.amazonaws.com/template2/024A2684.JPG",
-    gallery14:
-      "https://template-assets-sv.s3.amazonaws.com/template2/024A2719.JPG",
-    gallery20:
-      "https://template-assets-sv.s3.amazonaws.com/template2/024A2650.JPG",
-    gallery17:
-      "https://template-assets-sv.s3.amazonaws.com/template2/024A2684.JPG",
-    gallery21:
-      "https://template-assets-sv.s3.amazonaws.com/template2/024A2699.JPG",
+
     paral06: "/assets/templete/2/paral_06.jpg",
     avatars: [
       "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Blank&hairColor=Brown&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=Hoodie&clotheColor=Blue01&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Tanned",
@@ -577,38 +311,6 @@ let staticTemplateData = [
         percentHeight: "82.0977819151793%",
         column: 0,
         itemsInColumn: 4,
-      },
-    ],
-
-    SliderImg: [
-      {
-        id: 1,
-        link: "https://template-assets-sv.s3.amazonaws.com/template2/024A2684.JPG",
-      },
-      {
-        id: 2,
-        link: "https://template-assets-sv.s3.amazonaws.com/template2/024A2373.JPG",
-      },
-    ],
-    SliderImg2: [
-      {
-        id: 2,
-        link: "https://template-assets-sv.s3.amazonaws.com/template2/024A2483.JPG",
-      },
-      {
-        id: 1,
-        link: "https://template-assets-sv.s3.amazonaws.com/template2/024A2596.JPG",
-      },
-    ],
-
-    SliderImg1: [
-      {
-        id: 1,
-        link: "https://template-assets-sv.s3.amazonaws.com/template2/024A2433.JPG",
-      },
-      {
-        id: 2,
-        link: "https://template-assets-sv.s3.amazonaws.com/template2/024A2406.JPG",
       },
     ],
   },
@@ -637,25 +339,9 @@ let staticTemplateData = [
     bg09: "url('/assets/templete/2/bg-09-c21919.jpg')",
     bg11: "url('/assets/templete/2/bg-11-c21919.jpg')",
     bg12: "url('/assets/templete/2/bg-12-c21919.jpg')",
-    gallery02:
-      "https://template-assets-sv.s3.amazonaws.com/template2/024A2650.JPG",
-    gallery08:
-      "https://template-assets-sv.s3.amazonaws.com/template2/024A2406.JPG",
-    gallery05:
-      "https://template-assets-sv.s3.amazonaws.com/template2/024A2699.JPG",
-    gallery16:
-      "https://template-assets-sv.s3.amazonaws.com/template2/024A2699.JPG",
-    gallery18:
-      "https://template-assets-sv.s3.amazonaws.com/template2/024A2684.JPG",
-    gallery14:
-      "https://template-assets-sv.s3.amazonaws.com/template2/024A2719.JPG",
-    gallery20:
-      "https://template-assets-sv.s3.amazonaws.com/template2/024A2650.JPG",
-    gallery17:
-      "https://template-assets-sv.s3.amazonaws.com/template2/024A2684.JPG",
-    gallery21:
-      "https://template-assets-sv.s3.amazonaws.com/template2/024A2699.JPG",
+
     paral06: "/assets/templete/2/paral_06.jpg",
+
     avatars: [
       "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Blank&hairColor=Brown&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=Hoodie&clotheColor=Blue01&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Tanned",
 
@@ -750,38 +436,6 @@ let staticTemplateData = [
         percentHeight: "82.0977819151793%",
         column: 0,
         itemsInColumn: 4,
-      },
-    ],
-
-    SliderImg: [
-      {
-        id: 1,
-        link: "https://template-assets-sv.s3.amazonaws.com/template2/024A2684.JPG",
-      },
-      {
-        id: 2,
-        link: "https://template-assets-sv.s3.amazonaws.com/template2/024A2373.JPG",
-      },
-    ],
-    SliderImg2: [
-      {
-        id: 2,
-        link: "https://template-assets-sv.s3.amazonaws.com/template2/024A2483.JPG",
-      },
-      {
-        id: 1,
-        link: "https://template-assets-sv.s3.amazonaws.com/template2/024A2596.JPG",
-      },
-    ],
-
-    SliderImg1: [
-      {
-        id: 1,
-        link: "https://template-assets-sv.s3.amazonaws.com/template2/024A2433.JPG",
-      },
-      {
-        id: 2,
-        link: "https://template-assets-sv.s3.amazonaws.com/template2/024A2406.JPG",
       },
     ],
   },
@@ -810,24 +464,7 @@ let staticTemplateData = [
     bg09: "url('/assets/templete/2/bg-09-efc0fe.jpg')",
     bg11: "url('/assets/templete/2/bg-11-efc0fe.jpg')",
     bg12: "url('/assets/templete/2/bg-12-efc0fe.jpg')",
-    gallery02:
-      "https://template-assets-sv.s3.amazonaws.com/template2/024A2650.JPG",
-    gallery08:
-      "https://template-assets-sv.s3.amazonaws.com/template2/024A2406.JPG",
-    gallery05:
-      "https://template-assets-sv.s3.amazonaws.com/template2/024A2699.JPG",
-    gallery16:
-      "https://template-assets-sv.s3.amazonaws.com/template2/024A2699.JPG",
-    gallery18:
-      "https://template-assets-sv.s3.amazonaws.com/template2/024A2684.JPG",
-    gallery14:
-      "https://template-assets-sv.s3.amazonaws.com/template2/024A2719.JPG",
-    gallery20:
-      "https://template-assets-sv.s3.amazonaws.com/template2/024A2650.JPG",
-    gallery17:
-      "https://template-assets-sv.s3.amazonaws.com/template2/024A2684.JPG",
-    gallery21:
-      "https://template-assets-sv.s3.amazonaws.com/template2/024A2699.JPG",
+
     paral06: "/assets/templete/2/paral_06.jpg",
     avatars: [
       "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Blank&hairColor=Brown&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=Hoodie&clotheColor=Blue01&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Tanned",
@@ -923,38 +560,6 @@ let staticTemplateData = [
         percentHeight: "82.0977819151793%",
         column: 0,
         itemsInColumn: 4,
-      },
-    ],
-
-    SliderImg: [
-      {
-        id: 1,
-        link: "https://template-assets-sv.s3.amazonaws.com/template2/024A2684.JPG",
-      },
-      {
-        id: 2,
-        link: "https://template-assets-sv.s3.amazonaws.com/template2/024A2373.JPG",
-      },
-    ],
-    SliderImg2: [
-      {
-        id: 2,
-        link: "https://template-assets-sv.s3.amazonaws.com/template2/024A2483.JPG",
-      },
-      {
-        id: 1,
-        link: "https://template-assets-sv.s3.amazonaws.com/template2/024A2596.JPG",
-      },
-    ],
-
-    SliderImg1: [
-      {
-        id: 1,
-        link: "https://template-assets-sv.s3.amazonaws.com/template2/024A2433.JPG",
-      },
-      {
-        id: 2,
-        link: "https://template-assets-sv.s3.amazonaws.com/template2/024A2406.JPG",
       },
     ],
   },
@@ -983,24 +588,7 @@ let staticTemplateData = [
     bg09: "url('/assets/templete/2/bg-09-ffe54c.jpg')",
     bg11: "url('/assets/templete/2/bg-11-ffe54c.jpg')",
     bg12: "url('/assets/templete/2/bg-12-ffe54c.jpg')",
-    gallery02:
-      "https://template-assets-sv.s3.amazonaws.com/template2/024A2650.JPG",
-    gallery08:
-      "https://template-assets-sv.s3.amazonaws.com/template2/024A2406.JPG",
-    gallery05:
-      "https://template-assets-sv.s3.amazonaws.com/template2/024A2699.JPG",
-    gallery16:
-      "https://template-assets-sv.s3.amazonaws.com/template2/024A2699.JPG",
-    gallery18:
-      "https://template-assets-sv.s3.amazonaws.com/template2/024A2684.JPG",
-    gallery14:
-      "https://template-assets-sv.s3.amazonaws.com/template2/024A2719.JPG",
-    gallery20:
-      "https://template-assets-sv.s3.amazonaws.com/template2/024A2650.JPG",
-    gallery17:
-      "https://template-assets-sv.s3.amazonaws.com/template2/024A2684.JPG",
-    gallery21:
-      "https://template-assets-sv.s3.amazonaws.com/template2/024A2699.JPG",
+
     paral06: "/assets/templete/2/paral_06.jpg",
     avatars: [
       "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Blank&hairColor=Brown&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=Hoodie&clotheColor=Blue01&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Tanned",
@@ -1098,38 +686,6 @@ let staticTemplateData = [
         itemsInColumn: 4,
       },
     ],
-
-    SliderImg: [
-      {
-        id: 1,
-        link: "https://template-assets-sv.s3.amazonaws.com/template2/024A2684.JPG",
-      },
-      {
-        id: 2,
-        link: "https://template-assets-sv.s3.amazonaws.com/template2/024A2373.JPG",
-      },
-    ],
-    SliderImg2: [
-      {
-        id: 2,
-        link: "https://template-assets-sv.s3.amazonaws.com/template2/024A2483.JPG",
-      },
-      {
-        id: 1,
-        link: "https://template-assets-sv.s3.amazonaws.com/template2/024A2596.JPG",
-      },
-    ],
-
-    SliderImg1: [
-      {
-        id: 1,
-        link: "https://template-assets-sv.s3.amazonaws.com/template2/024A2433.JPG",
-      },
-      {
-        id: 2,
-        link: "https://template-assets-sv.s3.amazonaws.com/template2/024A2406.JPG",
-      },
-    ],
   },
   {
     id: 9,
@@ -1144,10 +700,6 @@ let staticTemplateData = [
       textColor: "#000",
       textBgColor: "#fff",
     },
-    gallery_02_1:
-      "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0036.jpg",
-    gallery_01_1:
-      "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0021.jpg",
     couple: "/assets/templete/3/couple.png",
     frame09: "/assets/templete/3/frame-09.png",
     frame05: "/assets/templete/3/frame-05.png",
@@ -1155,9 +707,7 @@ let staticTemplateData = [
     frame08: "/assets/templete/3/frame-08.png",
     frame: "/assets/templete/3/frame.png",
     greyLight: "url('/assets/templete/3/img-grey-light.png')",
-    pic2: "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0021.jpg",
     avatars: [
-      
       "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Blank&hairColor=Brown&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=Hoodie&clotheColor=Blue01&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Tanned",
       "https://avataaars.io/?avatarStyle=Transparent&topType=LongHairStraight&accessoriesType=Blank&hairColor=BrownDark&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light",
 
@@ -1169,48 +719,7 @@ let staticTemplateData = [
 
       "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortCurly&accessoriesType=Blank&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=CollarSweater&clotheColor=Red&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Twinkle&skinColor=Light",
     ],
-    images: [
-      {
-        id: 1,
-        image:
-          "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0046.jpg",
-      },
-      {
-        id: 3,
-        image:
-          "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0021.jpg",
-      },
-      {
-        id: 4,
-        image:
-          "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0023.jpg",
-      },
-      {
-        id: 2,
-        image:
-          "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0042.jpg",
-      },
-      {
-        id: 5,
-        image:
-          "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0028.jpg",
-      },
-      {
-        id: 6,
-        image:
-          "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0033.jpg",
-      },
-      {
-        id: 7,
-        image:
-          "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0045.jpg",
-      },
-      {
-        id: 8,
-        image:
-          "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0037.jpg",
-      },
-    ],
+
     occasions3: [
       {
         id: 1,
@@ -1286,10 +795,6 @@ let staticTemplateData = [
       textColor: "#000",
       textBgColor: "#fff",
     },
-    gallery_02_1:
-      "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0036.jpg",
-    gallery_01_1:
-      "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0021.jpg",
     couple: "/assets/templete/3/couple.png",
     frame09: "/assets/templete/3/frame-09-c21919.png",
     frame05: "/assets/templete/3/frame-05-c21919.png",
@@ -1297,7 +802,6 @@ let staticTemplateData = [
     frame08: "/assets/templete/3/frame-08-c21919.png",
     frame: "/assets/templete/3/frame-c21919.png",
     greyLight: "url('/assets/templete/3/img-grey-light-c21919.png')",
-    pic2: "/assets/templete/3/contact/pic2.jpg",
     avatars: [
       "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Blank&hairColor=Brown&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=Hoodie&clotheColor=Blue01&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Tanned",
 
@@ -1311,48 +815,7 @@ let staticTemplateData = [
 
       "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortCurly&accessoriesType=Blank&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=CollarSweater&clotheColor=Red&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Twinkle&skinColor=Light",
     ],
-    images: [
-      {
-        id: 1,
-        image:
-          "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0046.jpg",
-      },
-      {
-        id: 3,
-        image:
-          "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0021.jpg",
-      },
-      {
-        id: 4,
-        image:
-          "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0023.jpg",
-      },
-      {
-        id: 2,
-        image:
-          "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0042.jpg",
-      },
-      {
-        id: 5,
-        image:
-          "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0028.jpg",
-      },
-      {
-        id: 6,
-        image:
-          "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0033.jpg",
-      },
-      {
-        id: 7,
-        image:
-          "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0045.jpg",
-      },
-      {
-        id: 8,
-        image:
-          "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0037.jpg",
-      },
-    ],
+
     occasions3: [
       {
         id: 1,
@@ -1428,10 +891,6 @@ let staticTemplateData = [
       textColor: "#000",
       textBgColor: "#fff",
     },
-    gallery_02_1:
-      "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0036.jpg",
-    gallery_01_1:
-      "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0021.jpg",
     couple: "/assets/templete/3/couple.png",
     frame09: "/assets/templete/3/frame-09-efc0fe.png",
     frame05: "/assets/templete/3/frame-05-efc0fe.png",
@@ -1439,7 +898,6 @@ let staticTemplateData = [
     frame08: "/assets/templete/3/frame-08-efc0fe.png",
     frame: "/assets/templete/3/frame-efc0fe.png",
     greyLight: "url('/assets/templete/3/img-grey-light-efc0fe.png')",
-    pic2: "/assets/templete/3/contact/pic2.jpg",
     avatars: [
       "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Blank&hairColor=Brown&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=Hoodie&clotheColor=Blue01&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Tanned",
 
@@ -1453,48 +911,7 @@ let staticTemplateData = [
 
       "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortCurly&accessoriesType=Blank&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=CollarSweater&clotheColor=Red&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Twinkle&skinColor=Light",
     ],
-    images: [
-      {
-        id: 1,
-        image:
-          "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0046.jpg",
-      },
-      {
-        id: 3,
-        image:
-          "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0021.jpg",
-      },
-      {
-        id: 4,
-        image:
-          "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0023.jpg",
-      },
-      {
-        id: 2,
-        image:
-          "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0042.jpg",
-      },
-      {
-        id: 5,
-        image:
-          "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0028.jpg",
-      },
-      {
-        id: 6,
-        image:
-          "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0033.jpg",
-      },
-      {
-        id: 7,
-        image:
-          "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0045.jpg",
-      },
-      {
-        id: 8,
-        image:
-          "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0037.jpg",
-      },
-    ],
+
     occasions3: [
       {
         id: 1,
@@ -1571,10 +988,6 @@ let staticTemplateData = [
       textColor: "#000",
       textBgColor: "#fff",
     },
-    gallery_02_1:
-      "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0036.jpg",
-    gallery_01_1:
-      "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0021.jpg",
     couple: "/assets/templete/3/couple.png",
     frame09: "/assets/templete/3/frame-09-ffe54c.png",
     frame05: "/assets/templete/3/frame-05-ffe54c.png",
@@ -1582,7 +995,6 @@ let staticTemplateData = [
     frame08: "/assets/templete/3/frame-08-ffe54c.png",
     frame: "/assets/templete/3/frame-ffe54c.png",
     greyLight: "url('/assets/templete/3/img-grey-light-ffe54c.png')",
-    pic2: "/assets/templete/3/contact/pic2.jpg",
     avatars: [
       "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Blank&hairColor=Brown&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=Hoodie&clotheColor=Blue01&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Tanned",
 
@@ -1595,48 +1007,6 @@ let staticTemplateData = [
       "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairDreads01&accessoriesType=Blank&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=ShirtCrewNeck&clotheColor=PastelYellow&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Pale",
 
       "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortCurly&accessoriesType=Blank&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=CollarSweater&clotheColor=Red&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Twinkle&skinColor=Light",
-    ],
-    images: [
-      {
-        id: 1,
-        image:
-          "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0046.jpg",
-      },
-      {
-        id: 3,
-        image:
-          "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0021.jpg",
-      },
-      {
-        id: 4,
-        image:
-          "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0023.jpg",
-      },
-      {
-        id: 2,
-        image:
-          "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0042.jpg",
-      },
-      {
-        id: 5,
-        image:
-          "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0028.jpg",
-      },
-      {
-        id: 6,
-        image:
-          "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0033.jpg",
-      },
-      {
-        id: 7,
-        image:
-          "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0045.jpg",
-      },
-      {
-        id: 8,
-        image:
-          "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0037.jpg",
-      },
     ],
     occasions3: [
       {
@@ -1715,7 +1085,7 @@ let staticTemplateData = [
     shape3: "/assets/templete/4/sliderImages/shape3.png",
     shape4: "/assets/templete/4/sliderImages/shape4.png",
     icon02: "/images/icon-02.png",
-    clock_bg: '/assets/templete/4/time/clock-bg.png',
+    clock_bg: "/assets/templete/4/time/clock-bg.png",
     couple_man: "/assets/templete/4/coupleinfo/cople-man.jpg",
     couple_image: "/assets/templete/4/coupleinfo/couple-image.jpg",
     frame_shape: "/assets/templete/4/coupleinfo/fram-shape.png",
@@ -1725,8 +1095,7 @@ let staticTemplateData = [
     timeline_shape: "/assets/templete/4/milestone/timeline-shape.png",
     event_shape1: "/assets/templete/4/Itinerary/event-shape-1.png",
     event_shape2: "/assets/templete/4/Itinerary/event-shape-2.png",
-    paral_06: '/assets/templete/2/paral_06.jpg',
-
+    paral_06: "/assets/templete/2/paral_06.jpg",
   },
   {
     id: 14,
@@ -1743,7 +1112,7 @@ let staticTemplateData = [
     shape3: "/assets/templete/4/sliderImages/shape3.png",
     shape4: "/assets/templete/4/sliderImages/shape4.png",
     icon02: "/images/icon-02.png",
-    clock_bg: '/assets/templete/4/time/clock-bg-c21919.png',
+    clock_bg: "/assets/templete/4/time/clock-bg-c21919.png",
     couple_man: "/assets/templete/4/coupleinfo/cople-man.jpg",
     couple_image: "/assets/templete/4/coupleinfo/couple-image.jpg",
     frame_shape: "/assets/templete/4/coupleinfo/fram-shape-c21919.png",
@@ -1753,8 +1122,7 @@ let staticTemplateData = [
     timeline_shape: "/assets/templete/4/milestone/timeline-shape-c21919.png",
     event_shape1: "/assets/templete/4/Itinerary/event-shape-1-c21919.png",
     event_shape2: "/assets/templete/4/Itinerary/event-shape-2-c21919.png",
-    paral_06: '/assets/templete/2/paral_06.jpg',
-
+    paral_06: "/assets/templete/2/paral_06.jpg",
   },
   {
     id: 15,
@@ -1771,7 +1139,7 @@ let staticTemplateData = [
     shape3: "/assets/templete/4/sliderImages/shape3.png",
     shape4: "/assets/templete/4/sliderImages/shape4.png",
     icon02: "/images/icon-02.png",
-    clock_bg: '/assets/templete/4/time/clock-bg-efc0fe.png',
+    clock_bg: "/assets/templete/4/time/clock-bg-efc0fe.png",
     couple_man: "/assets/templete/4/coupleinfo/cople-man.jpg",
     couple_image: "/assets/templete/4/coupleinfo/couple-image.jpg",
     frame_shape: "/assets/templete/4/coupleinfo/fram-shape-efc0fe.png",
@@ -1781,8 +1149,7 @@ let staticTemplateData = [
     timeline_shape: "/assets/templete/4/milestone/timeline-shape-efc0fe.png",
     event_shape1: "/assets/templete/4/Itinerary/event-shape-1-efc0fe.png",
     event_shape2: "/assets/templete/4/Itinerary/event-shape-2-efc0fe.png",
-    paral_06: '/assets/templete/2/paral_06.jpg',
-
+    paral_06: "/assets/templete/2/paral_06.jpg",
   },
   {
     id: 16,
@@ -1799,7 +1166,7 @@ let staticTemplateData = [
     shape3: "/assets/templete/4/sliderImages/shape3.png",
     shape4: "/assets/templete/4/sliderImages/shape4.png",
     icon02: "/images/icon-02.png",
-    clock_bg: '/assets/templete/4/time/clock-bg-ffe54c.png',
+    clock_bg: "/assets/templete/4/time/clock-bg-ffe54c.png",
     couple_man: "/assets/templete/4/coupleinfo/cople-man.jpg",
     couple_image: "/assets/templete/4/coupleinfo/couple-image.jpg",
     frame_shape: "/assets/templete/4/coupleinfo/fram-shape-ffe54c.png",
@@ -1809,8 +1176,7 @@ let staticTemplateData = [
     timeline_shape: "/assets/templete/4/milestone/timeline-shape-ffe54c.png",
     event_shape1: "/assets/templete/4/Itinerary/event-shape-1-ffe54c.png",
     event_shape2: "/assets/templete/4/Itinerary/event-shape-2-ffe54c.png",
-    paral_06: '/assets/templete/2/paral_06.jpg',
-
+    paral_06: "/assets/templete/2/paral_06.jpg",
   },
   // {
   //   id: 7,

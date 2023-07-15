@@ -155,11 +155,11 @@ function Template4({ formData }) {
               {templateData?.weddingInfo.groom.name}
             </h3>
             <p className="mb-1">
-              s/o Mr. {templateData?.weddingInfo.groom.fatherName} and Mrs.{" "}
+              S/O  {templateData?.weddingInfo.groom.fatherName} and {" "}
               {templateData?.weddingInfo.groom.motherName}
             </p>
             <p className="mb-2">
-              g/s Mr. {templateData?.weddingInfo.groom.grandFatherName} and Mrs.{" "}
+              G/S  {templateData?.weddingInfo.groom.grandFatherName} and {" "}
               {templateData?.weddingInfo.groom.grandMotherName}
             </p>
             <p className="font-Mulish text-[#848892] text-[16px] px-5 lg:px-0">
@@ -190,11 +190,11 @@ function Template4({ formData }) {
               {templateData?.weddingInfo.bride.name}
             </h3>
             <p className="mb-1">
-              d/o Mr. {templateData?.weddingInfo.bride.fatherName} and Mrs.{" "}
+              d/o  {templateData?.weddingInfo.bride.fatherName} and {" "}
               {templateData?.weddingInfo.bride.motherName}
             </p>
             <p className="mb-2">
-              g/d Mr. {templateData?.weddingInfo.bride.grandFatherName} and Mrs.{" "}
+              g/d  {templateData?.weddingInfo.bride.grandFatherName} and {" "}
               {templateData?.weddingInfo.bride.grandMotherName}
             </p>
             <p className="font-Mulish text-[#848892] text-[16px]">

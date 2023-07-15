@@ -22,6 +22,7 @@ function Step5Family({
   const formFields = {
     name: "",
     relation: "",
+    image: "",
   };
   const addNewFamilyMember = (id) => {
     formik.setValues([
@@ -85,7 +86,7 @@ function Step5Family({
   // };
 
   const deleteFamilyMemberBox = async (arrayId, id) => {
-    if (arrayId !== 1) {
+    if (formik.values.length !== 1) {
       const updatedList = formik.values.filter(
         (list) => list.arrayId !== arrayId
       );
