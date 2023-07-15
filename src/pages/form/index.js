@@ -143,8 +143,6 @@ Now let's see the handleData function: */
       let image;
       if (getImage && filteredData.id && item.image) {
         image = await getBase64FromUrl(item.image);
-      } else {
-        image = item.image;
       }
 
       dataPromises.push(
