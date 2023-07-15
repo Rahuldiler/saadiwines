@@ -29,6 +29,7 @@ function Step3FAQ({
   const formFields = {
     title: "",
     description: "",
+    image: "",
   };
   const [quesAnsData, setQuesAnsData] = useState(faqsData);
   const [removedQuesAnsData, setRemovedQuesAnsData] = useState([]);

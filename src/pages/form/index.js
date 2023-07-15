@@ -54,7 +54,7 @@ function index() {
     },
   ]);
   const [milestoneLists, setMilestoneLists] = useState([
-    { arrayId: 1, title: "", description: "" },
+    { arrayId: 1, title: "", description: "", image: "" },
   ]);
   const [contactDetails, setContactDetails] = useState([
     {
@@ -63,11 +63,12 @@ function index() {
       lastName: "",
       contactNumber: "",
       fromSide: "GROOM",
+      image: "",
     },
   ]);
 
   const [familyMemberLists, setFamilyMemberLists] = useState([
-    { arrayId: 1, name: "", relation: "" },
+    { arrayId: 1, name: "", relation: "", image: "" },
   ]);
   const router = useRouter();
   const [activeStep, setActiveStep] = React.useState(0);
@@ -142,7 +143,10 @@ Now let's see the handleData function: */
       let image;
       if (getImage && filteredData.id && item.image) {
         image = await getBase64FromUrl(item.image);
+      } else {
+        image = item.image;
       }
+
       dataPromises.push(
         handleData(filteredData.id ? updateAction : addAction, {
           ...filteredData,

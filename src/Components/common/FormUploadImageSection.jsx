@@ -1,6 +1,5 @@
 import { Box, FormLabel } from "@mui/material";
 import React from "react";
-import styles from "../../styles/Form.module.css";
 import Image from "next/image";
 
 function FormUploadImageSection({ handleImgChange, formikImg, index }) {
@@ -30,8 +29,8 @@ function FormUploadImageSection({ handleImgChange, formikImg, index }) {
             onDone={({ base64 }) => handleImgChange(base64, index)}
           />
         </div> */}
-        <div className={styles.uploadBtnWrapper}>
-          <button className={styles.btn}>+</button>
+        <div className="uploadBtnWrapper">
+          <button className="btn">+</button>
           <input
             type="file"
             onChange={(event) => handleImgChange(event, index)}

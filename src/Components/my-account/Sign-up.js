@@ -47,7 +47,7 @@ export default function SignUp({ setHandle }) {
       //   router.push("/form");
       // }
     } catch (error) {
-      console.error("Error:", error);
+      return error;
     }
   };
 
