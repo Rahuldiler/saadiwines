@@ -30,6 +30,7 @@ const ContactForm = ({staticTemplateData,rsvpImage}) => {
         <div>
           <Image
             src={rsvpImage}
+            id="rsvp"
             fill
             alt=""
             className="!relative object-cover"
