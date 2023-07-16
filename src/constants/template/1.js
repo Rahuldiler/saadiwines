@@ -44,44 +44,44 @@ const templateInfoData = {
   familyMembers: [
     {
       id: 1,
-      name: "Sameer",
-      relation: "Father",
-    },
-    {
-      id: 2,
-      name: "Nikita",
+      name: "Meenu Goyal",
       relation: "Mother",
     },
     {
-      id: 3,
-      name: "Rajat",
-      relation: "Uncle",
-    },
-    {
-      id: 4,
-      name: "Rachna",
+      id: 2,
+      name: "Tripti Goyal",
       relation: "Sister",
     },
     {
+      id: 3,
+      name: "Amod Upadhyay",
+      relation: "Foofaji",
+    },
+    {
+      id: 4,
+      name: "Poonam Upadhyay",
+      relation: "Buaji",
+    },
+    {
       id: 5,
-      name: "Vibhor",
-      relation: "Brother",
+      name: "Sarthak Upadhyay",
+      relation: "Cousin",
     },
     {
       id: 6,
-      name: "Arpit",
-      relation: "Brother",
+      name: "Aman Upadhyay",
+      relation: "Cousin",
     },
   ],
   itinerary: [
     {
       id: 1,
 
-      functionName: "The Vibrant Mehendi Ceremony",
+      functionName: "Mehendi",
       details:
-        "Explore the significance and beauty of the Mehendi ceremony, where intricate henna designs are applied to the hands and feet of the bride, symbolizing love, happiness, and fertility.",
+        "At home",
       dateTime: "2024-06-18T08:29:53.796",
-      address: "string",
+      address: "At home",
       mapsLocation:
         "https://www.google.com/maps/place/Indira+Gandhi+International+Airport/@28.527554,77.0438314,11z/data=!4m6!3m5!1s0x390d1b85fc2a2d89:0xbef376182c43ed9d!8m2!3d28.5563529!4d77.1006963!16zL20vMDEyNDQ0?entry=ttu",
       image: "string",
@@ -125,15 +125,22 @@ const templateInfoData = {
   pocs: [
     {
       id: 2,
-      firstName: "Shivam",
-      lastName: "Shivam",
-      contactNumber: "8770123453",
-      fromSide: "Bride",
+      firstName: "Vibhor",
+      lastName: "Goyal",
+      contactNumber: "8171383588",
+      fromSide: "GROOM",
     },
     {
       id: 1,
-      firstName: "Sumit",
-      lastName: "Sumit",
+      firstName: "Sarthak",
+      lastName: "Upadhyay",
+      contactNumber: "97648536584",
+      fromSide: "GROOM",
+    },
+    {
+      id: 1,
+      firstName: "Aman",
+      lastName: "Upadhyay",
       contactNumber: "97648536584",
       fromSide: "GROOM",
     },
@@ -141,26 +148,26 @@ const templateInfoData = {
   weddingInfo: {
     id: 1,
     bride: {
-      name: "Saanvi Mehta",
-      motherName: "Nikita",
-      fatherName: "Sameer",
-      grandMotherName: "Aditi",
-      grandFatherName: "Ishaan",
+      name: "Priyanka Saxena",
+      motherName: "Smt. Meera Saxena",
+      fatherName: "Shri. Mahesh Chandra Saxena",
+      grandMotherName: null,
+      grandFatherName: null,
       description:
-        "Hello everyone, my name is Saanvi, and I'm overjoyed to share this special moment with all of you. I've always been a hopeless romantic, and I've dreamt of this day for as long as I can remember.",
+        "Hello everyone, my name is Priyanka, and I'm overjoyed to share this special moment with all of you. I've always been a hopeless romantic, and I've dreamt of this day for as long as I can remember.",
     },
     groom: {
-      name: "Krishna Jhosi",
-      motherName: "Rachna",
-      fatherName: "Rajat",
-      grandMotherName: "Adhya",
-      grandFatherName: "Arjun",
+      name: "Vibhor Goyal",
+      motherName: "Smt. Meenu Goyal",
+      fatherName: "Late Shri. Vipul Kumar Goyal",
+      grandMotherName: null,
+      grandFatherName: null,
       description:
-        "My name is Krishna, and I'm filled with joy and excitement to be marrying the love of my life. I feel overwhelmed with gratitude for the love and support that we've received from our family and friends.",
+        "My name is Vibhor, and I'm filled with joy and excitement to be marrying the love of my life. I feel overwhelmed with gratitude for the love and support that we've received from our family and friends.",
     },
     thankYouMessage:
       "We have exciting news to share - we're getting married! ❤️ We want to take a moment to express our heartfelt gratitude for being such an important part of our lives. Your presence has always meant the world to us, and we deeply appreciate your love and support. On our special day, we would be honored to have you join us in celebrating our love and commitment. Your presence would make the day even more memorable and joyous. Please save the date as we exchange vows and begin this beautiful journey together.",
-    functionDateTime: "2024-06-18T08:29:53.796",
+    functionDateTime: "2023-11-18T08:29:53.796",
     pics: ["D", "E", "F"],
     placesToVisit: ["Dont know", "Don know 2"],
   },

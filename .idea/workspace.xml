@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="369879d0-c866-4b70-8022-d857b0c9b9fe" name="Changes" comment="Minor text updates">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constants/form/stepper.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/form/stepper.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/form/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/form/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/constants/template/1.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/template/1.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
