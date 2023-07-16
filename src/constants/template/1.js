@@ -87,20 +87,9 @@ const templateInfoData = {
       image: "string",
     },
     {
-      id: 2,
-      functionName: "Joyful Sangeet Celebration",
-      details:
-        "Experience the lively and energetic Sangeet ceremony, filled with music, dance performances, and revelry, as both families come together to celebrate and honor the union of the couple.",
-      dateTime: "2024-06-18T09:29:53.796",
-      address: "string",
-      mapsLocation:
-        "https://www.google.com/maps/place/Mazaar+Restaurant/@28.5688605,77.2328845,15z/data=!4m6!3m5!1s0x390ce3ad97db2cb5:0xdce447161ff5833!8m2!3d28.5701715!4d77.2443807!16s%2Fg%2F1v7pwvx2?entry=ttu",
-      image: "string",
-    },
-    {
       id: 3,
 
-      functionName: "Grandeur of Baraat",
+      functionName: "Baraat",
       details:
         "Dive into the joyous and exuberant Baraat procession, where the groom arrives at the wedding venue with his family and friends, accompanied by music, dancing, and revelry.",
       dateTime: "2024-06-18T08:29:53.796",
@@ -119,6 +108,17 @@ const templateInfoData = {
       address: "string",
       mapsLocation:
         "https://www.google.com/maps/place/Vivanta+Surajkund/@28.5435843,77.2614842,12.28z/data=!4m9!3m8!1s0x390cdc0daaaaaaab:0xd76f205f7679d870!5m2!4m1!1i2!8m2!3d28.4898296!4d77.2849204!16s%2Fg%2F11c71b1922?entry=ttu",
+      image: "string",
+    },
+    {
+      id: 2,
+      functionName: "Sangeet & Reception",
+      details:
+        "Experience the lively and energetic Sangeet ceremony, filled with music, dance performances, and revelry, as both families come together to celebrate and honor the union of the couple.",
+      dateTime: "2024-06-18T09:29:53.796",
+      address: "string",
+      mapsLocation:
+        "https://www.google.com/maps/place/Mazaar+Restaurant/@28.5688605,77.2328845,15z/data=!4m6!3m5!1s0x390ce3ad97db2cb5:0xdce447161ff5833!8m2!3d28.5701715!4d77.2443807!16s%2Fg%2F1v7pwvx2?entry=ttu",
       image: "string",
     },
   ],

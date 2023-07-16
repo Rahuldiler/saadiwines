@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="369879d0-c866-4b70-8022-d857b0c9b9fe" name="Changes" comment="Minor text updates">
+    <list default="true" id="369879d0-c866-4b70-8022-d857b0c9b9fe" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/constants/template/1.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/template/1.js" afterDir="false" />
     </list>
@@ -218,7 +218,14 @@
       <option name="project" value="LOCAL" />
       <updated>1689174545191</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Minor text updates">
+      <created>1689534865787</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1689534865787</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -227,6 +234,11 @@
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
+        <entry key="84ea20f4-a36d-4f06-a71f-5ae88123f5e8">
+          <value>
+            <State />
+          </value>
+        </entry>
         <entry key="91359cf6-2ddf-4967-8427-51c7d68d35db">
           <value>
             <State>
@@ -301,8 +313,8 @@
     <MESSAGE value="Added favicon.png" />
     <MESSAGE value="fixed errors" />
     <MESSAGE value="removed commented code" />
-    <MESSAGE value="Minor text updates" />
     <MESSAGE value="Added cache control" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added cache control" />
+    <MESSAGE value="Minor text updates" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor text updates" />
   </component>
 </project>
