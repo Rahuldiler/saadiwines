@@ -88,20 +88,14 @@ function Header({ handleOpen, setHandle, navItems, isHome }) {
       <AppBar
         component="nav"
         sx={{
-          backgroundColor: colorChange
-            ? "#fff"
-            : mobileOpen
-            ? "#fff"
-            : isHome
-            ? "transparent"
-            : "#fff",
-          boxShadow: !colorChange && isHome ? "none" : "0px 0px 10px #000",
-          color: colorChange ? "#000" : "#fff",
+          backgroundColor: "#fff",
+          boxShadow: "0px 0px 10px #000",
+          color: "#000",
         }}
       >
         <Toolbar
           sx={{
-            color: colorChange ? "#000" : "#fff",
+            color: "#000",
             display: { xs: "flex" },
             justifyContent: { xs: "space-between" },
             alignItems: { xs: "center" },
@@ -162,7 +156,7 @@ function Header({ handleOpen, setHandle, navItems, isHome }) {
                   <Link
                     href={item.url}
                     sx={{
-                      color: colorChange ? "#000" : isHome ? "#fff" : "#000",
+                      color: "#000",
                       padding: "0px 20px",
                       textDecoration: "none",
                       fontWeight: 500,
