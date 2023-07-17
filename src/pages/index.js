@@ -15,6 +15,7 @@ import BottomBar from "@/Components/common/BottomBar";
 import Webcast from "@/Components/home/Webcast";
 import SEO from "@/Components/utils/seo";
 import { WhatsappFloatingIcon } from "@/Components/common/WhatsappFloatingIcon";
+import HomeForm from "@/Components/home/HomeForm";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -48,6 +49,7 @@ export default function Home() {
           isHome={true}
         />
         <HeroSection />
+        <HomeForm />
         {/* <ServicesSection /> */}
         <About />
         <WebsiteDesigningSection />
