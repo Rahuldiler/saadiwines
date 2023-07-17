@@ -10,7 +10,8 @@ import Lightbox from "@/Components/template-components/1/lightBox";
 import Cards from "@/Components/template-components/1/Cards";
 import Steps from "@/Components/template-components/1/steps";
 import TemplateFooter from "../template-components/Footer/footer";
-
+import PopupPlayer from "../common/YoutubePlayer";
+import GaneshVandana from "../common/GaneshVandana";
 function Template1({ templateData, staticTemplateData, images }) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [imageIndex, setImageIndex] = useState();
@@ -51,6 +52,7 @@ function Template1({ templateData, staticTemplateData, images }) {
       prevSlide === 0 ? Object.keys(slideShowImages).length - 1 : prevSlide - 1
     );
   };
+
   useEffect(() => {
     const interval = setInterval(nextSlide, 3000);
     return () => {
@@ -58,6 +60,15 @@ function Template1({ templateData, staticTemplateData, images }) {
     };
   }, []);
   const [rsvp, setRsvp] = useState(true);
+
+  const [showYoutubePlayer, setShowYoutubePlayer] = useState(false);
+  const openPopup = () => {
+    setShowYoutubePlayer(true);
+  };
+
+  const closePopup = () => {
+    setShowYoutubePlayer(false);
+  };
 
   return (
     <div className="lg:min-w-[1280px] ">
@@ -77,6 +88,8 @@ function Template1({ templateData, staticTemplateData, images }) {
               src={imageUrl}
               className="object-cover w-full h-full"
             />
+
+            <GaneshVandana />
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 p-4 text-white  w-max ">
               <div
                 className={`!font-Alex text-center text-[50px] w-56 lg:w-auto lg:text-[120px] ${
@@ -92,6 +105,20 @@ function Template1({ templateData, staticTemplateData, images }) {
                 )}
               </div>
             </div>
+            {templateData.isWedCastEnabled && (
+              <div
+                className="absolute top-10 right-[-30px] transform -translate-x-1/2 -translate-y-1/2 p-4 text-white"
+                onClick={openPopup}
+              >
+                <img
+                  className="cursor-pointer"
+                  width="48"
+                  height="48"
+                  src="https://img.icons8.com/color/48/youtube-live.png"
+                  alt="youtube-live"
+                />
+              </div>
+            )}
           </div>
         ))}
 
@@ -112,7 +139,13 @@ function Template1({ templateData, staticTemplateData, images }) {
           </button>
         </div>
       </div>
-
+      <div>
+        {showYoutubePlayer && (
+          <div className="z-1000 popup absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ">
+            <PopupPlayer url={templateData.liveURL} closePopup={closePopup} />
+          </div>
+        )}
+      </div>
       <GreenStrip
         title="Our Wedding"
         text="MISSING DAYS TO"
@@ -241,7 +274,7 @@ function Template1({ templateData, staticTemplateData, images }) {
               >
                 <img
                   src={image}
-                  id={`gallery${index+1}`}
+                  id={`gallery${index + 1}`}
                   alt=""
                   className="object-cover w-full h-full"
                 />
@@ -320,7 +353,7 @@ function Template1({ templateData, staticTemplateData, images }) {
 
       {rsvp && (
         <div
-        id={"rsvp"}
+          id={"rsvp"}
           className=" lg:py-[32rem] py-[450px] relative bg-cover "
           style={{ backgroundImage: `url(${templateData?.images.rsvp})` }}
         >
