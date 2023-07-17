@@ -9,6 +9,8 @@ import {
 import Image from "next/image";
 import React, { useState } from "react";
 import Typewriter from "typewriter-effect";
+import styles from "../../styles/Home.module.css";
+
 function HeroSection() {
   return (
     <Box>
@@ -40,22 +42,26 @@ function HeroSection() {
             sx={{ display: "inline-block", pl: 1, fontWeight: 500 }}
           >
             <Typewriter
-              options={{
-                strings: [
-                  "Wedsite - Personalised wedding website",
-                  "Wedding Invitation",
-                  "Budget Planner",
-                ],
-                autoStart: true,
-                loop: true,
-                delay: 70,
-              }}
               onInit={(typewriter) => {
-                typewriter.pauseFor(250).deleteAll().start();
+                typewriter
+                  .typeString("Wedsite - Personalised wedding website")
+                  .start();
               }}
             />
           </Typography>
         </Typography>
+        {/* <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          <span class="typewriter">
+            Lets create your
+            <h1>Wedsite Personalised wedding website invitation</h1>
+          </span>
+        </Box> */}
+
         {/* <Typewriter
           text={[
             "Wedsite Personalised wedding website invitation",
@@ -81,6 +87,7 @@ function HeroSection() {
           ></video>
         </Box> */}
         <Box
+          className={styles.heroImgSection}
           sx={{
             display: "flex",
             justifyContent: "center",
@@ -90,27 +97,30 @@ function HeroSection() {
         >
           <Image
             alt="img"
+            className={styles.heroImg}
             width={1000}
             height={1000}
             src="/assets/hero-img.jpeg"
             style={{ width: "900px", height: "auto" }}
           />
           <Box
+            className={styles.heroImgGifBox}
             sx={{
               position: "absolute",
               top: { lg: 25, xs: 10 },
-              left: { lg: 680, xs: 105 },
-              width: { lg: "615px", xs: "240px" },
-              height: "auto",
+              left: { lg: "39.5%", xs: "30%" },
             }}
           >
             <Image
               alt="img"
+              className={styles.heroImgGif}
               width={1000}
               height={1000}
               src="/assets/gif/shaadivines-15sec.gif"
               style={{
                 borderRadius: "10px 10px 0px 0px",
+                width: "615px",
+                height: "auto",
               }}
             />
           </Box>
