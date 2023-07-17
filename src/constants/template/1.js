@@ -1,4 +1,7 @@
 const templateInfoData = {
+  liveURL: "https://www.youtube.com/watch?v=H9tWRGxuKTw",
+  // liveURL: null,
+  isWedCastEnabled: true,
   images: {
     date2: "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4055.JPG",
     date1: "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4280.JPG",
