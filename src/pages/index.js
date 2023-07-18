@@ -1,5 +1,5 @@
 import { Inter } from "next/font/google";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import LoginModal from "@/Components/common/LoginModal";
 import HeroSection from "@/Components/home/HeroSection";
 import WebsiteDesigningSection from "@/Components/home/WebsiteDesigningSection";
@@ -32,6 +32,9 @@ export default function Home() {
     { title: "Reviews", url: "#reviews", id: "4" },
     { title: "Contact Us", url: "#contact", id: "5" },
   ];
+  // useEffect(() => {
+  //   window.scrollTo(0, 0);
+  // }, []);
 
   return (
     <>

@@ -47,7 +47,7 @@ function HeroSection() {
               }}
               onInit={(typewriter) => {
                 typewriter
-                  .typeString("Wedsite - Personalised wedding website")
+                  .typeString("WEDsite - Personalised wedding website")
                   .start();
               }}
             />
@@ -65,35 +65,11 @@ function HeroSection() {
           </span>
         </Box> */}
 
-        {/* <Typewriter
-          text={[
-            "Wedsite Personalised wedding website invitation",
-            "Wedding Invitation",
-            "Budget Planner",
-          ]}
-          delay={3000}
-          loop={true}
-        /> */}
-
-        {/* <Box style={{ width: "100vw", height: "100vh", objectFit: "cover" }}>
-          <video
-            src="https://download-video.akamaized.net/2/playback/9a87984f-dbd2-44c2-a0a6-1c85a286fa80/94779c32-673baa53?__token__=st=1684926149~exp=1684940549~acl=%2F2%2Fplayback%2F9a87984f-dbd2-44c2-a0a6-1c85a286fa80%2F94779c32-673baa53%2A~hmac=5704c4cef8aca0638d5c93f024f7f8ec06315677f9f4565740b515b50b106712&r=dXMtZWFzdDE%3D"
-            loop=""
-            autoplay=""
-            preload="auto"
-            poster=""
-            playsinline=""
-            style={{
-              width: "100vw",
-              height: "100vh",
-            }}
-          ></video>
-        </Box> */}
         <Box
           sx={{
             display: "flex",
             justifyContent: "center",
-            width: { lg: "1000px", xs: "100%" },
+            width: { lg: "850px", xs: "100%" },
             mx: "auto",
           }}
         >
@@ -105,20 +81,6 @@ function HeroSection() {
             style={{ width: "100%", height: "auto" }}
           />
         </Box>
-        {/* <Image
-          alt="img"
-          width={1000}
-          height={1000}
-          src="/assets/whitepaper.svg"
-          style={{
-            position: "absolute",
-            zIndex: 4,
-            bottom: -20,
-            width: "100%",
-            height: "auto",
-            left: 0,
-          }}
-        /> */}
       </Box>
     </Box>
   );

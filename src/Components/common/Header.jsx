@@ -19,15 +19,8 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 
 function Header({ handleOpen, setHandle, navItems, isHome }) {
-  const [colorChange, setColorchange] = useState(false);
   const router = useRouter();
-  const changeNavbarColor = () => {
-    if (window.scrollY >= 80) {
-      setColorchange(true);
-    } else {
-      setColorchange(false);
-    }
-  };
+
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const handleDrawerToggle = () => {
@@ -78,10 +71,6 @@ function Header({ handleOpen, setHandle, navItems, isHome }) {
     handleOpen();
     setHandle(true);
   };
-
-  useEffect(() => {
-    window.addEventListener("scroll", changeNavbarColor);
-  }, [colorChange]);
 
   return (
     <header style={{ position: "sticky", left: 0, top: 0, zIndex: 100 }}>
