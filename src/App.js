@@ -7,12 +7,13 @@ import Loader from "./Components/common/Loader";
 import { useEffect } from "react";
 
 function App() {
-  const loadingFalse = useNotificationStore((state) => state.loadingFalse);
-  const loading = useNotificationStore((state) => state.loading);
+  const { loading } = useNotificationStore((state) => ({
+    loading: state.loading,
+  }));
+  console.log("f", loading);
   return (
     <HydrationProvider>
       <Client>
-        {loading && <Loader message="Loading page" isLoading={loading} />}
         <AppProvider>
           <div className="App">
             <Template1 />

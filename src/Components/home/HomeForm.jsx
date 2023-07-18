@@ -1,27 +1,29 @@
+import React, { useEffect, useState } from "react";
 import {
   Box,
   Button,
   FormControl,
   FormLabel,
+  Grid,
   Link,
+  TextField,
   Typography,
 } from "@mui/material";
+
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import Image from "next/image";
-import React, { useState } from "react";
-import { TextFieldInput } from "../common/TextFieldInput";
-import { theme } from "../utils/theme";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import dayjs from "dayjs";
 import moment from "moment";
+
+import { TextFieldInput } from "../common/TextFieldInput";
+import { theme } from "../utils/theme";
 import Notification from "../common/Notification";
 import { addContactUs } from "@/services/Contact/contact-us";
 
 const HomeForm = () => {
-  const [contactForm, setContactForm] = useState();
   const [valueDateTime, setValueDateTime] = useState();
 
   const [isNotification, setIsNotification] = useState({
@@ -76,12 +78,9 @@ const HomeForm = () => {
       String(moment(dayjsFormat).format("DD-MMM-YYYY"))
     );
   };
+
   return (
     <Box sx={{ mx: { lg: 10, xs: 4 }, mt: 2 }}>
-      <Notification
-        message={isNotification.message}
-        type={isNotification.type}
-      />
       <Typography
         variant="h4"
         sx={{
@@ -100,126 +99,82 @@ const HomeForm = () => {
         onSubmit={formik.handleSubmit}
         className="contact-form-hero-section"
       >
-        <Box
-          sx={{
-            display: "flex",
-            width: "100%",
-            gap: { lg: "20px", xs: "10px" },
-          }}
-        >
-          <Box
-            sx={{
-              width: "50%",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "start",
-            }}
-          >
+        <Grid container spacing={2}>
+          <Grid item xs={6} lg={3}>
             <FormLabel sx={{ color: "#BC8129" }}>Wedding Date *</FormLabel>
-            <LocalizationProvider required dateAdapter={AdapterDayjs}>
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
               <DatePicker
+                label="Pick a date *"
                 name="valueDateTime"
-                value={valueDateTime ? valueDateTime || null : null}
+                value={valueDateTime || null}
                 disablePast
                 onChange={(newValue) => handleDateTime(newValue)}
-                sx={{
-                  mt: 2,
-                  width: "100%",
-                  backgroundColor: "#FFFFFF",
-                  borderRadius: "7px",
-                }}
+                sx={{ width: "100%" }}
               />
               {formik.touched.issueInfo && formik.errors.issueInfo ? (
                 <div style={{ color: "Red" }}>{formik.errors.issueInfo}</div>
               ) : null}
             </LocalizationProvider>
-          </Box>
-          <Box
-            sx={{
-              width: "50%",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "start",
-            }}
-          >
-            <FormLabel sx={{ color: "#BC8129" }}>Name *</FormLabel>
+          </Grid>
+          <Grid item xs={6} lg={3}>
+            <Box sx={{ display: "flex", flexDirection: "column" }}>
+              <FormLabel sx={{ color: "#BC8129" }}>Name *</FormLabel>
 
-            <TextFieldInput
-              type="text"
-              name="name"
-              value={formik.values?.name || ""}
-              onChange={formik.handleChange}
-              placeholder="Name *"
-              bg="#FFFFFF"
-            />
+              <TextField
+                type="text"
+                name="name"
+                value={formik.values?.name || ""}
+                onChange={formik.handleChange}
+                placeholder="Name *"
+              />
+            </Box>
             {formik.touched.name && formik.errors.name ? (
               <div style={{ color: "Red" }}>{formik.errors.name}</div>
             ) : null}
-          </Box>
-        </Box>
-        <Box
-          sx={{
-            display: "flex",
-            width: "100%",
-            gap: { lg: "20px", xs: "10px" },
-          }}
-        >
-          <Box
-            sx={{
-              width: "50%",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "start",
-            }}
-          >
-            <FormLabel sx={{ color: "#BC8129" }}>Phone Number *</FormLabel>
+          </Grid>
+          <Grid item xs={6} lg={3}>
+            <Box sx={{ display: "flex", flexDirection: "column" }}>
+              <FormLabel sx={{ color: "#BC8129" }}>Phone Number *</FormLabel>
 
-            <TextFieldInput
-              type="number"
-              name="contactNumber"
-              value={formik.values?.contactNumber || ""}
-              onChange={formik.handleChange}
-              placeholder="Phone Number *"
-              bg="#FFFFFF"
-            />
+              <TextField
+                type="number"
+                name="contactNumber"
+                value={formik.values?.contactNumber || ""}
+                onChange={formik.handleChange}
+                placeholder="Phone Number *"
+              />
+            </Box>
             {formik.touched.contactNumber && formik.errors.contactNumber ? (
               <div style={{ color: "Red" }}>{formik.errors.contactNumber}</div>
             ) : null}
-          </Box>
-          <Box
-            sx={{
-              width: "50%",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "start",
-            }}
-          >
-            <FormLabel sx={{ color: "#BC8129" }}>Email Address *</FormLabel>
+          </Grid>
+          <Grid item xs={6} lg={3}>
+            <Box sx={{ display: "flex", flexDirection: "column" }}>
+              <FormLabel sx={{ color: "#BC8129" }}>Email Address *</FormLabel>
 
-            <TextFieldInput
-              type="email"
-              name="fromMail"
-              value={formik.values?.fromMail || ""}
-              onChange={formik.handleChange}
-              placeholder="Email Address *"
-              bg="#FFFFFF"
-            />
+              <TextField
+                type="email"
+                name="fromMail"
+                value={formik.values?.fromMail || ""}
+                onChange={formik.handleChange}
+                placeholder="Email Address *"
+              />
+            </Box>
             {formik.touched.fromMail && formik.errors.fromMail ? (
               <div style={{ color: "Red" }}>{formik.errors.fromMail}</div>
             ) : null}
-          </Box>
-        </Box>
+          </Grid>
+        </Grid>
 
         <Button
           type="submit"
-          className={`bg-[${theme.palette.primary.main}]`}
           sx={{
             backgroundColor: theme.palette.primary.main,
             color: "#fff",
             padding: "16px 14px",
-            marginTop: "30px",
+            marginTop: "20px",
             border: 0,
-            width: { lg: "50%", xs: "100%" },
+            width: { lg: "10%", xs: "100%" },
             height: "100%",
             "&:hover": {
               background: "#BC812990",
