@@ -7,11 +7,21 @@ import {
   Typography,
 } from "@mui/material";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Typewriter from "typewriter-effect";
 import styles from "../../styles/Home.module.css";
 
 function HeroSection() {
+  const [wedsiteVisible, setWedsiteVisible] = useState(false);
+  const [oppsText, setOppsText] = useState(false);
+  useEffect(() => {
+    setTimeout(() => {
+      setOppsText(true);
+    }, 1600);
+    setTimeout(() => {
+      setWedsiteVisible(true);
+    }, 2600);
+  }, []);
   return (
     <Box>
       <Box sx={{ position: "relative", mt: 10 }}>
@@ -34,20 +44,64 @@ function HeroSection() {
             mb: 5,
             mt: 15,
             mx: 2,
+            position: "relative", // for typewriter text
           }}
         >
           Lets create your
           <Typography
             variant="span"
-            sx={{ display: "inline-block", pl: 1, fontWeight: 500 }}
+            className={`${oppsText && "typewriter-text"}`}
+            sx={{
+              display: "inline-block",
+              pl: 1,
+              fontWeight: 500,
+            }}
           >
             <Typewriter
+              options={{
+                delay: 60,
+              }}
               onInit={(typewriter) => {
-                typewriter
-                  .typeString("Wedsite - Personalised wedding website")
-                  .start();
+                typewriter.typeString("Wedding Card").start();
               }}
             />
+          </Typography>
+          {oppsText && (
+            <Typography
+              variant="span"
+              className="blink-animation"
+              sx={{
+                display: "inline-block",
+                position: "absolute",
+                top: { lg: "-35px", xs: "20px" },
+                left: { lg: "60%", xs: "270px" },
+                ml: 1,
+                fontWeight: 500,
+                color: "#F20B3F",
+                fontSize: { lg: "40px", xs: "20px" },
+              }}
+            >
+              OPPS
+            </Typography>
+          )}
+          <Typography
+            variant="span"
+            sx={{
+              fontWeight: 500,
+            }}
+          >
+            {wedsiteVisible && (
+              <Typewriter
+                options={{
+                  delay: 40,
+                }}
+                onInit={(typewriter) => {
+                  typewriter
+                    .typeString("Wedsite - Personalised wedding website")
+                    .start();
+                }}
+              />
+            )}
           </Typography>
         </Typography>
         {/* <Box
@@ -86,43 +140,40 @@ function HeroSection() {
             }}
           ></video>
         </Box> */}
-        <Box
-          className={styles.heroImgSection}
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            position: "relative",
-            mx: { lg: 0, xs: 4 },
-          }}
-        >
-          <Image
-            alt="img"
-            className={styles.heroImg}
-            width={1000}
-            height={1000}
-            src="/assets/hero-img.jpeg"
-            style={{ width: "900px", height: "auto" }}
-          />
+        <Box sx={{ height: "600px" }}>
           <Box
-            className={styles.heroImgGifBox}
             sx={{
-              position: "absolute",
-              top: { lg: 25, xs: 10 },
-              left: { lg: "39.5%", xs: "30%" },
+              display: "flex",
+              justifyContent: "center",
+              width: { lg: "1000px", xs: "100%" },
+              mx: "auto",
             }}
           >
-            <Image
-              alt="img"
-              className={styles.heroImgGif}
-              width={1000}
-              height={1000}
-              src="/assets/gif/shaadivines-15sec.gif"
-              style={{
-                borderRadius: "10px 10px 0px 0px",
-                width: "615px",
-                height: "auto",
-              }}
-            />
+            {wedsiteVisible && (
+              <Image
+                alt="img"
+                width={1000}
+                height={1000}
+                className="fade-in-animation"
+                src="/assets/gif/gif-hero-section.gif"
+                style={{ width: "100%", height: "100%" }}
+              />
+            )}
+
+            {!wedsiteVisible && (
+              <Image
+                alt="img"
+                width={1000}
+                height={1000}
+                className={`${oppsText && "fadeout-animation"}`}
+                src="/assets/tradational-wedding-card.webp"
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  paddingTop: "50px",
+                }}
+              />
+            )}
           </Box>
         </Box>
         {/* <Image
