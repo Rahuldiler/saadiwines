@@ -97,7 +97,7 @@
 
 .center::before,
 .center::after {
-  content: '';
+  content: "";
   left: 50%;
   position: absolute;
   filter: blur(45px);
@@ -107,6 +107,12 @@
 .logo {
   position: relative;
 }
+
+.heroImgSection .heroImg {
+  width: 900px;
+  height: auto;
+}
+
 /* Enable hover only on non-touch devices */
 @media (hover: hover) and (pointer: fine) {
   .card:hover {
@@ -200,12 +206,21 @@
     );
     z-index: 1;
   }
+
+  .heroImgGifBox {
+    width: 68%;
+    height: auto;
+  }
 }
 
 /* Tablet and Smaller Desktop */
 @media (min-width: 701px) and (max-width: 1120px) {
   .grid {
     grid-template-columns: repeat(2, 50%);
+  }
+
+  .gif-img {
+    left: 0;
   }
 }
 

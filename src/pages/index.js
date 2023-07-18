@@ -1,5 +1,5 @@
 import { Inter } from "next/font/google";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import LoginModal from "@/Components/common/LoginModal";
 import HeroSection from "@/Components/home/HeroSection";
 import WebsiteDesigningSection from "@/Components/home/WebsiteDesigningSection";
@@ -15,6 +15,7 @@ import BottomBar from "@/Components/common/BottomBar";
 import Webcast from "@/Components/home/Webcast";
 import SEO from "@/Components/utils/seo";
 import { WhatsappFloatingIcon } from "@/Components/common/WhatsappFloatingIcon";
+import HomeForm from "@/Components/home/HomeForm";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -31,6 +32,9 @@ export default function Home() {
     { title: "Reviews", url: "#reviews", id: "4" },
     { title: "Contact Us", url: "#contact", id: "5" },
   ];
+  // useEffect(() => {
+  //   window.scrollTo(0, 0);
+  // }, []);
 
   return (
     <>
@@ -48,6 +52,7 @@ export default function Home() {
           isHome={true}
         />
         <HeroSection />
+        <HomeForm />
         {/* <ServicesSection /> */}
         <About />
         <WebsiteDesigningSection />

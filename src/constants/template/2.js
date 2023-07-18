@@ -2,16 +2,14 @@ const template2InfoData = {
   images: {
     gallery4:
       "https://sv-user-images.s3.ap-south-1.amazonaws.com/102/7bec30e8-93aa-4ac9-8712-3c8fa0943435.JPG",
-    TEST3:
-      "https://sv-user-images.s3.ap-south-1.amazonaws.com/102/69d7e89e-eace-41b7-b737-9c79753c35fe.JPG",
     gallery5:
       "https://sv-user-images.s3.ap-south-1.amazonaws.com/102/53288e79-7602-4d63-b82d-0aa5e2f0f7fd.JPG",
     gallery2:
       "https://sv-user-images.s3.ap-south-1.amazonaws.com/102/41b9eb11-3034-4db1-9491-f7d611cb8b6d.JPG",
     gallery3:
-      "https://sv-user-images.s3.ap-south-1.amazonaws.com/102/26378ede-0176-47b9-be03-d4573b7ebf90.JPG",
+      "https://template-assets-sv.s3.amazonaws.com/template2/024A2429.JPG",
     gallery8:
-      "https://sv-user-images.s3.ap-south-1.amazonaws.com/102/f8230d26-40ce-484b-a940-c5dc9af7c0e8.JPG",
+      "https://template-assets-sv.s3.amazonaws.com/template2/024A2650.JPG",
     gallery6:
       "https://sv-user-images.s3.ap-south-1.amazonaws.com/102/2363c197-728a-49ff-a9e0-23e930651b7a.JPG",
     gallery7:
@@ -24,16 +22,16 @@ const template2InfoData = {
     itinerary3:
       "https://template-assets-sv.s3.amazonaws.com/template2/024A2684.JPG",
     itinerary4:
-      "https://template-assets-sv.s3.amazonaws.com/template2/024A2719.JPG",
+      "https://template-assets-sv.s3.amazonaws.com/template2/024A2429.JPG",
     itinerary5:
-      "https://template-assets-sv.s3.amazonaws.com/template2/024A2719.JPG",
+      "https://template-assets-sv.s3.amazonaws.com/template2/024A2650.JPG",
     itinerary6:
-      "https://template-assets-sv.s3.amazonaws.com/template2/024A2719.JPG",
+      "https://template-assets-sv.s3.amazonaws.com/template2/024A2650.JPG",
     itinerary7:
       "https://template-assets-sv.s3.amazonaws.com/template2/024A2719.JPG",
 
     date3: "https://template-assets-sv.s3.amazonaws.com/template2/024A2596.JPG",
-    rsvp: "https://sv-user-images.s3.ap-south-1.amazonaws.com/102/d8947fa9-9e42-4ee8-8fb5-1fd8c4a885f9.JPG",
+    rsvp: "https://template-assets-sv.s3.amazonaws.com/template2/024A2433.JPG",
     date2: "https://template-assets-sv.s3.amazonaws.com/template2/024A2373.JPG",
     gallery1:
       "https://sv-user-images.s3.ap-south-1.amazonaws.com/102/c81febe7-8113-4346-872f-9bc06d58b43e.JPG",

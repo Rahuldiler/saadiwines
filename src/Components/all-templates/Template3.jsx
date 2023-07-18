@@ -65,8 +65,33 @@ function Template3({ templateData, staticTemplateData }) {
   };
   return (
     <div>
-      <div className="md:grid md:grid-cols-7 py-20  ">
+      <div className="md:grid md:grid-cols-7 py-32  mt-20">
         <div className="flex justify-center relative md:col-span-2">
+          <div className="text-center absolute -top-[180px] left-8 z-30 sm:hidden">
+            <p className="!text-[22px] lg:!text-[42px] font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-[#BDA60A] to-[#D6BE27]">
+              वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ।
+            </p>
+            <p className="!text-[22px] lg:!text-[42px] font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-[#BDA60A] to-[#D6BE27]">
+              निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा॥
+            </p>
+            <div className="flex">
+              <img
+                src={"/assets/Swastic.svg"}
+                alt=""
+                className="w-12 sm:hidden"
+              />
+              <img
+                src={"/assets/Ganesh2.svg"}
+                alt=""
+                className="w-36 mb-3 mx-auto mt-4"
+              />
+              <img
+                src={"/assets/Swastic.svg"}
+                alt=""
+                className="w-12 sm:hidden"
+              />
+            </div>
+          </div>
           <div className="px-6 md:px-0 font-lora">
             <img
               id="date1"
@@ -75,6 +100,7 @@ function Template3({ templateData, staticTemplateData }) {
               className=" md:w-[22rem] w-[10rem] h-[10rem]  md:h-[27rem] object-cover rounded-full md:rounded-b-full mt-28 mx-auto"
             />
           </div>
+
           <div className="px-6">
             <img
               // id="date2"
@@ -84,21 +110,33 @@ function Template3({ templateData, staticTemplateData }) {
             />
           </div>
           <img
+            src={"/assets/Swastic.svg"}
+            alt=""
+            className="hidden w-20 absolute -top-[170px]  left-24 z-30 sm:block"
+          />
+
+          <img
             src={staticTemplateData?.frame09}
             alt=""
-            className="w-56 absolute -top-[75px]  left-0 z-30 "
+            className="w-24 absolute top-[40px] sm:-top-[65px]  left-0 z-30 sm:w-52"
           />
         </div>
         <div className="col-span-3 relative">
-          <div className="text-center ">
+          <div className="hidden text-center absolute -top-[170px]  left-24 z-30 sm:block">
+            <p className="!text-[22px] lg:!text-[42px] font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-[#BDA60A] to-[#D6BE27]">
+              वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ।
+            </p>
+            <p className="!text-[22px] lg:!text-[42px] font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-[#BDA60A] to-[#D6BE27]">
+              निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा॥
+            </p>
             <img
-              src={staticTemplateData?.couple}
+              src={"/assets/Ganesh2.svg"}
               alt=""
-              className="w-16 mb-3 mx-auto"
+              className="w-36 mb-3 mx-auto mt-4"
             />
-            <p>Forever Starts Today</p>
           </div>
-          <div className="text-center md:text-[100px]  text-6xl  md:leading-[6rem] my-9 font-lora">
+
+          <div className="text-center md:text-[60px]  text-6xl  md:leading-[4rem] my-9 font-lora mt-28 lg:mt-52">
             <span className="block">
               {templateData?.weddingInfo?.groom.name}
             </span>
@@ -128,6 +166,11 @@ function Template3({ templateData, staticTemplateData }) {
               className="object-cover w-[22rem]  h-[27rem] rounded-t-full mt-28"
             />
           </div>
+          <img
+            src={"/assets/Swastic.svg"}
+            alt=""
+            className="w-20 absolute -top-[170px]  right-24 z-30 "
+          />
           <img
             src={staticTemplateData?.frame06}
             alt=""
