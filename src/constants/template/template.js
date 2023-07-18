@@ -1178,6 +1178,20 @@ let staticTemplateData = [
     event_shape2: "/assets/templete/4/Itinerary/event-shape-2-ffe54c.png",
     paral_06: "/assets/templete/2/paral_06.jpg",
   },
+  {
+    id: 17,
+    templateId: 17,
+    templateName: "Classic",
+    templateImage: "/images/theme-16.png",
+    url: "/template/17",
+    isSelected: false,
+    theme: {
+      bgColor: "#fff",
+      textColor: "#B2A56A",
+      textBgColor: "#B2A56A",
+      themeColor:"#fff"
+    },
+  },
   // {
   //   id: 7,
   //   templateName: "Classic",

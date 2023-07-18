@@ -12,6 +12,7 @@ import { getUserPreference } from "@/services/user-preference/userPreference";
 import { templateInfoData } from "@/constants/template/1";
 import { template2InfoData } from "@/constants/template/2";
 import { template3InfoData } from "@/constants/template/3";
+import { template5InfoData } from "@/constants/template/5";
 import { staticTemplateData } from "@/constants/template/template";
 import Loader from "@/Components/common/Loader";
 import Template3 from "@/Components/all-templates/Template3";
@@ -19,6 +20,7 @@ import Template2 from "@/Components/all-templates/Template2";
 import Template1 from "@/Components/all-templates/Template1";
 import Template4 from "@/Components/all-templates/Template4";
 import SEO from "@/Components/utils/seo";
+import Template5 from "@/Components/template/5";
 
 function Template({
   singleTemplate,
@@ -156,6 +158,13 @@ function Template({
             images={staticTemplateData[15]}
           />
         );
+      case 17:
+        return (
+          <Template5
+            templateData={responseTemplateData}
+            staticTemplateData={staticTemplateData[16]}
+          />
+        );
 
       default:
         return (
@@ -266,8 +275,10 @@ export async function getServerSideProps({ params, req }) {
     );
     if (params.id >= 5 && params.id < 9) {
       responseTemplateData = template2InfoData;
-    } else if (params.id >= 9) {
+    } else if (params.id >= 9 && params.id < 16) {
       responseTemplateData = template3InfoData;
+    } else if (params.id >= 17) {
+      responseTemplateData = template5InfoData;
     } else {
       responseTemplateData = templateInfoData;
     }
