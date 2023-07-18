@@ -344,7 +344,7 @@ export default function Template2({ templateData, staticTemplateData }) {
               {/* {(selectedItem == "All" ||
                 selectedItem == "CapturedMemories") && ( */}
               <>
-                {/* <Gallery
+                <Gallery
                   images={staticTemplateData.GalleryImg}
                   paddingBottom="186.523%"
                   columngapcount="4"
@@ -355,7 +355,7 @@ export default function Template2({ templateData, staticTemplateData }) {
                   imageIndex={imageIndex}
                   onClose={closeLightbox}
                   images={templateData.GalleryImg}
-                /> */}
+                />
               </>
               {/* )} */}
 
