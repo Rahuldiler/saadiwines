@@ -112,9 +112,9 @@ function Template1({ templateData, staticTemplateData, images }) {
               >
                 <img
                   className="cursor-pointer"
-                  width="48"
-                  height="48"
-                  src="https://img.icons8.com/color/48/youtube-live.png"
+                  width="72"
+                  // height=""
+                  src="/assets/livestream.svg"
                   alt="youtube-live"
                 />
               </div>
@@ -166,7 +166,7 @@ function Template1({ templateData, staticTemplateData, images }) {
       {templateData && (
         <div
           className={`lg:p-24 py-28 p-4 lg:flex justify-between  `}
-          id={"introduction"}
+          id="introduction"
           style={{
             backgroundImage: `url(${templateData?.images.introduction})`,
             backgroundClip: "border-box",
@@ -253,6 +253,7 @@ function Template1({ templateData, staticTemplateData, images }) {
                   step={steps.id}
                   fctnName={steps.functionName}
                   location={steps.mapsLocation}
+                  address={steps.address}
                   dateTime={moment(steps.dateTime).format("LLLL")}
                   fctnInfo={steps.details}
                   themeColor={staticTemplateData.theme}

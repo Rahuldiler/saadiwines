@@ -190,11 +190,11 @@ function Template4({ formData }) {
               {templateData?.weddingInfo.bride.name}
             </h3>
             <p className="mb-1">
-              d/o  {templateData?.weddingInfo.bride.fatherName} and {" "}
+              D/O  {templateData?.weddingInfo.bride.fatherName} and {" "}
               {templateData?.weddingInfo.bride.motherName}
             </p>
             <p className="mb-2">
-              g/d  {templateData?.weddingInfo.bride.grandFatherName} and {" "}
+              G/D  {templateData?.weddingInfo.bride.grandFatherName} and {" "}
               {templateData?.weddingInfo.bride.grandMotherName}
             </p>
             <p className="font-Mulish text-[#848892] text-[16px]">

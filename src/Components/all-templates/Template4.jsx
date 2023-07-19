@@ -12,7 +12,7 @@ import Lightbox from "../template-components/4/lightBox";
 
 function Template4({ templateData, staticTemplateData }) {
   const [currentSlide, setCurrentSlide] = useState(0);
-  
+
   const [isOpen, setIsOpen] = useState(false);
   const [rsvp, setRsvp] = useState(true);
   const [isOpenRsvp, setIsOpenRsv] = useState(false);
@@ -63,7 +63,6 @@ function Template4({ templateData, staticTemplateData }) {
     );
   };
 
-
   const closeLightbox = () => {
     setIsOpen(false);
   };
@@ -75,7 +74,6 @@ function Template4({ templateData, staticTemplateData }) {
   const closeRsvpLightbox = () => {
     setIsOpenRsv(false);
   };
-
 
   return (
     <div>
@@ -165,13 +163,16 @@ function Template4({ templateData, staticTemplateData }) {
               {templateData?.weddingInfo?.groom.name}
             </h3>
             <p className="mb-1">
-              S/O  {templateData?.weddingInfo?.groom?.fatherName} and {" "}
+              S/O {templateData?.weddingInfo?.groom?.fatherName} and{" "}
               {templateData?.weddingInfo?.groom?.motherName}
             </p>
-            <p className="mb-2">
-              G/S  {templateData?.weddingInfo?.groom?.grandFatherName} and {" "}
-              {templateData?.weddingInfo?.groom?.grandMotherName}
-            </p>
+            {templateData?.weddingInfo?.groom?.grandFatherName && (
+              <p className="mb-2">
+                G/S {templateData?.weddingInfo?.groom?.grandFatherName} and{" "}
+                {templateData?.weddingInfo?.groom?.grandMotherName}
+              </p>
+            )}
+
             <p className="font-Mulish text-[#848892] text-[16px] px-5 lg:px-0">
               {templateData?.weddingInfo?.groom?.description}
             </p>
@@ -200,13 +201,16 @@ function Template4({ templateData, staticTemplateData }) {
               {templateData?.weddingInfo?.bride?.name}
             </h3>
             <p className="mb-1">
-              d/o  {templateData?.weddingInfo?.bride?.fatherName} and {" "}
+              D/O {templateData?.weddingInfo?.bride?.fatherName} and{" "}
               {templateData?.weddingInfo?.bride?.motherName}
             </p>
-            <p className="mb-2">
-              g/d  {templateData?.weddingInfo?.bride?.grandFatherName} and {" "}
-              {templateData?.weddingInfo?.bride?.grandMotherName}
-            </p>
+            {templateData?.weddingInfo?.bride?.grandFatherName && (
+              <p className="mb-2">
+                G/D {templateData?.weddingInfo?.bride?.grandFatherName} and{" "}
+                {templateData?.weddingInfo?.bride?.grandMotherName}
+              </p>
+            )}
+
             <p className="font-Mulish text-[#848892] text-[16px]">
               {templateData?.weddingInfo?.bride?.description}
             </p>
@@ -361,11 +365,11 @@ function Template4({ templateData, staticTemplateData }) {
             </div>
           ))}
           <Lightbox
-        isOpen={isOpen}
-        imageIndex={imageIndex}
-        onClose={closeLightbox}
-        images={images}
-      />
+            isOpen={isOpen}
+            imageIndex={imageIndex}
+            onClose={closeLightbox}
+            images={images}
+          />
         </div>
       </div>
 
