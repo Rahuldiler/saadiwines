@@ -16,28 +16,12 @@ const template3InfoData = {
       "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0042.jpg",
     gallery7:
       "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0031.jpg",
-    date4:
-      "https://sv-user-images.s3.ap-south-1.amazonaws.com/102/a70df2fc-9932-4226-9c6d-9d93a07c55f2.JPG",
-    itinerary:
-      "https://sv-user-images.s3.ap-south-1.amazonaws.com/102/d3453073-8910-42ae-88ac-9782784e99f0.png",
-    date3:
-      "https://sv-user-images.s3.ap-south-1.amazonaws.com/102/d93735ab-8c36-490a-ad67-a96cb1f23df9.JPG",
 
-    rsvp: "https://sv-user-images.s3.ap-south-1.amazonaws.com/102/d8947fa9-9e42-4ee8-8fb5-1fd8c4a885f9.JPG",
-    itinerary3:
-      "https://sv-user-images.s3.ap-south-1.amazonaws.com/102/f38a2fdf-86b2-4c98-8f31-5c87ae57eea4.JPG",
-    itinerary4:
-      "https://sv-user-images.s3.ap-south-1.amazonaws.com/102/d9f1db27-48e6-43db-b803-085c393eedd6.JPG",
-    itinerary5:
-      "https://sv-user-images.s3.ap-south-1.amazonaws.com/102/b96d827f-c2ee-4b14-ac27-7fcb1e9555b3.JPG",
     date2:
       "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0021.jpg",
-    introduction:
-      "https://sv-user-images.s3.ap-south-1.amazonaws.com/102/eb89caa4-c9ed-41b1-b0eb-3111a3ea3794.JPG",
+
     date1:
       "https://template-assets-sv.s3.amazonaws.com/template3/IMG-20201007-WA0036.jpg",
-    itinerary2:
-      "https://sv-user-images.s3.ap-south-1.amazonaws.com/102/59a14f1d-b644-4d18-8497-f1c95b3178c5.JPG",
   },
   milestone: [
     {
@@ -70,31 +54,43 @@ const template3InfoData = {
       id: 1,
       name: "Yash",
       relation: "Father",
+      image:
+        "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Blank&hairColor=Brown&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=Hoodie&clotheColor=Blue01&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Tanned",
     },
     {
       id: 2,
       name: "Monika",
       relation: "Mother",
+      image:
+        "https://avataaars.io/?avatarStyle=Transparent&topType=LongHairStraight&accessoriesType=Blank&hairColor=BrownDark&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light",
     },
     {
       id: 3,
       name: "Kapil",
       relation: "Uncle",
+      image:
+        "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortCurly&accessoriesType=Blank&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=CollarSweater&clotheColor=Red&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Twinkle&skinColor=Light",
     },
     {
       id: 4,
       name: "Shreya",
       relation: "Sister",
+      image:
+        "https://avataaars.io/?avatarStyle=Transparent&topType=LongHairMiaWallace&accessoriesType=Blank&hairColor=Black&facialHairColor=BrownDark&clotheType=ShirtCrewNeck&clotheColor=PastelYellow&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Pale",
     },
     {
       id: 5,
       name: "Govind",
       relation: "Brother",
+      image:
+        "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Blank&hairColor=Brown&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=Hoodie&clotheColor=Blue01&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Tanned",
     },
     {
       id: 6,
       name: "Vishal",
       relation: "Brother",
+      image:
+        "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortCurly&accessoriesType=Blank&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=CollarSweater&clotheColor=Red&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Twinkle&skinColor=Light",
     },
   ],
   itinerary: [
@@ -108,7 +104,8 @@ const template3InfoData = {
       address: "string",
       mapsLocation:
         "https://www.google.com/maps/place/Indira+Gandhi+International+Airport/@28.527554,77.0438314,11z/data=!4m6!3m5!1s0x390d1b85fc2a2d89:0xbef376182c43ed9d!8m2!3d28.5563529!4d77.1006963!16zL20vMDEyNDQ0?entry=ttu",
-      image: "string",
+      image:
+        "https://sv-user-images.s3.ap-south-1.amazonaws.com/102/d3453073-8910-42ae-88ac-9782784e99f0.png",
     },
     {
       id: 2,
@@ -119,7 +116,8 @@ const template3InfoData = {
       address: "string",
       mapsLocation:
         "https://www.google.com/maps/place/Mazaar+Restaurant/@28.5688605,77.2328845,15z/data=!4m6!3m5!1s0x390ce3ad97db2cb5:0xdce447161ff5833!8m2!3d28.5701715!4d77.2443807!16s%2Fg%2F1v7pwvx2?entry=ttu",
-      image: "string",
+      image:
+        "https://sv-user-images.s3.ap-south-1.amazonaws.com/102/d3453073-8910-42ae-88ac-9782784e99f0.png",
     },
     {
       id: 3,
@@ -131,9 +129,23 @@ const template3InfoData = {
       address: "string",
       mapsLocation:
         "https://www.google.com/maps/place/C+R+Park+Market+No.1/@28.5350621,77.2431712,13.75z/data=!4m6!3m5!1s0x390ce3d83e0cb4b7:0xb7ece1334b216b84!8m2!3d28.5401153!4d77.2486233!16s%2Fg%2F1wk4bfx6?entry=ttu",
-      image: "string",
+      image:
+        "https://sv-user-images.s3.ap-south-1.amazonaws.com/102/d3453073-8910-42ae-88ac-9782784e99f0.png",
     },
   ],
+  avatars: [
+    "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Blank&hairColor=Brown&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=Hoodie&clotheColor=Blue01&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Tanned",
+    "https://avataaars.io/?avatarStyle=Transparent&topType=LongHairStraight&accessoriesType=Blank&hairColor=BrownDark&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light",
+
+    "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Prescription02&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=Hoodie&clotheColor=Heather&eyeType=Happy&eyebrowType=RaisedExcitedNatural&mouthType=Smile&skinColor=Pale",
+
+    "https://avataaars.io/?avatarStyle=Transparent&topType=LongHairMiaWallace&accessoriesType=Prescription02&hairColor=Black&facialHairType=Blank&clotheType=ShirtScoopNeck&clotheColor=Heather&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Pale",
+
+    "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairDreads01&accessoriesType=Blank&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=ShirtCrewNeck&clotheColor=PastelYellow&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Pale",
+
+    "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortCurly&accessoriesType=Blank&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=CollarSweater&clotheColor=Red&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Twinkle&skinColor=Light",
+  ],
+
   pocs: [
     {
       id: 2,
@@ -141,12 +153,16 @@ const template3InfoData = {
       lastName: "Shivam",
       contactNumber: "8770123453",
       fromSide: "Bride",
+      image:
+        "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Blank&hairColor=Brown&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=Hoodie&clotheColor=Blue01&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Tanned",
     },
     {
       id: 1,
       firstName: "Dhruv",
       lastName: "Sumit",
       contactNumber: "97648536584",
+      image:
+        "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairDreads01&accessoriesType=Blank&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=ShirtCrewNeck&clotheColor=PastelYellow&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Pale",
     },
   ],
   weddingInfo: {

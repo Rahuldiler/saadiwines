@@ -212,7 +212,7 @@ function Template1({ templateData, staticTemplateData, images }) {
           <Double
             waterColor={staticTemplateData?.images.waterColor02}
             key={index}
-            img={staticTemplateData?.images.double1}
+            img={milestone.image}
             title={milestone.title}
             subtitle="11:30 am In The Square"
             infotext={milestone.description}
@@ -302,7 +302,7 @@ function Template1({ templateData, staticTemplateData, images }) {
             <Cards
               theme={staticTemplateData?.theme}
               key={index}
-              imgSrc={staticTemplateData.avatars[index]}
+              imgSrc={cards.image}
               name={cards.name}
               relationship={cards.relation}
             />
@@ -343,7 +343,7 @@ function Template1({ templateData, staticTemplateData, images }) {
             <Cards
               theme={staticTemplateData?.theme}
               key={index}
-              imgSrc={staticTemplateData.avatars[0]}
+              imgSrc={cards.image}
               name={cards.firstName}
               contactNo={`+91 ${cards.contactNumber}`}
             />

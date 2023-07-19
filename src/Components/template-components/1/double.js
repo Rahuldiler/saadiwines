@@ -28,13 +28,14 @@ function Double({
             </div> */}
 
         {/* <img src={img} alt="" className="h-full object-cover " /> */}
-        <Image
-          src={img}
-          alt=""
-          layout="fill"
-          className="h-full w-full object-cover "
-        />
-          
+        {img && (
+          <Image
+            src={img}
+            alt=""
+            layout="fill"
+            className="h-full w-full object-cover "
+          />
+        )}
       </div>
       <div
         style={{

@@ -35,6 +35,8 @@ const templateInfoData = {
         "What's the most romantic gesture you've ever experienced or witnessed with your partner?",
       description:
         "I once witnessed a romantic gesture when my partner surprised me with a bouquet of my favorite flowers and a candlelit dinner at home. It was a beautiful and intimate gesture that made me feel incredibly loved and special.",
+      image:
+        "https://template-assets-sv.s3.amazonaws.com/template1/SNY_1945.JPG",
     },
     {
       id: 2,
@@ -42,6 +44,8 @@ const templateInfoData = {
       title: "A song that you would like to dedicate to your partner?",
       description:
         "If I were to dedicate a song to my partner, I would choose 'Tum Hi Ho' from the movie Aashiqui 2. It's a beautiful and melodious song that expresses the depth of love and the feeling of finding one's soulmate.",
+      image:
+        "https://template-assets-sv.s3.amazonaws.com/template1/SNY_1945.JPG",
     },
   ],
   familyMembers: [
@@ -49,31 +53,43 @@ const templateInfoData = {
       id: 1,
       name: "Meenu Goyal",
       relation: "Mother",
+      image:
+        "https://avataaars.io/?avatarStyle=Transparent&topType=LongHairStraight&accessoriesType=Blank&hairColor=BrownDark&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light",
     },
     {
       id: 2,
       name: "Tripti Goyal",
       relation: "Sister",
+      image:
+        "https://avataaars.io/?avatarStyle=Transparent&topType=LongHairMiaWallace&accessoriesType=Prescription02&hairColor=Black&facialHairType=Blank&clotheType=ShirtScoopNeck&clotheColor=Heather&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Pale",
     },
     {
       id: 3,
       name: "Amod Upadhyay",
       relation: "Foofaji",
+      image:
+        "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Blank&hairColor=Brown&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=Hoodie&clotheColor=Blue01&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Tanned",
     },
     {
       id: 4,
       name: "Poonam Upadhyay",
       relation: "Buaji",
+      image:
+        "https://avataaars.io/?avatarStyle=Transparent&topType=LongHairMiaWallace&accessoriesType=Blank&hairColor=Black&facialHairColor=BrownDark&clotheType=ShirtCrewNeck&clotheColor=PastelYellow&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Pale",
     },
     {
       id: 5,
       name: "Sarthak Upadhyay",
       relation: "Cousin",
+      image:
+        "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Prescription02&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=Hoodie&clotheColor=Heather&eyeType=Happy&eyebrowType=RaisedExcitedNatural&mouthType=Smile&skinColor=Pale",
     },
     {
       id: 6,
       name: "Aman Upadhyay",
       relation: "Cousin",
+      image:
+        "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortCurly&accessoriesType=Blank&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=CollarSweater&clotheColor=Red&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Twinkle&skinColor=Light",
     },
   ],
   itinerary: [
@@ -81,8 +97,7 @@ const templateInfoData = {
       id: 1,
 
       functionName: "Mehendi",
-      details:
-        "At home",
+      details: "At home",
       dateTime: "2024-06-18T08:29:53.796",
       address: "At home",
       mapsLocation:
@@ -125,6 +140,7 @@ const templateInfoData = {
       image: "string",
     },
   ],
+
   pocs: [
     {
       id: 2,
@@ -132,6 +148,8 @@ const templateInfoData = {
       lastName: "Goyal",
       contactNumber: "8171383588",
       fromSide: "GROOM",
+      image:
+        "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Blank&hairColor=Brown&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=Hoodie&clotheColor=Blue01&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Tanned",
     },
     {
       id: 1,
@@ -139,13 +157,17 @@ const templateInfoData = {
       lastName: "Upadhyay",
       contactNumber: "97648536584",
       fromSide: "GROOM",
+      image:
+        "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairDreads01&accessoriesType=Blank&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=ShirtCrewNeck&clotheColor=PastelYellow&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Pale",
     },
     {
-      id: 1,
+      id: 3,
       firstName: "Aman",
       lastName: "Upadhyay",
       contactNumber: "97648536584",
       fromSide: "GROOM",
+      image:
+        "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Prescription02&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=Hoodie&clotheColor=Heather&eyeType=Happy&eyebrowType=RaisedExcitedNatural&mouthType=Smile&skinColor=Pale",
     },
   ],
   weddingInfo: {

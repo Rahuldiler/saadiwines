@@ -308,7 +308,7 @@ function Template3({ templateData, staticTemplateData }) {
                 fctnInfo={steps.details}
                 index={index}
                 // img={staticTemplateData.stepss[0].img}
-                img={templateData?.images.itinerary}
+                img={steps?.image}
               />
             </div>
           ))}
@@ -349,7 +349,7 @@ function Template3({ templateData, staticTemplateData }) {
           {templateData?.familyMembers?.map((cards, index) => (
             <Temp3Crds
               key={index}
-              imgSrc={staticTemplateData.avatars[index]}
+              imgSrc={cards.image}
               name={cards.name}
               relationship={cards.relation}
             />
@@ -365,7 +365,7 @@ function Template3({ templateData, staticTemplateData }) {
           {templateData?.pocs?.map((cards, index) => (
             <Temp3Crds
               key={index}
-              imgSrc={staticTemplateData.avatars[0]}
+              imgSrc={cards.image}
               name={cards.firstName}
               relationship={cards.relationship}
               contactNo={`+91 ${cards.contactNumber}`}
