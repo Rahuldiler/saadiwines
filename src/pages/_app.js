@@ -10,29 +10,17 @@ import "@/styles/globals.css";
 import useNotificationStore from "@/store/notificationStore";
 
 export default function App({ Component, pageProps }) {
-  const { loading } = useLoadingStore((state) => ({
-    loading: state.loading,
-  }));
-  const { notificationDetails } = useNotificationStore((state) => ({
-    notificationDetails: state.notificationDetails,
-  }));
   const loadingFn = useLoadingStore((state) => state.loadingFn);
 
   useEffect(() => {
-    loadingFn(false);
+    loadingFn(false, "Loading...");
   }, []);
   return (
     <>
       <AppProvider>
         <ThemeProvider theme={theme}>
-          {loading && (
-            <Loader message="Loading dashboard page" isLoading={loading} />
-          )}
-          <Notification
-            type={notificationDetails?.type}
-            message={notificationDetails?.message}
-            open={notificationDetails?.open}
-          />
+          <Loader />
+          <Notification />
           <Component {...pageProps} />
         </ThemeProvider>
       </AppProvider>

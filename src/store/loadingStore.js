@@ -2,8 +2,9 @@ import create from "zustand";
 
 const useLoadingStore = create((set) => ({
   loading: true,
-  loadingFn: (loadingValue) => {
-    set((state) => ({ loading: loadingValue }));
+  message: "Loading...",
+  loadingFn: (loadingValue, messageValue) => {
+    set((state) => ({ loading: loadingValue, message: messageValue }));
   },
 }));
 

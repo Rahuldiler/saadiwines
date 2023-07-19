@@ -4,33 +4,29 @@ import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
 import { useEffect } from "react";
 import { useState } from "react";
+import useNotificationStore from "@/store/notificationStore";
 
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
-const Notification = ({ type, message, open }) => {
-  const [openNotification, setOpenNotification] = useState(false);
+const Notification = () => {
+  const { notificationDetails } = useNotificationStore((state) => ({
+    notificationDetails: state.notificationDetails,
+  }));
+  const notification = useNotificationStore((state) => state.notification);
 
   const ref = useRef(null);
-  const handleClick = () => {
-    // setOpen(true);
-  };
 
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
       return;
     }
-
-    setOpenNotification(false);
+    notification({ ...notificationDetails, open: false });
   };
-
-  useEffect(() => {
-    setOpenNotification(open);
-  }, [open]);
 
   return (
     <Snackbar
-      open={openNotification}
+      open={notificationDetails.open}
       ref={ref}
       className="custom-snackbar"
       autoHideDuration={6000}
@@ -38,11 +34,14 @@ const Notification = ({ type, message, open }) => {
       anchorOrigin={{ vertical: "top", horizontal: "right" }}
     >
       <Alert
-        severity={type}
-        sx={{ width: "100%", background: type === "info" && "#F7B011" }}
+        severity={notificationDetails?.type}
+        sx={{
+          width: "100%",
+          background: notificationDetails?.type === "info" && "#F7B011",
+        }}
         onClose={handleClose}
       >
-        {message}
+        {notificationDetails?.message}
       </Alert>
     </Snackbar>
   );
