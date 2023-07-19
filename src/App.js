@@ -7,10 +7,6 @@ import Loader from "./Components/common/Loader";
 import { useEffect } from "react";
 
 function App() {
-  const { loading } = useNotificationStore((state) => ({
-    loading: state.loading,
-  }));
-  console.log("f", loading);
   return (
     <HydrationProvider>
       <Client>
