@@ -13,4 +13,18 @@ const signUp = async (userData) => {
   localStorage.setItem("jwtToken", response.data.jwtToken);
 };
 
-export { login, signUp };
+const resetLink = async (credentials) => {
+  await http.post({
+    url: `/reset-link?userMail=${credentials.userMail}`,
+    payload: credentials,
+  });
+};
+
+const reset = async (credentials) => {
+  await http.post({
+    url: `/reset`,
+    payload: credentials,
+  });
+};
+
+export { login, signUp, resetLink, reset };

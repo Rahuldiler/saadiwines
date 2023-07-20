@@ -1,23 +1,20 @@
 import create from "zustand";
-import { devtools, persist } from "zustand/middleware";
 
-const notificationStore = create((set) => ({
-  loading: null,
-  loadingTrue: () => {
-    set((state) => ({ loading: true }));
+const useNotificationStore = create((set) => ({
+  notificationDetails: {
+    type: null,
+    message: null,
+    open: null,
   },
-  loadingFalse: () => {
-    set((state) => ({ loading: false }));
-    console.log(state);
+  notification: (notificationValue) => {
+    set((state) => ({
+      notificationDetails: {
+        type: notificationValue.type,
+        message: notificationValue.message,
+        open: notificationValue.open,
+      },
+    }));
   },
 }));
-
-const useNotificationStore = create(
-  devtools(
-    persist(notificationStore, {
-      name: "notification",
-    })
-  )
-);
 
 export default useNotificationStore;

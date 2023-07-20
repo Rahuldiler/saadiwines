@@ -1,12 +1,18 @@
+import useLoadingStore from "@/store/loadingStore";
 import { Box, Typography } from "@mui/material";
 import Backdrop from "@mui/material/Backdrop";
 import Image from "next/image";
 import React from "react";
 
-function Loader({ message, isLoading }) {
+function Loader() {
+  const { loading, message } = useLoadingStore((state) => ({
+    loading: state.loading,
+    message: state.message,
+  }));
+
   return (
     <Backdrop
-      open={isLoading ?? false}
+      open={loading ?? false}
       sx={{
         display: "flex",
         flexDirection: "column",

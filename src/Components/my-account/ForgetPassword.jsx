@@ -8,20 +8,22 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import React, { useState } from "react";
-import { login } from "@/services/auth/auth";
+import { login, resetLink } from "@/services/auth/auth";
 import { COLORS } from "../utils/ConstantTheme";
 import { useRouter } from "next/router";
 import { TextFieldInput } from "../common/TextFieldInput";
+import useNotificationStore from "@/store/notificationStore";
 
 const theme = createTheme();
 
 const defaultTheme = createTheme();
 
-export default function SignIn({ setHandle }) {
+function ForgetPassword({ setHandle }) {
   const router = useRouter();
+  const notification = useNotificationStore((state) => state.notification);
+
   const loginDetail = {
-    email: "",
-    password: "",
+    userMail: "",
   };
 
   const [credentials, setCredentials] = useState(loginDetail);
@@ -36,17 +38,22 @@ export default function SignIn({ setHandle }) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-    try {
-      const response = await login(credentials);
-      router.push("/dashboard");
-      // alert("Login success!");
-    } catch (error) {
-      setValidationErrorMessage(error.response.data.message);
-      // alert("Incorrect Credentials!");
-    }
+    resetLink(credentials)
+      .then(() => {
+        notification({
+          type: "info",
+          message: "Reset link sent to your email",
+          open: true,
+        });
+      })
+      .catch((error) => {
+        notification({
+          type: "error",
+          message: "Something went wrong",
+          open: true,
+        });
+      });
   };
-
   return (
     <ThemeProvider theme={theme}>
       <ThemeProvider theme={defaultTheme}>
@@ -63,7 +70,7 @@ export default function SignIn({ setHandle }) {
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
-              Login
+              Forget Password
             </Typography>
             <Box
               component="form"
@@ -74,21 +81,13 @@ export default function SignIn({ setHandle }) {
               <TextFieldInput
                 id="email"
                 label="Email Address"
-                name="email"
+                name="userMail"
                 autoComplete="email"
                 type="email"
-                value={credentials.email}
+                value={credentials.userMail}
                 onChange={onLoginChange}
               />
-              <TextFieldInput
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-                value={credentials.password}
-                onChange={onLoginChange}
-              />
+
               <Typography
                 variant="span"
                 sx={{ color: "red", fontSize: "16px" }}
@@ -108,16 +107,9 @@ export default function SignIn({ setHandle }) {
                   },
                 }}
               >
-                Login
+                Forget Password
               </Button>
-              <Button
-                onClick={() => setHandle("forgetPassword")}
-                sx={{
-                  color: COLORS.primary,
-                }}
-              >
-                Forget Password?
-              </Button>
+
               <Grid container>
                 <Grid item>
                   <Button
@@ -136,3 +128,5 @@ export default function SignIn({ setHandle }) {
     </ThemeProvider>
   );
 }
+
+export default ForgetPassword;

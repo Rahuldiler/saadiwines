@@ -22,6 +22,7 @@ import { TextFieldInput } from "../common/TextFieldInput";
 import { theme } from "../utils/theme";
 import Notification from "../common/Notification";
 import { addContactUs } from "@/services/Contact/contact-us";
+import useNotificationStore from "@/store/notificationStore";
 
 const HomeForm = () => {
   const [valueDateTime, setValueDateTime] = useState();
@@ -30,6 +31,8 @@ const HomeForm = () => {
     type: "",
     message: "",
   });
+  const notification = useNotificationStore((state) => state.notification);
+
   const phoneRegExp =
     /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 
