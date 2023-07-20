@@ -455,6 +455,15 @@ p {
   opacity: 0;
 }
 
+/* .reset-form */
+.reset-form .password-reveal::-ms-reveal,
+.password-reveal::-ms-clear {
+  display: none;
+}
+.password-reveal {
+  letter-spacing: 0.1em;
+}
+
 @media only screen and (max-width: 600px) {
   .videoResponsiveService {
     width: 100%;
