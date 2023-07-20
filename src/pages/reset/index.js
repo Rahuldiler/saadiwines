@@ -7,66 +7,69 @@ import Ajv from "ajv";
 
 const Reset = () => {
   const router = useRouter();
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [formData, setFormData] = useState({
+    password: "",
+    confirmPassword: "",
+  });
   const notification = useNotificationStore((state) => state.notification);
-
-  console.log(router.query);
+  const [validationErrors, setValidationErrors] = useState({});
   const handleChange = (e) => {
     const { name, value } = e.target;
-    if (name === "password") {
-      setPassword(value);
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const validateData = (event) => {
+    event.preventDefault();
+
+    const ajv = new Ajv();
+    const schema = {
+      type: "object",
+      additionalProperties: false,
+      required: ["token", "password"],
+      properties: {
+        password: {
+          type: "string",
+          minLength: 6,
+          maxLength: 20,
+        },
+        token: {
+          type: "string",
+          minLength: 1,
+        },
+      },
+    };
+
+    const validate = ajv.compile(schema);
+    const isValid = validate({
+      password: formData.password,
+      token: router.query.token,
+    });
+    if (!isValid) {
+      let errors = {};
+      validate.errors.forEach((error) => {
+        const { instancePath, message } = error;
+        errors[instancePath.slice(1)] = message;
+      });
+      setValidationErrors(errors);
     } else {
-      setConfirmPassword(value);
+      handleSubmit();
     }
   };
 
-  //   const validateData = (event) => {
-  //     const ajv = new Ajv();
-  //     const schema = {
-  //       $schema: "https://json-schema.org/draft-07/schema",
-  //       title: "Reset Password Schema",
-  //       type: "object",
-  //       additionalProperties: false,
-  //       required: ["token", "password"],
-  //       properties: {
-  //         token: {
-  //           type: "string",
-  //           minLength: 1,
-  //         },
-  //         password: {
-  //           type: "string",
-  //           minLength: 6,
-  //           maxLength: 20,
-  //         },
-  //       },
-  //     };
-  //     const validate = ajv.compile(schema);
-  //     const isValid = validate(formData);
-
-  //     if (!isValid) {
-  //       const errors = {};
-  //       validate.errors.forEach((error) => {
-  //         const { dataPath, message } = error;
-  //         errors[dataPath.slice(1)] = message;
-  //       });
-  //       setValidationErrors(errors);
-  //     } else {
-  //       handleSubmit(event);
-  //     }
-  //   };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (password === confirmPassword) {
-      const response = await reset({ password, token: router.query.token });
+  const handleSubmit = async () => {
+    if (formData.password === formData.confirmPassword) {
+      const response = await reset({
+        password: formData.password,
+        token: router.query.token,
+      });
       notification({
         type: "success",
         message: "Password reset successfully! Please login",
         open: true,
       });
-      router.push("/");
+      // router.push("/");
     } else {
+      setValidationErrors({ confirmPassword: "Password does not match" });
       notification({
         type: "error",
         message: "Password does not match",
@@ -74,6 +77,7 @@ const Reset = () => {
       });
     }
   };
+
   return (
     <section className="flex justify-center items-center h-[100vh] bg-rest-bg-img">
       <div className="shadow-md p-10 rounded-md w-[500px]">
@@ -83,27 +87,46 @@ const Reset = () => {
           height={200}
           alt="background"
         />
-        <form className="flex flex-col mt-6" onSubmit={handleSubmit}>
+        <form className="flex flex-col mt-6">
           <label className="mt-4 font-medium">Password</label>
           <input
             placeholder="Password"
             type="password"
             name="password"
-            value={password}
+            value={formData.password}
             onChange={handleChange}
             className="p-4 bg-[#F3F3F3] rounded-md"
           />
+          {validationErrors.password && (
+            <p className="text-red-600 text-[12px]">
+              {validationErrors.password}
+            </p>
+          )}
           <label className="mt-4 font-medium">Confirm Password</label>
 
           <input
             placeholder="Confirm Password"
             name="confirmPassword"
             type="password"
-            value={confirmPassword}
+            value={formData.confirmPassword}
             onChange={handleChange}
             className="p-4 bg-[#F3F3F3] rounded-md"
           />
-          <button className="bg-[#FA4795] mt-8 p-4 rounded-md w-full text-white">
+          {validationErrors.confirmPassword && (
+            <p className="text-red-600 text-[12px]">
+              {validationErrors.confirmPassword}
+            </p>
+          )}
+
+          {validationErrors.token && (
+            <p className="text-red-600 text-[12px] mt-8">
+              {validationErrors.token}
+            </p>
+          )}
+          <button
+            className="bg-[#FA4795] mt-8 p-4 rounded-md w-full text-white"
+            onClick={validateData}
+          >
             Reset
           </button>
         </form>
