@@ -69,7 +69,7 @@ function Header({ handleOpen, setHandle, navItems, isHome }) {
 
   const handleOpenDialog = () => {
     handleOpen();
-    setHandle(true);
+    setHandle("login");
   };
 
   return (

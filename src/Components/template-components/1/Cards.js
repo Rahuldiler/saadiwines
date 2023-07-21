@@ -17,14 +17,16 @@ function Cards({
     >
       <div className=" rounded-lg absolute top-[-50px] left-1/2 transform -translate-x-1/2 ">
         {/* <img src={imgSrc} alt="" className="object-cover rounded-2xl w-28 h-28 shadow-2xl" /> */}
-        <Image
-          src={imgSrc}
-          alt=""
-          width={28}
-          height={28}
-          // layout="fill"
-          className="object-cover rounded-2xl w-28 h-28 shadow-2xl"
-        />
+        {imgSrc && (
+          <Image
+            src={imgSrc}
+            alt=""
+            width={28}
+            height={28}
+            // layout="fill"
+            className="object-cover rounded-2xl w-28 h-28 shadow-2xl"
+          />
+        )}
       </div>
       <div
         style={{ color: theme.textColor }}

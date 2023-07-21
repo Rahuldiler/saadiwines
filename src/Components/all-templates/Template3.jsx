@@ -109,6 +109,7 @@ function Template3({ templateData, staticTemplateData }) {
               className="object-cover  w-[10rem] h-[10rem] rounded-t-full mt-28 md:hidden"
             />
           </div>
+          {/*  left */}
           <img
             src={"/assets/Swastic.svg"}
             alt=""
@@ -121,21 +122,21 @@ function Template3({ templateData, staticTemplateData }) {
             className="w-24 absolute top-[40px] sm:-top-[65px]  left-0 z-30 sm:w-52"
           />
         </div>
+        {/*  Ganesh */}
+        <div className="hidden text-center absolute top-[10px] left-0 right-0 z-30 sm:block">
+          <p className="!text-[22px] lg:!text-[42px] font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-[#BDA60A] to-[#D6BE27]">
+            वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ।
+          </p>
+          <p className="!text-[22px] lg:!text-[42px] font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-[#BDA60A] to-[#D6BE27]">
+            निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा॥
+          </p>
+          <img
+            src={"/assets/Ganesh2.svg"}
+            alt=""
+            className="w-36 mb-3 mx-auto mt-4"
+          />
+        </div>
         <div className="col-span-3 relative">
-          <div className="hidden text-center absolute -top-[170px]  left-24 z-30 sm:block">
-            <p className="!text-[22px] lg:!text-[42px] font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-[#BDA60A] to-[#D6BE27]">
-              वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ।
-            </p>
-            <p className="!text-[22px] lg:!text-[42px] font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-[#BDA60A] to-[#D6BE27]">
-              निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा॥
-            </p>
-            <img
-              src={"/assets/Ganesh2.svg"}
-              alt=""
-              className="w-36 mb-3 mx-auto mt-4"
-            />
-          </div>
-
           <div className="text-center md:text-[60px]  text-6xl  md:leading-[4rem] my-9 font-lora mt-28 lg:mt-52">
             <span className="block">
               {templateData?.weddingInfo?.groom.name}
@@ -166,10 +167,11 @@ function Template3({ templateData, staticTemplateData }) {
               className="object-cover w-[22rem]  h-[27rem] rounded-t-full mt-28"
             />
           </div>
+          {/* RIght */}
           <img
             src={"/assets/Swastic.svg"}
             alt=""
-            className="w-20 absolute -top-[170px]  right-24 z-30 "
+            className="w-20 absolute -top-[170px]  right-24 z-30"
           />
           <img
             src={staticTemplateData?.frame06}
@@ -308,7 +310,7 @@ function Template3({ templateData, staticTemplateData }) {
                 fctnInfo={steps.details}
                 index={index}
                 // img={staticTemplateData.stepss[0].img}
-                img={templateData?.images.itinerary}
+                img={steps?.image}
               />
             </div>
           ))}
@@ -349,7 +351,7 @@ function Template3({ templateData, staticTemplateData }) {
           {templateData?.familyMembers?.map((cards, index) => (
             <Temp3Crds
               key={index}
-              imgSrc={staticTemplateData.avatars[index]}
+              imgSrc={cards.image}
               name={cards.name}
               relationship={cards.relation}
             />
@@ -365,7 +367,7 @@ function Template3({ templateData, staticTemplateData }) {
           {templateData?.pocs?.map((cards, index) => (
             <Temp3Crds
               key={index}
-              imgSrc={staticTemplateData.avatars[0]}
+              imgSrc={cards.image}
               name={cards.firstName}
               relationship={cards.relationship}
               contactNo={`+91 ${cards.contactNumber}`}

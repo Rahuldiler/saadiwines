@@ -31,17 +31,28 @@ export default function Template2({ templateData, staticTemplateData }) {
     setIsOpen(false);
   };
   const slideShowImages = Object.entries(templateData.images)
-    .filter(
-      ([label]) =>
-        label === "date1" ||
-        label === "date2" ||
-        label === "date3" ||
-        label === "date4"
-    )
+    .filter(([label]) => label.includes("date"))
     .reduce((acc, [label, imageUrl]) => {
       acc.push({ ["link"]: imageUrl, id: label });
       return acc;
     }, []);
+
+  const galleryImages = () => {
+    const galleryKeys = Object.keys(templateData.images).filter((key) =>
+      key.startsWith("gallery")
+    );
+    const imageArray = galleryKeys.map((key) => templateData.images[key]);
+
+    // for (
+    //   let i = 0;
+    //   i < imageArray.length && i < staticTemplateData.GalleryImg.length;
+    //   i++
+    // ) {
+    //   staticTemplateData.GalleryImg[i]["image"] = imageArray[i];
+    // }
+    return imageArray;
+  };
+  galleryImages()
   return (
     <>
       <div className="lg:flex mb-[-265px]">
@@ -525,7 +536,7 @@ export default function Template2({ templateData, staticTemplateData }) {
             {templateData?.familyMembers?.map((card, index) => (
               <FamilyCard
                 key={card.id}
-                imgSrc={staticTemplateData.avatars[index]}
+                imgSrc={card.image}
                 name={card.name}
                 relationship={card.relation}
               />
@@ -560,7 +571,7 @@ export default function Template2({ templateData, staticTemplateData }) {
             {templateData?.pocs?.map((card, index) => (
               <FamilyCard
                 key={card.id}
-                imgSrc={staticTemplateData.avatars[0]}
+                imgSrc={card.image}
                 name={card.firstName}
                 relationship={card.relationship}
                 contactNo={`+91 ${card.contactNumber}`}

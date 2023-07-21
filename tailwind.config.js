@@ -9,15 +9,17 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-
+    backgroundImage: {
+      "rest-bg-img": "url('/assets/bg-1.png')",
+    },
     extend: {
       fontFamily: {
         Alex: ["Alex Brush"],
         Cardo: ["Cardo"],
       },
       colors: {
-        themePrimaryColor: '#9CAB8D'
-      }
+        themePrimaryColor: "#9CAB8D",
+      },
     },
   },
   plugins: [],

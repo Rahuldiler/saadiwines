@@ -3,6 +3,7 @@ import Image from 'next/image';
 
 
 const Gallery = ({images, paddingBottom,columngapcount,openLightbox}) => {
+    console.log(images)
     return (
         <div className="relative flex"
             style={{
@@ -29,7 +30,7 @@ const Gallery = ({images, paddingBottom,columngapcount,openLightbox}) => {
                     className="Gallery"
                 >
 
-                    <Image src={image.image} alt={image.alt} fill className="!relative" />
+                    <Image src={image.image} alt={image} fill className="!relative" />
 
                 </div>
             ))}

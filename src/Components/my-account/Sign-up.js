@@ -22,7 +22,7 @@ export default function SignUp({ setHandle }) {
     lastName: "",
     password: "",
     email: "",
-    number: "",
+    phone: "",
   };
 
   const [userData, setUserData] = useState(signupDetail);
@@ -105,11 +105,11 @@ export default function SignUp({ setHandle }) {
                     <TextFieldInput
                       id="outlined-number"
                       label="Number"
-                      name="number"
+                      name="phone"
                       autoComplete="tel"
                       type="number"
                       required
-                      value={userData.number}
+                      value={userData.phone}
                       onChange={onSignupChange}
                     />
                   </Grid>
@@ -158,7 +158,7 @@ export default function SignUp({ setHandle }) {
                     <Button
                       variant="body2"
                       sx={{ fontWeight: 400, cursor: "pointer" }}
-                      onClick={() => setHandle(true)}
+                      onClick={() => setHandle("login")}
                     >
                       Already have an account? Sign in
                     </Button>
