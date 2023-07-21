@@ -23,6 +23,7 @@ export default function Template2({ templateData, staticTemplateData }) {
   const targetDate = new Date(templateData.weddingInfo.functionDateTime);
 
   const openLightbox = (img) => {
+    console.log(img)
     setIsOpen(true);
     setImageIndex(img);
   };
@@ -37,22 +38,13 @@ export default function Template2({ templateData, staticTemplateData }) {
       return acc;
     }, []);
 
-  const galleryImages = () => {
-    const galleryKeys = Object.keys(templateData.images).filter((key) =>
-      key.startsWith("gallery")
-    );
-    const imageArray = galleryKeys.map((key) => templateData.images[key]);
+  const galleryImages = Object.entries(templateData.images)
+    .filter(([label]) => label.includes("gallery"))
+    .reduce((acc, [label, imageUrl]) => {
+      acc[label] = imageUrl;
+      return acc;
+    }, {});
 
-    // for (
-    //   let i = 0;
-    //   i < imageArray.length && i < staticTemplateData.GalleryImg.length;
-    //   i++
-    // ) {
-    //   staticTemplateData.GalleryImg[i]["image"] = imageArray[i];
-    // }
-    return imageArray;
-  };
-  galleryImages()
   return (
     <>
       <div className="lg:flex mb-[-265px]">
@@ -356,7 +348,7 @@ export default function Template2({ templateData, staticTemplateData }) {
                 selectedItem == "CapturedMemories") && ( */}
               <>
                 <Gallery
-                  images={staticTemplateData.GalleryImg}
+                  images={galleryImages}
                   paddingBottom="186.523%"
                   columngapcount="4"
                   openLightbox={openLightbox}
@@ -365,7 +357,7 @@ export default function Template2({ templateData, staticTemplateData }) {
                   isOpen={isOpen}
                   imageIndex={imageIndex}
                   onClose={closeLightbox}
-                  images={templateData.GalleryImg}
+                  images={galleryImages}
                 />
               </>
               {/* )} */}

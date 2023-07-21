@@ -1,19 +1,19 @@
 const template2InfoData = {
   images: {
-    gallery4:
-      "https://sv-user-images.s3.ap-south-1.amazonaws.com/102/7bec30e8-93aa-4ac9-8712-3c8fa0943435.JPG",
-    gallery5:
-      "https://sv-user-images.s3.ap-south-1.amazonaws.com/102/53288e79-7602-4d63-b82d-0aa5e2f0f7fd.JPG",
-    gallery2:
-      "https://sv-user-images.s3.ap-south-1.amazonaws.com/102/41b9eb11-3034-4db1-9491-f7d611cb8b6d.JPG",
-    gallery3:
-      "https://template-assets-sv.s3.amazonaws.com/template2/024A2429.JPG",
     gallery8:
-      "https://template-assets-sv.s3.amazonaws.com/template2/024A2650.JPG",
-    gallery6:
-      "https://sv-user-images.s3.ap-south-1.amazonaws.com/102/2363c197-728a-49ff-a9e0-23e930651b7a.JPG",
+    "https://template-assets-sv.s3.amazonaws.com/template2/024A2650.JPG",
     gallery7:
-      "https://sv-user-images.s3.ap-south-1.amazonaws.com/102/2c5c8ffb-9e16-48c4-b28c-064cabebaf4a.JPG",
+    "https://template-assets-sv.s3.amazonaws.com/template2/024A2596.JPG",
+    gallery3:
+    "https://template-assets-sv.s3.amazonaws.com/template2/024A2719.JPG",
+    gallery2:
+    "https://template-assets-sv.s3.amazonaws.com/template2/024A2409.JPG",
+    gallery5:
+    "https://template-assets-sv.s3.amazonaws.com/template2/024A2406.JPG",
+    gallery6:
+    "https://template-assets-sv.s3.amazonaws.com/template2/024A2483.JPG",
+    gallery4:
+    "https://template-assets-sv.s3.amazonaws.com/template2/024A2699.JPG",
     date4: "https://template-assets-sv.s3.amazonaws.com/template2/024A2483.JPG",
     itinerary1:
       "https://sv-user-images.s3.ap-south-1.amazonaws.com/102/d3453073-8910-42ae-88ac-9782784e99f0.png",
@@ -34,7 +34,7 @@ const template2InfoData = {
     rsvp: "https://template-assets-sv.s3.amazonaws.com/template2/024A2433.JPG",
     date2: "https://template-assets-sv.s3.amazonaws.com/template2/024A2373.JPG",
     gallery1:
-      "https://sv-user-images.s3.ap-south-1.amazonaws.com/102/c81febe7-8113-4346-872f-9bc06d58b43e.JPG",
+      "https://template-assets-sv.s3.amazonaws.com/template2/024A2373.JPG",
     introduction:
       "https://sv-user-images.s3.ap-south-1.amazonaws.com/102/eb89caa4-c9ed-41b1-b0eb-3111a3ea3794.JPG",
     date1: "https://template-assets-sv.s3.amazonaws.com/template2/024A2684.JPG",
@@ -78,7 +78,7 @@ const template2InfoData = {
       relation: "Father",
       image:
         "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Prescription02&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=Hoodie&clotheColor=Heather&eyeType=Happy&eyebrowType=RaisedExcitedNatural&mouthType=Smile&skinColor=Pale",
-   },
+    },
     {
       id: 2,
       name: "Geeta",
@@ -209,121 +209,6 @@ const template2InfoData = {
     pics: ["D", "E", "F"],
     placesToVisit: ["Dont know", "Don know 2"],
   },
-  GalleryImg: [
-    {
-      image:
-        "https://template-assets-sv.s3.amazonaws.com/template2/024A2373.JPG",
-      alt: "Image 1",
-      itemHeight: "67.29166666666667%",
-      percentHeight: "0%",
-      column: 0,
-      itemsInColumn: 0,
-    },
-    {
-      image:
-        "https://template-assets-sv.s3.amazonaws.com/template2/024A2409.JPG",
-      alt: "Image 2",
-      itemHeight: "100%",
-      percentHeight: "0%",
-      column: 1,
-      itemsInColumn: 0,
-    },
-    {
-      image:
-        "https://template-assets-sv.s3.amazonaws.com/template2/024A2406.JPG",
-      alt: "Image 3",
-      itemHeight: "100%",
-      percentHeight: "17.491809735226195%",
-      column: 0,
-      itemsInColumn: 1,
-    },
-    {
-      image:
-        "https://template-assets-sv.s3.amazonaws.com/template2/024A2699.JPG",
-      alt: "Image 4",
-      itemHeight: "100%",
-      percentHeight: "25.994020659159673%",
-      column: 1,
-      itemsInColumn: 1,
-    },
-    {
-      image:
-        "https://template-assets-sv.s3.amazonaws.com/template2/024A2719.JPG",
-      alt: "Image 5",
-      itemHeight: "100%",
-      percentHeight: "43.48583039438586%",
-      column: 0,
-      itemsInColumn: 2,
-    },
-    {
-      image:
-        "https://template-assets-sv.s3.amazonaws.com/template2/024A2483.JPG",
-      alt: "Image 6",
-      itemHeight: "66.66666666666666%",
-      percentHeight: "51.98804131831935%",
-      column: 1,
-      itemsInColumn: 2,
-    },
-    {
-      image:
-        "https://template-assets-sv.s3.amazonaws.com/template2/024A2650.JPG",
-      alt: "Image 7",
-      itemHeight: "48.541666666666664%",
-      percentHeight: "69.47985105354553%",
-      column: 0,
-      itemsInColumn: 3,
-    },
-    {
-      image:
-        "https://template-assets-sv.s3.amazonaws.com/template2/024A2684.JPG",
-      alt: "Image 8",
-      itemHeight: "68.87052341597796%",
-      percentHeight: "69.31738842442579%",
-      column: 1,
-      itemsInColumn: 3,
-    },
-    {
-      image:
-        "https://template-assets-sv.s3.amazonaws.com/template2/024A2596.JPG",
-      alt: "Image 9",
-      itemHeight: "68.87052341597796%",
-      percentHeight: "82.0977819151793%",
-      column: 0,
-      itemsInColumn: 4,
-    },
-  ],
-
-  SliderImg: [
-    {
-      id: 1,
-      link: "https://template-assets-sv.s3.amazonaws.com/template2/024A2684.JPG",
-    },
-    {
-      id: 2,
-      link: "https://template-assets-sv.s3.amazonaws.com/template2/024A2373.JPG",
-    },
-  ],
-  SliderImg2: [
-    {
-      id: 2,
-      link: "https://template-assets-sv.s3.amazonaws.com/template2/024A2483.JPG",
-    },
-    {
-      id: 1,
-      link: "https://template-assets-sv.s3.amazonaws.com/template2/024A2596.JPG",
-    },
-  ],
-
-  SliderImg1: [
-    {
-      id: 1,
-      link: "https://template-assets-sv.s3.amazonaws.com/template2/024A2433.JPG",
-    },
-    {
-      id: 2,
-      link: "https://template-assets-sv.s3.amazonaws.com/template2/024A2406.JPG",
-    },
-  ],
 };
 
 export { template2InfoData };

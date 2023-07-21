@@ -100,19 +100,6 @@ let staticTemplateData = [
         "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4388.JPG",
       leaf03: "url('/images/gr-leaf-03.png')",
     },
-    avatars: [
-      "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Blank&hairColor=Brown&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=Hoodie&clotheColor=Blue01&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Tanned",
-
-      "https://avataaars.io/?avatarStyle=Transparent&topType=LongHairStraight&accessoriesType=Blank&hairColor=BrownDark&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light",
-
-      "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Prescription02&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=Hoodie&clotheColor=Heather&eyeType=Happy&eyebrowType=RaisedExcitedNatural&mouthType=Smile&skinColor=Pale",
-
-      "https://avataaars.io/?avatarStyle=Transparent&topType=LongHairMiaWallace&accessoriesType=Prescription02&hairColor=Black&facialHairType=Blank&clotheType=ShirtScoopNeck&clotheColor=Heather&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Pale",
-
-      "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairDreads01&accessoriesType=Blank&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=ShirtCrewNeck&clotheColor=PastelYellow&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Pale",
-
-      "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortCurly&accessoriesType=Blank&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=CollarSweater&clotheColor=Red&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Twinkle&skinColor=Light",
-    ],
   },
   {
     id: 4,
@@ -147,19 +134,6 @@ let staticTemplateData = [
         "https://template-assets-sv.s3.amazonaws.com/template1/DSC_4388.JPG",
       leaf03: "url('/images/gr-leaf-03.png')",
     },
-    avatars: [
-      "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Blank&hairColor=Brown&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=Hoodie&clotheColor=Blue01&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Tanned",
-
-      "https://avataaars.io/?avatarStyle=Transparent&topType=LongHairStraight&accessoriesType=Blank&hairColor=BrownDark&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light",
-
-      "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Prescription02&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=Hoodie&clotheColor=Heather&eyeType=Happy&eyebrowType=RaisedExcitedNatural&mouthType=Smile&skinColor=Pale",
-
-      "https://avataaars.io/?avatarStyle=Transparent&topType=LongHairMiaWallace&accessoriesType=Prescription02&hairColor=Black&facialHairType=Blank&clotheType=ShirtScoopNeck&clotheColor=Heather&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Pale",
-
-      "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairDreads01&accessoriesType=Blank&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=ShirtCrewNeck&clotheColor=PastelYellow&eyeType=Default&eyebrowType=RaisedExcitedNatural&mouthType=Default&skinColor=Pale",
-
-      "https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortCurly&accessoriesType=Blank&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=CollarSweater&clotheColor=Red&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Twinkle&skinColor=Light",
-    ],
   },
   {
     id: 5,
@@ -191,90 +165,6 @@ let staticTemplateData = [
     bg12: "url('/assets/templete/2/bg-12.jpg')",
 
     paral06: "/assets/templete/2/paral_06.jpg",
-   
-    GalleryImg: [
-      {
-        image:
-          "https://template-assets-sv.s3.amazonaws.com/template2/024A2373.JPG",
-        alt: "Image 1",
-        itemHeight: "67.29166666666667%",
-        percentHeight: "0%",
-        column: 0,
-        itemsInColumn: 0,
-      },
-      {
-        image:
-          "https://template-assets-sv.s3.amazonaws.com/template2/024A2409.JPG",
-        alt: "Image 2",
-        itemHeight: "100%",
-        percentHeight: "0%",
-        column: 1,
-        itemsInColumn: 0,
-      },
-      {
-        image:
-          "https://template-assets-sv.s3.amazonaws.com/template2/024A2406.JPG",
-        alt: "Image 3",
-        itemHeight: "100%",
-        percentHeight: "17.491809735226195%",
-        column: 0,
-        itemsInColumn: 1,
-      },
-      {
-        image:
-          "https://template-assets-sv.s3.amazonaws.com/template2/024A2699.JPG",
-        alt: "Image 4",
-        itemHeight: "100%",
-        percentHeight: "25.994020659159673%",
-        column: 1,
-        itemsInColumn: 1,
-      },
-      {
-        image:
-          "https://template-assets-sv.s3.amazonaws.com/template2/024A2719.JPG",
-        alt: "Image 5",
-        itemHeight: "100%",
-        percentHeight: "43.48583039438586%",
-        column: 0,
-        itemsInColumn: 2,
-      },
-      {
-        image:
-          "https://template-assets-sv.s3.amazonaws.com/template2/024A2483.JPG",
-        alt: "Image 6",
-        itemHeight: "66.66666666666666%",
-        percentHeight: "51.98804131831935%",
-        column: 1,
-        itemsInColumn: 2,
-      },
-      {
-        image:
-          "https://template-assets-sv.s3.amazonaws.com/template2/024A2650.JPG",
-        alt: "Image 7",
-        itemHeight: "48.541666666666664%",
-        percentHeight: "69.47985105354553%",
-        column: 0,
-        itemsInColumn: 3,
-      },
-      {
-        image:
-          "https://template-assets-sv.s3.amazonaws.com/template2/024A2684.JPG",
-        alt: "Image 8",
-        itemHeight: "68.87052341597796%",
-        percentHeight: "69.31738842442579%",
-        column: 1,
-        itemsInColumn: 3,
-      },
-      {
-        image:
-          "https://template-assets-sv.s3.amazonaws.com/template2/024A2596.JPG",
-        alt: "Image 9",
-        itemHeight: "68.87052341597796%",
-        percentHeight: "82.0977819151793%",
-        column: 0,
-        itemsInColumn: 4,
-      },
-    ],
   },
   {
     id: 6,
@@ -303,91 +193,6 @@ let staticTemplateData = [
     bg12: "url('/assets/templete/2/bg-12-c21919.jpg')",
 
     paral06: "/assets/templete/2/paral_06.jpg",
-
-   
-    GalleryImg: [
-      {
-        image:
-          "https://template-assets-sv.s3.amazonaws.com/template2/024A2373.JPG",
-        alt: "Image 1",
-        itemHeight: "67.29166666666667%",
-        percentHeight: "0%",
-        column: 0,
-        itemsInColumn: 0,
-      },
-      {
-        image:
-          "https://template-assets-sv.s3.amazonaws.com/template2/024A2409.JPG",
-        alt: "Image 2",
-        itemHeight: "100%",
-        percentHeight: "0%",
-        column: 1,
-        itemsInColumn: 0,
-      },
-      {
-        image:
-          "https://template-assets-sv.s3.amazonaws.com/template2/024A2406.JPG",
-        alt: "Image 3",
-        itemHeight: "100%",
-        percentHeight: "17.491809735226195%",
-        column: 0,
-        itemsInColumn: 1,
-      },
-      {
-        image:
-          "https://template-assets-sv.s3.amazonaws.com/template2/024A2699.JPG",
-        alt: "Image 4",
-        itemHeight: "100%",
-        percentHeight: "25.994020659159673%",
-        column: 1,
-        itemsInColumn: 1,
-      },
-      {
-        image:
-          "https://template-assets-sv.s3.amazonaws.com/template2/024A2719.JPG",
-        alt: "Image 5",
-        itemHeight: "100%",
-        percentHeight: "43.48583039438586%",
-        column: 0,
-        itemsInColumn: 2,
-      },
-      {
-        image:
-          "https://template-assets-sv.s3.amazonaws.com/template2/024A2483.JPG",
-        alt: "Image 6",
-        itemHeight: "66.66666666666666%",
-        percentHeight: "51.98804131831935%",
-        column: 1,
-        itemsInColumn: 2,
-      },
-      {
-        image:
-          "https://template-assets-sv.s3.amazonaws.com/template2/024A2650.JPG",
-        alt: "Image 7",
-        itemHeight: "48.541666666666664%",
-        percentHeight: "69.47985105354553%",
-        column: 0,
-        itemsInColumn: 3,
-      },
-      {
-        image:
-          "https://template-assets-sv.s3.amazonaws.com/template2/024A2684.JPG",
-        alt: "Image 8",
-        itemHeight: "68.87052341597796%",
-        percentHeight: "69.31738842442579%",
-        column: 1,
-        itemsInColumn: 3,
-      },
-      {
-        image:
-          "https://template-assets-sv.s3.amazonaws.com/template2/024A2596.JPG",
-        alt: "Image 9",
-        itemHeight: "68.87052341597796%",
-        percentHeight: "82.0977819151793%",
-        column: 0,
-        itemsInColumn: 4,
-      },
-    ],
   },
   {
     id: 7,
@@ -416,90 +221,6 @@ let staticTemplateData = [
     bg12: "url('/assets/templete/2/bg-12-efc0fe.jpg')",
 
     paral06: "/assets/templete/2/paral_06.jpg",
-  
-    GalleryImg: [
-      {
-        image:
-          "https://template-assets-sv.s3.amazonaws.com/template2/024A2373.JPG",
-        alt: "Image 1",
-        itemHeight: "67.29166666666667%",
-        percentHeight: "0%",
-        column: 0,
-        itemsInColumn: 0,
-      },
-      {
-        image:
-          "https://template-assets-sv.s3.amazonaws.com/template2/024A2409.JPG",
-        alt: "Image 2",
-        itemHeight: "100%",
-        percentHeight: "0%",
-        column: 1,
-        itemsInColumn: 0,
-      },
-      {
-        image:
-          "https://template-assets-sv.s3.amazonaws.com/template2/024A2406.JPG",
-        alt: "Image 3",
-        itemHeight: "100%",
-        percentHeight: "17.491809735226195%",
-        column: 0,
-        itemsInColumn: 1,
-      },
-      {
-        image:
-          "https://template-assets-sv.s3.amazonaws.com/template2/024A2699.JPG",
-        alt: "Image 4",
-        itemHeight: "100%",
-        percentHeight: "25.994020659159673%",
-        column: 1,
-        itemsInColumn: 1,
-      },
-      {
-        image:
-          "https://template-assets-sv.s3.amazonaws.com/template2/024A2719.JPG",
-        alt: "Image 5",
-        itemHeight: "100%",
-        percentHeight: "43.48583039438586%",
-        column: 0,
-        itemsInColumn: 2,
-      },
-      {
-        image:
-          "https://template-assets-sv.s3.amazonaws.com/template2/024A2483.JPG",
-        alt: "Image 6",
-        itemHeight: "66.66666666666666%",
-        percentHeight: "51.98804131831935%",
-        column: 1,
-        itemsInColumn: 2,
-      },
-      {
-        image:
-          "https://template-assets-sv.s3.amazonaws.com/template2/024A2650.JPG",
-        alt: "Image 7",
-        itemHeight: "48.541666666666664%",
-        percentHeight: "69.47985105354553%",
-        column: 0,
-        itemsInColumn: 3,
-      },
-      {
-        image:
-          "https://template-assets-sv.s3.amazonaws.com/template2/024A2684.JPG",
-        alt: "Image 8",
-        itemHeight: "68.87052341597796%",
-        percentHeight: "69.31738842442579%",
-        column: 1,
-        itemsInColumn: 3,
-      },
-      {
-        image:
-          "https://template-assets-sv.s3.amazonaws.com/template2/024A2596.JPG",
-        alt: "Image 9",
-        itemHeight: "68.87052341597796%",
-        percentHeight: "82.0977819151793%",
-        column: 0,
-        itemsInColumn: 4,
-      },
-    ],
   },
   {
     id: 8,
@@ -528,90 +249,6 @@ let staticTemplateData = [
     bg12: "url('/assets/templete/2/bg-12-ffe54c.jpg')",
 
     paral06: "/assets/templete/2/paral_06.jpg",
-  
-    GalleryImg: [
-      {
-        image:
-          "https://template-assets-sv.s3.amazonaws.com/template2/024A2373.JPG",
-        alt: "Image 1",
-        itemHeight: "67.29166666666667%",
-        percentHeight: "0%",
-        column: 0,
-        itemsInColumn: 0,
-      },
-      {
-        image:
-          "https://template-assets-sv.s3.amazonaws.com/template2/024A2409.JPG",
-        alt: "Image 2",
-        itemHeight: "100%",
-        percentHeight: "0%",
-        column: 1,
-        itemsInColumn: 0,
-      },
-      {
-        image:
-          "https://template-assets-sv.s3.amazonaws.com/template2/024A2406.JPG",
-        alt: "Image 3",
-        itemHeight: "100%",
-        percentHeight: "17.491809735226195%",
-        column: 0,
-        itemsInColumn: 1,
-      },
-      {
-        image:
-          "https://template-assets-sv.s3.amazonaws.com/template2/024A2699.JPG",
-        alt: "Image 4",
-        itemHeight: "100%",
-        percentHeight: "25.994020659159673%",
-        column: 1,
-        itemsInColumn: 1,
-      },
-      {
-        image:
-          "https://template-assets-sv.s3.amazonaws.com/template2/024A2719.JPG",
-        alt: "Image 5",
-        itemHeight: "100%",
-        percentHeight: "43.48583039438586%",
-        column: 0,
-        itemsInColumn: 2,
-      },
-      {
-        image:
-          "https://template-assets-sv.s3.amazonaws.com/template2/024A2483.JPG",
-        alt: "Image 6",
-        itemHeight: "66.66666666666666%",
-        percentHeight: "51.98804131831935%",
-        column: 1,
-        itemsInColumn: 2,
-      },
-      {
-        image:
-          "https://template-assets-sv.s3.amazonaws.com/template2/024A2650.JPG",
-        alt: "Image 7",
-        itemHeight: "48.541666666666664%",
-        percentHeight: "69.47985105354553%",
-        column: 0,
-        itemsInColumn: 3,
-      },
-      {
-        image:
-          "https://template-assets-sv.s3.amazonaws.com/template2/024A2684.JPG",
-        alt: "Image 8",
-        itemHeight: "68.87052341597796%",
-        percentHeight: "69.31738842442579%",
-        column: 1,
-        itemsInColumn: 3,
-      },
-      {
-        image:
-          "https://template-assets-sv.s3.amazonaws.com/template2/024A2596.JPG",
-        alt: "Image 9",
-        itemHeight: "68.87052341597796%",
-        percentHeight: "82.0977819151793%",
-        column: 0,
-        itemsInColumn: 4,
-      },
-    ],
   },
   {
     id: 9,
@@ -633,7 +270,7 @@ let staticTemplateData = [
     frame08: "/assets/templete/3/frame-08.png",
     frame: "/assets/templete/3/frame.png",
     greyLight: "url('/assets/templete/3/img-grey-light.png')",
-   
+
     occasions3: [
       {
         id: 1,
@@ -1103,7 +740,7 @@ let staticTemplateData = [
       bgColor: "#fff",
       textColor: "#B2A56A",
       textBgColor: "#B2A56A",
-      themeColor:"#fff"
+      themeColor: "#fff",
     },
   },
   // {

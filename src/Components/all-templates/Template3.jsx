@@ -193,13 +193,13 @@ function Template3({ templateData, staticTemplateData }) {
           </h2>
           <p className="mt-5 !text-[30px]">
             {" "}
-            S/O {templateData?.weddingInfo?.bride.fatherName} and{" "}
+            D/O {templateData?.weddingInfo?.bride.fatherName} and{" "}
             {templateData?.weddingInfo?.bride.motherName}
           </p>
           {templateData?.weddingInfo?.bride.grandFatherName && (
             <p className="mt-1 !text-[30px]">
               {" "}
-              G/S {templateData?.weddingInfo?.bride.grandFatherName} and{" "}
+              G/D {templateData?.weddingInfo?.bride.grandFatherName} and{" "}
               {templateData?.weddingInfo?.bride.grandMotherName}
             </p>
           )}
