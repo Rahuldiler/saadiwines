@@ -124,12 +124,13 @@ function Template3({ templateData, staticTemplateData }) {
         </div>
         {/*  Ganesh */}
         <div className="hidden text-center absolute top-[10px] left-0 right-0 z-30 sm:block">
-          <p className="!text-[22px] lg:!text-[42px] font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-[#BDA60A] to-[#D6BE27]">
+          <p className="!text-[22px] lg:!text-[42px] font-extrabold text-5xl p-4 text-center text-[#FEA71A]">
             वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ।
           </p>
-          <p className="!text-[22px] lg:!text-[42px] font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-[#BDA60A] to-[#D6BE27]">
+          <p className="!text-[22px] lg:!text-[42px] font-extrabold text-[#FEA71A]">
             निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा॥
           </p>
+          {/* //text-transparent bg-clip-text bg-gradient-to-br from-[#BDA60A] to-[#D6BE27] */}
           <img
             src={"/assets/Ganesh2.svg"}
             alt=""

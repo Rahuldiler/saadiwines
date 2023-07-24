@@ -105,7 +105,7 @@ function Template1({ templateData, staticTemplateData, images }) {
                 )}
               </div>
             </div>
-            {templateData.isWedCastEnabled && (
+            {templateData.wedCastEnabled && (
               <div
                 className="absolute top-10 right-[-30px] transform -translate-x-1/2 -translate-y-1/2 p-4 text-white"
                 onClick={openPopup}
@@ -139,13 +139,11 @@ function Template1({ templateData, staticTemplateData, images }) {
           </button>
         </div>
       </div>
-      <div>
+      <>
         {showYoutubePlayer && (
-          <div className="z-1000 popup absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ">
-            <PopupPlayer url={templateData.liveURL} closePopup={closePopup} />
-          </div>
+          <PopupPlayer url={templateData.wedCast} closePopup={closePopup} />
         )}
-      </div>
+      </>
       <GreenStrip
         title="Our Wedding"
         text="MISSING DAYS TO"

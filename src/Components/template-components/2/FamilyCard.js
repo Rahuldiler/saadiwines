@@ -4,14 +4,13 @@ import Image from "next/image";
 
 function Cards({ imgSrc, name, relationship, contactNo }) {
   return (
-    <div className="text-center pb-6 relative">
+    <div className="text-center pb-6 relative w-48 h-48 mx-auto">
       {imgSrc && (
         <Image
           src={imgSrc}
           alt=""
-          width={250}
-          height={250}
-          className="object-contain rounded-2xl shadow-2xl !relative mx-auto"
+          fill
+          className="object-cover rounded-2xl shadow-2xl !relative mx-auto"
         />
       )}
       <div className="text-black !font-Cardo mt-4">

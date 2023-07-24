@@ -9,14 +9,13 @@ import { EffectFade, Autoplay } from "swiper";
 import moment from "moment";
 import ThankYouMessage from "./ThankYouMessage";
 const WeddingDate = ({ images, weddingInfo }) => {
-
   const slideShowImages = Object.entries(images)
     .filter(([label]) => label.includes("date"))
     .reduce((acc, [label, imageUrl]) => {
       acc.push({ ["link"]: imageUrl, id: label });
       return acc;
     }, []);
-    
+
   return (
     <div className="lg:sticky lg:w-[60%] lg:h-screen lg:top-0">
       <Swiper
@@ -40,8 +39,8 @@ const WeddingDate = ({ images, weddingInfo }) => {
                 className="!relative lg:!h-screen !h-[50vh] object-cover"
               />
               <div className="absolute inset-0 flex justify-center items-end">
-                <div className="text-white w-[80%] text-center">
-                  <div className="!font-Alex text-center text-[50px]  lg:w-auto lg:text-[120px] transition-all duration-500">
+                <div className="text-white w-[100%] text-center">
+                  <div className="!font-Alex text-center text-[50px] px-10  lg:w-auto lg:text-[120px] transition-all duration-500">
                     {weddingInfo?.groom.name.split(" ")[0]} &{" "}
                     {weddingInfo?.bride.name.split(" ")[0]}
                   </div>

@@ -14,7 +14,10 @@ function Itinerary({
       className="bg-[#edf3f8] p-7 min-h-[480px] lg:min-h-[550px]"
     >
       <h2
-        style={{ color: staticTemplateData?.theme?.textBgColor, borderColor: staticTemplateData?.theme?.textBgColor  }}
+        style={{
+          color: staticTemplateData?.theme?.textBgColor,
+          borderColor: staticTemplateData?.theme?.textBgColor,
+        }}
         className="text-[25px] min-h-[100px] text-[#002642] font-Futura font-bold uppercase border-b-[1px] pb-3 mb-5 border-[#c4d8e4]"
       >
         {functionName}

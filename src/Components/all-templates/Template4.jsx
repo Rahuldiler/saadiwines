@@ -12,7 +12,6 @@ import Lightbox from "../template-components/4/lightBox";
 
 function Template4({ templateData, staticTemplateData }) {
   const [currentSlide, setCurrentSlide] = useState(0);
-
   const [isOpen, setIsOpen] = useState(false);
   const [rsvp, setRsvp] = useState(true);
   const [isOpenRsvp, setIsOpenRsv] = useState(false);
@@ -299,7 +298,7 @@ function Template4({ templateData, staticTemplateData }) {
             >
               <Itinerary
                 functionName={steps.functionName}
-                dateTime={steps.dateTime}
+                dateTime={moment(steps.functionDateTime).format("LLLL")}
                 description={steps.details}
                 image={steps.image}
                 mapsLocation={steps.mapsLocation}
